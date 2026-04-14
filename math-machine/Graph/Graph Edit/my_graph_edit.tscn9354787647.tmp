@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cx332tlkbnunc"]
+
+[ext_resource type="Script" uid="uid://dtsxch84g6w4n" path="res://Graph/Graph Edit/my_graph_edit.gd" id="1_icph3"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_i1exf"]
+[ext_resource type="PackedScene" uid="uid://b3nni3c2inqxl" path="res://Graph/Graph Nodes/Operation Nodes/operation_node.tscn" id="3_qud77"]
+
+[node name="GraphEdit" type="GraphEdit" unique_id=1777296774]
+offset_right = 1174.0
+offset_bottom = 673.0
+show_grid = false
+snapping_enabled = false
+zoom_min = 1.0
+zoom_max = 1.0
+minimap_enabled = false
+show_menu = false
+show_zoom_buttons = false
+show_grid_buttons = false
+show_minimap_button = false
+show_arrange_button = false
+script = ExtResource("1_icph3")
+
+[node name="InputNode" parent="." unique_id=736657052 instance=ExtResource("2_i1exf")]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 279.0
+offset_right = 242.0
+offset_bottom = 399.0
+mouse_filter = 1
+position_offset = Vector2(47, 279)
+output = 10
+
+[node name="OperationNode" parent="." unique_id=879709623 instance=ExtResource("3_qud77")]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 272.0
+offset_right = 548.0
+offset_bottom = 375.0
+mouse_filter = 1
+position_offset = Vector2(443, 272)

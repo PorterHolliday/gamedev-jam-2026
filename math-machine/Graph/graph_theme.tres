@@ -1,0 +1,16 @@
+[gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6q7qk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gcss"]
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 5.0
+
+[resource]
+GraphNode/constants/separation = 40
+GraphNode/styles/panel = SubResource("StyleBoxFlat_6q7qk")
+GraphNodeTitleLabel/constants/line_spacing = 0
+GraphNodeTitleLabel/font_sizes/font_size = 16
+GraphNodeTitleLabel/styles/normal = SubResource("StyleBoxFlat_3gcss")

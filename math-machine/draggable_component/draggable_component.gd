@@ -1,7 +1,7 @@
 class_name DraggableComponent
 extends Button
 
-@onready var parent: Node2D = get_parent()
+@onready var parent: Control = get_parent()
 var mouse_offset: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
@@ -12,10 +12,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not button_pressed: return
 	
-	parent.global_position = get_global_mouse_position() - mouse_offset
+	print(parent.global_position, ' | ', get_global_mouse_position(), ' | ', mouse_offset)
+	parent.position_offset = get_local_mouse_position() - mouse_offset
+	print(parent.global_position, ' | ', get_global_mouse_position(), ' | ', mouse_offset)
 	
 func _on_button_down() -> void:
-	mouse_offset = get_global_mouse_position() - parent.global_position
+	print('down')
+	mouse_offset = get_local_mouse_position() - parent.position_offset
 	
 func _on_button_up() -> void:
+	print('up')
 	mouse_offset = Vector2.ZERO
