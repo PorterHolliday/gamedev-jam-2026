@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ba1vuqivhrxgk"]
+
+[ext_resource type="Script" uid="uid://dle66tua6n7n1" path="res://draggable_component/draggable_component.gd" id="1_l1j2i"]
+
+[node name="DraggableComponent" type="Button" unique_id=2105944728]
+action_mode = 0
+keep_pressed_outside = true
+script = ExtResource("1_l1j2i")
