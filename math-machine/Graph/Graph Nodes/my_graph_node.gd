@@ -16,7 +16,7 @@ func is_input_connected(port_idx: int) -> bool:
 	var slot_idx: int = get_input_port_slot(port_idx)
 	return _inputs[slot_idx] != NULL_VALUE
 
-func add_input(port_idx: int, value: int) -> void:
+func update_input(port_idx: int, value: int) -> void:
 	var slot_idx: int = get_input_port_slot(port_idx)
 	_inputs[slot_idx] = value
 	_update_output()

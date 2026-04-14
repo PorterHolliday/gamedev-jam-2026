@@ -30,9 +30,12 @@ func _on_connection_request(from_node_name: StringName, from_port: int, to_node_
 	var to_node: MyGraphNode = get_node(NodePath(to_node_name))
 	
 	if to_node.is_input_connected(to_port): return
+	if _is_loop_created(from_node, to_node): 
+		print('loop created')
+		return
 	
 	connect_node(from_node_name, from_port, to_node_name, to_port)
-	to_node.add_input(to_port, from_node.output)
+	to_node.update_input(to_port, from_node.output)
 	
 func _on_disconnection_request(from_node_name: StringName, from_port: int, to_node_name: StringName, to_port: int) -> void:
 	var from_node: MyGraphNode = get_node(NodePath(from_node_name))
@@ -40,6 +43,17 @@ func _on_disconnection_request(from_node_name: StringName, from_port: int, to_no
 	
 	disconnect_node(from_node_name, from_port, to_node_name, to_port)
 	to_node.remove_input(to_port)
+	
+func _is_loop_created(search_for_node: MyGraphNode, next_node: MyGraphNode) -> bool:
+	if next_node == search_for_node: return true
+	if next_node is OutputNode: return false
+	
+	var output_connections = get_connection_list_from_output_port(next_node.name, 0)
+	for connection in output_connections:
+		print(connection['node'])
+		if _is_loop_created(search_for_node, connection['node']): return true
+	
+	return false
 
 func get_connection_list_from_output_port(node_name: StringName, port_idx: int) -> Array[Dictionary]:
 	var node_connections: Array[Dictionary] = get_connection_list_from_node(node_name)

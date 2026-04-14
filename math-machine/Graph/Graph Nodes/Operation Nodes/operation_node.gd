@@ -30,7 +30,7 @@ func _gui_input(event: InputEvent) -> void:
 		position_offset += event.relative / get_parent().zoom
 		get_viewport().set_input_as_handled()
 		
-func add_input(port_idx: int, value: int) -> void:
+func update_input(port_idx: int, value: int) -> void:
 	super(port_idx, value)
 	_update_input_label(port_idx)
 	
