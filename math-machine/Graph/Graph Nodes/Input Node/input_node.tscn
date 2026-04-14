@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://6yc4v3tu65xu" path="res://Graph/Graph Nodes/Input Node/input_node.gd" id="1_xb3t2"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_xb3t2"]
+font_size = 48
+
 [node name="InputNode" type="GraphNode" unique_id=736657052]
 offset_right = 168.0
 offset_bottom = 100.0
@@ -24,3 +27,14 @@ metadata/_custom_type_script = "uid://6yc4v3tu65xu"
 [node name="Control" type="Control" parent="." unique_id=1385535567]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="ValueLabel" type="Label" parent="Control" unique_id=775961950]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -19.0
+offset_right = 165.0
+offset_bottom = 61.0
+text = "5"
+label_settings = SubResource("LabelSettings_xb3t2")
+horizontal_alignment = 1
+vertical_alignment = 1

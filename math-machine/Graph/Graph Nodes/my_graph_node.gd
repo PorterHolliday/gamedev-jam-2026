@@ -5,11 +5,15 @@ extends GraphNode
 
 var _inputs: Array[int] = []
 const NULL_VALUE: int = 9223372036854775807
-var _output: int = NULL_VALUE
+var output: int = NULL_VALUE
 var _output_port_idx: int = 0
 
 func _ready() -> void:
 	pass
+	
+func is_input_connected(port_idx: int) -> bool:
+	var slot_idx: int = get_input_port_slot(port_idx)
+	return _inputs[slot_idx] != NULL_VALUE
 
 func update_input(port_idx: int, value: int) -> void:
 	var slot_idx: int = get_input_port_slot(port_idx)
@@ -23,8 +27,8 @@ func remove_input(port_idx: int) -> void:
 	
 func _update_output() -> void:
 	var new_output: int = _calculate_output()
-	if new_output == _output: return
-	_output = new_output
+	if new_output == output: return
+	output = new_output
 	
 	_update_output_connections()
 	
@@ -36,5 +40,5 @@ func _update_output_connections() -> void:
 	for connection in connections:
 		var graph_node_name: MyGraphNode = connection['node']
 		var port_idx: int = connection['port']
-		graph_node_name.update_input(port_idx, _output)
+		graph_node_name.update_input(port_idx, output)
 		

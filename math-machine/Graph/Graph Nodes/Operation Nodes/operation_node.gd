@@ -1,11 +1,11 @@
 class_name OperationNode
 extends MyGraphNode
 
+@export var _input_labels: Array[Label] = []
+@export var _output_label: Label
+
 var _dragging := false
 var _drag_offset := Vector2.ZERO
-
-var _input_labels: Array[Label] = []
-var _output_label: Label
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -37,7 +37,7 @@ func _update_input_label(port_idx: int) -> void:
 func _update_output() -> void:
 	super()
 	
-	if _output == NULL_VALUE:
+	if output == NULL_VALUE:
 		_output_label.text = ''
 	else:
-		_output_label.text = str(_output)
+		_output_label.text = str(output)
