@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dtsxch84g6w4n" path="res://Graph/Graph Edit/my_graph_edit.gd" id="1_icph3"]
 [ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_i1exf"]
-[ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Operation Nodes/Single Input Operations/Add Value Operation/add_value_operation.tscn" id="3_qud77"]
+[ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="3_qud77"]
+[ext_resource type="PackedScene" uid="uid://bnyrfxxrx0v05" path="res://Graph/Graph Nodes/Operation Nodes/Sum Operation/sum_operation.tscn" id="4_3yicx"]
+[ext_resource type="PackedScene" uid="uid://ckfb4fdxos2u2" path="res://Graph/Graph Nodes/Operation Nodes/Subtract Operation/subtract_operation.tscn" id="5_ld6b7"]
 
 [node name="GraphEdit" type="GraphEdit" unique_id=1777296774]
 offset_right = 1174.0
@@ -27,6 +29,7 @@ offset_right = 256.0
 offset_bottom = 446.0
 mouse_filter = 1
 position_offset = Vector2(61, 326)
+value = 1
 
 [node name="InputNode2" parent="." unique_id=252296669 instance=ExtResource("2_i1exf")]
 layout_mode = 0
@@ -36,6 +39,7 @@ offset_right = 255.0
 offset_bottom = 236.0
 mouse_filter = 1
 position_offset = Vector2(60, 116)
+value = 8
 
 [node name="AddValueOperation" parent="." unique_id=1740454549 instance=ExtResource("3_qud77")]
 layout_mode = 0
@@ -55,3 +59,30 @@ offset_right = 537.0
 offset_bottom = 443.0
 mouse_filter = 1
 position_offset = Vector2(417, 338)
+
+[node name="SumOperation" parent="." unique_id=163396201 instance=ExtResource("4_3yicx")]
+layout_mode = 0
+offset_left = 654.0
+offset_top = 97.0
+offset_right = 765.0
+offset_bottom = 188.0
+mouse_filter = 1
+position_offset = Vector2(654, 97)
+
+[node name="SumOperation2" parent="." unique_id=1652143794 instance=ExtResource("4_3yicx")]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 319.0
+offset_right = 781.0
+offset_bottom = 410.0
+mouse_filter = 1
+position_offset = Vector2(670, 319)
+
+[node name="SubtractOperation" parent="." unique_id=749474698 instance=ExtResource("5_ld6b7")]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 190.0
+offset_right = 1006.0
+offset_bottom = 279.0
+mouse_filter = 1
+position_offset = Vector2(899, 190)

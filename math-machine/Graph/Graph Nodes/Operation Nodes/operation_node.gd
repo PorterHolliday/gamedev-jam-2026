@@ -4,8 +4,20 @@ extends MyGraphNode
 @export var _input_labels: Array[Label] = []
 @export var _output_label: Label
 
+var _input_count: int = 0
+
 var _dragging := false
 var _drag_offset := Vector2.ZERO
+
+func _ready() -> void:
+	super()
+	
+	for child in get_children():
+		if child is Control:
+			child.mouse_filter = Control.MOUSE_FILTER_PASS
+			
+	for i in range(_input_count):
+		_inputs.append(NULL_VALUE)
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -18,7 +30,7 @@ func _gui_input(event: InputEvent) -> void:
 		position_offset += event.relative / get_parent().zoom
 		get_viewport().set_input_as_handled()
 		
-func update_input(port_idx: int, value: int) -> void:
+func add_input(port_idx: int, value: int) -> void:
 	super(port_idx, value)
 	_update_input_label(port_idx)
 	

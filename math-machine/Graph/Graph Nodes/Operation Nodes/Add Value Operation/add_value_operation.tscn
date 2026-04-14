@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://m2eaw868frt"]
 
-[ext_resource type="Script" uid="uid://hxdsmv50cqwf" path="res://Graph/Graph Nodes/Operation Nodes/Single Input Operations/Add Value Operation/add_value_operation.gd" id="1_oy3uw"]
+[ext_resource type="Script" uid="uid://hxdsmv50cqwf" path="res://Graph/Graph Nodes/Operation Nodes/Add Value Operation/add_value_operation.gd" id="1_oy3uw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oy3uw"]
 font_size = 48

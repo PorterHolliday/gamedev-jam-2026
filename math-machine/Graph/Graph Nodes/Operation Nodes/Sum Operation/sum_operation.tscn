@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bnyrfxxrx0v05"]
+
+[ext_resource type="Script" uid="uid://cfmts83uath1a" path="res://Graph/Graph Nodes/Operation Nodes/Sum Operation/sum_operation.gd" id="1_mwkdb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mwkdb"]
+font_size = 64
+
+[node name="SumOperation" type="GraphNode" unique_id=163396201 node_paths=PackedStringArray("_input_labels", "_output_label")]
+offset_right = 111.0
+offset_bottom = 91.0
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = true
+slot/1/left_type = 1
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_mwkdb")
+_input_labels = [NodePath("Control/InputLabel"), NodePath("Control2/InputLabel")]
+_output_label = NodePath("Control/OutputLabel")
+metadata/_custom_type_script = "uid://cfmts83uath1a"
+
+[node name="Control" type="Control" parent="." unique_id=226395711]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InputLabel" type="Label" parent="Control" unique_id=265874423]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label" type="Label" parent="Control" unique_id=961787232]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -33.0
+offset_right = 108.0
+offset_bottom = 55.0
+text = "+"
+label_settings = SubResource("LabelSettings_mwkdb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OutputLabel" type="Label" parent="Control" unique_id=1308906639]
+layout_mode = 0
+offset_left = 112.0
+offset_right = 152.0
+offset_bottom = 23.0
+
+[node name="Control2" type="Control" parent="." unique_id=1943666433]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InputLabel" type="Label" parent="Control2" unique_id=2131225406]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

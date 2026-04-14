@@ -1,6 +1,6 @@
 @tool
 class_name AddValueOperation
-extends SingleInputOperation
+extends OperationNode
 
 @export var value: int = 3:
 	set(new_val):
@@ -11,6 +11,7 @@ extends SingleInputOperation
 @onready var value_label: Label = %ValueLabel
 
 func _ready() -> void:
+	_input_count = 1
 	super()
 	_update_value_label()
 
@@ -21,6 +22,6 @@ func _calculate_output() -> int:
 
 func _update_value_label() -> void:
 	if value >= 0:
-		value_label.text = '+' + str(value)
+		value_label.text = '+ ' + str(value)
 	else:
-		value_label.text = str(value)
+		value_label.text = '- ' + str(abs(value))
