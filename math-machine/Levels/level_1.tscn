@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://d3bu737ku3ibm"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_n0qsc"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_rf6l5"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_syshm"]
+[ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_rfktq"]
+[ext_resource type="PackedScene" uid="uid://das8utoefdo4i" path="res://Graph/Graph Nodes/Draggable Nodes/Level Nodes/level_node.tscn" id="5_rfktq"]
+[ext_resource type="PackedScene" uid="uid://860gl053s0mk" path="res://Levels/level_1a.tscn" id="6_0urlm"]
+
+[node name="Level1" unique_id=921743447 instance=ExtResource("1_n0qsc")]
+level_number = 1
+
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=736657052 instance=ExtResource("2_rf6l5")]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 281.0
+offset_right = 278.0
+offset_bottom = 381.0
+mouse_filter = 1
+position_offset = Vector2(110, 281)
+
+[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1426663194 instance=ExtResource("3_syshm")]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 277.0
+offset_right = 1054.0
+offset_bottom = 361.0
+mouse_filter = 1
+position_offset = Vector2(960, 277)
+value = 8
+
+[node name="AddValueOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=1740454549 instance=ExtResource("4_rfktq")]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 266.0
+offset_right = 664.0
+offset_bottom = 371.0
+mouse_filter = 1
+position_offset = Vector2(544, 266)
+
+[node name="LevelNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=774285673 node_paths=PackedStringArray("level") instance=ExtResource("5_rfktq")]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 95.0
+offset_right = 470.0
+offset_bottom = 189.0
+mouse_filter = 1
+position_offset = Vector2(361, 95)
+level = NodePath("../../Level1A")
+
+[node name="Level1A" parent="." index="1" unique_id=226029732 node_paths=PackedStringArray("level_node") instance=ExtResource("6_0urlm")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode")

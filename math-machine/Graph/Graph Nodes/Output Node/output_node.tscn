@@ -24,6 +24,12 @@ metadata/_custom_type_script = "uid://dbxj6me4ikcab"
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="InputLabel" type="Label" parent="Control" unique_id=1921193364]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="ValueLabel" type="Label" parent="Control" unique_id=1773080751]
 unique_name_in_owner = true
 layout_mode = 0

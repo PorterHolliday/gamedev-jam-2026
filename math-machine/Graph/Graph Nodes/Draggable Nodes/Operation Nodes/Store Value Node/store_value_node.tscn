@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2ws1f5s2rits"]
 
-[ext_resource type="Script" uid="uid://datgihye7yewp" path="res://Graph/Graph Nodes/Operation Nodes/Store Value Node/store_value_node.gd" id="1_ljnvh"]
+[ext_resource type="Script" uid="uid://datgihye7yewp" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Store Value Node/store_value_node.gd" id="1_ljnvh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljnvh"]
 font_size = 48
