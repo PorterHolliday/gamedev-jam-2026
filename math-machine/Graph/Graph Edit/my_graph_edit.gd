@@ -1,12 +1,21 @@
 class_name MyGraphEdit
 extends GraphEdit
 
+signal level_complete
+
 const CONNECTION_GRAB_DISTANCE := 10.0
+
+var _output_nodes: Array[OutputNode] = []
 
 func _ready() -> void:
 	right_disconnects = true
 	connection_request.connect(_on_connection_request)
 	disconnection_request.connect(_on_disconnection_request)
+	
+	for child in get_children():
+		if child is OutputNode:
+			_output_nodes.append(child)
+			child.received_valid_output.connect(_check_level_complete)
 
 func _gui_input(event: InputEvent) -> void:
 	_handle_disconnection_on_right_click(event)
@@ -66,3 +75,10 @@ func get_connection_list_from_output_port(node_name: StringName, port_idx: int) 
 			dict["type"] = "left"
 			result.push_back(dict)
 	return result
+
+func _check_level_complete() -> void:
+	for output in _output_nodes:
+		if not output.is_satisfied:
+			return
+			
+	level_complete.emit()

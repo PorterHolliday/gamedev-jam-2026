@@ -2,15 +2,25 @@
 
 [ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_2agsg"]
 [ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_nhw8v"]
+[ext_resource type="PackedScene" uid="uid://cgbpswsx6c3m4" path="res://Graph/Graph Nodes/Draggable Nodes/Level Output Node/level_output_node.tscn" id="3_8u1uq"]
 
 [node name="Level1A" unique_id=921743447 instance=ExtResource("1_2agsg")]
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=736657052 instance=ExtResource("2_nhw8v")]
 layout_mode = 0
-offset_left = 554.0
-offset_top = 204.0
-offset_right = 722.0
-offset_bottom = 304.0
+offset_left = 244.0
+offset_top = 241.0
+offset_right = 412.0
+offset_bottom = 341.0
 mouse_filter = 1
-position_offset = Vector2(554, 204)
+position_offset = Vector2(244, 241)
 value = 15
+
+[node name="LevelOutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1318037545 instance=ExtResource("3_8u1uq")]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 253.0
+offset_right = 812.0
+offset_bottom = 342.0
+mouse_filter = 1
+position_offset = Vector2(720, 253)

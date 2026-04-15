@@ -48,7 +48,7 @@ mouse_filter = 1
 position_offset = Vector2(361, 95)
 level = NodePath("../../Level1A")
 
-[node name="Level1A" parent="." index="1" unique_id=226029732 node_paths=PackedStringArray("level_node") instance=ExtResource("6_0urlm")]
+[node name="Level1A" parent="." index="2" unique_id=226029732 node_paths=PackedStringArray("level_node") instance=ExtResource("6_0urlm")]
 visible = false
 layout_mode = 0
 level_node = NodePath("../GraphEdit/LevelNode")

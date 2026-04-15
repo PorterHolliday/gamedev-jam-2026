@@ -2,6 +2,8 @@
 class_name LevelNode
 extends DraggableNode
 
+@onready var value_label: Label = %ValueLabel
+
 @export var level: Level = null:
 	set(new_val):
 		if level:
@@ -10,18 +12,13 @@ extends DraggableNode
 		if level:
 			level.level_node = self
 			if level.level_number:
-				value = level.level_number
+				output = level.level_number
 			else:
-				value = NULL_VALUE
-			if Engine.is_editor_hint():
-				_update_value_label()
-
-var value: int = NULL_VALUE
-@onready var value_label: Label = %ValueLabel
+				output = NULL_VALUE
 
 func _ready() -> void:
 	super()
-	if level and level.level_number: value = level.level_number
+	if level and level.level_number: output = level.level_number
 	_update_value_label()
 	
 func _gui_input(event: InputEvent) -> void:
@@ -33,10 +30,16 @@ func _right_click_to_enter_level(event: InputEvent) -> void:
 		_enter_level()
 		
 func _enter_level() -> void:
-	level.enable()
+	level.enable() 
+	
+func update_output(new_val: int) -> void:
+	output = new_val
+	_update_value_label()
 	
 func _update_value_label() -> void:
-	if value == NULL_VALUE:
+	if not value_label: return
+	
+	if output == NULL_VALUE:
 		value_label.text = '?'
 	else:
-		value_label.text = str(value)
+		value_label.text = str(output)

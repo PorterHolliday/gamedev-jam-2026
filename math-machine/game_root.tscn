@@ -1,7 +1,3 @@
 [gd_scene format=3 uid="uid://ba5ofmvtojimp"]
 
-[ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="1_xj5yv"]
-
 [node name="GameRoot" type="Node" unique_id=1968118358]
-
-[node name="GraphEdit" parent="." unique_id=1777296774 instance=ExtResource("1_xj5yv")]

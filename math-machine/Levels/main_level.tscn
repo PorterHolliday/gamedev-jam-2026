@@ -18,7 +18,10 @@ offset_right = 335.0
 mouse_filter = 1
 position_offset = Vector2(226, 0)
 
-[node name="Level1" parent="." index="1" unique_id=1286574937 node_paths=PackedStringArray("level_node") instance=ExtResource("3_13urm")]
+[node name="BackButton" parent="." index="1" unique_id=132895122]
+visible = false
+
+[node name="Level1" parent="." index="2" unique_id=1286574937 node_paths=PackedStringArray("level_node") instance=ExtResource("3_13urm")]
 visible = false
 layout_mode = 0
 level_node = NodePath("../GraphEdit/Level1Node")

@@ -1,19 +1,10 @@
-@tool
-class_name OutputNode
-extends MyGraphNode
+class_name LevelOutputNode
+extends DraggableNode
 
-signal received_valid_output
-
-@export var value: int = 1:
-	set(new_val):
-		value = new_val
-		if Engine.is_editor_hint():
-			_update_value_label()
+signal input_changed(new_val: int)
 			
 @onready var _input_label: Label = %InputLabel
 @onready var _value_label: Label = %ValueLabel
-
-var is_satisfied: bool = false
 
 func _ready() -> void:
 	_inputs = [NULL_VALUE]
@@ -21,20 +12,13 @@ func _ready() -> void:
 	
 func update_input(port_idx: int, new_value: int) -> void:
 	super(port_idx, new_value)
+	input_changed.emit(_inputs[0])
 	_update_input_label()
-	_check_if_satisfied()
+	_update_value_label()
 	
 func remove_input(port_idx: int) -> void:
 	super(port_idx)
 	_update_input_label()
-	is_satisfied = false
-	
-func _check_if_satisfied() -> void:
-	if _inputs[0] == value:
-		is_satisfied = true
-		received_valid_output.emit()
-	else:
-		is_satisfied = false
 		
 func _calculate_output() -> int:
 	return NULL_VALUE
@@ -46,4 +30,7 @@ func _update_input_label() -> void:
 		_input_label.text = str(_inputs[0])
 
 func _update_value_label() -> void:
-	_value_label.text = str(value)
+	if _inputs[0] == NULL_VALUE:
+		_value_label.text = '?'
+	else:
+		_value_label.text = str(_inputs[0])
