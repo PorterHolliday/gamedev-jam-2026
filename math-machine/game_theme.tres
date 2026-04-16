@@ -12,6 +12,11 @@ expand_margin_right = 4.0
 expand_margin_bottom = 5.0
 
 [resource]
+GraphEdit/colors/selection_fill = Color(1, 1, 1, 0)
+GraphEdit/colors/selection_stroke = Color(1, 1, 1, 0)
+GraphEdit/constants/connection_hover_thickness = 100
+GraphEdit/constants/port_hotzone_inner_extent = 40
+GraphEdit/constants/port_hotzone_outer_extent = 26
 GraphEdit/styles/panel = SubResource("StyleBoxFlat_ncsgg")
 GraphNode/styles/panel = SubResource("StyleBoxFlat_6q7qk")
 GraphNodeTitleLabel/constants/line_spacing = 0
