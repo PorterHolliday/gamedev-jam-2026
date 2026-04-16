@@ -1,0 +1,32 @@
+Intro:
+	How to Connect w/ Add Value
+	Multiple Outputs
+	Multiple Inputs & Multiple Outputs
+	More Complex Puzzle
+Sum/Subtract Nodes:
+	Intro to Sum Node
+	More Sum Node
+	Intro to Subtract Node
+	More Subtract Node
+	Sum & Subtract Nodes
+	Sum & Subtract Nodes
+	Sum, Subtract, & Add Value Nodes
+Store Node:
+	Intro to Store Node
+	Store Node w/ Add/Subtract Node
+	More Store Node
+	2 Store Nodes = Infinite Operations
+	More 2 Store Node
+Level Node:
+	Intro to Level Node
+	More Level Node
+	Multiple Level Nodes
+	Level Node w/ Store Node (Save one result, get another)
+	More Level Node w/ Store Node
+	Multiple Level Nodes w/ Store Node
+Finale:
+	Actual Levels have outputs
+	""
+	""
+	""
+	""

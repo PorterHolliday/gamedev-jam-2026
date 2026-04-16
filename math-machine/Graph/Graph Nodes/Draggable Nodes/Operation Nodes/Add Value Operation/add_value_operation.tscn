@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://m2eaw868frt"]
+
+[ext_resource type="Script" uid="uid://hxdsmv50cqwf" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.gd" id="1_oy3uw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oy3uw"]
+font_size = 48
+
+[node name="AddValueOperation" type="GraphNode" unique_id=1740454549 node_paths=PackedStringArray("_input_labels", "_output_label")]
+offset_right = 120.0
+offset_bottom = 105.0
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_oy3uw")
+_input_labels = [NodePath("Control/InputLabel")]
+_output_label = NodePath("Control/OutputLabel")
+metadata/_custom_type_script = "uid://hxdsmv50cqwf"
+
+[node name="Control" type="Control" parent="." unique_id=865988396]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="InputLabel" type="Label" parent="Control" unique_id=227088467]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ValueLabel" type="Label" parent="Control" unique_id=444632217]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -25.0
+offset_right = 115.0
+offset_bottom = 65.0
+text = "+3"
+label_settings = SubResource("LabelSettings_oy3uw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OutputLabel" type="Label" parent="Control" unique_id=374840417]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 160.0
+offset_bottom = 23.0

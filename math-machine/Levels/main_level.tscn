@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cawd5fgqak87b"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_8xii8"]
+[ext_resource type="PackedScene" uid="uid://das8utoefdo4i" path="res://Graph/Graph Nodes/Draggable Nodes/Level Nodes/level_node.tscn" id="2_6x3q2"]
+[ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/level_1.tscn" id="3_13urm"]
+
+[node name="MainLevel" unique_id=921743447 instance=ExtResource("1_8xii8")]
+
+[node name="Level1Node" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=774285673 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+mouse_filter = 1
+level = NodePath("../../Level1")
+
+[node name="LevelNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1290287254 instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 226.0
+offset_right = 335.0
+mouse_filter = 1
+position_offset = Vector2(226, 0)
+
+[node name="BackButton" parent="." index="1" unique_id=132895122]
+visible = false
+
+[node name="Level1" parent="." index="2" unique_id=1286574937 node_paths=PackedStringArray("level_node") instance=ExtResource("3_13urm")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/Level1Node")

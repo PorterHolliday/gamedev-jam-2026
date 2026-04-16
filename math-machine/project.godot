@@ -14,6 +14,10 @@ config/name="Math Machine"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[gui]
+
+theme/custom="uid://c8v5ql7fu0rxv"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

@@ -1,0 +1,24 @@
+[gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncsgg"]
+bg_color = Color(0.011087578, 0.01108758, 0.011087572, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6q7qk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gcss"]
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 5.0
+
+[resource]
+GraphEdit/colors/selection_fill = Color(1, 1, 1, 0)
+GraphEdit/colors/selection_stroke = Color(1, 1, 1, 0)
+GraphEdit/constants/connection_hover_thickness = 100
+GraphEdit/constants/port_hotzone_inner_extent = 40
+GraphEdit/constants/port_hotzone_outer_extent = 26
+GraphEdit/styles/panel = SubResource("StyleBoxFlat_ncsgg")
+GraphNode/styles/panel = SubResource("StyleBoxFlat_6q7qk")
+GraphNodeTitleLabel/constants/line_spacing = 0
+GraphNodeTitleLabel/font_sizes/font_size = 16
+GraphNodeTitleLabel/styles/normal = SubResource("StyleBoxFlat_3gcss")

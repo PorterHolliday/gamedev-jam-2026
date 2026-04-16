@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ppnuvnpxhp1s"]
+
+[ext_resource type="Script" uid="uid://d4a0smbos5wso" path="res://Levels/level.gd" id="1_gbce7"]
+[ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="2_s7a6p"]
+
+[node name="LevelTemplate" type="Control" unique_id=921743447]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gbce7")
+metadata/_custom_type_script = "uid://d4a0smbos5wso"
+
+[node name="GraphEdit" parent="." unique_id=1777296774 instance=ExtResource("2_s7a6p")]
+unique_name_in_owner = true
+layout_mode = 0
+
+[node name="BackButton" type="Button" parent="." unique_id=132895122]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"

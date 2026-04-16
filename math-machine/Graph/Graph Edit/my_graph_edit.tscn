@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cx332tlkbnunc"]
+
+[ext_resource type="Script" uid="uid://dtsxch84g6w4n" path="res://Graph/Graph Edit/my_graph_edit.gd" id="1_icph3"]
+
+[node name="GraphEdit" type="GraphEdit" unique_id=1777296774]
+offset_right = 1174.0
+offset_bottom = 673.0
+show_grid = false
+snapping_enabled = false
+zoom_min = 1.0
+zoom_max = 1.0
+minimap_enabled = false
+show_menu = false
+show_zoom_buttons = false
+show_grid_buttons = false
+show_minimap_button = false
+show_arrange_button = false
+script = ExtResource("1_icph3")

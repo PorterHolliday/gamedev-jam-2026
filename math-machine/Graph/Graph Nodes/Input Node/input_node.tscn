@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://br47r8iro60sk"]
+
+[ext_resource type="Script" uid="uid://6yc4v3tu65xu" path="res://Graph/Graph Nodes/Input Node/input_node.gd" id="1_xb3t2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xb3t2"]
+font_size = 48
+
+[node name="InputNode" type="GraphNode" unique_id=736657052]
+offset_right = 168.0
+offset_bottom = 100.0
+theme_override_constants/separation = 2
+theme_override_constants/port_h_offset = 0
+draggable = false
+selectable = false
+slot/0/left_enabled = false
+slot/0/left_type = 1
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_xb3t2")
+metadata/_custom_type_script = "uid://6yc4v3tu65xu"
+
+[node name="Control" type="Control" parent="." unique_id=1385535567]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ValueLabel" type="Label" parent="Control" unique_id=775961950]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -19.0
+offset_right = 165.0
+offset_bottom = 61.0
+text = "5"
+label_settings = SubResource("LabelSettings_xb3t2")
+horizontal_alignment = 1
+vertical_alignment = 1
