@@ -1,15 +1,25 @@
 [gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncsgg"]
-bg_color = Color(0.011087578, 0.01108758, 0.011087572, 1)
+[ext_resource type="Texture2D" uid="uid://cx1j05lqol606" path="res://Shader/port.png" id="1_1fvms"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6q7qk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fvms"]
+bg_color = Color(0.88224053, 0.89203364, 0.8560674, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gcss"]
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 5.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vp4oh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1fvms"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1w3f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pd6sc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2l2ys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jvwys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mfn8g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nb47"]
 
 [resource]
 GraphEdit/colors/selection_fill = Color(1, 1, 1, 0)
@@ -17,8 +27,16 @@ GraphEdit/colors/selection_stroke = Color(1, 1, 1, 0)
 GraphEdit/constants/connection_hover_thickness = 100
 GraphEdit/constants/port_hotzone_inner_extent = 40
 GraphEdit/constants/port_hotzone_outer_extent = 26
-GraphEdit/styles/panel = SubResource("StyleBoxFlat_ncsgg")
-GraphNode/styles/panel = SubResource("StyleBoxFlat_6q7qk")
+GraphEdit/styles/panel = SubResource("StyleBoxFlat_1fvms")
+GraphNode/constants/port_h_offset = -4
+GraphNode/icons/port = ExtResource("1_1fvms")
+GraphNode/styles/panel = SubResource("StyleBoxEmpty_vp4oh")
+GraphNode/styles/panel_focus = SubResource("StyleBoxEmpty_1fvms")
+GraphNode/styles/panel_selected = SubResource("StyleBoxEmpty_p1w3f")
+GraphNode/styles/slot = SubResource("StyleBoxEmpty_pd6sc")
+GraphNode/styles/slot_selected = SubResource("StyleBoxEmpty_2l2ys")
+GraphNode/styles/titlebar = SubResource("StyleBoxEmpty_jvwys")
+GraphNode/styles/titlebar_selected = SubResource("StyleBoxEmpty_mfn8g")
 GraphNodeTitleLabel/constants/line_spacing = 0
 GraphNodeTitleLabel/font_sizes/font_size = 16
-GraphNodeTitleLabel/styles/normal = SubResource("StyleBoxFlat_3gcss")
+GraphNodeTitleLabel/styles/focus = SubResource("StyleBoxEmpty_4nb47")

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://hn14fwo6u6uq"]
+
+[ext_resource type="Shader" uid="uid://b7fcb0xghobbv" path="res://Shader/text_shader.gdshader" id="1_iagrk"]
+[ext_resource type="Texture2D" uid="uid://8aq0dlhcb78m" path="res://Shader/pencil_texture.tres" id="2_ikywk"]
+
+[resource]
+shader = ExtResource("1_iagrk")
+shader_parameter/pencil_texture = ExtResource("2_ikywk")
+shader_parameter/pencil_scale = Vector2(1, 3)
+shader_parameter/pencil_strength = 0.350000016625
+shader_parameter/color = Color(0.09806945, 0.10611644, 0.102092855, 1)

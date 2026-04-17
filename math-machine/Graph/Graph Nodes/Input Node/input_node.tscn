@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://br47r8iro60sk"]
 
 [ext_resource type="Script" uid="uid://6yc4v3tu65xu" path="res://Graph/Graph Nodes/Input Node/input_node.gd" id="1_xb3t2"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_xb3t2"]
-font_size = 48
+[ext_resource type="Material" uid="uid://dcyiuauihe76i" path="res://Shader/graph_node_shader.tres" id="2_7577v"]
+[ext_resource type="Texture2D" uid="uid://beswkip7wfw7a" path="res://Graph/Graph Nodes/square_node.png" id="3_ymrrd"]
+[ext_resource type="Material" uid="uid://hn14fwo6u6uq" path="res://Shader/text_shader.tres" id="4_y77i4"]
+[ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="4_ymrrd"]
 
 [node name="InputNode" type="GraphNode" unique_id=736657052]
-offset_right = 168.0
-offset_bottom = 100.0
-theme_override_constants/separation = 2
-theme_override_constants/port_h_offset = 0
+material = ExtResource("2_7577v")
+offset_right = 66.0
+offset_bottom = 66.0
 draggable = false
 selectable = false
 slot/0/left_enabled = false
@@ -21,6 +21,15 @@ slot/0/right_type = 1
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
 script = ExtResource("1_xb3t2")
 metadata/_custom_type_script = "uid://6yc4v3tu65xu"
 
@@ -28,13 +37,26 @@ metadata/_custom_type_script = "uid://6yc4v3tu65xu"
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1242681423]
+material = ExtResource("2_7577v")
+layout_mode = 0
+offset_top = -23.0
+offset_right = 66.0
+offset_bottom = 43.0
+texture = ExtResource("3_ymrrd")
+
 [node name="ValueLabel" type="Label" parent="Control" unique_id=775961950]
 unique_name_in_owner = true
+material = ExtResource("4_y77i4")
 layout_mode = 0
-offset_top = -19.0
-offset_right = 165.0
-offset_bottom = 61.0
+offset_top = -23.0
+offset_right = 66.0
+offset_bottom = 43.0
 text = "5"
-label_settings = SubResource("LabelSettings_xb3t2")
+label_settings = ExtResource("4_ymrrd")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="." unique_id=1070060118]
+layout_mode = 2
+size_flags_vertical = 3

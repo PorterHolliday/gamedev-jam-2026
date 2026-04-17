@@ -40,7 +40,6 @@ func _on_connection_request(from_node_name: StringName, from_port: int, to_node_
 	
 	if to_node.is_input_connected(to_port): return
 	if _is_loop_created(from_node, to_node): 
-		print('loop created')
 		return
 	
 	connect_node(from_node_name, from_port, to_node_name, to_port)

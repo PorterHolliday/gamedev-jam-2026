@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://dtsxch84g6w4n" path="res://Graph/Graph Edit/my_graph_edit.gd" id="1_icph3"]
 
 [node name="GraphEdit" type="GraphEdit" unique_id=1777296774]
-offset_right = 1174.0
-offset_bottom = 673.0
+offset_right = 2552.0
+offset_bottom = 1938.0
+scroll_offset = Vector2(-1058, -837)
 show_grid = false
 snapping_enabled = false
 zoom_min = 1.0

@@ -1,33 +1,71 @@
 [gd_scene format=3 uid="uid://ckfb4fdxos2u2"]
 
 [ext_resource type="Script" uid="uid://dkd1k8t3uq27m" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Subtract Operation/subtract_operation.gd" id="1_o2eef"]
+[ext_resource type="Material" uid="uid://dcyiuauihe76i" path="res://Shader/graph_node_shader.tres" id="2_pctr4"]
+[ext_resource type="Shader" uid="uid://b5yagcqqmc2vy" path="res://Shader/graph_node_shader.gdshader" id="3_mylgd"]
+[ext_resource type="Texture2D" uid="uid://d0dy7snf1csun" path="res://Graph/Graph Nodes/rectangle_node.png" id="3_pctr4"]
+[ext_resource type="Texture2D" uid="uid://8aq0dlhcb78m" path="res://Shader/pencil_texture.tres" id="4_hupli"]
+[ext_resource type="Material" uid="uid://hn14fwo6u6uq" path="res://Shader/text_shader.tres" id="4_qtm33"]
+[ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="5_hupli"]
+[ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="7_phh7x"]
+[ext_resource type="Shader" uid="uid://b7fcb0xghobbv" path="res://Shader/text_shader.gdshader" id="8_1cex2"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_o2eef"]
-font_size = 64
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtm33"]
+shader = ExtResource("3_mylgd")
+shader_parameter/pencil_texture = ExtResource("4_hupli")
+shader_parameter/pencil_scale = Vector2(1, 1)
+shader_parameter/pencil_strength = 0.50000002375
+shader_parameter/color = Color(0.33290285, 0.30119473, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7foa0"]
+shader = ExtResource("8_1cex2")
+shader_parameter/pencil_texture = ExtResource("4_hupli")
+shader_parameter/pencil_scale = Vector2(1, 3)
+shader_parameter/pencil_strength = 0.350000016625
+shader_parameter/color = Color(0.33333334, 0.3019608, 0, 1)
 
 [node name="SubtractOperation" type="GraphNode" unique_id=749474698 node_paths=PackedStringArray("_input_labels", "_output_label")]
-offset_right = 107.0
-offset_bottom = 89.0
+material = ExtResource("2_pctr4")
+offset_right = 64.0
+offset_bottom = 96.0
 slot/0/left_enabled = true
 slot/0/left_type = 1
 slot/0/left_color = Color(1, 1, 1, 1)
 slot/0/left_icon = null
-slot/0/right_enabled = true
+slot/0/right_enabled = false
 slot/0/right_type = 1
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
-slot/1/left_enabled = true
+slot/1/left_enabled = false
 slot/1/left_type = 1
 slot/1/left_color = Color(1, 1, 1, 1)
 slot/1/left_icon = null
-slot/1/right_enabled = false
-slot/1/right_type = 0
+slot/1/right_enabled = true
+slot/1/right_type = 1
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
+slot/2/left_enabled = true
+slot/2/left_type = 1
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color(1, 1, 1, 1)
+slot/3/left_icon = null
+slot/3/right_enabled = false
+slot/3/right_type = 0
+slot/3/right_color = Color(1, 1, 1, 1)
+slot/3/right_icon = null
+slot/3/draw_stylebox = true
 script = ExtResource("1_o2eef")
-_input_labels = [NodePath("Control/InputLabel"), NodePath("Control2/InputLabel")]
+_input_labels = [NodePath("Control/InputLabel"), NodePath("Control3/InputLabel")]
 _output_label = NodePath("Control/OutputLabel")
 metadata/_custom_type_script = "uid://dkd1k8t3uq27m"
 
@@ -35,33 +73,65 @@ metadata/_custom_type_script = "uid://dkd1k8t3uq27m"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InputLabel" type="Label" parent="Control" unique_id=1677644283]
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=91813373]
+material = SubResource("ShaderMaterial_qtm33")
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = -23.0
+offset_right = 64.0
+offset_bottom = 41.0
+texture = ExtResource("3_pctr4")
+
+[node name="InputLabel" type="Label" parent="Control" unique_id=1677644283]
+material = ExtResource("4_qtm33")
+layout_mode = 0
+offset_left = -41.0
+offset_top = -30.0
+offset_right = -1.0
+offset_bottom = -7.0
+label_settings = ExtResource("7_phh7x")
+horizontal_alignment = 2
 
 [node name="Label" type="Label" parent="Control" unique_id=1114672015]
+material = SubResource("ShaderMaterial_7foa0")
 layout_mode = 0
 offset_left = 1.0
-offset_top = -33.0
-offset_right = 108.0
-offset_bottom = 55.0
-text = "-"
-label_settings = SubResource("LabelSettings_o2eef")
+offset_top = -24.0
+offset_right = 64.0
+offset_bottom = 73.0
+text = "--"
+label_settings = ExtResource("5_hupli")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OutputLabel" type="Label" parent="Control" unique_id=713902501]
+material = ExtResource("4_qtm33")
 layout_mode = 0
-offset_left = 112.0
-offset_right = 152.0
-offset_bottom = 23.0
+offset_left = 66.0
+offset_top = -8.0
+offset_right = 106.0
+offset_bottom = 15.0
+label_settings = ExtResource("7_phh7x")
 
 [node name="Control2" type="Control" parent="." unique_id=1246112911]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 
-[node name="InputLabel" type="Label" parent="Control2" unique_id=382847725]
+[node name="Control3" type="Control" parent="." unique_id=1164844048]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InputLabel" type="Label" parent="Control3" unique_id=382847725]
+material = ExtResource("4_qtm33")
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -41.0
+offset_top = -30.0
+offset_right = -1.0
+offset_bottom = -7.0
+label_settings = ExtResource("7_phh7x")
+horizontal_alignment = 2
+
+[node name="Spacer" type="Control" parent="." unique_id=573340508]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5

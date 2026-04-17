@@ -14,7 +14,7 @@ level = NodePath("../../Level1")
 [node name="LevelNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1290287254 instance=ExtResource("2_6x3q2")]
 layout_mode = 0
 offset_left = 226.0
-offset_right = 335.0
+offset_right = 296.0
 mouse_filter = 1
 position_offset = Vector2(226, 0)
 
