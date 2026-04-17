@@ -21,7 +21,7 @@ func remove_input(port_idx: int) -> void:
 	_update_input_label(port_idx)
 	
 func _update_input_label(port_idx: int) -> void:
-	var slot: int = get_input_port_slot(port_idx)
+	var slot: int = _get_input_port_slot(port_idx)
 	
 	if _inputs[slot] == NULL_VALUE:
 		_input_labels[slot].text = ''

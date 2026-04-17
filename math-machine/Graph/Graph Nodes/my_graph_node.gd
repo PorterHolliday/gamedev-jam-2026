@@ -13,16 +13,17 @@ func _ready() -> void:
 	pass
 	
 func is_input_connected(port_idx: int) -> bool:
-	var slot_idx: int = get_input_port_slot(port_idx)
+	var slot_idx: int = _get_input_port_slot(port_idx)
 	return _inputs[slot_idx] != NULL_VALUE
 
 func update_input(port_idx: int, value: int) -> void:
-	var slot_idx: int = get_input_port_slot(port_idx)
+	var slot_idx: int = _get_input_port_slot(port_idx)
+
 	_inputs[slot_idx] = value
 	_update_output()
 	
 func remove_input(port_idx: int) -> void:
-	var slot_idx: int = get_input_port_slot(port_idx)
+	var slot_idx: int = _get_input_port_slot(port_idx)
 	_inputs[slot_idx] = NULL_VALUE
 	_update_output()
 	
@@ -44,3 +45,7 @@ func _update_output_connections() -> void:
 		var port_idx: int = connection['port']
 		graph_node_name.update_input(port_idx, output)
 		
+func _get_input_port_slot(port_idx: int) -> int:
+	var slot: int = get_input_port_slot(port_idx)
+	if slot == 2: return 1
+	return slot

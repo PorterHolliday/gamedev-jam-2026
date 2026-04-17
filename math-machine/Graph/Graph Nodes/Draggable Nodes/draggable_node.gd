@@ -12,7 +12,7 @@ func _ready() -> void:
 			child.mouse_filter = Control.MOUSE_FILTER_PASS
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and draggable:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		_dragging = event.pressed
 		_drag_offset = get_local_mouse_position()
 		if _dragging:
