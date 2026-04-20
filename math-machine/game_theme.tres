@@ -1,6 +1,10 @@
 [gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
 
 [ext_resource type="Texture2D" uid="uid://cx1j05lqol606" path="res://Shader/port.png" id="1_1fvms"]
+[ext_resource type="Texture2D" uid="uid://dq3pvwtcmrc1b" path="res://LevelButton/button_disabled.png" id="1_p1w3f"]
+[ext_resource type="Texture2D" uid="uid://hstiubhoj6os" path="res://LevelButton/button_hover.png" id="2_2l2ys"]
+[ext_resource type="Texture2D" uid="uid://drt4tudr0l267" path="res://LevelButton/button.png" id="3_jvwys"]
+[ext_resource type="Texture2D" uid="uid://b1ioswyipsi3k" path="res://LevelButton/button_pressed.png" id="5_jvwys"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fvms"]
 bg_color = Color(0.88224053, 0.89203364, 0.8560674, 1)
@@ -21,6 +25,34 @@ bg_color = Color(0.88224053, 0.89203364, 0.8560674, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nb47"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pd6sc"]
+texture = ExtResource("1_p1w3f")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mfn8g"]
+texture = ExtResource("2_2l2ys")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4nb47"]
+texture = ExtResource("3_jvwys")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2fgf"]
+texture = ExtResource("5_jvwys")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
 [resource]
 GraphEdit/colors/selection_fill = Color(1, 1, 1, 0)
 GraphEdit/colors/selection_stroke = Color(1, 1, 1, 0)
@@ -40,3 +72,8 @@ GraphNode/styles/titlebar_selected = SubResource("StyleBoxEmpty_mfn8g")
 GraphNodeTitleLabel/constants/line_spacing = 0
 GraphNodeTitleLabel/font_sizes/font_size = 16
 GraphNodeTitleLabel/styles/focus = SubResource("StyleBoxEmpty_4nb47")
+LevelButton/base_type = &"Button"
+LevelButton/styles/disabled = SubResource("StyleBoxTexture_pd6sc")
+LevelButton/styles/hover = SubResource("StyleBoxTexture_mfn8g")
+LevelButton/styles/normal = SubResource("StyleBoxTexture_4nb47")
+LevelButton/styles/pressed = SubResource("StyleBoxTexture_k2fgf")

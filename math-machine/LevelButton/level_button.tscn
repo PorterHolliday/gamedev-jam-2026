@@ -5,11 +5,14 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mshbt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mshbt"]
+font_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
 outline_size = 2
+outline_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
 
 [node name="LevelButton" type="Button" unique_id=863369867]
 offset_right = 32.0
 offset_bottom = 32.0
+theme_type_variation = &"LevelButton"
 disabled = true
 script = ExtResource("1_mshbt")
 _level_number = 2

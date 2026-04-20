@@ -2,12 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelButton/level_button.tscn" id="1_bntq0"]
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
+[ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="2_3v81n"]
 [ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Intro/level_2.tscn" id="3_whgxd"]
 
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_whgxd")
+
+[node name="GraphEdit" parent="." unique_id=1777296774 instance=ExtResource("2_3v81n")]
+layout_mode = 0
 
 [node name="LevelButton" parent="." unique_id=863369867 instance=ExtResource("1_bntq0")]
 layout_mode = 0
