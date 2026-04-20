@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://25v23ibhxckb"]
+
+[ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelButton/level_button.tscn" id="1_bntq0"]
+[ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
+[ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Intro/level_2.tscn" id="3_whgxd"]
+
+[node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_whgxd")
+
+[node name="LevelButton" parent="." unique_id=863369867 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 112.0
+offset_right = 416.0
+offset_bottom = 144.0
+disabled = false
+_level_scene = ExtResource("3_whgxd")
+
+[node name="LevelButton2" parent="." unique_id=1253257042 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 112.0
+offset_right = 464.0
+offset_bottom = 144.0
+_level_scene = ExtResource("3_whgxd")
