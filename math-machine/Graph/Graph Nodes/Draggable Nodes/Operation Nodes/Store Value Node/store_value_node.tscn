@@ -65,6 +65,7 @@ offset_bottom = 41.0
 texture = ExtResource("3_i2m44")
 
 [node name="InputLabel" type="Label" parent="Control" unique_id=422515933]
+visible = false
 material = ExtResource("4_nv0y1")
 layout_mode = 0
 offset_left = -41.0

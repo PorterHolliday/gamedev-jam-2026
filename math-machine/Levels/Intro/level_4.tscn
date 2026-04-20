@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://c7rfdt0m211w8"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_m72gx"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_bfu7b"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_dr83l"]
+[ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_2ycws"]
+
+[node name="Level4" unique_id=921743447 instance=ExtResource("1_m72gx")]
+level_number = 4
+
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_bfu7b")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 416.0
+offset_right = 258.0
+offset_bottom = 482.0
+mouse_filter = 1
+position_offset = Vector2(192, 416)
+
+[node name="InputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=889123467 instance=ExtResource("2_bfu7b")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 160.0
+offset_right = 258.0
+offset_bottom = 226.0
+mouse_filter = 1
+position_offset = Vector2(192, 160)
+value = 1
+
+[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=1426663194 instance=ExtResource("3_dr83l")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 160.0
+offset_right = 960.0
+offset_bottom = 224.0
+mouse_filter = 1
+position_offset = Vector2(896, 160)
+value = 4
+
+[node name="OutputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=634508288 instance=ExtResource("3_dr83l")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 416.0
+offset_right = 960.0
+offset_bottom = 480.0
+mouse_filter = 1
+position_offset = Vector2(896, 416)
+value = -1
+
+[node name="AddValueOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="5" unique_id=1740454549 instance=ExtResource("4_2ycws")]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 160.0
+offset_right = 480.0
+offset_bottom = 224.0
+mouse_filter = 1
+position_offset = Vector2(416, 160)
+value = -2
+
+[node name="AddValueOperation2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="6" unique_id=858645296 instance=ExtResource("4_2ycws")]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 416.0
+offset_right = 736.0
+offset_bottom = 480.0
+mouse_filter = 1
+position_offset = Vector2(672, 416)
+value = 5
+
+[node name="AddValueOperation4" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="7" unique_id=2119519605 instance=ExtResource("4_2ycws")]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 416.0
+offset_right = 480.0
+offset_bottom = 480.0
+mouse_filter = 1
+position_offset = Vector2(416, 416)
+value = 1
+
+[node name="AddValueOperation3" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="8" unique_id=2052865873 instance=ExtResource("4_2ycws")]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 160.0
+offset_right = 736.0
+offset_bottom = 224.0
+mouse_filter = 1
+position_offset = Vector2(672, 160)
+value = -7

@@ -4,14 +4,13 @@ extends MyGraphNode
 
 signal received_valid_output
 
+@onready var _input_label: Label = %InputLabel
+@onready var _value_label: Label = %ValueLabel
 @export var value: int = 1:
 	set(new_val):
 		value = new_val
 		if Engine.is_editor_hint():
 			_update_value_label()
-			
-@onready var _input_label: Label = %InputLabel
-@onready var _value_label: Label = %ValueLabel
 
 var is_satisfied: bool = false
 
@@ -46,4 +45,5 @@ func _update_input_label() -> void:
 		_input_label.text = str(_inputs[0])
 
 func _update_value_label() -> void:
+	if not _value_label: return
 	_value_label.text = str(value)

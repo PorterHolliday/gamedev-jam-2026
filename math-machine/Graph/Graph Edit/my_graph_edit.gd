@@ -42,7 +42,9 @@ func _on_connection_request(from_node_name: StringName, from_port: int, to_node_
 	if _is_loop_created(from_node, to_node): 
 		return
 	
-	connect_node(from_node_name, from_port, to_node_name, to_port)
+	if not to_node is StoreValueNode:
+		connect_node(from_node_name, from_port, to_node_name, to_port)
+		
 	to_node.update_input(to_port, from_node.output)
 	
 func _on_disconnection_request(from_node_name: StringName, from_port: int, to_node_name: StringName, to_port: int) -> void:

@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://deqpbagfggt00"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_sgxt1"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_j0paf"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_dcfrp"]
+[ext_resource type="PackedScene" uid="uid://ckfb4fdxos2u2" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Subtract Operation/subtract_operation.tscn" id="4_nd70t"]
+[ext_resource type="PackedScene" uid="uid://bnyrfxxrx0v05" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Sum Operation/sum_operation.tscn" id="5_j0paf"]
+
+[node name="Level9" unique_id=921743447 instance=ExtResource("1_sgxt1")]
+level_number = 9
+
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_j0paf")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 416.0
+offset_right = 258.0
+offset_bottom = 482.0
+mouse_filter = 1
+position_offset = Vector2(192, 416)
+value = 1
+
+[node name="InputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=889123467 instance=ExtResource("2_j0paf")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 160.0
+offset_right = 258.0
+offset_bottom = 226.0
+mouse_filter = 1
+position_offset = Vector2(192, 160)
+value = 2
+
+[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=1426663194 instance=ExtResource("3_dcfrp")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 160.0
+offset_right = 960.0
+offset_bottom = 224.0
+mouse_filter = 1
+position_offset = Vector2(896, 160)
+value = 5
+
+[node name="OutputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=634508288 instance=ExtResource("3_dcfrp")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 416.0
+offset_right = 960.0
+offset_bottom = 480.0
+mouse_filter = 1
+position_offset = Vector2(896, 416)
+value = -2
+
+[node name="SubtractOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="5" unique_id=749474698 instance=ExtResource("4_nd70t")]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 272.0
+offset_right = 608.0
+offset_bottom = 368.0
+mouse_filter = 1
+position_offset = Vector2(544, 272)
+
+[node name="SumOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="6" unique_id=163396201 instance=ExtResource("5_j0paf")]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 272.0
+offset_right = 448.0
+offset_bottom = 368.0
+mouse_filter = 1
+position_offset = Vector2(384, 272)
+
+[node name="SumOperation2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="7" unique_id=1689774490 instance=ExtResource("5_j0paf")]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 272.0
+offset_right = 768.0
+offset_bottom = 368.0
+mouse_filter = 1
+position_offset = Vector2(704, 272)

@@ -15,6 +15,10 @@ extends DraggableNode
 				output = level.level_number
 			else:
 				output = NULL_VALUE
+		else:
+			output = NULL_VALUE
+
+var _start_position := Vector2.ZERO
 
 func _ready() -> void:
 	super()
@@ -23,7 +27,13 @@ func _ready() -> void:
 	
 func _gui_input(event: InputEvent) -> void:
 	super(event)
-	_right_click_to_enter_level(event)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			_start_position = position_offset
+		else:
+			if position_offset == _start_position:
+				_enter_level()
+	#_right_click_to_enter_level(event)
 	
 func _right_click_to_enter_level(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
