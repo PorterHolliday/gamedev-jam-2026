@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://ytq8ln7owyxr"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_bgqeu"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_gutfs"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_rdmkj"]
+[ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_rdmkj"]
+[ext_resource type="LabelSettings" uid="uid://dq3knhvy1lxuk" path="res://LabelSettings/tutorial_label_settings.tres" id="5_mj61p"]
+
+[node name="Level2" unique_id=921743447 instance=ExtResource("1_bgqeu")]
+level_number = 2
+
+[node name="GraphEdit" parent="." index="0" unique_id=1777296774]
+connections = Array[Dictionary]([{
+"from_node": &"InputNode",
+"from_port": 0,
+"keep_alive": true,
+"to_node": &"OutputNode",
+"to_port": 0
+}])
+
+[node name="InputNode" parent="GraphEdit" index="0" unique_id=736657052 instance=ExtResource("2_gutfs")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 288.0
+offset_right = 258.0
+offset_bottom = 354.0
+mouse_filter = 1
+position_offset = Vector2(192, 288)
+value = 3
+
+[node name="OutputNode" parent="GraphEdit" index="2" unique_id=1426663194 instance=ExtResource("3_rdmkj")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 288.0
+offset_right = 960.0
+offset_bottom = 352.0
+mouse_filter = 1
+position_offset = Vector2(896, 288)
+value = 5
+
+[node name="AddValueOperation" parent="GraphEdit" index="3" unique_id=1740454549 instance=ExtResource("4_rdmkj")]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 64.0
+offset_right = 400.0
+offset_bottom = 128.0
+mouse_filter = 1
+position_offset = Vector2(336, 64)
+value = 2
+
+[node name="TutorialLabel" type="Label" parent="." index="2" unique_id=1766495276]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 64.0
+offset_right = 724.0
+offset_bottom = 202.0
+text = "Operation nodes modify inputs.
+
+You can also move them around."
+label_settings = ExtResource("5_mj61p")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TutorialLabel2" type="Label" parent="." index="3" unique_id=401295283]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 368.0
+offset_right = 752.0
+offset_bottom = 506.0
+text = "Right-click a connection to delete it."
+label_settings = ExtResource("5_mj61p")
+horizontal_alignment = 1
+autowrap_mode = 2

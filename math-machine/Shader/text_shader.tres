@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://hn14fwo6u6uq"]
 
-[ext_resource type="Shader" uid="uid://b7fcb0xghobbv" path="res://Shader/text_shader.gdshader" id="1_iagrk"]
+[ext_resource type="Shader" path="res://Shader/text_shader.gdshader" id="1_iagrk"]
 [ext_resource type="Texture2D" uid="uid://8aq0dlhcb78m" path="res://Shader/pencil_texture.tres" id="2_ikywk"]
 
 [resource]

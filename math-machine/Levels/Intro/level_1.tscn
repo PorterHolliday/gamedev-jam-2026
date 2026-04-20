@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://d3bu737ku3ibm"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_n0qsc"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_rf6l5"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_syshm"]
+[ext_resource type="LabelSettings" uid="uid://dq3knhvy1lxuk" path="res://LabelSettings/tutorial_label_settings.tres" id="4_y4kq6"]
+
+[node name="Level1" unique_id=921743447 instance=ExtResource("1_n0qsc")]
+level_number = 1
+
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_rf6l5")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 288.0
+offset_right = 258.0
+offset_bottom = 354.0
+mouse_filter = 1
+position_offset = Vector2(192, 288)
+value = 3
+
+[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1426663194 instance=ExtResource("3_syshm")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 288.0
+offset_right = 960.0
+offset_bottom = 352.0
+mouse_filter = 1
+position_offset = Vector2(896, 288)
+value = 3
+
+[node name="TutorialText" type="Label" parent="." index="2" unique_id=42337796]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 64.0
+offset_right = 735.0
+offset_bottom = 161.0
+text = "Click and drag between ports to connect nodes."
+label_settings = ExtResource("4_y4kq6")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TutorialText4" type="Label" parent="." index="3" unique_id=521570786]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 512.0
+offset_right = 735.0
+offset_bottom = 609.0
+text = "Get the correct values to all outputs to complete the level."
+label_settings = ExtResource("4_y4kq6")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TutorialText2" type="Label" parent="." index="4" unique_id=639408608]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 256.0
+offset_right = 258.0
+offset_bottom = 287.0
+text = "Input"
+label_settings = ExtResource("4_y4kq6")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TutorialText3" type="Label" parent="." index="5" unique_id=1805920976]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 256.0
+offset_right = 962.0
+offset_bottom = 287.0
+text = "Output"
+label_settings = ExtResource("4_y4kq6")
+horizontal_alignment = 1
+autowrap_mode = 2

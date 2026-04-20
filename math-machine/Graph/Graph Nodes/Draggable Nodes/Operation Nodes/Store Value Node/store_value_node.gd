@@ -13,6 +13,7 @@ func _ready() -> void:
 func update_input(port_idx: int, new_value: int) -> void:
 	super(port_idx, new_value)
 	value = output
+	_inputs[0] = NULL_VALUE
 	_update_value_label()
 	
 func _calculate_output() -> int:

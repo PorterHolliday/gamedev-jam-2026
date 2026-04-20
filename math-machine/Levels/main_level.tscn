@@ -2,21 +2,206 @@
 
 [ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_8xii8"]
 [ext_resource type="PackedScene" uid="uid://das8utoefdo4i" path="res://Graph/Graph Nodes/Draggable Nodes/Level Nodes/level_node.tscn" id="2_6x3q2"]
-[ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/level_1.tscn" id="3_13urm"]
+[ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/Intro/level_1.tscn" id="3_13urm"]
+[ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Intro/level_2.tscn" id="4_lrtkp"]
+[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Intro/level_3.tscn" id="5_n4dhi"]
+[ext_resource type="PackedScene" uid="uid://c7rfdt0m211w8" path="res://Levels/Intro/level_4.tscn" id="6_wlypf"]
+[ext_resource type="PackedScene" uid="uid://blcvrd4k8ts3x" path="res://Levels/SumAndSubtract/level_5.tscn" id="7_1u8fg"]
+[ext_resource type="PackedScene" uid="uid://dfesk0ify5r4n" path="res://Levels/SumAndSubtract/level_6.tscn" id="8_v22l5"]
+[ext_resource type="PackedScene" uid="uid://dkqjmtg7qcwdr" path="res://Levels/SumAndSubtract/level_7.tscn" id="9_lk0vy"]
+[ext_resource type="PackedScene" uid="uid://i4gxgham6edv" path="res://Levels/SumAndSubtract/level_8.tscn" id="10_p6e2r"]
+[ext_resource type="PackedScene" uid="uid://deqpbagfggt00" path="res://Levels/SumAndSubtract/level_9.tscn" id="11_kfyib"]
+[ext_resource type="PackedScene" uid="uid://c1q2kn5wdmq37" path="res://Levels/SumAndSubtract/level_10.tscn" id="12_nghx4"]
+[ext_resource type="PackedScene" uid="uid://cyqca4ep1ac6q" path="res://Levels/SumAndSubtract/level_11.tscn" id="13_8fxkl"]
+[ext_resource type="PackedScene" uid="uid://dy2wcgj48gw3g" path="res://Levels/SumAndSubtract/level_12.tscn" id="14_swjh3"]
+[ext_resource type="PackedScene" uid="uid://cgjod315owu1n" path="res://Levels/Store/level_13.tscn" id="15_11sot"]
+[ext_resource type="PackedScene" uid="uid://dyydyyxtrw40y" path="res://Levels/Store/level_14.tscn" id="16_qh1hh"]
+[ext_resource type="PackedScene" uid="uid://nu3amnhopc64" path="res://Levels/Store/level_15.tscn" id="17_8g37b"]
+[ext_resource type="PackedScene" uid="uid://j8mkjtbil2uu" path="res://Levels/Store/level_16.tscn" id="18_0hf6v"]
+[ext_resource type="PackedScene" uid="uid://bmy6gpljcu08j" path="res://Levels/Store/level_17.tscn" id="19_wlypf"]
+[ext_resource type="PackedScene" uid="uid://31dr8hl1xd8m" path="res://Levels/Store/level_18.tscn" id="20_1u8fg"]
 
 [node name="MainLevel" unique_id=921743447 instance=ExtResource("1_8xii8")]
 
-[node name="Level1Node" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=774285673 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+[node name="LevelNode1" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=774285673 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
 layout_mode = 0
+offset_left = 224.0
+offset_top = 64.0
+offset_right = 294.0
+offset_bottom = 135.0
 mouse_filter = 1
+position_offset = Vector2(224, 64)
 level = NodePath("../../Level1")
 
-[node name="LevelNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1290287254 instance=ExtResource("2_6x3q2")]
+[node name="LevelNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1265274234 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
 layout_mode = 0
-offset_left = 226.0
-offset_right = 296.0
+offset_left = 352.0
+offset_top = 64.0
+offset_right = 422.0
+offset_bottom = 135.0
 mouse_filter = 1
-position_offset = Vector2(226, 0)
+position_offset = Vector2(352, 64)
+level = NodePath("../../Level2")
+
+[node name="LevelNode3" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=1275723465 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 64.0
+offset_right = 550.0
+offset_bottom = 135.0
+mouse_filter = 1
+position_offset = Vector2(480, 64)
+level = NodePath("../../Level3")
+
+[node name="LevelNode4" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=1680181202 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 64.0
+offset_right = 678.0
+offset_bottom = 135.0
+mouse_filter = 1
+position_offset = Vector2(608, 64)
+level = NodePath("../../Level4")
+
+[node name="LevelNode5" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="5" unique_id=41281269 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 64.0
+offset_right = 806.0
+offset_bottom = 135.0
+mouse_filter = 1
+position_offset = Vector2(736, 64)
+level = NodePath("../../Level5")
+
+[node name="LevelNode6" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="6" unique_id=924867548 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 64.0
+offset_right = 934.0
+offset_bottom = 135.0
+mouse_filter = 1
+position_offset = Vector2(864, 64)
+level = NodePath("../../Level6")
+
+[node name="LevelNode7" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="7" unique_id=568908707 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 247.0
+mouse_filter = 1
+position_offset = Vector2(224, 176)
+level = NodePath("../../Level7")
+
+[node name="LevelNode8" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="8" unique_id=1170361710 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 176.0
+offset_right = 422.0
+offset_bottom = 247.0
+mouse_filter = 1
+position_offset = Vector2(352, 176)
+level = NodePath("../../Level8")
+
+[node name="LevelNode9" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="9" unique_id=1748876576 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 176.0
+offset_right = 550.0
+offset_bottom = 247.0
+mouse_filter = 1
+position_offset = Vector2(480, 176)
+level = NodePath("../../Level9")
+
+[node name="LevelNode10" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="10" unique_id=333978914 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 176.0
+offset_right = 678.0
+offset_bottom = 247.0
+mouse_filter = 1
+position_offset = Vector2(608, 176)
+level = NodePath("../../Level10")
+
+[node name="LevelNode11" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="11" unique_id=1782568617 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 176.0
+offset_right = 806.0
+offset_bottom = 247.0
+mouse_filter = 1
+position_offset = Vector2(736, 176)
+level = NodePath("../../Level11")
+
+[node name="LevelNode12" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="12" unique_id=2113355703 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 176.0
+offset_right = 934.0
+offset_bottom = 247.0
+mouse_filter = 1
+position_offset = Vector2(864, 176)
+level = NodePath("../../Level12")
+
+[node name="LevelNode13" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="13" unique_id=1183868592 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 288.0
+offset_right = 294.0
+offset_bottom = 359.0
+mouse_filter = 1
+position_offset = Vector2(224, 288)
+level = NodePath("../../Level13")
+
+[node name="LevelNode14" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="14" unique_id=1614459886 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 288.0
+offset_right = 422.0
+offset_bottom = 359.0
+mouse_filter = 1
+position_offset = Vector2(352, 288)
+level = NodePath("../../Level14")
+
+[node name="LevelNode15" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="15" unique_id=1732007272 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 288.0
+offset_right = 550.0
+offset_bottom = 359.0
+mouse_filter = 1
+position_offset = Vector2(480, 288)
+level = NodePath("../../Level15")
+
+[node name="LevelNode16" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="16" unique_id=2014251885 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 288.0
+offset_right = 678.0
+offset_bottom = 359.0
+mouse_filter = 1
+position_offset = Vector2(608, 288)
+level = NodePath("../../Level16")
+
+[node name="LevelNode17" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="17" unique_id=1437526570 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 288.0
+offset_right = 806.0
+offset_bottom = 359.0
+mouse_filter = 1
+position_offset = Vector2(736, 288)
+level = NodePath("../../Level17")
+
+[node name="LevelNode18" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="18" unique_id=1556277016 node_paths=PackedStringArray("level") instance=ExtResource("2_6x3q2")]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 288.0
+offset_right = 934.0
+offset_bottom = 359.0
+mouse_filter = 1
+position_offset = Vector2(864, 288)
+level = NodePath("../../Level18")
 
 [node name="BackButton" parent="." index="1" unique_id=132895122]
 visible = false
@@ -24,4 +209,89 @@ visible = false
 [node name="Level1" parent="." index="2" unique_id=1286574937 node_paths=PackedStringArray("level_node") instance=ExtResource("3_13urm")]
 visible = false
 layout_mode = 0
-level_node = NodePath("../GraphEdit/Level1Node")
+level_node = NodePath("../GraphEdit/LevelNode1")
+
+[node name="Level2" parent="." index="3" unique_id=741856139 node_paths=PackedStringArray("level_node") instance=ExtResource("4_lrtkp")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode2")
+
+[node name="Level3" parent="." index="4" unique_id=512995836 node_paths=PackedStringArray("level_node") instance=ExtResource("5_n4dhi")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode3")
+
+[node name="Level4" parent="." index="5" unique_id=362066339 node_paths=PackedStringArray("level_node") instance=ExtResource("6_wlypf")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode4")
+
+[node name="Level5" parent="." index="6" unique_id=277039214 node_paths=PackedStringArray("level_node") instance=ExtResource("7_1u8fg")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode5")
+
+[node name="Level6" parent="." index="7" unique_id=2050715979 node_paths=PackedStringArray("level_node") instance=ExtResource("8_v22l5")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode6")
+
+[node name="Level7" parent="." index="8" unique_id=1266037279 node_paths=PackedStringArray("level_node") instance=ExtResource("9_lk0vy")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode7")
+
+[node name="Level8" parent="." index="9" unique_id=1500805512 node_paths=PackedStringArray("level_node") instance=ExtResource("10_p6e2r")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode8")
+
+[node name="Level9" parent="." index="10" unique_id=352489119 node_paths=PackedStringArray("level_node") instance=ExtResource("11_kfyib")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode9")
+
+[node name="Level10" parent="." index="11" unique_id=1963136800 node_paths=PackedStringArray("level_node") instance=ExtResource("12_nghx4")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode10")
+
+[node name="Level11" parent="." index="12" unique_id=1407266969 node_paths=PackedStringArray("level_node") instance=ExtResource("13_8fxkl")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode11")
+
+[node name="Level12" parent="." index="13" unique_id=1774918316 node_paths=PackedStringArray("level_node") instance=ExtResource("14_swjh3")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode12")
+
+[node name="Level13" parent="." index="14" unique_id=1940942875 node_paths=PackedStringArray("level_node") instance=ExtResource("15_11sot")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode13")
+
+[node name="Level14" parent="." index="15" unique_id=124238676 node_paths=PackedStringArray("level_node") instance=ExtResource("16_qh1hh")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode14")
+
+[node name="Level15" parent="." index="16" unique_id=725548261 node_paths=PackedStringArray("level_node") instance=ExtResource("17_8g37b")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode15")
+
+[node name="Level16" parent="." index="17" unique_id=281977121 node_paths=PackedStringArray("level_node") instance=ExtResource("18_0hf6v")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode16")
+
+[node name="Level17" parent="." index="18" unique_id=1469929347 node_paths=PackedStringArray("level_node") instance=ExtResource("19_wlypf")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode17")
+
+[node name="Level18" parent="." index="19" unique_id=2047465637 node_paths=PackedStringArray("level_node") instance=ExtResource("20_1u8fg")]
+visible = false
+layout_mode = 0
+level_node = NodePath("../GraphEdit/LevelNode18")
