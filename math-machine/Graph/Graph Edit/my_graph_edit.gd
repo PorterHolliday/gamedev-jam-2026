@@ -2,6 +2,8 @@ class_name MyGraphEdit
 extends GraphEdit
 
 signal level_complete
+signal disconnection_occurred
+signal connection_occurred
 
 const CONNECTION_GRAB_DISTANCE := 10.0
 
@@ -45,6 +47,7 @@ func _on_connection_request(from_node_name: StringName, from_port: int, to_node_
 		connect_node(from_node_name, from_port, to_node_name, to_port)
 		
 	to_node.update_input(to_port, from_node.output)
+	connection_occurred.emit()
 	
 func _on_disconnection_request(from_node_name: StringName, from_port: int, to_node_name: StringName, to_port: int) -> void:
 	var from_node: MyGraphNode = get_node(NodePath(from_node_name))
@@ -52,6 +55,7 @@ func _on_disconnection_request(from_node_name: StringName, from_port: int, to_no
 	
 	disconnect_node(from_node_name, from_port, to_node_name, to_port)
 	to_node.remove_input(to_port)
+	disconnection_occurred.emit()
 	
 func _is_loop_created(search_for_node: MyGraphNode, next_node: MyGraphNode) -> bool:
 	if next_node == search_for_node: return true

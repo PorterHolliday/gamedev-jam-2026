@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://dbpsj8n6346mv"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_3n1dw"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_bjspv"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_nqu3f"]
+[ext_resource type="Texture2D" uid="uid://cjtlorpytq0mn" path="res://Levels/Levels/Tutorial/hand_icon.png" id="4_027kp"]
+
+[sub_resource type="Animation" id="Animation_md4ca"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(250, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandIcon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gmfmc"]
+resource_name = "tutorial"
+length = 3.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 3, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(250, 320), Vector2(250, 320), Vector2(880, 176), Vector2(880, 176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandIcon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxifx"]
+_data = {
+&"RESET": SubResource("Animation_md4ca"),
+&"tutorial": SubResource("Animation_gmfmc")
+}
+
+[node name="Level1" unique_id=921743447 instance=ExtResource("1_3n1dw")]
+
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_bjspv")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 288.0
+offset_right = 258.0
+offset_bottom = 354.0
+mouse_filter = 1
+position_offset = Vector2(192, 288)
+value = 7
+
+[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1426663194 instance=ExtResource("3_nqu3f")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 144.0
+offset_right = 960.0
+offset_bottom = 208.0
+mouse_filter = 1
+position_offset = Vector2(896, 144)
+value = 7
+
+[node name="OutputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=607721386 instance=ExtResource("3_nqu3f")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 240.0
+offset_right = 960.0
+offset_bottom = 304.0
+mouse_filter = 1
+position_offset = Vector2(896, 240)
+value = 7
+
+[node name="OutputNode3" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=1501585957 instance=ExtResource("3_nqu3f")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 336.0
+offset_right = 960.0
+offset_bottom = 400.0
+mouse_filter = 1
+position_offset = Vector2(896, 336)
+value = 7
+
+[node name="OutputNode4" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="5" unique_id=9568127 instance=ExtResource("3_nqu3f")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 432.0
+offset_right = 960.0
+offset_bottom = 496.0
+mouse_filter = 1
+position_offset = Vector2(896, 432)
+value = 7
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Values can be used any number of times."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=1288801110]
+libraries/ = SubResource("AnimationLibrary_cxifx")
+autoplay = &"tutorial"
+
+[node name="HandIcon" type="TextureRect" parent="." index="6" unique_id=1864709601]
+visible = false
+layout_mode = 0
+offset_left = 250.0
+offset_top = 320.0
+offset_right = 297.99982
+offset_bottom = 384.0002
+texture = ExtResource("4_027kp")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="connection_occurred" from="GraphEdit" to="AnimationPlayer" method="pause"]
+[connection signal="connection_occurred" from="GraphEdit" to="HandIcon" method="hide"]

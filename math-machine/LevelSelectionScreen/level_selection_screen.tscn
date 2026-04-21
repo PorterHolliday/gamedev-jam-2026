@@ -3,28 +3,33 @@
 [ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelButton/level_button.tscn" id="1_bntq0"]
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
 [ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="2_3v81n"]
-[ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/Intro/level_1.tscn" id="2_vs61n"]
-[ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Intro/level_2.tscn" id="3_whgxd"]
-[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Intro/level_3.tscn" id="6_qn167"]
-[ext_resource type="PackedScene" uid="uid://c7rfdt0m211w8" path="res://Levels/Intro/level_4.tscn" id="7_2j0k2"]
-[ext_resource type="PackedScene" uid="uid://blcvrd4k8ts3x" path="res://Levels/SumAndSubtract/level_5.tscn" id="8_s16oa"]
-[ext_resource type="PackedScene" uid="uid://dfesk0ify5r4n" path="res://Levels/SumAndSubtract/level_6.tscn" id="9_djp6x"]
-[ext_resource type="PackedScene" uid="uid://dkqjmtg7qcwdr" path="res://Levels/SumAndSubtract/level_7.tscn" id="10_wvxo5"]
-[ext_resource type="PackedScene" uid="uid://i4gxgham6edv" path="res://Levels/SumAndSubtract/level_8.tscn" id="11_n686a"]
-[ext_resource type="PackedScene" uid="uid://deqpbagfggt00" path="res://Levels/SumAndSubtract/level_9.tscn" id="12_tsht8"]
-[ext_resource type="PackedScene" uid="uid://c1q2kn5wdmq37" path="res://Levels/SumAndSubtract/level_10.tscn" id="13_vi82w"]
-[ext_resource type="PackedScene" uid="uid://cyqca4ep1ac6q" path="res://Levels/SumAndSubtract/level_11.tscn" id="14_hxkdi"]
-[ext_resource type="PackedScene" uid="uid://dy2wcgj48gw3g" path="res://Levels/SumAndSubtract/level_12.tscn" id="15_yiuws"]
-[ext_resource type="PackedScene" uid="uid://cgjod315owu1n" path="res://Levels/Store/level_13.tscn" id="16_nrn4x"]
-[ext_resource type="PackedScene" uid="uid://dyydyyxtrw40y" path="res://Levels/Store/level_14.tscn" id="17_4f8od"]
-[ext_resource type="PackedScene" uid="uid://nu3amnhopc64" path="res://Levels/Store/level_15.tscn" id="18_l6jef"]
-[ext_resource type="PackedScene" uid="uid://j8mkjtbil2uu" path="res://Levels/Store/level_16.tscn" id="19_1fsxm"]
-[ext_resource type="PackedScene" uid="uid://bmy6gpljcu08j" path="res://Levels/Store/level_17.tscn" id="20_pena4"]
-[ext_resource type="PackedScene" uid="uid://31dr8hl1xd8m" path="res://Levels/Store/level_18.tscn" id="21_nqun2"]
+[ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/Levels/Tutorial/level_1.tscn" id="2_vs61n"]
+[ext_resource type="PackedScene" uid="uid://b2n8dg6iyp2df" path="res://Levels/Levels/Tutorial/level_2.tscn" id="5_s16oa"]
+[ext_resource type="PackedScene" uid="uid://dbpsj8n6346mv" path="res://Levels/Levels/Tutorial/level_3.tscn" id="6_djp6x"]
+[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/AddValue/level_2.tscn" id="6_qn167"]
+[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/AddValue/level_3.tscn" id="7_2j0k2"]
+[ext_resource type="PackedScene" uid="uid://blcvrd4k8ts3x" path="res://Levels/Levels/SumAndSubtract/level_5.tscn" id="8_s16oa"]
+[ext_resource type="PackedScene" uid="uid://dfesk0ify5r4n" path="res://Levels/Levels/SumAndSubtract/level_6.tscn" id="9_djp6x"]
+[ext_resource type="PackedScene" uid="uid://dkqjmtg7qcwdr" path="res://Levels/Levels/SumAndSubtract/level_7.tscn" id="10_wvxo5"]
+[ext_resource type="PackedScene" uid="uid://i4gxgham6edv" path="res://Levels/Levels/SumAndSubtract/level_8.tscn" id="11_n686a"]
+[ext_resource type="PackedScene" uid="uid://deqpbagfggt00" path="res://Levels/Levels/SumAndSubtract/level_9.tscn" id="12_tsht8"]
+[ext_resource type="PackedScene" uid="uid://c1q2kn5wdmq37" path="res://Levels/Levels/SumAndSubtract/level_10.tscn" id="13_vi82w"]
+[ext_resource type="PackedScene" uid="uid://cyqca4ep1ac6q" path="res://Levels/Levels/SumAndSubtract/level_11.tscn" id="14_hxkdi"]
+[ext_resource type="PackedScene" uid="uid://dy2wcgj48gw3g" path="res://Levels/Levels/SumAndSubtract/level_12.tscn" id="15_yiuws"]
+[ext_resource type="PackedScene" uid="uid://cgjod315owu1n" path="res://Levels/Levels/Store/level_13.tscn" id="16_nrn4x"]
+[ext_resource type="PackedScene" uid="uid://dyydyyxtrw40y" path="res://Levels/Levels/Store/level_14.tscn" id="17_4f8od"]
+[ext_resource type="PackedScene" uid="uid://nu3amnhopc64" path="res://Levels/Levels/Store/level_15.tscn" id="18_l6jef"]
+[ext_resource type="PackedScene" uid="uid://j8mkjtbil2uu" path="res://Levels/Levels/Store/level_16.tscn" id="19_1fsxm"]
+[ext_resource type="PackedScene" uid="uid://bmy6gpljcu08j" path="res://Levels/Levels/Store/level_17.tscn" id="20_pena4"]
+[ext_resource type="PackedScene" uid="uid://31dr8hl1xd8m" path="res://Levels/Levels/Store/level_18.tscn" id="21_nqun2"]
 
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_whgxd")
 
 [node name="GraphEdit" parent="." unique_id=1777296774 instance=ExtResource("2_3v81n")]
@@ -39,13 +44,29 @@ offset_bottom = 160.0
 disabled = false
 _level_scene = ExtResource("2_vs61n")
 
+[node name="LevelButton2" parent="." unique_id=531769527 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 112.0
+offset_right = 480.0
+offset_bottom = 160.0
+_level_scene = ExtResource("5_s16oa")
+
+[node name="LevelButton3" parent="." unique_id=1729385555 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 112.0
+offset_right = 528.0
+offset_bottom = 160.0
+_level_scene = ExtResource("6_djp6x")
+
 [node name="LevelButton4" parent="." unique_id=1518741277 instance=ExtResource("1_bntq0")]
 layout_mode = 0
 offset_left = 384.0
 offset_top = 176.0
 offset_right = 432.0
 offset_bottom = 224.0
-_level_scene = ExtResource("3_whgxd")
+_level_scene = ExtResource("6_qn167")
 
 [node name="LevelButton5" parent="." unique_id=183187018 instance=ExtResource("1_bntq0")]
 layout_mode = 0
