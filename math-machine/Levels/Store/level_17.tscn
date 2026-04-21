@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ckfb4fdxos2u2" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Subtract Operation/subtract_operation.tscn" id="6_cv5rn"]
 
 [node name="Level17" unique_id=921743447 instance=ExtResource("1_y4bl7")]
-level_number = 17
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=736657052 instance=ExtResource("2_nxvg4")]
 layout_mode = 0
@@ -94,3 +93,6 @@ offset_right = 496.0
 offset_bottom = 464.0
 mouse_filter = 1
 position_offset = Vector2(432, 368)
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Try to get the middle number stored in a green block."

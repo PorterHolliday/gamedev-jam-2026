@@ -1,35 +1,36 @@
 [gd_scene format=3 uid="uid://7qbklb5jwxg5"]
 
 [ext_resource type="Script" uid="uid://bae0nu5wpdss6" path="res://LevelButton/level_button.gd" id="1_mshbt"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mshbt"]
+[ext_resource type="Texture2D" uid="uid://cakggmgm1x14g" path="res://LevelButton/checkmark.png" id="2_h71le"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mshbt"]
+font_size = 24
 font_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
 outline_size = 2
 outline_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
 
 [node name="LevelButton" type="Button" unique_id=863369867]
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 48.0
+offset_bottom = 48.0
 theme_type_variation = &"LevelButton"
 disabled = true
 script = ExtResource("1_mshbt")
-_level_number = 2
 
-[node name="CheckMark" type="TextureRect" parent="." unique_id=761775468]
+[node name="Checkmark" type="TextureRect" parent="." unique_id=761775468]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-texture = SubResource("PlaceholderTexture2D_mshbt")
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("2_h71le")
+expand_mode = 1
 
 [node name="LevelNumberLabel" type="Label" parent="." unique_id=1949569119]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 48.0
+offset_bottom = 48.0
 text = "12"
 label_settings = SubResource("LabelSettings_mshbt")
 horizontal_alignment = 1

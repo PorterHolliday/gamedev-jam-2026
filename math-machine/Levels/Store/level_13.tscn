@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="5_gx7ek"]
 
 [node name="Level13" unique_id=921743447 instance=ExtResource("1_1rtq7")]
-level_number = 13
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=736657052 instance=ExtResource("2_awf0f")]
 layout_mode = 0
@@ -47,3 +46,6 @@ offset_bottom = 448.0
 mouse_filter = 1
 position_offset = Vector2(544, 384)
 value = 2
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Green blocks store a number. Finding the right number to store is the trick!"

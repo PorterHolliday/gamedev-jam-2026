@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="5_b84n6"]
 
 [node name="Level16" unique_id=921743447 instance=ExtResource("1_4htk4")]
-level_number = 16
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=736657052 instance=ExtResource("2_fxpwl")]
 layout_mode = 0
@@ -56,3 +55,6 @@ offset_bottom = 448.0
 mouse_filter = 1
 position_offset = Vector2(544, 384)
 value = 2
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Two green blocks can feed into each other to allow infinite operations!"

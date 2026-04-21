@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="6_ub4j8"]
 
 [node name="TestLevel" unique_id=921743447 instance=ExtResource("1_3158n")]
-level_number = 1
 
 [node name="GraphEdit" parent="." index="0" unique_id=1777296774]
 visible = false

@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bnyrfxxrx0v05" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Sum Operation/sum_operation.tscn" id="5_sjvsh"]
 
 [node name="Level11" unique_id=921743447 instance=ExtResource("1_8p8y0")]
-level_number = 11
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=736657052 instance=ExtResource("2_q1yr1")]
 layout_mode = 0
@@ -94,3 +93,6 @@ offset_right = 480.0
 offset_bottom = 240.0
 mouse_filter = 1
 position_offset = Vector2(416, 144)
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Getting to the largest number first is often a good strategy when you have  yellow blocks."

@@ -5,19 +5,21 @@ extends Button
 signal level_completed
 
 @onready var level_number_label: Label = $LevelNumberLabel
-@onready var check_mark: TextureRect = %CheckMark
+@onready var checkmark: TextureRect = %Checkmark
 
 @export var _level_scene: PackedScene
-@export var _level_number: int = 0
+var level_number: int = 0:
+	set(new_val):
+		level_number = new_val
+		level_number_label.text = str(level_number)
 var level: Level
 
 var level_complete: bool = false:
 	set(new_val):
 		level_complete = new_val
-		check_mark.visible = level_complete
+		checkmark.visible = level_complete
 
 func _ready() -> void:
-	level_number_label.text = str(_level_number)
 	pressed.connect(_on_pressed)
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
@@ -44,7 +46,11 @@ func _on_level_completed() -> void:
 func _on_mouse_entered() -> void:
 	if not disabled:
 		level_number_label.show()
+		if level_complete:
+			checkmark.hide()
 	
 func _on_mouse_exited() -> void:
 	level_number_label.hide()
+	if level_complete:
+		checkmark.show()
 	

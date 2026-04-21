@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="5_1gr5o"]
 
 [node name="Level6" unique_id=921743447 instance=ExtResource("1_sghmu")]
-level_number = 6
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_1gr5o")]
 layout_mode = 0
@@ -75,3 +74,6 @@ offset_bottom = 352.0
 mouse_filter = 1
 position_offset = Vector2(544, 288)
 value = -2
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Order matters here. The -2 should happen last in its path."

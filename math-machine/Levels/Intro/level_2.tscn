@@ -7,7 +7,6 @@
 [ext_resource type="LabelSettings" uid="uid://dq3knhvy1lxuk" path="res://LabelSettings/tutorial_label_settings.tres" id="5_mj61p"]
 
 [node name="Level2" unique_id=921743447 instance=ExtResource("1_bgqeu")]
-level_number = 2
 
 [node name="GraphEdit" parent="." index="0" unique_id=1777296774]
 connections = Array[Dictionary]([{
@@ -71,3 +70,6 @@ text = "Right-click a connection to delete it."
 label_settings = ExtResource("5_mj61p")
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="Hint" parent="." index="6" unique_id=2128368680]
+text = "Connect to colored blocks to modify inputs to match outputs."

@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_2ycws"]
 
 [node name="Level4" unique_id=921743447 instance=ExtResource("1_m72gx")]
-level_number = 4
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_bfu7b")]
 layout_mode = 0
@@ -86,3 +85,6 @@ offset_bottom = 224.0
 mouse_filter = 1
 position_offset = Vector2(672, 160)
 value = -7
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "There are multiple solutions. In one, the 1 connects to 1 operation, and the 5 connects to the rest."

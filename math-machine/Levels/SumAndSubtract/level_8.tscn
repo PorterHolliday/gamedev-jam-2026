@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="5_ytwk4"]
 
 [node name="Level8" unique_id=921743447 instance=ExtResource("1_1h1le")]
-level_number = 8
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_ytwk4")]
 layout_mode = 0
@@ -36,7 +35,7 @@ offset_right = 960.0
 offset_bottom = 224.0
 mouse_filter = 1
 position_offset = Vector2(896, 160)
-value = 2
+value = 3
 
 [node name="OutputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=634508288 instance=ExtResource("3_r8g0n")]
 layout_mode = 0
@@ -74,3 +73,6 @@ offset_right = 608.0
 offset_bottom = 352.0
 mouse_filter = 1
 position_offset = Vector2(544, 288)
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Try getting to 10 before using either yellow block."

@@ -4,10 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_kc6m6"]
 [ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_eicki"]
 [ext_resource type="PackedScene" uid="uid://bnyrfxxrx0v05" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Sum Operation/sum_operation.tscn" id="4_m41di"]
-[ext_resource type="LabelSettings" uid="uid://dq3knhvy1lxuk" path="res://LabelSettings/tutorial_label_settings.tres" id="5_rsfra"]
 
 [node name="Level5" unique_id=921743447 instance=ExtResource("1_8h57h")]
-level_number = 5
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_kc6m6")]
 layout_mode = 0
@@ -66,13 +64,5 @@ offset_bottom = 496.0
 mouse_filter = 1
 position_offset = Vector2(544, 400)
 
-[node name="TutorialLabel" type="Label" parent="." index="2" unique_id=1132813205]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 32.0
-offset_right = 704.0
-offset_bottom = 160.0
-text = "You'll find many new nodes throughout the game. Experiment to see what they can do!"
-label_settings = ExtResource("5_rsfra")
-horizontal_alignment = 1
-autowrap_mode = 2
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Red blocks sum their two inputs. Try getting to 6 first using one red block."

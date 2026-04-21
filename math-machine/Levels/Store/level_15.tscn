@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://ckfb4fdxos2u2" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Subtract Operation/subtract_operation.tscn" id="5_2a1ow"]
 
 [node name="Level15" unique_id=921743447 instance=ExtResource("1_2a1ow")]
-level_number = 15
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=736657052 instance=ExtResource("2_vp3uc")]
 layout_mode = 0
@@ -74,3 +73,6 @@ offset_right = 608.0
 offset_bottom = 480.0
 mouse_filter = 1
 position_offset = Vector2(544, 384)
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "If you can get one of the final numbers stored in a green block it often makes life much easier."

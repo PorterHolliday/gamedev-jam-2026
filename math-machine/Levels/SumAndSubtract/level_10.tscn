@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bnyrfxxrx0v05" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Sum Operation/sum_operation.tscn" id="5_mycgo"]
 
 [node name="Level10" unique_id=921743447 instance=ExtResource("1_a6d5g")]
-level_number = 10
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_y080c")]
 layout_mode = 0
@@ -74,3 +73,6 @@ offset_right = 768.0
 offset_bottom = 368.0
 mouse_filter = 1
 position_offset = Vector2(704, 272)
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Get to 6 without using  the yellow block."

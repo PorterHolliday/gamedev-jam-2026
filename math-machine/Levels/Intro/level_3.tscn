@@ -4,10 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_bjspv"]
 [ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_nqu3f"]
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_2c6i1"]
-[ext_resource type="LabelSettings" uid="uid://dq3knhvy1lxuk" path="res://LabelSettings/tutorial_label_settings.tres" id="5_ktrhe"]
 
 [node name="Level3" unique_id=921743447 instance=ExtResource("1_3n1dw")]
-level_number = 3
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_bjspv")]
 layout_mode = 0
@@ -59,24 +57,5 @@ mouse_filter = 1
 position_offset = Vector2(688, 288)
 value = -1
 
-[node name="TutorialLabel" type="Label" parent="." index="2" unique_id=1766495276]
-layout_mode = 0
-offset_left = 447.0
-offset_top = 75.0
-offset_right = 707.0
-offset_bottom = 213.0
-text = "Output ports (right side) can connect to any number of input ports (left side)."
-label_settings = ExtResource("5_ktrhe")
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TutorialLabel2" type="Label" parent="." index="3" unique_id=1048071204]
-layout_mode = 0
-offset_left = 455.0
-offset_top = 513.0
-offset_right = 715.0
-offset_bottom = 651.0
-text = "Input ports may only have one connection."
-label_settings = ExtResource("5_ktrhe")
-horizontal_alignment = 1
-autowrap_mode = 2
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "You can use outputs mutliple times. Connect 3 to +2 and -1 to get 5 and 2."
