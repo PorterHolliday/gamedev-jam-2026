@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_gutfs"]
 [ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_rdmkj"]
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_rdmkj"]
-[ext_resource type="Texture2D" uid="uid://cjtlorpytq0mn" path="res://Levels/Levels/Tutorial/hand_icon.png" id="5_i7cmg"]
+[ext_resource type="Texture2D" uid="uid://cari7ta8dgpi4" path="res://Levels/Levels/AddValue/open_hand_icon.png" id="5_q1nwe"]
+[ext_resource type="Texture2D" uid="uid://6oly3fd63d3p" path="res://Levels/Levels/AddValue/closed_hand_icon.png" id="6_m08fk"]
 
 [sub_resource type="Animation" id="Animation_q1nwe"]
 length = 0.001
@@ -32,6 +33,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(352, 96)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandIcon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_q1nwe")]
+}
 
 [sub_resource type="Animation" id="Animation_m08fk"]
 resource_name = "tutorial"
@@ -56,10 +69,22 @@ tracks/1/path = NodePath("HandIcon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.4, 2.8, 3.4),
+"times": PackedFloat32Array(0, 1.8, 2.8, 3.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(352, 96), Vector2(352, 96), Vector2(560, 320), Vector2(560, 320)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandIcon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_q1nwe"), ExtResource("6_m08fk")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_isho1"]
@@ -108,9 +133,10 @@ visible = false
 layout_mode = 0
 offset_left = 352.0
 offset_top = 96.0
-offset_right = 400.0008
-offset_bottom = 160.00024
-texture = ExtResource("5_i7cmg")
+offset_right = 400.0072
+offset_bottom = 159.99649
+mouse_filter = 2
+texture = ExtResource("5_q1nwe")
 expand_mode = 1
 stretch_mode = 5
 

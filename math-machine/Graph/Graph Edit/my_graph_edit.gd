@@ -8,6 +8,7 @@ signal connection_occurred
 const CONNECTION_GRAB_DISTANCE := 10.0
 
 var _output_nodes: Array[OutputNode] = []
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 func _ready() -> void:
 	right_disconnects = true
@@ -40,7 +41,9 @@ func _on_connection_request(from_node_name: StringName, from_port: int, to_node_
 	var from_node: MyGraphNode = get_node(NodePath(from_node_name))
 	var to_node: MyGraphNode = get_node(NodePath(to_node_name))
 	
-	if _is_loop_created(from_node, to_node): return
+	if _is_loop_created(from_node, to_node): 
+		animation_player.play('no_loops')
+		return
 	if get_connection_list_from_input_port(to_node_name, to_port).size() > 0: return
 	
 	if not to_node is StoreValueNode:
@@ -96,5 +99,7 @@ func _check_level_complete() -> void:
 	for output in _output_nodes:
 		if not output.is_satisfied:
 			return
-			
+	
+	animation_player.play('level_complete')
+	await animation_player.animation_finished
 	level_complete.emit()

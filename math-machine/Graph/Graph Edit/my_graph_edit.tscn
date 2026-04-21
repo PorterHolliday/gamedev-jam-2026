@@ -1,6 +1,79 @@
 [gd_scene format=3 uid="uid://cx332tlkbnunc"]
 
 [ext_resource type="Script" uid="uid://dtsxch84g6w4n" path="res://Graph/Graph Edit/my_graph_edit.gd" id="1_icph3"]
+[ext_resource type="Texture2D" uid="uid://dc2an244x0t4f" path="res://Graph/Graph Edit/no_loops.png" id="2_i1exf"]
+
+[sub_resource type="Animation" id="Animation_qud77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelCompleteLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i1exf"]
+resource_name = "level_complete"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelCompleteLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3yicx"]
+resource_name = "no_loops"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ld6b7"]
+_data = {
+&"RESET": SubResource("Animation_qud77"),
+&"level_complete": SubResource("Animation_i1exf"),
+&"no_loops": SubResource("Animation_3yicx")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_i1exf"]
+font_size = 64
+font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+outline_size = 8
+outline_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 
 [node name="GraphEdit" type="GraphEdit" unique_id=1777296774]
 offset_right = 2552.0
@@ -15,3 +88,30 @@ show_grid_buttons = false
 show_minimap_button = false
 show_arrange_button = false
 script = ExtResource("1_icph3")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1788677485]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 448.0
+offset_top = 192.0
+offset_right = 704.0
+offset_bottom = 448.0
+texture = ExtResource("2_i1exf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1773104521]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_ld6b7")
+
+[node name="LevelCompleteLabel" type="Label" parent="." unique_id=411387927]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 336.0
+offset_top = 16.0
+offset_right = 811.0
+offset_bottom = 104.0
+text = "Level Complete"
+label_settings = SubResource("LabelSettings_i1exf")
+horizontal_alignment = 1
+vertical_alignment = 1

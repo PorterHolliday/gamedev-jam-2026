@@ -29,5 +29,5 @@ func _gui_input(event: InputEvent) -> void:
 		if not _snapping_enabled:
 			position_offset = _position_offset
 		else:
-			position_offset = Vector2(Vector2i(_position_offset / _snapping_distance)) * _snapping_distance
+			position_offset = Vector2(Vector2i((_position_offset + Vector2(_snapping_distance, _snapping_distance)/2)/ _snapping_distance)) * _snapping_distance
 		get_viewport().set_input_as_handled()
