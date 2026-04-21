@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
 [ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="2_3v81n"]
 [ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/Levels/Tutorial/level_1.tscn" id="2_vs61n"]
+[ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Levels/AddValue/level_1.tscn" id="3_whgxd"]
 [ext_resource type="PackedScene" uid="uid://b2n8dg6iyp2df" path="res://Levels/Levels/Tutorial/level_2.tscn" id="5_s16oa"]
 [ext_resource type="PackedScene" uid="uid://dbpsj8n6346mv" path="res://Levels/Levels/Tutorial/level_3.tscn" id="6_djp6x"]
 [ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/AddValue/level_2.tscn" id="6_qn167"]
@@ -66,7 +67,7 @@ offset_left = 384.0
 offset_top = 176.0
 offset_right = 432.0
 offset_bottom = 224.0
-_level_scene = ExtResource("6_qn167")
+_level_scene = ExtResource("3_whgxd")
 
 [node name="LevelButton5" parent="." unique_id=183187018 instance=ExtResource("1_bntq0")]
 layout_mode = 0
