@@ -99,7 +99,5 @@ func _check_level_complete() -> void:
 	for output in _output_nodes:
 		if not output.is_satisfied:
 			return
-	
-	animation_player.play('level_complete')
-	await animation_player.animation_finished
+
 	level_complete.emit()

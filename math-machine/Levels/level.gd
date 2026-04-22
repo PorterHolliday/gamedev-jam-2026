@@ -9,6 +9,7 @@ signal completed
 @onready var restart_button: Button = %RestartButton
 @onready var hint_button: Button = %HintButton
 @onready var hint: Label = %Hint
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 var level_output_node: LevelOutputNode
 
@@ -43,4 +44,7 @@ func _on_hint_button_pressed() -> void:
 
 # Hides level first time it is completed
 func _on_level_complete() -> void:
+	hint.hide()
+	animation_player.play('level_complete')
+	await animation_player.animation_finished
 	completed.emit()

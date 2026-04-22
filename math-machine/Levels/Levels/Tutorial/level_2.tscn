@@ -171,7 +171,11 @@ text = "6"
 [node name="Hint" parent="." index="4" unique_id=2128368680]
 text = "Right-click to remove a connection."
 
-[node name="RightClickIcon" type="TextureRect" parent="." index="5" unique_id=480649865]
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=1023647222]
+libraries/ = SubResource("AnimationLibrary_8luco")
+autoplay = &"tutorial"
+
+[node name="RightClickIcon" type="TextureRect" parent="." index="6" unique_id=480649865]
 visible = false
 layout_mode = 0
 offset_left = 560.0
@@ -183,12 +187,8 @@ texture = ExtResource("5_xuwo0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=1023647222]
-libraries/ = SubResource("AnimationLibrary_8luco")
-autoplay = &"tutorial"
-
-[connection signal="disconnection_occurred" from="GraphEdit" to="RightClickIcon" method="hide"]
 [connection signal="disconnection_occurred" from="GraphEdit" to="AnimationPlayer" method="pause"]
+[connection signal="disconnection_occurred" from="GraphEdit" to="RightClickIcon" method="hide"]
 
 [editable path="GraphEdit/OutputNode"]
 [editable path="GraphEdit/OutputNode2"]

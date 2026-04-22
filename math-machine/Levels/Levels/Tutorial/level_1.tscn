@@ -131,7 +131,7 @@ value = 3
 [node name="Hint" parent="." index="4" unique_id=2128368680]
 text = "Click and drag to connect blocks."
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=18887083]
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=18887083]
 libraries/ = SubResource("AnimationLibrary_1lf10")
 autoplay = &"tutorial"
 
@@ -146,5 +146,5 @@ texture = ExtResource("4_yt74c")
 expand_mode = 1
 stretch_mode = 5
 
-[connection signal="connection_occurred" from="GraphEdit" to="AnimationPlayer" method="pause"]
+[connection signal="connection_occurred" from="GraphEdit" to="TutorialAnimationPlayer" method="pause"]
 [connection signal="connection_occurred" from="GraphEdit" to="HandIcon" method="hide"]

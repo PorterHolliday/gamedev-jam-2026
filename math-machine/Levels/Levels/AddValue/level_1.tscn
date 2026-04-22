@@ -140,9 +140,9 @@ texture = ExtResource("5_q1nwe")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=116537985]
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=116537985]
 libraries/ = SubResource("AnimationLibrary_isho1")
 autoplay = &"tutorial"
 
 [connection signal="position_offset_changed" from="GraphEdit/AddValueOperation" to="HandIcon" method="hide"]
-[connection signal="position_offset_changed" from="GraphEdit/AddValueOperation" to="AnimationPlayer" method="pause"]
+[connection signal="position_offset_changed" from="GraphEdit/AddValueOperation" to="TutorialAnimationPlayer" method="pause"]
