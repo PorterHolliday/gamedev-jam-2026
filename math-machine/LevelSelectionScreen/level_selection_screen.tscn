@@ -24,6 +24,12 @@
 [ext_resource type="PackedScene" uid="uid://bmy6gpljcu08j" path="res://Levels/Levels/Store/level_17.tscn" id="20_pena4"]
 [ext_resource type="PackedScene" uid="uid://31dr8hl1xd8m" path="res://Levels/Levels/Store/level_18.tscn" id="21_nqun2"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_s16oa"]
+font_size = 64
+font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+outline_size = 8
+outline_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
 layout_mode = 3
 anchors_preset = 15
@@ -36,163 +42,183 @@ script = ExtResource("1_whgxd")
 [node name="GraphEdit" parent="." unique_id=1777296774 instance=ExtResource("2_3v81n")]
 layout_mode = 0
 
+[node name="Title" type="Label" parent="." unique_id=234851870]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 48.0
+offset_right = 672.0
+offset_bottom = 136.0
+text = "Levels"
+label_settings = SubResource("LabelSettings_s16oa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="LevelButton" parent="." unique_id=863369867 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 112.0
-offset_right = 432.0
-offset_bottom = 160.0
+offset_left = 512.0
+offset_top = 208.0
+offset_right = 560.0
+offset_bottom = 256.0
 disabled = false
 _level_scene = ExtResource("2_vs61n")
 
 [node name="LevelButton2" parent="." unique_id=531769527 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 112.0
-offset_right = 480.0
-offset_bottom = 160.0
+offset_left = 560.0
+offset_top = 208.0
+offset_right = 608.0
+offset_bottom = 256.0
 _level_scene = ExtResource("5_s16oa")
 
 [node name="LevelButton3" parent="." unique_id=1729385555 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 112.0
-offset_right = 528.0
-offset_bottom = 160.0
+offset_left = 608.0
+offset_top = 208.0
+offset_right = 656.0
+offset_bottom = 256.0
 _level_scene = ExtResource("6_djp6x")
 
 [node name="LevelButton4" parent="." unique_id=1518741277 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 176.0
-offset_right = 432.0
-offset_bottom = 224.0
+offset_left = 512.0
+offset_top = 272.0
+offset_right = 560.0
+offset_bottom = 320.0
 _level_scene = ExtResource("3_whgxd")
 
 [node name="LevelButton5" parent="." unique_id=183187018 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 176.0
-offset_right = 480.0
-offset_bottom = 224.0
+offset_left = 560.0
+offset_top = 272.0
+offset_right = 608.0
+offset_bottom = 320.0
 _level_scene = ExtResource("6_qn167")
 
 [node name="LevelButton6" parent="." unique_id=1398013742 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 176.0
-offset_right = 528.0
-offset_bottom = 224.0
+offset_left = 608.0
+offset_top = 272.0
+offset_right = 656.0
+offset_bottom = 320.0
 _level_scene = ExtResource("7_2j0k2")
 
 [node name="LevelButton7" parent="." unique_id=1067007151 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 240.0
-offset_right = 432.0
-offset_bottom = 288.0
+offset_left = 512.0
+offset_top = 336.0
+offset_right = 560.0
+offset_bottom = 384.0
 _level_scene = ExtResource("8_s16oa")
 
 [node name="LevelButton8" parent="." unique_id=328680659 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 240.0
-offset_right = 480.0
-offset_bottom = 288.0
+offset_left = 560.0
+offset_top = 336.0
+offset_right = 608.0
+offset_bottom = 384.0
 _level_scene = ExtResource("9_djp6x")
 
 [node name="LevelButton9" parent="." unique_id=1757024622 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 240.0
-offset_right = 528.0
-offset_bottom = 288.0
+offset_left = 608.0
+offset_top = 336.0
+offset_right = 656.0
+offset_bottom = 384.0
 _level_scene = ExtResource("10_wvxo5")
 
 [node name="LevelButton10" parent="." unique_id=1433417262 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 240.0
-offset_right = 576.0
-offset_bottom = 288.0
+offset_left = 656.0
+offset_top = 336.0
+offset_right = 704.0
+offset_bottom = 384.0
 _level_scene = ExtResource("11_n686a")
 
 [node name="LevelButton11" parent="." unique_id=941233518 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 288.0
-offset_right = 432.0
-offset_bottom = 336.0
+offset_left = 512.0
+offset_top = 384.0
+offset_right = 560.0
+offset_bottom = 432.0
 _level_scene = ExtResource("12_tsht8")
 
 [node name="LevelButton12" parent="." unique_id=1423079273 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 288.0
-offset_right = 480.0
-offset_bottom = 336.0
+offset_left = 560.0
+offset_top = 384.0
+offset_right = 608.0
+offset_bottom = 432.0
 _level_scene = ExtResource("13_vi82w")
 
 [node name="LevelButton13" parent="." unique_id=1802468550 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 288.0
-offset_right = 528.0
-offset_bottom = 336.0
+offset_left = 608.0
+offset_top = 384.0
+offset_right = 656.0
+offset_bottom = 432.0
 _level_scene = ExtResource("14_hxkdi")
 
 [node name="LevelButton14" parent="." unique_id=1364846621 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 288.0
-offset_right = 576.0
-offset_bottom = 336.0
+offset_left = 656.0
+offset_top = 384.0
+offset_right = 704.0
+offset_bottom = 432.0
 _level_scene = ExtResource("15_yiuws")
 
 [node name="LevelButton15" parent="." unique_id=247262557 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 352.0
-offset_right = 432.0
-offset_bottom = 400.0
+offset_left = 512.0
+offset_top = 448.0
+offset_right = 560.0
+offset_bottom = 496.0
 _level_scene = ExtResource("16_nrn4x")
 
 [node name="LevelButton16" parent="." unique_id=218652785 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 352.0
-offset_right = 480.0
-offset_bottom = 400.0
+offset_left = 560.0
+offset_top = 448.0
+offset_right = 608.0
+offset_bottom = 496.0
 _level_scene = ExtResource("17_4f8od")
 
 [node name="LevelButton17" parent="." unique_id=1705133428 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 352.0
-offset_right = 528.0
-offset_bottom = 400.0
+offset_left = 608.0
+offset_top = 448.0
+offset_right = 656.0
+offset_bottom = 496.0
 _level_scene = ExtResource("18_l6jef")
 
 [node name="LevelButton18" parent="." unique_id=1914789741 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 352.0
-offset_right = 576.0
-offset_bottom = 400.0
+offset_left = 656.0
+offset_top = 448.0
+offset_right = 704.0
+offset_bottom = 496.0
 _level_scene = ExtResource("19_1fsxm")
 
 [node name="LevelButton19" parent="." unique_id=683457002 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 576.0
-offset_top = 352.0
-offset_right = 624.0
-offset_bottom = 400.0
+offset_left = 704.0
+offset_top = 448.0
+offset_right = 752.0
+offset_bottom = 496.0
 _level_scene = ExtResource("20_pena4")
 
 [node name="LevelButton20" parent="." unique_id=1071956409 instance=ExtResource("1_bntq0")]
 layout_mode = 0
-offset_left = 624.0
-offset_top = 352.0
-offset_right = 672.0
-offset_bottom = 400.0
+offset_left = 752.0
+offset_top = 448.0
+offset_right = 800.0
+offset_bottom = 496.0
 _level_scene = ExtResource("21_nqun2")
+
+[node name="BackButton" type="Button" parent="." unique_id=23307136]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 80.0
+theme_type_variation = &"BackButton"
