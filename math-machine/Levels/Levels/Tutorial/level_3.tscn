@@ -122,7 +122,7 @@ value = 7
 [node name="Hint" parent="." index="4" unique_id=2128368680]
 text = "Values can be used any number of times."
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=1288801110]
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=1288801110]
 libraries/ = SubResource("AnimationLibrary_cxifx")
 autoplay = &"tutorial"
 
@@ -138,5 +138,5 @@ texture = ExtResource("4_027kp")
 expand_mode = 1
 stretch_mode = 5
 
-[connection signal="connection_occurred" from="GraphEdit" to="AnimationPlayer" method="pause"]
+[connection signal="connection_occurred" from="GraphEdit" to="TutorialAnimationPlayer" method="pause"]
 [connection signal="connection_occurred" from="GraphEdit" to="HandIcon" method="hide"]
