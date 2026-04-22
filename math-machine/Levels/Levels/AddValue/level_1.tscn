@@ -93,7 +93,7 @@ _data = {
 &"tutorial": SubResource("Animation_m08fk")
 }
 
-[node name="Level2" unique_id=921743447 instance=ExtResource("1_bgqeu")]
+[node name="Level1" unique_id=921743447 instance=ExtResource("1_bgqeu")]
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_gutfs")]
 layout_mode = 0

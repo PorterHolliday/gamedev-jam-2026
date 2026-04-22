@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_nqu3f"]
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_2c6i1"]
 
-[node name="Level3" unique_id=921743447 instance=ExtResource("1_3n1dw")]
+[node name="Level2" unique_id=921743447 instance=ExtResource("1_3n1dw")]
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_bjspv")]
 layout_mode = 0

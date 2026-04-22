@@ -28,7 +28,6 @@ shader_parameter/color = Color(0, 0.101960786, 0.39215687, 1)
 material = ExtResource("1_d3qfh")
 offset_right = 64.0
 offset_bottom = 64.0
-draggable = false
 slot/0/left_enabled = true
 slot/0/left_type = 1
 slot/0/left_color = Color(1, 1, 1, 1)

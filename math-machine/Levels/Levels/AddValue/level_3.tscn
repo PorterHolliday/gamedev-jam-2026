@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://c7rfdt0m211w8"]
+[gd_scene format=3 uid="uid://0y0h501tiyyq"]
 
 [ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_m72gx"]
 [ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_bfu7b"]
 [ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_dr83l"]
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_2ycws"]
 
-[node name="Level4" unique_id=921743447 instance=ExtResource("1_m72gx")]
+[node name="Level3" unique_id=921743447 instance=ExtResource("1_m72gx")]
 
 [node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_bfu7b")]
 layout_mode = 0
