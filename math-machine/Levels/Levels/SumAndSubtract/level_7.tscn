@@ -65,4 +65,4 @@ mouse_filter = 1
 position_offset = Vector2(544, 400)
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Yellow blocks subtract the bottom input from the top input."
+text = "Yellow blocks perform subtraction from top to bottom."

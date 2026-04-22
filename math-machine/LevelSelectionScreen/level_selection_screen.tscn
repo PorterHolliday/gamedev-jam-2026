@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b2n8dg6iyp2df" path="res://Levels/Levels/Tutorial/level_2.tscn" id="5_s16oa"]
 [ext_resource type="PackedScene" uid="uid://dbpsj8n6346mv" path="res://Levels/Levels/Tutorial/level_3.tscn" id="6_djp6x"]
 [ext_resource type="PackedScene" uid="uid://blcvrd4k8ts3x" path="res://Levels/Levels/SumAndSubtract/level_5.tscn" id="8_s16oa"]
+[ext_resource type="PackedScene" uid="uid://d4f8grrmkga2g" path="res://Levels/Levels/AddValue/level_2.tscn" id="8_tsht8"]
 [ext_resource type="PackedScene" uid="uid://dfesk0ify5r4n" path="res://Levels/Levels/SumAndSubtract/level_6.tscn" id="9_djp6x"]
 [ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/AddValue/level_3.tscn" id="9_tsht8"]
 [ext_resource type="PackedScene" uid="uid://dkqjmtg7qcwdr" path="res://Levels/Levels/SumAndSubtract/level_7.tscn" id="10_wvxo5"]
@@ -32,8 +33,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_s16oa"]
 font_size = 64
 font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
-outline_size = 8
-outline_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
 
 [sub_resource type="Animation" id="Animation_s16oa"]
 length = 0.001
@@ -88,6 +87,10 @@ _data = {
 &"fade_in": SubResource("Animation_djp6x"),
 &"fade_out": SubResource("Animation_wvxo5")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_tsht8"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
 layout_mode = 3
@@ -160,8 +163,7 @@ offset_left = 560.0
 offset_top = 272.0
 offset_right = 608.0
 offset_bottom = 320.0
-disabled = false
-level_scene = ExtResource("9_tsht8")
+level_scene = ExtResource("8_tsht8")
 
 [node name="LevelButton6" parent="." unique_id=1398013742 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -169,7 +171,6 @@ offset_left = 608.0
 offset_top = 272.0
 offset_right = 656.0
 offset_bottom = 320.0
-disabled = false
 level_scene = ExtResource("9_tsht8")
 
 [node name="LevelButton7" parent="." unique_id=1067007151 instance=ExtResource("1_bntq0")]
@@ -297,7 +298,19 @@ theme_type_variation = &"BackButton"
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_n686a")
 
+[node name="Label" type="Label" parent="." unique_id=2005907982]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 208.0
+offset_right = 491.0
+offset_bottom = 258.0
+text = "Tutorial"
+label_settings = SubResource("LabelSettings_tsht8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GraySection" type="TextureRect" parent="." unique_id=856318092]
+visible = false
 layout_mode = 0
 offset_left = 432.0
 offset_top = 208.0
@@ -308,18 +321,18 @@ expand_mode = 1
 
 [node name="BlueSection" type="TextureRect" parent="." unique_id=600397632]
 layout_mode = 0
-offset_left = 432.0
+offset_left = 416.0
 offset_top = 272.0
-offset_right = 480.0
+offset_right = 464.0
 offset_bottom = 320.0
 texture = ExtResource("24_tsht8")
 expand_mode = 1
 
 [node name="RedYellowSection" type="TextureRect" parent="." unique_id=519814975]
 layout_mode = 0
-offset_left = 432.0
+offset_left = 416.0
 offset_top = 336.0
-offset_right = 480.0
+offset_right = 464.0
 offset_bottom = 432.0
 texture = ExtResource("25_vi82w")
 expand_mode = 1
@@ -327,9 +340,9 @@ stretch_mode = 5
 
 [node name="GreenSection" type="TextureRect" parent="." unique_id=1265759253]
 layout_mode = 0
-offset_left = 432.0
+offset_left = 416.0
 offset_top = 448.0
-offset_right = 480.0
+offset_right = 464.0
 offset_bottom = 496.0
 texture = ExtResource("26_hxkdi")
 expand_mode = 1

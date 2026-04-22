@@ -126,7 +126,7 @@ position_offset = Vector2(336, 64)
 value = 2
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Connect to colored blocks to modify inputs to match outputs."
+text = "Colored blocks modify values. Use them to get the right numbers."
 
 [node name="HandIcon" type="TextureRect" parent="." index="5" unique_id=2099781783]
 visible = false
