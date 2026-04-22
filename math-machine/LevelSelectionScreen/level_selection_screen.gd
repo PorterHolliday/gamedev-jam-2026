@@ -1,6 +1,7 @@
 extends Control
 
 @onready var back_button: Button = %BackButton
+@onready var fade_out_animation_player: AnimationPlayer = %FadeOutAnimationPlayer
 var current_level_button: LevelButton
 var current_level: Level
 
@@ -20,21 +21,36 @@ func _number_level_buttons() -> void:
 func _on_level_button_pressed(button: LevelButton) -> void:
 	current_level_button = button
 	current_level = button.level_scene.instantiate()
-	current_level.restarted.connect(_on_level_restarted)
-	current_level.completed.connect(_on_level_completed)
-	add_child(current_level)
+	fade_out_animation_player.play('fade_out')
+	await fade_out_animation_player.animation_finished
+	_enter_current_level()
+	fade_out_animation_player.play('fade_in')
+	
+func _on_level_back_button_pressed() -> void:
+	fade_out_animation_player.play('fade_out')
+	await fade_out_animation_player.animation_finished
+	current_level.queue_free()
+	fade_out_animation_player.play('fade_in')
 	
 func _on_level_restarted() -> void:
+	fade_out_animation_player.play('fade_out')
+	await fade_out_animation_player.animation_finished
 	current_level.queue_free()
+	_enter_current_level()
+	fade_out_animation_player.play('fade_in')
+	
+func _enter_current_level() -> void:
 	current_level = current_level_button.level_scene.instantiate()
+	current_level.back_button_pressed.connect(_on_level_back_button_pressed)
 	current_level.restarted.connect(_on_level_restarted)
 	current_level.completed.connect(_on_level_completed)
 	add_child(current_level)
 	
 func _on_level_completed() -> void:
-	current_level.completed.disconnect(_on_level_completed)
-	current_level.restarted.disconnect(_on_level_restarted)
+	fade_out_animation_player.play('fade_out')
+	await fade_out_animation_player.animation_finished
 	current_level.queue_free()
+	fade_out_animation_player.play('fade_in')
 	current_level_button.level_complete = true
 	_enable_next_level_button()
 	

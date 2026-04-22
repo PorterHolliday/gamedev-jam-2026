@@ -1,6 +1,7 @@
 class_name Level
 extends Control
 
+signal back_button_pressed
 signal restarted
 signal completed
 
@@ -34,7 +35,7 @@ func enable() -> void:
 	graph_edit.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_back_button_pressed() -> void:
-	queue_free()
+	back_button_pressed.emit()
 	
 func _on_restart_button_pressed() -> void:
 	restarted.emit()
