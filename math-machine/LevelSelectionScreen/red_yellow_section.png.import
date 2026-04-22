@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx1j05lqol606"
-path="res://.godot/imported/port.png-a4b48924f9a6a5cc7b049986f3d1e6c8.ctex"
+uid="uid://bg5sehb7hwa7q"
+path="res://.godot/imported/red_yellow_section.png-cc7821f32112f3d665a6794f8ac7cb54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shader/port.png"
-dest_files=["res://.godot/imported/port.png-a4b48924f9a6a5cc7b049986f3d1e6c8.ctex"]
+source_file="res://LevelSelectionScreen/red_yellow_section.png"
+dest_files=["res://.godot/imported/red_yellow_section.png-cc7821f32112f3d665a6794f8ac7cb54.ctex"]
 
 [params]
 

@@ -7,16 +7,7 @@
 
 [node name="Level5" unique_id=921743447 instance=ExtResource("1_8h57h")]
 
-[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_kc6m6")]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 416.0
-offset_right = 258.0
-offset_bottom = 482.0
-mouse_filter = 1
-position_offset = Vector2(192, 416)
-
-[node name="InputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=889123467 instance=ExtResource("2_kc6m6")]
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=718594494 instance=ExtResource("2_kc6m6")]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 160.0
@@ -25,6 +16,15 @@ offset_bottom = 226.0
 mouse_filter = 1
 position_offset = Vector2(192, 160)
 value = 1
+
+[node name="InputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=736657052 instance=ExtResource("2_kc6m6")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 416.0
+offset_right = 258.0
+offset_bottom = 482.0
+mouse_filter = 1
+position_offset = Vector2(192, 416)
 
 [node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=1426663194 instance=ExtResource("3_eicki")]
 layout_mode = 0

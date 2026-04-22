@@ -15,6 +15,7 @@ signal received_valid_output
 var is_satisfied: bool = false
 
 func _ready() -> void:
+	super()
 	_inputs = [NULL_VALUE]
 	_update_value_label()
 	

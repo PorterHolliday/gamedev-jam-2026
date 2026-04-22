@@ -59,6 +59,7 @@ func _enable_next_level_button() -> void:
 	for child in get_children():
 		if enable_next and child is LevelButton:
 			child.disabled = false
+			child.level_number_label.show()
 			break
 		if child == current_level_button:
 			enable_next = true

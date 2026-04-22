@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c43rg6akm2ijx"
-path="res://.godot/imported/pencil_texture.png-24c6b5d24c8ae703d81b4d7c46d3eae4.ctex"
+uid="uid://di5axe14rkj5j"
+path="res://.godot/imported/port.svg-e8910e30cedc2882f26ba089ac89583f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shader/pencil_texture.png"
-dest_files=["res://.godot/imported/pencil_texture.png-24c6b5d24c8ae703d81b4d7c46d3eae4.ctex"]
+source_file="res://Graph/Graph Nodes/port.svg"
+dest_files=["res://.godot/imported/port.svg-e8910e30cedc2882f26ba089ac89583f.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

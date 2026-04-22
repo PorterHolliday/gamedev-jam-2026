@@ -8,17 +8,7 @@
 
 [node name="Level13" unique_id=921743447 instance=ExtResource("1_1rtq7")]
 
-[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=736657052 instance=ExtResource("2_awf0f")]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 288.0
-offset_right = 258.0
-offset_bottom = 354.0
-mouse_filter = 1
-position_offset = Vector2(192, 288)
-value = 3
-
-[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1426663194 instance=ExtResource("3_cg32i")]
+[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=1426663194 instance=ExtResource("3_cg32i")]
 layout_mode = 0
 offset_left = 896.0
 offset_top = 288.0
@@ -28,7 +18,7 @@ mouse_filter = 1
 position_offset = Vector2(896, 288)
 value = 7
 
-[node name="StoreValueNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=679965640 instance=ExtResource("4_wx4dg")]
+[node name="StoreValueNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=679965640 instance=ExtResource("4_wx4dg")]
 layout_mode = 0
 offset_left = 544.0
 offset_top = 192.0
@@ -37,7 +27,7 @@ offset_bottom = 256.0
 mouse_filter = 1
 position_offset = Vector2(544, 192)
 
-[node name="AddValueOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=1740454549 instance=ExtResource("5_gx7ek")]
+[node name="AddValueOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=1740454549 instance=ExtResource("5_gx7ek")]
 layout_mode = 0
 offset_left = 544.0
 offset_top = 384.0
@@ -46,6 +36,16 @@ offset_bottom = 448.0
 mouse_filter = 1
 position_offset = Vector2(544, 384)
 value = 2
+
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="6" unique_id=736657052 instance=ExtResource("2_awf0f")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 288.0
+offset_right = 258.0
+offset_bottom = 354.0
+mouse_filter = 1
+position_offset = Vector2(192, 288)
+value = 3
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
 text = "Green blocks store a number. Finding the right number to store is the trick!"
