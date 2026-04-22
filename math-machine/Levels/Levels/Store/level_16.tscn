@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://j8mkjtbil2uu"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_4htk4"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_fxpwl"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_ttrj3"]
+[ext_resource type="PackedScene" uid="uid://d2ws1f5s2rits" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Store Value Node/store_value_node.tscn" id="4_x7ffp"]
+[ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="5_b84n6"]
+
+[node name="Level16" unique_id=921743447 instance=ExtResource("1_4htk4")]
+
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=736657052 instance=ExtResource("2_fxpwl")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 288.0
+offset_right = 258.0
+offset_bottom = 354.0
+mouse_filter = 1
+position_offset = Vector2(192, 288)
+value = 3
+
+[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1426663194 instance=ExtResource("3_ttrj3")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 288.0
+offset_right = 960.0
+offset_bottom = 352.0
+mouse_filter = 1
+position_offset = Vector2(896, 288)
+value = 11
+
+[node name="StoreValueNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=679965640 instance=ExtResource("4_x7ffp")]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 192.0
+offset_right = 608.0
+offset_bottom = 256.0
+mouse_filter = 1
+position_offset = Vector2(544, 192)
+
+[node name="StoreValueNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=1953064540 instance=ExtResource("4_x7ffp")]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 288.0
+offset_right = 608.0
+offset_bottom = 352.0
+mouse_filter = 1
+position_offset = Vector2(544, 288)
+
+[node name="AddValueOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="5" unique_id=1740454549 instance=ExtResource("5_b84n6")]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 384.0
+offset_right = 608.0
+offset_bottom = 448.0
+mouse_filter = 1
+position_offset = Vector2(544, 384)
+value = 2
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Two green blocks can feed into each other to allow infinite operations!"

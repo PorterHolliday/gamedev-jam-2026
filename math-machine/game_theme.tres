@@ -1,6 +1,25 @@
 [gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
 
 [ext_resource type="Texture2D" uid="uid://cx1j05lqol606" path="res://Shader/port.png" id="1_1fvms"]
+[ext_resource type="Texture2D" uid="uid://kn27mchfpndx" path="res://Levels/BackButton/back_button.png" id="1_mfn8g"]
+[ext_resource type="Texture2D" uid="uid://dq3pvwtcmrc1b" path="res://LevelButton/button_disabled.png" id="1_p1w3f"]
+[ext_resource type="Texture2D" uid="uid://d04pg7tosyncl" path="res://Levels/BackButton/back_button_hover.png" id="1_yf74i"]
+[ext_resource type="Texture2D" uid="uid://hstiubhoj6os" path="res://LevelButton/button_hover.png" id="2_2l2ys"]
+[ext_resource type="Texture2D" uid="uid://drt4tudr0l267" path="res://LevelButton/button.png" id="3_jvwys"]
+[ext_resource type="Texture2D" uid="uid://qi7kr3paaqg3" path="res://Levels/HintButton/hint_button_hover.png" id="4_s88dg"]
+[ext_resource type="Texture2D" uid="uid://bw0spqr7jbc0y" path="res://Levels/HintButton/hint_button.png" id="5_1bs6c"]
+[ext_resource type="Texture2D" uid="uid://b1ioswyipsi3k" path="res://LevelButton/button_pressed.png" id="5_jvwys"]
+[ext_resource type="Texture2D" uid="uid://o6ahkgg7vr43" path="res://Levels/RestartButton/restart_button.png" id="7_4nb47"]
+[ext_resource type="Texture2D" uid="uid://ddnoo7oe1cyo5" path="res://Levels/RestartButton/restart_button_hover.png" id="8_bpukv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s88dg"]
+texture = ExtResource("1_yf74i")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yf74i"]
+texture = ExtResource("1_mfn8g")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bs6c"]
+texture = ExtResource("1_yf74i")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fvms"]
 bg_color = Color(0.88224053, 0.89203364, 0.8560674, 1)
@@ -21,7 +40,57 @@ bg_color = Color(0.88224053, 0.89203364, 0.8560674, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nb47"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_stq8r"]
+texture = ExtResource("4_s88dg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cj60n"]
+texture = ExtResource("5_1bs6c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dy1wi"]
+texture = ExtResource("4_s88dg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pd6sc"]
+texture = ExtResource("1_p1w3f")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mfn8g"]
+texture = ExtResource("2_2l2ys")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4nb47"]
+texture = ExtResource("3_jvwys")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2fgf"]
+texture = ExtResource("5_jvwys")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a4axt"]
+texture = ExtResource("8_bpukv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bpukv"]
+texture = ExtResource("7_4nb47")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bwj2p"]
+texture = ExtResource("8_bpukv")
+
 [resource]
+BackButton/base_type = &"Button"
+BackButton/styles/hover = SubResource("StyleBoxTexture_s88dg")
+BackButton/styles/normal = SubResource("StyleBoxTexture_yf74i")
+BackButton/styles/pressed = SubResource("StyleBoxTexture_1bs6c")
 GraphEdit/colors/selection_fill = Color(1, 1, 1, 0)
 GraphEdit/colors/selection_stroke = Color(1, 1, 1, 0)
 GraphEdit/constants/connection_hover_thickness = 100
@@ -40,3 +109,16 @@ GraphNode/styles/titlebar_selected = SubResource("StyleBoxEmpty_mfn8g")
 GraphNodeTitleLabel/constants/line_spacing = 0
 GraphNodeTitleLabel/font_sizes/font_size = 16
 GraphNodeTitleLabel/styles/focus = SubResource("StyleBoxEmpty_4nb47")
+HintButton/base_type = &"Button"
+HintButton/styles/hover = SubResource("StyleBoxTexture_stq8r")
+HintButton/styles/normal = SubResource("StyleBoxTexture_cj60n")
+HintButton/styles/pressed = SubResource("StyleBoxTexture_dy1wi")
+LevelButton/base_type = &"Button"
+LevelButton/styles/disabled = SubResource("StyleBoxTexture_pd6sc")
+LevelButton/styles/hover = SubResource("StyleBoxTexture_mfn8g")
+LevelButton/styles/normal = SubResource("StyleBoxTexture_4nb47")
+LevelButton/styles/pressed = SubResource("StyleBoxTexture_k2fgf")
+RestartButton/base_type = &"Button"
+RestartButton/styles/hover = SubResource("StyleBoxTexture_a4axt")
+RestartButton/styles/normal = SubResource("StyleBoxTexture_bpukv")
+RestartButton/styles/pressed = SubResource("StyleBoxTexture_bwj2p")

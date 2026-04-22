@@ -17,6 +17,13 @@ func _ready() -> void:
 		if child is Control:
 			child.mouse_filter = Control.MOUSE_FILTER_PASS
 
+func _process(_delta: float) -> void:
+	# Keep our cached offset in sync when the graph moves the node externally
+	# (e.g. title-bar drag, undo/redo, programmatic moves).
+	# Skip sync while we're dragging to avoid fighting ourselves.
+	if not _dragging and position_offset != _position_offset:
+		_position_offset = position_offset
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		_dragging = event.pressed
@@ -29,5 +36,5 @@ func _gui_input(event: InputEvent) -> void:
 		if not _snapping_enabled:
 			position_offset = _position_offset
 		else:
-			position_offset = Vector2(Vector2i(_position_offset / _snapping_distance)) * _snapping_distance
+			position_offset = Vector2(Vector2i((_position_offset + Vector2(_snapping_distance, _snapping_distance)/2)/ _snapping_distance)) * _snapping_distance
 		get_viewport().set_input_as_handled()
