@@ -316,6 +316,7 @@ level_scene = ExtResource("21_nqun2")
 
 [node name="BackButton" type="Button" parent="." unique_id=23307136]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
