@@ -25,6 +25,8 @@ func _ready() -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	_handle_disconnection_on_right_click(event)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE:
+		get_viewport().set_input_as_handled()
 	
 func _handle_disconnection_on_right_click(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
