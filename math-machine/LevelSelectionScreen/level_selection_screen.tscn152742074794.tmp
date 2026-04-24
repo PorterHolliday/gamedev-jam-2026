@@ -1,0 +1,386 @@
+[gd_scene format=3 uid="uid://25v23ibhxckb"]
+
+[ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelButton/level_button.tscn" id="1_bntq0"]
+[ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
+[ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="2_3v81n"]
+[ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/Levels/Tutorial/level_1.tscn" id="2_vs61n"]
+[ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Levels/AddValue/level_1.tscn" id="3_whgxd"]
+[ext_resource type="PackedScene" uid="uid://b2n8dg6iyp2df" path="res://Levels/Levels/Tutorial/level_2.tscn" id="5_s16oa"]
+[ext_resource type="PackedScene" uid="uid://dbpsj8n6346mv" path="res://Levels/Levels/Tutorial/level_3.tscn" id="6_djp6x"]
+[ext_resource type="PackedScene" uid="uid://blcvrd4k8ts3x" path="res://Levels/Levels/SumAndSubtract/level_5.tscn" id="8_s16oa"]
+[ext_resource type="PackedScene" uid="uid://d4f8grrmkga2g" path="res://Levels/Levels/AddValue/level_2.tscn" id="8_tsht8"]
+[ext_resource type="PackedScene" uid="uid://dfesk0ify5r4n" path="res://Levels/Levels/SumAndSubtract/level_6.tscn" id="9_djp6x"]
+[ext_resource type="PackedScene" uid="uid://cr3ubn3ko62t2" path="res://Levels/Levels/AddValue/level_3.tscn" id="9_tsht8"]
+[ext_resource type="PackedScene" uid="uid://dkqjmtg7qcwdr" path="res://Levels/Levels/SumAndSubtract/level_7.tscn" id="10_wvxo5"]
+[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/AddValue/level_4.tscn" id="10_yiuws"]
+[ext_resource type="PackedScene" uid="uid://i4gxgham6edv" path="res://Levels/Levels/SumAndSubtract/level_8.tscn" id="11_n686a"]
+[ext_resource type="PackedScene" uid="uid://deqpbagfggt00" path="res://Levels/Levels/SumAndSubtract/level_9.tscn" id="12_tsht8"]
+[ext_resource type="PackedScene" uid="uid://c1q2kn5wdmq37" path="res://Levels/Levels/SumAndSubtract/level_10.tscn" id="13_vi82w"]
+[ext_resource type="PackedScene" uid="uid://bomdu62m7xul1" path="res://Levels/Levels/SumAndSubtract/level_11.tscn" id="14_hxkdi"]
+[ext_resource type="PackedScene" uid="uid://dy2wcgj48gw3g" path="res://Levels/Levels/SumAndSubtract/level_13.tscn" id="15_yiuws"]
+[ext_resource type="PackedScene" uid="uid://cgjod315owu1n" path="res://Levels/Levels/Store/level_13.tscn" id="16_nrn4x"]
+[ext_resource type="PackedScene" uid="uid://dyydyyxtrw40y" path="res://Levels/Levels/Store/level_14.tscn" id="17_4f8od"]
+[ext_resource type="PackedScene" uid="uid://nu3amnhopc64" path="res://Levels/Levels/Store/level_15.tscn" id="18_l6jef"]
+[ext_resource type="PackedScene" uid="uid://cyqca4ep1ac6q" path="res://Levels/Levels/SumAndSubtract/level_12.tscn" id="18_nrn4x"]
+[ext_resource type="PackedScene" uid="uid://j8mkjtbil2uu" path="res://Levels/Levels/Store/level_16.tscn" id="19_1fsxm"]
+[ext_resource type="PackedScene" uid="uid://t4mv8h8am2sl" path="res://Levels/Levels/SumAndSubtract/level_14.tscn" id="20_4f8od"]
+[ext_resource type="PackedScene" uid="uid://bmy6gpljcu08j" path="res://Levels/Levels/Store/level_17.tscn" id="20_pena4"]
+[ext_resource type="PackedScene" uid="uid://31dr8hl1xd8m" path="res://Levels/Levels/Store/level_18.tscn" id="21_nqun2"]
+[ext_resource type="Texture2D" uid="uid://duefwu7uo0c1q" path="res://LevelSelectionScreen/gray_section.png" id="23_n686a"]
+[ext_resource type="Texture2D" uid="uid://byp4kbhyqa05k" path="res://LevelSelectionScreen/blue_section.png" id="24_tsht8"]
+[ext_resource type="Texture2D" uid="uid://bg5sehb7hwa7q" path="res://LevelSelectionScreen/red_yellow_section.png" id="25_vi82w"]
+[ext_resource type="Texture2D" uid="uid://c28w11vw1caj3" path="res://LevelSelectionScreen/green_section.png" id="26_hxkdi"]
+[ext_resource type="AudioStream" uid="uid://crdb7g3s2xq2w" path="res://Audio/SFX/freesound_community-mech-keyboard-02-102918.mp3" id="28_vi82w"]
+[ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="29_hxkdi"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tsht8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s16oa"]
+font_size = 64
+font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+
+[sub_resource type="Animation" id="Animation_s16oa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeOutTextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_djp6x"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeOutTextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wvxo5"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeOutTextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n686a"]
+_data = {
+&"RESET": SubResource("Animation_s16oa"),
+&"fade_in": SubResource("Animation_djp6x"),
+&"fade_out": SubResource("Animation_wvxo5")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_tsht8"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_whgxd")
+
+[node name="FadeOutTextureRect" type="TextureRect" parent="." unique_id=974686796]
+self_modulate = Color(0, 0, 0, 0)
+z_index = 100
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 656.0
+mouse_filter = 2
+texture = SubResource("CanvasTexture_tsht8")
+
+[node name="GraphEdit" parent="." unique_id=1777296774 instance=ExtResource("2_3v81n")]
+layout_mode = 0
+
+[node name="Title" type="Label" parent="." unique_id=234851870]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 48.0
+offset_right = 672.0
+offset_bottom = 136.0
+text = "Levels"
+label_settings = SubResource("LabelSettings_s16oa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelButton" parent="." unique_id=863369867 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 208.0
+offset_right = 560.0
+offset_bottom = 256.0
+disabled = false
+level_scene = ExtResource("2_vs61n")
+
+[node name="LevelButton2" parent="." unique_id=531769527 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 208.0
+offset_right = 608.0
+offset_bottom = 256.0
+level_scene = ExtResource("5_s16oa")
+
+[node name="LevelButton3" parent="." unique_id=1729385555 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 208.0
+offset_right = 656.0
+offset_bottom = 256.0
+level_scene = ExtResource("6_djp6x")
+
+[node name="LevelButton4" parent="." unique_id=1518741277 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 272.0
+offset_right = 560.0
+offset_bottom = 320.0
+level_scene = ExtResource("3_whgxd")
+
+[node name="LevelButton5" parent="." unique_id=1140446776 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 272.0
+offset_right = 608.0
+offset_bottom = 320.0
+level_scene = ExtResource("8_tsht8")
+
+[node name="LevelButton21" parent="." unique_id=1415051951 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 272.0
+offset_right = 656.0
+offset_bottom = 320.0
+level_scene = ExtResource("9_tsht8")
+
+[node name="LevelButton6" parent="." unique_id=1398013742 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 272.0
+offset_right = 704.0
+offset_bottom = 320.0
+level_scene = ExtResource("10_yiuws")
+
+[node name="LevelButton7" parent="." unique_id=1067007151 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 336.0
+offset_right = 560.0
+offset_bottom = 384.0
+level_scene = ExtResource("8_s16oa")
+
+[node name="LevelButton8" parent="." unique_id=328680659 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 336.0
+offset_right = 608.0
+offset_bottom = 384.0
+level_scene = ExtResource("9_djp6x")
+
+[node name="LevelButton9" parent="." unique_id=1757024622 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 336.0
+offset_right = 656.0
+offset_bottom = 384.0
+level_scene = ExtResource("10_wvxo5")
+
+[node name="LevelButton22" parent="." unique_id=185790884 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 336.0
+offset_right = 704.0
+offset_bottom = 384.0
+level_scene = ExtResource("14_hxkdi")
+
+[node name="LevelButton10" parent="." unique_id=1433417262 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 336.0
+offset_right = 752.0
+offset_bottom = 384.0
+level_scene = ExtResource("11_n686a")
+
+[node name="LevelButton11" parent="." unique_id=941233518 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 384.0
+offset_right = 560.0
+offset_bottom = 432.0
+level_scene = ExtResource("12_tsht8")
+
+[node name="LevelButton12" parent="." unique_id=1423079273 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 384.0
+offset_right = 608.0
+offset_bottom = 432.0
+level_scene = ExtResource("13_vi82w")
+
+[node name="LevelButton13" parent="." unique_id=1802468550 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 384.0
+offset_right = 656.0
+offset_bottom = 432.0
+level_scene = ExtResource("18_nrn4x")
+
+[node name="LevelButton14" parent="." unique_id=1364846621 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 384.0
+offset_right = 704.0
+offset_bottom = 432.0
+level_scene = ExtResource("15_yiuws")
+
+[node name="LevelButton23" parent="." unique_id=33864835 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 384.0
+offset_right = 752.0
+offset_bottom = 432.0
+level_scene = ExtResource("20_4f8od")
+
+[node name="LevelButton15" parent="." unique_id=247262557 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 448.0
+offset_right = 560.0
+offset_bottom = 496.0
+level_scene = ExtResource("16_nrn4x")
+
+[node name="LevelButton16" parent="." unique_id=218652785 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 448.0
+offset_right = 608.0
+offset_bottom = 496.0
+level_scene = ExtResource("17_4f8od")
+
+[node name="LevelButton17" parent="." unique_id=1705133428 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 448.0
+offset_right = 656.0
+offset_bottom = 496.0
+level_scene = ExtResource("18_l6jef")
+
+[node name="LevelButton18" parent="." unique_id=1914789741 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 448.0
+offset_right = 704.0
+offset_bottom = 496.0
+level_scene = ExtResource("19_1fsxm")
+
+[node name="LevelButton19" parent="." unique_id=683457002 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 448.0
+offset_right = 752.0
+offset_bottom = 496.0
+level_scene = ExtResource("20_pena4")
+
+[node name="LevelButton20" parent="." unique_id=1071956409 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 448.0
+offset_right = 800.0
+offset_bottom = 496.0
+level_scene = ExtResource("21_nqun2")
+
+[node name="BackButton" type="Button" parent="." unique_id=23307136]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 80.0
+theme_type_variation = &"BackButton"
+
+[node name="FadeOutAnimationPlayer" type="AnimationPlayer" parent="." unique_id=960185347]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_n686a")
+
+[node name="Label" type="Label" parent="." unique_id=2005907982]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 208.0
+offset_right = 491.0
+offset_bottom = 258.0
+text = "Tutorial"
+label_settings = SubResource("LabelSettings_tsht8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GraySection" type="TextureRect" parent="." unique_id=856318092]
+visible = false
+layout_mode = 0
+offset_left = 432.0
+offset_top = 208.0
+offset_right = 480.0
+offset_bottom = 256.0
+texture = ExtResource("23_n686a")
+expand_mode = 1
+
+[node name="BlueSection" type="TextureRect" parent="." unique_id=600397632]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 272.0
+offset_right = 464.0
+offset_bottom = 320.0
+texture = ExtResource("24_tsht8")
+expand_mode = 1
+
+[node name="RedYellowSection" type="TextureRect" parent="." unique_id=519814975]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 336.0
+offset_right = 464.0
+offset_bottom = 432.0
+texture = ExtResource("25_vi82w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GreenSection" type="TextureRect" parent="." unique_id=1265759253]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 448.0
+offset_right = 464.0
+offset_bottom = 496.0
+texture = ExtResource("26_hxkdi")
+expand_mode = 1
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=1351067402]
+unique_name_in_owner = true
+stream = ExtResource("28_vi82w")
+
+[node name="LevelSelectionMusic" type="AudioStreamPlayer" parent="." unique_id=1545615720]
+stream = ExtResource("29_hxkdi")
+volume_db = -10.0

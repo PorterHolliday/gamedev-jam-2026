@@ -46,6 +46,7 @@ _data = {
 [node name="GraphEdit" type="GraphEdit" unique_id=1777296774]
 offset_right = 2552.0
 offset_bottom = 1938.0
+show_grid = false
 snapping_distance = 16
 connection_lines_thickness = 10.0
 zoom_min = 1.0

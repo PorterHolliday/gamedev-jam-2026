@@ -22,7 +22,7 @@ texture = ExtResource("1_mfn8g")
 texture = ExtResource("1_yf74i")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fvms"]
-bg_color = Color(0.88224053, 0.89203364, 0.8560674, 1)
+bg_color = Color(0.930598, 0.9385361, 0.86215013, 1)
 
 [sub_resource type="DPITexture" id="DPITexture_s88dg"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"none\" stroke=\"#fefffe\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".65\" stroke-width=\"2\" d=\"M11 4v7H4\"/><circle cx=\"7.5\" cy=\"7.5\" r=\"1.5\" fill=\"#b2b2b2\" fill-opacity=\".65\"/></svg>
