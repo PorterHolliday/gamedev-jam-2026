@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://d2ws1f5s2rits"]
+
+[ext_resource type="Script" uid="uid://datgihye7yewp" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Store Value Node/store_value_node.gd" id="1_ljnvh"]
+[ext_resource type="Texture2D" uid="uid://beswkip7wfw7a" path="res://Graph/Graph Nodes/square_node.png" id="3_i2m44"]
+[ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="5_kq5jg"]
+[ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="6_w4iw5"]
+
+[node name="StoreValueNode" type="GraphNode" unique_id=679965640 node_paths=PackedStringArray("_input_labels", "_output_label")]
+offset_right = 64.0
+offset_bottom = 64.0
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_ljnvh")
+_input_labels = [NodePath("Control/InputLabel")]
+_output_label = NodePath("Control/OutputLabel")
+metadata/_custom_type_script = "uid://datgihye7yewp"
+
+[node name="Control" type="Control" parent="." unique_id=946010443]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1648324670]
+self_modulate = Color(0.20784314, 0.5137255, 0.3137255, 1)
+layout_mode = 0
+offset_top = -23.0
+offset_right = 64.0
+offset_bottom = 41.0
+texture = ExtResource("3_i2m44")
+expand_mode = 1
+
+[node name="InputLabel" type="Label" parent="Control" unique_id=422515933]
+visible = false
+self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
+layout_mode = 0
+offset_left = -41.0
+offset_top = -26.0
+offset_right = -1.0
+offset_bottom = -3.0
+label_settings = ExtResource("5_kq5jg")
+horizontal_alignment = 2
+
+[node name="ValueLabel" type="Label" parent="Control" unique_id=636511997]
+unique_name_in_owner = true
+self_modulate = Color(0.20784314, 0.5137255, 0.3137255, 1)
+layout_mode = 0
+offset_top = -23.0
+offset_right = 64.0
+offset_bottom = 41.0
+text = "0"
+label_settings = ExtResource("6_w4iw5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OutputLabel" type="Label" parent="Control" unique_id=311831919]
+visible = false
+self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
+layout_mode = 0
+offset_left = 67.0
+offset_top = -26.0
+offset_right = 107.0
+offset_bottom = -3.0
+text = "0"
+label_settings = ExtResource("5_kq5jg")
+
+[node name="Spacer" type="Control" parent="." unique_id=2138376682]
+layout_mode = 2
+size_flags_vertical = 3

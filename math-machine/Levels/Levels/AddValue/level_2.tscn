@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://d4f8grrmkga2g"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_6tewa"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_nhqu8"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_g4hqv"]
+[ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_dxmle"]
+
+[node name="Level2" unique_id=921743447 instance=ExtResource("1_6tewa")]
+
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_nhqu8")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 288.0
+offset_right = 258.0
+offset_bottom = 354.0
+mouse_filter = 1
+position_offset = Vector2(192, 288)
+value = 3
+
+[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1426663194 instance=ExtResource("3_g4hqv")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 192.0
+offset_right = 960.0
+offset_bottom = 256.0
+mouse_filter = 1
+position_offset = Vector2(896, 192)
+value = 5
+
+[node name="OutputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=634508288 instance=ExtResource("3_g4hqv")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 384.0
+offset_right = 960.0
+offset_bottom = 448.0
+mouse_filter = 1
+position_offset = Vector2(896, 384)
+value = 2
+
+[node name="AddValueOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=1740454549 instance=ExtResource("4_dxmle")]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 288.0
+offset_right = 512.0
+offset_bottom = 352.0
+pivot_offset = Vector2(32, 32)
+mouse_filter = 1
+position_offset = Vector2(448, 288)
+value = 2
+
+[node name="AddValueOperation2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="5" unique_id=858645296 instance=ExtResource("4_dxmle")]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 288.0
+offset_right = 752.0
+offset_bottom = 352.0
+pivot_offset = Vector2(32, 32)
+mouse_filter = 1
+position_offset = Vector2(688, 288)
+value = -1
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "You can use values mutliple times. Connect 3 to +2 and -1 to get 5 and 2."

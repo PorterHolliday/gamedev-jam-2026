@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dkqjmtg7qcwdr"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_8elux"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_o18v3"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_a1qte"]
+[ext_resource type="PackedScene" uid="uid://ckfb4fdxos2u2" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Subtract Operation/subtract_operation.tscn" id="4_8elux"]
+
+[node name="Level7" unique_id=921743447 instance=ExtResource("1_8elux")]
+
+[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_o18v3")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 416.0
+offset_right = 258.0
+offset_bottom = 482.0
+mouse_filter = 1
+position_offset = Vector2(192, 416)
+
+[node name="InputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="1" unique_id=889123467 instance=ExtResource("2_o18v3")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 160.0
+offset_right = 258.0
+offset_bottom = 226.0
+mouse_filter = 1
+position_offset = Vector2(192, 160)
+value = 7
+
+[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=1426663194 instance=ExtResource("3_a1qte")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 160.0
+offset_right = 960.0
+offset_bottom = 224.0
+mouse_filter = 1
+position_offset = Vector2(896, 160)
+value = -2
+
+[node name="OutputNode2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="4" unique_id=634508288 instance=ExtResource("3_a1qte")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 416.0
+offset_right = 960.0
+offset_bottom = 480.0
+mouse_filter = 1
+position_offset = Vector2(896, 416)
+value = 2
+
+[node name="SubtractOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="5" unique_id=749474698 instance=ExtResource("4_8elux")]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 144.0
+offset_right = 608.0
+offset_bottom = 240.0
+mouse_filter = 1
+position_offset = Vector2(544, 144)
+
+[node name="SubtractOperation2" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="6" unique_id=34777098 instance=ExtResource("4_8elux")]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 400.0
+offset_right = 608.0
+offset_bottom = 496.0
+mouse_filter = 1
+position_offset = Vector2(544, 400)
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Yellow blocks perform subtraction from top to bottom."
