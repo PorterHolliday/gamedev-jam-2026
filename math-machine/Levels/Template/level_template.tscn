@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d4a0smbos5wso" path="res://Levels/level.gd" id="1_gbce7"]
 [ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="2_s7a6p"]
+[ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="3_h12gg"]
+[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/soundreality-notification-tone-443095.mp3" id="4_tke54"]
+[ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="4_uc0wr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xh4c7"]
 font_size = 20
@@ -62,6 +65,7 @@ metadata/_custom_type_script = "uid://d4a0smbos5wso"
 [node name="GraphEdit" parent="." unique_id=1777296774 instance=ExtResource("2_s7a6p")]
 unique_name_in_owner = true
 layout_mode = 0
+metadata/_edit_lock_ = true
 
 [node name="BackButton" type="Button" parent="." unique_id=132895122]
 unique_name_in_owner = true
@@ -120,3 +124,16 @@ offset_bottom = 120.0
 text = "Level Complete"
 label_settings = SubResource("LabelSettings_tke54")
 horizontal_alignment = 1
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=1098381407]
+unique_name_in_owner = true
+stream = ExtResource("3_h12gg")
+
+[node name="LevelCompleteAudio" type="AudioStreamPlayer" parent="." unique_id=377105237]
+unique_name_in_owner = true
+stream = ExtResource("4_tke54")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=773539647]
+unique_name_in_owner = true
+stream = ExtResource("4_uc0wr")
+volume_db = -10.0
