@@ -9,6 +9,9 @@ const CONNECTION_GRAB_DISTANCE := 10.0
 
 var _output_nodes: Array[OutputNode] = []
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var connection_audio: AudioStreamPlayer = %ConnectionAudio
+@onready var disconnection_audio: AudioStreamPlayer = %DisconnectionAudio
+@onready var no_loops_audio: AudioStreamPlayer = %NoLoopsAudio
 
 func _ready() -> void:
 	right_disconnects = true
@@ -43,6 +46,7 @@ func _on_connection_request(from_node_name: StringName, from_port: int, to_node_
 	
 	if _is_loop_created(from_node, to_node): 
 		animation_player.play('no_loops')
+		no_loops_audio.play()
 		return
 	if get_connection_list_from_input_port(to_node_name, to_port).size() > 0: return
 	
@@ -50,7 +54,15 @@ func _on_connection_request(from_node_name: StringName, from_port: int, to_node_
 		connect_node(from_node_name, from_port, to_node_name, to_port)
 		
 	to_node.update_input(to_port, from_node.output)
+	
+	_play_connection_audio()
+	
 	connection_occurred.emit()
+	
+func _play_connection_audio() -> void:
+	connection_audio.volume_db = randf_range(-10, 0)
+	connection_audio.pitch_scale = randf_range(0.8, 1.2)
+	connection_audio.play()
 	
 func _on_disconnection_request(from_node_name: StringName, from_port: int, to_node_name: StringName, to_port: int) -> void:
 	var from_node: MyGraphNode = get_node(NodePath(from_node_name))
@@ -58,7 +70,17 @@ func _on_disconnection_request(from_node_name: StringName, from_port: int, to_no
 	
 	disconnect_node(from_node_name, from_port, to_node_name, to_port)
 	to_node.remove_input(to_port)
+	
+	_play_disconnection_audio()
+	
 	disconnection_occurred.emit()
+	
+func _play_disconnection_audio() -> void:
+	disconnection_audio.volume_db = randf_range(-5, -2)
+	disconnection_audio.pitch_scale = randf_range(0.8, 1.2)
+	disconnection_audio.play(0.35)
+	await get_tree().create_timer(0.18).timeout
+	disconnection_audio.stop()
 	
 func _is_loop_created(search_for_node: MyGraphNode, next_node: MyGraphNode) -> bool:
 	if next_node == search_for_node: return true
@@ -66,7 +88,6 @@ func _is_loop_created(search_for_node: MyGraphNode, next_node: MyGraphNode) -> b
 	
 	var output_connections = get_connection_list_from_output_port(next_node.name, 0)
 	for connection in output_connections:
-		print(connection['node'])
 		if _is_loop_created(search_for_node, connection['node']): return true
 	
 	return false

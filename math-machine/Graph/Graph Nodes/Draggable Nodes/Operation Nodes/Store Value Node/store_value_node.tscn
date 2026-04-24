@@ -69,12 +69,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OutputLabel" type="Label" parent="Control" unique_id=311831919]
+visible = false
 self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 layout_mode = 0
 offset_left = 67.0
 offset_top = -26.0
 offset_right = 107.0
 offset_bottom = -3.0
+text = "0"
 label_settings = ExtResource("5_kq5jg")
 
 [node name="Spacer" type="Control" parent="." unique_id=2138376682]

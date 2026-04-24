@@ -10,23 +10,28 @@
 [ext_resource type="PackedScene" uid="uid://blcvrd4k8ts3x" path="res://Levels/Levels/SumAndSubtract/level_5.tscn" id="8_s16oa"]
 [ext_resource type="PackedScene" uid="uid://d4f8grrmkga2g" path="res://Levels/Levels/AddValue/level_2.tscn" id="8_tsht8"]
 [ext_resource type="PackedScene" uid="uid://dfesk0ify5r4n" path="res://Levels/Levels/SumAndSubtract/level_6.tscn" id="9_djp6x"]
-[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/AddValue/level_3.tscn" id="9_tsht8"]
+[ext_resource type="PackedScene" uid="uid://cr3ubn3ko62t2" path="res://Levels/Levels/AddValue/level_3.tscn" id="9_tsht8"]
 [ext_resource type="PackedScene" uid="uid://dkqjmtg7qcwdr" path="res://Levels/Levels/SumAndSubtract/level_7.tscn" id="10_wvxo5"]
+[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/AddValue/level_4.tscn" id="10_yiuws"]
 [ext_resource type="PackedScene" uid="uid://i4gxgham6edv" path="res://Levels/Levels/SumAndSubtract/level_8.tscn" id="11_n686a"]
 [ext_resource type="PackedScene" uid="uid://deqpbagfggt00" path="res://Levels/Levels/SumAndSubtract/level_9.tscn" id="12_tsht8"]
 [ext_resource type="PackedScene" uid="uid://c1q2kn5wdmq37" path="res://Levels/Levels/SumAndSubtract/level_10.tscn" id="13_vi82w"]
-[ext_resource type="PackedScene" uid="uid://cyqca4ep1ac6q" path="res://Levels/Levels/SumAndSubtract/level_11.tscn" id="14_hxkdi"]
-[ext_resource type="PackedScene" uid="uid://dy2wcgj48gw3g" path="res://Levels/Levels/SumAndSubtract/level_12.tscn" id="15_yiuws"]
+[ext_resource type="PackedScene" uid="uid://bomdu62m7xul1" path="res://Levels/Levels/SumAndSubtract/level_11.tscn" id="14_hxkdi"]
+[ext_resource type="PackedScene" uid="uid://dy2wcgj48gw3g" path="res://Levels/Levels/SumAndSubtract/level_13.tscn" id="15_yiuws"]
 [ext_resource type="PackedScene" uid="uid://cgjod315owu1n" path="res://Levels/Levels/Store/level_13.tscn" id="16_nrn4x"]
 [ext_resource type="PackedScene" uid="uid://dyydyyxtrw40y" path="res://Levels/Levels/Store/level_14.tscn" id="17_4f8od"]
 [ext_resource type="PackedScene" uid="uid://nu3amnhopc64" path="res://Levels/Levels/Store/level_15.tscn" id="18_l6jef"]
+[ext_resource type="PackedScene" uid="uid://cyqca4ep1ac6q" path="res://Levels/Levels/SumAndSubtract/level_12.tscn" id="18_nrn4x"]
 [ext_resource type="PackedScene" uid="uid://j8mkjtbil2uu" path="res://Levels/Levels/Store/level_16.tscn" id="19_1fsxm"]
+[ext_resource type="PackedScene" uid="uid://t4mv8h8am2sl" path="res://Levels/Levels/SumAndSubtract/level_14.tscn" id="20_4f8od"]
 [ext_resource type="PackedScene" uid="uid://bmy6gpljcu08j" path="res://Levels/Levels/Store/level_17.tscn" id="20_pena4"]
 [ext_resource type="PackedScene" uid="uid://31dr8hl1xd8m" path="res://Levels/Levels/Store/level_18.tscn" id="21_nqun2"]
 [ext_resource type="Texture2D" uid="uid://duefwu7uo0c1q" path="res://LevelSelectionScreen/gray_section.png" id="23_n686a"]
 [ext_resource type="Texture2D" uid="uid://byp4kbhyqa05k" path="res://LevelSelectionScreen/blue_section.png" id="24_tsht8"]
 [ext_resource type="Texture2D" uid="uid://bg5sehb7hwa7q" path="res://LevelSelectionScreen/red_yellow_section.png" id="25_vi82w"]
 [ext_resource type="Texture2D" uid="uid://c28w11vw1caj3" path="res://LevelSelectionScreen/green_section.png" id="26_hxkdi"]
+[ext_resource type="AudioStream" uid="uid://crdb7g3s2xq2w" path="res://Audio/SFX/freesound_community-mech-keyboard-02-102918.mp3" id="28_vi82w"]
+[ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="29_hxkdi"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_tsht8"]
 
@@ -165,13 +170,21 @@ offset_right = 608.0
 offset_bottom = 320.0
 level_scene = ExtResource("8_tsht8")
 
-[node name="LevelButton6" parent="." unique_id=1398013742 instance=ExtResource("1_bntq0")]
+[node name="LevelButton21" parent="." unique_id=1415051951 instance=ExtResource("1_bntq0")]
 layout_mode = 0
 offset_left = 608.0
 offset_top = 272.0
 offset_right = 656.0
 offset_bottom = 320.0
 level_scene = ExtResource("9_tsht8")
+
+[node name="LevelButton6" parent="." unique_id=1398013742 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 272.0
+offset_right = 704.0
+offset_bottom = 320.0
+level_scene = ExtResource("10_yiuws")
 
 [node name="LevelButton7" parent="." unique_id=1067007151 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -197,11 +210,19 @@ offset_right = 656.0
 offset_bottom = 384.0
 level_scene = ExtResource("10_wvxo5")
 
-[node name="LevelButton10" parent="." unique_id=1433417262 instance=ExtResource("1_bntq0")]
+[node name="LevelButton22" parent="." unique_id=185790884 instance=ExtResource("1_bntq0")]
 layout_mode = 0
 offset_left = 656.0
 offset_top = 336.0
 offset_right = 704.0
+offset_bottom = 384.0
+level_scene = ExtResource("14_hxkdi")
+
+[node name="LevelButton10" parent="." unique_id=1433417262 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 336.0
+offset_right = 752.0
 offset_bottom = 384.0
 level_scene = ExtResource("11_n686a")
 
@@ -227,7 +248,7 @@ offset_left = 608.0
 offset_top = 384.0
 offset_right = 656.0
 offset_bottom = 432.0
-level_scene = ExtResource("14_hxkdi")
+level_scene = ExtResource("18_nrn4x")
 
 [node name="LevelButton14" parent="." unique_id=1364846621 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -236,6 +257,14 @@ offset_top = 384.0
 offset_right = 704.0
 offset_bottom = 432.0
 level_scene = ExtResource("15_yiuws")
+
+[node name="LevelButton23" parent="." unique_id=33864835 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 384.0
+offset_right = 752.0
+offset_bottom = 432.0
+level_scene = ExtResource("20_4f8od")
 
 [node name="LevelButton15" parent="." unique_id=247262557 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -346,3 +375,11 @@ offset_right = 464.0
 offset_bottom = 496.0
 texture = ExtResource("26_hxkdi")
 expand_mode = 1
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=1351067402]
+unique_name_in_owner = true
+stream = ExtResource("28_vi82w")
+
+[node name="LevelSelectionMusic" type="AudioStreamPlayer" parent="." unique_id=1545615720]
+stream = ExtResource("29_hxkdi")
+volume_db = -10.0
