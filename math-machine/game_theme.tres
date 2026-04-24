@@ -1,11 +1,11 @@
 [gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
 
-[ext_resource type="Texture2D" uid="uid://cx1j05lqol606" path="res://Shader/port.png" id="1_1fvms"]
 [ext_resource type="Texture2D" uid="uid://kn27mchfpndx" path="res://Levels/BackButton/back_button.png" id="1_mfn8g"]
 [ext_resource type="Texture2D" uid="uid://dq3pvwtcmrc1b" path="res://LevelButton/button_disabled.png" id="1_p1w3f"]
 [ext_resource type="Texture2D" uid="uid://d04pg7tosyncl" path="res://Levels/BackButton/back_button_hover.png" id="1_yf74i"]
 [ext_resource type="Texture2D" uid="uid://hstiubhoj6os" path="res://LevelButton/button_hover.png" id="2_2l2ys"]
 [ext_resource type="Texture2D" uid="uid://drt4tudr0l267" path="res://LevelButton/button.png" id="3_jvwys"]
+[ext_resource type="Texture2D" uid="uid://dbxm6r3xdhtp7" path="res://Graph/Graph Nodes/port.png" id="3_s88dg"]
 [ext_resource type="Texture2D" uid="uid://qi7kr3paaqg3" path="res://Levels/HintButton/hint_button_hover.png" id="4_s88dg"]
 [ext_resource type="Texture2D" uid="uid://bw0spqr7jbc0y" path="res://Levels/HintButton/hint_button.png" id="5_1bs6c"]
 [ext_resource type="Texture2D" uid="uid://b1ioswyipsi3k" path="res://LevelButton/button_pressed.png" id="5_jvwys"]
@@ -23,6 +23,10 @@ texture = ExtResource("1_yf74i")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fvms"]
 bg_color = Color(0.88224053, 0.89203364, 0.8560674, 1)
+
+[sub_resource type="DPITexture" id="DPITexture_s88dg"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"none\" stroke=\"#fefffe\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".65\" stroke-width=\"2\" d=\"M11 4v7H4\"/><circle cx=\"7.5\" cy=\"7.5\" r=\"1.5\" fill=\"#b2b2b2\" fill-opacity=\".65\"/></svg>
+"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vp4oh"]
 
@@ -51,31 +55,15 @@ texture = ExtResource("4_s88dg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pd6sc"]
 texture = ExtResource("1_p1w3f")
-texture_margin_left = 6.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mfn8g"]
 texture = ExtResource("2_2l2ys")
-texture_margin_left = 6.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4nb47"]
 texture = ExtResource("3_jvwys")
-texture_margin_left = 6.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2fgf"]
 texture = ExtResource("5_jvwys")
-texture_margin_left = 6.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a4axt"]
 texture = ExtResource("8_bpukv")
@@ -93,12 +81,15 @@ BackButton/styles/normal = SubResource("StyleBoxTexture_yf74i")
 BackButton/styles/pressed = SubResource("StyleBoxTexture_1bs6c")
 GraphEdit/colors/selection_fill = Color(1, 1, 1, 0)
 GraphEdit/colors/selection_stroke = Color(1, 1, 1, 0)
-GraphEdit/constants/connection_hover_thickness = 100
+GraphEdit/constants/connection_hover_thickness = 0
 GraphEdit/constants/port_hotzone_inner_extent = 40
-GraphEdit/constants/port_hotzone_outer_extent = 26
+GraphEdit/constants/port_hotzone_outer_extent = 30
 GraphEdit/styles/panel = SubResource("StyleBoxFlat_1fvms")
-GraphNode/constants/port_h_offset = -4
-GraphNode/icons/port = ExtResource("1_1fvms")
+GraphNode/colors/resizer_color = Color(0.875, 0.875, 0.875, 1)
+GraphNode/constants/port_h_offset = -6
+GraphNode/constants/separation = 2
+GraphNode/icons/port = ExtResource("3_s88dg")
+GraphNode/icons/resizer = SubResource("DPITexture_s88dg")
 GraphNode/styles/panel = SubResource("StyleBoxEmpty_vp4oh")
 GraphNode/styles/panel_focus = SubResource("StyleBoxEmpty_1fvms")
 GraphNode/styles/panel_selected = SubResource("StyleBoxEmpty_p1w3f")

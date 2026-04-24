@@ -95,4 +95,4 @@ mouse_filter = 1
 position_offset = Vector2(416, 144)
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Getting to the largest number first is often a good strategy when you have  yellow blocks."
+text = "Get to the largest number without using the yellow block."

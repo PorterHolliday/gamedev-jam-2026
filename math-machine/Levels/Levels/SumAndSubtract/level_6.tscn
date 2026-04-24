@@ -76,4 +76,4 @@ position_offset = Vector2(544, 288)
 value = -2
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Order matters here. The -2 should happen last in its path."
+text = "First, get to 2 using a single red block."

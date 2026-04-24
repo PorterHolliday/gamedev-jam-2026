@@ -76,4 +76,4 @@ mouse_filter = 1
 position_offset = Vector2(704, 272)
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Using the output of a block multiple times is the solution to many puzzles."
+text = "Using a value multiple times is the solution to this puzzle."

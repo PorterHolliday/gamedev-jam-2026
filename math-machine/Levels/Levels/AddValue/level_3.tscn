@@ -87,4 +87,4 @@ position_offset = Vector2(672, 160)
 value = -7
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "There are multiple solutions. In one, the 1 connects to 1 operation, and the 5 connects to the rest."
+text = "If you can get to either 4 or -1, you can get to the other."

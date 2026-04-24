@@ -75,4 +75,4 @@ mouse_filter = 1
 position_offset = Vector2(704, 272)
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Get to 6 without using  the yellow block."
+text = "Get to 6 first, without using  the yellow block."

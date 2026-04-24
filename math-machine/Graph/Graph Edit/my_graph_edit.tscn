@@ -44,6 +44,7 @@ _data = {
 offset_right = 2552.0
 offset_bottom = 1938.0
 snapping_distance = 16
+connection_lines_thickness = 10.0
 zoom_min = 1.0
 zoom_max = 1.0
 minimap_enabled = false

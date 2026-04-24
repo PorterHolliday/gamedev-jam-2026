@@ -1,31 +1,11 @@
 [gd_scene format=3 uid="uid://bnyrfxxrx0v05"]
 
-[ext_resource type="Material" uid="uid://dcyiuauihe76i" path="res://Shader/graph_node_shader.tres" id="1_evtke"]
 [ext_resource type="Script" uid="uid://cfmts83uath1a" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Sum Operation/sum_operation.gd" id="1_mwkdb"]
-[ext_resource type="Shader" uid="uid://b5yagcqqmc2vy" path="res://Shader/graph_node_shader.gdshader" id="3_hgjhk"]
-[ext_resource type="Texture2D" uid="uid://8aq0dlhcb78m" path="res://Shader/pencil_texture.tres" id="4_ele5w"]
 [ext_resource type="Texture2D" uid="uid://d0dy7snf1csun" path="res://Graph/Graph Nodes/rectangle_node.png" id="5_wh0em"]
-[ext_resource type="Material" uid="uid://hn14fwo6u6uq" path="res://Shader/text_shader.tres" id="6_kw2rk"]
 [ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="7_j4rx2"]
-[ext_resource type="Shader" uid="uid://b7fcb0xghobbv" path="res://Shader/text_shader.gdshader" id="8_i1lnv"]
 [ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="9_1dpb3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kudq"]
-shader = ExtResource("3_hgjhk")
-shader_parameter/pencil_texture = ExtResource("4_ele5w")
-shader_parameter/pencil_scale = Vector2(1, 1)
-shader_parameter/pencil_strength = 0.50000002375
-shader_parameter/color = Color(0.2729571, 0.0046321005, 3.6098065e-08, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_of1om"]
-shader = ExtResource("8_i1lnv")
-shader_parameter/pencil_texture = ExtResource("4_ele5w")
-shader_parameter/pencil_scale = Vector2(1, 3)
-shader_parameter/pencil_strength = 0.350000016625
-shader_parameter/color = Color(0.27450982, 0.003921569, 0, 1)
-
 [node name="SumOperation" type="GraphNode" unique_id=163396201 node_paths=PackedStringArray("_input_labels", "_output_label")]
-material = ExtResource("1_evtke")
 offset_right = 64.0
 offset_bottom = 96.0
 slot/0/left_enabled = true
@@ -74,15 +54,17 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=545363433]
-material = SubResource("ShaderMaterial_4kudq")
+self_modulate = Color(0.7749281, 0, 0.16887495, 1)
 layout_mode = 0
 offset_top = -23.0
 offset_right = 64.0
-offset_bottom = 41.0
+offset_bottom = 73.0
 texture = ExtResource("5_wh0em")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="InputLabel" type="Label" parent="Control" unique_id=1454616084]
-material = ExtResource("6_kw2rk")
+self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 layout_mode = 0
 offset_left = -41.0
 offset_top = -30.0
@@ -92,9 +74,8 @@ label_settings = ExtResource("7_j4rx2")
 horizontal_alignment = 2
 
 [node name="Label" type="Label" parent="Control" unique_id=1041286697]
-material = SubResource("ShaderMaterial_of1om")
+self_modulate = Color(0.7764706, 0, 0.16862746, 1)
 layout_mode = 0
-offset_left = 1.0
 offset_top = -24.0
 offset_right = 64.0
 offset_bottom = 73.0
@@ -104,7 +85,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OutputLabel" type="Label" parent="Control" unique_id=1588343372]
-material = ExtResource("6_kw2rk")
+self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 layout_mode = 0
 offset_left = 66.0
 offset_top = -8.0
@@ -122,7 +103,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="InputLabel" type="Label" parent="Control3" unique_id=1319132213]
-material = ExtResource("6_kw2rk")
+self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 layout_mode = 0
 offset_left = -41.0
 offset_top = -30.0
