@@ -4,7 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cakggmgm1x14g" path="res://LevelButton/checkmark.png" id="2_h71le"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="3_6kelq"]
 
+[sub_resource type="SystemFont" id="SystemFont_6kelq"]
+font_names = PackedStringArray("Century Gothic")
+font_weight = 600
+
 [sub_resource type="LabelSettings" id="LabelSettings_mshbt"]
+font = SubResource("SystemFont_6kelq")
 font_size = 24
 font_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
 outline_size = 2

@@ -15,14 +15,8 @@ signal completed
 @onready var level_complete_audio: AudioStreamPlayer = %LevelCompleteAudio
 @onready var music: AudioStreamPlayer = %Music
 
-var level_output_node: LevelOutputNode
-
 func _ready() -> void:
 	global_position = Vector2.ZERO
-		
-	for child in graph_edit.get_children():
-		if child is LevelOutputNode:
-			level_output_node = child
 		
 	graph_edit.level_complete.connect(_on_level_complete)
 	
@@ -63,6 +57,8 @@ func _on_button_pressed() -> void:
 func _on_level_complete() -> void:
 	music.stop()
 	hint.hide()
+	
+	process_mode = Node.PROCESS_MODE_DISABLED
 	
 	level_complete_audio.stream = load("res://Audio/SFX/LevelCompleteClick.mp3")
 	level_complete_audio.play()
