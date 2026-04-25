@@ -48,4 +48,4 @@ position_offset = Vector2(192, 288)
 value = 3
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Green blocks store a number. Finding the right number to store is the trick!"
+text = "Green blocks store a number. A new input replaces the current value. Finding the right number to store is the trick!"

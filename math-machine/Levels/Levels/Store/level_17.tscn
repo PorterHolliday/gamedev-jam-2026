@@ -95,4 +95,4 @@ mouse_filter = 1
 position_offset = Vector2(432, 368)
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Try to get 10 stored in a green block."
+text = "First get 10 stored in a green block."

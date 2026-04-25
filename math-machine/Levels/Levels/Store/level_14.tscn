@@ -76,4 +76,4 @@ mouse_filter = 1
 position_offset = Vector2(544, 384)
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Try getting to one of the solution values and storing it in the green block."
+text = "Storing the number 3 in the green block will prove useful."

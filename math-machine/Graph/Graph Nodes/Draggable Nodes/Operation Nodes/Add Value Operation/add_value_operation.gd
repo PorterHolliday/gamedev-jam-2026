@@ -22,6 +22,6 @@ func _calculate_output() -> int:
 func _update_value_label() -> void:
 	if not value_label: return
 	if value >= 0:
-		value_label.text = '+ ' + str(value)
+		value_label.text = '+' + str(value)
 	else:
-		value_label.text = '- ' + str(abs(value))
+		value_label.text = '−' + str(abs(value))

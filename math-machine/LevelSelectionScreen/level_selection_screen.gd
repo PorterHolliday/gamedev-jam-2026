@@ -1,5 +1,7 @@
 extends Control
 
+signal game_completed
+
 @onready var back_button: Button = %BackButton
 @onready var fade_out_animation_player: AnimationPlayer = %FadeOutAnimationPlayer
 @onready var button_audio: AudioStreamPlayer = %ButtonAudio
@@ -73,18 +75,23 @@ func _on_level_completed() -> void:
 	
 func _enable_next_level_button() -> void:
 	var enable_next: bool = false
+	var final_level: bool = true
 	for child in get_children():
 		if enable_next and child is LevelButton:
 			child.disabled = false
 			child.level_number_label.show()
+			final_level = false
 			break
 		if child == current_level_button:
 			enable_next = true
-
+			
+	if final_level:
+		game_completed.emit()
+		
 func _on_back_button_pressed() -> void:
 	button_audio.volume_db = randf_range(-5, 0)
 	button_audio.pitch_scale = randf_range(0.8, 1.2)
-	button_audio.play(0.15)
+	button_audio.play()
 	hide()
 	
 func _music_fade_in() -> void:

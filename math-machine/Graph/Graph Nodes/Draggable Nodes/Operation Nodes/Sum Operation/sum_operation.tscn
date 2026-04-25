@@ -66,9 +66,9 @@ stretch_mode = 4
 [node name="InputLabel" type="Label" parent="Control" unique_id=1454616084]
 self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 layout_mode = 0
-offset_left = -41.0
+offset_left = -43.0
 offset_top = -30.0
-offset_right = -1.0
+offset_right = -3.0
 offset_bottom = -7.0
 label_settings = ExtResource("7_j4rx2")
 horizontal_alignment = 2
@@ -87,9 +87,9 @@ vertical_alignment = 1
 [node name="OutputLabel" type="Label" parent="Control" unique_id=1588343372]
 self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 layout_mode = 0
-offset_left = 66.0
+offset_left = 68.0
 offset_top = -8.0
-offset_right = 106.0
+offset_right = 108.0
 offset_bottom = 15.0
 label_settings = ExtResource("7_j4rx2")
 
@@ -105,9 +105,9 @@ size_flags_vertical = 3
 [node name="InputLabel" type="Label" parent="Control3" unique_id=1319132213]
 self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 layout_mode = 0
-offset_left = -41.0
+offset_left = -43.0
 offset_top = -30.0
-offset_right = -1.0
+offset_right = -3.0
 offset_bottom = -7.0
 label_settings = ExtResource("7_j4rx2")
 horizontal_alignment = 2

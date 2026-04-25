@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelButton/level_button.tscn" id="1_bntq0"]
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
-[ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="2_3v81n"]
 [ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/Levels/Tutorial/level_1.tscn" id="2_vs61n"]
+[ext_resource type="LabelSettings" uid="uid://p5y2u4bbu5w8" path="res://LabelSettings/title_label_settings.tres" id="3_l6jef"]
 [ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Levels/AddValue/level_1.tscn" id="3_whgxd"]
 [ext_resource type="PackedScene" uid="uid://b2n8dg6iyp2df" path="res://Levels/Levels/Tutorial/level_2.tscn" id="5_s16oa"]
 [ext_resource type="PackedScene" uid="uid://dbpsj8n6346mv" path="res://Levels/Levels/Tutorial/level_3.tscn" id="6_djp6x"]
@@ -34,10 +34,6 @@
 [ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="29_hxkdi"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_tsht8"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_s16oa"]
-font_size = 64
-font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
 
 [sub_resource type="Animation" id="Animation_s16oa"]
 length = 0.001
@@ -93,8 +89,13 @@ _data = {
 &"fade_out": SubResource("Animation_wvxo5")
 }
 
+[sub_resource type="SystemFont" id="SystemFont_4f8od"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
+
 [sub_resource type="LabelSettings" id="LabelSettings_tsht8"]
-font_size = 24
+font = SubResource("SystemFont_4f8od")
+font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
@@ -109,14 +110,17 @@ script = ExtResource("1_whgxd")
 [node name="FadeOutTextureRect" type="TextureRect" parent="." unique_id=974686796]
 self_modulate = Color(0, 0, 0, 0)
 z_index = 100
+z_as_relative = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 656.0
 mouse_filter = 2
 texture = SubResource("CanvasTexture_tsht8")
 
-[node name="GraphEdit" parent="." unique_id=1777296774 instance=ExtResource("2_3v81n")]
+[node name="Panel" type="Panel" parent="." unique_id=1249510233]
 layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 688.0
 
 [node name="Title" type="Label" parent="." unique_id=234851870]
 layout_mode = 0
@@ -125,7 +129,7 @@ offset_top = 48.0
 offset_right = 672.0
 offset_bottom = 136.0
 text = "Levels"
-label_settings = SubResource("LabelSettings_s16oa")
+label_settings = ExtResource("3_l6jef")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -316,7 +320,6 @@ level_scene = ExtResource("21_nqun2")
 
 [node name="BackButton" type="Button" parent="." unique_id=23307136]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -332,7 +335,7 @@ libraries/ = SubResource("AnimationLibrary_n686a")
 layout_mode = 0
 offset_left = 384.0
 offset_top = 208.0
-offset_right = 491.0
+offset_right = 496.0
 offset_bottom = 258.0
 text = "Tutorial"
 label_settings = SubResource("LabelSettings_tsht8")

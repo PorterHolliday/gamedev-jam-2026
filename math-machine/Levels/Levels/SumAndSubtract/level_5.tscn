@@ -65,4 +65,4 @@ mouse_filter = 1
 position_offset = Vector2(544, 400)
 
 [node name="Hint" parent="." index="4" unique_id=2128368680]
-text = "Red blocks sum their two inputs. Try getting to 6 first using one red block."
+text = "Red blocks sum their two inputs. Get to 6 first using one red block."
