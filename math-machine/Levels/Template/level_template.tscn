@@ -8,6 +8,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_mgy6g"]
 font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_xh4c7"]
 font = SubResource("SystemFont_mgy6g")
@@ -54,6 +55,7 @@ _data = {
 
 [sub_resource type="SystemFont" id="SystemFont_tke54"]
 font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_tke54"]
 font = SubResource("SystemFont_tke54")

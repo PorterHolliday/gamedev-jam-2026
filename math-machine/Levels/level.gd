@@ -65,6 +65,7 @@ func _on_level_complete() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	level_complete_audio.stream = load("res://Audio/SFX/soundreality-notification-tone-443095.mp3")
+	level_complete_audio.volume_db = -10.0
 	level_complete_audio.play()
 	
 	animation_player.play('level_complete')
