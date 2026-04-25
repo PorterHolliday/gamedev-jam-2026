@@ -84,7 +84,7 @@ func _enable_next_level_button() -> void:
 func _on_back_button_pressed() -> void:
 	button_audio.volume_db = randf_range(-5, 0)
 	button_audio.pitch_scale = randf_range(0.8, 1.2)
-	button_audio.play(0.15)
+	button_audio.play()
 	hide()
 	
 func _music_fade_in() -> void:

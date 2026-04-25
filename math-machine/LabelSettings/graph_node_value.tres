@@ -1,5 +1,10 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://ct31oif4gybnu"]
 
+[sub_resource type="SystemFont" id="SystemFont_6orn6"]
+font_names = PackedStringArray("Century Gothic")
+font_weight = 600
+
 [resource]
+font = SubResource("SystemFont_6orn6")
 font_size = 32
-outline_size = 4
+outline_size = 2

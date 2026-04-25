@@ -8,6 +8,7 @@
 [node name="AddValueOperation" type="GraphNode" unique_id=1740454549 node_paths=PackedStringArray("_input_labels", "_output_label")]
 offset_right = 64.0
 offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
 slot/0/left_enabled = true
 slot/0/left_type = 1
 slot/0/left_color = Color(1, 1, 1, 1)
@@ -48,9 +49,9 @@ expand_mode = 1
 [node name="InputLabel" type="Label" parent="Control" unique_id=227088467]
 self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 layout_mode = 0
-offset_left = -41.0
+offset_left = -43.0
 offset_top = -26.0
-offset_right = -1.0
+offset_right = -3.0
 offset_bottom = -3.0
 label_settings = ExtResource("5_c5b13")
 horizontal_alignment = 2
@@ -63,7 +64,7 @@ layout_mode = 0
 offset_top = -23.0
 offset_right = 64.0
 offset_bottom = 41.0
-text = "+ 3"
+text = "−3"
 label_settings = ExtResource("4_bxn3j")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -71,9 +72,9 @@ vertical_alignment = 1
 [node name="OutputLabel" type="Label" parent="Control" unique_id=374840417]
 self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 layout_mode = 0
-offset_left = 66.0
+offset_left = 68.0
 offset_top = -26.0
-offset_right = 106.0
+offset_right = 108.0
 offset_bottom = -3.0
 label_settings = ExtResource("5_c5b13")
 
