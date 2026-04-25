@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Math Machine"
-run/main_scene="uid://25v23ibhxckb"
+run/main_scene="uid://cxdnvto6wdmfw"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

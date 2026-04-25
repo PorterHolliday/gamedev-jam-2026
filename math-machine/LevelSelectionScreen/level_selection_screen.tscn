@@ -109,6 +109,7 @@ script = ExtResource("1_whgxd")
 [node name="FadeOutTextureRect" type="TextureRect" parent="." unique_id=974686796]
 self_modulate = Color(0, 0, 0, 0)
 z_index = 100
+z_as_relative = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 656.0
@@ -162,7 +163,6 @@ offset_left = 512.0
 offset_top = 272.0
 offset_right = 560.0
 offset_bottom = 320.0
-disabled = false
 level_scene = ExtResource("3_whgxd")
 
 [node name="LevelButton5" parent="." unique_id=1140446776 instance=ExtResource("1_bntq0")]

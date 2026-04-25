@@ -58,6 +58,8 @@ func _on_level_complete() -> void:
 	music.stop()
 	hint.hide()
 	
+	process_mode = Node.PROCESS_MODE_DISABLED
+	
 	level_complete_audio.stream = load("res://Audio/SFX/LevelCompleteClick.mp3")
 	level_complete_audio.play()
 	await get_tree().create_timer(1.0).timeout
