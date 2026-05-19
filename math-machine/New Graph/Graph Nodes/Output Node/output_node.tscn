@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cxfq5h7snyc2s"]
+
+[ext_resource type="Script" uid="uid://dcdorusfnlmtt" path="res://New Graph/Graph Nodes/Output Node/output_node.gd" id="1_gusin"]
+[ext_resource type="Texture2D" uid="uid://beswkip7wfw7a" path="res://Graph/Graph Nodes/square_node.png" id="2_bpm7v"]
+[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://New Graph/Graph Node Port/graph_node_input.tscn" id="3_amupw"]
+
+[node name="OutputNode" type="Node2D" unique_id=1924490215]
+script = ExtResource("1_gusin")
+metadata/_custom_type_script = "uid://dcdorusfnlmtt"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=718211145]
+texture = ExtResource("2_bpm7v")
+
+[node name="ValueLabel" type="Label" parent="." unique_id=757642171]
+unique_name_in_owner = true
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("3_amupw")]
+position = Vector2(-65, 0)

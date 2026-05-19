@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://jxjl5s4t0dnk"]
+
+[ext_resource type="Script" uid="uid://coor3phny5eqw" path="res://New Graph/Graph Nodes/Operation Nodes/Store/store_node.gd" id="1_am1hp"]
+[ext_resource type="Texture2D" uid="uid://beswkip7wfw7a" path="res://Graph/Graph Nodes/square_node.png" id="2_kun3n"]
+[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DraggableComponent/draggable_component.gd" id="3_1py27"]
+[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://New Graph/Graph Node Port/graph_node_input.tscn" id="4_pgy35"]
+[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://New Graph/Graph Node Port/graph_node_output.tscn" id="5_y7270"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1ro2"]
+size = Vector2(128, 128)
+
+[node name="StoreNode" type="Node2D" unique_id=879742008]
+script = ExtResource("1_am1hp")
+metadata/_custom_type_script = "uid://coor3phny5eqw"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=893656708]
+texture = ExtResource("2_kun3n")
+
+[node name="ValueLabel" type="Label" parent="." unique_id=769433824]
+unique_name_in_owner = true
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DraggableComponent" type="Area2D" parent="." unique_id=1166694383]
+script = ExtResource("3_1py27")
+metadata/_custom_type_script = "uid://b2k4pkccuwh8r"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableComponent" unique_id=1400554135]
+shape = SubResource("RectangleShape2D_j1ro2")
+
+[node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("4_pgy35")]
+position = Vector2(-65, 0)
+
+[node name="GraphNodeOutput" parent="." unique_id=429833011 instance=ExtResource("5_y7270")]
+position = Vector2(65, 0)

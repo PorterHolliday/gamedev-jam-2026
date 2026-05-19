@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bcc6d7yom8e26"]
+
+[ext_resource type="Script" uid="uid://dp3x2ylp6ysso" path="res://New Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.gd" id="1_4m75e"]
+[ext_resource type="Texture2D" uid="uid://beswkip7wfw7a" path="res://Graph/Graph Nodes/square_node.png" id="2_hvsry"]
+[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://New Graph/Graph Node Port/graph_node_input.tscn" id="3_ri1qq"]
+[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DraggableComponent/draggable_component.gd" id="3_wdqb3"]
+[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://New Graph/Graph Node Port/graph_node_output.tscn" id="4_wdqb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdqb3"]
+size = Vector2(128, 128)
+
+[node name="AddValueNode" type="Node2D" unique_id=1512119247]
+script = ExtResource("1_4m75e")
+metadata/_custom_type_script = "uid://dp3x2ylp6ysso"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1025160681]
+modulate = Color(0, 0, 1, 1)
+texture = ExtResource("2_hvsry")
+
+[node name="ValueLabel" type="Label" parent="." unique_id=1927894702]
+unique_name_in_owner = true
+offset_left = -65.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+text = "+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DraggableComponent" type="Area2D" parent="." unique_id=765180584]
+physics_interpolation_mode = 2
+self_modulate = Color(1, 1, 1, 0)
+script = ExtResource("3_wdqb3")
+metadata/_custom_type_script = "uid://b2k4pkccuwh8r"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableComponent" unique_id=582226572]
+shape = SubResource("RectangleShape2D_wdqb3")
+
+[node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("3_ri1qq")]
+position = Vector2(-65, 0)
+
+[node name="GraphNodeOutput" parent="." unique_id=1452740761 instance=ExtResource("4_wdqb3")]
+position = Vector2(65, 0)

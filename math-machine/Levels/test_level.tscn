@@ -1,19 +1,31 @@
 [gd_scene format=3 uid="uid://gi6xs4h4j8ov"]
 
-[ext_resource type="Script" uid="uid://boo36jrexts7x" path="res://Graph/Graph Canvas/graph_canvas.gd" id="1_ormqy"]
-[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="2_4k50d"]
-[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="3_i4ak4"]
-[ext_resource type="Texture2D" uid="uid://dc2an244x0t4f" path="res://Graph/Graph Edit/no_loops.png" id="4_pvdih"]
-[ext_resource type="AudioStream" uid="uid://ca3wrnak0kmyq" path="res://Audio/SFX/freesound_community-breaker-switch-45684.mp3" id="5_7e6fp"]
-[ext_resource type="AudioStream" uid="uid://dl5deba0v2081" path="res://Audio/SFX/freesound_community-slice-apple-on-wood_fizz-85879.mp3" id="6_4t6x8"]
-[ext_resource type="AudioStream" uid="uid://cet2ki55a1gjb" path="res://Audio/SFX/floraphonic-classic-game-action-negative-8-224414.mp3" id="7_tc6tp"]
+[ext_resource type="Script" uid="uid://cpjdg0xbwgfg8" path="res://Levels/level2.gd" id="1_7e6fp"]
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://New Graph/Graph Canvas/graph_canvas.tscn" id="2_7e6fp"]
+[ext_resource type="PackedScene" uid="uid://me1l8cg708on" path="res://New Graph/Graph Nodes/Operation Nodes/Divide/divide_node.tscn" id="6_k8b6b"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="7_7e6fp"]
+[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="7_tc6tp"]
+[ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="9_k8b6b"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="9_lx7qo"]
+[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/soundreality-notification-tone-443095.mp3" id="10_lx7qo"]
+[ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="11_dkv23"]
 
-[sub_resource type="Animation" id="Animation_qud77"]
+[sub_resource type="SystemFont" id="SystemFont_mgy6g"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_x458k"]
+font = SubResource("SystemFont_mgy6g")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_xh4c7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/path = NodePath("LevelCompleteLabel:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,84 +35,126 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_3yicx"]
-resource_name = "no_loops"
+[sub_resource type="Animation" id="Animation_h12gg"]
+resource_name = "level_complete"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:self_modulate")
+tracks/0/path = NodePath("LevelCompleteLabel:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.5, 2),
+"times": PackedFloat32Array(0, 0.2, 1.6, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ld6b7"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lrol0"]
 _data = {
-&"RESET": SubResource("Animation_qud77"),
-&"no_loops": SubResource("Animation_3yicx")
+&"RESET": SubResource("Animation_xh4c7"),
+&"level_complete": SubResource("Animation_h12gg")
 }
 
-[node name="TestLevel" type="Node" unique_id=155037289]
+[sub_resource type="SystemFont" id="SystemFont_tke54"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
 
-[node name="GraphCanvas" type="Node2D" parent="." unique_id=588255608]
-script = ExtResource("1_ormqy")
-metadata/_custom_type_script = "uid://boo36jrexts7x"
+[sub_resource type="LabelSettings" id="LabelSettings_ouwm7"]
+font = SubResource("SystemFont_tke54")
+font_size = 64
+font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
 
-[node name="Node2D" type="Node2D" parent="GraphCanvas" unique_id=1858429149]
-position = Vector2(162, 157)
+[node name="TestLevel" type="Node2D" unique_id=1406629895]
+script = ExtResource("1_7e6fp")
 
-[node name="GraphNodeInput" parent="GraphCanvas/Node2D" unique_id=2095797941 instance=ExtResource("2_4k50d")]
-position = Vector2(-10, 0)
-connection_color = Color(1, 0, 0, 1)
+[node name="GraphCanvas" parent="." unique_id=90730119 instance=ExtResource("2_7e6fp")]
+unique_name_in_owner = true
 
-[node name="GraphNodeOutput" parent="GraphCanvas/Node2D" unique_id=1085657213 instance=ExtResource("3_i4ak4")]
-position = Vector2(16, 0)
+[node name="InputNode" parent="GraphCanvas" unique_id=1370377095 instance=ExtResource("7_7e6fp")]
+position = Vector2(102, 296)
+value = 7
 
-[node name="Node2D2" type="Node2D" parent="GraphCanvas" unique_id=280628519]
-position = Vector2(314, 277)
+[node name="InputNode2" parent="GraphCanvas" unique_id=1985564578 instance=ExtResource("7_7e6fp")]
+position = Vector2(111, 482)
+value = -2
 
-[node name="GraphNodeInput" parent="GraphCanvas/Node2D2" unique_id=681600458 instance=ExtResource("2_4k50d")]
-position = Vector2(-10, 0)
+[node name="OutputNode" parent="GraphCanvas" unique_id=1924490215 instance=ExtResource("9_lx7qo")]
+position = Vector2(1048, 317)
+value = 10
 
-[node name="GraphNodeOutput" parent="GraphCanvas/Node2D2" unique_id=514329463 instance=ExtResource("3_i4ak4")]
-position = Vector2(16, 0)
+[node name="DivideNode" parent="GraphCanvas" unique_id=55653580 instance=ExtResource("6_k8b6b")]
+position = Vector2(778, 298)
 
-[node name="Node2D3" type="Node2D" parent="GraphCanvas" unique_id=1807355049]
-position = Vector2(429, 180)
+[node name="SubtractNode" parent="GraphCanvas" unique_id=1134007312 instance=ExtResource("7_tc6tp")]
+position = Vector2(544, 264)
 
-[node name="GraphNodeInput" parent="GraphCanvas/Node2D3" unique_id=1857752969 instance=ExtResource("2_4k50d")]
-position = Vector2(-10, 0)
+[node name="BackButton" type="Button" parent="." unique_id=1968901754]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 80.0
+theme_type_variation = &"BackButton"
 
-[node name="GraphNodeOutput" parent="GraphCanvas/Node2D3" unique_id=687700587 instance=ExtResource("3_i4ak4")]
-position = Vector2(16, 0)
+[node name="RestartButton" type="Button" parent="." unique_id=1154201295]
+unique_name_in_owner = true
+offset_left = 992.0
+offset_top = 16.0
+offset_right = 1056.0
+offset_bottom = 80.0
+theme_type_variation = &"RestartButton"
 
-[node name="TextureRect" type="TextureRect" parent="GraphCanvas" unique_id=334553271]
+[node name="HintButton" type="Button" parent="." unique_id=731076566]
+unique_name_in_owner = true
+offset_left = 1072.0
+offset_top = 16.0
+offset_right = 1136.0
+offset_bottom = 80.0
+theme_type_variation = &"HintButton"
+
+[node name="Hint" type="Label" parent="." unique_id=224217002]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 176.0
+grow_horizontal = 2
+text = "Get the 17 stored in a green block. Then store a number you can use with the yellow block to get to 1."
+label_settings = SubResource("LabelSettings_x458k")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1366976567]
+unique_name_in_owner = true
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_lrol0")
+
+[node name="LevelCompleteLabel" type="Label" parent="." unique_id=1659052927]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 480.0
-offset_top = 224.0
-offset_right = 672.0
-offset_bottom = 416.0
-texture = ExtResource("4_pvdih")
-expand_mode = 1
-stretch_mode = 5
+offset_left = 320.0
+offset_top = 32.0
+offset_right = 830.0
+offset_bottom = 120.0
+text = "Level Complete"
+label_settings = SubResource("LabelSettings_ouwm7")
+horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GraphCanvas" unique_id=167839279]
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=970184025]
 unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_ld6b7")
+stream = ExtResource("9_k8b6b")
 
-[node name="ConnectionAudio" type="AudioStreamPlayer" parent="GraphCanvas" unique_id=1458524953]
+[node name="LevelCompleteAudio" type="AudioStreamPlayer" parent="." unique_id=1699906461]
 unique_name_in_owner = true
-stream = ExtResource("5_7e6fp")
+process_mode = 3
+stream = ExtResource("10_lx7qo")
 
-[node name="DisconnectionAudio" type="AudioStreamPlayer" parent="GraphCanvas" unique_id=445390442]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=868956691]
 unique_name_in_owner = true
-stream = ExtResource("6_4t6x8")
-
-[node name="NoLoopsAudio" type="AudioStreamPlayer" parent="GraphCanvas" unique_id=177383971]
-unique_name_in_owner = true
-stream = ExtResource("7_tc6tp")
+stream = ExtResource("11_dkv23")
+volume_db = -10.0

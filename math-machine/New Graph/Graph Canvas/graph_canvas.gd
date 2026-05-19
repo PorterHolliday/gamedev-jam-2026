@@ -1,14 +1,13 @@
 class_name GraphCanvas
 extends Node2D
 
-signal level_complete
-
 const DISCONNECTION_DISTANCE := 10.0
 const BEZIER_SAMPLES := 20
 const LINE_WIDTH := 3.0
 const PREVIEW_COLOR := Color(1.0, 1.0, 1.0, 0.6)
 
-var _output_nodes: Array[OutputNode] = []
+signal level_complete
+var _output_nodes: Array[OutputNode2] = []
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var connection_audio: AudioStreamPlayer = %ConnectionAudio
 @onready var disconnection_audio: AudioStreamPlayer = %DisconnectionAudio
@@ -21,20 +20,19 @@ var connections: Array[Connection] = []
 var current_connection_start_port: GraphNodePort
 var current_connection_end_port: GraphNodePort
 
-
 var ports: Array[GraphNodePort] = []
 
 func _ready() -> void:
 	_connect_port_signals()
 	
 	for child in get_children():
-		if child is OutputNode:
+		if child is OutputNode2:
 			_output_nodes.append(child)
 			child.received_valid_output.connect(_check_level_complete)
 
 func _connect_port_signals() -> void:
 	for child in get_children():
-		if child is Node2D:
+		if child is MyGraphNode2:
 			for grandchild in child.get_children():
 				if grandchild is GraphNodePort:
 					grandchild.port_clicked.connect(func(): _port_clicked(grandchild))
@@ -43,16 +41,16 @@ func _connect_port_signals() -> void:
 					
 func _port_clicked(port: GraphNodePort) -> void:
 	# Disconnect if input already connected
-	if port.type == GraphNodePort.Type.INPUT and _get_port_connections(port).size() > 0:
-		var port_connection: Connection = _get_port_connections(port)[0]
-		connections.erase(port_connection)
-		current_connection_start_port = port_connection.from_port
+	if port.type == GraphNodePort.Type.INPUT and get_port_connections(port).size() > 0:
+		var connection: Connection = get_port_connections(port)[0]
+		request_disconnection(connection)
+		current_connection_start_port = connection.from_port
 		return
 	
 	# Start connection from current port
 	current_connection_start_port = port
 		
-func _get_port_connections(port: GraphNodePort) -> Array[Connection]:
+func get_port_connections(port: GraphNodePort) -> Array[Connection]:
 	var port_connections: Array[Connection] = []
 	for connection in connections:
 		if connection.from_port == port or connection.to_port == port:
@@ -82,6 +80,20 @@ func _can_connect_ports(port1: GraphNodePort, port2: GraphNodePort) -> bool:
 	return true
 	
 func _is_loop_created(port1: GraphNodePort, port2: GraphNodePort) -> bool:
+	if port1.type == GraphNodePort.Type.OUTPUT:
+		return _loop_search(port1.graph_node, port2.graph_node)
+	else:
+		return _loop_search(port2.graph_node, port1.graph_node)
+	
+func _loop_search(search_for_node: MyGraphNode2, next_node: MyGraphNode2) -> bool:
+	if next_node == search_for_node: return true
+	if next_node is OutputNode2: return false
+	
+	for output in next_node.outputs:
+		var output_connections: Array[Connection] = get_port_connections(output)
+		for connection in output_connections:
+			if _loop_search(search_for_node, connection.to_port.graph_node): return true
+	
 	return false
 	
 func _process(_delta: float) -> void:
@@ -132,7 +144,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _handle_connection_completion(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 		if current_connection_start_port and current_connection_end_port:
-			_request_connection(current_connection_start_port, current_connection_end_port)
+			request_connection(current_connection_start_port, current_connection_end_port)
 		current_connection_start_port = null
 		current_connection_end_port = null
 		
@@ -142,7 +154,7 @@ func _handle_disconnection_on_right_click(event: InputEvent) -> void:
 		
 		if not connection: return
 			
-		_request_disconnection(connection)
+		request_disconnection(connection)
 		get_viewport().set_input_as_handled()
 		
 func _get_closest_connection_at_point(point: Vector2, max_distance: float) -> Connection:
@@ -177,7 +189,7 @@ func _sample_bezier(conn: Connection, t: float) -> Vector2:
 	var u := 1.0 - t
 	return u*u*u*p0 + 3.0*u*u*t*p1 + 3.0*u*t*t*p2 + t*t*t*p3
 		
-func _request_connection(port1: GraphNodePort, port2: GraphNodePort) -> bool:
+func request_connection(port1: GraphNodePort, port2: GraphNodePort) -> bool:
 	if not _can_connect_ports(port1, port2): return false
 	
 	var connection: Connection = Connection.new()
@@ -188,22 +200,22 @@ func _request_connection(port1: GraphNodePort, port2: GraphNodePort) -> bool:
 		connection.from_port = port2
 		connection.to_port = port1
 		
-	if _get_port_connections(connection.to_port).size() > 0:
-		connections.erase(_get_port_connections(connection.to_port)[0])
+	if get_port_connections(connection.to_port).size() > 0:
+		connections.erase(get_port_connections(connection.to_port)[0])
 		
 	connections.append(connection)
 	
 	_play_connection_audio()
-	#connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
+	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
 	
 	return true
 	
-func _request_disconnection(connection: Connection) -> bool:
+func request_disconnection(connection: Connection) -> bool:
 	if not connections.has(connection): return false
 	
 	connections.erase(connection)
 	_play_disconnection_audio()
-	#connection.to_port.graph_node.remove_input(connection.to_port)
+	connection.to_port.graph_node.remove_input(connection.to_port)
 	return true
 
 func _play_connection_audio() -> void:
@@ -222,5 +234,10 @@ func _check_level_complete() -> void:
 	for output in _output_nodes:
 		if not output.is_satisfied:
 			return
-
+	
 	level_complete.emit()
+	
+func update_output_connections(port: GraphNodePort) -> void:
+	var connections: Array[Connection] = get_port_connections(port)
+	for connection in connections:
+		connection.to_port.graph_node.update_input(connection.to_port, port.value)

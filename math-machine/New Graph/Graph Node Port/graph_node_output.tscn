@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ugrt5ergfwml"]
 
-[ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://Graph/Graph Node Port/graph_node_port.gd" id="1_j0l1v"]
+[ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://New Graph/Graph Node Port/graph_node_port.gd" id="1_j0l1v"]
 [ext_resource type="Texture2D" uid="uid://di5axe14rkj5j" path="res://Graph/Graph Nodes/port.svg" id="2_wcwo4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcwo4"]
@@ -20,3 +20,10 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1677184462]
 position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_wcwo4")
+
+[node name="Label" type="Label" parent="." unique_id=1749924856]
+unique_name_in_owner = true
+offset_left = 3.0
+offset_top = -31.0
+offset_right = 43.0
+offset_bottom = -8.0

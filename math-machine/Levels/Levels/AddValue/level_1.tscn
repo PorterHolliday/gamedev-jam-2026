@@ -2,10 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_bgqeu"]
 [ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_gutfs"]
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://New Graph/Graph Canvas/graph_canvas.tscn" id="2_xtpph"]
 [ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_rdmkj"]
 [ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_rdmkj"]
 [ext_resource type="Texture2D" uid="uid://cari7ta8dgpi4" path="res://Levels/Levels/AddValue/open_hand_icon.png" id="5_q1nwe"]
 [ext_resource type="Texture2D" uid="uid://6oly3fd63d3p" path="res://Levels/Levels/AddValue/closed_hand_icon.png" id="6_m08fk"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="8_xpbi6"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="9_2u8ge"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://New Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="10_3jea3"]
 
 [sub_resource type="Animation" id="Animation_q1nwe"]
 length = 0.001
@@ -95,7 +99,10 @@ _data = {
 
 [node name="Level1" unique_id=921743447 instance=ExtResource("1_bgqeu")]
 
-[node name="InputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="0" unique_id=736657052 instance=ExtResource("2_gutfs")]
+[node name="GraphEdit" parent="." index="0" unique_id=1777296774]
+visible = false
+
+[node name="InputNode" parent="GraphEdit" index="0" unique_id=736657052 instance=ExtResource("2_gutfs")]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 288.0
@@ -105,7 +112,7 @@ mouse_filter = 1
 position_offset = Vector2(192, 288)
 value = 3
 
-[node name="OutputNode" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="2" unique_id=1426663194 instance=ExtResource("3_rdmkj")]
+[node name="OutputNode" parent="GraphEdit" index="2" unique_id=1426663194 instance=ExtResource("3_rdmkj")]
 layout_mode = 0
 offset_left = 896.0
 offset_top = 288.0
@@ -115,7 +122,7 @@ mouse_filter = 1
 position_offset = Vector2(896, 288)
 value = 5
 
-[node name="AddValueOperation" parent="GraphEdit" parent_id_path=PackedInt32Array(1777296774) index="3" unique_id=1740454549 instance=ExtResource("4_rdmkj")]
+[node name="AddValueOperation" parent="GraphEdit" index="3" unique_id=1740454549 instance=ExtResource("4_rdmkj")]
 layout_mode = 0
 offset_left = 336.0
 offset_top = 64.0
@@ -143,6 +150,18 @@ stretch_mode = 5
 [node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=116537985]
 libraries/ = SubResource("AnimationLibrary_isho1")
 autoplay = &"tutorial"
+
+[node name="GraphCanvas" parent="." index="12" unique_id=90730119 instance=ExtResource("2_xtpph")]
+
+[node name="InputNode" parent="GraphCanvas" index="5" unique_id=1370377095 instance=ExtResource("8_xpbi6")]
+position = Vector2(192, 336)
+value = 2
+
+[node name="OutputNode" parent="GraphCanvas" index="6" unique_id=1924490215 instance=ExtResource("9_2u8ge")]
+position = Vector2(928, 336)
+
+[node name="AddValueNode" parent="GraphCanvas" index="7" unique_id=1512119247 instance=ExtResource("10_3jea3")]
+position = Vector2(544, 352)
 
 [connection signal="position_offset_changed" from="GraphEdit/AddValueOperation" to="HandIcon" method="hide"]
 [connection signal="position_offset_changed" from="GraphEdit/AddValueOperation" to="TutorialAnimationPlayer" method="pause"]

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dfdis5g62i3y0"]
+
+[ext_resource type="Script" uid="uid://184cv0va5mfi" path="res://New Graph/Graph Nodes/Operation Nodes/Sum/sum_node.gd" id="1_ckcue"]
+[ext_resource type="Texture2D" uid="uid://d0dy7snf1csun" path="res://Graph/Graph Nodes/rectangle_node.png" id="2_l762r"]
+[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://New Graph/Graph Node Port/graph_node_input.tscn" id="3_7apbg"]
+[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DraggableComponent/draggable_component.gd" id="3_td6ec"]
+[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://New Graph/Graph Node Port/graph_node_output.tscn" id="4_td6ec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r0to"]
+size = Vector2(128, 192)
+
+[node name="SumNode" type="Node2D" unique_id=1459015131]
+script = ExtResource("1_ckcue")
+metadata/_custom_type_script = "uid://184cv0va5mfi"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1627334206]
+texture = ExtResource("2_l762r")
+
+[node name="Label" type="Label" parent="." unique_id=1673355230]
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DraggableComponent" type="Area2D" parent="." unique_id=1439462406]
+script = ExtResource("3_td6ec")
+metadata/_custom_type_script = "uid://b2k4pkccuwh8r"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableComponent" unique_id=2127377298]
+shape = SubResource("RectangleShape2D_2r0to")
+
+[node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("3_7apbg")]
+position = Vector2(-65, -55)
+
+[node name="GraphNodeInput2" parent="." unique_id=251669985 instance=ExtResource("3_7apbg")]
+position = Vector2(-65, 56)
+
+[node name="GraphNodeOutput" parent="." unique_id=380110332 instance=ExtResource("4_td6ec")]
+position = Vector2(65, 0)

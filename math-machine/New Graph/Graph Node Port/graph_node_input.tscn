@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cgkcg446jre7f"]
 
-[ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://Graph/Graph Node Port/graph_node_port.gd" id="1_v8ah4"]
+[ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://New Graph/Graph Node Port/graph_node_port.gd" id="1_v8ah4"]
 [ext_resource type="Texture2D" uid="uid://di5axe14rkj5j" path="res://Graph/Graph Nodes/port.svg" id="2_bsyxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bsyxn"]
+size = Vector2(36, 45)
 
 [node name="GraphNodeInput" type="Marker2D" unique_id=2095797941]
 script = ExtResource("1_v8ah4")
-metadata/_custom_type_script = "uid://igltm2xbx00c"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=68125033]
 position = Vector2(-3, 0)
@@ -17,5 +17,13 @@ texture = ExtResource("2_bsyxn")
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=895685989]
-position = Vector2(-3, 0)
+position = Vector2(5, -0.5)
 shape = SubResource("RectangleShape2D_bsyxn")
+
+[node name="Label" type="Label" parent="." unique_id=1189312209]
+unique_name_in_owner = true
+offset_left = -27.0
+offset_top = -31.0
+offset_right = -2.0
+offset_bottom = -8.0
+horizontal_alignment = 2
