@@ -15,7 +15,7 @@ func _calculate_outputs() -> Array[int]:
 		negative = true
 		input2 *= -1
 		
-	var output: int = int(str(inputs[0].value) + str(inputs[1].value))
+	var output: int = int(str(input1) + str(input2))
 	if negative:
 		output *= -1
 	

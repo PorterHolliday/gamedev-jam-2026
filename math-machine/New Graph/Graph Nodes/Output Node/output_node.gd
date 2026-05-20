@@ -4,20 +4,35 @@ extends MyGraphNode2
 
 signal received_valid_output
 
+@onready var _sprite: Sprite2D = %Sprite2D
 @onready var _value_label: Label = %ValueLabel
 @export var value: int = 1:
 	set(new_val):
 		value = new_val
 		if Engine.is_editor_hint():
 			_update_value_label()
+@export var unsatisfied_color: Color = Color.GRAY:
+	set(new_val):
+		unsatisfied_color = new_val
+		if is_satisfied:
+			_sprite.modulate = unsatisfied_color
+			_value_label.modulate = unsatisfied_color
+@export var satisfied_color: Color
 
-var is_satisfied: bool = false
+@export var is_satisfied: bool = false:
+	set(new_val):
+		is_satisfied = new_val
+		if is_satisfied:
+			_sprite.modulate = satisfied_color
+			_value_label.modulate = satisfied_color
+		else:
+			_sprite.modulate = unsatisfied_color
+			_value_label.modulate = unsatisfied_color
 
 func _ready() -> void:
-	if Engine.is_editor_hint(): return
-	
-	super()
 	_update_value_label()
+	if Engine.is_editor_hint(): return
+	super()
 	
 func update_input(port: GraphNodePort, new_value: int) -> void:
 	super(port, new_value)

@@ -10,10 +10,9 @@ extends MyGraphNode2
 			_update_value_label()
 
 func _ready() -> void:
-	if Engine.is_editor_hint(): return
-	
-	super()
 	_update_value_label()
+	if Engine.is_editor_hint(): return
+	super()
 
 func _calculate_outputs() -> Array[int]:
 	if inputs[0].value != NULL_VALUE:

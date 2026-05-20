@@ -1,9 +1,9 @@
 class_name GraphCanvas
 extends Node2D
 
-const DISCONNECTION_DISTANCE := 10.0
-const BEZIER_SAMPLES := 20
-const LINE_WIDTH := 3.0
+const DISCONNECTION_DISTANCE := 40.0
+const BEZIER_SAMPLES := 40
+const LINE_WIDTH := 10.0
 const PREVIEW_COLOR := Color(1.0, 1.0, 1.0, 0.6)
 
 signal level_complete
@@ -65,6 +65,7 @@ func _mouse_entered_port_area(port: GraphNodePort) -> void:
 	
 func _mouse_exited_port_area(port: GraphNodePort) -> void:
 	if not current_connection_start_port: return
+	if port != current_connection_end_port: return
 	current_connection_end_port = null
 	
 func _can_connect_ports(port1: GraphNodePort, port2: GraphNodePort) -> bool:

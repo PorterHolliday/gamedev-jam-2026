@@ -1,29 +1,34 @@
 [gd_scene format=3 uid="uid://ugrt5ergfwml"]
 
 [ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://New Graph/Graph Node Port/graph_node_port.gd" id="1_j0l1v"]
-[ext_resource type="Texture2D" uid="uid://di5axe14rkj5j" path="res://Graph/Graph Nodes/port.svg" id="2_wcwo4"]
+[ext_resource type="Texture2D" uid="uid://bxk6rmw3swbbr" path="res://New Graph/Graph Node Port/port.png" id="2_7mlao"]
+[ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_ykvyb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcwo4"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mlao"]
+radius = 18.0
 
 [node name="GraphNodeOutput" type="Marker2D" unique_id=2095797941]
 script = ExtResource("1_j0l1v")
 type = 1
 metadata/_custom_type_script = "uid://igltm2xbx00c"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=759823865]
-position = Vector2(3, 0)
-texture = ExtResource("2_wcwo4")
-
 [node name="Area2D" type="Area2D" parent="." unique_id=689805829]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1677184462]
-position = Vector2(3, 0)
-shape = SubResource("RectangleShape2D_wcwo4")
+position = Vector2(8, 0)
+shape = SubResource("CircleShape2D_7mlao")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=759823865]
+position = Vector2(4, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7mlao")
 
 [node name="Label" type="Label" parent="." unique_id=1749924856]
 unique_name_in_owner = true
+modulate = Color(0.5882353, 0.5882353, 0.5882353, 1)
 offset_left = 3.0
 offset_top = -31.0
-offset_right = 43.0
+offset_right = 323.0
 offset_bottom = -8.0
+label_settings = ExtResource("3_ykvyb")

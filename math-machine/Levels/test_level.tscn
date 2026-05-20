@@ -2,13 +2,17 @@
 
 [ext_resource type="Script" uid="uid://cpjdg0xbwgfg8" path="res://Levels/level2.gd" id="1_7e6fp"]
 [ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://New Graph/Graph Canvas/graph_canvas.tscn" id="2_7e6fp"]
-[ext_resource type="PackedScene" uid="uid://me1l8cg708on" path="res://New Graph/Graph Nodes/Operation Nodes/Divide/divide_node.tscn" id="6_k8b6b"]
+[ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://New Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="6_4t6x8"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://New Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="6_pvdih"]
 [ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="7_7e6fp"]
 [ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="7_tc6tp"]
+[ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://New Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="8_k8b6b"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="9_k8b6b"]
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="9_lx7qo"]
 [ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/soundreality-notification-tone-443095.mp3" id="10_lx7qo"]
 [ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="11_dkv23"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4t6x8"]
 
 [sub_resource type="SystemFont" id="SystemFont_mgy6g"]
 font_names = PackedStringArray("Century Gothic")
@@ -69,26 +73,40 @@ font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
 [node name="TestLevel" type="Node2D" unique_id=1406629895]
 script = ExtResource("1_7e6fp")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=648646161]
+modulate = Color(0.92941177, 0.9372549, 0.8627451, 1)
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("CanvasTexture_4t6x8")
+
 [node name="GraphCanvas" parent="." unique_id=90730119 instance=ExtResource("2_7e6fp")]
 unique_name_in_owner = true
 
 [node name="InputNode" parent="GraphCanvas" unique_id=1370377095 instance=ExtResource("7_7e6fp")]
-position = Vector2(102, 296)
-value = 7
+position = Vector2(121, 233)
+value = 6
 
 [node name="InputNode2" parent="GraphCanvas" unique_id=1985564578 instance=ExtResource("7_7e6fp")]
 position = Vector2(111, 482)
-value = -2
 
 [node name="OutputNode" parent="GraphCanvas" unique_id=1924490215 instance=ExtResource("9_lx7qo")]
 position = Vector2(1048, 317)
-value = 10
 
-[node name="DivideNode" parent="GraphCanvas" unique_id=55653580 instance=ExtResource("6_k8b6b")]
-position = Vector2(778, 298)
+[node name="OutputNode2" parent="GraphCanvas" unique_id=1326295916 instance=ExtResource("9_lx7qo")]
+position = Vector2(1052, 467)
+value = 11
 
 [node name="SubtractNode" parent="GraphCanvas" unique_id=1134007312 instance=ExtResource("7_tc6tp")]
-position = Vector2(544, 264)
+position = Vector2(641, 303)
+
+[node name="AddValueNode" parent="GraphCanvas" unique_id=1512119247 instance=ExtResource("6_pvdih")]
+position = Vector2(346, 263)
+
+[node name="SumNode" parent="GraphCanvas" unique_id=1459015131 instance=ExtResource("6_4t6x8")]
+position = Vector2(370, 462)
+
+[node name="StoreNode" parent="GraphCanvas" unique_id=879742008 instance=ExtResource("8_k8b6b")]
+position = Vector2(652, 487)
 
 [node name="BackButton" type="Button" parent="." unique_id=1968901754]
 unique_name_in_owner = true
