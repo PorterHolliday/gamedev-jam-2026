@@ -5,22 +5,22 @@
 [ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_ykvyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mlao"]
-radius = 18.0
+radius = 21.0
 
 [node name="GraphNodeOutput" type="Marker2D" unique_id=2095797941]
 script = ExtResource("1_j0l1v")
 type = 1
+connection_border_color = Color(0.5882353, 0.5882353, 0.5882353, 1)
 metadata/_custom_type_script = "uid://igltm2xbx00c"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=689805829]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1677184462]
-position = Vector2(8, 0)
+position = Vector2(4, 0)
 shape = SubResource("CircleShape2D_7mlao")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=759823865]
-position = Vector2(4, 0)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_7mlao")
 

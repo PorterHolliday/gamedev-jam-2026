@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cakggmgm1x14g"
-path="res://.godot/imported/checkmark.png-017f54d2d05c80d37c4d0bf3c006dc2e.ctex"
+uid="uid://b1ioswyipsi3k"
+path="res://.godot/imported/button_pressed.png-c7cf93a99be1789b6b2a793ebff88a30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://LevelButton/checkmark.png"
-dest_files=["res://.godot/imported/checkmark.png-017f54d2d05c80d37c4d0bf3c006dc2e.ctex"]
+source_file="res://LevelSelectionScreen/LevelButton/button_pressed.png"
+dest_files=["res://.godot/imported/button_pressed.png-c7cf93a99be1789b6b2a793ebff88a30.ctex"]
 
 [params]
 

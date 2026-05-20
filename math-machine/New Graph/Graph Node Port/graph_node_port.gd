@@ -12,6 +12,7 @@ enum Type {
 }
 @export var type: Type = Type.INPUT
 @export var connection_color: Color = Color.WHITE
+@export var connection_border_color: Color = Color.BLACK
 
 @onready var graph_node: MyGraphNode2 = get_parent()
 @onready var snap_area: Area2D = %Area2D

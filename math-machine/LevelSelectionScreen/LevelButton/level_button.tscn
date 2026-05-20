@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7qbklb5jwxg5"]
 
-[ext_resource type="Script" uid="uid://bae0nu5wpdss6" path="res://LevelButton/level_button.gd" id="1_mshbt"]
-[ext_resource type="Texture2D" uid="uid://cakggmgm1x14g" path="res://LevelButton/checkmark.png" id="2_h71le"]
+[ext_resource type="Script" uid="uid://bae0nu5wpdss6" path="res://LevelSelectionScreen/LevelButton/level_button.gd" id="1_mshbt"]
+[ext_resource type="Texture2D" uid="uid://cakggmgm1x14g" path="res://LevelSelectionScreen/LevelButton/checkmark.png" id="2_h71le"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="3_6kelq"]
 
 [sub_resource type="SystemFont" id="SystemFont_6kelq"]

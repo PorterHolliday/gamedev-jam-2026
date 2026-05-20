@@ -1,14 +1,14 @@
 [gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
 
 [ext_resource type="Texture2D" uid="uid://kn27mchfpndx" path="res://Levels/BackButton/back_button.png" id="1_mfn8g"]
-[ext_resource type="Texture2D" uid="uid://dq3pvwtcmrc1b" path="res://LevelButton/button_disabled.png" id="1_p1w3f"]
+[ext_resource type="Texture2D" uid="uid://dq3pvwtcmrc1b" path="res://LevelSelectionScreen/LevelButton/button_disabled.png" id="1_p1w3f"]
 [ext_resource type="Texture2D" uid="uid://d04pg7tosyncl" path="res://Levels/BackButton/back_button_hover.png" id="1_yf74i"]
-[ext_resource type="Texture2D" uid="uid://hstiubhoj6os" path="res://LevelButton/button_hover.png" id="2_2l2ys"]
-[ext_resource type="Texture2D" uid="uid://drt4tudr0l267" path="res://LevelButton/button.png" id="3_jvwys"]
+[ext_resource type="Texture2D" uid="uid://hstiubhoj6os" path="res://LevelSelectionScreen/LevelButton/button_hover.png" id="2_2l2ys"]
+[ext_resource type="Texture2D" uid="uid://drt4tudr0l267" path="res://LevelSelectionScreen/LevelButton/button.png" id="3_jvwys"]
 [ext_resource type="Texture2D" uid="uid://dbxm6r3xdhtp7" path="res://Graph/Graph Nodes/port.png" id="3_s88dg"]
 [ext_resource type="Texture2D" uid="uid://qi7kr3paaqg3" path="res://Levels/HintButton/hint_button_hover.png" id="4_s88dg"]
 [ext_resource type="Texture2D" uid="uid://bw0spqr7jbc0y" path="res://Levels/HintButton/hint_button.png" id="5_1bs6c"]
-[ext_resource type="Texture2D" uid="uid://b1ioswyipsi3k" path="res://LevelButton/button_pressed.png" id="5_jvwys"]
+[ext_resource type="Texture2D" uid="uid://b1ioswyipsi3k" path="res://LevelSelectionScreen/LevelButton/button_pressed.png" id="5_jvwys"]
 [ext_resource type="Texture2D" uid="uid://o6ahkgg7vr43" path="res://Levels/RestartButton/restart_button.png" id="7_4nb47"]
 [ext_resource type="Texture2D" uid="uid://ddnoo7oe1cyo5" path="res://Levels/RestartButton/restart_button_hover.png" id="8_bpukv"]
 

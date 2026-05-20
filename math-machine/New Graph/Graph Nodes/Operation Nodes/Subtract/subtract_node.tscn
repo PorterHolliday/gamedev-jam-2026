@@ -10,6 +10,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic471"]
 size = Vector2(64, 96)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_80iqm"]
+
 [node name="SubtractNode" type="Node2D" unique_id=1134007312]
 script = ExtResource("1_0rwlh")
 metadata/_custom_type_script = "uid://ua5g1uh1ndaf"
@@ -22,13 +24,17 @@ metadata/_custom_type_script = "uid://b2k4pkccuwh8r"
 shape = SubResource("RectangleShape2D_ic471")
 
 [node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("4_tsxk7")]
-position = Vector2(-32, -24)
+position = Vector2(-36, -24)
 
 [node name="GraphNodeInput2" parent="." unique_id=1144647020 instance=ExtResource("4_tsxk7")]
-position = Vector2(-32, 24)
+position = Vector2(-36, 24)
 
 [node name="GraphNodeOutput" parent="." unique_id=529093135 instance=ExtResource("5_fr80i")]
-position = Vector2(32, 0)
+position = Vector2(36, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=63851858]
+scale = Vector2(48, 82)
+texture = SubResource("CanvasTexture_80iqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=801012760]
 modulate = Color(0.9882353, 0.83137256, 0, 1)

@@ -4,7 +4,9 @@ extends Node2D
 const DISCONNECTION_DISTANCE := 40.0
 const BEZIER_SAMPLES := 40
 const LINE_WIDTH := 10.0
-const PREVIEW_COLOR := Color(1.0, 1.0, 1.0, 0.6)
+const BORDER_WIDTH: float = 2.0
+const PREVIEW_COLOR := Color(1.0, 1.0, 1.0, 0.8)
+const BORDER_PREVIEW_COLOR: Color = Color(0.6, 0.6, 0.6, 0.6)
 
 signal level_complete
 var _output_nodes: Array[OutputNode2] = []
@@ -43,7 +45,7 @@ func _port_clicked(port: GraphNodePort) -> void:
 	# Disconnect if input already connected
 	if port.type == GraphNodePort.Type.INPUT and get_port_connections(port).size() > 0:
 		var connection: Connection = get_port_connections(port)[0]
-		request_disconnection(connection)
+		request_disconnection(connection, false)
 		current_connection_start_port = connection.from_port
 		return
 	
@@ -109,7 +111,8 @@ func _draw_connection(connection: Connection) -> void:
 	_draw_bezier(
 			to_local(connection.from_port.global_position),
 			to_local(connection.to_port.global_position),
-			connection.from_port.connection_color
+			connection.from_port.connection_color,
+			connection.from_port.connection_border_color
 		)
 	
 func _draw_current_connection() -> void:
@@ -119,24 +122,26 @@ func _draw_current_connection() -> void:
 				if current_connection_end_port != null \
 				else get_local_mouse_position()
 		if current_connection_start_port.type == GraphNodePort.Type.OUTPUT:
-			_draw_bezier(start, end, PREVIEW_COLOR)
+			_draw_bezier(start, end, PREVIEW_COLOR, BORDER_PREVIEW_COLOR)
 		else:
-			_draw_bezier(end, start, PREVIEW_COLOR)
+			_draw_bezier(end, start, PREVIEW_COLOR, BORDER_PREVIEW_COLOR)
 		
-func _draw_bezier(from: Vector2, to: Vector2, color: Color) -> void:
+func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color) -> void:
 	var offset := Vector2(abs(to.x - from.x) * 0.5, 0.0)
 	var p0 := from
 	var p1 := from + offset
 	var p2 := to - offset
 	var p3 := to
 
-	var prev := p0
-	for i in range(1, BEZIER_SAMPLES + 1):
+	var points := PackedVector2Array()
+	points.resize(BEZIER_SAMPLES + 1)
+	for i in range(BEZIER_SAMPLES + 1):
 		var t := float(i) / float(BEZIER_SAMPLES)
 		var u := 1.0 - t
-		var next := u*u*u*p0 + 3.0*u*u*t*p1 + 3.0*u*t*t*p2 + t*t*t*p3
-		draw_line(prev, next, color, LINE_WIDTH, true)
-		prev = next
+		points[i] = u*u*u*p0 + 3.0*u*u*t*p1 + 3.0*u*t*t*p2 + t*t*t*p3
+
+	draw_polyline(points, border_color, LINE_WIDTH + BORDER_WIDTH * 2.0, true)
+	draw_polyline(points, color, LINE_WIDTH, true)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	_handle_connection_completion(event)
@@ -190,7 +195,7 @@ func _sample_bezier(conn: Connection, t: float) -> Vector2:
 	var u := 1.0 - t
 	return u*u*u*p0 + 3.0*u*u*t*p1 + 3.0*u*t*t*p2 + t*t*t*p3
 		
-func request_connection(port1: GraphNodePort, port2: GraphNodePort) -> bool:
+func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: bool = true) -> bool:
 	if not _can_connect_ports(port1, port2): return false
 	
 	var connection: Connection = Connection.new()
@@ -206,16 +211,18 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort) -> bool:
 		
 	connections.append(connection)
 	
-	_play_connection_audio()
+	if play_sound:
+		_play_connection_audio()
 	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
 	
 	return true
 	
-func request_disconnection(connection: Connection) -> bool:
+func request_disconnection(connection: Connection, play_sound: bool = true) -> bool:
 	if not connections.has(connection): return false
 	
 	connections.erase(connection)
-	_play_disconnection_audio()
+	if play_sound:
+		_play_disconnection_audio()
 	connection.to_port.graph_node.remove_input(connection.to_port)
 	return true
 

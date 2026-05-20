@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://25v23ibhxckb"]
 
-[ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelButton/level_button.tscn" id="1_bntq0"]
+[ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelSelectionScreen/LevelButton/level_button.tscn" id="1_bntq0"]
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
 [ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/Levels/Tutorial/level_1.tscn" id="2_vs61n"]
 [ext_resource type="LabelSettings" uid="uid://p5y2u4bbu5w8" path="res://LabelSettings/title_label_settings.tres" id="3_l6jef"]
