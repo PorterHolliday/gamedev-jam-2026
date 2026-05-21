@@ -10,10 +10,9 @@ const BORDER_PREVIEW_COLOR: Color = Color(0.6, 0.6, 0.6, 0.6)
 
 signal level_complete
 var _output_nodes: Array[OutputNode2] = []
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
+
 @onready var connection_audio: AudioStreamPlayer = %ConnectionAudio
 @onready var disconnection_audio: AudioStreamPlayer = %DisconnectionAudio
-@onready var no_loops_audio: AudioStreamPlayer = %NoLoopsAudio
 
 class Connection:
 	var from_port: GraphNodePort

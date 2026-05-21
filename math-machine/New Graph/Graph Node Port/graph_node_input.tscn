@@ -19,7 +19,7 @@ position = Vector2(-4, 0)
 shape = SubResource("CircleShape2D_kp32d")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=68125033]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_kp32d")
 
 [node name="Label" type="Label" parent="." unique_id=1189312209]

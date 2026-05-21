@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://2lhe6vg0rg0o"]
+
+[sub_resource type="SystemFont" id="SystemFont_nkg80"]
+font_names = PackedStringArray("Century Gothic")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ws0hg"]
+font = SubResource("SystemFont_nkg80")
+font_size = 48
+font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+outline_size = 4
+outline_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+
+[node name="LevelCompletePopup" type="PanelContainer" unique_id=1582193850]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 357.0
+offset_top = 218.0
+offset_right = -357.0
+offset_bottom = -218.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=894566429]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1588084333]
+layout_mode = 2
+text = "Level Complete"
+label_settings = SubResource("LabelSettings_ws0hg")
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="VBoxContainer" unique_id=818070243]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1638299160]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="NextLevelButton" type="Button" parent="VBoxContainer/MarginContainer" unique_id=994906912]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next Level"
+
+[node name="LevelSelectButton" type="Button" parent="VBoxContainer" unique_id=711288712]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Level Select"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer" unique_id=1082514793]
+layout_mode = 2
+size_flags_vertical = 3

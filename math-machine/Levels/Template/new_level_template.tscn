@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://bpflbeoqkvd62"]
+
+[ext_resource type="Script" uid="uid://cpjdg0xbwgfg8" path="res://Levels/level2.gd" id="1_3rkkl"]
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://New Graph/Graph Canvas/graph_canvas.tscn" id="2_ngotv"]
+[ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="2_pw5pt"]
+[ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="4_ngotv"]
+[ext_resource type="PackedScene" uid="uid://ojae0y7pvy22" path="res://Levels/HintPopup/hint_popup.tscn" id="9_g7a5h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngotv"]
+bg_color = Color(1, 1, 0.8784314, 1)
+
+[sub_resource type="Animation" id="Animation_xh4c7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintPopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintPopup:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_h12gg"]
+resource_name = "show_hint"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintPopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintPopup:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11tni"]
+_data = {
+&"RESET": SubResource("Animation_xh4c7"),
+&"show_hint": SubResource("Animation_h12gg")
+}
+
+[node name="NewLevelTemplate" type="Node2D" unique_id=1073491300]
+script = ExtResource("1_3rkkl")
+metadata/_custom_type_script = "uid://cpjdg0xbwgfg8"
+
+[node name="Panel" type="Panel" parent="." unique_id=2079327295]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ngotv")
+
+[node name="GraphCanvas" parent="." unique_id=90730119 instance=ExtResource("2_ngotv")]
+unique_name_in_owner = true
+
+[node name="BackButton" type="Button" parent="." unique_id=629111258]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 80.0
+theme_type_variation = &"BackButton"
+
+[node name="RestartButton" type="Button" parent="." unique_id=930462941]
+unique_name_in_owner = true
+offset_left = 992.0
+offset_top = 16.0
+offset_right = 1056.0
+offset_bottom = 80.0
+theme_type_variation = &"RestartButton"
+
+[node name="HintButton" type="Button" parent="." unique_id=348902469]
+unique_name_in_owner = true
+offset_left = 1072.0
+offset_top = 16.0
+offset_right = 1136.0
+offset_bottom = 80.0
+theme_type_variation = &"HintButton"
+
+[node name="HintPopup" parent="." unique_id=950000720 instance=ExtResource("9_g7a5h")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=35115402]
+unique_name_in_owner = true
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_11tni")
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=2107270752]
+unique_name_in_owner = true
+stream = ExtResource("2_pw5pt")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=420279063]
+unique_name_in_owner = true
+stream = ExtResource("4_ngotv")
+volume_db = -10.0
+
+[editable path="HintPopup"]

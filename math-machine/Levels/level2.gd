@@ -1,4 +1,4 @@
-class_name Level
+class_name Level2
 extends Node2D
 
 signal back_button_pressed
@@ -9,10 +9,8 @@ signal completed
 @onready var back_button: Button = %BackButton
 @onready var restart_button: Button = %RestartButton
 @onready var hint_button: Button = %HintButton
-@onready var hint: Label = %Hint
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var button_audio: AudioStreamPlayer = %ButtonAudio
-@onready var level_complete_audio: AudioStreamPlayer = %LevelCompleteAudio
 @onready var music: AudioStreamPlayer = %Music
 
 func _ready() -> void:
@@ -46,7 +44,7 @@ func _on_restart_button_pressed() -> void:
 	restarted.emit()
 	
 func _on_hint_button_pressed() -> void:
-	hint.show()
+	animation_player.play('show_hint')
 	
 func _on_button_pressed() -> void:
 	button_audio.volume_db = randf_range(-0.5, 0.5)
@@ -56,22 +54,9 @@ func _on_button_pressed() -> void:
 func _check_level_complete() -> void:
 	pass
 
-# Hides level first time it is completed
 func _on_level_complete() -> void:
 	music.stop()
-	hint.hide()
 	
 	process_mode = Node.PROCESS_MODE_DISABLED
-	
-	level_complete_audio.stream = load("res://Audio/SFX/LevelCompleteClick.mp3")
-	level_complete_audio.play()
-	await get_tree().create_timer(1.0).timeout
-	
-	level_complete_audio.stream = load("res://Audio/SFX/soundreality-notification-tone-443095.mp3")
-	level_complete_audio.volume_db = -10.0
-	level_complete_audio.play()
-	
-	animation_player.play('level_complete')
-	await animation_player.animation_finished
 	
 	completed.emit()

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ccwmpw8ywqwff"]
+
+[ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_slrui"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_yaljy"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="3_nrwey"]
+
+[node name="Tutorial1" unique_id=1073491300 instance=ExtResource("1_slrui")]
+
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_yaljy")]
+position = Vector2(192, 320)
+value = 3
+
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1924490215 instance=ExtResource("3_nrwey")]
+position = Vector2(960, 320)
+value = 3
+
+[node name="BackButton" parent="." index="2" unique_id=629111258]
+metadata/_edit_lock_ = true
+
+[node name="RestartButton" parent="." index="3" unique_id=930462941]
+metadata/_edit_lock_ = true
+
+[node name="HintButton" parent="." index="4" unique_id=348902469]
+metadata/_edit_lock_ = true
+
+[node name="HintPopup" parent="." index="5" unique_id=950000720]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[editable path="HintPopup"]

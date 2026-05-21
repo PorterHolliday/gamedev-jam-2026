@@ -1,65 +1,12 @@
 [gd_scene format=3 uid="uid://dfcmc8qocwu47"]
 
 [ext_resource type="Script" uid="uid://boo36jrexts7x" path="res://New Graph/Graph Canvas/graph_canvas.gd" id="1_v84bs"]
-[ext_resource type="Texture2D" uid="uid://dc2an244x0t4f" path="res://Graph/Graph Edit/no_loops.png" id="2_es0st"]
 [ext_resource type="AudioStream" uid="uid://ca3wrnak0kmyq" path="res://Audio/SFX/freesound_community-breaker-switch-45684.mp3" id="3_5emxd"]
 [ext_resource type="AudioStream" uid="uid://dl5deba0v2081" path="res://Audio/SFX/freesound_community-slice-apple-on-wood_fizz-85879.mp3" id="4_pusok"]
-[ext_resource type="AudioStream" uid="uid://cet2ki55a1gjb" path="res://Audio/SFX/floraphonic-classic-game-action-negative-8-224414.mp3" id="5_eqtyt"]
-
-[sub_resource type="Animation" id="Animation_qud77"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_3yicx"]
-resource_name = "no_loops"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_netwr"]
-_data = {
-&"RESET": SubResource("Animation_qud77"),
-&"no_loops": SubResource("Animation_3yicx")
-}
 
 [node name="GraphCanvas" type="Node2D" unique_id=90730119]
 script = ExtResource("1_v84bs")
 metadata/_custom_type_script = "uid://boo36jrexts7x"
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2123599864]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 480.0
-offset_top = 224.0
-offset_right = 672.0
-offset_bottom = 416.0
-texture = ExtResource("2_es0st")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1618509845]
-unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_netwr")
 
 [node name="ConnectionAudio" type="AudioStreamPlayer" parent="." unique_id=1097085759]
 unique_name_in_owner = true
@@ -68,7 +15,3 @@ stream = ExtResource("3_5emxd")
 [node name="DisconnectionAudio" type="AudioStreamPlayer" parent="." unique_id=2025728267]
 unique_name_in_owner = true
 stream = ExtResource("4_pusok")
-
-[node name="NoLoopsAudio" type="AudioStreamPlayer" parent="." unique_id=77749310]
-unique_name_in_owner = true
-stream = ExtResource("5_eqtyt")

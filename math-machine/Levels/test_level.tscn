@@ -7,29 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="7_7e6fp"]
 [ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="7_tc6tp"]
 [ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://New Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="8_k8b6b"]
+[ext_resource type="PackedScene" uid="uid://ojae0y7pvy22" path="res://Levels/HintPopup/hint_popup.tscn" id="9_dkv23"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="9_k8b6b"]
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="9_lx7qo"]
 [ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/soundreality-notification-tone-443095.mp3" id="10_lx7qo"]
 [ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="11_dkv23"]
+[ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="12_lx7qo"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4t6x8"]
-
-[sub_resource type="SystemFont" id="SystemFont_mgy6g"]
-font_names = PackedStringArray("Century Gothic")
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_x458k"]
-font = SubResource("SystemFont_mgy6g")
-font_size = 20
-font_color = Color(0, 0, 0, 1)
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_xh4c7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LevelCompleteLabel:self_modulate")
+tracks/0/path = NodePath("UI/HintPopup:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,25 +32,25 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_h12gg"]
-resource_name = "level_complete"
-length = 2.0
+resource_name = "show_hint"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LevelCompleteLabel:self_modulate")
+tracks/0/path = NodePath("UI/HintPopup:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.6, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lrol0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x458k"]
 _data = {
 &"RESET": SubResource("Animation_xh4c7"),
-&"level_complete": SubResource("Animation_h12gg")
+&"show_hint": SubResource("Animation_h12gg")
 }
 
 [sub_resource type="SystemFont" id="SystemFont_tke54"]
@@ -132,26 +124,14 @@ offset_right = 1136.0
 offset_bottom = 80.0
 theme_type_variation = &"HintButton"
 
-[node name="Hint" type="Label" parent="." unique_id=224217002]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -256.0
-offset_top = 16.0
-offset_right = 256.0
-offset_bottom = 176.0
-grow_horizontal = 2
-text = "Get the 17 stored in a green block. Then store a number you can use with the yellow block to get to 1."
-label_settings = SubResource("LabelSettings_x458k")
-horizontal_alignment = 1
-autowrap_mode = 2
+[node name="HintPopup" parent="." unique_id=950000720 instance=ExtResource("9_dkv23")]
+offset_right = 1152.0
+offset_bottom = 648.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1366976567]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=588194274]
 unique_name_in_owner = true
 process_mode = 3
-libraries/ = SubResource("AnimationLibrary_lrol0")
+libraries/ = SubResource("AnimationLibrary_x458k")
 
 [node name="LevelCompleteLabel" type="Label" parent="." unique_id=1659052927]
 self_modulate = Color(1, 1, 1, 0)
@@ -176,3 +156,10 @@ stream = ExtResource("10_lx7qo")
 unique_name_in_owner = true
 stream = ExtResource("11_dkv23")
 volume_db = -10.0
+
+[node name="LevelCompletePopup" parent="." unique_id=292462121 instance=ExtResource("12_lx7qo")]
+visible = false
+offset_left = 584.0
+offset_top = 329.0
+offset_right = 584.0
+offset_bottom = 329.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjtlorpytq0mn"
-path="res://.godot/imported/hand_icon.png-5c5338d2750fa158ccbfb8ad53d8bc0f.ctex"
+uid="uid://cari7ta8dgpi4"
+path="res://.godot/imported/open_hand_icon.png-8d1d7ec25d1dc92d228411ac2db5a655.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Levels/Tutorial/hand_icon.png"
-dest_files=["res://.godot/imported/hand_icon.png-5c5338d2750fa158ccbfb8ad53d8bc0f.ctex"]
+source_file="res://Levels/Levels/Deprecated/AddValue/open_hand_icon.png"
+dest_files=["res://.godot/imported/open_hand_icon.png-8d1d7ec25d1dc92d228411ac2db5a655.ctex"]
 
 [params]
 

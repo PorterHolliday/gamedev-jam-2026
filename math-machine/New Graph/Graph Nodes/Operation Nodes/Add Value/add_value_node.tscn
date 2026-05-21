@@ -36,13 +36,13 @@ scale = Vector2(48, 48)
 texture = SubResource("CanvasTexture_qmhv7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1025160681]
-modulate = Color(0.13725491, 0.19215687, 0.7607843, 1)
+modulate = Color(0.17254902, 0.36078432, 0.7607843, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_wdqb3")
 
 [node name="ValueLabel" type="Label" parent="." unique_id=1927894702]
 unique_name_in_owner = true
-modulate = Color(0.13725491, 0.19215687, 0.7607843, 1)
+modulate = Color(0.17254902, 0.36078432, 0.7607843, 1)
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0

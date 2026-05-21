@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6oly3fd63d3p"
-path="res://.godot/imported/closed_hand_icon.png-a04d150bd1f72744448239a2ae315838.ctex"
+uid="uid://svgapwg6soo"
+path="res://.godot/imported/right_click_2.png-4a9f30db6c3bc2aa4ed62e25120ee5b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Levels/AddValue/closed_hand_icon.png"
-dest_files=["res://.godot/imported/closed_hand_icon.png-a04d150bd1f72744448239a2ae315838.ctex"]
+source_file="res://Levels/Levels/Deprecated/Tutorial/right_click_2.png"
+dest_files=["res://.godot/imported/right_click_2.png-4a9f30db6c3bc2aa4ed62e25120ee5b7.ctex"]
 
 [params]
 

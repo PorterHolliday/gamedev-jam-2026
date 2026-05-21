@@ -1,16 +1,16 @@
 [gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
 
 [ext_resource type="Texture2D" uid="uid://kn27mchfpndx" path="res://Levels/BackButton/back_button.png" id="1_mfn8g"]
-[ext_resource type="Texture2D" uid="uid://dq3pvwtcmrc1b" path="res://LevelSelectionScreen/LevelButton/button_disabled.png" id="1_p1w3f"]
 [ext_resource type="Texture2D" uid="uid://d04pg7tosyncl" path="res://Levels/BackButton/back_button_hover.png" id="1_yf74i"]
-[ext_resource type="Texture2D" uid="uid://hstiubhoj6os" path="res://LevelSelectionScreen/LevelButton/button_hover.png" id="2_2l2ys"]
-[ext_resource type="Texture2D" uid="uid://drt4tudr0l267" path="res://LevelSelectionScreen/LevelButton/button.png" id="3_jvwys"]
+[ext_resource type="Texture2D" uid="uid://hstiubhoj6os" path="res://LevelSelectionScreen/LevelButton/button_hover.png" id="3_1bs6c"]
 [ext_resource type="Texture2D" uid="uid://dbxm6r3xdhtp7" path="res://Graph/Graph Nodes/port.png" id="3_s88dg"]
+[ext_resource type="Texture2D" uid="uid://drt4tudr0l267" path="res://LevelSelectionScreen/LevelButton/button.png" id="4_a4axt"]
 [ext_resource type="Texture2D" uid="uid://qi7kr3paaqg3" path="res://Levels/HintButton/hint_button_hover.png" id="4_s88dg"]
 [ext_resource type="Texture2D" uid="uid://bw0spqr7jbc0y" path="res://Levels/HintButton/hint_button.png" id="5_1bs6c"]
-[ext_resource type="Texture2D" uid="uid://b1ioswyipsi3k" path="res://LevelSelectionScreen/LevelButton/button_pressed.png" id="5_jvwys"]
+[ext_resource type="Texture2D" uid="uid://b1ioswyipsi3k" path="res://LevelSelectionScreen/LevelButton/button_pressed.png" id="5_bwj2p"]
 [ext_resource type="Texture2D" uid="uid://o6ahkgg7vr43" path="res://Levels/RestartButton/restart_button.png" id="7_4nb47"]
 [ext_resource type="Texture2D" uid="uid://ddnoo7oe1cyo5" path="res://Levels/RestartButton/restart_button_hover.png" id="8_bpukv"]
+[ext_resource type="Texture2D" uid="uid://dq3pvwtcmrc1b" path="res://LevelSelectionScreen/LevelButton/button_disabled.png" id="9_stq8r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s88dg"]
 texture = ExtResource("1_yf74i")
@@ -26,21 +26,21 @@ font_names = PackedStringArray("Century Gothic")
 font_weight = 600
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocp23"]
-texture = ExtResource("2_2l2ys")
+texture = ExtResource("3_1bs6c")
 texture_margin_left = 10.0
 texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jd20g"]
-texture = ExtResource("3_jvwys")
+texture = ExtResource("4_a4axt")
 texture_margin_left = 10.0
 texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6u8bf"]
-texture = ExtResource("5_jvwys")
+texture = ExtResource("5_bwj2p")
 texture_margin_left = 10.0
 texture_margin_top = 10.0
 texture_margin_right = 10.0
@@ -79,19 +79,31 @@ texture = ExtResource("5_1bs6c")
 texture = ExtResource("4_s88dg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pd6sc"]
-texture = ExtResource("1_p1w3f")
+texture = ExtResource("9_stq8r")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mfn8g"]
-texture = ExtResource("2_2l2ys")
+texture = ExtResource("3_1bs6c")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4nb47"]
-texture = ExtResource("3_jvwys")
+texture = ExtResource("4_a4axt")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2fgf"]
-texture = ExtResource("5_jvwys")
+texture = ExtResource("5_bwj2p")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s88dg"]
-bg_color = Color(0.92941177, 0.9372549, 0.8627451, 1)
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 4
+shadow_offset = Vector2(8, 8)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a4axt"]
 texture = ExtResource("8_bpukv")
@@ -107,6 +119,11 @@ BackButton/base_type = &"Button"
 BackButton/styles/hover = SubResource("StyleBoxTexture_s88dg")
 BackButton/styles/normal = SubResource("StyleBoxTexture_yf74i")
 BackButton/styles/pressed = SubResource("StyleBoxTexture_1bs6c")
+Button/colors/font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+Button/colors/font_focus_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+Button/colors/font_hover_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+Button/colors/font_hover_pressed_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+Button/colors/font_pressed_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
 Button/fonts/font = SubResource("SystemFont_s88dg")
 Button/styles/hover = SubResource("StyleBoxTexture_ocp23")
 Button/styles/normal = SubResource("StyleBoxTexture_jd20g")
@@ -141,7 +158,7 @@ LevelButton/styles/disabled = SubResource("StyleBoxTexture_pd6sc")
 LevelButton/styles/hover = SubResource("StyleBoxTexture_mfn8g")
 LevelButton/styles/normal = SubResource("StyleBoxTexture_4nb47")
 LevelButton/styles/pressed = SubResource("StyleBoxTexture_k2fgf")
-Panel/styles/panel = SubResource("StyleBoxFlat_s88dg")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_s88dg")
 RestartButton/base_type = &"Button"
 RestartButton/styles/hover = SubResource("StyleBoxTexture_a4axt")
 RestartButton/styles/normal = SubResource("StyleBoxTexture_bpukv")
