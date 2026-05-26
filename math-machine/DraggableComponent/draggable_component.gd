@@ -1,6 +1,9 @@
 class_name DraggableComponent
 extends Area2D
 
+signal drag_started
+signal drag_ended
+
 @export var min_position: Vector2 = Vector2.ZERO
 @export var max_position: Vector2 = Vector2(1152, 648)
 @export var snap_distance: Vector2 = Vector2(16, 16)
@@ -33,12 +36,14 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_mouse_clicked() -> void:
 	is_clicked = true
 	mouse_offset = get_global_mouse_position() - parent.global_position
-	parent.scale = Vector2(1.05, 1.05)
+	parent.scale = Vector2(1.1, 1.1)
+	drag_started.emit()
 	
 func _on_mouse_released() -> void:
 	is_clicked = false
 	mouse_offset = Vector2.ZERO
 	parent.scale = Vector2.ONE
+	drag_ended.emit()
 	
 func _on_mouse_entered() -> void:
 	is_mouse_in_area = true

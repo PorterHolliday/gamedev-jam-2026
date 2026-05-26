@@ -57,6 +57,7 @@ func _check_level_complete() -> void:
 func _on_level_complete() -> void:
 	music.stop()
 	
-	process_mode = Node.PROCESS_MODE_DISABLED
-	
 	completed.emit()
+	
+	await get_tree().create_timer(0.1).timeout
+	process_mode = Node.PROCESS_MODE_DISABLED

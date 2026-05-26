@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyf2325jh8soc"
-path="res://.godot/imported/square_node.png-ef12ed43409a1f11ff7b4ea2c74492e0.ctex"
+uid="uid://cjpeudkedmt8n"
+path="res://.godot/imported/store_node.png-64bd9844d9d32b2cd916dfc294da2d1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://New Graph/Graph Nodes/square_node.png"
-dest_files=["res://.godot/imported/square_node.png-ef12ed43409a1f11ff7b4ea2c74492e0.ctex"]
+source_file="res://New Graph/Graph Nodes/Operation Nodes/Store/store_node.png"
+dest_files=["res://.godot/imported/store_node.png-64bd9844d9d32b2cd916dfc294da2d1b.ctex"]
 
 [params]
 

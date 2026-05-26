@@ -7,6 +7,7 @@
 [sub_resource type="SystemFont" id="SystemFont_6kelq"]
 font_names = PackedStringArray("Century Gothic")
 font_weight = 600
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_mshbt"]
 font = SubResource("SystemFont_6kelq")
@@ -21,15 +22,17 @@ offset_bottom = 48.0
 theme_type_variation = &"LevelButton"
 disabled = true
 script = ExtResource("1_mshbt")
-font_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
-hover_font_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+hover_font_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
 
 [node name="Checkmark" type="TextureRect" parent="." unique_id=761775468]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_right = 48.0
-offset_bottom = 48.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("2_h71le")
 expand_mode = 1
 

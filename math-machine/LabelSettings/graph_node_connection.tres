@@ -5,4 +5,6 @@ font_names = PackedStringArray("Century Gothic")
 
 [resource]
 font = SubResource("SystemFont_d4gjh")
+font_color = Color(0, 0, 0, 1)
 outline_size = 2
+outline_color = Color(0, 0, 0, 1)

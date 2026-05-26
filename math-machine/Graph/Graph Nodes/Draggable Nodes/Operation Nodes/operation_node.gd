@@ -4,6 +4,8 @@ extends DraggableNode
 @export var _input_labels: Array[Label] = []
 @export var _output_label: Label
 
+
+
 var _input_count: int = 0
 
 func _ready() -> void:
@@ -35,3 +37,4 @@ func _update_output() -> void:
 		_output_label.text = ''
 	else:
 		_output_label.text = str(output)
+		

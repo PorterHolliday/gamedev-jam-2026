@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_n0qsc"]
 [ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_rf6l5"]
 [ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_syshm"]
-[ext_resource type="Texture2D" uid="uid://cjtlorpytq0mn" path="res://Levels/Levels/Deprecated/Tutorial/hand_icon.png" id="4_yt74c"]
+[ext_resource type="Texture2D" uid="uid://cjtlorpytq0mn" path="res://Levels/Levels/Tutorial/hand_icon.png" id="4_yt74c"]
 
 [sub_resource type="Animation" id="Animation_7xowb"]
 length = 0.001

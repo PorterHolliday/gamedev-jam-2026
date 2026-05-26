@@ -49,21 +49,15 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1945544030]
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="PanelContainer/VBoxContainer" unique_id=1732487603]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
 [node name="Hint" type="Label" parent="PanelContainer/VBoxContainer" unique_id=47662854]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_vertical = 3
 text = "Hint..."
 label_settings = SubResource("LabelSettings_wlvep")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Spacer2" type="Control" parent="PanelContainer/VBoxContainer" unique_id=259301888]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+autowrap_mode = 2
 
 [node name="CloseButton" type="Button" parent="." unique_id=2031022156]
 unique_name_in_owner = true
@@ -78,3 +72,4 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_c70oy")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_r4ekt")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jf8q7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qg3u3")
+metadata/_edit_lock_ = true

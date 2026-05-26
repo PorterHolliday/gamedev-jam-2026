@@ -8,15 +8,19 @@ const BORDER_WIDTH: float = 2.0
 const PREVIEW_COLOR := Color(1.0, 1.0, 1.0, 0.8)
 const BORDER_PREVIEW_COLOR: Color = Color(0.6, 0.6, 0.6, 0.6)
 
+signal connection_occurred
+signal disconnection_occurred
 signal level_complete
 var _output_nodes: Array[OutputNode2] = []
 
 @onready var connection_audio: AudioStreamPlayer = %ConnectionAudio
 @onready var disconnection_audio: AudioStreamPlayer = %DisconnectionAudio
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 class Connection:
 	var from_port: GraphNodePort
 	var to_port: GraphNodePort
+@export var init_connections: Array[ConnectionData] = []
 var connections: Array[Connection] = []
 var current_connection_start_port: GraphNodePort
 var current_connection_end_port: GraphNodePort
@@ -25,6 +29,11 @@ var ports: Array[GraphNodePort] = []
 
 func _ready() -> void:
 	_connect_port_signals()
+	
+	for connection_data in init_connections:
+		var from_port: GraphNodePort = get_node(connection_data.from_node).outputs[connection_data.from_port]
+		var to_port: GraphNodePort = get_node(connection_data.to_node).inputs[connection_data.to_port]
+		request_connection(from_port, to_port, false)
 	
 	for child in get_children():
 		if child is OutputNode2:
@@ -206,7 +215,7 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 		connection.to_port = port1
 		
 	if get_port_connections(connection.to_port).size() > 0:
-		connections.erase(get_port_connections(connection.to_port)[0])
+		request_disconnection(get_port_connections(connection.to_port)[0], false)
 		
 	connections.append(connection)
 	
@@ -214,6 +223,7 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 		_play_connection_audio()
 	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
 	
+	connection_occurred.emit()
 	return true
 	
 func request_disconnection(connection: Connection, play_sound: bool = true) -> bool:
@@ -223,12 +233,14 @@ func request_disconnection(connection: Connection, play_sound: bool = true) -> b
 	if play_sound:
 		_play_disconnection_audio()
 	connection.to_port.graph_node.remove_input(connection.to_port)
+	
+	disconnection_occurred.emit()
 	return true
 
 func _play_connection_audio() -> void:
 	connection_audio.volume_db = randf_range(-10, 0)
 	connection_audio.pitch_scale = randf_range(0.8, 1.2)
-	connection_audio.play()
+	connection_audio.play(0.12)
 	
 func _play_disconnection_audio() -> void:
 	disconnection_audio.volume_db = randf_range(-5, -2)

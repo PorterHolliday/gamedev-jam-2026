@@ -4,6 +4,16 @@
 [ext_resource type="AudioStream" uid="uid://ca3wrnak0kmyq" path="res://Audio/SFX/freesound_community-breaker-switch-45684.mp3" id="3_5emxd"]
 [ext_resource type="AudioStream" uid="uid://dl5deba0v2081" path="res://Audio/SFX/freesound_community-slice-apple-on-wood_fizz-85879.mp3" id="4_pusok"]
 
+[sub_resource type="Animation" id="Animation_5kykg"]
+resource_name = "animate"
+length = 5.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2kjk2"]
+_data = {
+&"animate": SubResource("Animation_5kykg")
+}
+
 [node name="GraphCanvas" type="Node2D" unique_id=90730119]
 script = ExtResource("1_v84bs")
 metadata/_custom_type_script = "uid://boo36jrexts7x"
@@ -15,3 +25,8 @@ stream = ExtResource("3_5emxd")
 [node name="DisconnectionAudio" type="AudioStreamPlayer" parent="." unique_id=2025728267]
 unique_name_in_owner = true
 stream = ExtResource("4_pusok")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=269440094]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_2kjk2")
+autoplay = &"animate"

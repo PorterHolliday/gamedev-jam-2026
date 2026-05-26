@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://svgapwg6soo"
-path="res://.godot/imported/right_click_2.png-4a9f30db6c3bc2aa4ed62e25120ee5b7.ctex"
+uid="uid://d1qcqr84hh3ed"
+path="res://.godot/imported/output_node_highlight.png-853b3a39d31bbdda5197274292d1b512.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Levels/Deprecated/Tutorial/right_click_2.png"
-dest_files=["res://.godot/imported/right_click_2.png-4a9f30db6c3bc2aa4ed62e25120ee5b7.ctex"]
+source_file="res://New Graph/Graph Nodes/Output Node/output_node_highlight.png"
+dest_files=["res://.godot/imported/output_node_highlight.png-853b3a39d31bbdda5197274292d1b512.ctex"]
 
 [params]
 

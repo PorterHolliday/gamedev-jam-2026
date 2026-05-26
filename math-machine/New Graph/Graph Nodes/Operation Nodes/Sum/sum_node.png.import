@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cari7ta8dgpi4"
-path="res://.godot/imported/open_hand_icon.png-8d1d7ec25d1dc92d228411ac2db5a655.ctex"
+uid="uid://1gfk5yw8slyd"
+path="res://.godot/imported/sum_node.png-549ed1639c37be5b3aa7a0623e7910e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Levels/Deprecated/AddValue/open_hand_icon.png"
-dest_files=["res://.godot/imported/open_hand_icon.png-8d1d7ec25d1dc92d228411ac2db5a655.ctex"]
+source_file="res://New Graph/Graph Nodes/Operation Nodes/Sum/sum_node.png"
+dest_files=["res://.godot/imported/sum_node.png-549ed1639c37be5b3aa7a0623e7910e1.ctex"]
 
 [params]
 

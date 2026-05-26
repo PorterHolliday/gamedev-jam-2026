@@ -11,23 +11,28 @@ signal received_valid_output
 		value = new_val
 		if Engine.is_editor_hint():
 			_update_value_label()
-@export var unsatisfied_color: Color = Color.GRAY:
+@export var unsatisfied_color: Color = Color.WHITE:
 	set(new_val):
 		unsatisfied_color = new_val
-		if is_satisfied:
+		if not is_satisfied:
 			_sprite.modulate = unsatisfied_color
-			_value_label.modulate = unsatisfied_color
+@export var unsatisfied_text_color: Color = Color.BLACK:
+	set(new_val):
+		unsatisfied_text_color = new_val
+		if not is_satisfied:
+			_value_label.modulate = unsatisfied_text_color
 @export var satisfied_color: Color
+@export var satisfied_text_color: Color = Color.WHITE
 
 @export var is_satisfied: bool = false:
 	set(new_val):
 		is_satisfied = new_val
 		if is_satisfied:
 			_sprite.modulate = satisfied_color
-			_value_label.modulate = satisfied_color
+			_value_label.modulate = satisfied_text_color
 		else:
 			_sprite.modulate = unsatisfied_color
-			_value_label.modulate = unsatisfied_color
+			_value_label.modulate = unsatisfied_text_color
 
 func _ready() -> void:
 	_update_value_label()

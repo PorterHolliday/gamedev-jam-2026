@@ -1,6 +1,6 @@
 @tool
 class_name AddValueNode
-extends MyGraphNode2
+extends OperationNode2
 
 @onready var value_label: Label = %ValueLabel
 @export var value: int = 3:

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ojae0y7pvy22" path="res://Levels/HintPopup/hint_popup.tscn" id="9_g7a5h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngotv"]
-bg_color = Color(1, 1, 0.8784314, 1)
+bg_color = Color(0.9019608, 0.87058824, 0.80784315, 1)
 
 [sub_resource type="Animation" id="Animation_xh4c7"]
 length = 0.001

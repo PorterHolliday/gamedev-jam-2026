@@ -2,7 +2,7 @@ extends Control
 
 signal game_completed
 
-@onready var level_complete_popup: PanelContainer = %LevelCompletePopup
+@onready var level_complete_popup: Control = %LevelCompletePopup
 @onready var next_level_button: Button = %NextLevelButton
 @onready var level_select_button: Button = %LevelSelectButton
 @onready var back_button: Button = %BackButton
@@ -78,7 +78,7 @@ func _on_level_completed() -> void:
 	_enable_next_level_button()
 	
 	level_complete_audio.stream = load("res://Audio/SFX/LevelCompleteClick.mp3")
-	level_complete_audio.play()
+	level_complete_audio.play(0.03)
 	await get_tree().create_timer(1.0).timeout
 	
 	level_complete_audio.stream = load("res://Audio/SFX/soundreality-notification-tone-443095.mp3")
@@ -88,11 +88,12 @@ func _on_level_completed() -> void:
 	animation_player.play('level_complete')
 	
 func _on_next_level_button_pressed() -> void:
+	_play_button_audio()
 	animation_player.play('fade_out')
 	await animation_player.animation_finished
 	current_level.queue_free()
 	level_complete_popup.modulate = Color(1.0, 1.0, 1.0, 0.0)
-	level_complete_popup.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	level_complete_popup.hide()
 	current_level_number += 1
 	current_level_button = level_buttons[current_level_number]
 	_enter_current_level()
@@ -100,11 +101,12 @@ func _on_next_level_button_pressed() -> void:
 	await animation_player.animation_finished
 	
 func _on_level_select_button_pressed() -> void:
+	_play_button_audio()
 	animation_player.play('fade_out')
 	await animation_player.animation_finished
 	current_level.queue_free()
 	level_complete_popup.modulate = Color(1.0, 1.0, 1.0, 0.0)
-	level_complete_popup.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	level_complete_popup.hide()
 	animation_player.play('fade_in')
 	
 	await animation_player.animation_finished
@@ -125,10 +127,13 @@ func _enable_next_level_button() -> void:
 	if final_level:
 		game_completed.emit()
 		
-func _on_back_button_pressed() -> void:
+func _play_button_audio() -> void:
 	button_audio.volume_db = randf_range(-5, 0)
 	button_audio.pitch_scale = randf_range(0.8, 1.2)
-	button_audio.play()
+	button_audio.play(0.17)
+		
+func _on_back_button_pressed() -> void:
+	_play_button_audio()
 	hide()
 	
 func _music_fade_in() -> void:

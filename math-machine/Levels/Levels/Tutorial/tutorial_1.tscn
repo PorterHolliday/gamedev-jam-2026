@@ -3,16 +3,98 @@
 [ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_slrui"]
 [ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_yaljy"]
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="3_nrwey"]
+[ext_resource type="Texture2D" uid="uid://cjtlorpytq0mn" path="res://Levels/Levels/Tutorial/hand_icon.png" id="4_nrwey"]
+
+[sub_resource type="Animation" id="Animation_7xowb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(208, 304)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandIcon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yt74c"]
+resource_name = "tutorial"
+length = 3.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6, 3.01, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(208, 304), Vector2(208, 304), Vector2(912, 208), Vector2(912, 208)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandIcon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fobbe"]
+_data = {
+&"RESET": SubResource("Animation_7xowb"),
+&"tutorial": SubResource("Animation_yt74c")
+}
 
 [node name="Tutorial1" unique_id=1073491300 instance=ExtResource("1_slrui")]
 
+[node name="Panel" parent="." index="0" unique_id=2079327295]
+metadata/_edit_lock_ = true
+
 [node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_yaljy")]
-position = Vector2(192, 320)
+position = Vector2(160, 304)
 value = 3
 
-[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1924490215 instance=ExtResource("3_nrwey")]
-position = Vector2(960, 320)
+[node name="InputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1126152933 instance=ExtResource("2_yaljy")]
+position = Vector2(160, 400)
+value = 4
+
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1924490215 instance=ExtResource("3_nrwey")]
+position = Vector2(992, 208)
 value = 3
+
+[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=1943080177 instance=ExtResource("3_nrwey")]
+position = Vector2(992, 304)
+value = 4
+
+[node name="OutputNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1962038702 instance=ExtResource("3_nrwey")]
+position = Vector2(992, 400)
+value = 3
+
+[node name="OutputNode4" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=235987233 instance=ExtResource("3_nrwey")]
+position = Vector2(992, 496)
+value = 4
 
 [node name="BackButton" parent="." index="2" unique_id=629111258]
 metadata/_edit_lock_ = true
@@ -23,8 +105,28 @@ metadata/_edit_lock_ = true
 [node name="HintButton" parent="." index="4" unique_id=348902469]
 metadata/_edit_lock_ = true
 
-[node name="HintPopup" parent="." index="5" unique_id=950000720]
+[node name="HandIcon" type="TextureRect" parent="." index="5" unique_id=762774428]
+offset_left = 208.0
+offset_top = 304.0
+offset_right = 255.99762
+offset_bottom = 368.0024
+mouse_filter = 2
+texture = ExtResource("4_nrwey")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HintPopup" parent="." index="6" unique_id=950000720]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
+
+[node name="Hint" parent="HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1945544030) index="0" unique_id=47662854]
+text = "Click and drag to connect blocks."
+
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="8" unique_id=322318621]
+libraries/ = SubResource("AnimationLibrary_fobbe")
+autoplay = &"tutorial"
+
+[connection signal="connection_occurred" from="GraphCanvas" to="HandIcon" method="hide"]
+[connection signal="connection_occurred" from="GraphCanvas" to="TutorialAnimationPlayer" method="pause"]
 
 [editable path="HintPopup"]

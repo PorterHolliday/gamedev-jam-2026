@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dkyidum7h2hbs"]
+
+[ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_6p3qw"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_fworg"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://New Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="3_pa34x"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="4_leynp"]
+
+[node name="AddValue4" unique_id=1073491300 instance=ExtResource("1_6p3qw")]
+
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_fworg")]
+position = Vector2(160, 256)
+value = 1
+
+[node name="InputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=475549016 instance=ExtResource("2_fworg")]
+position = Vector2(160, 448)
+
+[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1512119247 instance=ExtResource("3_pa34x")]
+position = Vector2(448, 256)
+value = -2
+
+[node name="AddValueNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=579198277 instance=ExtResource("3_pa34x")]
+position = Vector2(704, 256)
+value = -7
+
+[node name="AddValueNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=916156933 instance=ExtResource("3_pa34x")]
+position = Vector2(448, 448)
+value = 1
+
+[node name="AddValueNode4" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=180850161 instance=ExtResource("3_pa34x")]
+position = Vector2(704, 448)
+value = 5
+
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="8" unique_id=1924490215 instance=ExtResource("4_leynp")]
+position = Vector2(992, 256)
+value = 4
+
+[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="9" unique_id=1653906786 instance=ExtResource("4_leynp")]
+position = Vector2(992, 448)
+value = -1
+
+[editable path="HintPopup"]

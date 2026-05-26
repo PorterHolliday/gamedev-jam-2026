@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://New Graph/Graph Node Port/graph_node_port.gd" id="1_v8ah4"]
 [ext_resource type="Texture2D" uid="uid://bxk6rmw3swbbr" path="res://New Graph/Graph Node Port/port.png" id="2_kp32d"]
+[ext_resource type="Texture2D" uid="uid://dq7cmcucj1jdy" path="res://New Graph/Graph Node Port/port_shadow.png" id="2_mso3d"]
 [ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_qp16x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kp32d"]
-radius = 21.0
+radius = 24.0
 
 [node name="GraphNodeInput" type="Marker2D" unique_id=2095797941]
 script = ExtResource("1_v8ah4")
@@ -15,19 +16,23 @@ connection_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=895685989]
-position = Vector2(-4, 0)
+position = Vector2(-8, 0)
 shape = SubResource("CircleShape2D_kp32d")
 
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1239731309]
+position = Vector2(1, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_mso3d")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=68125033]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_kp32d")
 
 [node name="Label" type="Label" parent="." unique_id=1189312209]
 unique_name_in_owner = true
-modulate = Color(0.5882353, 0.5882353, 0.5882353, 1)
-offset_left = -322.0
+offset_left = -68.0
 offset_top = -31.0
-offset_right = -2.0
+offset_right = -4.0
 offset_bottom = -8.0
 label_settings = ExtResource("3_qp16x")
 horizontal_alignment = 2

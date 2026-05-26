@@ -45,5 +45,5 @@ func _on_mouse_exited() -> void:
 func _on_pressed() -> void:
 	audio_stream_player.volume_db = randf_range(-5, 0)
 	audio_stream_player.pitch_scale = randf_range(0.8, 1.2)
-	audio_stream_player.play(0.15)
+	audio_stream_player.play(0.17)
 	

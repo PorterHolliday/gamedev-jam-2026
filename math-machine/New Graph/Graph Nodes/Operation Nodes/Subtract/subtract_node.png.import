@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlivdbwjdcdxb"
-path="res://.godot/imported/right_click_1.png-01007f532af08295f9178c642cb6b81b.ctex"
+uid="uid://b63vbnqayhal5"
+path="res://.godot/imported/subtract_node.png-861bd8a2eda07f39656adf2b9d6df591.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Levels/Deprecated/Tutorial/right_click_1.png"
-dest_files=["res://.godot/imported/right_click_1.png-01007f532af08295f9178c642cb6b81b.ctex"]
+source_file="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.png"
+dest_files=["res://.godot/imported/subtract_node.png-861bd8a2eda07f39656adf2b9d6df591.ctex"]
 
 [params]
 
