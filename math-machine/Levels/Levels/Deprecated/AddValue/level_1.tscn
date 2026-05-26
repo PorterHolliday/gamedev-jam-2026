@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://ytq8ln7owyxr"]
+
+[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_bgqeu"]
+[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_gutfs"]
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://New Graph/Graph Canvas/graph_canvas.tscn" id="2_xtpph"]
+[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_rdmkj"]
+[ext_resource type="PackedScene" uid="uid://m2eaw868frt" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Add Value Operation/add_value_operation.tscn" id="4_rdmkj"]
+[ext_resource type="Texture2D" uid="uid://cari7ta8dgpi4" path="res://Levels/Levels/AddValue/open_hand_icon.png" id="5_q1nwe"]
+[ext_resource type="Texture2D" uid="uid://6oly3fd63d3p" path="res://Levels/Levels/AddValue/closed_hand_icon.png" id="6_m08fk"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="8_xpbi6"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="9_2u8ge"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://New Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="10_3jea3"]
+
+[sub_resource type="Animation" id="Animation_q1nwe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandIcon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandIcon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(352, 96)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandIcon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_q1nwe")]
+}
+
+[sub_resource type="Animation" id="Animation_m08fk"]
+resource_name = "tutorial"
+length = 3.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HandIcon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HandIcon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.8, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(352, 96), Vector2(352, 96), Vector2(560, 320), Vector2(560, 320)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandIcon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_q1nwe"), ExtResource("6_m08fk")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_isho1"]
+_data = {
+&"RESET": SubResource("Animation_q1nwe"),
+&"tutorial": SubResource("Animation_m08fk")
+}
+
+[node name="Level1" unique_id=921743447 instance=ExtResource("1_bgqeu")]
+
+[node name="GraphEdit" parent="." index="0" unique_id=1777296774]
+visible = false
+
+[node name="InputNode" parent="GraphEdit" index="0" unique_id=736657052 instance=ExtResource("2_gutfs")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 288.0
+offset_right = 258.0
+offset_bottom = 354.0
+mouse_filter = 1
+position_offset = Vector2(192, 288)
+value = 3
+
+[node name="OutputNode" parent="GraphEdit" index="2" unique_id=1426663194 instance=ExtResource("3_rdmkj")]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 288.0
+offset_right = 960.0
+offset_bottom = 352.0
+mouse_filter = 1
+position_offset = Vector2(896, 288)
+value = 5
+
+[node name="AddValueOperation" parent="GraphEdit" index="3" unique_id=1740454549 instance=ExtResource("4_rdmkj")]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 64.0
+offset_right = 400.0
+offset_bottom = 128.0
+mouse_filter = 1
+position_offset = Vector2(336, 64)
+value = 2
+
+[node name="Hint" parent="." index="4" unique_id=2128368680]
+text = "Colored blocks modify values. Use them to get the right numbers."
+
+[node name="HandIcon" type="TextureRect" parent="." index="5" unique_id=2099781783]
+visible = false
+layout_mode = 0
+offset_left = 352.0
+offset_top = 96.0
+offset_right = 400.0072
+offset_bottom = 159.99649
+mouse_filter = 2
+texture = ExtResource("5_q1nwe")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=116537985]
+libraries/ = SubResource("AnimationLibrary_isho1")
+autoplay = &"tutorial"
+
+[node name="GraphCanvas" parent="." index="12" unique_id=90730119 instance=ExtResource("2_xtpph")]
+
+[node name="InputNode" parent="GraphCanvas" index="5" unique_id=1370377095 instance=ExtResource("8_xpbi6")]
+position = Vector2(192, 336)
+value = 2
+
+[node name="OutputNode" parent="GraphCanvas" index="6" unique_id=1924490215 instance=ExtResource("9_2u8ge")]
+position = Vector2(928, 336)
+
+[node name="AddValueNode" parent="GraphCanvas" index="7" unique_id=1512119247 instance=ExtResource("10_3jea3")]
+position = Vector2(544, 352)
+
+[connection signal="position_offset_changed" from="GraphEdit/AddValueOperation" to="HandIcon" method="hide"]
+[connection signal="position_offset_changed" from="GraphEdit/AddValueOperation" to="TutorialAnimationPlayer" method="pause"]

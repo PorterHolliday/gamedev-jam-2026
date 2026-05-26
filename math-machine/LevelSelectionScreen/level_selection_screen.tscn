@@ -1,39 +1,41 @@
 [gd_scene format=3 uid="uid://25v23ibhxckb"]
 
-[ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelButton/level_button.tscn" id="1_bntq0"]
+[ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelSelectionScreen/LevelButton/level_button.tscn" id="1_bntq0"]
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
-[ext_resource type="PackedScene" uid="uid://d3bu737ku3ibm" path="res://Levels/Levels/Tutorial/level_1.tscn" id="2_vs61n"]
 [ext_resource type="LabelSettings" uid="uid://p5y2u4bbu5w8" path="res://LabelSettings/title_label_settings.tres" id="3_l6jef"]
-[ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Levels/AddValue/level_1.tscn" id="3_whgxd"]
-[ext_resource type="PackedScene" uid="uid://b2n8dg6iyp2df" path="res://Levels/Levels/Tutorial/level_2.tscn" id="5_s16oa"]
-[ext_resource type="PackedScene" uid="uid://dbpsj8n6346mv" path="res://Levels/Levels/Tutorial/level_3.tscn" id="6_djp6x"]
-[ext_resource type="PackedScene" uid="uid://blcvrd4k8ts3x" path="res://Levels/Levels/SumAndSubtract/level_5.tscn" id="8_s16oa"]
-[ext_resource type="PackedScene" uid="uid://d4f8grrmkga2g" path="res://Levels/Levels/AddValue/level_2.tscn" id="8_tsht8"]
-[ext_resource type="PackedScene" uid="uid://dfesk0ify5r4n" path="res://Levels/Levels/SumAndSubtract/level_6.tscn" id="9_djp6x"]
-[ext_resource type="PackedScene" uid="uid://cr3ubn3ko62t2" path="res://Levels/Levels/AddValue/level_3.tscn" id="9_tsht8"]
-[ext_resource type="PackedScene" uid="uid://dkqjmtg7qcwdr" path="res://Levels/Levels/SumAndSubtract/level_7.tscn" id="10_wvxo5"]
-[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/AddValue/level_4.tscn" id="10_yiuws"]
-[ext_resource type="PackedScene" uid="uid://i4gxgham6edv" path="res://Levels/Levels/SumAndSubtract/level_8.tscn" id="11_n686a"]
-[ext_resource type="PackedScene" uid="uid://deqpbagfggt00" path="res://Levels/Levels/SumAndSubtract/level_9.tscn" id="12_tsht8"]
-[ext_resource type="PackedScene" uid="uid://c1q2kn5wdmq37" path="res://Levels/Levels/SumAndSubtract/level_10.tscn" id="13_vi82w"]
-[ext_resource type="PackedScene" uid="uid://bomdu62m7xul1" path="res://Levels/Levels/SumAndSubtract/level_11.tscn" id="14_hxkdi"]
-[ext_resource type="PackedScene" uid="uid://dy2wcgj48gw3g" path="res://Levels/Levels/SumAndSubtract/level_13.tscn" id="15_yiuws"]
-[ext_resource type="PackedScene" uid="uid://cgjod315owu1n" path="res://Levels/Levels/Store/level_13.tscn" id="16_nrn4x"]
-[ext_resource type="PackedScene" uid="uid://dyydyyxtrw40y" path="res://Levels/Levels/Store/level_14.tscn" id="17_4f8od"]
-[ext_resource type="PackedScene" uid="uid://nu3amnhopc64" path="res://Levels/Levels/Store/level_15.tscn" id="18_l6jef"]
-[ext_resource type="PackedScene" uid="uid://cyqca4ep1ac6q" path="res://Levels/Levels/SumAndSubtract/level_12.tscn" id="18_nrn4x"]
-[ext_resource type="PackedScene" uid="uid://j8mkjtbil2uu" path="res://Levels/Levels/Store/level_16.tscn" id="19_1fsxm"]
-[ext_resource type="PackedScene" uid="uid://t4mv8h8am2sl" path="res://Levels/Levels/SumAndSubtract/level_14.tscn" id="20_4f8od"]
-[ext_resource type="PackedScene" uid="uid://bmy6gpljcu08j" path="res://Levels/Levels/Store/level_17.tscn" id="20_pena4"]
-[ext_resource type="PackedScene" uid="uid://31dr8hl1xd8m" path="res://Levels/Levels/Store/level_18.tscn" id="21_nqun2"]
+[ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Levels/Deprecated/AddValue/level_1.tscn" id="3_whgxd"]
+[ext_resource type="PackedScene" uid="uid://ccwmpw8ywqwff" path="res://Levels/Levels/Tutorial/tutorial_1.tscn" id="4_l6jef"]
+[ext_resource type="PackedScene" uid="uid://gtn1hy00v6mt" path="res://Levels/Levels/Tutorial/tutorial_2.tscn" id="5_l6jef"]
+[ext_resource type="PackedScene" uid="uid://dbpsj8n6346mv" path="res://Levels/Levels/Deprecated/Tutorial/level_3.tscn" id="6_djp6x"]
+[ext_resource type="PackedScene" uid="uid://blcvrd4k8ts3x" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_5.tscn" id="8_s16oa"]
+[ext_resource type="PackedScene" uid="uid://d4f8grrmkga2g" path="res://Levels/Levels/Deprecated/AddValue/level_2.tscn" id="8_tsht8"]
+[ext_resource type="PackedScene" uid="uid://dfesk0ify5r4n" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_6.tscn" id="9_djp6x"]
+[ext_resource type="PackedScene" uid="uid://cr3ubn3ko62t2" path="res://Levels/Levels/Deprecated/AddValue/level_3.tscn" id="9_tsht8"]
+[ext_resource type="PackedScene" uid="uid://dkqjmtg7qcwdr" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_7.tscn" id="10_wvxo5"]
+[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/Deprecated/AddValue/level_4.tscn" id="10_yiuws"]
+[ext_resource type="PackedScene" uid="uid://i4gxgham6edv" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_8.tscn" id="11_n686a"]
+[ext_resource type="PackedScene" uid="uid://deqpbagfggt00" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_9.tscn" id="12_tsht8"]
+[ext_resource type="PackedScene" uid="uid://c1q2kn5wdmq37" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_10.tscn" id="13_vi82w"]
+[ext_resource type="PackedScene" uid="uid://bomdu62m7xul1" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_11.tscn" id="14_hxkdi"]
+[ext_resource type="PackedScene" uid="uid://dy2wcgj48gw3g" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_13.tscn" id="15_yiuws"]
+[ext_resource type="PackedScene" uid="uid://cgjod315owu1n" path="res://Levels/Levels/Deprecated/Store/level_13.tscn" id="16_nrn4x"]
+[ext_resource type="PackedScene" uid="uid://dyydyyxtrw40y" path="res://Levels/Levels/Deprecated/Store/level_14.tscn" id="17_4f8od"]
+[ext_resource type="PackedScene" uid="uid://nu3amnhopc64" path="res://Levels/Levels/Deprecated/Store/level_15.tscn" id="18_l6jef"]
+[ext_resource type="PackedScene" uid="uid://cyqca4ep1ac6q" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_12.tscn" id="18_nrn4x"]
+[ext_resource type="PackedScene" uid="uid://j8mkjtbil2uu" path="res://Levels/Levels/Deprecated/Store/level_16.tscn" id="19_1fsxm"]
+[ext_resource type="PackedScene" uid="uid://t4mv8h8am2sl" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_14.tscn" id="20_4f8od"]
+[ext_resource type="PackedScene" uid="uid://bmy6gpljcu08j" path="res://Levels/Levels/Deprecated/Store/level_17.tscn" id="20_pena4"]
+[ext_resource type="PackedScene" uid="uid://31dr8hl1xd8m" path="res://Levels/Levels/Deprecated/Store/level_18.tscn" id="21_nqun2"]
 [ext_resource type="Texture2D" uid="uid://duefwu7uo0c1q" path="res://LevelSelectionScreen/gray_section.png" id="23_n686a"]
 [ext_resource type="Texture2D" uid="uid://byp4kbhyqa05k" path="res://LevelSelectionScreen/blue_section.png" id="24_tsht8"]
 [ext_resource type="Texture2D" uid="uid://bg5sehb7hwa7q" path="res://LevelSelectionScreen/red_yellow_section.png" id="25_vi82w"]
 [ext_resource type="Texture2D" uid="uid://c28w11vw1caj3" path="res://LevelSelectionScreen/green_section.png" id="26_hxkdi"]
-[ext_resource type="AudioStream" uid="uid://crdb7g3s2xq2w" path="res://Audio/SFX/freesound_community-mech-keyboard-02-102918.mp3" id="28_vi82w"]
 [ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="29_hxkdi"]
+[ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="31_l6jef"]
+[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/soundreality-notification-tone-443095.mp3" id="32_l6jef"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_tsht8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f8od"]
+bg_color = Color(1, 1, 0.8784314, 1)
 
 [sub_resource type="Animation" id="Animation_s16oa"]
 length = 0.001
@@ -48,6 +50,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FadeOutTextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelCompletePopup:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelCompletePopup:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_djp6x"]
@@ -65,6 +103,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FadeOutTextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_wvxo5"]
 resource_name = "fade_out"
@@ -81,12 +131,53 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FadeOutTextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4f8od"]
+resource_name = "level_complete"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelCompletePopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelCompletePopup:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n686a"]
 _data = {
 &"RESET": SubResource("Animation_s16oa"),
 &"fade_in": SubResource("Animation_djp6x"),
-&"fade_out": SubResource("Animation_wvxo5")
+&"fade_out": SubResource("Animation_wvxo5"),
+&"level_complete": SubResource("Animation_4f8od")
 }
 
 [sub_resource type="SystemFont" id="SystemFont_4f8od"]
@@ -98,6 +189,36 @@ font = SubResource("SystemFont_4f8od")
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkg80"]
+bg_color = Color(0.85830307, 0.7384042, 0.03260146, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 10
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="SystemFont" id="SystemFont_nkg80"]
+font_names = PackedStringArray("Century Gothic")
+font_weight = 600
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ws0hg"]
+font = SubResource("SystemFont_nkg80")
+font_size = 48
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tsht8"]
+
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
 layout_mode = 3
 anchors_preset = 15
@@ -105,22 +226,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_whgxd")
-
-[node name="FadeOutTextureRect" type="TextureRect" parent="." unique_id=974686796]
-self_modulate = Color(0, 0, 0, 0)
-z_index = 100
-z_as_relative = false
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 656.0
 mouse_filter = 2
-texture = SubResource("CanvasTexture_tsht8")
+script = ExtResource("1_whgxd")
 
 [node name="Panel" type="Panel" parent="." unique_id=1249510233]
 layout_mode = 0
 offset_right = 1200.0
 offset_bottom = 688.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4f8od")
 
 [node name="Title" type="Label" parent="." unique_id=234851870]
 layout_mode = 0
@@ -140,7 +254,7 @@ offset_top = 208.0
 offset_right = 560.0
 offset_bottom = 256.0
 disabled = false
-level_scene = ExtResource("2_vs61n")
+level_scene = ExtResource("4_l6jef")
 
 [node name="LevelButton2" parent="." unique_id=531769527 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -148,7 +262,7 @@ offset_left = 560.0
 offset_top = 208.0
 offset_right = 608.0
 offset_bottom = 256.0
-level_scene = ExtResource("5_s16oa")
+level_scene = ExtResource("5_l6jef")
 
 [node name="LevelButton3" parent="." unique_id=1729385555 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -327,7 +441,7 @@ offset_right = 80.0
 offset_bottom = 80.0
 theme_type_variation = &"BackButton"
 
-[node name="FadeOutAnimationPlayer" type="AnimationPlayer" parent="." unique_id=960185347]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=960185347]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_n686a")
 
@@ -380,9 +494,97 @@ offset_bottom = 496.0
 texture = ExtResource("26_hxkdi")
 expand_mode = 1
 
+[node name="LevelCompletePopup" type="Control" parent="." unique_id=1099721590]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 100
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelCompletePopup" unique_id=1607057536]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -56.5
+offset_right = 221.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCompletePopup/PanelContainer" unique_id=894566429]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="LevelCompletePopup/PanelContainer/VBoxContainer" unique_id=1802589202]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NextLevelButton" type="Button" parent="LevelCompletePopup/PanelContainer/VBoxContainer" unique_id=994906912]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Next Level"
+
+[node name="LevelSelectButton" type="Button" parent="LevelCompletePopup/PanelContainer/VBoxContainer" unique_id=711288712]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 1.2
+text = "Level Select"
+
+[node name="TitlePanel" type="PanelContainer" parent="LevelCompletePopup" unique_id=1785770655]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.5
+offset_top = -98.0
+offset_right = 208.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nkg80")
+
+[node name="Label" type="Label" parent="LevelCompletePopup/TitlePanel" unique_id=1588084333]
+layout_mode = 2
+text = "Level Complete"
+label_settings = SubResource("LabelSettings_ws0hg")
+horizontal_alignment = 1
+
+[node name="FadeOutTextureRect" type="TextureRect" parent="." unique_id=974686796]
+visible = false
+self_modulate = Color(0, 0, 0, 0)
+z_index = 100
+z_as_relative = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 656.0
+mouse_filter = 0
+texture = SubResource("CanvasTexture_tsht8")
+
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=1351067402]
 unique_name_in_owner = true
-stream = ExtResource("28_vi82w")
+stream = ExtResource("31_l6jef")
+
+[node name="LevelCompleteAudio" type="AudioStreamPlayer" parent="." unique_id=476622141]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("32_l6jef")
 
 [node name="LevelSelectionMusic" type="AudioStreamPlayer" parent="." unique_id=1545615720]
 stream = ExtResource("29_hxkdi")

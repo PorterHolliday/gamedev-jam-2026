@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ctt7yx4a462q7"]
+
+[ext_resource type="Script" uid="uid://ua5g1uh1ndaf" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.gd" id="1_0rwlh"]
+[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DraggableComponent/draggable_component.gd" id="3_80iqm"]
+[ext_resource type="Texture2D" uid="uid://db3mq2mhjm4vl" path="res://New Graph/Graph Nodes/rectangle_node_shadow.png" id="3_tsxk7"]
+[ext_resource type="Texture2D" uid="uid://b63vbnqayhal5" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.png" id="4_fr80i"]
+[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://New Graph/Graph Node Port/graph_node_input.tscn" id="4_tsxk7"]
+[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://New Graph/Graph Node Port/graph_node_output.tscn" id="5_fr80i"]
+[ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="6_tsxk7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic471"]
+size = Vector2(66, 98)
+
+[node name="SubtractNode" type="Node2D" unique_id=1134007312]
+script = ExtResource("1_0rwlh")
+metadata/_custom_type_script = "uid://ua5g1uh1ndaf"
+
+[node name="DraggableComponent" type="Area2D" parent="." unique_id=37370601]
+script = ExtResource("3_80iqm")
+metadata/_custom_type_script = "uid://b2k4pkccuwh8r"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableComponent" unique_id=1765989356]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_ic471")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=63851858]
+position = Vector2(4, 4)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_tsxk7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=801012760]
+position = Vector2(-1, -1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_fr80i")
+
+[node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("4_tsxk7")]
+position = Vector2(-32, -24)
+
+[node name="GraphNodeInput2" parent="." unique_id=1144647020 instance=ExtResource("4_tsxk7")]
+position = Vector2(-32, 24)
+
+[node name="GraphNodeOutput" parent="." unique_id=529093135 instance=ExtResource("5_fr80i")]
+position = Vector2(32, 0)
+
+[node name="Label" type="Label" parent="." unique_id=1533026284]
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 32.0
+offset_bottom = 48.0
+text = "−"
+label_settings = ExtResource("6_tsxk7")
+horizontal_alignment = 1
+vertical_alignment = 1

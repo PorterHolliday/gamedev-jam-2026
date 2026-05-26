@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cxy864y1rmwdl"]
+
+[ext_resource type="Script" uid="uid://tnge33mk1lgm" path="res://New Graph/Graph Nodes/Input Node/input_node.gd" id="1_whq1o"]
+[ext_resource type="Texture2D" uid="uid://bj8ommvwqy81c" path="res://New Graph/Graph Nodes/square_node_shadow.png" id="2_qjccq"]
+[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://New Graph/Graph Node Port/graph_node_output.tscn" id="3_45htt"]
+[ext_resource type="Texture2D" uid="uid://bfng417mial4b" path="res://New Graph/Graph Nodes/Input Node/input_node.png" id="3_m44ug"]
+[ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="4_45htt"]
+
+[node name="InputNode" type="Node2D" unique_id=1370377095]
+script = ExtResource("1_whq1o")
+metadata/_custom_type_script = "uid://tnge33mk1lgm"
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=78312120]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_qjccq")
+offset = Vector2(16, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=718211145]
+position = Vector2(-1, -1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_m44ug")
+
+[node name="GraphNodeOutput" parent="." unique_id=2095797941 instance=ExtResource("3_45htt")]
+position = Vector2(32, 0)
+
+[node name="ValueLabel" type="Label" parent="." unique_id=757642171]
+unique_name_in_owner = true
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+text = "5"
+label_settings = ExtResource("4_45htt")
+horizontal_alignment = 1
+vertical_alignment = 1

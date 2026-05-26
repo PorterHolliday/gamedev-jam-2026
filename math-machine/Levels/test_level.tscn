@@ -1,202 +1,165 @@
 [gd_scene format=3 uid="uid://gi6xs4h4j8ov"]
 
-[ext_resource type="PackedScene" uid="uid://ppnuvnpxhp1s" path="res://Levels/Template/level_template.tscn" id="1_3158n"]
-[ext_resource type="PackedScene" uid="uid://br47r8iro60sk" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_ub4j8"]
-[ext_resource type="PackedScene" uid="uid://bvox10j6vx5vc" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_pvdih"]
-[ext_resource type="PackedScene" uid="uid://ckfb4fdxos2u2" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Subtract Operation/subtract_operation.tscn" id="4_7e6fp"]
-[ext_resource type="PackedScene" uid="uid://bnyrfxxrx0v05" path="res://Graph/Graph Nodes/Draggable Nodes/Operation Nodes/Sum Operation/sum_operation.tscn" id="5_4t6x8"]
-[ext_resource type="PackedScene" uid="uid://cx332tlkbnunc" path="res://Graph/Graph Edit/my_graph_edit.tscn" id="6_ub4j8"]
+[ext_resource type="Script" uid="uid://cpjdg0xbwgfg8" path="res://Levels/level2.gd" id="1_7e6fp"]
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://New Graph/Graph Canvas/graph_canvas.tscn" id="2_7e6fp"]
+[ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://New Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="6_4t6x8"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://New Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="6_pvdih"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="7_7e6fp"]
+[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="7_tc6tp"]
+[ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://New Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="8_k8b6b"]
+[ext_resource type="PackedScene" uid="uid://ojae0y7pvy22" path="res://Levels/HintPopup/hint_popup.tscn" id="9_dkv23"]
+[ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="9_k8b6b"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="9_lx7qo"]
+[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/soundreality-notification-tone-443095.mp3" id="10_lx7qo"]
+[ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="11_dkv23"]
+[ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="12_lx7qo"]
 
-[node name="TestLevel" unique_id=921743447 instance=ExtResource("1_3158n")]
+[sub_resource type="CanvasTexture" id="CanvasTexture_4t6x8"]
 
-[node name="GraphEdit" parent="." index="0" unique_id=1777296774]
-visible = false
-show_grid = false
-snapping_enabled = false
+[sub_resource type="Animation" id="Animation_xh4c7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/HintPopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
-[node name="InputNode" parent="GraphEdit" index="0" unique_id=736657052 instance=ExtResource("2_ub4j8")]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 288.0
-offset_right = 258.0
-offset_bottom = 354.0
-mouse_filter = 1
-position_offset = Vector2(192, 288)
-value = 1
+[sub_resource type="Animation" id="Animation_h12gg"]
+resource_name = "show_hint"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/HintPopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
-[node name="OutputNode" parent="GraphEdit" index="2" unique_id=1426663194 instance=ExtResource("3_pvdih")]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 96.0
-offset_right = 960.0
-offset_bottom = 160.0
-mouse_filter = 1
-position_offset = Vector2(896, 96)
-value = 2
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x458k"]
+_data = {
+&"RESET": SubResource("Animation_xh4c7"),
+&"show_hint": SubResource("Animation_h12gg")
+}
 
-[node name="OutputNode2" parent="GraphEdit" index="3" unique_id=634508288 instance=ExtResource("3_pvdih")]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 224.0
-offset_right = 960.0
-offset_bottom = 288.0
-mouse_filter = 1
-position_offset = Vector2(896, 224)
-value = 3
+[sub_resource type="SystemFont" id="SystemFont_tke54"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
 
-[node name="OutputNode3" parent="GraphEdit" index="4" unique_id=78909880 instance=ExtResource("3_pvdih")]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 352.0
-offset_right = 960.0
-offset_bottom = 416.0
-mouse_filter = 1
-position_offset = Vector2(896, 352)
-value = 4
+[sub_resource type="LabelSettings" id="LabelSettings_ouwm7"]
+font = SubResource("SystemFont_tke54")
+font_size = 64
+font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
 
-[node name="OutputNode4" parent="GraphEdit" index="5" unique_id=1028027343 instance=ExtResource("3_pvdih")]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 480.0
-offset_right = 960.0
-offset_bottom = 544.0
-mouse_filter = 1
-position_offset = Vector2(896, 480)
-value = 5
+[node name="TestLevel" type="Node2D" unique_id=1406629895]
+script = ExtResource("1_7e6fp")
 
-[node name="SubtractOperation" parent="GraphEdit" index="6" unique_id=749474698 instance=ExtResource("4_7e6fp")]
-layout_mode = 0
-offset_left = 672.0
-offset_top = 400.0
-offset_right = 736.0
-offset_bottom = 496.0
-mouse_filter = 1
-position_offset = Vector2(672, 400)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=648646161]
+modulate = Color(0.92941177, 0.9372549, 0.8627451, 1)
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("CanvasTexture_4t6x8")
 
-[node name="SumOperation" parent="GraphEdit" index="7" unique_id=163396201 instance=ExtResource("5_4t6x8")]
-layout_mode = 0
-offset_left = 672.0
-offset_top = 144.0
-offset_right = 736.0
-offset_bottom = 240.0
-mouse_filter = 1
-position_offset = Vector2(672, 144)
-
-[node name="SumOperation2" parent="GraphEdit" index="8" unique_id=1787910304 instance=ExtResource("5_4t6x8")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 400.0
-offset_right = 480.0
-offset_bottom = 496.0
-mouse_filter = 1
-position_offset = Vector2(416, 400)
-
-[node name="SumOperation3" parent="GraphEdit" index="9" unique_id=410761621 instance=ExtResource("5_4t6x8")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 144.0
-offset_right = 480.0
-offset_bottom = 240.0
-mouse_filter = 1
-position_offset = Vector2(416, 144)
-
-[node name="GraphEdit2" parent="." index="1" unique_id=1723771705 instance=ExtResource("6_ub4j8")]
+[node name="GraphCanvas" parent="." unique_id=90730119 instance=ExtResource("2_7e6fp")]
 unique_name_in_owner = true
-layout_mode = 0
-show_grid = false
-snapping_enabled = false
 
-[node name="InputNode" parent="GraphEdit2" index="0" unique_id=215199844 instance=ExtResource("2_ub4j8")]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 288.0
-offset_right = 258.0
-offset_bottom = 354.0
-mouse_filter = 1
-position_offset = Vector2(192, 288)
-value = 1
+[node name="InputNode" parent="GraphCanvas" unique_id=1370377095 instance=ExtResource("7_7e6fp")]
+position = Vector2(121, 233)
+value = 6
 
-[node name="OutputNode" parent="GraphEdit2" index="2" unique_id=2144029364 instance=ExtResource("3_pvdih")]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 96.0
-offset_right = 960.0
-offset_bottom = 160.0
-mouse_filter = 1
-position_offset = Vector2(896, 96)
-value = 2
+[node name="InputNode2" parent="GraphCanvas" unique_id=1985564578 instance=ExtResource("7_7e6fp")]
+position = Vector2(111, 482)
 
-[node name="OutputNode2" parent="GraphEdit2" index="3" unique_id=1933217259 instance=ExtResource("3_pvdih")]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 224.0
-offset_right = 960.0
-offset_bottom = 288.0
-mouse_filter = 1
-position_offset = Vector2(896, 224)
-value = 3
+[node name="OutputNode" parent="GraphCanvas" unique_id=1924490215 instance=ExtResource("9_lx7qo")]
+position = Vector2(1048, 317)
 
-[node name="OutputNode3" parent="GraphEdit2" index="4" unique_id=1722230509 instance=ExtResource("3_pvdih")]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 352.0
-offset_right = 960.0
-offset_bottom = 416.0
-mouse_filter = 1
-position_offset = Vector2(896, 352)
-value = 4
+[node name="OutputNode2" parent="GraphCanvas" unique_id=1326295916 instance=ExtResource("9_lx7qo")]
+position = Vector2(1052, 467)
+value = 11
 
-[node name="OutputNode4" parent="GraphEdit2" index="5" unique_id=769164704 instance=ExtResource("3_pvdih")]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 480.0
-offset_right = 960.0
-offset_bottom = 544.0
-mouse_filter = 1
-position_offset = Vector2(896, 480)
-value = 5
+[node name="SubtractNode" parent="GraphCanvas" unique_id=1134007312 instance=ExtResource("7_tc6tp")]
+position = Vector2(641, 303)
 
-[node name="SubtractOperation" parent="GraphEdit2" index="6" unique_id=2068720689 instance=ExtResource("4_7e6fp")]
-layout_mode = 0
-offset_left = 672.0
-offset_top = 400.0
-offset_right = 736.0
-offset_bottom = 496.0
-mouse_filter = 1
-position_offset = Vector2(672, 400)
+[node name="AddValueNode" parent="GraphCanvas" unique_id=1512119247 instance=ExtResource("6_pvdih")]
+position = Vector2(346, 263)
 
-[node name="SubtractOperation3" parent="GraphEdit2" index="7" unique_id=1338179091 instance=ExtResource("4_7e6fp")]
-layout_mode = 0
-offset_left = 672.0
-offset_top = 272.0
-offset_right = 736.0
-offset_bottom = 368.0
-mouse_filter = 1
-position_offset = Vector2(672, 272)
+[node name="SumNode" parent="GraphCanvas" unique_id=1459015131 instance=ExtResource("6_4t6x8")]
+position = Vector2(370, 462)
 
-[node name="SubtractOperation2" parent="GraphEdit2" index="8" unique_id=1448098641 instance=ExtResource("4_7e6fp")]
-layout_mode = 0
-offset_left = 672.0
-offset_top = 144.0
-offset_right = 736.0
-offset_bottom = 240.0
-mouse_filter = 1
-position_offset = Vector2(672, 144)
+[node name="StoreNode" parent="GraphCanvas" unique_id=879742008 instance=ExtResource("8_k8b6b")]
+position = Vector2(652, 487)
 
-[node name="SumOperation2" parent="GraphEdit2" index="9" unique_id=1615654929 instance=ExtResource("5_4t6x8")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 400.0
-offset_right = 480.0
-offset_bottom = 496.0
-mouse_filter = 1
-position_offset = Vector2(416, 400)
+[node name="BackButton" type="Button" parent="." unique_id=1968901754]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 80.0
+theme_type_variation = &"BackButton"
 
-[node name="SumOperation3" parent="GraphEdit2" index="10" unique_id=2061041847 instance=ExtResource("5_4t6x8")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 144.0
-offset_right = 480.0
-offset_bottom = 240.0
-mouse_filter = 1
-position_offset = Vector2(416, 144)
+[node name="RestartButton" type="Button" parent="." unique_id=1154201295]
+unique_name_in_owner = true
+offset_left = 992.0
+offset_top = 16.0
+offset_right = 1056.0
+offset_bottom = 80.0
+theme_type_variation = &"RestartButton"
+
+[node name="HintButton" type="Button" parent="." unique_id=731076566]
+unique_name_in_owner = true
+offset_left = 1072.0
+offset_top = 16.0
+offset_right = 1136.0
+offset_bottom = 80.0
+theme_type_variation = &"HintButton"
+
+[node name="HintPopup" parent="." unique_id=950000720 instance=ExtResource("9_dkv23")]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=588194274]
+unique_name_in_owner = true
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_x458k")
+
+[node name="LevelCompleteLabel" type="Label" parent="." unique_id=1659052927]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 320.0
+offset_top = 32.0
+offset_right = 830.0
+offset_bottom = 120.0
+text = "Level Complete"
+label_settings = SubResource("LabelSettings_ouwm7")
+horizontal_alignment = 1
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=970184025]
+unique_name_in_owner = true
+stream = ExtResource("9_k8b6b")
+
+[node name="LevelCompleteAudio" type="AudioStreamPlayer" parent="." unique_id=1699906461]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("10_lx7qo")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=868956691]
+unique_name_in_owner = true
+stream = ExtResource("11_dkv23")
+volume_db = -10.0
+
+[node name="LevelCompletePopup" parent="." unique_id=292462121 instance=ExtResource("12_lx7qo")]
+visible = false
+offset_left = 584.0
+offset_top = 329.0
+offset_right = 584.0
+offset_bottom = 329.0
