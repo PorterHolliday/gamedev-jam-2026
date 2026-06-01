@@ -1,32 +1,17 @@
-Intro:
-	How to Connect w/ Add Value
-	Multiple Outputs
-	Multiple Inputs & Multiple Outputs
-	More Complex Puzzle
-Sum/Subtract Nodes:
-	Intro to Sum Node
-	More Sum Node
-	Intro to Subtract Node
-	More Subtract Node
-	Sum & Subtract Nodes
-	Sum & Subtract Nodes
-	Sum, Subtract, & Add Value Nodes
-Store Node:
-	Intro to Store Node
-	Store Node w/ Add/Subtract Node
-	More Store Node
-	2 Store Nodes = Infinite Operations
-	More 2 Store Node
-Level Node:
-	Intro to Level Node
-	More Level Node
-	Multiple Level Nodes
-	Level Node w/ Store Node (Save one result, get another)
-	More Level Node w/ Store Node
-	Multiple Level Nodes w/ Store Node
-Finale:
-	Actual Levels have outputs
-	""
-	""
-	""
-	""
+Git Branches:
+	Level UI Update
+	Update Draggable Component Bounds & Name
+	Graph Canvas Connection Update
+	Level Update
+	Remove Old Code/Scenes
+	Level Complete Popup Update
+	Hint Popup Update
+	Level Select Update
+	Title Screen Update
+	Settings Screen + Settings Button
+	End Screen Update
+	Audio Update
+	Gameplay Animations
+	Final Check/Refactor - Add Additional Branches as Needed
+
+ANY OTHER CHANGES MUST BE ADDED TO THIS LIST BEFORE BEING IMPLEMENTED!!!
