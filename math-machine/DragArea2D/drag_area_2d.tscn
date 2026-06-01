@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cfbjles1s05dy"]
+
+[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DragArea2D/drag_area_2d.gd" id="1_xbk82"]
+
+[node name="DragArea2D" type="Area2D" unique_id=1240829746]
+physics_interpolation_mode = 2
+self_modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_xbk82")
+drag_button_indexes = Array[int]([1])
+min_position = Vector2(0, 66)
+metadata/_custom_type_script = "uid://b2k4pkccuwh8r"

@@ -1,6 +1,6 @@
 Git Branches:
-	Level UI Update
-	Update Draggable Component Bounds & Name
+	* Level UI Update
+	* Update Draggable Component Bounds & Name
 	Graph Canvas Connection Update
 	Level Update
 	Remove Old Code/Scenes

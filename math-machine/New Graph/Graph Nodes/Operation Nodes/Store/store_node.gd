@@ -1,5 +1,5 @@
 class_name StoreNode
-extends MyGraphNode2
+extends OperationNode2
 
 var value: int = 0
 @onready var value_label: Label = %ValueLabel
