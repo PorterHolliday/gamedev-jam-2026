@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cea180as2cplv" path="res://New Graph/Graph Nodes/Operation Nodes/Multiply/multiply_node.gd" id="1_gli7n"]
 [ext_resource type="Texture2D" uid="uid://d0dy7snf1csun" path="res://Graph/Graph Nodes/rectangle_node.png" id="2_k6kws"]
-[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DraggableComponent/draggable_component.gd" id="3_i4p6w"]
+[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DragArea2D/drag_area_2d.gd" id="3_i4p6w"]
 [ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://New Graph/Graph Node Port/graph_node_input.tscn" id="4_5moo5"]
 [ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://New Graph/Graph Node Port/graph_node_output.tscn" id="5_teyx4"]
 
