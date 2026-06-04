@@ -1,7 +1,8 @@
 Git Branches:
 	* Level UI Update
 	* Update Draggable Component Bounds & Name
-	Graph Canvas Connection Update
+	* Graph Canvas Connection Update
+	Update Port Value Labels
 	Level Update
 	Remove Old Code/Scenes
 	Level Complete Popup Update

@@ -33,13 +33,12 @@ value = 7
 position = Vector2(992, 448)
 value = 0
 
-[node name="PanelContainer" parent="PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]
+[node name="PanelContainer" parent="UI/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]
 offset_left = -115.0
 offset_right = 115.0
 offset_bottom = 23.0
 
-[node name="Label" parent="PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+[node name="Label" parent="UI/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
 text = "Sum & Subtract: 1"
-horizontal_alignment = 1
 
 [editable path="HintPopup"]

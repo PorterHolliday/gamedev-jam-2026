@@ -4,9 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_ykhi7"]
 [ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://New Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="3_o4co2"]
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="4_n0prt"]
-[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="5_8hp4c"]
-[ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://New Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="6_cxe3e"]
-[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://New Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="7_vcxbk"]
 
 [node name="SumSubtract1" unique_id=1073491300 instance=ExtResource("1_bwljv")]
 
@@ -30,15 +27,6 @@ value = 6
 [node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1653906786 instance=ExtResource("4_n0prt")]
 position = Vector2(992, 448)
 value = 11
-
-[node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="9" unique_id=1134007312 instance=ExtResource("5_8hp4c")]
-position = Vector2(387, 339)
-
-[node name="StoreNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="10" unique_id=879742008 instance=ExtResource("6_cxe3e")]
-position = Vector2(436, 212)
-
-[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="11" unique_id=1512119247 instance=ExtResource("7_vcxbk")]
-position = Vector2(273, 162)
 
 [node name="Label" parent="UI/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
 text = "Sum & Subtract: 1"
