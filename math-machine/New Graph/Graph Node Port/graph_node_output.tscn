@@ -11,7 +11,7 @@ radius = 24.0
 [node name="GraphNodeOutput" type="Marker2D" unique_id=2095797941]
 script = ExtResource("1_j0l1v")
 type = 1
-connection_border_color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+connection_color = Color(0.8730344, 0.53234875, 0.30797088, 1)
 metadata/_custom_type_script = "uid://igltm2xbx00c"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=689805829]

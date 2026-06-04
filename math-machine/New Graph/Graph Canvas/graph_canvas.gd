@@ -1,12 +1,14 @@
 class_name GraphCanvas
 extends Node2D
 
-const DISCONNECTION_DISTANCE := 40.0
-const BEZIER_SAMPLES := 40
-const LINE_WIDTH := 10.0
-const BORDER_WIDTH: float = 2.0
-const PREVIEW_COLOR := Color(1.0, 1.0, 1.0, 0.8)
+const DISCONNECTION_DISTANCE: float = 40.0
+const BEZIER_SAMPLES: float = 40
+const LINE_WIDTH: float = 4.0
+const BORDER_WIDTH: float = 4.0
+const PREVIEW_COLOR: Color = Color(1.0, 1.0, 1.0, 0.8)
 const BORDER_PREVIEW_COLOR: Color = Color(0.6, 0.6, 0.6, 0.6)
+const SHADOW_OFFSET: Vector2 = Vector2(2, 2)
+const SHADOW_COLOR: Color = Color(Color.BLACK, 0.64)
 
 signal connection_occurred
 signal disconnection_occurred
@@ -120,7 +122,8 @@ func _draw_connection(connection: Connection) -> void:
 			to_local(connection.from_port.global_position),
 			to_local(connection.to_port.global_position),
 			connection.from_port.connection_color,
-			connection.from_port.connection_border_color
+			connection.from_port.connection_border_color,
+			true
 		)
 	
 func _draw_current_connection() -> void:
@@ -130,11 +133,11 @@ func _draw_current_connection() -> void:
 				if current_connection_end_port != null \
 				else get_local_mouse_position()
 		if current_connection_start_port.type == GraphNodePort.Type.OUTPUT:
-			_draw_bezier(start, end, PREVIEW_COLOR, BORDER_PREVIEW_COLOR)
+			_draw_bezier(start, end, PREVIEW_COLOR, BORDER_PREVIEW_COLOR, false)
 		else:
-			_draw_bezier(end, start, PREVIEW_COLOR, BORDER_PREVIEW_COLOR)
+			_draw_bezier(end, start, PREVIEW_COLOR, BORDER_PREVIEW_COLOR, false)
 		
-func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color) -> void:
+func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color, draw_shadow: bool) -> void:
 	var offset := Vector2(abs(to.x - from.x) * 0.5, 0.0)
 	var p0 := from
 	var p1 := from + offset
@@ -143,11 +146,16 @@ func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color)
 
 	var points := PackedVector2Array()
 	points.resize(BEZIER_SAMPLES + 1)
+	var shadow_points := PackedVector2Array()
+	shadow_points.resize(BEZIER_SAMPLES + 1)
 	for i in range(BEZIER_SAMPLES + 1):
 		var t := float(i) / float(BEZIER_SAMPLES)
 		var u := 1.0 - t
 		points[i] = u*u*u*p0 + 3.0*u*u*t*p1 + 3.0*u*t*t*p2 + t*t*t*p3
+		shadow_points[i] = points[i] + SHADOW_OFFSET
 
+	if draw_shadow:
+		draw_polyline(shadow_points, SHADOW_COLOR, LINE_WIDTH + BORDER_WIDTH * 2.0, true)
 	draw_polyline(points, border_color, LINE_WIDTH + BORDER_WIDTH * 2.0, true)
 	draw_polyline(points, color, LINE_WIDTH, true)
 	
