@@ -88,8 +88,6 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\">
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mfn8g"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nb47"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_stq8r"]
 texture = ExtResource("4_s88dg")
 
@@ -165,9 +163,6 @@ GraphNode/styles/slot = SubResource("StyleBoxEmpty_pd6sc")
 GraphNode/styles/slot_selected = SubResource("StyleBoxEmpty_2l2ys")
 GraphNode/styles/titlebar = SubResource("StyleBoxEmpty_jvwys")
 GraphNode/styles/titlebar_selected = SubResource("StyleBoxEmpty_mfn8g")
-GraphNodeTitleLabel/constants/line_spacing = 0
-GraphNodeTitleLabel/font_sizes/font_size = 16
-GraphNodeTitleLabel/styles/focus = SubResource("StyleBoxEmpty_4nb47")
 HintButton/base_type = &"Button"
 HintButton/styles/hover = SubResource("StyleBoxTexture_stq8r")
 HintButton/styles/normal = SubResource("StyleBoxTexture_cj60n")

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dq7cmcucj1jdy" path="res://New Graph/Graph Node Port/port_shadow.png" id="2_1h452"]
 [ext_resource type="Texture2D" uid="uid://bxk6rmw3swbbr" path="res://New Graph/Graph Node Port/port.png" id="2_7mlao"]
 [ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_ykvyb"]
+[ext_resource type="Script" uid="uid://byh1bnt7lgfl8" path="res://UI/DirectionalExpandContainer/directional_expand_container.gd" id="4_dptiu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mlao"]
 radius = 24.0
@@ -30,10 +31,16 @@ texture = ExtResource("2_1h452")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_7mlao")
 
-[node name="Label" type="Label" parent="." unique_id=1749924856]
-unique_name_in_owner = true
+[node name="DirectionalExpandContainer" type="Container" parent="." unique_id=1787146700]
 offset_left = 6.0
-offset_top = -31.0
-offset_right = 70.0
-offset_bottom = -8.0
+offset_top = -35.0
+offset_right = 7.0
+offset_bottom = -14.0
+script = ExtResource("4_dptiu")
+metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
+
+[node name="Label" type="Label" parent="DirectionalExpandContainer" unique_id=1749924856]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
 label_settings = ExtResource("3_ykvyb")
