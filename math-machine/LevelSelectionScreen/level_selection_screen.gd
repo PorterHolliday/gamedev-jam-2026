@@ -29,7 +29,7 @@ func _number_level_buttons() -> void:
 		if child is LevelButton:
 			child.pressed.connect(func():
 				_on_level_button_pressed(child))
-			if level_number <= 3:
+			if level_number <= 2:
 				child.level_number = 'T' + str(level_number)
 			else:
 				child.level_number = str(level_number-3)

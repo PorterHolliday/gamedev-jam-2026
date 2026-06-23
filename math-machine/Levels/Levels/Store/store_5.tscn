@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dflydoltemh5e"]
+
+[ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_dkti1"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_qkapo"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="3_4vbao"]
+[ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://New Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="4_a5xod"]
+[ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://New Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="4_qkapo"]
+[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="5_vqhpx"]
+
+[node name="Store5" unique_id=1073491300 instance=ExtResource("1_dkti1")]
+
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_qkapo")]
+position = Vector2(160, 288)
+value = 2
+
+[node name="InputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=378892100 instance=ExtResource("2_qkapo")]
+position = Vector2(160, 416)
+value = 7
+
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1924490215 instance=ExtResource("3_4vbao")]
+position = Vector2(992, 224)
+
+[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=30320394 instance=ExtResource("3_4vbao")]
+position = Vector2(992, 352)
+value = 10
+
+[node name="OutputNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=371468091 instance=ExtResource("3_4vbao")]
+position = Vector2(992, 480)
+value = 19
+
+[node name="SumNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="8" unique_id=1459015131 instance=ExtResource("4_qkapo")]
+position = Vector2(448, 256)
+
+[node name="StoreNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="9" unique_id=879742008 instance=ExtResource("4_a5xod")]
+position = Vector2(704, 256)
+
+[node name="StoreNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="10" unique_id=1025037621 instance=ExtResource("4_a5xod")]
+position = Vector2(704, 448)
+
+[node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="11" unique_id=1134007312 instance=ExtResource("5_vqhpx")]
+position = Vector2(448, 448)
+
+[node name="PanelContainer" parent="UI/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]
+offset_left = -115.0
+offset_right = 115.0
+offset_bottom = 23.0
+
+[node name="Label" parent="UI/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+text = "Storage: 5"
+
+[node name="Hint" parent="UI/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1289930638) index="0" unique_id=47662854]
+text = "First get 10 stored in a green block."
+
+[editable path="UI/HintPopup"]

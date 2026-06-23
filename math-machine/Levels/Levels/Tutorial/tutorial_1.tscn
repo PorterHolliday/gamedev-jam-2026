@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(208, 304)]
+"values": [Vector2(176, 304)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.6, 3.01, 3.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(208, 304), Vector2(208, 304), Vector2(912, 208), Vector2(912, 208)]
+"values": [Vector2(176, 304), Vector2(176, 304), Vector2(944, 208), Vector2(944, 208)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -96,37 +96,40 @@ value = 3
 position = Vector2(992, 496)
 value = 4
 
-[node name="BackButton" parent="." index="2" unique_id=629111258]
+[node name="BackButton" parent="UI/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="0" unique_id=629111258]
 metadata/_edit_lock_ = true
 
-[node name="RestartButton" parent="." index="3" unique_id=930462941]
+[node name="Label" parent="UI/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+text = "Tutorial: 1"
+
+[node name="RestartButton" parent="UI/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="0" unique_id=930462941]
 metadata/_edit_lock_ = true
 
-[node name="HintButton" parent="." index="4" unique_id=348902469]
+[node name="HintButton" parent="UI/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="1" unique_id=348902469]
 metadata/_edit_lock_ = true
+
+[node name="HintPopup" parent="UI" parent_id_path=PackedInt32Array(1147669631) index="1" unique_id=950000720]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Hint" parent="UI/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1289930638) index="0" unique_id=47662854]
+text = "Click and drag to connect blocks."
 
 [node name="HandIcon" type="TextureRect" parent="." index="5" unique_id=762774428]
-offset_left = 208.0
+offset_left = 176.0
 offset_top = 304.0
-offset_right = 255.99762
-offset_bottom = 368.0024
+offset_right = 223.99756
+offset_bottom = 368.0027
 mouse_filter = 2
 texture = ExtResource("4_nrwey")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HintPopup" parent="." index="6" unique_id=950000720]
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[node name="Hint" parent="HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1945544030) index="0" unique_id=47662854]
-text = "Click and drag to connect blocks."
-
-[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="8" unique_id=322318621]
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="7" unique_id=322318621]
 libraries/ = SubResource("AnimationLibrary_fobbe")
 autoplay = &"tutorial"
 
 [connection signal="connection_occurred" from="GraphCanvas" to="HandIcon" method="hide"]
 [connection signal="connection_occurred" from="GraphCanvas" to="TutorialAnimationPlayer" method="pause"]
 
-[editable path="HintPopup"]
+[editable path="UI/HintPopup"]

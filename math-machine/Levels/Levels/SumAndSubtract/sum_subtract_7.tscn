@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://d2xn5c2bptr6e"]
+
+[ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_1al5i"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_r8nip"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="3_qxc4n"]
+[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="5_ohvox"]
+
+[node name="SumSubtract7" unique_id=1073491300 instance=ExtResource("1_1al5i")]
+
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_r8nip")]
+position = Vector2(160, 256)
+value = 0
+
+[node name="InputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=475549016 instance=ExtResource("2_r8nip")]
+position = Vector2(160, 448)
+value = 7
+
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1924490215 instance=ExtResource("3_qxc4n")]
+position = Vector2(992, 352)
+value = 14
+
+[node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1134007312 instance=ExtResource("5_ohvox")]
+position = Vector2(576, 256)
+
+[node name="SubtractNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1614070819 instance=ExtResource("5_ohvox")]
+position = Vector2(576, 448)
+
+[node name="PanelContainer" parent="UI/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]
+offset_left = -115.0
+offset_right = 115.0
+offset_bottom = 23.0
+
+[node name="Label" parent="UI/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+text = "Sum & Subtract: 7"
+
+[node name="Hint" parent="UI/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1289930638) index="0" unique_id=47662854]
+text = "What happens when you subtract a negative number?
+(Put it on the bottom)"
+
+[editable path="UI/HintPopup"]

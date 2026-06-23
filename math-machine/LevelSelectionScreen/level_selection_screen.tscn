@@ -3,32 +3,31 @@
 [ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelSelectionScreen/LevelButton/level_button.tscn" id="1_bntq0"]
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
 [ext_resource type="LabelSettings" uid="uid://p5y2u4bbu5w8" path="res://LabelSettings/title_label_settings.tres" id="3_l6jef"]
-[ext_resource type="PackedScene" uid="uid://ytq8ln7owyxr" path="res://Levels/Levels/Deprecated/AddValue/level_1.tscn" id="3_whgxd"]
 [ext_resource type="PackedScene" uid="uid://ccwmpw8ywqwff" path="res://Levels/Levels/Tutorial/tutorial_1.tscn" id="4_l6jef"]
 [ext_resource type="PackedScene" uid="uid://gtn1hy00v6mt" path="res://Levels/Levels/Tutorial/tutorial_2.tscn" id="5_l6jef"]
-[ext_resource type="PackedScene" uid="uid://dbpsj8n6346mv" path="res://Levels/Levels/Deprecated/Tutorial/level_3.tscn" id="6_djp6x"]
-[ext_resource type="PackedScene" uid="uid://blcvrd4k8ts3x" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_5.tscn" id="8_s16oa"]
-[ext_resource type="PackedScene" uid="uid://d4f8grrmkga2g" path="res://Levels/Levels/Deprecated/AddValue/level_2.tscn" id="8_tsht8"]
-[ext_resource type="PackedScene" uid="uid://dfesk0ify5r4n" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_6.tscn" id="9_djp6x"]
-[ext_resource type="PackedScene" uid="uid://cr3ubn3ko62t2" path="res://Levels/Levels/Deprecated/AddValue/level_3.tscn" id="9_tsht8"]
-[ext_resource type="PackedScene" uid="uid://dkqjmtg7qcwdr" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_7.tscn" id="10_wvxo5"]
-[ext_resource type="PackedScene" uid="uid://0y0h501tiyyq" path="res://Levels/Levels/Deprecated/AddValue/level_4.tscn" id="10_yiuws"]
-[ext_resource type="PackedScene" uid="uid://i4gxgham6edv" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_8.tscn" id="11_n686a"]
-[ext_resource type="PackedScene" uid="uid://deqpbagfggt00" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_9.tscn" id="12_tsht8"]
-[ext_resource type="PackedScene" uid="uid://c1q2kn5wdmq37" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_10.tscn" id="13_vi82w"]
-[ext_resource type="PackedScene" uid="uid://bomdu62m7xul1" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_11.tscn" id="14_hxkdi"]
-[ext_resource type="PackedScene" uid="uid://dy2wcgj48gw3g" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_13.tscn" id="15_yiuws"]
-[ext_resource type="PackedScene" uid="uid://cgjod315owu1n" path="res://Levels/Levels/Deprecated/Store/level_13.tscn" id="16_nrn4x"]
-[ext_resource type="PackedScene" uid="uid://dyydyyxtrw40y" path="res://Levels/Levels/Deprecated/Store/level_14.tscn" id="17_4f8od"]
-[ext_resource type="PackedScene" uid="uid://nu3amnhopc64" path="res://Levels/Levels/Deprecated/Store/level_15.tscn" id="18_l6jef"]
-[ext_resource type="PackedScene" uid="uid://cyqca4ep1ac6q" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_12.tscn" id="18_nrn4x"]
-[ext_resource type="PackedScene" uid="uid://j8mkjtbil2uu" path="res://Levels/Levels/Deprecated/Store/level_16.tscn" id="19_1fsxm"]
-[ext_resource type="PackedScene" uid="uid://t4mv8h8am2sl" path="res://Levels/Levels/Deprecated/SumAndSubtract/level_14.tscn" id="20_4f8od"]
-[ext_resource type="PackedScene" uid="uid://bmy6gpljcu08j" path="res://Levels/Levels/Deprecated/Store/level_17.tscn" id="20_pena4"]
-[ext_resource type="PackedScene" uid="uid://31dr8hl1xd8m" path="res://Levels/Levels/Deprecated/Store/level_18.tscn" id="21_nqun2"]
+[ext_resource type="PackedScene" uid="uid://dgnnb2x4vurq2" path="res://Levels/Levels/AddValue/add_value_1.tscn" id="6_4f8od"]
+[ext_resource type="PackedScene" uid="uid://bd8sgsvenfu2m" path="res://Levels/Levels/AddValue/add_value_2.tscn" id="7_l6jef"]
+[ext_resource type="PackedScene" uid="uid://deeiubaorhowk" path="res://Levels/Levels/AddValue/add_value_3.tscn" id="8_1fsxm"]
+[ext_resource type="PackedScene" uid="uid://dkyidum7h2hbs" path="res://Levels/Levels/AddValue/add_value_4.tscn" id="9_pena4"]
+[ext_resource type="PackedScene" uid="uid://bxtja1fem475h" path="res://Levels/Levels/SumAndSubtract/sum_subtract_1.tscn" id="10_nqun2"]
+[ext_resource type="PackedScene" uid="uid://c2nf7tyc8lc3i" path="res://Levels/Levels/SumAndSubtract/sum_subtract_2.tscn" id="11_sjtsq"]
+[ext_resource type="PackedScene" uid="uid://bqft2p4g63444" path="res://Levels/Levels/SumAndSubtract/sum_subtract_3.tscn" id="12_xj8vr"]
+[ext_resource type="PackedScene" uid="uid://bl6w6gbravx8t" path="res://Levels/Levels/SumAndSubtract/sum_subtract_4.tscn" id="13_dl2l4"]
+[ext_resource type="PackedScene" uid="uid://bfa34iijso61j" path="res://Levels/Levels/SumAndSubtract/sum_subtract_5.tscn" id="14_exp6r"]
+[ext_resource type="PackedScene" uid="uid://dv8vdsv2bcy74" path="res://Levels/Levels/SumAndSubtract/sum_subtract_6.tscn" id="15_tltue"]
+[ext_resource type="PackedScene" uid="uid://d2xn5c2bptr6e" path="res://Levels/Levels/SumAndSubtract/sum_subtract_7.tscn" id="16_q7sjo"]
+[ext_resource type="PackedScene" uid="uid://3itpswv2bs5q" path="res://Levels/Levels/SumAndSubtract/sum_subtract_8.tscn" id="17_sqy4a"]
+[ext_resource type="PackedScene" uid="uid://i4bko4cv4que" path="res://Levels/Levels/SumAndSubtract/sum_subtract_9.tscn" id="18_wjokm"]
+[ext_resource type="PackedScene" uid="uid://w8niccj12ken" path="res://Levels/Levels/SumAndSubtract/sum_subtract_10.tscn" id="19_3cybt"]
+[ext_resource type="PackedScene" uid="uid://4134ilw77mg8" path="res://Levels/Levels/Store/store_1.tscn" id="20_t3rau"]
+[ext_resource type="PackedScene" uid="uid://cwxb28imqenia" path="res://Levels/Levels/Store/store_2.tscn" id="21_kaobb"]
+[ext_resource type="PackedScene" uid="uid://clcequu140cle" path="res://Levels/Levels/Store/store_3.tscn" id="22_kqpbi"]
 [ext_resource type="Texture2D" uid="uid://duefwu7uo0c1q" path="res://LevelSelectionScreen/gray_section.png" id="23_n686a"]
+[ext_resource type="PackedScene" uid="uid://doug8iiv8wl33" path="res://Levels/Levels/Store/store_4.tscn" id="23_nbrox"]
+[ext_resource type="PackedScene" uid="uid://dflydoltemh5e" path="res://Levels/Levels/Store/store_5.tscn" id="24_quhkn"]
 [ext_resource type="Texture2D" uid="uid://byp4kbhyqa05k" path="res://LevelSelectionScreen/blue_section.png" id="24_tsht8"]
 [ext_resource type="Texture2D" uid="uid://bg5sehb7hwa7q" path="res://LevelSelectionScreen/red_yellow_section.png" id="25_vi82w"]
+[ext_resource type="PackedScene" uid="uid://wk0sn1mrfgm4" path="res://Levels/Levels/Store/store_6.tscn" id="25_xqmbg"]
 [ext_resource type="Texture2D" uid="uid://c28w11vw1caj3" path="res://LevelSelectionScreen/green_section.png" id="26_hxkdi"]
 [ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="29_hxkdi"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="31_l6jef"]
@@ -264,21 +263,13 @@ offset_right = 608.0
 offset_bottom = 256.0
 level_scene = ExtResource("5_l6jef")
 
-[node name="LevelButton3" parent="." unique_id=1729385555 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 608.0
-offset_top = 208.0
-offset_right = 656.0
-offset_bottom = 256.0
-level_scene = ExtResource("6_djp6x")
-
 [node name="LevelButton4" parent="." unique_id=1518741277 instance=ExtResource("1_bntq0")]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 272.0
 offset_right = 560.0
 offset_bottom = 320.0
-level_scene = ExtResource("3_whgxd")
+level_scene = ExtResource("6_4f8od")
 
 [node name="LevelButton5" parent="." unique_id=1140446776 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -286,7 +277,7 @@ offset_left = 560.0
 offset_top = 272.0
 offset_right = 608.0
 offset_bottom = 320.0
-level_scene = ExtResource("8_tsht8")
+level_scene = ExtResource("7_l6jef")
 
 [node name="LevelButton21" parent="." unique_id=1415051951 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -294,7 +285,7 @@ offset_left = 608.0
 offset_top = 272.0
 offset_right = 656.0
 offset_bottom = 320.0
-level_scene = ExtResource("9_tsht8")
+level_scene = ExtResource("8_1fsxm")
 
 [node name="LevelButton6" parent="." unique_id=1398013742 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -302,7 +293,7 @@ offset_left = 656.0
 offset_top = 272.0
 offset_right = 704.0
 offset_bottom = 320.0
-level_scene = ExtResource("10_yiuws")
+level_scene = ExtResource("9_pena4")
 
 [node name="LevelButton7" parent="." unique_id=1067007151 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -310,7 +301,7 @@ offset_left = 512.0
 offset_top = 336.0
 offset_right = 560.0
 offset_bottom = 384.0
-level_scene = ExtResource("8_s16oa")
+level_scene = ExtResource("10_nqun2")
 
 [node name="LevelButton8" parent="." unique_id=328680659 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -318,7 +309,7 @@ offset_left = 560.0
 offset_top = 336.0
 offset_right = 608.0
 offset_bottom = 384.0
-level_scene = ExtResource("9_djp6x")
+level_scene = ExtResource("11_sjtsq")
 
 [node name="LevelButton9" parent="." unique_id=1757024622 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -326,7 +317,7 @@ offset_left = 608.0
 offset_top = 336.0
 offset_right = 656.0
 offset_bottom = 384.0
-level_scene = ExtResource("10_wvxo5")
+level_scene = ExtResource("12_xj8vr")
 
 [node name="LevelButton22" parent="." unique_id=185790884 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -334,7 +325,7 @@ offset_left = 656.0
 offset_top = 336.0
 offset_right = 704.0
 offset_bottom = 384.0
-level_scene = ExtResource("14_hxkdi")
+level_scene = ExtResource("13_dl2l4")
 
 [node name="LevelButton10" parent="." unique_id=1433417262 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -342,7 +333,7 @@ offset_left = 704.0
 offset_top = 336.0
 offset_right = 752.0
 offset_bottom = 384.0
-level_scene = ExtResource("11_n686a")
+level_scene = ExtResource("14_exp6r")
 
 [node name="LevelButton11" parent="." unique_id=941233518 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -350,7 +341,7 @@ offset_left = 512.0
 offset_top = 384.0
 offset_right = 560.0
 offset_bottom = 432.0
-level_scene = ExtResource("12_tsht8")
+level_scene = ExtResource("15_tltue")
 
 [node name="LevelButton12" parent="." unique_id=1423079273 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -358,7 +349,7 @@ offset_left = 560.0
 offset_top = 384.0
 offset_right = 608.0
 offset_bottom = 432.0
-level_scene = ExtResource("13_vi82w")
+level_scene = ExtResource("16_q7sjo")
 
 [node name="LevelButton13" parent="." unique_id=1802468550 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -366,7 +357,7 @@ offset_left = 608.0
 offset_top = 384.0
 offset_right = 656.0
 offset_bottom = 432.0
-level_scene = ExtResource("18_nrn4x")
+level_scene = ExtResource("17_sqy4a")
 
 [node name="LevelButton14" parent="." unique_id=1364846621 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -374,7 +365,7 @@ offset_left = 656.0
 offset_top = 384.0
 offset_right = 704.0
 offset_bottom = 432.0
-level_scene = ExtResource("15_yiuws")
+level_scene = ExtResource("18_wjokm")
 
 [node name="LevelButton23" parent="." unique_id=33864835 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -382,7 +373,7 @@ offset_left = 704.0
 offset_top = 384.0
 offset_right = 752.0
 offset_bottom = 432.0
-level_scene = ExtResource("20_4f8od")
+level_scene = ExtResource("19_3cybt")
 
 [node name="LevelButton15" parent="." unique_id=247262557 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -390,7 +381,7 @@ offset_left = 512.0
 offset_top = 448.0
 offset_right = 560.0
 offset_bottom = 496.0
-level_scene = ExtResource("16_nrn4x")
+level_scene = ExtResource("20_t3rau")
 
 [node name="LevelButton16" parent="." unique_id=218652785 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -398,7 +389,7 @@ offset_left = 560.0
 offset_top = 448.0
 offset_right = 608.0
 offset_bottom = 496.0
-level_scene = ExtResource("17_4f8od")
+level_scene = ExtResource("21_kaobb")
 
 [node name="LevelButton17" parent="." unique_id=1705133428 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -406,7 +397,7 @@ offset_left = 608.0
 offset_top = 448.0
 offset_right = 656.0
 offset_bottom = 496.0
-level_scene = ExtResource("18_l6jef")
+level_scene = ExtResource("22_kqpbi")
 
 [node name="LevelButton18" parent="." unique_id=1914789741 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -414,7 +405,7 @@ offset_left = 656.0
 offset_top = 448.0
 offset_right = 704.0
 offset_bottom = 496.0
-level_scene = ExtResource("19_1fsxm")
+level_scene = ExtResource("23_nbrox")
 
 [node name="LevelButton19" parent="." unique_id=683457002 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -422,7 +413,7 @@ offset_left = 704.0
 offset_top = 448.0
 offset_right = 752.0
 offset_bottom = 496.0
-level_scene = ExtResource("20_pena4")
+level_scene = ExtResource("24_quhkn")
 
 [node name="LevelButton20" parent="." unique_id=1071956409 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -430,7 +421,7 @@ offset_left = 752.0
 offset_top = 448.0
 offset_right = 800.0
 offset_bottom = 496.0
-level_scene = ExtResource("21_nqun2")
+level_scene = ExtResource("25_xqmbg")
 
 [node name="BackButton" type="Button" parent="." unique_id=23307136]
 unique_name_in_owner = true

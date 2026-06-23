@@ -118,16 +118,26 @@ value = 5
 position = Vector2(992, 448)
 value = 3
 
-[node name="BackButton" parent="." index="2" unique_id=629111258]
+[node name="BackButton" parent="UI/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="0" unique_id=629111258]
 metadata/_edit_lock_ = true
 
-[node name="RestartButton" parent="." index="3" unique_id=930462941]
+[node name="Label" parent="UI/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+text = "Tutorial: 2"
+
+[node name="RestartButton" parent="UI/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="0" unique_id=930462941]
 metadata/_edit_lock_ = true
 
-[node name="HintButton" parent="." index="4" unique_id=348902469]
+[node name="HintButton" parent="UI/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="1" unique_id=348902469]
 metadata/_edit_lock_ = true
 
-[node name="RightClickIcon" type="TextureRect" parent="." index="5" unique_id=1704541209]
+[node name="HintPopup" parent="UI" parent_id_path=PackedInt32Array(1147669631) index="1" unique_id=950000720]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Hint" parent="UI/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1289930638) index="0" unique_id=47662854]
+text = "Right-click to remove a connection."
+
+[node name="RightClickIcon" type="TextureRect" parent="." index="3" unique_id=1704541209]
 visible = false
 offset_left = 560.0
 offset_top = 256.0
@@ -138,18 +148,11 @@ texture = ExtResource("4_3pjiv")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HintPopup" parent="." index="6" unique_id=950000720]
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[node name="Hint" parent="HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1945544030) index="0" unique_id=47662854]
-text = "Click and drag to connect blocks."
-
-[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="8" unique_id=706738908]
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="7" unique_id=706738908]
 libraries/ = SubResource("AnimationLibrary_j1a6v")
 autoplay = &"tutorial"
 
 [connection signal="disconnection_occurred" from="GraphCanvas" to="RightClickIcon" method="hide"]
 [connection signal="disconnection_occurred" from="GraphCanvas" to="TutorialAnimationPlayer" method="pause"]
 
-[editable path="HintPopup"]
+[editable path="UI/HintPopup"]
