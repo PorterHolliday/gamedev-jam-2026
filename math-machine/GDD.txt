@@ -3,7 +3,7 @@ Git Branches:
 	* Update Draggable Component Bounds & Name
 	* Graph Canvas Connection Update
 	* Update Port Value Labels
-	Level Update
+	* Level Update
 	Remove Old Code/Scenes
 	Level Complete Popup Update
 	Hint Popup Update
