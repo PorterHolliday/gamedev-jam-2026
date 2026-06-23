@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bl6w6gbravx8t"]
+
+[ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_3t1jg"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_px7c4"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://New Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="3_f8v0l"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="5_0p3ml"]
+[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="5_3t1jg"]
+
+[node name="SumSubtract4" unique_id=1073491300 instance=ExtResource("1_3t1jg")]
+
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_px7c4")]
+position = Vector2(160, 256)
+value = 6
+
+[node name="InputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=475549016 instance=ExtResource("2_px7c4")]
+position = Vector2(160, 448)
+
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1924490215 instance=ExtResource("5_0p3ml")]
+position = Vector2(992, 256)
+value = 3
+
+[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=1653906786 instance=ExtResource("5_0p3ml")]
+position = Vector2(992, 448)
+value = -4
+
+[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1512119247 instance=ExtResource("3_f8v0l")]
+position = Vector2(576, 352)
+
+[node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="8" unique_id=1134007312 instance=ExtResource("5_3t1jg")]
+position = Vector2(576, 240)
+
+[node name="SubtractNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="9" unique_id=647148039 instance=ExtResource("5_3t1jg")]
+position = Vector2(576, 464)
+
+[node name="PanelContainer" parent="UI/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]
+offset_left = -115.0
+offset_right = 115.0
+offset_bottom = 23.0
+
+[node name="Label" parent="UI/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+text = "Sum & Subtract: 4"
+
+[node name="Hint" parent="UI/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1289930638) index="0" unique_id=47662854]
+text = "Get to 9 before using either yellow block."
+
+[editable path="UI/HintPopup"]

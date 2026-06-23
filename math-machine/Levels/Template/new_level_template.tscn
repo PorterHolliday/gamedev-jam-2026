@@ -40,7 +40,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HintPopup:modulate")
+tracks/0/path = NodePath("UI/HintPopup:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,7 +52,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HintPopup:visible")
+tracks/1/path = NodePath("UI/HintPopup:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -68,7 +68,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HintPopup:modulate")
+tracks/0/path = NodePath("UI/HintPopup:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,7 +80,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HintPopup:visible")
+tracks/1/path = NodePath("UI/HintPopup:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -225,11 +225,9 @@ texture = ExtResource("5_tcd1y")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HintPopup" parent="." unique_id=950000720 instance=ExtResource("9_g7a5h")]
+[node name="HintPopup" parent="UI" unique_id=950000720 instance=ExtResource("9_g7a5h")]
 visible = false
 modulate = Color(1, 1, 1, 0)
-offset_right = 1152.0
-offset_bottom = 648.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=35115402]
 unique_name_in_owner = true
@@ -245,4 +243,4 @@ unique_name_in_owner = true
 stream = ExtResource("4_ngotv")
 volume_db = -10.0
 
-[editable path="HintPopup"]
+[editable path="UI/HintPopup"]
