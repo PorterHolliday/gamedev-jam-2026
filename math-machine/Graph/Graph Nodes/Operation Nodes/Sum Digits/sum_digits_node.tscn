@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://keoeq6diextf"]
+
+[ext_resource type="Script" uid="uid://dr2wyqigoy0ay" path="res://Graph/Graph Nodes/Operation Nodes/Sum Digits/sum_digits_node.gd" id="1_iqeeo"]
+[ext_resource type="Texture2D" path="res://Graph/Graph Nodes/square_node.png" id="2_uo8lc"]
+[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DragArea2D/drag_area_2d.gd" id="3_dhkae"]
+[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="4_w5qu8"]
+[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="5_2pafq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_od3hv"]
+size = Vector2(128, 128)
+
+[node name="SumDigitsNode" type="Node2D" unique_id=1492354170]
+script = ExtResource("1_iqeeo")
+metadata/_custom_type_script = "uid://dr2wyqigoy0ay"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1437554300]
+texture = ExtResource("2_uo8lc")
+
+[node name="ValueLabel" type="Label" parent="." unique_id=596437667]
+unique_name_in_owner = true
+offset_left = -65.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+text = "Sum Digits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DraggableComponent" type="Area2D" parent="." unique_id=1337169873]
+physics_interpolation_mode = 2
+self_modulate = Color(1, 1, 1, 0)
+script = ExtResource("3_dhkae")
+metadata/_custom_type_script = "uid://b2k4pkccuwh8r"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableComponent" unique_id=1113907825]
+shape = SubResource("RectangleShape2D_od3hv")
+
+[node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("4_w5qu8")]
+position = Vector2(-65, 0)
+
+[node name="GraphNodeOutput" parent="." unique_id=1082781132 instance=ExtResource("5_2pafq")]
+position = Vector2(65, 0)

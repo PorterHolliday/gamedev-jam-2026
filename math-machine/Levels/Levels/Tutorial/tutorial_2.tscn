@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://gtn1hy00v6mt"]
 
 [ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_vhkcy"]
-[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_3pjiv"]
-[ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://New Graph/Graph Canvas/connection_data.gd" id="2_ho0of"]
-[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="3_ho0of"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_3pjiv"]
+[ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="2_ho0of"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_ho0of"]
 [ext_resource type="Texture2D" uid="uid://dlivdbwjdcdxb" path="res://Levels/Levels/Tutorial/right_click_1.png" id="4_3pjiv"]
 [ext_resource type="Texture2D" uid="uid://svgapwg6soo" path="res://Levels/Levels/Tutorial/right_click_2.png" id="5_ho0of"]
 

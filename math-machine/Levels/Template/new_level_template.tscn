@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bpflbeoqkvd62"]
 
-[ext_resource type="Script" uid="uid://cpjdg0xbwgfg8" path="res://Levels/level2.gd" id="1_3rkkl"]
-[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://New Graph/Graph Canvas/graph_canvas.tscn" id="2_ngotv"]
+[ext_resource type="Script" uid="uid://cpjdg0xbwgfg8" path="res://Levels/level.gd" id="1_3rkkl"]
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://Graph/Graph Canvas/graph_canvas.tscn" id="2_ngotv"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="2_pw5pt"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="3_11tni"]
 [ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="4_ngotv"]
