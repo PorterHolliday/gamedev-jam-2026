@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dgnnb2x4vurq2"]
 
 [ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_sb2q6"]
-[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_6q25k"]
-[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://New Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="3_kpbdj"]
-[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="4_x35gt"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_6q25k"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="3_kpbdj"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="4_x35gt"]
 [ext_resource type="Texture2D" uid="uid://cari7ta8dgpi4" path="res://Levels/Levels/AddValue/open_hand_icon.png" id="5_x35gt"]
 [ext_resource type="Texture2D" uid="uid://6oly3fd63d3p" path="res://Levels/Levels/AddValue/closed_hand_icon.png" id="6_gn8oa"]
 

@@ -1,51 +1,42 @@
 class_name MyGraphNode
-extends GraphNode
+extends Node2D
 
-@onready var _graph_edit: MyGraphEdit = get_parent()
+@onready var _graph_canvas: GraphCanvas = get_parent()
 
 const NULL_VALUE: int = 9223372036854775807
-const OUTPUT_PORT_IDX: int = 0
 
-var _inputs: Array[int] = []
-var output: int = NULL_VALUE
+var inputs: Array[GraphNodePort] = []
+var outputs: Array[GraphNodePort] = []
 
 func _ready() -> void:
-	pass
+	_init_ports()
 	
-func is_input_connected(port_idx: int) -> bool:
-	var slot_idx: int = _get_input_port_slot(port_idx)
-	return _inputs[slot_idx] != NULL_VALUE
+func _init_ports() -> void:
+	for child in get_children():
+		if child is GraphNodePort:
+			if child.type == GraphNodePort.Type.INPUT:
+				inputs.append(child)
+			else:
+				outputs.append(child)
+	
+func is_input_connected(port: GraphNodePort) -> bool:
+	return port.value != NULL_VALUE
 
-func update_input(port_idx: int, value: int) -> void:
-	var slot_idx: int = _get_input_port_slot(port_idx)
-
-	_inputs[slot_idx] = value
-	_update_output()
+func update_input(port: GraphNodePort, value: int) -> void:
+	port.value = value
+	_update_outputs()
 	
-func remove_input(port_idx: int) -> void:
-	var slot_idx: int = _get_input_port_slot(port_idx)
-	_inputs[slot_idx] = NULL_VALUE
-	_update_output()
+func remove_input(port: GraphNodePort) -> void:
+	port.value = NULL_VALUE
+	_update_outputs()
 	
-func _update_output() -> void:
-	var new_output: int = _calculate_output()
-	if new_output == output: return
-	output = new_output
+func _update_outputs() -> void:
+	var new_outputs: Array[int] = _calculate_outputs()
 	
-	_update_output_connections()
+	for i in range(outputs.size()):
+		if new_outputs[i] == outputs[i].value: continue
+		outputs[i].value = new_outputs[i]
+		_graph_canvas.update_output_connections(outputs[i])
 	
-func _calculate_output() -> int:
-	push_error(self, ' does not override _calculate_output()')
-	return NULL_VALUE
-
-func _update_output_connections() -> void:
-	var connections: Array[Dictionary] = _graph_edit.get_connection_list_from_output_port(self.name, OUTPUT_PORT_IDX)
-	for connection in connections:
-		var graph_node_name: MyGraphNode = connection['node']
-		var port_idx: int = connection['port']
-		graph_node_name.update_input(port_idx, output)
-		
-func _get_input_port_slot(port_idx: int) -> int:
-	var slot: int = get_input_port_slot(port_idx)
-	if slot == 2: return 1
-	return slot
+func _calculate_outputs() -> Array[int]:
+	return []

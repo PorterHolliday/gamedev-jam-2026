@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://i4bko4cv4que"]
 
 [ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_3ffsk"]
-[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://New Graph/Graph Nodes/Input Node/input_node.tscn" id="2_n0bta"]
-[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://New Graph/Graph Nodes/Output Node/output_node.tscn" id="3_jsfp8"]
-[ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://New Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="4_kvrw6"]
-[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://New Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="5_6imm1"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_n0bta"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_jsfp8"]
+[ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="4_kvrw6"]
+[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="5_6imm1"]
 
 [node name="SumSubtract9" unique_id=1073491300 instance=ExtResource("1_3ffsk")]
 
