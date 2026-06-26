@@ -30,8 +30,11 @@
 [ext_resource type="PackedScene" uid="uid://wk0sn1mrfgm4" path="res://Levels/Levels/Store/store_6.tscn" id="25_xqmbg"]
 [ext_resource type="Texture2D" uid="uid://c28w11vw1caj3" path="res://LevelSelectionScreen/green_section.png" id="26_hxkdi"]
 [ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="29_hxkdi"]
+[ext_resource type="Texture2D" uid="uid://dyq2fghqdxkop" path="res://Levels/LevelCompletePopup/star.png" id="30_1fsxm"]
+[ext_resource type="Texture2D" uid="uid://clmak4td1d4na" path="res://Levels/LevelCompletePopup/level_complete_popup_header.png" id="30_l6jef"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="31_l6jef"]
 [ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/soundreality-notification-tone-443095.mp3" id="32_l6jef"]
+[ext_resource type="AudioStream" uid="uid://ll5vr8o6m2q6" path="res://Audio/SFX/LevelCompleteClick.mp3" id="34_pena4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f8od"]
 bg_color = Color(1, 1, 0.8784314, 1)
@@ -85,6 +88,42 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect:offset_transform_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect2:offset_transform_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect3:offset_transform_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_djp6x"]
@@ -145,7 +184,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_4f8od"]
 resource_name = "level_complete"
-length = 0.2
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -170,6 +209,56 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect:offset_transform_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect2:offset_transform_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.59999996, 0.79999995, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect3:offset_transform_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.79999995, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LevelCompleteAudio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n686a"]
 _data = {
@@ -188,22 +277,35 @@ font = SubResource("SystemFont_4f8od")
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkg80"]
-bg_color = Color(0.85830307, 0.7384042, 0.03260146, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-corner_detail = 10
-expand_margin_left = 8.0
-expand_margin_top = 8.0
-expand_margin_right = 8.0
-expand_margin_bottom = 8.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pena4"]
+bg_color = Color(0.21216999, 0.49, 0.093100004, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqun2"]
+bg_color = Color(0.40128002, 0.66, 0.2904, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="SystemFont" id="SystemFont_nkg80"]
 font_names = PackedStringArray("Century Gothic")
@@ -213,7 +315,7 @@ subpixel_positioning = 0
 [sub_resource type="LabelSettings" id="LabelSettings_ws0hg"]
 font = SubResource("SystemFont_nkg80")
 font_size = 48
-outline_size = 12
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_tsht8"]
@@ -506,28 +608,64 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -221.0
-offset_top = -56.5
+offset_top = -115.0
 offset_right = 221.0
-offset_bottom = 127.0
+offset_bottom = 159.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCompletePopup/PanelContainer" unique_id=894566429]
+[node name="MarginContainer" type="MarginContainer" parent="LevelCompletePopup/PanelContainer" unique_id=1109031552]
+layout_mode = 2
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCompletePopup/PanelContainer/MarginContainer" unique_id=894566429]
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="LevelCompletePopup/PanelContainer/VBoxContainer" unique_id=1802589202]
+[node name="MarginContainer" type="MarginContainer" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=1062958183]
+layout_mode = 2
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=2130333551]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NextLevelButton" type="Button" parent="LevelCompletePopup/PanelContainer/VBoxContainer" unique_id=994906912]
+[node name="TextureRect" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=134175361]
+layout_mode = 2
+size_flags_horizontal = 10
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0, 0)
+texture = ExtResource("30_1fsxm")
+
+[node name="TextureRect2" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1473287350]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -16)
+offset_transform_scale = Vector2(0, 0)
+texture = ExtResource("30_1fsxm")
+
+[node name="TextureRect3" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1918726920]
+layout_mode = 2
+size_flags_horizontal = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0, 0)
+texture = ExtResource("30_1fsxm")
+
+[node name="NextLevelButton" type="Button" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=994906912]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_pena4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nqun2")
 text = "Next Level"
 
-[node name="LevelSelectButton" type="Button" parent="LevelCompletePopup/PanelContainer/VBoxContainer" unique_id=711288712]
+[node name="LevelSelectButton" type="Button" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=711288712]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -536,7 +674,7 @@ size_flags_vertical = 6
 size_flags_stretch_ratio = 1.2
 text = "Level Select"
 
-[node name="TitlePanel" type="PanelContainer" parent="LevelCompletePopup" unique_id=1785770655]
+[node name="Title" type="TextureRect" parent="LevelCompletePopup" unique_id=166725285]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -544,15 +682,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -206.5
-offset_top = -98.0
+offset_top = -154.0
 offset_right = 208.0
-offset_bottom = -18.0
+offset_bottom = -74.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nkg80")
+texture = ExtResource("30_l6jef")
 
-[node name="Label" type="Label" parent="LevelCompletePopup/TitlePanel" unique_id=1588084333]
-layout_mode = 2
+[node name="Label" type="Label" parent="LevelCompletePopup/Title" unique_id=1588084333]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 404.5
+offset_bottom = 67.0
 text = "Level Complete"
 label_settings = SubResource("LabelSettings_ws0hg")
 horizontal_alignment = 1
@@ -576,6 +718,12 @@ stream = ExtResource("31_l6jef")
 unique_name_in_owner = true
 process_mode = 3
 stream = ExtResource("32_l6jef")
+volume_db = -10.0
+
+[node name="LevelCompleteClickAudio" type="AudioStreamPlayer" parent="." unique_id=684191177]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("34_pena4")
 
 [node name="LevelSelectionMusic" type="AudioStreamPlayer" parent="." unique_id=1545615720]
 stream = ExtResource("29_hxkdi")

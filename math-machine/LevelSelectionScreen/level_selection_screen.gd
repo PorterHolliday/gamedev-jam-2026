@@ -8,7 +8,7 @@ signal game_completed
 @onready var back_button: Button = %BackButton
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var button_audio: AudioStreamPlayer = %ButtonAudio
-@onready var level_complete_audio: AudioStreamPlayer = %LevelCompleteAudio
+@onready var level_complete_click_audio: AudioStreamPlayer = %LevelCompleteClickAudio
 @onready var level_selection_music: AudioStreamPlayer = $LevelSelectionMusic
 
 var level_buttons: Array[LevelButton] = [null]
@@ -77,13 +77,8 @@ func _on_level_completed() -> void:
 	current_level_button.level_complete = true
 	_enable_next_level_button()
 	
-	level_complete_audio.stream = load("res://Audio/SFX/LevelCompleteClick.mp3")
-	level_complete_audio.play(0.03)
+	level_complete_click_audio.play(0.03)
 	await get_tree().create_timer(1.0).timeout
-	
-	level_complete_audio.stream = load("res://Audio/SFX/soundreality-notification-tone-443095.mp3")
-	level_complete_audio.volume_db = -10.0
-	level_complete_audio.play()
 	
 	animation_player.play('level_complete')
 	
