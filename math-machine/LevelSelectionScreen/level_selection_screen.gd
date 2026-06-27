@@ -2,9 +2,7 @@ extends Control
 
 signal game_completed
 
-@onready var level_complete_popup: Control = %LevelCompletePopup
-@onready var next_level_button: Button = %NextLevelButton
-@onready var level_select_button: Button = %LevelSelectButton
+@onready var level_complete_popup: LevelCompletePopup = %LevelCompletePopup
 @onready var back_button: Button = %BackButton
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var button_audio: AudioStreamPlayer = %ButtonAudio
@@ -18,8 +16,8 @@ var current_level_number: int = 0
 
 func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
-	next_level_button.pressed.connect(_on_next_level_button_pressed)
-	level_select_button.pressed.connect(_on_level_select_button_pressed)
+	level_complete_popup.next_level_button_pressed.connect(_on_next_level_button_pressed)
+	level_complete_popup.level_select_button_pressed.connect(_on_level_select_button_pressed)
 	_number_level_buttons()
 	_music_fade_in()
 	
@@ -77,17 +75,15 @@ func _on_level_completed() -> void:
 	current_level_button.level_complete = true
 	_enable_next_level_button()
 	
-	level_complete_click_audio.play(0.03)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	
-	animation_player.play('level_complete')
+	level_complete_popup.on_level_completed()
 	
 func _on_next_level_button_pressed() -> void:
 	_play_button_audio()
 	animation_player.play('fade_out')
 	await animation_player.animation_finished
 	current_level.queue_free()
-	level_complete_popup.modulate = Color(1.0, 1.0, 1.0, 0.0)
 	level_complete_popup.hide()
 	current_level_number += 1
 	current_level_button = level_buttons[current_level_number]
