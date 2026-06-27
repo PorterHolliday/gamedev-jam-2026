@@ -29,9 +29,11 @@
 [ext_resource type="Texture2D" uid="uid://bg5sehb7hwa7q" path="res://LevelSelectionScreen/red_yellow_section.png" id="25_vi82w"]
 [ext_resource type="PackedScene" uid="uid://wk0sn1mrfgm4" path="res://Levels/Levels/Store/store_6.tscn" id="25_xqmbg"]
 [ext_resource type="Texture2D" uid="uid://c28w11vw1caj3" path="res://LevelSelectionScreen/green_section.png" id="26_hxkdi"]
+[ext_resource type="AudioStream" uid="uid://cas36bo5hcpi" path="res://Levels/LevelCompletePopup/PageFlip.mp3" id="26_sjtsq"]
 [ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="29_hxkdi"]
 [ext_resource type="Texture2D" uid="uid://dyq2fghqdxkop" path="res://Levels/LevelCompletePopup/star.png" id="30_1fsxm"]
 [ext_resource type="Texture2D" uid="uid://clmak4td1d4na" path="res://Levels/LevelCompletePopup/level_complete_popup_header.png" id="30_l6jef"]
+[ext_resource type="Texture2D" uid="uid://1o4x7lbjqqi4" path="res://Levels/LevelCompletePopup/star_location.png" id="30_nqun2"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="31_l6jef"]
 [ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/soundreality-notification-tone-443095.mp3" id="32_l6jef"]
 [ext_resource type="AudioStream" uid="uid://ll5vr8o6m2q6" path="res://Audio/SFX/LevelCompleteClick.mp3" id="34_pena4"]
@@ -92,7 +94,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect:offset_transform_scale")
+tracks/4/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer/Star:offset_transform_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -104,7 +106,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect2:offset_transform_scale")
+tracks/5/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2/Star:offset_transform_scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -116,7 +118,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect3:offset_transform_scale")
+tracks/6/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3/Star:offset_transform_scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -124,6 +126,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LevelCompletePopup:offset_transform_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LevelCompletePopup:offset_transform_rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_djp6x"]
@@ -195,7 +221,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -212,11 +238,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect:offset_transform_scale")
+tracks/2/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer/Star:offset_transform_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.8, 1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
@@ -224,11 +250,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect2:offset_transform_scale")
+tracks/3/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2/Star:offset_transform_scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.59999996, 0.79999995, 1),
+"times": PackedFloat32Array(0, 1, 1.1999999, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
@@ -236,29 +262,69 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/TextureRect3:offset_transform_scale")
+tracks/4/path = NodePath("LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3/Star:offset_transform_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.79999995, 1, 1.2),
+"times": PackedFloat32Array(0, 1.1999999, 1.4, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
-tracks/5/type = "method"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("LevelCompleteAudio")
-tracks/5/interp = 1
+tracks/5/path = NodePath("LevelCompletePopup:offset_transform_position")
+tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.55),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-128, -600), Vector2(0, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LevelCompletePopup:offset_transform_rotation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.0943952, 0.0]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PageFlipAudio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("26_sjtsq")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/7/use_blend = true
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LevelCompleteAudio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 7.5,
+"start_offset": 0.0,
+"stream": ExtResource("32_l6jef")
+}],
+"times": PackedFloat32Array(0.86)
+}
+tracks/8/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n686a"]
 _data = {
@@ -292,8 +358,20 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjtsq"]
+bg_color = Color(0.4, 0.65882355, 0.2901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqun2"]
-bg_color = Color(0.40128002, 0.66, 0.2904, 1)
+bg_color = Color(0.4, 0.65882355, 0.2901961, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -599,6 +677,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 
 [node name="PanelContainer" type="PanelContainer" parent="LevelCompletePopup" unique_id=1607057536]
 layout_mode = 1
@@ -630,26 +709,75 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=134175361]
+[node name="CenterContainer" type="CenterContainer" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=607161368]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="StarLocation" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer" unique_id=135240545]
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 offset_transform_enabled = true
+texture = ExtResource("30_nqun2")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Star" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer" unique_id=134175361]
+custom_minimum_size = Vector2(66, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 1)
 offset_transform_scale = Vector2(0, 0)
 texture = ExtResource("30_1fsxm")
+expand_mode = 4
+stretch_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1473287350]
+[node name="CenterContainer2" type="CenterContainer" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=815823200]
+layout_mode = 2
+
+[node name="StarLocation" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2" unique_id=2091875528]
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -16)
+texture = ExtResource("30_nqun2")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Star" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2" unique_id=1473287350]
+custom_minimum_size = Vector2(66, 0)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, -15)
 offset_transform_scale = Vector2(0, 0)
 texture = ExtResource("30_1fsxm")
+expand_mode = 4
+stretch_mode = 4
 
-[node name="TextureRect3" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1918726920]
+[node name="CenterContainer3" type="CenterContainer" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1622092714]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="StarLocation" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3" unique_id=1003529946]
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 offset_transform_enabled = true
+texture = ExtResource("30_nqun2")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Star" type="TextureRect" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3" unique_id=1918726920]
+custom_minimum_size = Vector2(66, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
 offset_transform_scale = Vector2(0, 0)
 texture = ExtResource("30_1fsxm")
+expand_mode = 4
+stretch_mode = 4
 
 [node name="NextLevelButton" type="Button" parent="LevelCompletePopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=994906912]
 unique_name_in_owner = true
@@ -662,6 +790,7 @@ theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_pena4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sjtsq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nqun2")
 text = "Next Level"
 
@@ -684,10 +813,12 @@ anchor_bottom = 0.5
 offset_left = -206.5
 offset_top = -154.0
 offset_right = 208.0
-offset_bottom = -74.0
+offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("30_l6jef")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="LevelCompletePopup/Title" unique_id=1588084333]
 layout_mode = 0
@@ -717,13 +848,16 @@ stream = ExtResource("31_l6jef")
 [node name="LevelCompleteAudio" type="AudioStreamPlayer" parent="." unique_id=476622141]
 unique_name_in_owner = true
 process_mode = 3
-stream = ExtResource("32_l6jef")
 volume_db = -10.0
 
 [node name="LevelCompleteClickAudio" type="AudioStreamPlayer" parent="." unique_id=684191177]
 unique_name_in_owner = true
 process_mode = 3
 stream = ExtResource("34_pena4")
+
+[node name="PageFlipAudio" type="AudioStreamPlayer" parent="." unique_id=356097203]
+unique_name_in_owner = true
+process_mode = 3
 
 [node name="LevelSelectionMusic" type="AudioStreamPlayer" parent="." unique_id=1545615720]
 stream = ExtResource("29_hxkdi")
