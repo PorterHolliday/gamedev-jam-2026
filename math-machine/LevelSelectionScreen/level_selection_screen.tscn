@@ -31,12 +31,14 @@
 [ext_resource type="Texture2D" uid="uid://c28w11vw1caj3" path="res://LevelSelectionScreen/green_section.png" id="26_hxkdi"]
 [ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="29_hxkdi"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="31_l6jef"]
-[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/soundreality-notification-tone-443095.mp3" id="32_l6jef"]
+[ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="32_pena4"]
+[ext_resource type="AudioStream" uid="uid://ll5vr8o6m2q6" path="res://Audio/SFX/LevelCompleteClick.mp3" id="34_pena4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f8od"]
 bg_color = Color(1, 1, 0.8784314, 1)
 
 [sub_resource type="Animation" id="Animation_s16oa"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -57,30 +59,6 @@ tracks/1/path = NodePath("FadeOutTextureRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LevelCompletePopup:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("LevelCompletePopup:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -143,40 +121,11 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_4f8od"]
-resource_name = "level_complete"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LevelCompletePopup:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LevelCompletePopup:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n686a"]
 _data = {
 &"RESET": SubResource("Animation_s16oa"),
 &"fade_in": SubResource("Animation_djp6x"),
-&"fade_out": SubResource("Animation_wvxo5"),
-&"level_complete": SubResource("Animation_4f8od")
+&"fade_out": SubResource("Animation_wvxo5")
 }
 
 [sub_resource type="SystemFont" id="SystemFont_4f8od"]
@@ -187,34 +136,6 @@ subpixel_positioning = 0
 font = SubResource("SystemFont_4f8od")
 font_size = 30
 font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkg80"]
-bg_color = Color(0.85830307, 0.7384042, 0.03260146, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-corner_detail = 10
-expand_margin_left = 8.0
-expand_margin_top = 8.0
-expand_margin_right = 8.0
-expand_margin_bottom = 8.0
-
-[sub_resource type="SystemFont" id="SystemFont_nkg80"]
-font_names = PackedStringArray("Century Gothic")
-font_weight = 600
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_ws0hg"]
-font = SubResource("SystemFont_nkg80")
-font_size = 48
-outline_size = 12
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_tsht8"]
 
@@ -485,77 +406,11 @@ offset_bottom = 496.0
 texture = ExtResource("26_hxkdi")
 expand_mode = 1
 
-[node name="LevelCompletePopup" type="Control" parent="." unique_id=1099721590]
+[node name="LevelCompletePopup" parent="." unique_id=1099721590 instance=ExtResource("32_pena4")]
 unique_name_in_owner = true
-visible = false
-modulate = Color(1, 1, 1, 0)
-z_index = 100
+z_index = 90
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="LevelCompletePopup" unique_id=1607057536]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -221.0
-offset_top = -56.5
-offset_right = 221.0
-offset_bottom = 127.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCompletePopup/PanelContainer" unique_id=894566429]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="LevelCompletePopup/PanelContainer/VBoxContainer" unique_id=1802589202]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="NextLevelButton" type="Button" parent="LevelCompletePopup/PanelContainer/VBoxContainer" unique_id=994906912]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-text = "Next Level"
-
-[node name="LevelSelectButton" type="Button" parent="LevelCompletePopup/PanelContainer/VBoxContainer" unique_id=711288712]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-size_flags_stretch_ratio = 1.2
-text = "Level Select"
-
-[node name="TitlePanel" type="PanelContainer" parent="LevelCompletePopup" unique_id=1785770655]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -206.5
-offset_top = -98.0
-offset_right = 208.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nkg80")
-
-[node name="Label" type="Label" parent="LevelCompletePopup/TitlePanel" unique_id=1588084333]
-layout_mode = 2
-text = "Level Complete"
-label_settings = SubResource("LabelSettings_ws0hg")
-horizontal_alignment = 1
 
 [node name="FadeOutTextureRect" type="TextureRect" parent="." unique_id=974686796]
 visible = false
@@ -575,7 +430,16 @@ stream = ExtResource("31_l6jef")
 [node name="LevelCompleteAudio" type="AudioStreamPlayer" parent="." unique_id=476622141]
 unique_name_in_owner = true
 process_mode = 3
-stream = ExtResource("32_l6jef")
+volume_db = -10.0
+
+[node name="LevelCompleteClickAudio" type="AudioStreamPlayer" parent="." unique_id=684191177]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("34_pena4")
+
+[node name="PageFlipAudio" type="AudioStreamPlayer" parent="." unique_id=356097203]
+unique_name_in_owner = true
+process_mode = 3
 
 [node name="LevelSelectionMusic" type="AudioStreamPlayer" parent="." unique_id=1545615720]
 stream = ExtResource("29_hxkdi")

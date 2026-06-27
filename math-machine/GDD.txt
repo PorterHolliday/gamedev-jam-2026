@@ -4,7 +4,7 @@ Git Branches:
 	* Graph Canvas Connection Update
 	* Update Port Value Labels
 	* Level Update
-	Remove Old Code/Scenes
+	* Remove Old Code/Scenes
 	Level Complete Popup Update
 	Hint Popup Update
 	Level Select Update
