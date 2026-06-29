@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://3vvhaji5x0ta"]
+
+[ext_resource type="Shader" uid="uid://t1xjlanho1" path="res://GameRoot/page_flip.gdshader" id="1_et131"]
+[ext_resource type="Script" uid="uid://bdwtcgt4rnjhx" path="res://TransitionRoot/transition_root.gd" id="2_k5fmk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prtjo"]
+shader = ExtResource("1_et131")
+shader_parameter/progress = 0.0
+shader_parameter/normal_x = 1.0
+shader_parameter/normal_y = 0.43999999016512
+shader_parameter/next_shadow_size = 0.5
+shader_parameter/next_shadow_color = Color(0, 0, 0, 0.6431373)
+shader_parameter/back_color = Color(0.96286684, 0.9506962, 0.9263319, 1)
+shader_parameter/back_shadow_size = 0.499999988824
+shader_parameter/back_shadow_color = Color(0, 0, 0, 0.6431373)
+shader_parameter/contrast = 0.0
+shader_parameter/brightness = 0.999999977648
+
+[node name="TransitionRoot" type="SubViewportContainer" unique_id=978441498]
+material = SubResource("ShaderMaterial_prtjo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_k5fmk")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=819753107]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4

@@ -37,11 +37,10 @@ func enable() -> void:
 	graph_canvas.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_back_button_pressed() -> void:
-	music.stop()
-	back_button_pressed.emit()
+	GameRoot.enter_level_select_screen()
 	
 func _on_restart_button_pressed() -> void:
-	restarted.emit()
+	GameRoot.restart_level()
 	
 func _on_hint_button_pressed() -> void:
 	animation_player.play('show_hint')

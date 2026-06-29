@@ -17,7 +17,7 @@ func _on_play_button_pressed() -> void:
 	button_audio.volume_db = randf_range(-5, 0)
 	button_audio.pitch_scale = randf_range(0.8, 1.2)
 	button_audio.play()
-	level_selection_screen.show()
+	GameRoot.enter_level_select_screen()
 	
 func _on_game_completed() -> void:
 	#level_selection_screen.hide()
