@@ -1,10 +1,6 @@
 class_name Level
 extends Node2D
 
-signal back_button_pressed
-signal restarted
-signal completed
-
 @onready var graph_canvas: GraphCanvas = %GraphCanvas
 @onready var back_button: Button = %BackButton
 @onready var restart_button: Button = %RestartButton
@@ -37,11 +33,10 @@ func enable() -> void:
 	graph_canvas.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_back_button_pressed() -> void:
-	music.stop()
-	back_button_pressed.emit()
+	GameRoot.enter_level_select_screen()
 	
 func _on_restart_button_pressed() -> void:
-	restarted.emit()
+	GameRoot.restart_level()
 	
 func _on_hint_button_pressed() -> void:
 	animation_player.play('show_hint')
@@ -50,14 +45,11 @@ func _on_button_pressed() -> void:
 	button_audio.volume_db = randf_range(-0.5, 0.5)
 	button_audio.pitch_scale = randf_range(0.8, 1.2)
 	button_audio.play(0.15)
-	
-func _check_level_complete() -> void:
-	pass
 
 func _on_level_complete() -> void:
 	music.stop()
 	
-	completed.emit()
+	LevelManager.complete_current_level()
 	
 	await get_tree().create_timer(0.1).timeout
 	process_mode = Node.PROCESS_MODE_DISABLED

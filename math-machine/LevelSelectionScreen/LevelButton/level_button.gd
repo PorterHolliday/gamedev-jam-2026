@@ -8,11 +8,13 @@ extends Button
 @onready var checkmark: TextureRect = %Checkmark
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
-@export var level_scene: PackedScene
-var level_number: String = '0':
+var level_number: int = 0:
 	set(new_val):
 		level_number = new_val
-		level_number_label.text = level_number
+		if level_number < LevelManager.tutorial_count:
+			level_number_label.text = 'T' + str(level_number + 1)
+		else:
+			level_number_label.text = str(level_number + 1 - LevelManager.tutorial_count)
 
 var level_complete: bool = false:
 	set(new_val):

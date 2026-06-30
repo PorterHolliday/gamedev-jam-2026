@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dpu1qtcpln6qf"]
+
+[ext_resource type="Script" uid="uid://deggewgm1t5un" path="res://GameRoot/game_root.gd" id="1_6mbnm"]
+[ext_resource type="PackedScene" uid="uid://cxdnvto6wdmfw" path="res://TitleScreen/title_screen.tscn" id="2_prtjo"]
+[ext_resource type="PackedScene" uid="uid://25v23ibhxckb" path="res://LevelSelectionScreen/level_selection_screen.tscn" id="3_pc124"]
+[ext_resource type="PackedScene" uid="uid://cnhbrp0py8kv6" path="res://TitleScreen/end_screen.tscn" id="4_yx0wv"]
+[ext_resource type="PackedScene" uid="uid://3vvhaji5x0ta" path="res://TransitionRoot/transition_root.tscn" id="5_pc124"]
+[ext_resource type="PackedScene" uid="uid://dckjs325lx5n3" path="res://UIRoot/ui_root.tscn" id="5_yjbio"]
+[ext_resource type="Script" uid="uid://g68g4kmhjyq7" path="res://UIRoot/ui_root.gd" id="6_7rb8t"]
+[ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="7_7rb8t"]
+
+[node name="GameRoot" type="Node" unique_id=428157721]
+script = ExtResource("1_6mbnm")
+title_screen_scene = ExtResource("2_prtjo")
+level_select_screen_scene = ExtResource("3_pc124")
+end_screen_scene = ExtResource("4_yx0wv")
+metadata/_custom_type_script = "uid://deggewgm1t5un"
+
+[node name="GameScreenLayer" type="CanvasLayer" parent="." unique_id=813723494]
+
+[node name="GameScreenRoot" type="Node" parent="GameScreenLayer" unique_id=1548128098]
+unique_name_in_owner = true
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=651098734]
+layer = 2
+
+[node name="UIRoot" parent="UILayer" unique_id=19140832 instance=ExtResource("5_yjbio")]
+unique_name_in_owner = true
+script = ExtResource("6_7rb8t")
+level_complete_popup_scene = ExtResource("7_7rb8t")
+
+[node name="SettingsMenuLayer" type="CanvasLayer" parent="." unique_id=722790838]
+layer = 4
+
+[node name="SettingsMenuRoot" type="Control" parent="SettingsMenuLayer" unique_id=1748925662]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=309553721]
+layer = 4
+
+[node name="TransitionRoot" parent="TransitionLayer" unique_id=978441498 instance=ExtResource("5_pc124")]
+unique_name_in_owner = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1726423414]
+unique_name_in_owner = true

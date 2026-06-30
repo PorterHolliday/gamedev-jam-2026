@@ -5,13 +5,13 @@ Git Branches:
 	* Update Port Value Labels
 	* Level Update
 	* Remove Old Code/Scenes
-	Level Complete Popup Update
-	Hint Popup Update
+	* Level Complete Popup Update
+	* Game Structure
 	Level Select Update
-		Hide LevelButtons so they don't accept input during level
 	Title Screen Update
 	Settings Screen + Settings Button
 	End Screen Update
+	Hint Popup Update
 	Audio Update
 	Gameplay Animations
 	Final Check/Refactor - Add Additional Branches as Needed
