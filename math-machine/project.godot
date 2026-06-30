@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Math Machine"
-run/main_scene="uid://cxdnvto6wdmfw"
+run/main_scene="uid://dpu1qtcpln6qf"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[autoload]
+
+LevelManager="*uid://p7vahmcreqeo"
 
 [display]
 

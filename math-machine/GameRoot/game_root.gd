@@ -8,7 +8,7 @@ static var node: GameRoot
 @export var end_screen_scene: PackedScene
 
 @onready var game_screen_root: Node = %GameScreenRoot
-@onready var ui_root: Control = %UIRoot
+@onready var ui_root: UIRoot = %UIRoot
 @onready var settings_menu_root: Control = %SettingsMenuRoot
 @onready var transition_root: TransitionRoot = %TransitionRoot
 
@@ -24,10 +24,13 @@ static func enter_level(level_scene: PackedScene) -> void:
 	node.transition_page_forward(level_scene.instantiate())
 	
 static func restart_level() -> void:
-	node.transition_page_forward(node.current_screen_scene.instantiate())
+	node.transition_page_forward(LevelManager.get_current_level_scene().instantiate())
 	
 static func level_complete() -> void:
-	pass
+	node.ui_root.on_level_complete()
+	
+static func enter_next_level() -> void:
+	node.transition_page_forward(LevelManager.get_next_level_scene().instantiate())
 	
 static func enter_level_select_screen() -> void:
 	var level_select_screen: Control = node.level_select_screen_scene.instantiate()
