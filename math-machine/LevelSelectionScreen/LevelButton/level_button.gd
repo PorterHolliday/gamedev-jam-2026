@@ -8,7 +8,6 @@ extends Button
 @onready var checkmark: TextureRect = %Checkmark
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
-@export var level_scene: PackedScene
 var level_number: int = 0:
 	set(new_val):
 		level_number = new_val
