@@ -9,9 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://ccb31vo32ayga" path="res://UI/Level UI/hint_icon.png" id="5_tcd1y"]
 [ext_resource type="PackedScene" uid="uid://ojae0y7pvy22" path="res://Levels/HintPopup/hint_popup.tscn" id="9_g7a5h"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngotv"]
-bg_color = Color(0.9019608, 0.87058824, 0.80784315, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3su"]
 bg_color = Color(0.22745098, 0.2509804, 0.32941177, 1)
 border_width_left = 4
@@ -105,7 +102,6 @@ offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 mouse_behavior_recursive = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_ngotv")
 
 [node name="GraphCanvas" parent="." unique_id=90730119 instance=ExtResource("2_ngotv")]
 unique_name_in_owner = true

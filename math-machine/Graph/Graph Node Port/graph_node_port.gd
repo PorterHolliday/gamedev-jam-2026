@@ -16,6 +16,7 @@ enum Type {
 
 @onready var graph_node: MyGraphNode = get_parent()
 @onready var snap_area: Area2D = %Area2D
+@onready var panel_container: PanelContainer = %PanelContainer
 @onready var value_label: Label = %Label
 var _mouse_is_in_port_area: bool = false
 
@@ -42,5 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _update_value_label() -> void:
 	if value == NULL_VALUE:
 		value_label.text = ''
+		panel_container.hide()
 	else:
 		value_label.text = str(value)
+		panel_container.show()

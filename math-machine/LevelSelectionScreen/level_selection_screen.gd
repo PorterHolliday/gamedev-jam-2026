@@ -1,5 +1,6 @@
 extends Control
 
+@onready var level_buttons_container: Node = %LevelButtonsContainer
 @onready var back_button: Button = %BackButton
 @onready var button_audio: AudioStreamPlayer = %ButtonAudio
 
@@ -12,15 +13,14 @@ func _ready() -> void:
 func _init_level_buttons() -> void:
 	var level_number: int = 0
 	var previous_level_complete = false
-	for child in get_children():
+	for child in level_buttons_container.get_children():
 		if child is LevelButton:
 			child.pressed.connect(func():
 				_on_level_button_pressed(child))
 			child.level_number = level_number
 			if previous_level_complete:
 				child.disabled = false
-				child.level_number_label.show()
-			if LevelManager.levels_completed[level_number]:
+			if level_number < LevelManager.level_scenes.size() and LevelManager.levels_completed[level_number]:
 				child.level_complete = true
 				previous_level_complete = true
 			else:
