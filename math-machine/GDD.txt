@@ -14,6 +14,11 @@ Git Branches:
 	Hint Popup Update
 	Audio Update
 	Gameplay Animations
+		- Port filled when hovered
+		- Node pop animation when it gets a new input
+	Save Data
+		- Saves LevelManager levels_complete array
+		- Saves Settings selection
 	Final Check/Refactor - Add Additional Branches as Needed
 
 ANY OTHER CHANGES MUST BE ADDED TO THIS LIST BEFORE BEING IMPLEMENTED!!!

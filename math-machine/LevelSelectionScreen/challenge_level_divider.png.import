@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg5sehb7hwa7q"
-path="res://.godot/imported/red_yellow_section.png-cc7821f32112f3d665a6794f8ac7cb54.ctex"
+uid="uid://bqjkn1etmk7m1"
+path="res://.godot/imported/challenge_level_divider.png-d46c959933e65e4145c6637e6d7d24ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://LevelSelectionScreen/red_yellow_section.png"
-dest_files=["res://.godot/imported/red_yellow_section.png-cc7821f32112f3d665a6794f8ac7cb54.ctex"]
+source_file="res://LevelSelectionScreen/challenge_level_divider.png"
+dest_files=["res://.godot/imported/challenge_level_divider.png-d46c959933e65e4145c6637e6d7d24ae.ctex"]
 
 [params]
 

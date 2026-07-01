@@ -2,119 +2,126 @@
 
 [ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://LevelSelectionScreen/LevelButton/level_button.tscn" id="1_bntq0"]
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
-[ext_resource type="LabelSettings" uid="uid://p5y2u4bbu5w8" path="res://LabelSettings/title_label_settings.tres" id="3_l6jef"]
-[ext_resource type="Texture2D" uid="uid://duefwu7uo0c1q" path="res://LevelSelectionScreen/gray_section.png" id="23_n686a"]
-[ext_resource type="Texture2D" uid="uid://byp4kbhyqa05k" path="res://LevelSelectionScreen/blue_section.png" id="24_tsht8"]
-[ext_resource type="Texture2D" uid="uid://bg5sehb7hwa7q" path="res://LevelSelectionScreen/red_yellow_section.png" id="25_vi82w"]
-[ext_resource type="Texture2D" uid="uid://c28w11vw1caj3" path="res://LevelSelectionScreen/green_section.png" id="26_hxkdi"]
-[ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="29_hxkdi"]
+[ext_resource type="Texture2D" uid="uid://bqjkn1etmk7m1" path="res://LevelSelectionScreen/challenge_level_divider.png" id="2_e8uy2"]
+[ext_resource type="LabelSettings" uid="uid://buq01gkh36dd0" path="res://LabelSettings/divider_label_settings.tres" id="2_osfc4"]
+[ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_gnmtl"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="31_l6jef"]
-[ext_resource type="AudioStream" uid="uid://ll5vr8o6m2q6" path="res://Audio/SFX/LevelCompleteClick.mp3" id="34_pena4"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f8od"]
-bg_color = Color(1, 1, 0.8784314, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnmtl"]
+bg_color = Color(0.5882353, 0.09411765, 0.09411765, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
 
-[sub_resource type="Animation" id="Animation_s16oa"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FadeOutTextureRect:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FadeOutTextureRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_djp6x"]
-resource_name = "fade_in"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FadeOutTextureRect:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FadeOutTextureRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_wvxo5"]
-resource_name = "fade_out"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FadeOutTextureRect:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FadeOutTextureRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_n686a"]
-_data = {
-&"RESET": SubResource("Animation_s16oa"),
-&"fade_in": SubResource("Animation_djp6x"),
-&"fade_out": SubResource("Animation_wvxo5")
-}
-
-[sub_resource type="SystemFont" id="SystemFont_4f8od"]
+[sub_resource type="SystemFont" id="SystemFont_7gix3"]
 font_names = PackedStringArray("Century Gothic")
-subpixel_positioning = 0
+font_weight = 600
 
-[sub_resource type="LabelSettings" id="LabelSettings_tsht8"]
-font = SubResource("SystemFont_4f8od")
-font_size = 30
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_bp0l3"]
+font = SubResource("SystemFont_7gix3")
+font_size = 32
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_tsht8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0td6"]
+bg_color = Color(0.22745098, 0.2509804, 0.32941177, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v81n"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osfc4"]
+bg_color = Color(0.43529412, 0.5058824, 0.57254905, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dpc8"]
+bg_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3qp5"]
+bg_color = Color(0.7647059, 0.68235296, 0.12156863, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgou2"]
+bg_color = Color(0.7490196, 0.2509804, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqsud"]
+bg_color = Color(0.19215687, 0.4, 0.1764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
 
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
 layout_mode = 3
@@ -125,271 +132,502 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_whgxd")
+metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="." unique_id=1249510233]
 layout_mode = 0
-offset_right = 1200.0
-offset_bottom = 688.0
+offset_right = 1152.0
+offset_bottom = 656.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4f8od")
+metadata/_edit_lock_ = true
 
-[node name="Title" type="Label" parent="." unique_id=234851870]
+[node name="Title" type="Control" parent="." unique_id=1786388866]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 128.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title" unique_id=885344371]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 48.0
-offset_right = 672.0
-offset_bottom = 136.0
-text = "Levels"
-label_settings = ExtResource("3_l6jef")
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Title/VBoxContainer" unique_id=421700196]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1225383215]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer" unique_id=815106424]
+layout_mode = 2
+text = "M"
+label_settings = SubResource("LabelSettings_bp0l3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelButton" parent="." unique_id=863369867 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 208.0
-offset_right = 560.0
-offset_bottom = 256.0
+[node name="PanelContainer2" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1251869390]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=460821874]
+layout_mode = 2
+text = "A"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1833997675]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer3" unique_id=1128105345]
+layout_mode = 2
+text = "T"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1723936026]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer4" unique_id=1860981820]
+layout_mode = 2
+text = "H"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="Title/VBoxContainer" unique_id=1983761888]
+custom_maximum_size = Vector2(48, -1)
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=874735106]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer2" unique_id=757592897]
+layout_mode = 2
+text = "A"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1803846798]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer3" unique_id=1232145589]
+layout_mode = 2
+text = "C"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1393676870]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer4" unique_id=616103040]
+layout_mode = 2
+text = "H"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=335739974]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer5" unique_id=1511127038]
+layout_mode = 2
+text = "I"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=2133252519]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer6" unique_id=412464695]
+layout_mode = 2
+text = "N"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer7" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1978505566]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer7" unique_id=1911213524]
+layout_mode = 2
+text = "E"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dividers" type="Node" parent="." unique_id=1766819516]
+
+[node name="GroupDivider" type="Control" parent="Dividers" unique_id=492848605]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 312.0
+offset_top = 32.0
+offset_right = 344.0
+offset_bottom = 67.0
+metadata/_edit_group_ = true
+
+[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider" unique_id=1365344396]
+layout_mode = 1
+offset_right = 568.0
+offset_bottom = 4.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider" unique_id=1676739429]
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_osfc4")
+
+[node name="Label" type="Label" parent="Dividers/GroupDivider/PanelContainer" unique_id=1014042662]
+layout_mode = 2
+text = "Tutorial"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GroupDivider2" type="Control" parent="Dividers" unique_id=101621133]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 312.0
+offset_top = 136.0
+offset_right = 344.0
+offset_bottom = 171.0
+metadata/_edit_group_ = true
+
+[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider2" unique_id=645282194]
+layout_mode = 1
+offset_right = 568.0
+offset_bottom = 4.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider2" unique_id=609917930]
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1dpc8")
+
+[node name="Label" type="Label" parent="Dividers/GroupDivider2/PanelContainer" unique_id=171055039]
+layout_mode = 2
+text = "Add Value"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GroupDivider3" type="Control" parent="Dividers" unique_id=1532247483]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 312.0
+offset_top = 240.0
+offset_right = 344.0
+offset_bottom = 275.0
+metadata/_edit_group_ = true
+
+[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider3" unique_id=350444684]
+layout_mode = 1
+offset_right = 568.0
+offset_bottom = 4.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider3" unique_id=186092529]
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3qp5")
+
+[node name="Panel" type="Panel" parent="Dividers/GroupDivider3/PanelContainer" unique_id=538517503]
+custom_maximum_size = Vector2(52, -1)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tgou2")
+
+[node name="Label" type="Label" parent="Dividers/GroupDivider3/PanelContainer" unique_id=75865554]
+layout_mode = 2
+text = "Sum & Subtract"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GroupDivider4" type="Control" parent="Dividers" unique_id=163032398]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 312.0
+offset_top = 424.0
+offset_right = 344.0
+offset_bottom = 459.0
+metadata/_edit_group_ = true
+
+[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider4" unique_id=2043722742]
+layout_mode = 1
+offset_right = 568.0
+offset_bottom = 4.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider4" unique_id=2068894189]
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vqsud")
+
+[node name="Label" type="Label" parent="Dividers/GroupDivider4/PanelContainer" unique_id=1902656470]
+layout_mode = 2
+text = "Storage"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GroupDivider5" type="Control" parent="Dividers" unique_id=712495437]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 312.0
+offset_top = 528.0
+offset_right = 344.0
+offset_bottom = 563.0
+metadata/_edit_group_ = true
+
+[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider5" unique_id=1193001365]
+layout_mode = 1
+offset_right = 568.0
+offset_bottom = 4.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider5" unique_id=62259496]
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 32.0
+
+[node name="TextureRect" type="TextureRect" parent="Dividers/GroupDivider5/PanelContainer" unique_id=1618687411]
+layout_mode = 2
+texture = ExtResource("2_e8uy2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Dividers/GroupDivider5/PanelContainer" unique_id=461404234]
+layout_mode = 2
+text = "Challenge"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelButtonsContainer" type="Node" parent="." unique_id=1495535825]
+unique_name_in_owner = true
+
+[node name="LevelButton" parent="LevelButtonsContainer" unique_id=863369867 instance=ExtResource("1_bntq0")]
+offset_left = 472.0
+offset_top = 48.0
+offset_right = 544.0
+offset_bottom = 120.0
 disabled = false
 
-[node name="LevelButton2" parent="." unique_id=531769527 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 560.0
-offset_top = 208.0
-offset_right = 608.0
-offset_bottom = 256.0
+[node name="LevelButton2" parent="LevelButtonsContainer" unique_id=531769527 instance=ExtResource("1_bntq0")]
+offset_left = 552.0
+offset_top = 48.0
+offset_right = 624.0
+offset_bottom = 120.0
+disabled = false
 
-[node name="LevelButton4" parent="." unique_id=1518741277 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 272.0
-offset_right = 560.0
-offset_bottom = 320.0
+[node name="LevelButton3" parent="LevelButtonsContainer" unique_id=1650950780 instance=ExtResource("1_bntq0")]
+offset_left = 472.0
+offset_top = 152.0
+offset_right = 544.0
+offset_bottom = 224.0
+disabled = false
 
-[node name="LevelButton5" parent="." unique_id=1140446776 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 560.0
-offset_top = 272.0
-offset_right = 608.0
-offset_bottom = 320.0
+[node name="LevelButton4" parent="LevelButtonsContainer" unique_id=1570781335 instance=ExtResource("1_bntq0")]
+offset_left = 552.0
+offset_top = 152.0
+offset_right = 624.0
+offset_bottom = 224.0
 
-[node name="LevelButton21" parent="." unique_id=1415051951 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 608.0
-offset_top = 272.0
-offset_right = 656.0
-offset_bottom = 320.0
-
-[node name="LevelButton6" parent="." unique_id=1398013742 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 272.0
+[node name="LevelButton5" parent="LevelButtonsContainer" unique_id=1200488002 instance=ExtResource("1_bntq0")]
+offset_left = 632.0
+offset_top = 152.0
 offset_right = 704.0
-offset_bottom = 320.0
+offset_bottom = 224.0
 
-[node name="LevelButton7" parent="." unique_id=1067007151 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 512.0
+[node name="LevelButton6" parent="LevelButtonsContainer" unique_id=1451083318 instance=ExtResource("1_bntq0")]
+offset_left = 712.0
+offset_top = 152.0
+offset_right = 784.0
+offset_bottom = 224.0
+
+[node name="LevelButton23" parent="LevelButtonsContainer" unique_id=50856958 instance=ExtResource("1_bntq0")]
+offset_left = 792.0
+offset_top = 152.0
+offset_right = 864.0
+offset_bottom = 224.0
+
+[node name="LevelButton7" parent="LevelButtonsContainer" unique_id=893442744 instance=ExtResource("1_bntq0")]
+offset_left = 472.0
+offset_top = 256.0
+offset_right = 544.0
+offset_bottom = 328.0
+
+[node name="LevelButton8" parent="LevelButtonsContainer" unique_id=386276884 instance=ExtResource("1_bntq0")]
+offset_left = 552.0
+offset_top = 256.0
+offset_right = 624.0
+offset_bottom = 328.0
+
+[node name="LevelButton9" parent="LevelButtonsContainer" unique_id=153766639 instance=ExtResource("1_bntq0")]
+offset_left = 632.0
+offset_top = 256.0
+offset_right = 704.0
+offset_bottom = 328.0
+
+[node name="LevelButton10" parent="LevelButtonsContainer" unique_id=94989472 instance=ExtResource("1_bntq0")]
+offset_left = 712.0
+offset_top = 256.0
+offset_right = 784.0
+offset_bottom = 328.0
+
+[node name="LevelButton11" parent="LevelButtonsContainer" unique_id=1056782993 instance=ExtResource("1_bntq0")]
+offset_left = 792.0
+offset_top = 256.0
+offset_right = 864.0
+offset_bottom = 328.0
+
+[node name="LevelButton12" parent="LevelButtonsContainer" unique_id=780097692 instance=ExtResource("1_bntq0")]
+offset_left = 472.0
 offset_top = 336.0
-offset_right = 560.0
-offset_bottom = 384.0
+offset_right = 544.0
+offset_bottom = 408.0
 
-[node name="LevelButton8" parent="." unique_id=328680659 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 560.0
+[node name="LevelButton13" parent="LevelButtonsContainer" unique_id=336903344 instance=ExtResource("1_bntq0")]
+offset_left = 552.0
 offset_top = 336.0
-offset_right = 608.0
-offset_bottom = 384.0
+offset_right = 624.0
+offset_bottom = 408.0
 
-[node name="LevelButton9" parent="." unique_id=1757024622 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 608.0
-offset_top = 336.0
-offset_right = 656.0
-offset_bottom = 384.0
-
-[node name="LevelButton22" parent="." unique_id=185790884 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 656.0
+[node name="LevelButton14" parent="LevelButtonsContainer" unique_id=415540774 instance=ExtResource("1_bntq0")]
+offset_left = 632.0
 offset_top = 336.0
 offset_right = 704.0
-offset_bottom = 384.0
+offset_bottom = 408.0
 
-[node name="LevelButton10" parent="." unique_id=1433417262 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 704.0
+[node name="LevelButton15" parent="LevelButtonsContainer" unique_id=1045238823 instance=ExtResource("1_bntq0")]
+offset_left = 712.0
 offset_top = 336.0
-offset_right = 752.0
-offset_bottom = 384.0
+offset_right = 784.0
+offset_bottom = 408.0
 
-[node name="LevelButton11" parent="." unique_id=941233518 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 384.0
-offset_right = 560.0
-offset_bottom = 432.0
+[node name="LevelButton16" parent="LevelButtonsContainer" unique_id=406050735 instance=ExtResource("1_bntq0")]
+offset_left = 792.0
+offset_top = 336.0
+offset_right = 864.0
+offset_bottom = 408.0
 
-[node name="LevelButton12" parent="." unique_id=1423079273 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 560.0
-offset_top = 384.0
-offset_right = 608.0
-offset_bottom = 432.0
+[node name="LevelButton17" parent="LevelButtonsContainer" unique_id=985013322 instance=ExtResource("1_bntq0")]
+offset_left = 472.0
+offset_top = 440.0
+offset_right = 544.0
+offset_bottom = 512.0
 
-[node name="LevelButton13" parent="." unique_id=1802468550 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 608.0
-offset_top = 384.0
-offset_right = 656.0
-offset_bottom = 432.0
+[node name="LevelButton18" parent="LevelButtonsContainer" unique_id=463969283 instance=ExtResource("1_bntq0")]
+offset_left = 552.0
+offset_top = 440.0
+offset_right = 624.0
+offset_bottom = 512.0
 
-[node name="LevelButton14" parent="." unique_id=1364846621 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 384.0
+[node name="LevelButton19" parent="LevelButtonsContainer" unique_id=73588653 instance=ExtResource("1_bntq0")]
+offset_left = 632.0
+offset_top = 440.0
 offset_right = 704.0
-offset_bottom = 432.0
+offset_bottom = 512.0
 
-[node name="LevelButton23" parent="." unique_id=33864835 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 704.0
-offset_top = 384.0
-offset_right = 752.0
-offset_bottom = 432.0
+[node name="LevelButton20" parent="LevelButtonsContainer" unique_id=1559009018 instance=ExtResource("1_bntq0")]
+offset_left = 712.0
+offset_top = 440.0
+offset_right = 784.0
+offset_bottom = 512.0
 
-[node name="LevelButton15" parent="." unique_id=247262557 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 448.0
-offset_right = 560.0
-offset_bottom = 496.0
+[node name="LevelButton21" parent="LevelButtonsContainer" unique_id=968432730 instance=ExtResource("1_bntq0")]
+offset_left = 792.0
+offset_top = 440.0
+offset_right = 864.0
+offset_bottom = 512.0
 
-[node name="LevelButton16" parent="." unique_id=218652785 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 560.0
-offset_top = 448.0
-offset_right = 608.0
-offset_bottom = 496.0
+[node name="LevelButton22" parent="LevelButtonsContainer" unique_id=260983362 instance=ExtResource("1_bntq0")]
+offset_left = 472.0
+offset_top = 544.0
+offset_right = 544.0
+offset_bottom = 616.0
 
-[node name="LevelButton17" parent="." unique_id=1705133428 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 608.0
-offset_top = 448.0
-offset_right = 656.0
-offset_bottom = 496.0
+[node name="LevelButton24" parent="LevelButtonsContainer" unique_id=471533219 instance=ExtResource("1_bntq0")]
+offset_left = 552.0
+offset_top = 544.0
+offset_right = 624.0
+offset_bottom = 616.0
 
-[node name="LevelButton18" parent="." unique_id=1914789741 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 448.0
+[node name="LevelButton25" parent="LevelButtonsContainer" unique_id=1293210855 instance=ExtResource("1_bntq0")]
+offset_left = 632.0
+offset_top = 544.0
 offset_right = 704.0
-offset_bottom = 496.0
+offset_bottom = 616.0
 
-[node name="LevelButton19" parent="." unique_id=683457002 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 704.0
-offset_top = 448.0
-offset_right = 752.0
-offset_bottom = 496.0
+[node name="LevelButton26" parent="LevelButtonsContainer" unique_id=393916819 instance=ExtResource("1_bntq0")]
+offset_left = 712.0
+offset_top = 544.0
+offset_right = 784.0
+offset_bottom = 616.0
 
-[node name="LevelButton20" parent="." unique_id=1071956409 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 752.0
-offset_top = 448.0
-offset_right = 800.0
-offset_bottom = 496.0
+[node name="LevelButton27" parent="LevelButtonsContainer" unique_id=559676808 instance=ExtResource("1_bntq0")]
+offset_left = 792.0
+offset_top = 544.0
+offset_right = 864.0
+offset_bottom = 616.0
 
 [node name="BackButton" type="Button" parent="." unique_id=23307136]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 16.0
+offset_left = 1088.0
 offset_top = 16.0
-offset_right = 80.0
-offset_bottom = 80.0
+offset_right = 1136.0
+offset_bottom = 64.0
 theme_type_variation = &"BackButton"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=960185347]
-unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_n686a")
-
-[node name="Label" type="Label" parent="." unique_id=2005907982]
+[node name="TextureRect" type="TextureRect" parent="BackButton" unique_id=1767596963]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 208.0
-offset_right = 496.0
-offset_bottom = 258.0
-text = "Tutorial"
-label_settings = SubResource("LabelSettings_tsht8")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GraySection" type="TextureRect" parent="." unique_id=856318092]
-visible = false
-layout_mode = 0
-offset_left = 432.0
-offset_top = 208.0
-offset_right = 480.0
-offset_bottom = 256.0
-texture = ExtResource("23_n686a")
-expand_mode = 1
-
-[node name="BlueSection" type="TextureRect" parent="." unique_id=600397632]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 272.0
-offset_right = 464.0
-offset_bottom = 320.0
-texture = ExtResource("24_tsht8")
-expand_mode = 1
-
-[node name="RedYellowSection" type="TextureRect" parent="." unique_id=519814975]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 336.0
-offset_right = 464.0
-offset_bottom = 432.0
-texture = ExtResource("25_vi82w")
+offset_left = 9.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("4_gnmtl")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="GreenSection" type="TextureRect" parent="." unique_id=1265759253]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 448.0
-offset_right = 464.0
-offset_bottom = 496.0
-texture = ExtResource("26_hxkdi")
-expand_mode = 1
-
-[node name="FadeOutTextureRect" type="TextureRect" parent="." unique_id=974686796]
-visible = false
-self_modulate = Color(0, 0, 0, 0)
-z_index = 100
-z_as_relative = false
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 656.0
-mouse_filter = 0
-texture = SubResource("CanvasTexture_tsht8")
 
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=1351067402]
 unique_name_in_owner = true
 stream = ExtResource("31_l6jef")
-
-[node name="LevelCompleteAudio" type="AudioStreamPlayer" parent="." unique_id=476622141]
-unique_name_in_owner = true
-process_mode = 3
-volume_db = -10.0
-
-[node name="LevelCompleteClickAudio" type="AudioStreamPlayer" parent="." unique_id=684191177]
-unique_name_in_owner = true
-process_mode = 3
-stream = ExtResource("34_pena4")
-
-[node name="PageFlipAudio" type="AudioStreamPlayer" parent="." unique_id=356097203]
-unique_name_in_owner = true
-process_mode = 3
-
-[node name="LevelSelectionMusic" type="AudioStreamPlayer" parent="." unique_id=1545615720]
-stream = ExtResource("29_hxkdi")
-volume_db = -10.0
