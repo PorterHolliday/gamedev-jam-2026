@@ -7,7 +7,7 @@ Git Branches:
 	* Remove Old Code/Scenes
 	* Level Complete Popup Update
 	* Game Structure
-	Level Select Update
+	* Level Select Update
 	Title Screen Update
 	Settings Screen + Settings Button
 	End Screen Update

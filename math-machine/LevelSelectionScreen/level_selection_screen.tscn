@@ -48,10 +48,6 @@ shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v81n"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
@@ -124,6 +120,49 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yuwhm"]
+bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_337mu"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yfhlq"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
 layout_mode = 3
 anchors_preset = 15
@@ -143,6 +182,7 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="Title" type="Control" parent="." unique_id=1786388866]
+visible = false
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -614,11 +654,14 @@ offset_bottom = 616.0
 [node name="BackButton" type="Button" parent="." unique_id=23307136]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1088.0
+offset_left = 16.0
 offset_top = 16.0
-offset_right = 1136.0
+offset_right = 64.0
 offset_bottom = 64.0
 theme_type_variation = &"BackButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_yuwhm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_337mu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfhlq")
 
 [node name="TextureRect" type="TextureRect" parent="BackButton" unique_id=1767596963]
 layout_mode = 0
