@@ -7,45 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_gnmtl"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="31_l6jef"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnmtl"]
-bg_color = Color(0.5882353, 0.09411765, 0.09411765, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="SystemFont" id="SystemFont_7gix3"]
-font_names = PackedStringArray("Century Gothic")
-font_weight = 600
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_bp0l3"]
-font = SubResource("SystemFont_7gix3")
-font_size = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0td6"]
-bg_color = Color(0.22745098, 0.2509804, 0.32941177, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v81n"]
 bg_color = Color(0, 0, 0, 1)
 border_color = Color(0, 0, 0, 1)
@@ -70,7 +31,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
-shadow_offset = Vector2(4, 4)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dpc8"]
 bg_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
@@ -85,7 +46,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
-shadow_offset = Vector2(4, 4)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3qp5"]
 bg_color = Color(0.7647059, 0.68235296, 0.12156863, 1)
@@ -100,7 +61,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
-shadow_offset = Vector2(4, 4)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgou2"]
 bg_color = Color(0.7490196, 0.2509804, 0, 1)
@@ -118,7 +79,22 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
-shadow_offset = Vector2(4, 4)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnmtl"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yuwhm"]
 bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
@@ -180,152 +156,6 @@ offset_right = 1152.0
 offset_bottom = 656.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
-
-[node name="Title" type="Control" parent="." unique_id=1786388866]
-visible = false
-anchors_preset = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 224.0
-offset_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Title" unique_id=885344371]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 6
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Title/VBoxContainer" unique_id=421700196]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1225383215]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer" unique_id=815106424]
-layout_mode = 2
-text = "M"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer2" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1251869390]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=460821874]
-layout_mode = 2
-text = "A"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer3" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1833997675]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer3" unique_id=1128105345]
-layout_mode = 2
-text = "T"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer4" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1723936026]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer4" unique_id=1860981820]
-layout_mode = 2
-text = "H"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer2" type="VBoxContainer" parent="Title/VBoxContainer" unique_id=1983761888]
-custom_maximum_size = Vector2(48, -1)
-layout_mode = 2
-
-[node name="PanelContainer2" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=874735106]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer2" unique_id=757592897]
-layout_mode = 2
-text = "A"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer3" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1803846798]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer3" unique_id=1232145589]
-layout_mode = 2
-text = "C"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer4" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1393676870]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer4" unique_id=616103040]
-layout_mode = 2
-text = "H"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer5" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=335739974]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer5" unique_id=1511127038]
-layout_mode = 2
-text = "I"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer6" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=2133252519]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer6" unique_id=412464695]
-layout_mode = 2
-text = "N"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer7" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1978505566]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_b0td6")
-
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer7" unique_id=1911213524]
-layout_mode = 2
-text = "E"
-label_settings = SubResource("LabelSettings_bp0l3")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Dividers" type="Node" parent="." unique_id=1766819516]
 
@@ -470,6 +300,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
 layout_mode = 1
 offset_right = 144.0
 offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
 
 [node name="TextureRect" type="TextureRect" parent="Dividers/GroupDivider5/PanelContainer" unique_id=1618687411]
 layout_mode = 2

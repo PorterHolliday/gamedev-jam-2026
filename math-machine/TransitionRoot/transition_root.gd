@@ -12,6 +12,8 @@ func play_transition_forward(old_screen: Node) -> void:
 	
 	var shader_material: ShaderMaterial = material
 	var tween: Tween = get_tree().create_tween()
+	#shader_material.set_shader_parameter('normal_x', randf_range(0.5, 1.0))
+	#shader_material.set_shader_parameter('normal_y', randf_range(0.5, 1.0))
 	tween.tween_method(func(value: float):
 		shader_material.set_shader_parameter('progress', value), 
 		0.0, 1.0, transition_duration
@@ -26,6 +28,8 @@ func play_transition_back(new_screen: Node) -> void:
 	sub_viewport.add_child(new_screen)
 	
 	var shader_material: ShaderMaterial = material
+	#shader_material.set_shader_parameter('normal_x', randf_range(0.5, 1.0))
+	#shader_material.set_shader_parameter('normal_y', randf_range(0.5, 1.0))
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_method(func(value: float):
 		shader_material.set_shader_parameter('progress', value), 

@@ -10,11 +10,9 @@ shader_parameter/normal_x = 1.0
 shader_parameter/normal_y = 0.43999999016512
 shader_parameter/next_shadow_size = 0.5
 shader_parameter/next_shadow_color = Color(0, 0, 0, 0.6431373)
-shader_parameter/back_color = Color(0.96286684, 0.9506962, 0.9263319, 1)
+shader_parameter/back_color = Color(1, 1, 1, 1)
 shader_parameter/back_shadow_size = 0.499999988824
 shader_parameter/back_shadow_color = Color(0, 0, 0, 0.6431373)
-shader_parameter/contrast = 0.0
-shader_parameter/brightness = 0.999999977648
 
 [node name="TransitionRoot" type="SubViewportContainer" unique_id=978441498]
 material = SubResource("ShaderMaterial_prtjo")
