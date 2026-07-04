@@ -6,6 +6,7 @@
 [node name="LevelButton" type="Button" unique_id=863369867]
 offset_right = 80.0
 offset_bottom = 80.0
+theme_type_variation = &"LevelButton"
 disabled = true
 script = ExtResource("1_mshbt")
 

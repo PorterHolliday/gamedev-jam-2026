@@ -1,5 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
 
+[ext_resource type="Texture2D" uid="uid://cfs0vw4uwxpfh" path="res://Themes/Panel/grid_tile.png" id="1_3ovl0"]
+
 [sub_resource type="SystemFont" id="SystemFont_s88dg"]
 font_names = PackedStringArray("Century Gothic")
 font_weight = 600
@@ -16,7 +18,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
-shadow_offset = Vector2(4, 4)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bs6c"]
 bg_color = Color(1, 1, 1, 1)
@@ -31,7 +33,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
-shadow_offset = Vector2(4, 4)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4axt"]
 bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
@@ -46,7 +48,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
-shadow_offset = Vector2(4, 4)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwj2p"]
 bg_color = Color(1, 1, 1, 1)
@@ -60,7 +62,6 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_size = 1
-shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vp4oh"]
 bg_color = Color(0.43137255, 0.7490196, 0.36862746, 1)
@@ -106,8 +107,55 @@ corner_radius_bottom_left = 4
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqsud"]
-bg_color = Color(0.9019608, 0.87058824, 0.80784315, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh1o2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xr0m"]
+bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4qjp"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cqf5v"]
+texture = ExtResource("1_3ovl0")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s88dg"]
 bg_color = Color(1, 1, 1, 1)
@@ -143,5 +191,9 @@ CompleteLevelButton/colors/font_pressed_color = Color(1, 1, 1, 1)
 CompleteLevelButton/styles/hover = SubResource("StyleBoxFlat_vp4oh")
 CompleteLevelButton/styles/normal = SubResource("StyleBoxFlat_jvwys")
 CompleteLevelButton/styles/pressed = SubResource("StyleBoxFlat_1fvms")
-Panel/styles/panel = SubResource("StyleBoxFlat_vqsud")
+LevelButton/base_type = &"Button"
+LevelButton/styles/hover = SubResource("StyleBoxFlat_qh1o2")
+LevelButton/styles/normal = SubResource("StyleBoxFlat_0xr0m")
+LevelButton/styles/pressed = SubResource("StyleBoxFlat_h4qjp")
+Panel/styles/panel = SubResource("StyleBoxTexture_cqf5v")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_s88dg")

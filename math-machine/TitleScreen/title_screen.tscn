@@ -26,18 +26,173 @@ gravity = Vector3(0, 98, 0)
 scale_min = 0.39999998
 scale_max = 0.7
 
-[sub_resource type="SystemFont" id="SystemFont_myilg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fqn1"]
+bg_color = Color(0.5882353, 0.09411765, 0.09411765, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="SystemFont" id="SystemFont_7gix3"]
 font_names = PackedStringArray("Century Gothic")
+font_weight = 600
 subpixel_positioning = 0
 
-[sub_resource type="LabelSettings" id="LabelSettings_f424p"]
-font = SubResource("SystemFont_myilg")
+[sub_resource type="LabelSettings" id="LabelSettings_qax5j"]
+font = SubResource("SystemFont_7gix3")
 font_size = 64
-font_color = Color(0, 0, 0, 1)
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 6
-shadow_color = Color(0, 0, 0, 0.31764707)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oaxot"]
+bg_color = Color(0.22745098, 0.2509804, 0.32941177, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqf5v"]
+bg_color = Color(0.21176471, 0.49019608, 0.09411765, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f424p"]
+bg_color = Color(0.4, 0.65882355, 0.2901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x53nb"]
+bg_color = Color(0.4, 0.65882355, 0.2901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qax5j"]
+bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpegp"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytjtq"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r64nw"]
+bg_color = Color(0.45882353, 0.3529412, 0.6901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhfdr"]
+bg_color = Color(0.6509804, 0.5411765, 0.8901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksn83"]
+bg_color = Color(0.6509804, 0.5411765, 0.8901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
 [node name="TitleScreen" type="Control" unique_id=177250034]
@@ -51,10 +206,11 @@ script = ExtResource("1_2e2ej")
 
 [node name="Panel" type="Panel" parent="." unique_id=1416400080]
 layout_mode = 0
-offset_right = 1184.0
-offset_bottom = 688.0
+offset_right = 1152.0
+offset_bottom = 656.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1735489541]
+visible = false
 position = Vector2(592, -128)
 amount = 1
 texture = ExtResource("2_x53nb")
@@ -64,6 +220,7 @@ visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1389615647]
+visible = false
 position = Vector2(592, -128)
 amount = 1
 texture = ExtResource("3_r64nw")
@@ -73,6 +230,7 @@ visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=1543649240]
+visible = false
 position = Vector2(592, -128)
 amount = 1
 texture = ExtResource("4_fhfdr")
@@ -82,6 +240,7 @@ visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
 [node name="GPUParticles2D4" type="GPUParticles2D" parent="." unique_id=578842815]
+visible = false
 position = Vector2(592, -128)
 amount = 1
 texture = ExtResource("5_ksn83")
@@ -91,6 +250,7 @@ visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
 [node name="GPUParticles2D5" type="GPUParticles2D" parent="." unique_id=1920360819]
+visible = false
 position = Vector2(592, -128)
 amount = 1
 texture = ExtResource("6_0fqn1")
@@ -100,6 +260,7 @@ visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
 [node name="GPUParticles2D6" type="GPUParticles2D" parent="." unique_id=1233988595]
+visible = false
 position = Vector2(592, -128)
 amount = 1
 texture = ExtResource("7_qax5j")
@@ -109,6 +270,7 @@ visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
 [node name="GPUParticles2D7" type="GPUParticles2D" parent="." unique_id=1413535613]
+visible = false
 position = Vector2(592, -128)
 amount = 1
 texture = ExtResource("8_oaxot")
@@ -118,6 +280,7 @@ visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
 [node name="GPUParticles2D8" type="GPUParticles2D" parent="." unique_id=540327750]
+visible = false
 position = Vector2(592, -128)
 amount = 1
 texture = ExtResource("9_vpegp")
@@ -127,6 +290,7 @@ visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
 [node name="GPUParticles2D9" type="GPUParticles2D" parent="." unique_id=1003488544]
+visible = false
 position = Vector2(592, -128)
 amount = 2
 texture = ExtResource("10_ytjtq")
@@ -136,6 +300,7 @@ visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
 [node name="GPUParticles2D10" type="GPUParticles2D" parent="." unique_id=514187344]
+visible = false
 position = Vector2(592, -128)
 amount = 2
 texture = ExtResource("11_64lml")
@@ -144,30 +309,212 @@ preprocess = 8.0
 visibility_rect = Rect2(-100, 0, 200, 200)
 process_material = SubResource("ParticleProcessMaterial_nu07b")
 
-[node name="Title" type="Label" parent="." unique_id=1217068109]
-layout_mode = 0
-offset_left = 352.0
-offset_top = 144.0
-offset_right = 795.0
-offset_bottom = 232.0
-text = "Math Machine"
-label_settings = SubResource("LabelSettings_f424p")
+[node name="Title" type="Control" parent="." unique_id=243422476]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -292.0
+offset_top = 91.0
+offset_right = 292.0
+offset_bottom = 203.0
+grow_horizontal = 2
 
-[node name="PlayButton" type="Button" parent="." unique_id=1503869416]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="Title" unique_id=48857325]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 352.0
-offset_right = 720.0
-offset_bottom = 417.0
-theme_override_colors/font_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
-theme_override_colors/font_focus_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
-theme_override_colors/font_pressed_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
-theme_override_colors/font_hover_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
-theme_override_font_sizes/font_size = 32
-text = "PLAY"
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Title/VBoxContainer" unique_id=38280589]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1661353495]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer" unique_id=1351784842]
+layout_mode = 2
+text = "M"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1031069347]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=173031789]
+layout_mode = 2
+text = "A"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=211483172]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer3" unique_id=665937690]
+layout_mode = 2
+text = "T"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=2031581029]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer4" unique_id=1851533134]
+layout_mode = 2
+text = "H"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Title/VBoxContainer" unique_id=514477293]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=2113330329]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer" unique_id=1004562383]
+layout_mode = 2
+text = "M"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1156457829]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer2" unique_id=229580010]
+layout_mode = 2
+text = "A"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1466671399]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer3" unique_id=1722763073]
+layout_mode = 2
+text = "C"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1872185732]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer4" unique_id=1987896495]
+layout_mode = 2
+text = "H"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=346616420]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer5" unique_id=1217250486]
+layout_mode = 2
+text = "I"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1427149523]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer6" unique_id=686441696]
+layout_mode = 2
+text = "N"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer7" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1001539061]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
+
+[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer7" unique_id=1560476718]
+layout_mode = 2
+text = "E"
+label_settings = SubResource("LabelSettings_qax5j")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=1261809320]
 unique_name_in_owner = true
 stream = ExtResource("4_skoes")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=233216516]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -284.0
+offset_right = 128.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1503869416]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_cqf5v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f424p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x53nb")
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=460415763]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_qax5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vpegp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ytjtq")
+text = "Settings"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1189575717]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_r64nw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fhfdr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ksn83")
+text = "Credits"

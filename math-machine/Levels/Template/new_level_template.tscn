@@ -19,7 +19,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
-shadow_offset = Vector2(4, 4)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="SystemFont" id="SystemFont_11tni"]
 font_names = PackedStringArray("Century Gothic")
@@ -149,6 +149,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/PanelContainer/MarginContainer/Control" unique_id=1298672109]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
