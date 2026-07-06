@@ -1,6 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://c8v5ql7fu0rxv"]
 
 [ext_resource type="Texture2D" uid="uid://cfs0vw4uwxpfh" path="res://Themes/Panel/grid_tile.png" id="1_3ovl0"]
+[ext_resource type="Texture2D" uid="uid://dgmj2pcxhl4gs" path="res://Themes/Slider/slider_grabber.svg" id="1_v6q4r"]
+[ext_resource type="Texture2D" uid="uid://d6ghj1owxq1m" path="res://Themes/Slider/slider_grabber_focused.svg" id="2_0xr0m"]
 
 [sub_resource type="SystemFont" id="SystemFont_s88dg"]
 font_names = PackedStringArray("Century Gothic")
@@ -107,6 +109,48 @@ corner_radius_bottom_left = 4
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blbig"]
+bg_color = Color(0.8745098, 0.53333336, 0.30980393, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ovl0"]
+bg_color = Color(0.87058824, 0.6392157, 0.34117648, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gix3"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh1o2"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 4
@@ -191,6 +235,12 @@ CompleteLevelButton/colors/font_pressed_color = Color(1, 1, 1, 1)
 CompleteLevelButton/styles/hover = SubResource("StyleBoxFlat_vp4oh")
 CompleteLevelButton/styles/normal = SubResource("StyleBoxFlat_jvwys")
 CompleteLevelButton/styles/pressed = SubResource("StyleBoxFlat_1fvms")
+HSlider/constants/grabber_offset = 2
+HSlider/icons/grabber = ExtResource("1_v6q4r")
+HSlider/icons/grabber_highlight = ExtResource("2_0xr0m")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_blbig")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_3ovl0")
+HSlider/styles/slider = SubResource("StyleBoxFlat_7gix3")
 LevelButton/base_type = &"Button"
 LevelButton/styles/hover = SubResource("StyleBoxFlat_qh1o2")
 LevelButton/styles/normal = SubResource("StyleBoxFlat_0xr0m")

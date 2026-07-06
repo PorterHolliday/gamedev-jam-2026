@@ -14,6 +14,10 @@ config/name="Math Machine"
 run/main_scene="uid://dpu1qtcpln6qf"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+[audio]
+
+buses/default_bus_layout="uid://mswcxkopegv8"
+
 [autoload]
 
 LevelManager="*uid://p7vahmcreqeo"
