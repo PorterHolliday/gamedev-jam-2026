@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="4_ngotv"]
 [ext_resource type="Texture2D" uid="uid://dxctjnu8acqc1" path="res://UI/Level UI/restart_icon.png" id="4_ni20n"]
 [ext_resource type="Texture2D" uid="uid://ccb31vo32ayga" path="res://UI/Level UI/hint_icon.png" id="5_tcd1y"]
+[ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="6_ni20n"]
 [ext_resource type="PackedScene" uid="uid://ojae0y7pvy22" path="res://Levels/HintPopup/hint_popup.tscn" id="9_g7a5h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3su"]
@@ -222,6 +223,22 @@ texture = ExtResource("5_tcd1y")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="SettingsButton" type="Button" parent="UI/PanelContainer/MarginContainer/Control/HBoxContainer" unique_id=518444032]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="TextureRect" type="TextureRect" parent="UI/PanelContainer/MarginContainer/Control/HBoxContainer/SettingsButton" unique_id=1044884217]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("6_ni20n")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="HintPopup" parent="UI" unique_id=950000720 instance=ExtResource("9_g7a5h")]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -234,10 +251,12 @@ libraries/ = SubResource("AnimationLibrary_11tni")
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=2107270752]
 unique_name_in_owner = true
 stream = ExtResource("2_pw5pt")
+bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=420279063]
 unique_name_in_owner = true
 stream = ExtResource("4_ngotv")
 volume_db = -10.0
+bus = &"Music"
 
 [editable path="UI/HintPopup"]

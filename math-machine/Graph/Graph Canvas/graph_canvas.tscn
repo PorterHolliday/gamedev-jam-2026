@@ -21,10 +21,12 @@ metadata/_custom_type_script = "uid://boo36jrexts7x"
 [node name="ConnectionAudio" type="AudioStreamPlayer" parent="." unique_id=1097085759]
 unique_name_in_owner = true
 stream = ExtResource("3_5emxd")
+bus = &"SFX"
 
 [node name="DisconnectionAudio" type="AudioStreamPlayer" parent="." unique_id=2025728267]
 unique_name_in_owner = true
 stream = ExtResource("4_pusok")
+bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=269440094]
 unique_name_in_owner = true
