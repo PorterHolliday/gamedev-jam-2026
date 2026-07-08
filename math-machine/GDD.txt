@@ -9,16 +9,17 @@ Git Branches:
 	* Game Structure
 	* Level Select Update
 	* Title Screen Update
-	Settings Screen + Settings Button
-	Credits Screen
-	End Screen Update
-	Hint Popup Update
-	Audio Update
+	* Settings Screen + Settings Button
 	Gameplay Animations
 		- Port filled when hovered
 		- Node pop animation when it gets a new input
 		- Output node fill animation when fulfilled
 		- Output node pop when level is complete
+	Credits Screen
+	End Screen Update
+	Hint Popup Update
+	Audio Update
+	
 	Save Data
 		- Saves LevelManager levels_complete array
 		- Saves Settings selection
