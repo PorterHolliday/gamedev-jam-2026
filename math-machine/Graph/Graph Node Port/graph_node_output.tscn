@@ -60,6 +60,7 @@ offset_left = 6.0
 offset_top = -35.0
 offset_right = 6.0
 offset_bottom = -35.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("4_dptiu")
 metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
 

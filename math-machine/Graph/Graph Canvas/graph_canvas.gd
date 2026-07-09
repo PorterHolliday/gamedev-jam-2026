@@ -235,7 +235,7 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 		connection.to_port = port1
 		
 	if get_port_connections(connection.to_port).size() > 0:
-		request_disconnection(get_port_connections(connection.to_port)[0], false)
+		connections.erase(get_port_connections(connection.to_port)[0])
 		
 	connections.append(connection)
 	
