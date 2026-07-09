@@ -47,6 +47,7 @@ func _connect_port_signals() -> void:
 		if child is MyGraphNode:
 			for grandchild in child.get_children():
 				if grandchild is GraphNodePort:
+					ports.append(grandchild)
 					grandchild.port_clicked.connect(func(): _port_clicked(grandchild))
 					grandchild.mouse_entered_port_area.connect(func(): _mouse_entered_port_area(grandchild))
 					grandchild.mouse_exited_port_area.connect(func(): _mouse_exited_port_area(grandchild))
@@ -71,11 +72,15 @@ func get_port_connections(port: GraphNodePort) -> Array[Connection]:
 	return port_connections
 	
 func _mouse_entered_port_area(port: GraphNodePort) -> void:
-	if not current_connection_start_port: return
+	if not current_connection_start_port: 
+		port.show_hover_fill()
+		return
 	if _can_connect_ports(current_connection_start_port, port):
+		port.show_hover_fill()
 		current_connection_end_port = port
 	
 func _mouse_exited_port_area(port: GraphNodePort) -> void:
+	port.hide_hover_fill()
 	if not current_connection_start_port: return
 	if port != current_connection_end_port: return
 	current_connection_end_port = null
@@ -111,6 +116,13 @@ func _loop_search(search_for_node: MyGraphNode, next_node: MyGraphNode) -> bool:
 	
 func _process(_delta: float) -> void:
 	queue_redraw()
+	for port in ports:
+		port.hide_hover_fill()
+	if current_connection_start_port:
+		current_connection_start_port.show_connected_fill()
+	for connection in connections:
+		connection.from_port.show_connected_fill()
+		connection.to_port.show_connected_fill()
 
 func _draw() -> void:
 	for connection in connections:

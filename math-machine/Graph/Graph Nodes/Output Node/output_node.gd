@@ -26,11 +26,11 @@ signal received_valid_output
 
 @export var is_satisfied: bool = false:
 	set(new_val):
-		is_satisfied = new_val
-		if is_satisfied:
+		if not is_satisfied and new_val:
 			_play_fill_animation()
-		else:
+		elif is_satisfied and not new_val:
 			_play_fill_animation(true)
+		is_satisfied = new_val
 			
 @export var transition_duration: float = 0.5
 
