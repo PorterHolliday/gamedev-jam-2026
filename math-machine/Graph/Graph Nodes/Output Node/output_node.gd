@@ -19,7 +19,7 @@ signal received_valid_output
 @export var unsatisfied_text_color: Color = Color.BLACK:
 	set(new_val):
 		unsatisfied_text_color = new_val
-		if not is_satisfied:
+		if not is_satisfied and _value_label:
 			_value_label.modulate = unsatisfied_text_color
 @export var satisfied_color: Color
 @export var satisfied_text_color: Color = Color.WHITE
@@ -38,7 +38,6 @@ func _ready() -> void:
 	_update_value_label()
 	_sprite.material = _sprite.material.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	_value_label.material = _value_label.material.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
-	_sprite.material.set_shader_parameter('fill_color', satisfied_color)
 	_value_label.material.set_shader_parameter('fill_color', satisfied_text_color)
 	if Engine.is_editor_hint(): return
 	super()
