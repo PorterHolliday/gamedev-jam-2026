@@ -13,6 +13,7 @@ enum Type {
 @export var type: Type = Type.INPUT
 @export var connection_color: Color = Color.WHITE
 @export var connection_border_color: Color = Color.BLACK
+@export var connection_hover_color: Color = Color.WHITE
 @export var hover_color: Color = Color.BLACK
 @export var connected_color: Color = Color.DIM_GRAY
 

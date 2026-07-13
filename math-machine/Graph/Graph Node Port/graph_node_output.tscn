@@ -29,6 +29,7 @@ shadow_offset = Vector2(1, 1)
 script = ExtResource("1_j0l1v")
 type = 1
 connection_color = Color(0.8745098, 0.53333336, 0.30980393, 1)
+connection_hover_color = Color(0.87058824, 0.6392157, 0.34117648, 1)
 connected_color = Color(0.40460834, 0.48308903, 0.56990933, 1)
 metadata/_custom_type_script = "uid://igltm2xbx00c"
 

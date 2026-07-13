@@ -125,15 +125,16 @@ func _process(_delta: float) -> void:
 		connection.to_port.show_connected_fill()
 
 func _draw() -> void:
+	var hovered_connection: Connection = _get_closest_connection_at_point(get_global_mouse_position(), DISCONNECTION_DISTANCE)
 	for connection in connections:
-		_draw_connection(connection)
+		_draw_connection(connection, connection == hovered_connection)
 	_draw_current_connection()
 		
-func _draw_connection(connection: Connection) -> void:
+func _draw_connection(connection: Connection, is_hovered: bool) -> void:
 	_draw_bezier(
 			to_local(connection.from_port.global_position),
 			to_local(connection.to_port.global_position),
-			connection.from_port.connection_color,
+			connection.from_port.connection_hover_color if is_hovered else connection.from_port.connection_color,
 			connection.from_port.connection_border_color,
 			true
 		)
@@ -148,6 +149,17 @@ func _draw_current_connection() -> void:
 			_draw_bezier(start, end, PREVIEW_COLOR, BORDER_PREVIEW_COLOR, false)
 		else:
 			_draw_bezier(end, start, PREVIEW_COLOR, BORDER_PREVIEW_COLOR, false)
+			
+func _draw_hovered_connection(connection: Connection) -> void:
+	if not connection: return
+	
+	_draw_bezier(
+			to_local(connection.from_port.global_position),
+			to_local(connection.to_port.global_position),
+			connection.from_port.connection_hover_color,
+			connection.from_port.connection_border_color,
+			true
+		)
 		
 func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color, draw_shadow: bool) -> void:
 	var offset := Vector2(abs(to.x - from.x) * 0.5, 0.0)
