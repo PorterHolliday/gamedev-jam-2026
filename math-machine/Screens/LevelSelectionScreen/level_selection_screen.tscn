@@ -403,7 +403,6 @@ offset_left = 576.0
 offset_top = 336.0
 offset_right = 648.0
 offset_bottom = 408.0
-disabled = false
 
 [node name="LevelButton15" parent="LevelButtonsContainer" unique_id=1045238823 instance=ExtResource("1_bntq0")]
 offset_left = 656.0
