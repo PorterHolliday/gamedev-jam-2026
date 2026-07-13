@@ -8,18 +8,6 @@ func _ready() -> void:
 	_drag_area_2d.drag_started.connect(_on_drag_started)
 	_drag_area_2d.drag_ended.connect(_on_drag_ended)
 	
-func update_input(port: GraphNodePort, value: int) -> void:
-	if port.value != NULL_VALUE and value == NULL_VALUE:
-		_play_remove_input_animation()
-	elif port.value != value:
-		_play_update_input_animation()
-	super(port, value)
-	
-func remove_input(port: GraphNodePort) -> void:
-	if port.value != NULL_VALUE:
-		_play_remove_input_animation()
-	super(port)
-	
 func _on_drag_started() -> void:
 	scale = Vector2(1.1, 1.1)
 	get_parent().move_child(self, get_parent().get_children().size())

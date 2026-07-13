@@ -23,10 +23,16 @@ func is_input_connected(port: GraphNodePort) -> bool:
 	return port.value != NULL_VALUE
 
 func update_input(port: GraphNodePort, value: int) -> void:
+	if port.value != NULL_VALUE and value == NULL_VALUE:
+		_play_remove_input_animation()
+	elif port.value != value:
+		_play_update_input_animation()
 	port.value = value
 	_update_outputs()
 	
 func remove_input(port: GraphNodePort) -> void:
+	if port.value != NULL_VALUE:
+		_play_remove_input_animation()
 	port.value = NULL_VALUE
 	_update_outputs()
 	
@@ -40,3 +46,14 @@ func _update_outputs() -> void:
 	
 func _calculate_outputs() -> Array[int]:
 	return []
+	
+func _play_update_input_animation() -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, 'scale', Vector2(1.1, 1.1), 0.1)
+	tween.tween_property(self, 'scale', Vector2.ONE, 0.1)
+	
+func _play_remove_input_animation() -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, 'rotation_degrees', -5.0, 0.05)
+	tween.tween_property(self, 'rotation_degrees', 5, 0.1)
+	tween.tween_property(self, 'rotation_degrees', 0, 0.05)
