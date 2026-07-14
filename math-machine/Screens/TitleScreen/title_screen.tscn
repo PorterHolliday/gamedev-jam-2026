@@ -18,13 +18,13 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
-[sub_resource type="SystemFont" id="SystemFont_7gix3"]
+[sub_resource type="SystemFont" id="SystemFont_vnbe3"]
 font_names = PackedStringArray("Century Gothic")
 font_weight = 600
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_qax5j"]
-font = SubResource("SystemFont_7gix3")
+font = SubResource("SystemFont_vnbe3")
 font_size = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oaxot"]

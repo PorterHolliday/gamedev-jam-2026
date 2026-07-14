@@ -50,6 +50,7 @@ shadow_offset = Vector2(2, 2)
 
 [sub_resource type="SystemFont" id="SystemFont_7gix3"]
 font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_bp0l3"]
 font = SubResource("SystemFont_7gix3")
@@ -104,10 +105,10 @@ grow_vertical = 2
 [node name="BackButton" type="Button" parent="." unique_id=672972270]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 64.0
-offset_bottom = 64.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
 theme_type_variation = &"BackButton"
 theme_override_styles/normal = SubResource("StyleBoxFlat_4gme4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lrles")
