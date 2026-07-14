@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://g68g4kmhjyq7" path="res://UIRoot/ui_root.gd" id="6_7rb8t"]
 [ext_resource type="PackedScene" uid="uid://crdmfsmvvx803" path="res://Screens/CreditsScreen/credits_screen.tscn" id="6_ahdtl"]
 [ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="7_7rb8t"]
+[ext_resource type="PackedScene" uid="uid://l0wv334kim35" path="res://Levels/LevelCompletePopup/game_complete_popup.tscn" id="10_4878p"]
 
 [node name="GameRoot" type="Node" unique_id=428157721]
 script = ExtResource("1_6mbnm")
@@ -32,6 +33,7 @@ layer = 2
 unique_name_in_owner = true
 script = ExtResource("6_7rb8t")
 level_complete_popup_scene = ExtResource("7_7rb8t")
+game_complete_popup_scene = ExtResource("10_4878p")
 
 [node name="SettingsMenuLayer" type="CanvasLayer" parent="." unique_id=722790838]
 layer = 4

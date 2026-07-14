@@ -27,7 +27,4 @@ func get_level_scene(index: int) -> PackedScene:
 
 func complete_current_level() -> void:
 	levels_completed[current_level_index] = true
-	if current_level_index == level_scenes.size() - 1:
-		GameRoot.enter_end_screen()
-	else:
-		GameRoot.level_complete()
+	GameRoot.level_complete()
