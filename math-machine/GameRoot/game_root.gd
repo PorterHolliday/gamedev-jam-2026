@@ -5,7 +5,6 @@ static var node: GameRoot
 
 @export var title_screen_scene: PackedScene
 @export var level_select_screen_scene: PackedScene
-@export var end_screen_scene: PackedScene
 @export var settings_screen_scene: PackedScene
 @export var credits_screen_scene: PackedScene
 
