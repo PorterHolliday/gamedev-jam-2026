@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dq7cmcucj1jdy" path="res://Graph/Graph Node Port/port_shadow.png" id="2_mso3d"]
 [ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_qp16x"]
 [ext_resource type="Script" uid="uid://byh1bnt7lgfl8" path="res://UI/DirectionalExpandContainer/directional_expand_container.gd" id="4_xv260"]
+[ext_resource type="Texture2D" uid="uid://vomfgbeuondv" path="res://Graph/Graph Node Port/port_hover_fill.png" id="6_ok08f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kp32d"]
 radius = 24.0
@@ -27,6 +28,7 @@ shadow_offset = Vector2(1, 1)
 [node name="GraphNodeInput" type="Marker2D" unique_id=2095797941]
 script = ExtResource("1_v8ah4")
 connection_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+connected_color = Color(0.40392157, 0.48235294, 0.5686275, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1226451037]
 unique_name_in_owner = true
@@ -40,6 +42,7 @@ offset_left = -3.0
 offset_top = -35.0
 offset_right = -3.0
 offset_bottom = -35.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("4_xv260")
 h_expand_direction = 0
 metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
@@ -71,3 +74,10 @@ texture = ExtResource("2_mso3d")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=68125033]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_kp32d")
+
+[node name="FillSprite" type="Sprite2D" parent="." unique_id=1872212463]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_ok08f")

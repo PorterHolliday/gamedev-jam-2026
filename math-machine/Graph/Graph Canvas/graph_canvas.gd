@@ -47,6 +47,7 @@ func _connect_port_signals() -> void:
 		if child is MyGraphNode:
 			for grandchild in child.get_children():
 				if grandchild is GraphNodePort:
+					ports.append(grandchild)
 					grandchild.port_clicked.connect(func(): _port_clicked(grandchild))
 					grandchild.mouse_entered_port_area.connect(func(): _mouse_entered_port_area(grandchild))
 					grandchild.mouse_exited_port_area.connect(func(): _mouse_exited_port_area(grandchild))
@@ -71,11 +72,15 @@ func get_port_connections(port: GraphNodePort) -> Array[Connection]:
 	return port_connections
 	
 func _mouse_entered_port_area(port: GraphNodePort) -> void:
-	if not current_connection_start_port: return
+	if not current_connection_start_port: 
+		port.show_hover_fill()
+		return
 	if _can_connect_ports(current_connection_start_port, port):
+		port.show_hover_fill()
 		current_connection_end_port = port
 	
 func _mouse_exited_port_area(port: GraphNodePort) -> void:
+	port.hide_hover_fill()
 	if not current_connection_start_port: return
 	if port != current_connection_end_port: return
 	current_connection_end_port = null
@@ -111,17 +116,25 @@ func _loop_search(search_for_node: MyGraphNode, next_node: MyGraphNode) -> bool:
 	
 func _process(_delta: float) -> void:
 	queue_redraw()
+	for port in ports:
+		port.hide_hover_fill()
+	if current_connection_start_port:
+		current_connection_start_port.show_connected_fill()
+	for connection in connections:
+		connection.from_port.show_connected_fill()
+		connection.to_port.show_connected_fill()
 
 func _draw() -> void:
+	var hovered_connection: Connection = _get_closest_connection_at_point(get_global_mouse_position(), DISCONNECTION_DISTANCE)
 	for connection in connections:
-		_draw_connection(connection)
+		_draw_connection(connection, connection == hovered_connection)
 	_draw_current_connection()
 		
-func _draw_connection(connection: Connection) -> void:
+func _draw_connection(connection: Connection, is_hovered: bool) -> void:
 	_draw_bezier(
 			to_local(connection.from_port.global_position),
 			to_local(connection.to_port.global_position),
-			connection.from_port.connection_color,
+			connection.from_port.connection_hover_color if is_hovered else connection.from_port.connection_color,
 			connection.from_port.connection_border_color,
 			true
 		)
@@ -136,6 +149,17 @@ func _draw_current_connection() -> void:
 			_draw_bezier(start, end, PREVIEW_COLOR, BORDER_PREVIEW_COLOR, false)
 		else:
 			_draw_bezier(end, start, PREVIEW_COLOR, BORDER_PREVIEW_COLOR, false)
+			
+func _draw_hovered_connection(connection: Connection) -> void:
+	if not connection: return
+	
+	_draw_bezier(
+			to_local(connection.from_port.global_position),
+			to_local(connection.to_port.global_position),
+			connection.from_port.connection_hover_color,
+			connection.from_port.connection_border_color,
+			true
+		)
 		
 func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color, draw_shadow: bool) -> void:
 	var offset := Vector2(abs(to.x - from.x) * 0.5, 0.0)
@@ -223,7 +247,7 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 		connection.to_port = port1
 		
 	if get_port_connections(connection.to_port).size() > 0:
-		request_disconnection(get_port_connections(connection.to_port)[0], false)
+		connections.erase(get_port_connections(connection.to_port)[0])
 		
 	connections.append(connection)
 	
@@ -268,3 +292,13 @@ func update_output_connections(port: GraphNodePort) -> void:
 	var connections: Array[Connection] = get_port_connections(port)
 	for connection in connections:
 		connection.to_port.graph_node.update_input(connection.to_port, port.value)
+
+func play_level_complete_animation() -> void:	
+	await get_tree().create_timer(0.3).timeout
+	
+	if _output_nodes.size() == 1: return
+	
+	for output_node in _output_nodes:
+		output_node.play_level_complete_animation()
+		await get_tree().create_timer(0.08).timeout
+	await get_tree().create_timer(0.4).timeout

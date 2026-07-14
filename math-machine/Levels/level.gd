@@ -55,6 +55,8 @@ func _on_button_pressed() -> void:
 func _on_level_complete() -> void:
 	music.stop()
 	
+	await graph_canvas.play_level_complete_animation()
+	
 	LevelManager.complete_current_level()
 	
 	await get_tree().create_timer(0.1).timeout

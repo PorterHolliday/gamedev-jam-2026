@@ -14,10 +14,13 @@ func update_input(port: GraphNodePort, new_value: int) -> void:
 		value = new_value
 	_disconnect_input()
 	_update_value_label()
+	_update_outputs()
 	
 func _disconnect_input() -> void:
 	var connection: = _graph_canvas.get_port_connections(inputs[0])[0]
-	_graph_canvas.request_disconnection(connection, false)
+	_graph_canvas.connections.erase(connection)
+	inputs[0].value = NULL_VALUE
+	
 	
 func _calculate_outputs() -> Array[int]:
 	return [value]

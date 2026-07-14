@@ -9,19 +9,23 @@ Git Branches:
 	* Game Structure
 	* Level Select Update
 	* Title Screen Update
-	Settings Screen + Settings Button
-	Credits Screen
-	End Screen Update
-	Hint Popup Update
-	Audio Update
+	* Settings Screen + Settings Button
 	Gameplay Animations
 		- Port filled when hovered
 		- Node pop animation when it gets a new input
 		- Output node fill animation when fulfilled
 		- Output node pop when level is complete
+		- Connection line color change when hovered
+	Credits Screen
+	End Screen Update
+	Hint Popup Update
+	Audio Update
 	Save Data
 		- Saves LevelManager levels_complete array
 		- Saves Settings selection
+	Additional Levels
+		- 1 Add Value Level
+		- 4 Challenge Levels
 	Final Check/Refactor - Add Additional Branches as Needed
 
 ANY OTHER CHANGES MUST BE ADDED TO THIS LIST BEFORE BEING IMPLEMENTED!!!
