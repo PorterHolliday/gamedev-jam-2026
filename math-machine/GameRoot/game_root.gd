@@ -7,6 +7,7 @@ static var node: GameRoot
 @export var level_select_screen_scene: PackedScene
 @export var end_screen_scene: PackedScene
 @export var settings_screen_scene: PackedScene
+@export var credits_screen_scene: PackedScene
 
 @onready var game_screen_root: Node = %GameScreenRoot
 @onready var ui_root: UIRoot = %UIRoot
@@ -64,6 +65,10 @@ static func exit_settings_screen() -> void:
 		node.transition_page_forward(node.previous_screen)
 	else:
 		node.transition_page_back(node.previous_screen)
+		
+static func enter_credits_screen() -> void:
+	var credits_screen: Control = node.credits_screen_scene.instantiate()
+	node.transition_page_forward(credits_screen)
 	
 func transition_page_forward(new_screen: Node) -> void:
 	var old_screen: Node = node.game_screen_root.get_child(0)

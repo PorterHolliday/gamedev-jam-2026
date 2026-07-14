@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bqjkn1etmk7m1" path="res://Screens/LevelSelectionScreen/challenge_level_divider.png" id="2_e8uy2"]
 [ext_resource type="LabelSettings" uid="uid://buq01gkh36dd0" path="res://LabelSettings/divider_label_settings.tres" id="2_osfc4"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_gnmtl"]
+[ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="6_4o1ik"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="31_l6jef"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v81n"]
@@ -517,6 +518,31 @@ offset_left = 9.0
 offset_right = 39.0
 offset_bottom = 48.0
 texture = ExtResource("4_gnmtl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsButton" type="Button" parent="." unique_id=1879229678]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_type_variation = &"BackButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_yuwhm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_337mu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfhlq")
+
+[node name="TextureRect" type="TextureRect" parent="SettingsButton" unique_id=785720812]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("6_4o1ik")
 expand_mode = 1
 stretch_mode = 5
 

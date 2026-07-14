@@ -24,4 +24,4 @@ func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()
 	
 func _on_credits_button_pressed() -> void:
-	pass
+	GameRoot.enter_credits_screen()

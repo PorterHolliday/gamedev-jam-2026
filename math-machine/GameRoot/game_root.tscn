@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://3vvhaji5x0ta" path="res://TransitionRoot/transition_root.tscn" id="5_pc124"]
 [ext_resource type="PackedScene" uid="uid://dckjs325lx5n3" path="res://UIRoot/ui_root.tscn" id="5_yjbio"]
 [ext_resource type="Script" uid="uid://g68g4kmhjyq7" path="res://UIRoot/ui_root.gd" id="6_7rb8t"]
+[ext_resource type="PackedScene" uid="uid://crdmfsmvvx803" path="res://Screens/CreditsScreen/credits_screen.tscn" id="6_ahdtl"]
 [ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="7_7rb8t"]
 
 [node name="GameRoot" type="Node" unique_id=428157721]
@@ -16,6 +17,7 @@ title_screen_scene = ExtResource("2_prtjo")
 level_select_screen_scene = ExtResource("3_pc124")
 end_screen_scene = ExtResource("4_yx0wv")
 settings_screen_scene = ExtResource("5_c8ohv")
+credits_screen_scene = ExtResource("6_ahdtl")
 metadata/_custom_type_script = "uid://deggewgm1t5un"
 
 [node name="GameScreenLayer" type="CanvasLayer" parent="." unique_id=813723494]
