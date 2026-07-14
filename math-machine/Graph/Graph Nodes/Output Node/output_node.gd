@@ -77,3 +77,9 @@ func _play_fill_animation(reverse: bool = false) -> void:
 	)
 	
 	await tween.finished
+
+func play_level_complete_animation() -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, 'scale', Vector2(1.1, 1.1), 0.15)
+	tween.tween_property(self, 'scale', Vector2(1.0, 1.0), 0.15)
+	await tween.finished

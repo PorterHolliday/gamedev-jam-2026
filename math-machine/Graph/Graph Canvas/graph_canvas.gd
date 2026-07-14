@@ -292,3 +292,13 @@ func update_output_connections(port: GraphNodePort) -> void:
 	var connections: Array[Connection] = get_port_connections(port)
 	for connection in connections:
 		connection.to_port.graph_node.update_input(connection.to_port, port.value)
+
+func play_level_complete_animation() -> void:	
+	await get_tree().create_timer(0.3).timeout
+	
+	if _output_nodes.size() == 1: return
+	
+	for output_node in _output_nodes:
+		output_node.play_level_complete_animation()
+		await get_tree().create_timer(0.08).timeout
+	await get_tree().create_timer(0.4).timeout
