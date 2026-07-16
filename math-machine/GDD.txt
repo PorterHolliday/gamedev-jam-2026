@@ -16,15 +16,16 @@ Git Branches:
 		- Output node fill animation when fulfilled
 		- Output node pop when level is complete
 		- Connection line color change when hovered
-	Screens
+	* Screens
 		- Credits Screen
 		- End Screen Update
 		- Miscellaneous Screen Fixes
-	Hint Popup Update
-	Audio Update
 	Save Data
 		- Saves LevelManager levels_complete array
 		- Saves Settings selection
+	Toolbar Explanation
+	Hint Popup Update
+	Audio Update
 	Additional Levels
 		- 1 Add Value Level
 		- 4 Challenge Levels

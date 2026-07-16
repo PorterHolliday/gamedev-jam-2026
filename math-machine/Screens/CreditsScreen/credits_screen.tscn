@@ -124,6 +124,7 @@ shadow_offset = Vector2(2, 2)
 [sub_resource type="SystemFont" id="SystemFont_7gix3"]
 font_names = PackedStringArray("Century Gothic")
 font_italic = true
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_bp0l3"]
 font = SubResource("SystemFont_7gix3")
