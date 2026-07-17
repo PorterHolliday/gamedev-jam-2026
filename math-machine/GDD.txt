@@ -24,6 +24,7 @@ Git Branches:
 		- Saves LevelManager levels_complete array
 		- Saves Settings selection
 	Toolbar Explanation
+	Fix Web Lag
 	Hint Popup Update
 	Audio Update
 	Additional Levels

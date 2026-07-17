@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SaveData" format=3]
+
+[ext_resource type="Script" path="res://Singletons/save_data.gd" id="1_osnqw"]
+
+[resource]
+script = ExtResource("1_osnqw")
+levels_completed = Array[bool]([false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false])

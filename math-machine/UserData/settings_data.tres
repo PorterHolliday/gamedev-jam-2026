@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SettingsData" format=3]
+
+[ext_resource type="Script" path="res://Screens/SettingsScreen/SettingsData/settings_data.gd" id="1_76fwp"]
+
+[resource]
+script = ExtResource("1_76fwp")
+music_volume = 19.0
+sfx_volume = 100.0
+metadata/_custom_type_script = "uid://el3hanlm4pmu"

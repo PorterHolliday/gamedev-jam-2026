@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SettingsData" format=3]
-
-[ext_resource type="Script" path="res://Screens/SettingsScreen/SettingsData/settings_data.gd" id="1_k2k2b"]
-
-[resource]
-script = ExtResource("1_k2k2b")
-sfx_volume = 32.0
-metadata/_custom_type_script = "uid://el3hanlm4pmu"
