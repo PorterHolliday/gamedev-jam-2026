@@ -320,7 +320,7 @@ value = 50.0
 
 [node name="MusicPercentage" type="Label" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=1018589631]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 text = "50%"
 label_settings = ExtResource("3_lrles")
@@ -361,7 +361,7 @@ value = 50.0
 
 [node name="SFXPercentage" type="Label" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=633335647]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 text = "50%"
 label_settings = ExtResource("3_lrles")
