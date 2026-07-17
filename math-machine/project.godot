@@ -21,6 +21,7 @@ buses/default_bus_layout="uid://mswcxkopegv8"
 [autoload]
 
 LevelManager="*uid://p7vahmcreqeo"
+SaveManager="*uid://ckii1lcb1rdhn"
 
 [display]
 
