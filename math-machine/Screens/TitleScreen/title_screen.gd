@@ -10,10 +10,6 @@ func _ready() -> void:
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	credits_button.pressed.connect(_on_credits_button_pressed)
 	
-	for child in get_children():
-		if child is GPUParticles2D:
-			child.preprocess = randf_range(child.lifetime, child.lifetime * 2)
-	
 func _on_play_button_pressed() -> void:
 	button_audio.volume_db = randf_range(-5, 0)
 	button_audio.pitch_scale = randf_range(0.8, 1.2)

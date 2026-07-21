@@ -2,6 +2,7 @@ class_name Level
 extends Node2D
 
 @onready var graph_canvas: GraphCanvas = %GraphCanvas
+@onready var ui_layer: CanvasLayer = %UILayer
 @onready var back_button: Button = %BackButton
 @onready var restart_button: Button = %RestartButton
 @onready var hint_button: Button = %HintButton
@@ -25,7 +26,12 @@ func _ready() -> void:
 	hint_button.pressed.connect(_on_button_pressed)
 	settings_button.pressed.connect(_on_button_pressed)
 	
-	music.play()
+	#music.play()
+	
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_VISIBILITY_CHANGED:
+		if not ui_layer: return
+		ui_layer.visible = visible
 		
 func disable() -> void:
 	hide()
@@ -36,7 +42,8 @@ func enable() -> void:
 	graph_canvas.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_back_button_pressed() -> void:
-	GameRoot.enter_level_select_screen()
+	await GameRoot.enter_level_select_screen()
+	LevelManager.replace_current_level(LevelManager.get_spare_level_instance(false))
 	
 func _on_restart_button_pressed() -> void:
 	GameRoot.restart_level()
