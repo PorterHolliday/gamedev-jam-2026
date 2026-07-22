@@ -96,24 +96,21 @@ value = 3
 position = Vector2(992, 496)
 value = 4
 
-[node name="BackButton" parent="UI/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="0" unique_id=629111258]
+[node name="BackButton" parent="UILayer/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="0" unique_id=629111258]
 metadata/_edit_lock_ = true
 
-[node name="Label" parent="UI/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+[node name="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
 text = "Tutorial: 1"
 
-[node name="RestartButton" parent="UI/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="0" unique_id=930462941]
+[node name="RestartButton" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="0" unique_id=930462941]
 metadata/_edit_lock_ = true
 
-[node name="HintButton" parent="UI/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="1" unique_id=348902469]
+[node name="HintButton" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="1" unique_id=348902469]
 metadata/_edit_lock_ = true
 
-[node name="HintPopup" parent="UI" parent_id_path=PackedInt32Array(1147669631) index="1" unique_id=950000720]
+[node name="HintPopup" parent="UILayer" parent_id_path=PackedInt32Array(1147669631) index="1" unique_id=950000720]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
-
-[node name="Hint" parent="UI/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1289930638) index="0" unique_id=47662854]
-text = "Click and drag to connect blocks."
 
 [node name="HandIcon" type="TextureRect" parent="." index="5" unique_id=762774428]
 offset_left = 176.0
@@ -132,4 +129,4 @@ autoplay = &"tutorial"
 [connection signal="connection_occurred" from="GraphCanvas" to="HandIcon" method="hide"]
 [connection signal="connection_occurred" from="GraphCanvas" to="TutorialAnimationPlayer" method="pause"]
 
-[editable path="UI/HintPopup"]
+[editable path="UILayer/HintPopup"]

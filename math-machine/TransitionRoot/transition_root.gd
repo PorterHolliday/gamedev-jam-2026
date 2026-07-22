@@ -1,42 +1,21 @@
 class_name TransitionRoot
 extends Control
 
-signal transition_finished
+@export var transition_duration: float = 0.25;
 
-@export var transition_duration: float = 0.5;
+@onready var black: TextureRect = %Black
 
-@onready var sub_viewport: SubViewport = %SubViewport
-
-func play_transition_forward(old_screen: Node) -> void:
-	sub_viewport.add_child(old_screen)
-	
-	var shader_material: ShaderMaterial = material
+func transition_in() -> void:
+	black.show()
+	black.self_modulate = Color(0.0, 0.0, 0.0, 0.0)
 	var tween: Tween = get_tree().create_tween()
-	#shader_material.set_shader_parameter('normal_x', randf_range(0.5, 1.0))
-	#shader_material.set_shader_parameter('normal_y', randf_range(0.5, 1.0))
-	tween.tween_method(func(value: float):
-		shader_material.set_shader_parameter('progress', value), 
-		0.0, 1.0, transition_duration
-	)
+	tween.tween_property(black, 'self_modulate', Color(0.0, 0.0, 0.0, 1.0), transition_duration)
 	await tween.finished
 	
-	sub_viewport.remove_child(old_screen)
-	shader_material.set_shader_parameter('progress', 0.0)
-	transition_finished.emit()
-	
-func play_transition_back(new_screen: Node) -> void:
-	sub_viewport.add_child(new_screen)
-	
-	var shader_material: ShaderMaterial = material
-	#shader_material.set_shader_parameter('normal_x', randf_range(0.5, 1.0))
-	#shader_material.set_shader_parameter('normal_y', randf_range(0.5, 1.0))
+func transition_out() -> void:
+	black.self_modulate = Color()
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_method(func(value: float):
-		shader_material.set_shader_parameter('progress', value), 
-		1.0, 0.0, transition_duration
-	)
-	await tween.finished
+	tween.tween_property(black, 'self_modulate', Color(0.0, 0.0, 0.0, 0.0), transition_duration)
 	
-	sub_viewport.remove_child(new_screen)
-	shader_material.set_shader_parameter('progress', 0.0)
-	transition_finished.emit()
+	await tween.finished
+	black.hide()
