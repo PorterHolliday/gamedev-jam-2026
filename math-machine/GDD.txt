@@ -20,11 +20,11 @@ Git Branches:
 		- Credits Screen
 		- End Screen Update
 		- Miscellaneous Screen Fixes
-	Save Data
+	* Save Data
 		- Saves LevelManager levels_complete array
 		- Saves Settings selection
+	* Fix Web Lag
 	Toolbar Explanation
-	Fix Web Lag
 	Hint Popup Update
 	Audio Update
 	Additional Levels

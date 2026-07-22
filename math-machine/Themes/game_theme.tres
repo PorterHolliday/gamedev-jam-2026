@@ -216,6 +216,27 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
 
+[sub_resource type="SystemFont" id="SystemFont_v6q4r"]
+font_names = PackedStringArray("Century Gothic")
+font_weight = 600
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4o1ik"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6862745)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
@@ -247,3 +268,7 @@ LevelButton/styles/normal = SubResource("StyleBoxFlat_0xr0m")
 LevelButton/styles/pressed = SubResource("StyleBoxFlat_h4qjp")
 Panel/styles/panel = SubResource("StyleBoxTexture_cqf5v")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_s88dg")
+TooltipLabel/colors/font_color = Color(0, 0, 0, 1)
+TooltipLabel/font_sizes/font_size = 14
+TooltipLabel/fonts/font = SubResource("SystemFont_v6q4r")
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_4o1ik")

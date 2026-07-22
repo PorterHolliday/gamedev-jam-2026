@@ -139,6 +139,7 @@ offset_bottom = 24.0
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_stretch_ratio = 15.0
+tooltip_text = "Level Select"
 icon_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/BackButton" unique_id=2016060500]
@@ -198,6 +199,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 2
+tooltip_text = "Restart"
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/RestartButton" unique_id=300638952]
 layout_mode = 0
@@ -213,6 +215,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Hint"
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HintButton" unique_id=807053921]
 layout_mode = 0
@@ -229,6 +232,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Settings"
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/SettingsButton" unique_id=1044884217]
 layout_mode = 0

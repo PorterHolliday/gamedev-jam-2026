@@ -114,6 +114,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
 offset_bottom = 56.0
+tooltip_text = "Back"
 theme_type_variation = &"BackButton"
 theme_override_styles/normal = SubResource("StyleBoxFlat_4gme4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lrles")
