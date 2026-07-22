@@ -365,5 +365,5 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_7o3u2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1791773775]
-volume_db = -8.0
+volume_db = -14.0
 bus = &"SFX"

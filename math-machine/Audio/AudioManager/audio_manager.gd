@@ -1,13 +1,15 @@
 extends Node
 
-const MUSIC_DB: float = -24.0
+const MUSIC_DB: float = -20.0
 const SFX_PLAYER_POOL_COUNT: int = 5
 
 @export var button_click_sfx: AudioStream
 @export var connection_sfx: AudioStream
 @export var disconnection_sfx: AudioStream
 @export var grab_sfx: AudioStream
+@export var drop_sfx: AudioStream
 @export var star_sfx: AudioStream
+@export var output_satisfied_sfx: AudioStream
 
 @onready var music_player_a: AudioStreamPlayer = AudioStreamPlayer.new()
 @onready var music_player_b: AudioStreamPlayer = AudioStreamPlayer.new()
@@ -82,17 +84,26 @@ func play_disconnection_sfx() -> void:
 	player.stop()
 	
 func play_grab_sfx() -> void:
-	var player: AudioStreamPlayer = play_sfx(grab_sfx)
-	player.pitch_scale = 0.7
+	var player: AudioStreamPlayer = play_sfx(grab_sfx, 0.02)
+	player.volume_db = -10.0
 	await get_tree().create_timer(0.1).timeout
-	player.pitch_scale = 1.0
+	player.volume_linear = 1.0
 	player.stop()
 	
 func play_drop_sfx() -> void:
-	var player: AudioStreamPlayer = play_sfx(grab_sfx)
-	player.pitch_scale = 0.5
+	var player: AudioStreamPlayer = play_sfx(drop_sfx, 0.02)
+	player.volume_db = -10.0
+	player.pitch_scale = 0.7
 	await get_tree().create_timer(0.1).timeout
+	player.volume_linear = 1.0
 	player.pitch_scale = 1.0
+	player.stop()
+	
+func play_output_satisfied_sfx() -> void:
+	var player: AudioStreamPlayer = play_sfx(output_satisfied_sfx, 0.13)
+	player.volume_db += 5.0
+	await get_tree().create_timer(0.1).timeout
+	player.volume_db -= 5.0
 	player.stop()
 	
 func _get_sfx_player() -> AudioStreamPlayer:

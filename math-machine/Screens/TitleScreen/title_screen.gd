@@ -3,7 +3,6 @@ extends Control
 @onready var play_button: Button = %PlayButton
 @onready var settings_button: Button = %SettingsButton
 @onready var credits_button: Button = %CreditsButton
-@onready var button_audio: AudioStreamPlayer = %ButtonAudio
 
 func _ready() -> void:
 	play_button.pressed.connect(_on_play_button_pressed)

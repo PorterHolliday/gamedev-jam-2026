@@ -27,6 +27,7 @@ signal received_valid_output
 @export var is_satisfied: bool = false:
 	set(new_val):
 		if not is_satisfied and new_val:
+			AudioManager.play_output_satisfied_sfx()
 			_play_fill_animation()
 		elif is_satisfied and not new_val:
 			_play_fill_animation(true)
@@ -82,4 +83,5 @@ func play_level_complete_animation() -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(self, 'scale', Vector2(1.1, 1.1), 0.15)
 	tween.tween_property(self, 'scale', Vector2(1.0, 1.0), 0.15)
+	AudioManager.play_output_satisfied_sfx()
 	await tween.finished

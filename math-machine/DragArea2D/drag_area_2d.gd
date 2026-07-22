@@ -26,6 +26,7 @@ func _process(_delta: float) -> void:
 	
 func _on_mouse_clicked(button_index: MouseButton) -> void:
 	if not drag_button_indexes.has(button_index): return
+	if is_dragging: return
 	is_dragging = true
 	mouse_offset = get_global_mouse_position() - parent.global_position
 	get_viewport().set_input_as_handled()
@@ -33,6 +34,7 @@ func _on_mouse_clicked(button_index: MouseButton) -> void:
 	
 func _on_mouse_released(button_index: MouseButton) -> void:
 	if not drag_button_indexes.has(button_index): return
+	if not is_dragging: return
 	is_dragging = false
 	mouse_offset = Vector2.ZERO
 	drag_ended.emit()

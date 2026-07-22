@@ -3,7 +3,6 @@ extends Control
 @onready var level_buttons_container: Node = %LevelButtonsContainer
 @onready var back_button: Button = %BackButton
 @onready var settings_button: Button = %SettingsButton
-@onready var button_audio: AudioStreamPlayer = %ButtonAudio
 
 var level_buttons: Array[LevelButton] = [null]
 

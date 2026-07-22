@@ -26,6 +26,7 @@ Git Branches:
 	* Fix Web Lag
 	* Toolbar Explanation
 	Audio Update
+	Fix Entering Levels
 	Hint Popup Update
 	Additional Levels
 		- 1 Add Value Level
