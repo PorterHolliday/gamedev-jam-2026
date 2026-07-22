@@ -55,9 +55,7 @@ func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()
 	
 func _on_button_pressed() -> void:
-	button_audio.volume_db = randf_range(-0.5, 0.5)
-	button_audio.pitch_scale = randf_range(0.8, 1.2)
-	button_audio.play(0.15)
+	AudioManager.play_button_click_sfx()
 
 func _on_level_complete() -> void:
 	music.stop()

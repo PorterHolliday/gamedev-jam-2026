@@ -14,7 +14,6 @@ var mouse_offset: Vector2 = Vector2.ZERO
 var is_dragging: bool = false
 
 func _ready() -> void:
-	super()
 	mouse_clicked.connect(_on_mouse_clicked)
 	mouse_released.connect(_on_mouse_released)
 	

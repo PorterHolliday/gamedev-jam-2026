@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ojae0y7pvy22" path="res://Levels/HintPopup/hint_popup.tscn" id="9_dkv23"]
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="9_k8b6b"]
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="9_lx7qo"]
-[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Levels/LevelCompletePopup/ding_ding_ding.mp3" id="10_lx7qo"]
+[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/ding_ding_ding.mp3" id="10_lx7qo"]
 [ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="11_dkv23"]
 [ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="12_lx7qo"]
 

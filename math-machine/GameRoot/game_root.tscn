@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dhhayos68polj" path="res://Screens/SettingsScreen/settings_screen.tscn" id="5_c8ohv"]
 [ext_resource type="PackedScene" uid="uid://3vvhaji5x0ta" path="res://TransitionRoot/transition_root.tscn" id="5_pc124"]
 [ext_resource type="PackedScene" uid="uid://dckjs325lx5n3" path="res://UIRoot/ui_root.tscn" id="5_yjbio"]
+[ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="6_3mdbn"]
 [ext_resource type="Script" uid="uid://g68g4kmhjyq7" path="res://UIRoot/ui_root.gd" id="6_7rb8t"]
 [ext_resource type="PackedScene" uid="uid://crdmfsmvvx803" path="res://Screens/CreditsScreen/credits_screen.tscn" id="6_ahdtl"]
+[ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="7_2fpqp"]
 [ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="7_7rb8t"]
 [ext_resource type="PackedScene" uid="uid://l0wv334kim35" path="res://Levels/LevelCompletePopup/game_complete_popup.tscn" id="10_4878p"]
 
@@ -17,6 +19,8 @@ title_screen_scene = ExtResource("2_prtjo")
 level_select_screen_scene = ExtResource("3_pc124")
 settings_screen_scene = ExtResource("5_c8ohv")
 credits_screen_scene = ExtResource("6_ahdtl")
+menu_music = ExtResource("6_3mdbn")
+level_music = ExtResource("7_2fpqp")
 metadata/_custom_type_script = "uid://deggewgm1t5un"
 
 [node name="GameScreenLayer" type="CanvasLayer" parent="." unique_id=813723494]
@@ -50,7 +54,4 @@ mouse_filter = 2
 layer = 4
 
 [node name="TransitionRoot" parent="TransitionLayer" unique_id=978441498 instance=ExtResource("5_pc124")]
-unique_name_in_owner = true
-
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1726423414]
 unique_name_in_owner = true
