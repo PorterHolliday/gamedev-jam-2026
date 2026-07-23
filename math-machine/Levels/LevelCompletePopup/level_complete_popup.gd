@@ -1,6 +1,8 @@
 class_name LevelCompletePopup
 extends Control
 
+const MUSIC_FADE_DURATION: float = 0.7
+
 @onready var next_level_button: Button = %NextLevelButton
 @onready var level_select_button: Button = %LevelSelectButton
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -31,11 +33,11 @@ func _fade_down_music() -> void:
 	tween.tween_method(
 		func(volume):
 			AudioServer.set_bus_volume_linear(AudioServer.get_bus_index('Music'), volume),
-		current_music_volume, current_music_volume / 2.0, 1.0)
+		current_music_volume, current_music_volume / 2.0, MUSIC_FADE_DURATION)
 
 func _fade_up_music() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_method(
 		func(volume):
 			AudioServer.set_bus_volume_linear(AudioServer.get_bus_index('Music'), volume),
-		current_music_volume / 2.0, current_music_volume, 1.0)
+		current_music_volume / 2.0, current_music_volume, MUSIC_FADE_DURATION)

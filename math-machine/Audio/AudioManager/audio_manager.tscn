@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://ca3wrnak0kmyq" path="res://Audio/SFX/freesound_community-breaker-switch-45684.mp3" id="3_rxf24"]
 [ext_resource type="AudioStream" uid="uid://dl5deba0v2081" path="res://Audio/SFX/freesound_community-slice-apple-on-wood_fizz-85879.mp3" id="4_irfy0"]
 [ext_resource type="AudioStream" uid="uid://xeobln0n6s5w" path="res://Audio/SFX/vadim_makes_sound-soft-app-button-tap-sound-2-547872.mp3" id="5_0k1la"]
-[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/ding_ding_ding.mp3" id="6_ss0fk"]
 [ext_resource type="AudioStream" uid="uid://d2s75lqdl3uyj" path="res://Audio/SFX/universfield-bubble-pop-293342.mp3" id="7_0k1la"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_45xei"]
@@ -51,5 +50,4 @@ connection_sfx = SubResource("AudioStreamRandomizer_bkb3b")
 disconnection_sfx = SubResource("AudioStreamRandomizer_rxf24")
 grab_sfx = SubResource("AudioStreamRandomizer_irfy0")
 drop_sfx = SubResource("AudioStreamRandomizer_0k1la")
-star_sfx = ExtResource("6_ss0fk")
 output_satisfied_sfx = SubResource("AudioStreamRandomizer_jhtfi")
