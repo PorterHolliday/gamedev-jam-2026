@@ -25,12 +25,13 @@ Git Branches:
 		- Saves Settings selection
 	* Fix Web Lag
 	* Toolbar Explanation
-	Audio Update
-	Fix Entering Levels
+	* Audio Update
+	* Fix Entering Levels
 	Hint Popup Update
 	Additional Levels
 		- 1 Add Value Level
 		- 4 Challenge Levels
+	3 Star Audio
 	Final Check/Refactor - Add Additional Branches as Needed
 
 ANY OTHER CHANGES MUST BE ADDED TO THIS LIST BEFORE BEING IMPLEMENTED!!!
