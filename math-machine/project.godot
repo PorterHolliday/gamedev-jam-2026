@@ -13,7 +13,6 @@ config_version=5
 config/name="Math Machine"
 run/main_scene="uid://dpu1qtcpln6qf"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [audio]
 

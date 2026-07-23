@@ -6,6 +6,7 @@ extends Node2D
 @onready var back_button: Button = %BackButton
 @onready var restart_button: Button = %RestartButton
 @onready var hint_button: Button = %HintButton
+@onready var hint_close_button: Button = %HintCloseButton
 @onready var settings_button: Button = %SettingsButton
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
@@ -17,6 +18,7 @@ func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
 	restart_button.pressed.connect(_on_restart_button_pressed)
 	hint_button.pressed.connect(_on_hint_button_pressed)
+	hint_close_button.pressed.connect(_on_hint_close_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	
 	back_button.pressed.connect(_on_button_pressed)
@@ -46,6 +48,9 @@ func _on_restart_button_pressed() -> void:
 	
 func _on_hint_button_pressed() -> void:
 	animation_player.play('show_hint')
+	
+func _on_hint_close_button_pressed() -> void:
+	animation_player.play('hide_hint')
 	
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()

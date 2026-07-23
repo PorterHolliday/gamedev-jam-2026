@@ -8,7 +8,6 @@ const SFX_PLAYER_POOL_COUNT: int = 5
 @export var disconnection_sfx: AudioStream
 @export var grab_sfx: AudioStream
 @export var drop_sfx: AudioStream
-@export var star_sfx: AudioStream
 @export var output_satisfied_sfx: AudioStream
 
 @onready var music_player_a: AudioStreamPlayer = AudioStreamPlayer.new()

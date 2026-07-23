@@ -108,10 +108,10 @@ value = 8
 [node name="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
 text = "Add Value: 1"
 
-[node name="Hint" parent="UILayer/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1289930638) index="0" unique_id=47662854]
+[node name="Hint" parent="UILayer/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1289930638) index="0" unique_id=47662854]
 text = "Colored blocks modify values."
 
-[node name="HandIcon" type="TextureRect" parent="." index="5" unique_id=875813203]
+[node name="HandIcon" type="TextureRect" parent="." index="4" unique_id=875813203]
 visible = false
 offset_left = 352.0
 offset_top = 96.0
@@ -122,11 +122,10 @@ texture = ExtResource("5_x35gt")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="7" unique_id=1273832184]
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=1273832184]
 libraries/ = SubResource("AnimationLibrary_fdk85")
 autoplay = &"tutorial"
 
 [connection signal="drag_started" from="GraphCanvas/AddValueNode/DragArea2D" to="TutorialAnimationPlayer" method="play" binds= ["RESET"]]
 
 [editable path="GraphCanvas/AddValueNode"]
-[editable path="UILayer/HintPopup"]

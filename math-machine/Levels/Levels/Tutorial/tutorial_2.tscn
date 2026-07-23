@@ -145,11 +145,9 @@ texture = ExtResource("4_3pjiv")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="7" unique_id=706738908]
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=706738908]
 libraries/ = SubResource("AnimationLibrary_j1a6v")
 autoplay = &"tutorial"
 
 [connection signal="disconnection_occurred" from="GraphCanvas" to="RightClickIcon" method="hide"]
 [connection signal="disconnection_occurred" from="GraphCanvas" to="TutorialAnimationPlayer" method="pause"]
-
-[editable path="UILayer/HintPopup"]
