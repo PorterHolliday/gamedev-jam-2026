@@ -15,10 +15,6 @@ signal disconnection_occurred
 signal level_complete
 var _output_nodes: Array[OutputNode2] = []
 
-@onready var connection_audio: AudioStreamPlayer = %ConnectionAudio
-@onready var disconnection_audio: AudioStreamPlayer = %DisconnectionAudio
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
-
 class Connection:
 	var from_port: GraphNodePort
 	var to_port: GraphNodePort
@@ -191,6 +187,7 @@ func _handle_connection_completion(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 		if current_connection_start_port and current_connection_end_port:
 			request_connection(current_connection_start_port, current_connection_end_port)
+			get_viewport().set_input_as_handled()
 		current_connection_start_port = null
 		current_connection_end_port = null
 		
@@ -252,7 +249,7 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 	connections.append(connection)
 	
 	if play_sound:
-		_play_connection_audio()
+		AudioManager.play_connection_sfx()
 	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
 	
 	connection_occurred.emit()
@@ -263,23 +260,11 @@ func request_disconnection(connection: Connection, play_sound: bool = true) -> b
 	
 	connections.erase(connection)
 	if play_sound:
-		_play_disconnection_audio()
+		AudioManager.play_disconnection_sfx()
 	connection.to_port.graph_node.remove_input(connection.to_port)
 	
 	disconnection_occurred.emit()
 	return true
-
-func _play_connection_audio() -> void:
-	connection_audio.volume_db = randf_range(-10, 0)
-	connection_audio.pitch_scale = randf_range(0.8, 1.2)
-	connection_audio.play(0.12)
-	
-func _play_disconnection_audio() -> void:
-	disconnection_audio.volume_db = randf_range(-5, -2)
-	disconnection_audio.pitch_scale = randf_range(0.8, 1.2)
-	disconnection_audio.play(0.35)
-	await get_tree().create_timer(0.18).timeout
-	disconnection_audio.stop()
 
 func _check_level_complete() -> void:
 	for output in _output_nodes:

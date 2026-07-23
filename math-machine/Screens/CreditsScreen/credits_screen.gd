@@ -15,4 +15,5 @@ func logo_animation() -> void:
 	animation_player.play('logo_fade')
 
 func _on_back_button_pressed() -> void:
+	AudioManager.play_button_click_sfx()
 	GameRoot.enter_title_screen()

@@ -6,7 +6,6 @@
 [ext_resource type="LabelSettings" uid="uid://buq01gkh36dd0" path="res://LabelSettings/divider_label_settings.tres" id="2_osfc4"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_gnmtl"]
 [ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="6_4o1ik"]
-[ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="31_l6jef"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v81n"]
 bg_color = Color(0, 0, 0, 1)
@@ -547,8 +546,3 @@ offset_bottom = 48.0
 texture = ExtResource("6_4o1ik")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=1351067402]
-unique_name_in_owner = true
-stream = ExtResource("31_l6jef")
-bus = &"SFX"

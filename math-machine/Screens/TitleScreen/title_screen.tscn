@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cxdnvto6wdmfw"]
 
 [ext_resource type="Script" uid="uid://cevlv5ybi8urd" path="res://Screens/TitleScreen/title_screen.gd" id="1_2e2ej"]
-[ext_resource type="AudioStream" uid="uid://crdb7g3s2xq2w" path="res://Audio/SFX/freesound_community-mech-keyboard-02-102918.mp3" id="4_skoes"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fqn1"]
 bg_color = Color(0.5882353, 0.09411765, 0.09411765, 1)
@@ -345,11 +344,6 @@ text = "E"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ButtonAudio" type="AudioStreamPlayer" parent="." unique_id=1261809320]
-unique_name_in_owner = true
-stream = ExtResource("4_skoes")
-bus = &"SFX"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=233216516]
 layout_mode = 1

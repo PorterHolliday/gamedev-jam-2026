@@ -11,9 +11,11 @@ func _ready() -> void:
 func _on_drag_started() -> void:
 	scale = Vector2(1.1, 1.1)
 	get_parent().move_child(self, get_parent().get_children().size())
+	AudioManager.play_grab_sfx()
 	
 func _on_drag_ended() -> void:
 	scale = Vector2.ONE
+	AudioManager.play_drop_sfx()
 	
 func _play_update_input_animation() -> void:
 	var tween: Tween = get_tree().create_tween()

@@ -7,6 +7,8 @@ static var node: GameRoot
 @export var level_select_screen_scene: PackedScene
 @export var settings_screen_scene: PackedScene
 @export var credits_screen_scene: PackedScene
+@export var menu_music: AudioStream
+@export var level_music: AudioStream
 
 @onready var game_screen_root: Node = %GameScreenRoot
 @onready var ui_root: UIRoot = %UIRoot
@@ -29,9 +31,11 @@ var previous_screen: Node
 func _ready() -> void:
 	node = self
 	await _add_screens()
+	AudioManager.play_music(menu_music)
 	current_screen = title_screen
 
 static func enter_level(level: Level) -> void:
+	AudioManager.crossfade_music(node.level_music)
 	await node.transition(level)
 	
 static func restart_level() -> void:
@@ -46,10 +50,12 @@ static func enter_next_level() -> void:
 	await node.transition(LevelManager.get_next_level())
 	
 static func enter_level_select_screen() -> void:
+	AudioManager.crossfade_music(node.menu_music)
 	node.level_select_screen.update_level_buttons()
 	await node.transition(node.level_select_screen)
 	
 static func enter_title_screen() -> void:
+	AudioManager.crossfade_music(node.menu_music)
 	await node.transition(node.title_screen)
 	
 static func enter_settings_screen() -> void:
@@ -59,6 +65,7 @@ static func exit_settings_screen() -> void:
 	await node.transition(node.previous_screen)
 		
 static func enter_credits_screen() -> void:
+	AudioManager.crossfade_music(node.menu_music)
 	node.credits_screen.reset_animation()
 	await node.transition(node.credits_screen)
 	node.credits_screen.logo_animation()
@@ -74,28 +81,6 @@ func transition(new_screen: Node) -> void:
 	
 	previous_screen = current_screen
 	current_screen = new_screen
-	
-#func transition_page_forward(new_screen: Node) -> void:
-	#new_screen.show()
-	#
-	#transition_root.play_transition_forward(current_screen)
-	#await transition_root.transition_finished
-	#
-	#new_screen.process_mode = Node.PROCESS_MODE_INHERIT
-	#
-	#previous_screen = current_screen
-	#current_screen = new_screen
-	#
-#func transition_page_back(new_screen: Node) -> void:
-	#new_screen.show()
-	#
-	#transition_root.play_transition_back(new_screen)
-	#await transition_root.transition_finished
-	#
-	#new_screen.process_mode = Node.PROCESS_MODE_INHERIT
-	#
-	#previous_screen = current_screen
-	#current_screen = new_screen
 	
 func _add_screens() -> void:
 	game_screen_root.add_child(title_screen)

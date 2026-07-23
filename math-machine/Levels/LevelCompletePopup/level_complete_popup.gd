@@ -11,10 +11,12 @@ func _ready() -> void:
 	animation_player.play('level_complete')
 	
 func _on_next_level_button_pressed() -> void:
+	AudioManager.play_button_click_sfx()
 	GameRoot.enter_next_level()
 	queue_free()
 	
 func _on_level_select_button_pressed() -> void:
+	AudioManager.play_button_click_sfx()
 	GameRoot.enter_level_select_screen()
 	queue_free()
 	

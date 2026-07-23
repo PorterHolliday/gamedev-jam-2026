@@ -8,7 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://cjauutl4wsp43" path="res://Themes/GreenButton/green_button_pressed.tres" id="5_j2e6t"]
 [ext_resource type="AudioStream" uid="uid://cas36bo5hcpi" path="res://Levels/LevelCompletePopup/page_flip.mp3" id="5_myun5"]
 [ext_resource type="StyleBox" uid="uid://bicushmbmqcb6" path="res://Themes/GreenButton/green_button_hover.tres" id="6_c5v27"]
-[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Levels/LevelCompletePopup/ding_ding_ding.mp3" id="6_jsvsw"]
+[ext_resource type="AudioStream" uid="uid://d5bqjxbjkixb" path="res://Audio/SFX/ding_ding_ding.mp3" id="6_jsvsw"]
 
 [sub_resource type="SystemFont" id="SystemFont_nkg80"]
 font_names = PackedStringArray("Century Gothic")
@@ -365,3 +365,5 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_7o3u2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1791773775]
+volume_db = -14.0
+bus = &"SFX"

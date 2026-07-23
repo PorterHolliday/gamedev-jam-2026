@@ -8,8 +8,6 @@ extends Node2D
 @onready var hint_button: Button = %HintButton
 @onready var settings_button: Button = %SettingsButton
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
-@onready var button_audio: AudioStreamPlayer = %ButtonAudio
-@onready var music: AudioStreamPlayer = %Music
 
 func _ready() -> void:
 	global_position = Vector2.ZERO
@@ -25,8 +23,6 @@ func _ready() -> void:
 	restart_button.pressed.connect(_on_button_pressed)
 	hint_button.pressed.connect(_on_button_pressed)
 	settings_button.pressed.connect(_on_button_pressed)
-	
-	#music.play()
 	
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
@@ -55,14 +51,11 @@ func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()
 	
 func _on_button_pressed() -> void:
-	button_audio.volume_db = randf_range(-0.5, 0.5)
-	button_audio.pitch_scale = randf_range(0.8, 1.2)
-	button_audio.play(0.15)
+	AudioManager.play_button_click_sfx()
 
-func _on_level_complete() -> void:
-	music.stop()
-	
+func _on_level_complete() -> void:	
 	await graph_canvas.play_level_complete_animation()
+	await get_tree().create_timer(0.1).timeout
 	
 	LevelManager.complete_current_level()
 	
