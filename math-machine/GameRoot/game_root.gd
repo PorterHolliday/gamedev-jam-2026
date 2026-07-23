@@ -47,7 +47,9 @@ static func level_complete() -> void:
 	node.ui_root.on_level_complete()
 	
 static func enter_next_level() -> void:
-	await node.transition(LevelManager.get_next_level())
+	LevelManager.levels[LevelManager.current_level_index] = LevelManager.get_spare_level_instance()
+	await enter_level(LevelManager.get_next_level())
+	node.previous_screen.queue_free()
 	
 static func enter_level_select_screen() -> void:
 	AudioManager.crossfade_music(node.menu_music)
