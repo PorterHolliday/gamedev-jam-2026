@@ -55,6 +55,7 @@ static func enter_level_select_screen() -> void:
 	AudioManager.crossfade_music(node.menu_music)
 	node.level_select_screen.update_level_buttons()
 	await node.transition(node.level_select_screen)
+	LevelManager.replace_current_level(LevelManager.get_spare_level_instance())
 	
 static func enter_title_screen() -> void:
 	AudioManager.crossfade_music(node.menu_music)
