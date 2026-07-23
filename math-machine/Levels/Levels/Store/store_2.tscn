@@ -6,6 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="4_n5yjm"]
 [ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="5_5svkb"]
 
+[sub_resource type="SystemFont" id="SystemFont_q6k2w"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_wlvep"]
+font = SubResource("SystemFont_q6k2w")
+font_size = 24
+font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+outline_size = 2
+outline_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+
 [node name="Store2" unique_id=1073491300 instance=ExtResource("1_5svkb")]
 
 [node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_n7hdv")]
@@ -33,15 +44,20 @@ position = Vector2(576, 224)
 [node name="SumNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="9" unique_id=1815491459 instance=ExtResource("5_5svkb")]
 position = Vector2(576, 480)
 
-[node name="PanelContainer" parent="UI/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]
+[node name="PanelContainer" parent="UILayer/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]
 offset_left = -115.0
 offset_right = 115.0
 offset_bottom = 23.0
 
-[node name="Label" parent="UI/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+[node name="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
 text = "Storage: 2"
 
-[node name="Hint" parent="UI/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(950000720, 1289930638) index="0" unique_id=47662854]
+[node name="UI_HintPopup_PanelContainer_VBoxContainer#Hint" type="Label" parent="UILayer/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1289930638) index="0" unique_id=47662854]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_vertical = 3
 text = "Store the number 3 in the green block."
-
-[editable path="UI/HintPopup"]
+label_settings = SubResource("LabelSettings_wlvep")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

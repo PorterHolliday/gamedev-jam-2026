@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dxctjnu8acqc1" path="res://UI/Level UI/restart_icon.png" id="4_ni20n"]
 [ext_resource type="Texture2D" uid="uid://ccb31vo32ayga" path="res://UI/Level UI/hint_icon.png" id="5_tcd1y"]
 [ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="6_ni20n"]
-[ext_resource type="PackedScene" uid="uid://ojae0y7pvy22" path="res://Levels/HintPopup/hint_popup.tscn" id="9_g7a5h"]
+[ext_resource type="AudioStream" uid="uid://cxp5orf12fkrl" path="res://Audio/SFX/u_56l164mftx-carddrop-447013.mp3" id="7_0yuw1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3su"]
 bg_color = Color(0.22745098, 0.2509804, 0.32941177, 1)
@@ -30,6 +30,27 @@ font_size = 24
 font_color = Color(0, 0, 0, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_q6k2w"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_wlvep"]
+font = SubResource("SystemFont_q6k2w")
+font_size = 24
+font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+outline_size = 2
+outline_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56jn4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c70oy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r4ekt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jf8q7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qg3u3"]
 
 [sub_resource type="Animation" id="Animation_xh4c7"]
 length = 0.001
@@ -57,10 +78,62 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UILayer/HintPopup/PanelContainer:offset_transform_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_0yuw1"]
+resource_name = "hide_hint"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UILayer/HintPopup:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UILayer/HintPopup:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UILayer/HintPopup/PanelContainer:offset_transform_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_h12gg"]
 resource_name = "show_hint"
-length = 0.2
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -68,7 +141,7 @@ tracks/0/path = NodePath("UILayer/HintPopup:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.20000002),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -85,10 +158,38 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UILayer/HintPopup/PanelContainer:offset_transform_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.29999998, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2.5, 2.5), Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 1.3256,
+"start_offset": 0.63,
+"stream": ExtResource("7_0yuw1")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_11tni"]
 _data = {
 &"RESET": SubResource("Animation_xh4c7"),
+&"hide_hint": SubResource("Animation_0yuw1"),
 &"show_hint": SubResource("Animation_h12gg")
 }
 
@@ -242,13 +343,67 @@ texture = ExtResource("6_ni20n")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HintPopup" parent="UILayer" unique_id=950000720 instance=ExtResource("9_g7a5h")]
+[node name="HintPopup" type="Control" parent="UILayer" unique_id=950000720]
 visible = false
 modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UILayer/HintPopup" unique_id=1841013588]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -59.5
+offset_right = 209.0
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+
+[node name="VBoxContainer" type="MarginContainer" parent="UILayer/HintPopup/PanelContainer" unique_id=1289930638]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Hint" type="Label" parent="UILayer/HintPopup/PanelContainer/VBoxContainer" unique_id=47662854]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Hint..."
+label_settings = SubResource("LabelSettings_wlvep")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HintCloseButton" type="Button" parent="UILayer/HintPopup" unique_id=2031022156]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56jn4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c70oy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_r4ekt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jf8q7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qg3u3")
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=35115402]
 unique_name_in_owner = true
 process_mode = 3
 libraries/ = SubResource("AnimationLibrary_11tni")
 
-[editable path="UILayer/HintPopup"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=537778273]
