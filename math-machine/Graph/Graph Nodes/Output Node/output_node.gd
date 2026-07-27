@@ -37,8 +37,12 @@ signal received_valid_output
 
 func _ready() -> void:
 	_update_value_label()
-	_sprite.material = _sprite.material.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
-	_value_label.material = _value_label.material.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	# Shallow duplicate: each node needs its own shader *parameters*, but the
+	# Shader itself must stay shared. duplicate_deep(DEEP_DUPLICATE_ALL) also
+	# copied the Shader, so every output node created a distinct shader program
+	# for the renderer to compile and cache.
+	_sprite.material = _sprite.material.duplicate()
+	_value_label.material = _value_label.material.duplicate()
 	_value_label.material.set_shader_parameter('fill_color', satisfied_text_color)
 	if Engine.is_editor_hint(): return
 	super()

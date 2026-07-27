@@ -122,11 +122,9 @@ texture = ExtResource("4_nrwey")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="7" unique_id=322318621]
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=322318621]
 libraries/ = SubResource("AnimationLibrary_fobbe")
 autoplay = &"tutorial"
 
 [connection signal="connection_occurred" from="GraphCanvas" to="HandIcon" method="hide"]
 [connection signal="connection_occurred" from="GraphCanvas" to="TutorialAnimationPlayer" method="pause"]
-
-[editable path="UILayer/HintPopup"]

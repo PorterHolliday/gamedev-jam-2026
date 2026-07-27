@@ -14,8 +14,6 @@ static var node: GameRoot
 @export var level_select_screen_scene: PackedScene
 @export var settings_screen_scene: PackedScene
 @export var credits_screen_scene: PackedScene
-@export var menu_music: AudioStream
-@export var level_music: AudioStream
 
 @onready var game_screen_root: Node = %GameScreenRoot
 @onready var ui_root: UIRoot = %UIRoot
@@ -44,14 +42,14 @@ var current_level: Level
 func _ready() -> void:
 	node = self
 	_add_screens()
-	AudioManager.play_music(menu_music)
+	AudioManager.play_menu_music()
 	current_screen = title_screen
 	title_screen.process_mode = Node.PROCESS_MODE_INHERIT
 
 #region Navigation
 
 static func enter_level(index: int) -> void:
-	AudioManager.crossfade_music(node.level_music)
+	AudioManager.crossfade_to_level_music()
 	await node.transition_to_level(index)
 
 static func restart_level() -> void:
@@ -68,12 +66,12 @@ static func level_complete() -> void:
 	node.ui_root.on_level_complete()
 
 static func enter_level_select_screen() -> void:
-	AudioManager.crossfade_music(node.menu_music)
+	AudioManager.crossfade_to_menu_music()
 	node.level_select_screen.update_level_buttons()
 	await node.transition(node.level_select_screen)
 
 static func enter_title_screen() -> void:
-	AudioManager.crossfade_music(node.menu_music)
+	AudioManager.crossfade_to_menu_music()
 	await node.transition(node.title_screen)
 
 static func enter_settings_screen() -> void:
@@ -83,7 +81,7 @@ static func exit_settings_screen() -> void:
 	await node.transition(node.previous_screen)
 
 static func enter_credits_screen() -> void:
-	AudioManager.crossfade_music(node.menu_music)
+	AudioManager.crossfade_to_menu_music()
 	node.credits_screen.reset_animation()
 	await node.transition(node.credits_screen)
 	node.credits_screen.logo_animation()

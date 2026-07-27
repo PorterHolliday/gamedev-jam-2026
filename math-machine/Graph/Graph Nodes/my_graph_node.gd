@@ -1,7 +1,7 @@
 class_name MyGraphNode
 extends Node2D
 
-@onready var _graph_canvas: GraphCanvas = get_parent()
+@onready var _graph_canvas: GraphCanvas
 
 const NULL_VALUE: int = 9223372036854775807
 
@@ -9,6 +9,8 @@ var inputs: Array[GraphNodePort] = []
 var outputs: Array[GraphNodePort] = []
 
 func _ready() -> void:
+	if get_parent() is GraphCanvas:
+		_graph_canvas = get_parent()
 	_init_ports()
 	
 func _init_ports() -> void:
