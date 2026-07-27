@@ -40,9 +40,8 @@ func enable() -> void:
 	graph_canvas.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_back_button_pressed() -> void:
-	await GameRoot.enter_level_select_screen()
-	LevelManager.replace_current_level(LevelManager.get_spare_level_instance(false))
-	
+	GameRoot.enter_level_select_screen()
+
 func _on_restart_button_pressed() -> void:
 	GameRoot.restart_level()
 	
