@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://dl5deba0v2081" path="res://Audio/SFX/freesound_community-slice-apple-on-wood_fizz-85879.mp3" id="4_irfy0"]
 [ext_resource type="AudioStream" uid="uid://xeobln0n6s5w" path="res://Audio/SFX/vadim_makes_sound-soft-app-button-tap-sound-2-547872.mp3" id="5_0k1la"]
 [ext_resource type="AudioStream" uid="uid://d2s75lqdl3uyj" path="res://Audio/SFX/universfield-bubble-pop-293342.mp3" id="7_0k1la"]
+[ext_resource type="AudioStream" uid="uid://0t5dbf1sosgs" path="res://Audio/Music/eliveta-background-music-491190.mp3" id="8_menu"]
+[ext_resource type="AudioStream" uid="uid://d3j55oo15nlnu" path="res://Audio/Music/the_mountain-is-ambient-electronic-146981.mp3" id="9_level"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_45xei"]
 random_pitch = 1.1892071
@@ -45,6 +47,8 @@ stream_0/stream = ExtResource("7_0k1la")
 
 [node name="AudioManager" type="Node" unique_id=651285484]
 script = ExtResource("1_y8554")
+menu_music = ExtResource("8_menu")
+level_music = ExtResource("9_level")
 button_click_sfx = SubResource("AudioStreamRandomizer_45xei")
 connection_sfx = SubResource("AudioStreamRandomizer_bkb3b")
 disconnection_sfx = SubResource("AudioStreamRandomizer_rxf24")

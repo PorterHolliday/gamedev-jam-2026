@@ -4,7 +4,8 @@ extends Control
 @onready var back_button: Button = %BackButton
 @onready var settings_button: Button = %SettingsButton
 
-var level_buttons: Array[LevelButton] = [null]
+## Parallel to LevelManager.level_scenes: level_buttons[n].level_number == n.
+var level_buttons: Array[LevelButton] = []
 
 func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
@@ -14,12 +15,11 @@ func _ready() -> void:
 func update_level_buttons() -> void:
 	var previous_level_complete: bool = false
 	for level_button in level_buttons:
-		if not level_button: continue
-		if level_button.level_number >= LevelManager.levels.size(): continue
+		if level_button.level_number >= LevelManager.level_scenes.size(): continue
 		if previous_level_complete:
 			previous_level_complete = false
 			level_button.disabled = false
-		if LevelManager.levels_completed[level_button.level_number]:
+		if LevelManager.is_level_completed(level_button.level_number):
 			level_button.level_complete = true
 			level_button.disabled = false
 			previous_level_complete = true
@@ -34,7 +34,7 @@ func _init_level_buttons() -> void:
 			child.level_number = level_number
 			if previous_level_complete:
 				child.disabled = false
-			if level_number < LevelManager.levels.size() and LevelManager.levels_completed[level_number]:
+			if LevelManager.has_level(level_number) and LevelManager.is_level_completed(level_number):
 				child.level_complete = true
 				previous_level_complete = true
 			else:
@@ -43,8 +43,7 @@ func _init_level_buttons() -> void:
 			level_number += 1
 			
 func _on_level_button_pressed(button: LevelButton) -> void:
-	var level: Level = LevelManager.get_level(button.level_number)
-	GameRoot.enter_level(level)
+	GameRoot.enter_level(button.level_number)
 	
 func _on_back_button_pressed() -> void:
 	AudioManager.play_button_click_sfx()

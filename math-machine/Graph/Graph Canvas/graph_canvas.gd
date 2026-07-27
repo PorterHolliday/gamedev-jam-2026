@@ -36,7 +36,7 @@ func _ready() -> void:
 	for child in get_children():
 		if child is OutputNode2:
 			_output_nodes.append(child)
-			child.received_valid_output.connect(_check_level_complete)
+			child.received_valid_output.connect(_check_level_complete.call_deferred)
 
 func _connect_port_signals() -> void:
 	for child in get_children():
