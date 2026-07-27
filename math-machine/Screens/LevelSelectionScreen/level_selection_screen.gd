@@ -19,7 +19,7 @@ func update_level_buttons() -> void:
 		if previous_level_complete:
 			previous_level_complete = false
 			level_button.disabled = false
-		if LevelManager.levels_completed[level_button.level_number]:
+		if LevelManager.is_level_completed(level_button.level_number):
 			level_button.level_complete = true
 			level_button.disabled = false
 			previous_level_complete = true
@@ -34,7 +34,7 @@ func _init_level_buttons() -> void:
 			child.level_number = level_number
 			if previous_level_complete:
 				child.disabled = false
-			if level_number < LevelManager.level_scenes.size() and LevelManager.levels_completed[level_number]:
+			if LevelManager.has_level(level_number) and LevelManager.is_level_completed(level_number):
 				child.level_complete = true
 				previous_level_complete = true
 			else:
