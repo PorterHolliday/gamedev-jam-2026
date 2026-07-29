@@ -113,7 +113,7 @@ def run_one(case, verbose=True):
                 if not required:
                     msgs.append(f"    node {node_id} not required (deletable)")
 
-        families = dedupe_families(result.solutions)
+        families = dedupe_families(level, result.solutions)
         min_fam = case.get("expect_min_families")
         if min_fam is not None and len(families) < min_fam:
             ok = False
@@ -125,7 +125,7 @@ def run_one(case, verbose=True):
         for m in msgs:
             print(f"        {m}")
         if case["expect_solvable"] and result.solvable and verbose:
-            families = dedupe_families(result.solutions)
+            families = dedupe_families(level, result.solutions)
             print(f"        -> {len(families)} distinct family/families found")
             for i, sol in enumerate(families, 1):
                 print(f"        Family {i}:")

@@ -8,6 +8,7 @@ from typing import Dict, List, Tuple
 
 from reach import PlacedNode, reach_values, find_covering_networks, prune_to_needed
 from model import Level
+from signature import literal_signature
 
 
 @dataclass(frozen=True)
@@ -107,7 +108,13 @@ def solve(level: Level, bound: Tuple[int, int] = (-200, 200), max_latches: int =
                 srcs_excl = [n for n in sources_for_state(level, state, store_ids) if n.node_id != store_id]
                 cand_values = cached_reach(frozenset(n.value for n in srcs_excl))
                 cur_val = state.values[si]
-                for v in cand_values:
+                # Sorted rather than iterated in raw (hash-seed-dependent)
+                # frozenset order: exploration order feeds directly into which
+                # states get discovered first, which matters once raw_cap /
+                # examine_budget kick in -- without a fixed order, re-running
+                # the exact same level could report a different family count
+                # from run to run purely because of PYTHONHASHSEED.
+                for v in sorted(cand_values):
                     if v == cur_val:
                         continue
                     new_vals = list(state.values)
@@ -139,25 +146,34 @@ def solve(level: Level, bound: Tuple[int, int] = (-200, 200), max_latches: int =
 
     solutions: List[Solution] = []
     if solvable:
-        # Solution diversity has two independent sources: different latch-event
-        # sequences (the outer state-graph search) AND different combinational
-        # wirings achieving the exact same goal from the exact same state (e.g.
-        # a 0-latch level can still have several structurally distinct networks
-        # simultaneously covering the outputs). Both must be explored for --all,
-        # or genuinely distinct families get missed. Since raw candidates often
-        # collapse into far fewer *families* after Sum-port/wire-order dedup, we
-        # over-generate raw candidates (raw_cap) relative to max_families and let
-        # the caller dedupe-then-truncate, rather than stopping the moment the
-        # raw count hits max_families (which tends to yield many duplicates of
-        # the same family and starve genuinely different ones).
+        # Family identity (see notation.py) depends only on a solution's FINAL
+        # store contents and final wiring -- never on how the stores got there.
+        # final_witnesses_for(wstate) depends only on wstate's contents, not on
+        # the path used to reach it, so that's the one place genuine family
+        # diversity comes from and the one search worth widening. By contrast:
+        #   - latch-transition witnesses only affect the *route* to a state,
+        #     which is invisible to family identity, so any single valid one
+        #     will do (latch_witness_cap = 1).
+        #   - multiple paths to the same state are similarly irrelevant to
+        #     family identity, and the BFS already records only shortest-depth
+        #     predecessor edges, so a single reconstructed path is always
+        #     minimal-latch-count already (path_cap = 1).
+        # This both matches the new family definition and is a large speedup:
+        # the search no longer explores the combinatorial product of path and
+        # latch-witness choices that used to just produce different routes to
+        # identical destinations.
         if find_all:
-            per_phase_witness_cap = max(20, max_families * 4)
-            path_cap = max(20, max_families * 4)
-            raw_cap = max(60, max_families * 8)
+            latch_witness_cap = 1
+            final_witness_cap = max(20, max_families * 4)
+            path_cap = 1
+            raw_cap = max(30, max_families * 4)
+            examine_budget = max(4000, max_families * 400)
         else:
-            per_phase_witness_cap = 1
+            latch_witness_cap = 1
+            final_witness_cap = 1
             path_cap = 1
             raw_cap = 1
+            examine_budget = 10
 
         # Memoize witness searches by (source-value-set, target-value-set): many
         # different paths pass through the same state, and the final-phase
@@ -176,7 +192,7 @@ def solve(level: Level, bound: Tuple[int, int] = (-200, 200), max_latches: int =
             cached = latch_witness_cache.get(key)
             if cached is None:
                 cached = find_covering_networks(srcs_excl, comb_ops, bound, {"_latch": value},
-                                                 max_witnesses=per_phase_witness_cap)
+                                                 max_witnesses=latch_witness_cap)
                 latch_witness_cache[key] = cached
             return cached
 
@@ -185,16 +201,20 @@ def solve(level: Level, bound: Tuple[int, int] = (-200, 200), max_latches: int =
             if cached is None:
                 final_srcs = sources_for_state(level, wstate, store_ids)
                 cached = find_covering_networks(final_srcs, comb_ops, bound, level.outputs,
-                                                 max_witnesses=per_phase_witness_cap)
+                                                 max_witnesses=final_witness_cap)
                 final_witness_cache[wstate] = cached
             return cached
 
+        seen_signatures = set()
+        examined = 0
+        done = False
+
         for wstate in winning_states:
-            if len(solutions) >= raw_cap:
+            if done:
                 break
             paths = _reconstruct_paths(preds, start, wstate, cap=path_cap)
             for path in paths:
-                if len(solutions) >= raw_cap:
+                if done:
                     break
                 witness_lists = []
                 cur = start
@@ -218,7 +238,9 @@ def solve(level: Level, bound: Tuple[int, int] = (-200, 200), max_latches: int =
                     continue
 
                 for combo in itertools.product(*witness_lists, final_witnesses):
-                    if len(solutions) >= raw_cap:
+                    examined += 1
+                    if examined > examine_budget:
+                        done = True
                         break
                     latches = []
                     for (store_id, value), (built, assignment) in zip(path, combo[:-1]):
@@ -226,7 +248,18 @@ def solve(level: Level, bound: Tuple[int, int] = (-200, 200), max_latches: int =
                         latches.append(LatchPhase(store_id, value, built, assignment))
                     fbuilt, fassignment = combo[-1]
                     fbuilt = prune_to_needed(fbuilt, fassignment)
-                    solutions.append(Solution(latches, FinalPhase(fbuilt, fassignment), len(latches)))
+                    latches, fbuilt, fassignment = _prefer_cheaper_producers(level, latches, fbuilt, fassignment)
+                    pruned_latches = _prune_dead_latches(latches, fbuilt, fassignment, store_ids)
+                    candidate = Solution(pruned_latches, FinalPhase(fbuilt, fassignment), len(pruned_latches))
+
+                    sig = literal_signature(candidate)
+                    if sig in seen_signatures:
+                        continue  # padding duplicate after pruning -- don't count it, keep looking
+                    seen_signatures.add(sig)
+                    solutions.append(candidate)
+                    if len(solutions) >= raw_cap:
+                        done = True
+                        break
 
     return SearchResult(
         solvable=solvable,
@@ -236,6 +269,107 @@ def solve(level: Level, bound: Tuple[int, int] = (-200, 200), max_latches: int =
         solutions=solutions,
         states_explored=len(dist),
     )
+
+
+def _prefer_cheaper_producers(level: Level, latches: List[LatchPhase],
+                               final_built: List[PlacedNode], final_assignment: Dict[str, str]):
+    """Whenever a producer reference points at a store, but some other source
+    (an input, or a store that was latched earlier) already holds the exact
+    same value at that point, rewrite the reference to the cheaper one.
+
+    This matters because the search finds witnesses state-by-state: if two
+    stores end up holding the same value (one because it was latched earlier
+    for its own reasons, the other because the search happened to copy that
+    same value into it later), a witness built against that later state may
+    reference the *newer* copy purely because that's what the search saw,
+    even though the older, already-available one would have worked identically
+    and made the newer latch unnecessary. Without this rewrite, that redundant
+    copy survives dead-latch pruning (it looks "used") and produces a
+    needlessly-padded "different" family. This only ever substitutes a
+    same-valued producer, so it never changes what the network computes --
+    it just prefers not to require the extra latch event when something
+    already on hand would do."""
+    value_of: Dict[str, int] = dict(level.inputs)
+    available_since: Dict[str, int] = {iid: -1 for iid in level.inputs}
+
+    def cheapest_for(value, exclude=None):
+        candidates = [pid for pid, v in value_of.items() if v == value and pid != exclude]
+        if not candidates:
+            return None
+        return min(candidates, key=lambda pid: (available_since[pid], pid))
+
+    def remap(pid, exclude=None):
+        v = value_of.get(pid)
+        if v is None:
+            return pid  # not a tracked source (e.g. an op-node id) -- leave alone
+        best = cheapest_for(v, exclude=exclude)
+        return best if best is not None else pid
+
+    def remap_node(node: PlacedNode, exclude=None) -> PlacedNode:
+        return PlacedNode(node.node_id, node.value, node.kind,
+                           tuple(remap(p, exclude=exclude) for p in node.inputs))
+
+    new_latches = []
+    for idx, latch in enumerate(latches):
+        # Exclude the store being written from its own candidate producers --
+        # it can't be a source for its own new value (that's the cycle rule),
+        # and at this point in the walk value_of[latch.store_id] is still its
+        # *old* (about to be overwritten) value, so it would otherwise look
+        # like a spuriously eligible candidate.
+        new_built = [remap_node(n, exclude=latch.store_id) for n in latch.built]
+        new_producer = remap(latch.assignment["_latch"], exclude=latch.store_id)
+        new_latches.append(LatchPhase(latch.store_id, latch.value, new_built, {"_latch": new_producer}))
+        value_of[latch.store_id] = latch.value
+        available_since[latch.store_id] = idx
+
+    new_final_built = [remap_node(n) for n in final_built]
+    new_final_assignment = {k: remap(v) for k, v in final_assignment.items()}
+    return new_latches, new_final_built, new_final_assignment
+
+
+def _prune_dead_latches(latches: List[LatchPhase], final_built: List[PlacedNode],
+                         final_assignment: Dict[str, str], store_ids: List[str]) -> List[LatchPhase]:
+    """Drop latch events that never causally contribute to the final network --
+    e.g. a trailing latch into a store nobody reads from again, or a store that
+    briefly holds an intermediate value on the way to being overwritten by a
+    later latch that's the one actually used. Without this, the outer search
+    treats every reachable store-content state as its own distinct "winning
+    state" even when the only difference from another one is an unused store
+    value, which blows up the reported family count with meaningless padding
+    (see: ratcheting past a target and back, or leaving a second store on some
+    arbitrary leftover value after the real solution is already complete).
+
+    This is a backward liveness sweep: start from the store ids the final
+    network actually reads from, walk the latch sequence in reverse, and keep
+    only latches whose store id is currently "needed." Keeping a latch adds
+    whatever store ids *it* reads from to the needed set (since that's how its
+    own value got built), and removes its own store id (whatever that store
+    held before this latch is now irrelevant -- this event fully determines
+    what matters going forward from here)."""
+    store_id_set = set(store_ids)
+    needed = set()
+    for node in final_built:
+        for pid in node.inputs:
+            if pid in store_id_set:
+                needed.add(pid)
+    for v in final_assignment.values():
+        if v in store_id_set:
+            needed.add(v)
+
+    kept_reversed = []
+    for latch in reversed(latches):
+        if latch.store_id not in needed:
+            continue  # dead: nothing downstream ever reads this value
+        kept_reversed.append(latch)
+        needed.discard(latch.store_id)
+        for node in latch.built:
+            for pid in node.inputs:
+                if pid in store_id_set:
+                    needed.add(pid)
+        producer = latch.assignment.get("_latch")
+        if producer in store_id_set:
+            needed.add(producer)
+    return list(reversed(kept_reversed))
 
 
 def _reconstruct_paths(preds, start, target, cap=10, max_pred_branch=4):

@@ -61,7 +61,7 @@ def full_report(level: Level, bound, max_latches, find_all=False, max_families=1
 
     exit_code = 0
     if result.solvable:
-        families = dedupe_families(result.solutions)
+        families = dedupe_families(level, result.solutions)
         if find_all:
             families = families[:max_families]
         lines.append("")
@@ -104,7 +104,7 @@ def solve_only_report(level: Level, bound, max_latches) -> Tuple[str, int]:
     result = solve(level, bound=bound, max_latches=max_latches, find_all=False, max_families=1)
     lines = header_lines(level) + [solvability_line(level, result, bound, max_latches)]
     if result.solvable:
-        sol = dedupe_families(result.solutions)[0]
+        sol = dedupe_families(level, result.solutions)[0]
         lines.append("")
         lines.append(f"Solution ({sol.latch_count} latch event(s)):")
         lines.extend(render_solution(level, sol))
@@ -116,7 +116,7 @@ def all_report(level: Level, bound, max_latches, max_families=10) -> Tuple[str, 
     result = solve(level, bound=bound, max_latches=max_latches, find_all=True, max_families=max_families)
     lines = header_lines(level) + [solvability_line(level, result, bound, max_latches)]
     if result.solvable:
-        families = dedupe_families(result.solutions)[:max_families]
+        families = dedupe_families(level, result.solutions)[:max_families]
         lines.append("")
         lines.append(f"Found {len(families)} distinct solution family/families:")
         for i, sol in enumerate(families, 1):
