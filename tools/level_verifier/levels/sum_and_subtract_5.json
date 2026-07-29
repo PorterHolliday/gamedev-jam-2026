@@ -1,0 +1,22 @@
+{
+  "name": "sum_and_subtract_5",
+  "inputs": {
+    "I1": 2,
+    "I2": 1
+  },
+  "operations": {
+    "P1": {
+      "type": "sum"
+    },
+    "P2": {
+      "type": "sum"
+    },
+    "M1": {
+      "type": "subtract"
+    }
+  },
+  "outputs": {
+    "O1": 5,
+    "O2": -2
+  }
+}
