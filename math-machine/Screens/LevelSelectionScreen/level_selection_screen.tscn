@@ -344,6 +344,7 @@ offset_left = 496.0
 offset_top = 152.0
 offset_right = 568.0
 offset_bottom = 224.0
+disabled = false
 
 [node name="LevelButton5" parent="LevelButtonsContainer" unique_id=1200488002 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -351,6 +352,7 @@ offset_left = 576.0
 offset_top = 152.0
 offset_right = 648.0
 offset_bottom = 224.0
+disabled = false
 
 [node name="LevelButton6" parent="LevelButtonsContainer" unique_id=1451083318 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -358,6 +360,7 @@ offset_left = 656.0
 offset_top = 152.0
 offset_right = 728.0
 offset_bottom = 224.0
+disabled = false
 
 [node name="LevelButton7" parent="LevelButtonsContainer" unique_id=893442744 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -365,6 +368,7 @@ offset_left = 416.0
 offset_top = 256.0
 offset_right = 488.0
 offset_bottom = 328.0
+disabled = false
 
 [node name="LevelButton8" parent="LevelButtonsContainer" unique_id=386276884 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -372,6 +376,7 @@ offset_left = 496.0
 offset_top = 256.0
 offset_right = 568.0
 offset_bottom = 328.0
+disabled = false
 
 [node name="LevelButton9" parent="LevelButtonsContainer" unique_id=153766639 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -379,6 +384,7 @@ offset_left = 576.0
 offset_top = 256.0
 offset_right = 648.0
 offset_bottom = 328.0
+disabled = false
 
 [node name="LevelButton10" parent="LevelButtonsContainer" unique_id=94989472 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -386,6 +392,7 @@ offset_left = 656.0
 offset_top = 256.0
 offset_right = 728.0
 offset_bottom = 328.0
+disabled = false
 
 [node name="LevelButton11" parent="LevelButtonsContainer" unique_id=1056782993 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -393,6 +400,7 @@ offset_left = 736.0
 offset_top = 256.0
 offset_right = 808.0
 offset_bottom = 328.0
+disabled = false
 
 [node name="LevelButton12" parent="LevelButtonsContainer" unique_id=780097692 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -400,6 +408,7 @@ offset_left = 416.0
 offset_top = 336.0
 offset_right = 488.0
 offset_bottom = 408.0
+disabled = false
 
 [node name="LevelButton13" parent="LevelButtonsContainer" unique_id=336903344 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -407,6 +416,7 @@ offset_left = 496.0
 offset_top = 336.0
 offset_right = 568.0
 offset_bottom = 408.0
+disabled = false
 
 [node name="LevelButton14" parent="LevelButtonsContainer" unique_id=415540774 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -414,6 +424,7 @@ offset_left = 576.0
 offset_top = 336.0
 offset_right = 648.0
 offset_bottom = 408.0
+disabled = false
 
 [node name="LevelButton15" parent="LevelButtonsContainer" unique_id=1045238823 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -421,6 +432,7 @@ offset_left = 656.0
 offset_top = 336.0
 offset_right = 728.0
 offset_bottom = 408.0
+disabled = false
 
 [node name="LevelButton16" parent="LevelButtonsContainer" unique_id=406050735 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -428,6 +440,7 @@ offset_left = 736.0
 offset_top = 336.0
 offset_right = 808.0
 offset_bottom = 408.0
+disabled = false
 
 [node name="LevelButton17" parent="LevelButtonsContainer" unique_id=985013322 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -435,6 +448,7 @@ offset_left = 416.0
 offset_top = 440.0
 offset_right = 488.0
 offset_bottom = 512.0
+disabled = false
 
 [node name="LevelButton18" parent="LevelButtonsContainer" unique_id=463969283 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -442,6 +456,7 @@ offset_left = 496.0
 offset_top = 440.0
 offset_right = 568.0
 offset_bottom = 512.0
+disabled = false
 
 [node name="LevelButton19" parent="LevelButtonsContainer" unique_id=73588653 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -449,6 +464,7 @@ offset_left = 576.0
 offset_top = 440.0
 offset_right = 648.0
 offset_bottom = 512.0
+disabled = false
 
 [node name="LevelButton20" parent="LevelButtonsContainer" unique_id=1559009018 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -456,6 +472,7 @@ offset_left = 656.0
 offset_top = 440.0
 offset_right = 728.0
 offset_bottom = 512.0
+disabled = false
 
 [node name="LevelButton21" parent="LevelButtonsContainer" unique_id=968432730 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -463,6 +480,7 @@ offset_left = 736.0
 offset_top = 440.0
 offset_right = 808.0
 offset_bottom = 512.0
+disabled = false
 
 [node name="LevelButton22" parent="LevelButtonsContainer" unique_id=260983362 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -470,6 +488,7 @@ offset_left = 416.0
 offset_top = 544.0
 offset_right = 488.0
 offset_bottom = 616.0
+disabled = false
 
 [node name="LevelButton24" parent="LevelButtonsContainer" unique_id=471533219 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -477,6 +496,7 @@ offset_left = 496.0
 offset_top = 544.0
 offset_right = 568.0
 offset_bottom = 616.0
+disabled = false
 
 [node name="LevelButton25" parent="LevelButtonsContainer" unique_id=1293210855 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -484,6 +504,7 @@ offset_left = 576.0
 offset_top = 544.0
 offset_right = 648.0
 offset_bottom = 616.0
+disabled = false
 
 [node name="LevelButton26" parent="LevelButtonsContainer" unique_id=393916819 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -491,6 +512,7 @@ offset_left = 656.0
 offset_top = 544.0
 offset_right = 728.0
 offset_bottom = 616.0
+disabled = false
 
 [node name="LevelButton27" parent="LevelButtonsContainer" unique_id=559676808 instance=ExtResource("1_bntq0")]
 layout_mode = 0
@@ -498,6 +520,7 @@ offset_left = 736.0
 offset_top = 544.0
 offset_right = 808.0
 offset_bottom = 616.0
+disabled = false
 
 [node name="BackButton" type="Button" parent="." unique_id=23307136]
 unique_name_in_owner = true

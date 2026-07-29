@@ -8,29 +8,29 @@
 
 [node name="SumSubtract2" unique_id=1073491300 instance=ExtResource("1_o8mxn")]
 
-[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_j47sb")]
-position = Vector2(160, 256)
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="1" unique_id=1370377095 instance=ExtResource("2_j47sb")]
+position = Vector2(80, 288)
 value = 1
 
-[node name="InputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=475549016 instance=ExtResource("2_j47sb")]
-position = Vector2(160, 448)
+[node name="InputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=475549016 instance=ExtResource("2_j47sb")]
+position = Vector2(80, 416)
 
-[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1512119247 instance=ExtResource("3_j47sb")]
+[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1512119247 instance=ExtResource("3_j47sb")]
 position = Vector2(576, 352)
 value = -2
 
-[node name="SumNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=1459015131 instance=ExtResource("3_nhvvw")]
+[node name="SumNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1459015131 instance=ExtResource("3_nhvvw")]
 position = Vector2(576, 224)
 
-[node name="SumNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=743805373 instance=ExtResource("3_nhvvw")]
+[node name="SumNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=743805373 instance=ExtResource("3_nhvvw")]
 position = Vector2(576, 480)
 
-[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1924490215 instance=ExtResource("4_0s5q1")]
-position = Vector2(992, 256)
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1924490215 instance=ExtResource("4_0s5q1")]
+position = Vector2(1072, 288)
 value = 7
 
-[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="8" unique_id=1653906786 instance=ExtResource("4_0s5q1")]
-position = Vector2(992, 448)
+[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1653906786 instance=ExtResource("4_0s5q1")]
+position = Vector2(1072, 416)
 value = 0
 
 [node name="PanelContainer" parent="UILayer/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]

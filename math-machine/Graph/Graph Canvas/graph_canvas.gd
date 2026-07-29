@@ -3,8 +3,8 @@ extends Node2D
 
 const DISCONNECTION_DISTANCE: float = 40.0
 const BEZIER_SAMPLES: float = 40
-const LINE_WIDTH: float = 4.0
-const BORDER_WIDTH: float = 4.0
+const LINE_WIDTH: float = 6.0
+const BORDER_WIDTH: float = 6.0
 const PREVIEW_COLOR: Color = Color(1.0, 1.0, 1.0, 0.8)
 const BORDER_PREVIEW_COLOR: Color = Color(0.6, 0.6, 0.6, 0.6)
 const SHADOW_OFFSET: Vector2 = Vector2(2, 2)
@@ -19,14 +19,20 @@ class Connection:
 	var from_port: GraphNodePort
 	var to_port: GraphNodePort
 @export var init_connections: Array[ConnectionData] = []
+
+@onready var double_click_detector: DoubleClickDetector = %DoubleClickDetector
+
 var connections: Array[Connection] = []
 var current_connection_start_port: GraphNodePort
 var current_connection_end_port: GraphNodePort
 
 var ports: Array[GraphNodePort] = []
+var _level_completed: bool = false
 
 func _ready() -> void:
 	_connect_port_signals()
+	
+	double_click_detector.double_clicked.connect(_on_double_clicked)
 	
 	for connection_data in init_connections:
 		var from_port: GraphNodePort = get_node(connection_data.from_node).outputs[connection_data.from_port]
@@ -37,28 +43,23 @@ func _ready() -> void:
 		if child is OutputNode2:
 			_output_nodes.append(child)
 			child.received_valid_output.connect(_check_level_complete.call_deferred)
+			
+func _process(_delta: float) -> void:
+	queue_redraw()
+	for port in ports:
+		port.hide_hover_fill()
+	if current_connection_start_port:
+		current_connection_start_port.show_connected_fill()
+	for connection in connections:
+		connection.from_port.show_connected_fill()
+		connection.to_port.show_connected_fill()
 
-func _connect_port_signals() -> void:
-	for child in get_children():
-		if child is MyGraphNode:
-			for grandchild in child.get_children():
-				if grandchild is GraphNodePort:
-					ports.append(grandchild)
-					grandchild.port_clicked.connect(func(): _port_clicked(grandchild))
-					grandchild.mouse_entered_port_area.connect(func(): _mouse_entered_port_area(grandchild))
-					grandchild.mouse_exited_port_area.connect(func(): _mouse_exited_port_area(grandchild))
-					
-func _port_clicked(port: GraphNodePort) -> void:
-	# Disconnect if input already connected
-	if port.type == GraphNodePort.Type.INPUT and get_port_connections(port).size() > 0:
-		var connection: Connection = get_port_connections(port)[0]
-		request_disconnection(connection, false)
-		current_connection_start_port = connection.from_port
-		return
+func _draw() -> void:
+	var hovered_connection: Connection = _get_closest_connection_at_point(get_global_mouse_position(), DISCONNECTION_DISTANCE)
+	for connection in connections:
+		_draw_connection(connection, connection == hovered_connection)
+	_draw_current_connection()
 	
-	# Start connection from current port
-	current_connection_start_port = port
-		
 func get_port_connections(port: GraphNodePort) -> Array[Connection]:
 	var port_connections: Array[Connection] = []
 	for connection in connections:
@@ -66,6 +67,55 @@ func get_port_connections(port: GraphNodePort) -> Array[Connection]:
 			port_connections.append(connection)
 	
 	return port_connections
+	
+func update_output_connections(port: GraphNodePort) -> void:
+	var connections: Array[Connection] = get_port_connections(port)
+	for connection in connections:
+		connection.to_port.graph_node.update_input(connection.to_port, port.value)
+
+func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: bool = true) -> bool:
+	if not _can_connect_ports(port1, port2): return false
+	
+	var connection: Connection = Connection.new()
+	if port1.type == GraphNodePort.Type.OUTPUT:
+		connection.from_port = port1
+		connection.to_port = port2
+	else:
+		connection.from_port = port2
+		connection.to_port = port1
+		
+	if get_port_connections(connection.to_port).size() > 0:
+		connections.erase(get_port_connections(connection.to_port)[0])
+		
+	connections.append(connection)
+	
+	if play_sound:
+		AudioManager.play_connection_sfx()
+	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
+	
+	connection_occurred.emit()
+	return true
+	
+func request_disconnection(connection: Connection, play_sound: bool = true) -> bool:
+	if not connections.has(connection): return false
+	
+	connections.erase(connection)
+	if play_sound:
+		AudioManager.play_disconnection_sfx()
+	connection.to_port.graph_node.remove_input(connection.to_port)
+	
+	disconnection_occurred.emit()
+	return true
+
+func play_level_complete_animation() -> void:	
+	await get_tree().create_timer(0.3).timeout
+	
+	if _output_nodes.size() == 1: return
+	
+	for output_node in _output_nodes:
+		output_node.play_level_complete_animation()
+		await get_tree().create_timer(0.08).timeout
+	await get_tree().create_timer(0.4).timeout
 	
 func _mouse_entered_port_area(port: GraphNodePort) -> void:
 	if not current_connection_start_port: 
@@ -109,22 +159,6 @@ func _loop_search(search_for_node: MyGraphNode, next_node: MyGraphNode) -> bool:
 			if _loop_search(search_for_node, connection.to_port.graph_node): return true
 	
 	return false
-	
-func _process(_delta: float) -> void:
-	queue_redraw()
-	for port in ports:
-		port.hide_hover_fill()
-	if current_connection_start_port:
-		current_connection_start_port.show_connected_fill()
-	for connection in connections:
-		connection.from_port.show_connected_fill()
-		connection.to_port.show_connected_fill()
-
-func _draw() -> void:
-	var hovered_connection: Connection = _get_closest_connection_at_point(get_global_mouse_position(), DISCONNECTION_DISTANCE)
-	for connection in connections:
-		_draw_connection(connection, connection == hovered_connection)
-	_draw_current_connection()
 		
 func _draw_connection(connection: Connection, is_hovered: bool) -> void:
 	_draw_bezier(
@@ -178,27 +212,17 @@ func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color,
 		draw_polyline(shadow_points, SHADOW_COLOR, LINE_WIDTH + BORDER_WIDTH * 2.0, true)
 	draw_polyline(points, border_color, LINE_WIDTH + BORDER_WIDTH * 2.0, true)
 	draw_polyline(points, color, LINE_WIDTH, true)
-	
-func _unhandled_input(event: InputEvent) -> void:
-	_handle_connection_completion(event)
-	_handle_disconnection_on_right_click(event)
 
-func _handle_connection_completion(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-		if current_connection_start_port and current_connection_end_port:
-			request_connection(current_connection_start_port, current_connection_end_port)
-			get_viewport().set_input_as_handled()
-		current_connection_start_port = null
-		current_connection_end_port = null
+func _port_released() -> void:
+	if current_connection_start_port and current_connection_end_port:
+		request_connection(current_connection_start_port, current_connection_end_port)
+	current_connection_start_port = null
+	current_connection_end_port = null
 		
-func _handle_disconnection_on_right_click(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-		var connection: Connection = _get_closest_connection_at_point(event.position, DISCONNECTION_DISTANCE)
-		
-		if not connection: return
-			
-		request_disconnection(connection)
-		get_viewport().set_input_as_handled()
+func _on_double_clicked(position: Vector2, _button_index: MouseButton) -> void:
+	var connection: Connection = _get_closest_connection_at_point(position, DISCONNECTION_DISTANCE)
+	if not connection: return
+	request_disconnection(connection)
 		
 func _get_closest_connection_at_point(point: Vector2, max_distance: float) -> Connection:
 	var closest: Connection = null
@@ -231,59 +255,33 @@ func _sample_bezier(conn: Connection, t: float) -> Vector2:
 	# Cubic Bezier
 	var u := 1.0 - t
 	return u*u*u*p0 + 3.0*u*u*t*p1 + 3.0*u*t*t*p2 + t*t*t*p3
-		
-func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: bool = true) -> bool:
-	if not _can_connect_ports(port1, port2): return false
-	
-	var connection: Connection = Connection.new()
-	if port1.type == GraphNodePort.Type.OUTPUT:
-		connection.from_port = port1
-		connection.to_port = port2
-	else:
-		connection.from_port = port2
-		connection.to_port = port1
-		
-	if get_port_connections(connection.to_port).size() > 0:
-		connections.erase(get_port_connections(connection.to_port)[0])
-		
-	connections.append(connection)
-	
-	if play_sound:
-		AudioManager.play_connection_sfx()
-	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
-	
-	connection_occurred.emit()
-	return true
-	
-func request_disconnection(connection: Connection, play_sound: bool = true) -> bool:
-	if not connections.has(connection): return false
-	
-	connections.erase(connection)
-	if play_sound:
-		AudioManager.play_disconnection_sfx()
-	connection.to_port.graph_node.remove_input(connection.to_port)
-	
-	disconnection_occurred.emit()
-	return true
 
 func _check_level_complete() -> void:
+	if _level_completed: return
 	for output in _output_nodes:
 		if not output.is_satisfied:
 			return
-	
+	_level_completed = true
 	level_complete.emit()
 	
-func update_output_connections(port: GraphNodePort) -> void:
-	var connections: Array[Connection] = get_port_connections(port)
-	for connection in connections:
-		connection.to_port.graph_node.update_input(connection.to_port, port.value)
-
-func play_level_complete_animation() -> void:	
-	await get_tree().create_timer(0.3).timeout
+func _connect_port_signals() -> void:
+	for child in get_children():
+		if child is MyGraphNode:
+			for grandchild in child.get_children():
+				if grandchild is GraphNodePort:
+					ports.append(grandchild)
+					grandchild.port_clicked.connect(func(): _port_clicked(grandchild))
+					grandchild.port_released.connect(_port_released)
+					grandchild.mouse_entered_port_area.connect(func(): _mouse_entered_port_area(grandchild))
+					grandchild.mouse_exited_port_area.connect(func(): _mouse_exited_port_area(grandchild))
+					
+func _port_clicked(port: GraphNodePort) -> void:
+	# Disconnect if input already connected
+	if port.type == GraphNodePort.Type.INPUT and get_port_connections(port).size() > 0:
+		var connection: Connection = get_port_connections(port)[0]
+		request_disconnection(connection, false)
+		current_connection_start_port = connection.from_port
+		return
 	
-	if _output_nodes.size() == 1: return
-	
-	for output_node in _output_nodes:
-		output_node.play_level_complete_animation()
-		await get_tree().create_timer(0.08).timeout
-	await get_tree().create_timer(0.4).timeout
+	# Start connection from current port
+	current_connection_start_port = port

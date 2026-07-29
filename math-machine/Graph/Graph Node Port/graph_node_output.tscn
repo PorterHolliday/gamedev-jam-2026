@@ -3,12 +3,35 @@
 [ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://Graph/Graph Node Port/graph_node_port.gd" id="1_j0l1v"]
 [ext_resource type="Texture2D" uid="uid://dq7cmcucj1jdy" path="res://Graph/Graph Node Port/port_shadow.png" id="2_1h452"]
 [ext_resource type="Texture2D" uid="uid://bxk6rmw3swbbr" path="res://Graph/Graph Node Port/port.png" id="2_7mlao"]
+[ext_resource type="Script" uid="uid://b7assewelikkx" path="res://DragControl/clickable_control.gd" id="2_u4gnu"]
 [ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_ykvyb"]
 [ext_resource type="Script" uid="uid://byh1bnt7lgfl8" path="res://UI/DirectionalExpandContainer/directional_expand_container.gd" id="4_dptiu"]
 [ext_resource type="Texture2D" uid="uid://vomfgbeuondv" path="res://Graph/Graph Node Port/port_hover_fill.png" id="4_y5pxb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7mlao"]
-radius = 24.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4gnu"]
+bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1y8pw"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u4gnu"]
+radius = 30.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bxjd"]
 bg_color = Color(1, 1, 1, 1)
@@ -33,19 +56,40 @@ connection_hover_color = Color(0.87058824, 0.6392157, 0.34117648, 1)
 connected_color = Color(0.40460834, 0.48308903, 0.56990933, 1)
 metadata/_custom_type_script = "uid://igltm2xbx00c"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=689805829]
-unique_name_in_owner = true
+[node name="Panel" type="Panel" parent="." unique_id=408845485]
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u4gnu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1677184462]
-position = Vector2(8, 0)
-shape = SubResource("CircleShape2D_7mlao")
+[node name="FillPanel" type="Panel" parent="." unique_id=584984982]
+unique_name_in_owner = true
+visible = false
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1y8pw")
+
+[node name="SnapArea" type="Control" parent="." unique_id=1102113085]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_right = 4.0
+script = ExtResource("2_u4gnu")
+shape = SubResource("CircleShape2D_u4gnu")
+metadata/_custom_type_script = "uid://b7assewelikkx"
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=596107368]
+visible = false
 position = Vector2(2, 2)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_1h452")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=759823865]
+visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_7mlao")
 
@@ -57,10 +101,10 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_y5pxb")
 
 [node name="DirectionalExpandContainer" type="Container" parent="." unique_id=1787146700]
-offset_left = 6.0
-offset_top = -35.0
-offset_right = 6.0
-offset_bottom = -35.0
+offset_left = 8.0
+offset_top = -40.0
+offset_right = 8.0
+offset_bottom = -40.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("4_dptiu")
 metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
@@ -73,10 +117,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8bxjd")
 
 [node name="MarginContainer" type="MarginContainer" parent="DirectionalExpandContainer/PanelContainer" unique_id=404157358]
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = -2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = -3
 theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = -1
+theme_override_constants/margin_bottom = -2
 
 [node name="Label" type="Label" parent="DirectionalExpandContainer/PanelContainer/MarginContainer" unique_id=293123437]
 unique_name_in_owner = true

@@ -2,6 +2,7 @@ class_name GraphNodePort
 extends Marker2D
 
 signal port_clicked
+signal port_released
 signal mouse_entered_port_area
 signal mouse_exited_port_area
 
@@ -18,8 +19,8 @@ enum Type {
 @export var connected_color: Color = Color.DIM_GRAY
 
 @onready var graph_node: MyGraphNode = get_parent()
-@onready var snap_area: Area2D = %Area2D
-@onready var fill_sprite: Sprite2D = %FillSprite
+@onready var snap_area: ClickableControl = %SnapArea
+@onready var fill_panel: Panel = %FillPanel
 @onready var panel_container: PanelContainer = %PanelContainer
 @onready var value_label: Label = %Label
 var _mouse_is_in_port_area: bool = false
@@ -33,11 +34,10 @@ var value: int = NULL_VALUE:
 func _ready() -> void:
 	snap_area.mouse_entered.connect(_on_mouse_entered)
 	snap_area.mouse_exited.connect(_on_mouse_exited)
-	
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and _mouse_is_in_port_area:
-		port_clicked.emit()
-		get_viewport().set_input_as_handled()
+	snap_area.mouse_clicked.connect(func(mouse_button):
+		port_clicked.emit())
+	snap_area.mouse_released.connect(func(mouse_button):
+		port_released.emit())
 
 func _update_value_label() -> void:
 	if value == NULL_VALUE:
@@ -57,14 +57,14 @@ func _on_mouse_exited() -> void:
 	
 func show_hover_fill() -> void:
 	if not _mouse_is_in_port_area: return
-	fill_sprite.show()
-	fill_sprite.modulate = hover_color
+	fill_panel.show()
+	fill_panel.modulate = hover_color
 	
 func hide_hover_fill() -> void:
 	if _mouse_is_in_port_area: return
-	fill_sprite.hide()
+	fill_panel.hide()
 
 func show_connected_fill() -> void:
 	if _mouse_is_in_port_area: return
-	fill_sprite.show()
-	fill_sprite.modulate = connected_color
+	fill_panel.show()
+	fill_panel.modulate = connected_color

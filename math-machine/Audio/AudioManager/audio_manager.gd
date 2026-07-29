@@ -26,6 +26,7 @@ const WARMUP_DB: float = -80.0
 @onready var music_player_b: AudioStreamPlayer = AudioStreamPlayer.new()
 
 var sfx_player_pool: Array[AudioStreamPlayer] = []
+var visibility_callback
 
 func _ready() -> void:
 	add_child(music_player_a)
@@ -41,6 +42,7 @@ func _ready() -> void:
 		sfx_player.bus = 'SFX'
 	# Not awaited: startup must not block on this.
 	_warm_up_music()
+	_setup_visibility_change_listener()
 
 #region Music
 
@@ -170,3 +172,21 @@ func _get_sfx_player() -> AudioStreamPlayer:
 	return sfx_player_pool[0]
 
 #endregion
+
+func _setup_visibility_change_listener() -> void:
+	if OS.has_feature("web"):
+		# Create a callback that points to a function in this script
+		visibility_callback = JavaScriptBridge.create_callback(_on_web_visibility_change)
+		
+		# Hook it into the browser's native 'visibilitychange' event listener
+		var document = JavaScriptBridge.get_interface("document")
+		document.addEventListener("visibilitychange", visibility_callback)
+
+func _on_web_visibility_change(args):
+	var document = JavaScriptBridge.get_interface("document")
+	if document.hidden:
+		print("Browser tab hidden! Muting audio.")
+		AudioServer.set_bus_mute(0, true) # Mutes the Master audio bus
+	else:
+		print("Browser tab visible! Unmuting audio.")
+		AudioServer.set_bus_mute(0, false) # Unmutes the Master audio bus

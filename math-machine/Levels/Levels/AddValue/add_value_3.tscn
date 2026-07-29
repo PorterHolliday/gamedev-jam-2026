@@ -7,26 +7,26 @@
 
 [node name="AddValue3" unique_id=1073491300 instance=ExtResource("1_ac7io")]
 
-[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_dbbg5")]
-position = Vector2(160, 352)
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="1" unique_id=1370377095 instance=ExtResource("2_dbbg5")]
+position = Vector2(80, 352)
 
-[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1512119247 instance=ExtResource("3_mi26x")]
-position = Vector2(384, 352)
+[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1512119247 instance=ExtResource("3_mi26x")]
+position = Vector2(576, 224)
 value = -1
 
-[node name="AddValueNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1384182580 instance=ExtResource("3_mi26x")]
+[node name="AddValueNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1384182580 instance=ExtResource("3_mi26x")]
 position = Vector2(576, 352)
 
-[node name="AddValueNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=1887618993 instance=ExtResource("3_mi26x")]
-position = Vector2(768, 352)
+[node name="AddValueNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1887618993 instance=ExtResource("3_mi26x")]
+position = Vector2(576, 480)
 value = -2
 
-[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1924490215 instance=ExtResource("4_ykwwa")]
-position = Vector2(992, 256)
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=1924490215 instance=ExtResource("4_ykwwa")]
+position = Vector2(1072, 288)
 value = 6
 
-[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1398601887 instance=ExtResource("4_ykwwa")]
-position = Vector2(992, 448)
+[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1398601887 instance=ExtResource("4_ykwwa")]
+position = Vector2(1072, 416)
 value = 2
 
 [node name="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]

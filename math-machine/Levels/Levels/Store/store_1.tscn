@@ -8,18 +8,18 @@
 
 [node name="Store1" unique_id=1073491300 instance=ExtResource("1_enel2")]
 
-[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1370377095 instance=ExtResource("2_lbnfx")]
-position = Vector2(160, 352)
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="1" unique_id=1370377095 instance=ExtResource("2_lbnfx")]
+position = Vector2(80, 352)
 value = 3
 
-[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1924490215 instance=ExtResource("3_ujwgn")]
-position = Vector2(992, 352)
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1924490215 instance=ExtResource("3_ujwgn")]
+position = Vector2(1072, 352)
 value = 7
 
-[node name="StoreNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=879742008 instance=ExtResource("4_p4iho")]
+[node name="StoreNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=879742008 instance=ExtResource("4_p4iho")]
 position = Vector2(576, 256)
 
-[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1512119247 instance=ExtResource("6_s25hn")]
+[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1512119247 instance=ExtResource("6_s25hn")]
 position = Vector2(576, 448)
 value = 2
 

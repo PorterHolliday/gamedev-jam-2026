@@ -1,12 +1,12 @@
 class_name OperationNode
 extends MyGraphNode
 
-@onready var _drag_area_2d: DragArea2D = %DragArea2D
+@onready var _drag_control: DragControl = %DragControl
 
 func _ready() -> void:
 	super()
-	_drag_area_2d.drag_started.connect(_on_drag_started)
-	_drag_area_2d.drag_ended.connect(_on_drag_ended)
+	_drag_control.drag_started.connect(_on_drag_started)
+	_drag_control.drag_ended.connect(_on_drag_ended)
 	
 func _on_drag_started() -> void:
 	scale = Vector2(1.1, 1.1)

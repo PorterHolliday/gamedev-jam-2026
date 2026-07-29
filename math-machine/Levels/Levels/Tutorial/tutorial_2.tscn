@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_3pjiv"]
 [ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="2_ho0of"]
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_ho0of"]
-[ext_resource type="Texture2D" uid="uid://dlivdbwjdcdxb" path="res://Levels/Levels/Tutorial/right_click_1.png" id="4_3pjiv"]
-[ext_resource type="Texture2D" uid="uid://svgapwg6soo" path="res://Levels/Levels/Tutorial/right_click_2.png" id="5_ho0of"]
+[ext_resource type="Texture2D" uid="uid://cjtlorpytq0mn" path="res://Levels/Levels/Tutorial/hand_icon.png" id="5_3pjiv"]
 
 [sub_resource type="Resource" id="Resource_j1a6v"]
 script = ExtResource("2_ho0of")
@@ -42,20 +41,21 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RightClickIcon:texture")
+tracks/1/path = NodePath("RightClickIcon:offset_transform_rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_3pjiv")]
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_581xw"]
 resource_name = "tutorial"
-length = 4.6
+length = 3.6
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -71,14 +71,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RightClickIcon:texture")
+tracks/1/path = NodePath("RightClickIcon:offset_transform_rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.8000001, 2.2, 2.6, 3, 3.4, 3.8000002, 4.2000003),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("4_3pjiv"), ExtResource("5_ho0of"), ExtResource("4_3pjiv"), ExtResource("5_ho0of"), ExtResource("4_3pjiv"), ExtResource("5_ho0of"), ExtResource("4_3pjiv")]
+"times": PackedFloat32Array(2.2, 2.3000002, 2.4, 2.5000002, 2.6000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.34906584, 0.0, -0.34906584, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1a6v"]
@@ -95,27 +95,27 @@ metadata/_edit_lock_ = true
 [node name="GraphCanvas" parent="." index="1" unique_id=90730119]
 init_connections = Array[ExtResource("2_ho0of")]([SubResource("Resource_j1a6v"), SubResource("Resource_qiw2v"), SubResource("Resource_2cbn5")])
 
-[node name="InputNode" parent="GraphCanvas" index="2" unique_id=1370377095 instance=ExtResource("2_3pjiv")]
-position = Vector2(160, 256)
+[node name="InputNode" parent="GraphCanvas" index="1" unique_id=1370377095 instance=ExtResource("2_3pjiv")]
+position = Vector2(80, 224)
 value = 3
 
-[node name="InputNode2" parent="GraphCanvas" index="3" unique_id=1126152933 instance=ExtResource("2_3pjiv")]
-position = Vector2(160, 352)
+[node name="InputNode2" parent="GraphCanvas" index="2" unique_id=1126152933 instance=ExtResource("2_3pjiv")]
+position = Vector2(80, 352)
 value = 4
 
-[node name="InputNode3" parent="GraphCanvas" index="4" unique_id=464345360 instance=ExtResource("2_3pjiv")]
-position = Vector2(160, 448)
+[node name="InputNode3" parent="GraphCanvas" index="3" unique_id=464345360 instance=ExtResource("2_3pjiv")]
+position = Vector2(80, 480)
 
-[node name="OutputNode" parent="GraphCanvas" index="5" unique_id=1924490215 instance=ExtResource("3_ho0of")]
-position = Vector2(992, 256)
+[node name="OutputNode" parent="GraphCanvas" index="4" unique_id=1924490215 instance=ExtResource("3_ho0of")]
+position = Vector2(1072, 224)
 value = 4
 
-[node name="OutputNode2" parent="GraphCanvas" index="6" unique_id=1943080177 instance=ExtResource("3_ho0of")]
-position = Vector2(992, 352)
+[node name="OutputNode2" parent="GraphCanvas" index="5" unique_id=1943080177 instance=ExtResource("3_ho0of")]
+position = Vector2(1072, 352)
 value = 5
 
-[node name="OutputNode3" parent="GraphCanvas" index="7" unique_id=1962038702 instance=ExtResource("3_ho0of")]
-position = Vector2(992, 448)
+[node name="OutputNode3" parent="GraphCanvas" index="6" unique_id=1962038702 instance=ExtResource("3_ho0of")]
+position = Vector2(1072, 480)
 value = 3
 
 [node name="BackButton" parent="UILayer/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="0" unique_id=629111258]
@@ -137,11 +137,12 @@ metadata/_edit_group_ = true
 [node name="RightClickIcon" type="TextureRect" parent="." index="3" unique_id=1704541209]
 visible = false
 offset_left = 560.0
-offset_top = 256.0
-offset_right = 592.0
-offset_bottom = 304.0
+offset_top = 208.0
+offset_right = 624.0
+offset_bottom = 288.0
+offset_transform_enabled = true
 mouse_filter = 2
-texture = ExtResource("4_3pjiv")
+texture = ExtResource("5_3pjiv")
 expand_mode = 1
 stretch_mode = 5
 

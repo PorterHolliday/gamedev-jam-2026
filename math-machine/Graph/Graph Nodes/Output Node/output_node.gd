@@ -4,7 +4,7 @@ extends MyGraphNode
 
 signal received_valid_output
 
-@onready var _sprite: Sprite2D = %Sprite2D
+@onready var _panel_container: PanelContainer = %PanelContainer
 @onready var _value_label: Label = %ValueLabel
 @export var value: int = 1:
 	set(new_val):
@@ -15,7 +15,7 @@ signal received_valid_output
 	set(new_val):
 		unsatisfied_color = new_val
 		if not is_satisfied:
-			_sprite.modulate = unsatisfied_color
+			_panel_container.modulate = unsatisfied_color
 @export var unsatisfied_text_color: Color = Color.BLACK:
 	set(new_val):
 		unsatisfied_text_color = new_val
@@ -37,12 +37,8 @@ signal received_valid_output
 
 func _ready() -> void:
 	_update_value_label()
-	# Shallow duplicate: each node needs its own shader *parameters*, but the
-	# Shader itself must stay shared. duplicate_deep(DEEP_DUPLICATE_ALL) also
-	# copied the Shader, so every output node created a distinct shader program
-	# for the renderer to compile and cache.
-	_sprite.material = _sprite.material.duplicate()
-	_value_label.material = _value_label.material.duplicate()
+	_panel_container.material = _panel_container.material.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	_value_label.material = _value_label.material.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	_value_label.material.set_shader_parameter('fill_color', satisfied_text_color)
 	if Engine.is_editor_hint(): return
 	super()
@@ -67,7 +63,7 @@ func _update_value_label() -> void:
 	_value_label.text = str(value)
 
 func _play_fill_animation(reverse: bool = false) -> void:
-	var sprite_material: ShaderMaterial = _sprite.material
+	var sprite_material: ShaderMaterial = _panel_container.material
 	#sprite_material.set_shader_parameter('invert', reverse)
 	var text_material: ShaderMaterial = _value_label.material
 	#text_material.set_shader_parameter('invert', reverse)

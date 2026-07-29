@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://l3velbsqy31w" path="res://Graph/Graph Nodes/Operation Nodes/Invert/invert_node.gd" id="1_odu6t"]
 [ext_resource type="Texture2D" path="res://Graph/Graph Nodes/square_node.png" id="2_nprv1"]
-[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DragArea2D/drag_area_2d.gd" id="3_15le5"]
+[ext_resource type="Script" uid="uid://b2k4pkccuwh8r" path="res://DragControl/drag_control.gd" id="3_15le5"]
 [ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="4_5nsgq"]
 [ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="5_lfpjf"]
 
