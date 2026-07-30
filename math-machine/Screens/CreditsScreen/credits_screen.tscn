@@ -354,12 +354,15 @@ layout_mode = 2
 metadata/_edit_group_ = true
 
 [node name="DividerLine" type="Panel" parent="VBoxContainer/MarginContainer3/GroupDivider" unique_id=807396871]
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_lg0ts")
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer3/GroupDivider" unique_id=176139870]
@@ -407,12 +410,15 @@ layout_mode = 2
 metadata/_edit_group_ = true
 
 [node name="DividerLine" type="Panel" parent="VBoxContainer/MarginContainer2/GroupDivider2" unique_id=704717038]
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_lg0ts")
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer2/GroupDivider2" unique_id=1722109163]
