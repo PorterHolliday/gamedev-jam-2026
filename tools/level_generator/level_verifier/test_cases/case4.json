@@ -1,0 +1,21 @@
+{
+  "name": "case4",
+  "inputs": {
+    "I1": 3
+  },
+  "operations": {
+    "A1": {
+      "type": "add",
+      "value": 3
+    },
+    "S1": {
+      "type": "store"
+    },
+    "S2": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 12
+  }
+}
