@@ -241,25 +241,23 @@ stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=813825174]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=899532477]
 layout_mode = 2
-theme_override_constants/margin_bottom = 24
+mouse_filter = 2
 
 [node name="TitleContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=299758867]
 layout_mode = 2
+mouse_filter = 2
+alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/TitleContainer" unique_id=2046016833]
 custom_minimum_size = Vector2(56, 72)
@@ -345,32 +343,38 @@ label_settings = ExtResource("4_fly6y")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GroupDivider" type="Control" parent="VBoxContainer" unique_id=1844783438]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer" unique_id=1032654336]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="GroupDivider" type="Control" parent="VBoxContainer/MarginContainer3" unique_id=1844783438]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(-232, 0)
 metadata/_edit_group_ = true
 
-[node name="DividerLine" type="Panel" parent="VBoxContainer/GroupDivider" unique_id=807396871]
+[node name="DividerLine" type="Panel" parent="VBoxContainer/MarginContainer3/GroupDivider" unique_id=807396871]
 layout_mode = 1
-offset_right = 656.0
-offset_bottom = 4.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lg0ts")
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/GroupDivider" unique_id=176139870]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer3/GroupDivider" unique_id=176139870]
 custom_minimum_size = Vector2(225, 32)
 layout_mode = 1
 offset_right = 144.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ot11")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GroupDivider/PanelContainer" unique_id=1009280059]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer3/GroupDivider/PanelContainer" unique_id=1009280059]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_right = 4
 
-[node name="Label" type="Label" parent="VBoxContainer/GroupDivider/PanelContainer/MarginContainer" unique_id=1543338034]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer3/GroupDivider/PanelContainer/MarginContainer" unique_id=1543338034]
 layout_mode = 2
 text = "Design, Development & Art"
 label_settings = ExtResource("5_5ot11")
@@ -392,32 +396,38 @@ layout_mode = 2
 text = "ProterMcGoater"
 label_settings = ExtResource("5_jhtfi")
 
-[node name="GroupDivider2" type="Control" parent="VBoxContainer" unique_id=1843789331]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=752935831]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="GroupDivider2" type="Control" parent="VBoxContainer/MarginContainer2" unique_id=1843789331]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(-232, 0)
 metadata/_edit_group_ = true
 
-[node name="DividerLine" type="Panel" parent="VBoxContainer/GroupDivider2" unique_id=704717038]
+[node name="DividerLine" type="Panel" parent="VBoxContainer/MarginContainer2/GroupDivider2" unique_id=704717038]
 layout_mode = 1
-offset_right = 656.0
-offset_bottom = 4.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lg0ts")
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/GroupDivider2" unique_id=1722109163]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer2/GroupDivider2" unique_id=1722109163]
 custom_minimum_size = Vector2(225, 0)
 layout_mode = 1
 offset_right = 144.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lbjfv")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GroupDivider2/PanelContainer" unique_id=1427099203]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/GroupDivider2/PanelContainer" unique_id=1427099203]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_right = 4
 
-[node name="Label" type="Label" parent="VBoxContainer/GroupDivider2/PanelContainer/MarginContainer" unique_id=708023611]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/GroupDivider2/PanelContainer/MarginContainer" unique_id=708023611]
 layout_mode = 2
 text = "Music & Sound Effects"
 label_settings = ExtResource("5_5ot11")
@@ -446,7 +456,7 @@ theme_override_constants/margin_right = 6
 
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=196179944]
 layout_mode = 2
-text = "Artist - \"Sound Effect\""
+text = "Eliveta - \"Background Music\""
 label_settings = ExtResource("5_jhtfi")
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/VBoxContainer" unique_id=513356679]
@@ -461,8 +471,9 @@ theme_override_constants/margin_right = 6
 
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer2/MarginContainer" unique_id=640726583]
 layout_mode = 2
-text = "Artist - \"Sound Effect\""
+text = "freesound_community - \"Breaker Switch\" & \"slice apple on wood_fizz\""
 label_settings = ExtResource("5_jhtfi")
+horizontal_alignment = 1
 
 [node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/VBoxContainer" unique_id=306265885]
 layout_mode = 2
@@ -476,7 +487,68 @@ theme_override_constants/margin_right = 6
 
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer3/MarginContainer" unique_id=332482485]
 layout_mode = 2
-text = "Artist - \"Sound Effect\""
+text = "PuyoPuyoMegaFan1234 - \"Winner game sound.\""
+label_settings = ExtResource("5_jhtfi")
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="VBoxContainer/VBoxContainer" unique_id=608446753]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ssg6y")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/PanelContainer5" unique_id=2137306440]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer5/MarginContainer" unique_id=416111389]
+layout_mode = 2
+text = "The_Mountain - \"Digital Factory\""
+label_settings = ExtResource("5_jhtfi")
+
+[node name="PanelContainer6" type="PanelContainer" parent="VBoxContainer/VBoxContainer" unique_id=328203342]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ssg6y")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/PanelContainer6" unique_id=1274347755]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer6/MarginContainer" unique_id=2143869103]
+layout_mode = 2
+text = "u_56l164mftx - \"cardDrop\""
+label_settings = ExtResource("5_jhtfi")
+
+[node name="PanelContainer7" type="PanelContainer" parent="VBoxContainer/VBoxContainer" unique_id=835126768]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ssg6y")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/PanelContainer7" unique_id=1657062722]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer7/MarginContainer" unique_id=497349802]
+layout_mode = 2
+text = "Universfield - \"Bubble Pop\""
+label_settings = ExtResource("5_jhtfi")
+
+[node name="PanelContainer8" type="PanelContainer" parent="VBoxContainer/VBoxContainer" unique_id=2074810657]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ssg6y")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/PanelContainer8" unique_id=2126407725]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer8/MarginContainer" unique_id=1798541550]
+layout_mode = 2
+text = "Vadim_Makes_Sound - \"Soft App Button Tap Sound #2\""
 label_settings = ExtResource("5_jhtfi")
 
 [node name="LogoContainer" type="PanelContainer" parent="." unique_id=1144720524]
