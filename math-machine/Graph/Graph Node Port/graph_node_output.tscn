@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_ykvyb"]
 [ext_resource type="Script" uid="uid://byh1bnt7lgfl8" path="res://UI/DirectionalExpandContainer/directional_expand_container.gd" id="4_dptiu"]
 [ext_resource type="Texture2D" uid="uid://vomfgbeuondv" path="res://Graph/Graph Node Port/port_hover_fill.png" id="4_y5pxb"]
+[ext_resource type="Texture2D" uid="uid://hocp4reuyt5h" path="res://Graph/Graph Node Port/port_bad_connection.png" id="6_1y8pw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4gnu"]
 bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
@@ -99,6 +100,13 @@ visible = false
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_y5pxb")
+
+[node name="BadConnection" type="Sprite2D" parent="." unique_id=1142063469]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.7490196, 0.050980393, 0.050980393, 1)
+scale = Vector2(0.313, 0.313)
+texture = ExtResource("6_1y8pw")
 
 [node name="DirectionalExpandContainer" type="Container" parent="." unique_id=1787146700]
 offset_left = 8.0

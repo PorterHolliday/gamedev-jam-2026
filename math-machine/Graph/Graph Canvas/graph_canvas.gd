@@ -48,6 +48,8 @@ func _process(_delta: float) -> void:
 	queue_redraw()
 	for port in ports:
 		port.hide_hover_fill()
+		if not current_connection_start_port:
+			port.hide_bad_connection()
 	if current_connection_start_port:
 		current_connection_start_port.show_connected_fill()
 	for connection in connections:
@@ -124,9 +126,12 @@ func _mouse_entered_port_area(port: GraphNodePort) -> void:
 	if _can_connect_ports(current_connection_start_port, port):
 		port.show_hover_fill()
 		current_connection_end_port = port
+	elif port != current_connection_start_port:
+		port.show_bad_connection()
 	
 func _mouse_exited_port_area(port: GraphNodePort) -> void:
 	port.hide_hover_fill()
+	port.hide_bad_connection()
 	if not current_connection_start_port: return
 	if port != current_connection_end_port: return
 	current_connection_end_port = null
