@@ -29,6 +29,8 @@ Git Branches:
 	* Fix Entering Levels
 	*Hint Popup Update
 	* 3 Star Audio
+	* Add Credits
+	* Mobile Support
 	Feedback Fix
 		- Bug when beating level
 		- Error color when trying to connect to wrong port
@@ -37,8 +39,7 @@ Git Branches:
 		- 1 Store Level
 		- 3 Challenge Levels
 			- Inputs are negatives
-	Add Credits
-	Mobile Support
+	
 	Final Check/Refactor - Add Additional Branches as Needed
 
 ANY OTHER CHANGES MUST BE ADDED TO THIS LIST BEFORE BEING IMPLEMENTED!!!

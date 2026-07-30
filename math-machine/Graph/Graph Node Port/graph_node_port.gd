@@ -21,6 +21,7 @@ enum Type {
 @onready var graph_node: MyGraphNode = get_parent()
 @onready var snap_area: ClickableControl = %SnapArea
 @onready var fill_panel: Panel = %FillPanel
+@onready var bad_connection: Sprite2D = %BadConnection
 @onready var panel_container: PanelContainer = %PanelContainer
 @onready var value_label: Label = %Label
 var _mouse_is_in_port_area: bool = false
@@ -68,3 +69,10 @@ func show_connected_fill() -> void:
 	if _mouse_is_in_port_area: return
 	fill_panel.show()
 	fill_panel.modulate = connected_color
+	
+func show_bad_connection() -> void:
+	if not _mouse_is_in_port_area: return
+	bad_connection.show()
+	
+func hide_bad_connection() -> void:
+	bad_connection.hide()
