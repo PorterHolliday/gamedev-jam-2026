@@ -1,0 +1,26 @@
+{
+  "name": "case5",
+  "inputs": {
+    "I1": 2,
+    "I2": 7
+  },
+  "operations": {
+    "P1": {
+      "type": "sum"
+    },
+    "M1": {
+      "type": "subtract"
+    },
+    "S1": {
+      "type": "store"
+    },
+    "S2": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 1,
+    "O2": 17,
+    "O3": 19
+  }
+}
