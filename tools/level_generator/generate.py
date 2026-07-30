@@ -59,9 +59,26 @@ from api import (  # noqa: E402
 DEFAULT_BOUND: Tuple[int, int] = (-20, 20)
 DEFAULT_MAX_LATCHES = 8
 DEFAULT_SOLVE_TIMEOUT = 8  # seconds, per solve() call; see note above
-VALUE_RANGE = range(-20, 21)          # design constraint: values live in -20..20
+
+# Three independently configurable display/design ranges, split out from the
+# single -20..20 "design range" this project started with. The game's node
+# UI can't display arbitrarily wide values without overflowing, so these are
+# deliberately narrower defaults than the solver's own comfortable range --
+# and deliberately NOT the same as DEFAULT_BOUND (see the note on
+# --*-range vs --bound below). Every CLI flag that samples or accepts a raw
+# value (inputs, outputs, add-op values) is checked against the matching
+# range; the solver's search bound is a completely separate concern.
+DEFAULT_INPUT_RANGE: Tuple[int, int] = (-9, 20)
+DEFAULT_OUTPUT_RANGE: Tuple[int, int] = (-9, 20)
+DEFAULT_ADD_VALUE_RANGE: Tuple[int, int] = (-9, 9)
+
 OP_TYPES = ["add", "sum", "subtract", "store"]
 OP_PREFIX = {"add": "A", "sum": "P", "subtract": "M", "store": "S"}
+
+
+def to_range(bounds: Tuple[int, int]):
+    """(lo, hi) -> range(lo, hi+1), i.e. an inclusive integer range."""
+    return range(bounds[0], bounds[1] + 1)
 # Empirically measured (not just theoretical): 4 combinational ops in the
 # SAME level as 1-2 store ops pushed a single find_all=False solve() call
 # from ~1-2s to >20s, even though the number of BFS states explored barely
@@ -136,8 +153,8 @@ class IdCounters:
         return f"{OP_PREFIX[op_type]}{self.counts[op_type]}"
 
 
-def random_distinct_values(rng: random.Random, n: int, low=-20, high=20,
-                            exclude=()) -> List[int]:
+def random_distinct_values(rng: random.Random, n: int, low=DEFAULT_INPUT_RANGE[0],
+                            high=DEFAULT_INPUT_RANGE[1], exclude=()) -> List[int]:
     pool = [v for v in range(low, high + 1) if v not in exclude]
     rng.shuffle(pool)
     if len(pool) < n:
@@ -146,7 +163,7 @@ def random_distinct_values(rng: random.Random, n: int, low=-20, high=20,
 
 
 def random_op_pool(rng: random.Random, n: int, allowed_types=OP_TYPES,
-                    add_value_range=(-20, 20),
+                    add_value_range=DEFAULT_ADD_VALUE_RANGE,
                     max_combinational=DEFAULT_MAX_COMBINATIONAL_OPS) -> Dict[str, OpSpec]:
     """Samples a pool of n ops. Combinational ops (add/sum/subtract) are
     capped at `max_combinational` -- reach_values()'s DFS over combinational
@@ -182,7 +199,10 @@ def parse_int_list(s: str) -> List[int]:
     return [int(x) for x in s.split(",") if x.strip() != ""]
 
 
-def parse_bound(s: str) -> Tuple[int, int]:
+def parse_range(s: str) -> Tuple[int, int]:
+    """Parses a 'lo,hi' CLI value. Used for --bound as well as the three
+    --*-range flags -- same "lo,hi" format, different meaning at each call
+    site (search bound vs. a value-acceptance range)."""
     lo, hi = s.split(",")
     return (int(lo), int(hi))
 
@@ -205,15 +225,23 @@ def parse_op_type_list(s: str) -> List[Tuple[str, Optional[int]]]:
 
 def build_fixed_ops(spec_list: List[Tuple[str, Optional[int]]],
                      rng: Optional[random.Random] = None,
-                     add_value_range=(-20, 20)) -> Dict[str, OpSpec]:
+                     add_value_range=DEFAULT_ADD_VALUE_RANGE) -> Dict[str, OpSpec]:
     counters = IdCounters()
     ops: Dict[str, OpSpec] = {}
+    lo, hi = add_value_range
     for t, v in spec_list:
         if t not in OP_TYPES:
             raise ValueError(f"Unknown op type '{t}' (expected one of {OP_TYPES})")
         oid = counters.next(t)
         if t == "add":
-            val = v if v is not None else (rng.randint(*add_value_range) if rng else 0)
+            if v is not None:
+                if not (lo <= v <= hi):
+                    raise ValueError(
+                        f"add value {v} for '{oid}' is outside the configured "
+                        f"add-value range [{lo},{hi}] (--add-value-range)")
+                val = v
+            else:
+                val = rng.randint(lo, hi) if rng else 0
         else:
             val = None
         ops[oid] = OpSpec(oid, t, val)
@@ -294,16 +322,22 @@ class SolveBudget:
 
 def generate_by_deletion(outputs: Dict[str, int], pool_inputs: int, pool_ops: int,
                           seed: int, budget: SolveBudget,
-                          allowed_op_types=OP_TYPES, add_value_range=(-20, 20),
+                          allowed_op_types=OP_TYPES,
+                          input_range=DEFAULT_INPUT_RANGE,
+                          add_value_range=DEFAULT_ADD_VALUE_RANGE,
                           max_resamples=200, name="generated") -> Optional[dict]:
     """Start over-provisioned, delete greedily, keep whatever breaks when
     removed. Minimal by construction: one pass, no fixpoint loop needed,
-    since solvability is monotone in the node set (see module docstring)."""
+    since solvability is monotone in the node set (see module docstring).
+    NOTE: `outputs` is caller-supplied and fixed -- it is the caller's
+    responsibility to have already validated it against the intended output
+    range (see cmd_deletion); this function does not re-check it."""
     rng = random.Random(seed)
 
     for attempt in range(max_resamples):
         input_ids = make_input_ids(pool_inputs)
-        input_values = random_distinct_values(rng, pool_inputs)
+        input_values = random_distinct_values(rng, pool_inputs,
+                                               low=input_range[0], high=input_range[1])
         inputs = dict(zip(input_ids, input_values))
         ops = random_op_pool(rng, pool_ops, allowed_types=allowed_op_types,
                               add_value_range=add_value_range)
@@ -356,7 +390,9 @@ def probe_reachable(inputs: Dict[str, int], ops: Dict[str, OpSpec], value: int,
 
 
 def reach_all(inputs: Dict[str, int], ops: Dict[str, OpSpec], budget: SolveBudget,
-              candidate_range=VALUE_RANGE) -> Tuple[set, bool]:
+              candidate_range=None) -> Tuple[set, bool]:
+    if candidate_range is None:
+        candidate_range = to_range(DEFAULT_OUTPUT_RANGE)
     reachable = set()
     all_exhausted = True
     for v in candidate_range:
@@ -378,10 +414,21 @@ def without(inputs: Dict[str, int], ops: Dict[str, OpSpec], node_id: str):
 def generate_by_enumeration(inputs: Dict[str, int], ops: Dict[str, OpSpec],
                              budget: SolveBudget, exhaustive=False, max_targets=4,
                              max_emit: Optional[int] = None, name_prefix="generated",
-                             candidate_range=VALUE_RANGE) -> Tuple[List[dict], bool]:
+                             candidate_range=None) -> Tuple[List[dict], bool]:
     """Returns (survivors, setup_exhausted). Each survivor is
     {'level', 'is_minimal', 'rows'}. setup_exhausted reports whether every
-    reach_all() call underneath this run proved its result within budget."""
+    reach_all() call underneath this run proved its result within budget.
+
+    `candidate_range` is the TARGET-ENUMERATION range (what output values are
+    considered at all) -- deliberately independent of `budget.bound` (the
+    solver's own intermediate-value search bound). Defaults to
+    DEFAULT_OUTPUT_RANGE if not given. This is what lets intermediates stay
+    wide (a generous --bound) while emitted targets stay narrow (a tight
+    --output-range) -- the two are never the same parameter, even though
+    earlier versions of this tool defaulted them to the same numbers, which
+    made them look coupled when they weren't."""
+    if candidate_range is None:
+        candidate_range = to_range(DEFAULT_OUTPUT_RANGE)
     all_nodes = list(inputs.keys()) + list(ops.keys())
     R_full, r_full_exh = reach_all(inputs, ops, budget, candidate_range)
 
@@ -399,7 +446,14 @@ def generate_by_enumeration(inputs: Dict[str, int], ops: Dict[str, OpSpec],
             if not (d & design_vals):
                 return [], setup_exhausted  # N can never be forced -- discard this pairing
 
-    design_range = [v for v in sorted(R_full) if -20 <= v <= 20]
+    # R_full is already a subset of candidate_range by construction (reach_all
+    # only ever probes values drawn from candidate_range), so no further
+    # range filter is needed here -- an earlier version of this function
+    # re-filtered by a hardcoded -20..20 literal at this point, which was
+    # harmless back when candidate_range always defaulted to exactly that
+    # range, but would have silently clawed back the old default the moment
+    # candidate_range became configurable. Removed.
+    design_range = sorted(R_full)
 
     iso = IsomorphismFilter()
     results: List[dict] = []
@@ -589,13 +643,27 @@ def emit_level(level: Level, out_dir: str, pipeline: str, seed, budget: SolveBud
 # --------------------------------------------------------------------------
 
 def cmd_deletion(args):
-    outputs = make_output_dict(parse_int_list(args.outputs))
-    budget = SolveBudget(parse_bound(args.bound) if args.bound else DEFAULT_BOUND,
+    input_range = parse_range(args.input_range) if args.input_range else DEFAULT_INPUT_RANGE
+    output_range = parse_range(args.output_range) if args.output_range else DEFAULT_OUTPUT_RANGE
+    add_value_range = (parse_range(args.add_value_range) if args.add_value_range
+                        else DEFAULT_ADD_VALUE_RANGE)
+
+    output_values = parse_int_list(args.outputs)
+    out_of_range = [v for v in output_values if not (output_range[0] <= v <= output_range[1])]
+    if out_of_range:
+        raise SystemExit(
+            f"--outputs contains values outside the configured output range "
+            f"[{output_range[0]},{output_range[1]}] (--output-range): {out_of_range}")
+    outputs = make_output_dict(output_values)
+
+    budget = SolveBudget(parse_range(args.bound) if args.bound else DEFAULT_BOUND,
                           args.max_latches, timeout=args.solve_timeout)
     allowed = args.op_types.split(",") if args.op_types else OP_TYPES
 
     result = generate_by_deletion(outputs, args.pool_inputs, args.pool_ops, args.seed,
-                                   budget, allowed_op_types=allowed, name=args.name)
+                                   budget, allowed_op_types=allowed,
+                                   input_range=input_range, add_value_range=add_value_range,
+                                   name=args.name)
     if result is None:
         print("Failed to find a solvable starting pool after max resamples; "
               "try a different --seed or larger --pool-inputs/--pool-ops.",
@@ -625,7 +693,10 @@ def cmd_deletion(args):
                        (is_minimal, rows), analysis, tier,
                        extra={"resample_attempt": result["attempt"],
                               "deletion_pass_exhausted": result["deletion_pass_exhausted"],
-                              "solver_timeout_hit": budget.any_timeout})
+                              "solver_timeout_hit": budget.any_timeout,
+                              "input_range": list(input_range),
+                              "output_range": list(output_range),
+                              "add_value_range": list(add_value_range)})
     print(f"Wrote {path}")
     print(f"  inputs={dict(level.inputs)}")
     print(f"  operations={[(oid, s.type, s.value) for oid, s in level.operations.items()]}")
@@ -634,26 +705,37 @@ def cmd_deletion(args):
 
 
 def cmd_enumerate(args):
+    input_range = parse_range(args.input_range) if args.input_range else DEFAULT_INPUT_RANGE
+    output_range = parse_range(args.output_range) if args.output_range else DEFAULT_OUTPUT_RANGE
+    add_value_range = (parse_range(args.add_value_range) if args.add_value_range
+                        else DEFAULT_ADD_VALUE_RANGE)
+
     input_ids = make_input_ids(args.inputs)
     if args.input_values:
         given = parse_int_list(args.input_values)
         if len(given) != args.inputs:
             raise SystemExit("--input-values count must match --inputs")
+        out_of_range = [v for v in given if not (input_range[0] <= v <= input_range[1])]
+        if out_of_range:
+            raise SystemExit(
+                f"--input-values contains values outside the configured input range "
+                f"[{input_range[0]},{input_range[1]}] (--input-range): {out_of_range}")
         input_values = given
     else:
         rng = random.Random(args.seed)
-        input_values = random_distinct_values(rng, args.inputs)
+        input_values = random_distinct_values(rng, args.inputs,
+                                               low=input_range[0], high=input_range[1])
     inputs = dict(zip(input_ids, input_values))
 
     spec_list = parse_op_type_list(args.ops)
-    ops = build_fixed_ops(spec_list, rng=random.Random(args.seed))
+    ops = build_fixed_ops(spec_list, rng=random.Random(args.seed), add_value_range=add_value_range)
 
-    budget = SolveBudget(parse_bound(args.bound) if args.bound else DEFAULT_BOUND,
+    budget = SolveBudget(parse_range(args.bound) if args.bound else DEFAULT_BOUND,
                           args.max_latches, timeout=args.solve_timeout)
 
     survivors, setup_exhausted = generate_by_enumeration(
         inputs, ops, budget, exhaustive=args.exhaustive, max_targets=args.targets,
-        max_emit=args.max_emit, name_prefix=args.name)
+        max_emit=args.max_emit, name_prefix=args.name, candidate_range=to_range(output_range))
 
     if not survivors:
         print("No levels survived enumeration for this (inputs, ops) pairing "
@@ -679,14 +761,32 @@ def cmd_enumerate(args):
                            (s["is_minimal"], s["rows"]), analysis, tier,
                            extra={"exhaustive": args.exhaustive,
                                   "reach_setup_exhausted": setup_exhausted,
-                                  "solver_timeout_hit": budget.any_timeout})
+                                  "solver_timeout_hit": budget.any_timeout,
+                                  "input_range": list(input_range),
+                                  "output_range": list(output_range),
+                                  "add_value_range": list(add_value_range)})
         print(f"Wrote {path}  tier={tier} score={score:.1f} outputs={dict(level.outputs)}")
+
+
+# All four "lo,hi" range flags (--bound, --input-range, --output-range,
+# --add-value-range) commonly need a negative lo. argparse's own heuristic
+# for "is this value or a new flag?" only recognizes bare negative INTEGERS
+# (e.g. "-9") as values, not "-9,20" (the comma breaks the pattern) -- so
+# `--output-range -9,20` (space-separated) fails with "expected one
+# argument", while `--output-range=-9,20` (equals form) works every time.
+# This isn't new here (--bound always had it); it's just far more likely to
+# bite now that three more flags default to a negative lower bound.
+NEG_RANGE_NOTE = (" Use --flag=lo,hi (with '=') if lo is negative -- "
+                   "space-separated '--flag -9,20' is misparsed by argparse "
+                   "as an unknown flag.")
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="generate.py",
-        description="Generate node-puzzle levels using level_verifier as a correctness oracle.")
+        description="Generate node-puzzle levels using level_verifier as a correctness oracle. "
+                     "All 'lo,hi' range flags need --flag=lo,hi (with '=') when lo is negative; "
+                     "see any individual flag's --help text for why.")
     sub = p.add_subparsers(dest="command", required=True)
 
     pa = sub.add_parser("deletion", help="Pipeline A: delta-debugging shrink to a minimal level.")
@@ -698,9 +798,27 @@ def build_arg_parser() -> argparse.ArgumentParser:
                      help="Comma-separated allowed op types to sample from "
                           "(default: add,sum,subtract,store)")
     pa.add_argument("--seed", type=int, default=0)
+    pa.add_argument("--input-range", default=None,
+                     help=(f"lo,hi (default {DEFAULT_INPUT_RANGE[0]},{DEFAULT_INPUT_RANGE[1]}). "
+                           "Range the randomly-sampled starting input pool is drawn from."
+                           ) + NEG_RANGE_NOTE)
+    pa.add_argument("--output-range", default=None,
+                     help=(f"lo,hi (default {DEFAULT_OUTPUT_RANGE[0]},{DEFAULT_OUTPUT_RANGE[1]}). "
+                           "--outputs values outside this range are rejected outright, before "
+                           "any generation is attempted."
+                           ) + NEG_RANGE_NOTE)
+    pa.add_argument("--add-value-range", default=None,
+                     help=(f"lo,hi (default {DEFAULT_ADD_VALUE_RANGE[0]},{DEFAULT_ADD_VALUE_RANGE[1]}). "
+                           "Range 'add' op values are sampled from when --op-types includes add."
+                           ) + NEG_RANGE_NOTE)
     pa.add_argument("--bound", default=None,
-                     help=f"lo,hi (default {DEFAULT_BOUND[0]},{DEFAULT_BOUND[1]} -- deliberately "
-                          "tighter than the verifier's own -200,200 default; see module docstring)")
+                     help=(f"lo,hi (default {DEFAULT_BOUND[0]},{DEFAULT_BOUND[1]} -- deliberately "
+                           "tighter than the verifier's own -200,200 default; see module docstring). "
+                           "This is the SOLVER's intermediate-value search bound, independent of "
+                           "--input-range/--output-range/--add-value-range -- widening this does "
+                           "not widen what values are sampled or accepted, only what the solver is "
+                           "willing to consider mid-network while searching for a solution."
+                           ) + NEG_RANGE_NOTE)
     pa.add_argument("--max-latches", type=int, default=DEFAULT_MAX_LATCHES)
     pa.add_argument("--max-families", type=int, default=10)
     pa.add_argument("--solve-timeout", type=int, default=DEFAULT_SOLVE_TIMEOUT,
@@ -724,8 +842,29 @@ def build_arg_parser() -> argparse.ArgumentParser:
                      help="Skip the covering fast path; run full leave-one-out on "
                           "every candidate target tuple")
     pb.add_argument("--seed", type=int, default=0)
+    pb.add_argument("--input-range", default=None,
+                     help=(f"lo,hi (default {DEFAULT_INPUT_RANGE[0]},{DEFAULT_INPUT_RANGE[1]}). "
+                           "Range random inputs are drawn from when --input-values is omitted; "
+                           "--input-values entries outside this range are rejected outright."
+                           ) + NEG_RANGE_NOTE)
+    pb.add_argument("--output-range", default=None,
+                     help=(f"lo,hi (default {DEFAULT_OUTPUT_RANGE[0]},{DEFAULT_OUTPUT_RANGE[1]}). "
+                           "This is the TARGET-ENUMERATION range -- what output values get "
+                           "considered at all when searching for candidate levels. Independent of "
+                           "--bound: widen --bound to give the solver more intermediate room "
+                           "without also widening what target values get proposed."
+                           ) + NEG_RANGE_NOTE)
+    pb.add_argument("--add-value-range", default=None,
+                     help=(f"lo,hi (default {DEFAULT_ADD_VALUE_RANGE[0]},{DEFAULT_ADD_VALUE_RANGE[1]}). "
+                           "Range explicit 'add:N' values in --ops are validated against, and the "
+                           "range a random value is drawn from for a bare 'add' with no ':N'."
+                           ) + NEG_RANGE_NOTE)
     pb.add_argument("--bound", default=None,
-                     help=f"lo,hi (default {DEFAULT_BOUND[0]},{DEFAULT_BOUND[1]})")
+                     help=(f"lo,hi (default {DEFAULT_BOUND[0]},{DEFAULT_BOUND[1]}). The SOLVER's "
+                           "intermediate-value search bound -- see --input-range/--output-range/"
+                           "--add-value-range for the flags that actually constrain sampled/"
+                           "accepted/enumerated values."
+                           ) + NEG_RANGE_NOTE)
     pb.add_argument("--max-latches", type=int, default=DEFAULT_MAX_LATCHES)
     pb.add_argument("--max-families", type=int, default=10)
     pb.add_argument("--solve-timeout", type=int, default=DEFAULT_SOLVE_TIMEOUT,

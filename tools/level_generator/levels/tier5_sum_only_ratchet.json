@@ -1,0 +1,54 @@
+{
+  "name": "cand_s204",
+  "inputs": {
+    "I1": -1,
+    "I2": 11
+  },
+  "operations": {
+    "S2": {
+      "type": "store"
+    },
+    "P1": {
+      "type": "sum"
+    },
+    "S3": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 8,
+    "O2": -2,
+    "O3": 16
+  },
+  "generator": {
+    "pipeline": "deletion",
+    "seed": 204,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "minimality_rows_exhausted": true,
+    "solution_length": 27,
+    "latch_count": 4,
+    "solution_family_count": 2,
+    "family_search_exhausted": true,
+    "tier": 5,
+    "resample_attempt": 1,
+    "deletion_pass_exhausted": false,
+    "solver_timeout_hit": false,
+    "input_range": [
+      -9,
+      20
+    ],
+    "output_range": [
+      -9,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

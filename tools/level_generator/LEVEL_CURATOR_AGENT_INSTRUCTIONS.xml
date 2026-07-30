@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent_instructions role="level_curator">
+
+  <overview>
+    <summary>
+      You are curating levels for a node-puzzle game. Levels are produced by
+      level_generator/generate.py, a CLI that uses level_generator/level_verifier/
+      (a separate, frozen solver/verifier) as a correctness oracle. You do not
+      write puzzle logic by hand: you invoke the generator to produce candidate
+      level JSON files, inspect their metadata (and, when needed, their actual
+      solutions via the verifier CLI), and decide which candidates are worth
+      keeping in the shipped level pool.
+    </summary>
+    <working_directory>
+      All commands below assume your shell's cwd is level_generator/, located
+      at the absolute path:
+      C:\Users\prote\Applications\godot\projects\gamedev-jam-2026\tools\level_generator
+      (that directory contains generate.py, test_generate.py, README.md,
+      LEVEL_CURATOR_AGENT_INSTRUCTIONS.xml (this file), a levels/ output
+      directory, and the level_verifier/ subdirectory). generate.py locates
+      level_verifier/ relative to its own file path, so cwd doesn't strictly
+      matter for generate.py itself, but level_verifier/verify.py (used below
+      for manual review) DOES require being invoked from inside
+      level_verifier/, since it is a flat, non-package module set with
+      bare-name imports.
+    </working_directory>
+    <environment>
+      Tested against Python 3.10.12; nothing in generate.py or level_verifier/
+      uses syntax newer than that (f-strings, dataclasses, type hints -- all
+      3.7+-safe), so any reasonably current Python 3 should work. No pip
+      install is required anywhere in this project: generate.py's imports are
+      argparse, itertools, json, os, random, signal, sys, collections, and
+      typing -- all standard library. level_verifier/'s own modules
+      (model.py, solver.py, reach.py, notation.py, minimality.py,
+      signature.py, api.py) are likewise standard-library-only (mainly
+      dataclasses/typing/json). signal.SIGALRM (used internally by
+      generate.py's timeout wrapper) is POSIX-only -- this project is not
+      expected to run on native Windows Python, only inside a Unix-like shell
+      (WSL, a Linux/macOS sandbox, etc.).
+    </environment>
+    <two_tools_you_have>
+      <tool name="generate.py">Produces candidate levels. This is your primary interface.</tool>
+      <tool name="level_verifier/verify.py">
+        The underlying oracle's own CLI. generate.py already calls this
+        library's functions internally to filter/score/emit candidates, so
+        you do NOT need verify.py to determine solvability or minimality --
+        that is already decided before a file is ever written. You DO need
+        verify.py to actually SEE a solution (generate.py's output JSON never
+        contains rendered solution steps, by design, so that curating a level
+        doesn't force you to look at its answer) and as an independent
+        second opinion if you want one.
+      </tool>
+    </two_tools_you_have>
+  </overview>
+
+  <generator_interface>
+    <pipeline name="deletion" aka="Pipeline A">
+      <description>
+        Delta-debugging shrink. Produces exactly ONE level per invocation:
+        starts from a randomly over-provisioned pool of inputs/operations
+        against a FIXED set of output targets you specify, then greedily
+        deletes nodes that don't break solvability. Minimal by construction.
+        To get multiple candidates toward the same output targets, invoke it
+        repeatedly with different --seed values -- each seed yields a
+        different minimal level from the same starting shape.
+      </description>
+      <command>python3 generate.py deletion --outputs &lt;v1,v2,...&gt; [flags]</command>
+      <flags>
+        <flag name="--outputs" required="true">
+          Comma-separated output target values, e.g. "1,17,19". Determines
+          the number of outputs (1-4) and their exact values. This is the
+          one thing Pipeline A does NOT search over -- you choose it.
+        </flag>
+        <flag name="--pool-inputs" default="4">Size of the starting input pool before shrinking (final level will have &lt;= this many inputs, usually fewer).</flag>
+        <flag name="--pool-ops" default="6">Size of the starting operation pool before shrinking (final level will have &lt;= this many ops).</flag>
+        <flag name="--op-types" default="add,sum,subtract,store">
+          Comma-separated list restricting which op types are eligible to be
+          sampled into the starting pool. Use this to bias what mechanic a
+          level teaches -- e.g. "subtract,store" to exclude add/sum entirely,
+          forcing a subtract-and-latch level.
+        </flag>
+        <flag name="--seed" default="0">Controls both the random starting pool AND the deletion order. Different seeds against the same --outputs/--pool-* produce different minimal levels.</flag>
+        <flag name="--input-range" default="-9,20">
+          "lo,hi". Range the randomly-sampled starting input pool is drawn
+          from. Purely a display/design-constraint range -- unrelated to
+          --bound (see the dedicated ranges section below).
+        </flag>
+        <flag name="--output-range" default="-9,20" importance="high">
+          "lo,hi". EVERY value in --outputs is validated against this range
+          up front, before any generation is attempted -- an out-of-range
+          --outputs value now fails fast with a clear message and exit code
+          1, rather than silently running a full generation attempt that
+          comes back "unsolvable" for reasons that have nothing to do with
+          solvability. See "Range validation" below.
+        </flag>
+        <flag name="--add-value-range" default="-9,9">
+          "lo,hi". Range randomly-sampled 'add' op values are drawn from when
+          --op-types includes add.
+        </flag>
+        <flag name="--bound" default="-20,20">
+          Value bound "lo,hi" passed to the verifier's solve(). Deliberately
+          tighter than the verifier's own internal default (-200,200) -- see
+          "Performance characteristics" below before widening this. This is
+          the SOLVER's intermediate-value search space, NOT a value-
+          acceptance range -- it is independent of --input-range/
+          --output-range/--add-value-range and does not need to match them.
+          Widen --bound freely for solver headroom without it affecting what
+          values get sampled, accepted, or emitted.
+        </flag>
+        <flag name="--max-latches" default="8">Max store-latch events the solver will search through.</flag>
+        <flag name="--max-families" default="10">Soft target for how many distinct solution families the post-hoc family-count search aims for (affects search budget, not a hard cap -- actual counts can exceed this).</flag>
+        <flag name="--solve-timeout" default="8">
+          Wall-clock seconds the generator will wait on any single verifier
+          call before giving up and treating it as inconclusive. Set to 0 to
+          disable (not recommended -- see performance notes).
+        </flag>
+        <flag name="--richer-families-are-harder" default="false (flag)">
+          Flips the sign of the family-count term in the difficulty score.
+          Off (default): more solution families make a level score EASIER
+          (more forgiving). On: more families score HARDER (richer).
+        </flag>
+        <flag name="--name" default="generated">Base filename (and in-file "name" field) for the emitted level.</flag>
+        <flag name="--out-dir" default="levels">Directory the JSON file is written into (created if missing). Point this at your curated pool directory, or a scratch directory for review-before-promotion -- your choice.</flag>
+      </flags>
+      <caveat importance="high">
+        Pipeline A does NOT discard or resample a level whose output equals
+        one of its own input values (a "trivial" one-wire solution) -- it
+        only prints a warning to stderr and still writes the file. Check the
+        emitted level's own "inputs"/"outputs" JSON fields for overlap
+        yourself before accepting a Pipeline-A level; don't rely on stderr
+        output, which you may not see if you're invoking this
+        programmatically.
+      </caveat>
+    </pipeline>
+
+    <pipeline name="enumerate" aka="Pipeline B">
+      <description>
+        Forward enumeration with derived targets. Fixes an EXACT operation
+        set (you specify types and count) and an input set, computes what
+        output values are actually reachable (accounting for store
+        ratcheting across multiple latches), and searches candidate output
+        tuples drawn from that reachable set -- never guessing blind. Can
+        emit MANY levels in a single invocation (all sharing the same
+        input/op shape, differing only in output targets), ranked and
+        numbered by difficulty score.
+      </description>
+      <command>python3 generate.py enumerate --inputs &lt;n&gt; --ops &lt;type,type,...&gt; [flags]</command>
+      <flags>
+        <flag name="--inputs" required="true">Number of inputs (1-4).</flag>
+        <flag name="--input-values" default="null (random distinct)" importance="high">
+          Comma-separated explicit input values, count must match --inputs.
+          Omit to let the generator pick random distinct values from
+          --input-range. If given explicitly, EVERY value is now validated
+          against --input-range and rejected outright (clear message, exit
+          1) if any value falls outside it -- see "Range validation" below.
+        </flag>
+        <flag name="--ops" required="true">
+          Comma-separated op types IN ID-ASSIGNMENT ORDER, e.g.
+          "sum,subtract,store,store" -&gt; produces P1(sum), M1(subtract),
+          S1(store), S2(store). For "add" ops, append a fixed value with a
+          colon: "add:5,store" -&gt; A1 with value 5. Unlike Pipeline A, there
+          is NO automatic cap on how many combinational (add/sum/subtract)
+          ops you request here -- see performance caveat below. An explicit
+          "add:N" value IS now validated against --add-value-range -- an
+          out-of-range N raises ValueError (uncaught -- traceback, exit 1;
+          see the exit-codes section), same failure style as an unknown op
+          type already had.
+        </flag>
+        <flag name="--targets" default="4">
+          Max output tuple SIZE to try; the search sweeps sizes 1..this. If
+          you want ONLY N-output levels, you must post-filter the emitted
+          files yourself for len(outputs)==N -- there is no "exact size"
+          flag, and with a low --max-emit the smaller sizes can crowd out
+          larger ones before the sweep even reaches them (see below).
+        </flag>
+        <flag name="--exhaustive" default="false (flag)">
+          Skips two things at once: (1) the spec's node-forcing "covering"
+          pre-filter, which otherwise discards the ENTIRE (inputs, ops)
+          pairing outright if even one node can never be forced into any
+          solution within the design value range -- this is common and can
+          silently produce zero survivors in default mode even for
+          reasonable-looking op sets; (2) the fast-path assumption that
+          covering implies minimality. With --exhaustive, every candidate
+          output tuple gets a real leave-one-out minimality check instead.
+          <recommendation>
+            If a plain `enumerate` call reports "No levels survived... some
+            node could never be forced," retry the same command with
+            --exhaustive before concluding the (inputs, ops) shape doesn't
+            work -- this is the single most common gotcha with Pipeline B.
+          </recommendation>
+        </flag>
+        <flag name="--seed" default="0">Only affects --input-values selection when you don't supply your own, and the add-value fallback when an "add:N" isn't given a value. Does NOT reorder the enumeration search itself (that's deterministic over the reachable value range).</flag>
+        <flag name="--input-range" default="-9,20">Same meaning as Pipeline A -- also the range --input-values entries are validated against.</flag>
+        <flag name="--output-range" default="-9,20" importance="high">
+          "lo,hi". THIS IS THE TARGET-ENUMERATION RANGE for Pipeline B -- what
+          output values get considered as candidates at all (previously a
+          hardcoded, unconfigurable -20..20 literal). Independent of --bound:
+          you can widen --bound for solver headroom on intermediates while
+          keeping --output-range narrow for display-safe targets, or vice
+          versa. There is no separate validation step here the way Pipeline
+          A has one for --outputs, because Pipeline B never accepts a raw
+          output value from you in the first place -- it only ever proposes
+          values already drawn from --output-range.
+        </flag>
+        <flag name="--add-value-range" default="-9,9">Same meaning as Pipeline A -- also the range explicit "add:N" values in --ops are validated against.</flag>
+        <flag name="--bound" default="-20,20">Same meaning as Pipeline A -- the solver's search space, independent of the three ranges above.</flag>
+        <flag name="--max-latches" default="8">Same meaning as Pipeline A.</flag>
+        <flag name="--max-families" default="10">Same meaning as Pipeline A.</flag>
+        <flag name="--solve-timeout" default="8">Same meaning as Pipeline A, but applied per-probe during the reachability setup too (see performance notes) -- a LOT of small solve() calls happen before any level is even considered.</flag>
+        <flag name="--max-emit" default="20">
+          Stops the search after this many surviving levels. This is a
+          SAFETY VALVE on a search space that can reach ~100k candidate
+          tuples (per the design spec's own sizing estimate) -- raise it if
+          you want a bigger batch to choose from, but expect proportionally
+          longer runtime.
+        </flag>
+        <flag name="--richer-families-are-harder" default="false (flag)">Same meaning as Pipeline A.</flag>
+        <flag name="--name" default="generated">Base name; ranked survivors are automatically suffixed "_1", "_2", ... in ascending difficulty-score order (rank 1 = easiest).</flag>
+        <flag name="--out-dir" default="levels">Same meaning as Pipeline A.</flag>
+      </flags>
+      <behavior_note>
+        Unlike Pipeline A, Pipeline B silently discards (does not emit, does
+        not warn) any candidate whose output value equals an input value --
+        you never need to check for that case with Pipeline B output.
+      </behavior_note>
+    </pipeline>
+  </generator_interface>
+
+  <value_ranges importance="high">
+    <description>
+      Three independently configurable ranges replace what used to be a
+      single, unconfigurable -20..20 "design range" -- added specifically so
+      this tool can be retuned for a game's actual display constraints (node
+      values that are too wide overflow the UI) without a source edit.
+    </description>
+    <range name="input" flag="--input-range" default="-9,20">
+      Where randomly-sampled starting inputs are drawn from (both
+      pipelines); Pipeline B's --input-values entries are validated against
+      it when supplied explicitly.
+    </range>
+    <range name="output" flag="--output-range" default="-9,20">
+      Pipeline A: --outputs values outside it are rejected outright, before
+      any generation is attempted. Pipeline B: the TARGET-ENUMERATION
+      range -- what output values get proposed as candidates at all.
+    </range>
+    <range name="add-value" flag="--add-value-range" default="-9,9">
+      Where randomly-sampled 'add' op values come from; explicit "add:N"
+      values in Pipeline B's --ops are validated against it too.
+    </range>
+    <decoupled_from_bound importance="high">
+      --bound is the SOLVER's intermediate-value search space (how wide a
+      value solve() will consider mid-network while proving solvability) --
+      a performance/completeness knob, structurally unrelated to what values
+      are acceptable as inputs/outputs/add-values in the emitted level.
+      Widening --bound gives the solver more room to find a solution; it
+      does NOT widen what gets sampled, validated, or accepted. You can
+      freely combine a wide --bound with narrow --input-range/--output-range/
+      --add-value-range (generous solver headroom, display-safe output), or
+      any other combination. Do not assume these move together just because
+      they defaulted to the same numbers in an earlier version of this tool.
+    </decoupled_from_bound>
+    <negative_lower_bound_gotcha importance="high">
+      All four "lo,hi" flags (--bound included) need --flag=lo,hi (WITH the
+      '=') whenever lo is negative. `--output-range -9,20` (space-separated)
+      is misparsed by argparse as an attempt to pass an unrecognized new
+      flag, because argparse's heuristic for "is this a value or another
+      flag?" only recognizes bare negative INTEGERS (matching `-9`) as
+      values, not "-9,20" (the comma breaks that pattern) -- you'll see
+      "error: argument --output-range: expected one argument". This was
+      already true of --bound before this change; it's just far more likely
+      to bite now, since three more flags default to a negative lower bound
+      that you may routinely want to override. Always use the '=' form for
+      these four flags when lo is negative:
+      `--output-range=-9,20`, not `--output-range -9,20`.
+    </negative_lower_bound_gotcha>
+  </value_ranges>
+
+  <output_format>
+    <description>
+      Every emitted file is a verifier-loadable level JSON (openable directly
+      via level_verifier/verify.py or level_from_dict()) with one extra
+      top-level key, "generator", holding curation-relevant metadata. Field
+      meanings:
+    </description>
+    <field name="name">Level's display/file-base name.</field>
+    <field name="inputs">{id: value} -- compare against "outputs" yourself for trivial-output overlap on Pipeline-A files (see caveat above).</field>
+    <field name="operations">{id: {type[, value for add]}}.</field>
+    <field name="outputs">{id: value} -- the fixed goal state.</field>
+    <field name="generator.pipeline">"deletion" or "enumerate".</field>
+    <field name="generator.seed">Seed used (or a custom string if you hand-curated/re-emitted a level -- see "manual re-emission" below).</field>
+    <field name="generator.bound / generator.max_latches">
+      The EXACT search budget every solvability/minimality claim in this file
+      rests on. Treat these as load-bearing: if you re-verify this level with
+      verify.py, pass matching --bound/--max-latches, or you may get a
+      different (and differently-costly) answer. See performance notes.
+    </field>
+    <field name="generator.input_range / generator.output_range / generator.add_value_range">
+      [lo, hi] lists recording the three value-acceptance ranges in force
+      when this level was generated (see the dedicated ranges section below).
+      Independent of generator.bound -- a level can perfectly well have a
+      wide bound and narrow ranges, or vice versa. These are what you check
+      to confirm a level's node values are actually safe for your current
+      display constraints; generator.bound tells you nothing about that.
+    </field>
+    <field name="generator.minimal_within_bound">
+      true / false / null. NULL specifically means the final minimality
+      sanity-check itself timed out during generation -- the level's own
+      generation process still believes it's minimal, but that belief is
+      UNCONFIRMED. Treat null the same as "needs manual re-check" before
+      shipping, not as a pass.
+    </field>
+    <field name="generator.minimality_rows_exhausted">
+      Whether every leave-one-out check behind the minimality claim actually
+      proved its result within bound/max_latches (true), or merely ran out of
+      search budget without finding a counterexample (false) -- still
+      directionally trustworthy for "this node is required," but not a
+      completeness proof. null if minimal_within_bound is also null.
+    </field>
+    <field name="generator.solution_length">Rendered step-notation line count of the simplest known solution family. Rough proxy for how long a playthrough takes.</field>
+    <field name="generator.latch_count">Store-latch events in the simplest known solution. Rough proxy for how much of the "ratcheting" mechanic a level exercises.</field>
+    <field name="generator.solution_family_count">
+      Distinct solution families found (destination-based, symmetry-aware --
+      see level_verifier/notation.py). null means this specific search timed
+      out; see generator.solver_timeout_hit.
+    </field>
+    <field name="generator.family_search_exhausted">Whether the family-count search proved it found ALL families within budget, or just stopped early.</field>
+    <field name="generator.tier">
+      Integer 1-5 (never 6 or higher -- see below), computed from the SAME
+      three raw fields already in this JSON (solution_length, latch_count,
+      solution_family_count). The exact formula, verified directly against
+      generate.py:
+      <formula>
+        fam_term = -(solution_family_count - 1)   # negated by default;
+                                                     # positive if the level
+                                                     # was generated with
+                                                     # --richer-families-are-harder
+        score = solution_length + 2*latch_count + fam_term
+        tier  = 1 if score &lt;= 4
+              = 2 if score &lt;= 8
+              = 3 if score &lt;= 12
+              = 4 if score &lt;= 17
+              = 5 otherwise   # score &gt; 17; there is no tier 6
+      </formula>
+      <do_not_double_count importance="high">
+        generator.tier is ALREADY a function of solution_length +
+        latch_count + family_count. If your own tiering logic also derives a
+        tier from those same three fields, you are recomputing the same
+        signal twice under two names. Pick one: either (a) trust
+        generator.tier as-is and treat it as the level's tier, or (b) ignore
+        generator.tier entirely and compute your own tier from the three raw
+        fields using your own formula/thresholds -- do not feed
+        generator.tier as a FOURTH input into a formula that already
+        consumes the three fields it was built from, and do not treat
+        agreement between the two as independent confirmation of anything;
+        they are mathematically coupled, not two opinions.
+      </do_not_double_count>
+      <six_tier_note importance="high">
+        If your design calls for six tiers, generator.tier's heuristic as
+        shipped can only ever emit 1-5 -- tier 6 is structurally unreachable
+        under the current TIER_THRESHOLDS = [4, 8, 12, 17] in generate.py
+        (four thresholds partition the score line into five buckets, by
+        construction). There is no hidden tier-6 case being suppressed
+        elsewhere. To get a sixth tier you would need to either: split one of
+        the existing five buckets by adding a threshold (e.g. inside
+        generate.py's TIER_THRESHOLDS list, which is explicitly documented in
+        README.md as "an arbitrary, documented default; tune to taste"), or
+        define your six-tier mapping independently from the three raw fields
+        rather than from generator.tier. Decide which before writing curator
+        instructions that assume six tiers exist in the data today -- they
+        don't.
+      </six_tier_note>
+    </field>
+    <field name="generator.solver_timeout_hit">
+      true if ANY verifier call anywhere during this level's generation hit
+      the wall-clock --solve-timeout. A distinct, generator-owned
+      incompleteness layer on top of bound/max_latches -- true here is a
+      signal to double-check this specific level manually before trusting
+      its other metadata fields at face value.
+    </field>
+    <field name="generator.resample_attempt">(deletion only) How many random starting pools were tried before one was solvable.</field>
+    <field name="generator.deletion_pass_exhausted">(deletion only) Whether every deletion-loop solvability check during shrinking proved its result within budget.</field>
+    <field name="generator.exhaustive">(enumerate only) Whether --exhaustive was used for this candidate.</field>
+    <field name="generator.reach_setup_exhausted">(enumerate only) Whether the reachability computation behind this level's candidacy proved its result within budget.</field>
+  </output_format>
+
+  <generator_exit_codes_and_failure_behavior>
+    <description>
+      generate.py's exit-code contract is thinner than verify.py's, and one
+      case in particular is easy to misread. Verified directly by running
+      each scenario below and inspecting the actual exit code, stdout,
+      stderr, and whether --out-dir was created.
+    </description>
+    <case name="success (Pipeline A wrote a level, or Pipeline B wrote 1+ levels)">
+      <exit_code>0</exit_code>
+      <behavior>Normal "Wrote &lt;path&gt; ..." line(s) on stdout, one or more JSON files exist under --out-dir.</behavior>
+    </case>
+    <case name="Pipeline A: resample attempts exhausted (no solvable starting pool found within max_resamples=200)">
+      <exit_code>1</exit_code>
+      <behavior>
+        stderr: "Failed to find a solvable starting pool after max resamples;
+        try a different --seed or larger --pool-inputs/--pool-ops." Nothing
+        is written; --out-dir is not even created if it didn't already exist.
+        This is an explicit, intentional sys.exit(1) -- not a crash.
+      </behavior>
+    </case>
+    <case name="Pipeline B: zero survivors" importance="high">
+      <exit_code>0</exit_code>
+      <behavior>
+        THIS IS THE CASE YOUR §10 NEEDS TO KNOW ABOUT. "Zero survivors" is
+        NOT an error from generate.py's point of view -- it exits 0, exactly
+        like success. stderr gets a message: "No levels survived enumeration
+        for this (inputs, ops) pairing -- either nothing was solvable, or (in
+        fast-path mode) some node could never be forced within the design
+        range." --out-dir is never created (no makedirs call happens on this
+        path) and stdout is empty. You CANNOT distinguish "ran successfully,
+        found nothing" from "ran successfully, found something" by exit code
+        alone for Pipeline B -- you must check whether --out-dir exists /
+        contains new files, or match stderr for that literal string.
+        (Retrying with --exhaustive is the standard next step here, per the
+        interface doc's Pipeline B recommendation.)
+      </behavior>
+    </case>
+    <case name="malformed CLI input the parser doesn't specifically validate (e.g. non-integer in --outputs, unknown op type in --ops, --pool-inputs larger than the available distinct-value range)">
+      <exit_code>1</exit_code>
+      <behavior>
+        An UNCAUGHT Python exception (ValueError, typically) propagates out
+        of main() with a full traceback printed to stderr -- there is no
+        top-level try/except in generate.py. This is functionally a crash,
+        distinguishable from the two intentional exit(1) cases above by
+        stderr containing a Python traceback (the words "Traceback (most
+        recent call last)") rather than one of the two friendly one-line
+        messages quoted above.
+      </behavior>
+    </case>
+    <case name="--input-values count doesn't match --inputs (enumerate only)">
+      <exit_code>1</exit_code>
+      <behavior>stderr: "--input-values count must match --inputs" (via an explicit `raise SystemExit(...)`, not a traceback).</behavior>
+    </case>
+    <case name="--outputs (deletion) or --input-values (enumerate) contains a value outside the configured range" importance="high">
+      <exit_code>1</exit_code>
+      <behavior>
+        A clean, single-line stderr message via `raise SystemExit(...)`, NOT
+        a traceback -- e.g. "--outputs contains values outside the
+        configured output range [-9,20] (--output-range): [50]". No files
+        written, --out-dir not created. This is the new validation added for
+        the display-range work: previously an out-of-range --outputs value
+        would run a full generation attempt and come back "unsolvable,"
+        which read as ordinary failure rather than the input error it was --
+        that's fixed; check for this message pattern to distinguish "you
+        gave a value outside the allowed range" from a genuine solvability
+        failure.
+      </behavior>
+    </case>
+    <case name="explicit add:N value in --ops (enumerate) is outside --add-value-range">
+      <exit_code>1</exit_code>
+      <behavior>
+        Unlike the two cases above, this one IS a traceback (uncaught
+        ValueError raised from build_fixed_ops -- matches the existing
+        "unknown op type" failure style, not the clean-message style used
+        for --outputs/--input-values). Message: "add value N for '&lt;id&gt;'
+        is outside the configured add-value range [lo,hi]
+        (--add-value-range)". Distinguish from a genuinely malformed --ops
+        string by this specific wording appearing in the traceback's final
+        line.
+      </behavior>
+    </case>
+    <summary_rule>
+      To reliably classify a generate.py run: (1) check exit code -- 0 means
+      either real success OR Pipeline-B zero-survivors, both need the
+      output-directory check to disambiguate; nonzero always means something
+      went wrong. (2) On nonzero, check stderr for one of the two known
+      friendly messages above (intentional, actionable failures) versus a
+      Python traceback (malformed input -- fix the command, don't retry
+      as-is). (3) On zero, check whether --out-dir gained the file(s) you
+      expected; if not, it was Pipeline B's zero-survivors case, not a
+      crash.
+    </summary_rule>
+  </generator_exit_codes_and_failure_behavior>
+
+  <corpus_calibration>
+    <description>
+      Confirmed directly: level_verifier/tests_corpus.py's CASES list IS the
+      designer's five-case regression corpus from spec section 8 -- run via
+      `python3 verify.py --test` from inside level_verifier/. It embeds all
+      five cases as Python dicts (name, inputs, operations, outputs, plus
+      expect_solvable/expect_minimal), so `--test` is fully self-contained
+      and requires no external files to run.
+    </description>
+    <standalone_files_available importance="high">
+      If your calibration step wants standalone level JSON files (e.g. to
+      feed through generate.py's own tooling, or to diff against, rather than
+      just running --test and reading pass/fail) -- you do NOT need to build
+      these by hand. They already exist at
+      level_verifier/test_cases/case1.json through case5.json, and are
+      byte-for-byte the same level data embedded in tests_corpus.py (verified
+      by direct comparison). Use these as your calibration fixtures directly.
+    </standalone_files_available>
+    <stale_reference_warning>
+      level_verifier/README.md itself refers to a "levels/" directory as
+      holding "the regression corpus as standalone level JSON files" -- that
+      directory does not exist in this checkout. The real location is
+      test_cases/, confirmed above. Don't let an agent go looking for
+      level_verifier/levels/; it isn't there.
+    </stale_reference_warning>
+    <expected_output>
+      `python3 verify.py --test` (run from inside level_verifier/) prints a
+      per-case trace ending in the literal line "ALL TESTS PASSED" on
+      success, exit code 0. On any failure it reports which case(s) failed
+      and exits nonzero -- treat that as the "generated content is untrusted
+      this session" gate your §4 already specifies.
+    </expected_output>
+  </corpus_calibration>
+
+  <pipeline_a_sampling_behavior importance="medium">
+    <description>
+      Verified directly against generate.py's actual sampling code and by
+      running edge-case commands, since Pipeline B documents its
+      distinctness behavior in the interface doc but Pipeline A's was
+      previously left implicit. Updated for the value-ranges change -- range
+      is now enforced where it previously wasn't; distinctness still isn't.
+    </description>
+    <fact name="add op value range">
+      Drawn from --add-value-range (default -9..9; random_op_pool's
+      add_value_range parameter defaults to DEFAULT_ADD_VALUE_RANGE, and both
+      CLI subcommands now expose --add-value-range to override it).
+    </fact>
+    <fact name="starting input pool distinctness">
+      Guaranteed distinct by construction: random_distinct_values() samples
+      without replacement from --input-range (shuffle-then-take-n), so it is
+      structurally impossible for Pipeline A's randomly-sampled starting
+      inputs to collide.
+    </fact>
+    <fact name="--outputs range" importance="high">
+      NOW VALIDATED (this was previously the biggest gap in this section, and
+      is exactly what the value-ranges change fixed). Every value in
+      --outputs is checked against --output-range up front, in cmd_deletion,
+      before any generation is attempted; any value outside it produces a
+      clean `raise SystemExit(...)` message and exit code 1, with nothing
+      written -- see the exit-codes section's dedicated case for this. The
+      same applies to Pipeline B's --input-values against --input-range, and
+      to explicit "add:N" values in Pipeline B's --ops against
+      --add-value-range (that last one raises ValueError/traceback rather
+      than a clean SystemExit -- see exit-codes section).
+    </fact>
+    <fact name="--outputs distinctness" importance="high">
+      STILL NOT validated -- this part of the original gap remains.
+      parse_int_list() does a bare int() conversion with no dedup check, and
+      the Level object Pipeline A builds is constructed directly (not via
+      level_from_dict()), which means the verifier's own distinctness
+      warning-check (validate(), which only ever WARNS even when it does
+      run) is never invoked on generator output at all. Confirmed by direct
+      test: `--outputs 5,5` (with values inside --output-range) still exits
+      0 and happily writes a level with O1=5, O2=5. In practice this is
+      nearly always self-defeating rather than dangerous: a duplicate output
+      value means any single value that satisfies one target automatically
+      satisfies the other, so Pipeline A's own delta-debugging shrink will
+      typically collapse straight down to a trivial one-input, zero-op level
+      (which DOES still trigger the existing trivial-output stderr warning,
+      since that input value now also equals an output value) -- but nothing
+      currently stops --outputs "3,3" from being accepted and emitted if you
+      don't check for it yourself. If your curation pipeline wants a hard
+      guarantee here, check --outputs for duplicates yourself before
+      invoking generate.py, or re-run level_from_dict() on the emitted JSON
+      afterward and check .warnings == [] the way test_generate.py's own
+      regression suite does.
+    </fact>
+  </pipeline_a_sampling_behavior>
+
+  <verifier_interactions>
+    <description>
+      Use level_verifier/verify.py directly when you need to actually SEE a
+      solution (to judge whether it's interesting/fun, not just "valid"), or
+      want an independent second opinion outside the generator's own
+      pipeline. All commands below assume `cd level_verifier` first.
+    </description>
+    <command purpose="full human-readable report (solvability + a solution + minimality table)">
+      python3 verify.py &lt;absolute_path_to_level.json&gt; --bound &lt;lo,hi&gt; --max-latches &lt;n&gt;
+    </command>
+    <command purpose="just the first/simplest solution, rendered as step notation">
+      python3 verify.py &lt;path&gt; --solve --bound &lt;lo,hi&gt; --max-latches &lt;n&gt;
+    </command>
+    <command purpose="every distinct solution family (use to judge how 'open' vs 'directed' a level feels)">
+      python3 verify.py &lt;path&gt; --all --bound &lt;lo,hi&gt; --max-latches &lt;n&gt;
+    </command>
+    <command purpose="leave-one-out minimality table only, no solution shown">
+      python3 verify.py &lt;path&gt; --minimality --bound &lt;lo,hi&gt; --max-latches &lt;n&gt;
+    </command>
+    <command purpose="run the verifier's OWN regression suite (only needed if you suspect level_verifier/ itself is broken -- you should never need to touch its code)">
+      python3 verify.py --test
+    </command>
+    <exit_codes>
+      0 = solvable and minimal. 1 = unsolvable within the given bound. 2 =
+      solvable but not minimal. Useful for scripting a quick pass/fail triage
+      across many candidate files without parsing text output.
+    </exit_codes>
+    <critical_caveat importance="high">
+      ALWAYS pass --bound and --max-latches matching the values recorded in
+      the level's own generator.bound / generator.max_latches fields (verify.py's
+      --bound takes a single N for [-N,N], or "lo,hi" -- e.g. bound [-20,20]
+      in the JSON becomes --bound -20,20 on the command line). verify.py's
+      OWN default bound is (-200,200), much wider than the generator's
+      default (-20,20), and unlike generate.py, verify.py has NO wall-clock
+      timeout protection. Running it at a wider bound than the level was
+      generated under risks reproducing the same reach_values() combinatorial
+      blowup documented in README.md's "performance characteristics" section
+      -- observed taking 20+ seconds, in the worst case effectively hanging,
+      on nothing more exotic than a handful of subtract/sum ops. Matching the
+      recorded bound avoids this entirely and is also the only way to get an
+      answer consistent with what the generator itself claimed.
+    </critical_caveat>
+  </verifier_interactions>
+
+  <performance_characteristics>
+    <note>
+      This section is operational, not optional reading -- both pipelines can
+      appear to "hang" if you push past these limits, and that is a known,
+      documented characteristic of the underlying (frozen) verifier, not a
+      bug to work around by killing and retrying blindly.
+    </note>
+    <fact>
+      The verifier's solve() gets combinatorially slower as combinational
+      (add/sum/subtract) op COUNT increases in a single level -- NOT just as
+      bound widens. Measured: 3 combinational ops stayed under ~2s per call;
+      going to 4 pushed a single call from ~2s to ~20s with barely any change
+      in states explored. Pipeline A enforces a cap of 3 combinational ops
+      per randomly-sampled pool automatically. Pipeline B's --ops has NO such
+      cap, because you're choosing the exact op set deliberately -- if you
+      ask for 4+ combinational ops, expect each solve() call to be
+      significantly slower, and raise --solve-timeout accordingly rather
+      than assuming something is broken.
+    </fact>
+    <fact>
+      Pipeline B's `enumerate` setup phase (computing what's reachable, and
+      what requires each individual node) issues on the order of (node_count
+      + 1) x 41 individual solve() probes BEFORE any candidate output tuple
+      is even considered. For a 6-node shape this took ~2-5s in testing; it
+      scales with node count and with --solve-timeout (a probe that times out
+      still costs the full timeout).
+    </fact>
+    <fact>
+      A timeout is a THIRD outcome, never treated as a proof of solvability
+      or unsolvability by the generator -- but it IS treated conservatively
+      (as "not solvable" / "node not required") in the moment, which can
+      cause the generator to keep a node it didn't strictly need to, or skip
+      a candidate that might actually have worked. generator.solver_timeout_hit
+      is your signal to re-check such a level manually (with a higher
+      --solve-timeout, or via verify.py at the SAME bound/max_latches) before
+      fully trusting its metadata.
+    </fact>
+  </performance_characteristics>
+
+  <curator_responsibilities_not_handled_by_the_generator>
+    <item importance="high" name="cross-invocation isomorphism">
+      The generator's isomorphism filter (canonical_signature / IsomorphismFilter
+      in generate.py) only dedupes WITHIN a single `enumerate` invocation's
+      survivor list. It does NOT persist across separate CLI calls, across
+      different --seed values, across Pipeline A runs, or against levels
+      already sitting in your curated pool / --out-dir. If you run the
+      generator multiple times (which you will, routinely), you are
+      responsible for checking new candidates against your existing pool
+      yourself. You can reuse the generator's own logic as a library rather
+      than reimplementing it:
+      <code>
+        import sys, os, json
+        LEVEL_GENERATOR_DIR = "/absolute/path/to/level_generator"
+        sys.path.insert(0, LEVEL_GENERATOR_DIR)
+        sys.path.insert(0, os.path.join(LEVEL_GENERATOR_DIR, "level_verifier"))
+        import generate as g
+        from api import level_from_dict  # api.py is level_verifier's own re-export seam
+
+        seen = set()
+        for path in existing_pool_paths:
+            level = level_from_dict(json.load(open(path)))
+            seen.add(g.canonical_signature(level))
+
+        new_level = level_from_dict(json.load(open(candidate_path)))
+        is_duplicate = g.canonical_signature(new_level) in seen
+      </code>
+      <corrected_from_prior_version importance="high">
+        An earlier version of this snippet added only LEVEL_GENERATOR_DIR to
+        sys.path and imported `from model import level_from_dict` directly.
+        Tested directly: that line does NOT raise ImportError, but only by
+        accident -- `import generate as g` has a side effect of adding
+        level_verifier/ to sys.path itself (generate.py's own top-level code
+        does this unconditionally, so it can import its own dependencies),
+        and `from model import level_from_dict` was silently riding on that
+        side effect rather than being correct on its own terms. Two fixes
+        applied above: (1) add level_verifier/ to sys.path explicitly rather
+        than relying on an import order you'd have to remember, and (2)
+        import level_from_dict from api (level_verifier's own re-export
+        module, purpose-built as the stable seam for exactly this kind of
+        external use) rather than reaching into model.py directly -- api.py
+        re-exports level_from_dict unchanged, so this is a drop-in swap, not
+        a behavior change.
+      </corrected_from_prior_version>
+    </item>
+    <item importance="medium" name="trivial-output check on Pipeline A output">
+      See the caveat under the deletion pipeline above -- Pipeline A does not
+      self-filter this; Pipeline B does.
+    </item>
+    <item importance="medium" name="actually playing/judging solutions">
+      The generator's tier/score is a heuristic over (solution_length,
+      latch_count, family_count). It has no notion of whether a level is fun,
+      whether its solution path is intuitive vs. fiddly, or whether a
+      "minimal" level is minimal in a way that feels satisfying vs. just
+      technically irreducible. Use verify.py --all on promising candidates to
+      actually inspect the solution family(ies) before committing a level to
+      the shipped pool.
+    </item>
+    <item importance="low" name="manual re-emission / re-tagging">
+      If you hand-pick and re-save a level (e.g., copying a candidate into
+      your curated pool with a new name, or after manually re-verifying it),
+      you can reuse generate.py's own emit_level() function to keep the
+      generator.* metadata block consistently formatted -- see
+      level_generator/generate.py's emit_level() signature, or just hand-edit
+      the JSON's "generator" block directly; level_from_dict() ignores
+      unrecognized top-level/nested keys, so the file stays verifier-loadable
+      either way.
+    </item>
+  </curator_responsibilities_not_handled_by_the_generator>
+
+  <quick_reference_workflow>
+    <step n="1">Decide the mechanic/shape you want (op types, input/output counts) based on the tier/mechanic you're targeting.</step>
+    <step n="2">
+      For a single hand-tuned level with fixed output targets: use `deletion`
+      with a few different --seed values, keep the one you like best.
+      For a batch exploring one fixed mechanic across many possible targets:
+      use `enumerate` (with --exhaustive if the plain covering pass reports
+      zero survivors), raising --max-emit if you want more candidates.
+    </step>
+    <step n="3">Filter the emitted JSON files: check generator.minimal_within_bound is true (not null), generator.solver_timeout_hit is false (or manually re-check if true), and (for Pipeline A) that inputs/outputs don't overlap.</step>
+    <step n="4">Deduplicate against your existing pool using canonical_signature (see above) -- the generator will not have done this for you across runs.</step>
+    <step n="5">For serious candidates, run verify.py --all at the level's own recorded bound/max_latches to actually look at the solution(s) and judge quality/interest.</step>
+    <step n="6">Promote the survivors into your shipped level pool; discard or re-seed the rest.</step>
+  </quick_reference_workflow>
+
+</agent_instructions>

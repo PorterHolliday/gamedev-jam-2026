@@ -42,6 +42,45 @@ that reachable set instead of guessing blind. Can emit many levels per run
   the fast-path covering check, and instead runs the real leave-one-out
   minimality check on every candidate target tuple.
 
+## Value ranges
+
+Three independently configurable ranges replace what used to be a single
+`-20..20` "design range," so the generator can be retuned for a game's actual
+display constraints without a source edit:
+
+| Range | Flag | Default | Governs |
+|---|---|---|---|
+| Input | `--input-range` | `-9,20` | Where randomly-sampled starting inputs are drawn from (both pipelines); `--input-values` entries outside it are rejected. |
+| Output | `--output-range` | `-9,20` | Pipeline A: `--outputs` values outside it are rejected outright, before any generation is attempted. Pipeline B: the *target-enumeration range* -- what output values get considered as candidates at all. |
+| Add-value | `--add-value-range` | `-9,9` | Where randomly-sampled `add` op values come from; explicit `add:N` values in Pipeline B's `--ops` are validated against it too. |
+
+**Decoupled from `--bound` on purpose.** `--bound` is the *solver's*
+intermediate-value search space (how wide a value `solve()` is willing to
+consider mid-network while proving solvability) -- a performance/completeness
+knob, unrelated to what values are actually acceptable as inputs/outputs/add
+values in the *emitted* level. Widening `--bound` gives the solver more room
+to find a solution; it does not widen what gets sampled or what an emitted
+level's node values can be. Earlier versions of this tool defaulted both to
+the same numbers, which made them look coupled when they weren't -- they are
+still two separate parameters now, just with defaults that no longer
+coincide, and Pipeline B's target-enumeration loop now takes its range
+directly from `--output-range` rather than a hardcoded literal.
+
+**Validation, not silent failure.** `--outputs`, `--input-values`, and
+explicit `add:N` values are all checked against their matching range up
+front and rejected with a clear message (exit 1) if any value is out of
+range -- previously an out-of-range value just came back "unsolvable" after
+a full generation attempt, which read as an ordinary failure rather than the
+input error it actually was.
+
+**Negative lower bounds and argparse.** All four `lo,hi` flags (`--bound`
+included) need `--flag=lo,hi` (with `=`) when `lo` is negative --
+`--output-range -9,20` (space-separated) gets misparsed by argparse as an
+unrecognized flag, because `-9,20` isn't a bare negative integer. `--output-range=-9,20`
+works every time. This isn't new (`--bound` always had it); it's just far
+more likely to come up now that three more flags default to a negative lower
+bound.
+
 ## Design decisions left to my judgment
 
 The build notes explicitly left several choices open. Here's what I picked
@@ -76,7 +115,9 @@ interchangeability within a single level's solution space.
 invented reasonably elsewhere (`--pool-inputs`/`--pool-ops` for Pipeline A's
 starting pool size, `--input-values`/`--ops` with an `add:5`-style value
 syntax for Pipeline B's fixed shape, `--max-emit` as a safety valve on
-Pipeline B's up-to-~100k-tuple search).
+Pipeline B's up-to-~100k-tuple search, `--input-range`/`--output-range`/
+`--add-value-range` for the three display-constrained value ranges -- see
+"Value ranges" above).
 
 ## Honest incompleteness
 
@@ -85,6 +126,10 @@ solvability/minimality claims were checked under -- never an unqualified
 positive or negative:
 
 - `bound`, `max_latches`: the `solve()` budget used.
+- `input_range`, `output_range`, `add_value_range`: the three value ranges in
+  force for this run (see "Value ranges" above) -- recorded for the same
+  reason `bound` is: so a level file is self-describing about what
+  constraints produced it, not just what the solver's search budget was.
 - `minimal_within_bound`: true/false/**null**. Null means the final
   minimality sanity-check itself timed out (see below) -- the deletion
   loop's own bookkeeping still believes the level is minimal, but that belief
