@@ -1,0 +1,56 @@
+{
+  "name": "r4_s13",
+  "inputs": {
+    "I1": 10,
+    "I2": -8
+  },
+  "operations": {
+    "P1": {
+      "type": "sum"
+    },
+    "S1": {
+      "type": "store"
+    },
+    "S2": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 12,
+    "O2": -2
+  },
+  "generator": {
+    "pipeline": "constructive-asym",
+    "seed": 13,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "solution_length": 30,
+    "latch_count": 5,
+    "solution_family_count": 4,
+    "family_search_exhausted": true,
+    "direct_store": "S2",
+    "indirect_store": "S1",
+    "latch_counts_per_store": {
+      "S1": 3,
+      "S2": 2
+    },
+    "rule1_holds": false,
+    "rule2_holds": true,
+    "input_range": [
+      -9,
+      20
+    ],
+    "output_range": [
+      -9,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

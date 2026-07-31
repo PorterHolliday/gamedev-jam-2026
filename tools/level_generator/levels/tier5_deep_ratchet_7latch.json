@@ -1,0 +1,51 @@
+{
+  "name": "dsbuild_s7018",
+  "inputs": {
+    "I1": 15,
+    "I3": 4
+  },
+  "operations": {
+    "S1": {
+      "type": "store"
+    },
+    "M1": {
+      "type": "subtract"
+    },
+    "S2": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 2,
+    "O2": 9,
+    "O3": 11
+  },
+  "generator": {
+    "pipeline": "constructive",
+    "seed": 7018,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "solution_length": 39,
+    "latch_count": 7,
+    "solution_family_count": 1,
+    "family_search_exhausted": false,
+    "all_families_direct_store_output": true,
+    "best_family_direct_store_output": true,
+    "input_range": [
+      -9,
+      20
+    ],
+    "output_range": [
+      -9,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

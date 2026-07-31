@@ -1,0 +1,60 @@
+{
+  "name": "r5_s15",
+  "inputs": {
+    "I1": 5
+  },
+  "operations": {
+    "M1": {
+      "type": "subtract"
+    },
+    "S1": {
+      "type": "store"
+    },
+    "A1": {
+      "type": "add",
+      "value": 1
+    },
+    "S2": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 14,
+    "O2": 20,
+    "O3": 9
+  },
+  "generator": {
+    "pipeline": "constructive-asym-r5",
+    "seed": 15,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "solution_length": 34,
+    "latch_count": 5,
+    "solution_family_count": 2,
+    "family_search_exhausted": true,
+    "direct_store": "S1",
+    "indirect_store": "S2",
+    "latch_counts_per_store": {
+      "S1": 3,
+      "S2": 2
+    },
+    "rule1_holds": true,
+    "rule2_holds": false,
+    "input_range": [
+      0,
+      9
+    ],
+    "output_range": [
+      -9,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}
