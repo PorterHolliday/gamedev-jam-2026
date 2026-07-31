@@ -45,7 +45,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_kevf4")
 [node name="ValueLabel" type="Label" parent="DragControl/PanelContainer" unique_id=769433824]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0"
+text = "?"
 label_settings = ExtResource("6_pgy35")
 horizontal_alignment = 1
 vertical_alignment = 1
