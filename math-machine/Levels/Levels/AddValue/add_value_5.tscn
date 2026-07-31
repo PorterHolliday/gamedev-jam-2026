@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dy0f8ionlgwua"]
+
+[ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_dr1h2"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_8psxp"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="3_ws18a"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="4_4a7k7"]
+
+[node name="AddValue5" unique_id=1073491300 instance=ExtResource("1_dr1h2")]
+
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="1" unique_id=1370377095 instance=ExtResource("2_8psxp")]
+position = Vector2(80, 352)
+value = 4
+
+[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1512119247 instance=ExtResource("3_ws18a")]
+position = Vector2(448, 256)
+value = 2
+
+[node name="AddValueNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=579198277 instance=ExtResource("3_ws18a")]
+position = Vector2(704, 256)
+value = 7
+
+[node name="AddValueNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=916156933 instance=ExtResource("3_ws18a")]
+position = Vector2(448, 448)
+value = -4
+
+[node name="AddValueNode4" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=180850161 instance=ExtResource("3_ws18a")]
+position = Vector2(704, 448)
+value = -3
+
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1924490215 instance=ExtResource("4_4a7k7")]
+position = Vector2(1072, 224)
+value = -1
+
+[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1653906786 instance=ExtResource("4_4a7k7")]
+position = Vector2(1072, 352)
+value = 3
+
+[node name="OutputNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="8" unique_id=1201311774 instance=ExtResource("4_4a7k7")]
+position = Vector2(1072, 480)
+value = 8
+
+[node name="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+text = "Add Value: 4"
+
+[node name="Hint" parent="UILayer/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1289930638) index="0" unique_id=47662854]
+text = "Subtract 3 first, then branch out to the target values."

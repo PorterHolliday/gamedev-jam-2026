@@ -1,0 +1,51 @@
+{
+  "name": "dsbuild_s7131",
+  "inputs": {
+    "I1": -1,
+    "I2": 20
+  },
+  "operations": {
+    "M1": {
+      "type": "subtract"
+    },
+    "S1": {
+      "type": "store"
+    },
+    "S2": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 18,
+    "O2": 0,
+    "O3": 17
+  },
+  "generator": {
+    "pipeline": "constructive",
+    "seed": 7131,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "solution_length": 35,
+    "latch_count": 6,
+    "solution_family_count": 5,
+    "family_search_exhausted": false,
+    "all_families_direct_store_output": true,
+    "best_family_direct_store_output": true,
+    "input_range": [
+      -9,
+      20
+    ],
+    "output_range": [
+      -9,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

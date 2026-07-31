@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ir6p8wvkbrql"]
+
+[ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_h4i1y"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_akvh0"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_2hsjj"]
+[ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="4_x4yih"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="5_h4i1y"]
+[ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="5_v5osv"]
+
+[node name="Challenge2" unique_id=1073491300 instance=ExtResource("1_h4i1y")]
+
+[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="1" unique_id=1370377095 instance=ExtResource("2_akvh0")]
+position = Vector2(80, 352)
+value = 7
+
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1924490215 instance=ExtResource("3_2hsjj")]
+position = Vector2(1072, 224)
+value = -5
+
+[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=30320394 instance=ExtResource("3_2hsjj")]
+position = Vector2(1072, 352)
+value = -4
+
+[node name="OutputNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=371468091 instance=ExtResource("3_2hsjj")]
+position = Vector2(1072, 480)
+value = 2
+
+[node name="SumNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=1459015131 instance=ExtResource("4_x4yih")]
+position = Vector2(448, 256)
+
+[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1512119247 instance=ExtResource("5_h4i1y")]
+position = Vector2(448, 448)
+value = -4
+
+[node name="StoreNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=879742008 instance=ExtResource("5_v5osv")]
+position = Vector2(704, 256)
+
+[node name="StoreNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="8" unique_id=1025037621 instance=ExtResource("5_v5osv")]
+position = Vector2(704, 448)
+
+[node name="PanelContainer" parent="UILayer/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]
+offset_left = -115.0
+offset_right = 115.0
+offset_bottom = 23.0
+
+[node name="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
+text = "Storage: 5"
+
+[node name="Hint" parent="UILayer/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1289930638) index="0" unique_id=47662854]
+text = "Start by getting -4 stored in a green block."

@@ -362,6 +362,14 @@ offset_right = 728.0
 offset_bottom = 224.0
 disabled = false
 
+[node name="LevelButton23" parent="LevelButtonsContainer" unique_id=991400321 instance=ExtResource("1_bntq0")]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 152.0
+offset_right = 808.0
+offset_bottom = 224.0
+disabled = false
+
 [node name="LevelButton7" parent="LevelButtonsContainer" unique_id=893442744 instance=ExtResource("1_bntq0")]
 layout_mode = 0
 offset_left = 416.0

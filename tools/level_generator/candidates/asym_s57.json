@@ -1,0 +1,54 @@
+{
+  "name": "asym_s57",
+  "inputs": {
+    "I1": -6,
+    "I2": 19
+  },
+  "operations": {
+    "S1": {
+      "type": "store"
+    },
+    "P1": {
+      "type": "sum"
+    },
+    "S2": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 16,
+    "O2": 2
+  },
+  "generator": {
+    "pipeline": "constructive-asym",
+    "seed": 57,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "solution_length": 30,
+    "latch_count": 5,
+    "solution_family_count": 2,
+    "family_search_exhausted": false,
+    "direct_store": "S1",
+    "indirect_store": "S2",
+    "latch_counts_per_store": {
+      "S1": 3,
+      "S2": 2
+    },
+    "input_range": [
+      -9,
+      20
+    ],
+    "output_range": [
+      -9,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

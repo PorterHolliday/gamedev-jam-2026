@@ -1,0 +1,51 @@
+{
+  "name": "dsbuild_s7126",
+  "inputs": {
+    "I1": 10,
+    "I3": 8
+  },
+  "operations": {
+    "M1": {
+      "type": "subtract"
+    },
+    "S1": {
+      "type": "store"
+    },
+    "S2": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 6,
+    "O2": -2,
+    "O3": 4
+  },
+  "generator": {
+    "pipeline": "constructive",
+    "seed": 7126,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "solution_length": 21,
+    "latch_count": 3,
+    "solution_family_count": 6,
+    "family_search_exhausted": true,
+    "all_families_direct_store_output": true,
+    "best_family_direct_store_output": true,
+    "input_range": [
+      -9,
+      20
+    ],
+    "output_range": [
+      -9,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

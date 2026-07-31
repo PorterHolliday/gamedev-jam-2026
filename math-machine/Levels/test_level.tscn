@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cw60x2kgtjono"]
 
 [ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_ormqy"]
+[ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="6_4t6x8"]
 [ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="6_pvdih"]
 [ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="7_7e6fp"]
 [ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="7_tc6tp"]
@@ -11,33 +12,56 @@
 
 [node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="1" unique_id=1370377095 instance=ExtResource("7_7e6fp")]
 position = Vector2(128, 368)
+value = 4
+
+[node name="InputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=688742612 instance=ExtResource("7_7e6fp")]
+visible = false
+position = Vector2(133, 472)
+
+[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1512119247 instance=ExtResource("6_pvdih")]
+position = Vector2(446, 235)
+value = 7
+
+[node name="AddValueNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1661453544 instance=ExtResource("6_pvdih")]
+position = Vector2(443, 463)
+value = 2
+
+[node name="AddValueNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=1520662115 instance=ExtResource("6_pvdih")]
+position = Vector2(744, 468)
 value = -3
 
-[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=1512119247 instance=ExtResource("6_pvdih")]
-position = Vector2(455, 359)
-value = -17
+[node name="AddValueNode4" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1222578314 instance=ExtResource("6_pvdih")]
+position = Vector2(737, 227)
+value = -4
 
-[node name="AddValueNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1241399092 instance=ExtResource("6_pvdih")]
-position = Vector2(278, 292)
-value = -13
+[node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1134007312 instance=ExtResource("7_tc6tp")]
+visible = false
+position = Vector2(372, 307)
 
-[node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1134007312 instance=ExtResource("7_tc6tp")]
-position = Vector2(424, 516)
-
-[node name="StoreNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=879742008 instance=ExtResource("8_k8b6b")]
+[node name="StoreNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="8" unique_id=879742008 instance=ExtResource("8_k8b6b")]
+visible = false
 position = Vector2(576, 292)
 
-[node name="StoreNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1533894850 instance=ExtResource("8_k8b6b")]
+[node name="StoreNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="9" unique_id=1533894850 instance=ExtResource("8_k8b6b")]
+visible = false
 position = Vector2(583, 417)
 
-[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1924490215 instance=ExtResource("9_lx7qo")]
+[node name="SumNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="10" unique_id=1459015131 instance=ExtResource("6_4t6x8")]
+visible = false
+position = Vector2(382, 330)
+
+[node name="SumNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="11" unique_id=1717139212 instance=ExtResource("6_4t6x8")]
+visible = false
+position = Vector2(378, 496)
+
+[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="12" unique_id=1924490215 instance=ExtResource("9_lx7qo")]
 position = Vector2(1043, 229)
-value = 8
+value = -1
 
-[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="8" unique_id=310644201 instance=ExtResource("9_lx7qo")]
+[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="13" unique_id=310644201 instance=ExtResource("9_lx7qo")]
 position = Vector2(1041, 364)
-value = -13
+value = 3
 
-[node name="OutputNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="9" unique_id=482030964 instance=ExtResource("9_lx7qo")]
+[node name="OutputNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="14" unique_id=482030964 instance=ExtResource("9_lx7qo")]
 position = Vector2(1048, 506)
-value = 4
+value = 8

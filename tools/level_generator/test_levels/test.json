@@ -1,21 +1,25 @@
 {
   "name": "case1",
   "inputs": {
-    "I1": 2
+    "I1": 4
   },
   "operations": {
-    "M1": {
-        "type": "subtract"
+    "A1": {
+        "type": "add", "value": 2
     },
-    "S1": {
-        "type": "store"
+    "A2": {
+        "type": "add", "value": -3
     },
-    "S2": {
-        "type": "store"
+    "A3": {
+        "type": "add", "value": -4
+    },
+    "A4": {
+        "type": "add", "value": 7
     }
   },
   "outputs": {
-    "O1": 10,
-    "O2": -10
+    "O1": -1,
+    "O2": 3,
+    "O3": 8
   }
 }

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bd8sgsvenfu2m" path="res://Levels/Levels/AddValue/add_value_2.tscn" id="5_e8ygn"]
 [ext_resource type="PackedScene" uid="uid://deeiubaorhowk" path="res://Levels/Levels/AddValue/add_value_3.tscn" id="6_loxqu"]
 [ext_resource type="PackedScene" uid="uid://dkyidum7h2hbs" path="res://Levels/Levels/AddValue/add_value_4.tscn" id="7_oc2m1"]
+[ext_resource type="PackedScene" uid="uid://dy0f8ionlgwua" path="res://Levels/Levels/AddValue/add_value_5.tscn" id="8_75ic7"]
 [ext_resource type="PackedScene" uid="uid://bxtja1fem475h" path="res://Levels/Levels/SumAndSubtract/sum_subtract_1.tscn" id="8_kuvfn"]
 [ext_resource type="PackedScene" uid="uid://c2nf7tyc8lc3i" path="res://Levels/Levels/SumAndSubtract/sum_subtract_2.tscn" id="9_7weky"]
 [ext_resource type="PackedScene" uid="uid://bqft2p4g63444" path="res://Levels/Levels/SumAndSubtract/sum_subtract_3.tscn" id="10_ialos"]
@@ -21,9 +22,13 @@
 [ext_resource type="PackedScene" uid="uid://cwxb28imqenia" path="res://Levels/Levels/Store/store_2.tscn" id="19_njsi6"]
 [ext_resource type="PackedScene" uid="uid://clcequu140cle" path="res://Levels/Levels/Store/store_3.tscn" id="20_21bil"]
 [ext_resource type="PackedScene" uid="uid://doug8iiv8wl33" path="res://Levels/Levels/Store/store_4.tscn" id="21_otrdj"]
-[ext_resource type="PackedScene" uid="uid://dflydoltemh5e" path="res://Levels/Levels/Store/store_5.tscn" id="22_8omb0"]
-[ext_resource type="PackedScene" uid="uid://wk0sn1mrfgm4" path="res://Levels/Levels/Store/store_6.tscn" id="23_qwv0j"]
+[ext_resource type="PackedScene" uid="uid://crxl47bkqa462" path="res://Levels/Levels/Store/store_5.tscn" id="22_8omb0"]
+[ext_resource type="PackedScene" uid="uid://dflydoltemh5e" path="res://Levels/Levels/Challenge/challenge_1.tscn" id="23_cj2m3"]
+[ext_resource type="PackedScene" uid="uid://wk0sn1mrfgm4" path="res://Levels/Levels/Challenge/challenge_4.tscn" id="23_qwv0j"]
+[ext_resource type="PackedScene" uid="uid://ir6p8wvkbrql" path="res://Levels/Levels/Challenge/challenge_2.tscn" id="24_75ic7"]
+[ext_resource type="PackedScene" uid="uid://cf2v72q2tils3" path="res://Levels/Levels/Challenge/challenge_3.tscn" id="25_g50on"]
+[ext_resource type="PackedScene" uid="uid://bie2l53aev74a" path="res://Levels/Levels/Challenge/challenge_5.tscn" id="27_w74hx"]
 
 [node name="LevelManager" type="Node" unique_id=547684951]
 script = ExtResource("1_dleg4")
-level_scenes = Array[PackedScene]([ExtResource("2_j7obe"), ExtResource("3_rvedd"), ExtResource("4_16eaf"), ExtResource("5_e8ygn"), ExtResource("6_loxqu"), ExtResource("7_oc2m1"), ExtResource("8_kuvfn"), ExtResource("9_7weky"), ExtResource("10_ialos"), ExtResource("11_0wlgt"), ExtResource("12_5ovh3"), ExtResource("13_g4rpp"), ExtResource("14_pesf0"), ExtResource("15_0i1n4"), ExtResource("16_a8rok"), ExtResource("17_5wm27"), ExtResource("18_hc3my"), ExtResource("19_njsi6"), ExtResource("20_21bil"), ExtResource("21_otrdj"), ExtResource("22_8omb0"), ExtResource("23_qwv0j")])
+level_scenes = Array[PackedScene]([ExtResource("2_j7obe"), ExtResource("3_rvedd"), ExtResource("4_16eaf"), ExtResource("5_e8ygn"), ExtResource("6_loxqu"), ExtResource("7_oc2m1"), ExtResource("8_75ic7"), ExtResource("8_kuvfn"), ExtResource("9_7weky"), ExtResource("10_ialos"), ExtResource("11_0wlgt"), ExtResource("12_5ovh3"), ExtResource("13_g4rpp"), ExtResource("14_pesf0"), ExtResource("15_0i1n4"), ExtResource("16_a8rok"), ExtResource("17_5wm27"), ExtResource("18_hc3my"), ExtResource("19_njsi6"), ExtResource("20_21bil"), ExtResource("21_otrdj"), ExtResource("22_8omb0"), ExtResource("23_cj2m3"), ExtResource("24_75ic7"), ExtResource("25_g50on"), ExtResource("23_qwv0j"), ExtResource("27_w74hx")])
