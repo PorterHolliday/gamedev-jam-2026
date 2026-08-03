@@ -10,17 +10,6 @@
 [ext_resource type="StyleBox" uid="uid://bicushmbmqcb6" path="res://Themes/GreenButton/green_button_hover.tres" id="6_c5v27"]
 [ext_resource type="AudioStream" uid="uid://cc233nnoxelcy" path="res://Audio/SFX/puyopuyomegafan1234-winner-game-sound-404167.mp3" id="9_qe50i"]
 
-[sub_resource type="SystemFont" id="SystemFont_nkg80"]
-font_names = PackedStringArray("Century Gothic")
-font_weight = 600
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_c5v27"]
-font = SubResource("SystemFont_nkg80")
-font_size = 48
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="Animation" id="Animation_jtbvk"]
 resource_name = "RESET"
 length = 0.001
@@ -199,6 +188,17 @@ _data = {
 &"level_complete": SubResource("Animation_sor72")
 }
 
+[sub_resource type="SystemFont" id="SystemFont_qe50i"]
+font_names = PackedStringArray("Century Gothic")
+font_weight = 600
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5v27"]
+font = SubResource("SystemFont_qe50i")
+font_size = 72
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
 [node name="LevelCompletePopup" type="Control" unique_id=1099721590]
 visible = false
 layout_mode = 3
@@ -217,10 +217,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -221.0
-offset_top = -115.0
-offset_right = 221.0
-offset_bottom = 159.0
+offset_left = -320.0
+offset_top = -200.0
+offset_right = 320.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -231,21 +231,26 @@ theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=567861347]
 layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1270606317]
 layout_mode = 2
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_top = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=638994863]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 3
+alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2060386078]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 
 [node name="StarLocation" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer" unique_id=1481446631]
-custom_minimum_size = Vector2(66, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 offset_transform_enabled = true
@@ -254,7 +259,7 @@ expand_mode = 4
 stretch_mode = 4
 
 [node name="Star" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer" unique_id=2134812754]
-custom_minimum_size = Vector2(66, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 offset_transform_enabled = true
@@ -266,21 +271,21 @@ stretch_mode = 4
 
 [node name="CenterContainer2" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=424813396]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -24)
 
 [node name="StarLocation" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2" unique_id=1869159025]
-custom_minimum_size = Vector2(66, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
-offset_transform_enabled = true
 offset_transform_position = Vector2(0, -16)
 texture = ExtResource("2_3ckc3")
 expand_mode = 4
 stretch_mode = 4
 
 [node name="Star" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2" unique_id=1875278838]
-custom_minimum_size = Vector2(66, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 offset_transform_enabled = true
-offset_transform_position = Vector2(1, -15)
 offset_transform_scale = Vector2(0, 0)
 texture = ExtResource("3_myun5")
 expand_mode = 4
@@ -291,7 +296,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 
 [node name="StarLocation" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3" unique_id=1863869468]
-custom_minimum_size = Vector2(66, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 offset_transform_enabled = true
@@ -300,7 +305,7 @@ expand_mode = 4
 stretch_mode = 4
 
 [node name="Star" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3" unique_id=1300239588]
-custom_minimum_size = Vector2(66, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 offset_transform_enabled = true
@@ -312,10 +317,9 @@ stretch_mode = 4
 
 [node name="NextLevelButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1173664343]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -327,39 +331,10 @@ text = "Next Level"
 
 [node name="LevelSelectButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=631778824]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(400, 60)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
-size_flags_stretch_ratio = 1.2
 text = "Level Select"
-
-[node name="Title" type="TextureRect" parent="." unique_id=946102949]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -206.5
-offset_top = -154.0
-offset_right = 208.0
-offset_bottom = -69.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_jsvsw")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="Title" unique_id=618042547]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 7.0
-offset_right = 404.5
-offset_bottom = 67.0
-text = "Level Complete"
-label_settings = SubResource("LabelSettings_c5v27")
-horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1392210760]
 unique_name_in_owner = true
@@ -368,3 +343,25 @@ libraries/ = SubResource("AnimationLibrary_7o3u2")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1791773775]
 volume_db = -14.0
 bus = &"SFX"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=558318405]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 66.0
+offset_right = 877.0
+offset_bottom = 190.0
+
+[node name="Title" type="TextureRect" parent="CenterContainer" unique_id=946102949]
+custom_minimum_size = Vector2(600, 124)
+layout_mode = 2
+texture = ExtResource("4_jsvsw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=618042547]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -4)
+text = "Level Complete"
+label_settings = SubResource("LabelSettings_c5v27")
+horizontal_alignment = 1
