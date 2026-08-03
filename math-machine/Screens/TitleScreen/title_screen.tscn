@@ -24,7 +24,7 @@ subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_qax5j"]
 font = SubResource("SystemFont_vnbe3")
-font_size = 64
+font_size = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oaxot"]
 bg_color = Color(0.22745098, 0.2509804, 0.32941177, 1)
@@ -185,160 +185,155 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 656.0
 
-[node name="Title" type="Control" parent="." unique_id=243422476]
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=48857325]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -292.0
-offset_top = 91.0
-offset_right = 292.0
-offset_bottom = 203.0
+offset_left = -376.0
+offset_top = 56.0
+offset_right = 376.0
+offset_bottom = 318.0
 grow_horizontal = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Title" unique_id=48857325]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 theme_override_constants/separation = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Title/VBoxContainer" unique_id=38280589]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2" unique_id=38280589]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1661353495]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/HBoxContainer" unique_id=1661353495]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer" unique_id=1351784842]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer/PanelContainer" unique_id=1351784842]
 layout_mode = 2
 text = "M"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=1031069347]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer2/HBoxContainer" unique_id=1031069347]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=173031789]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer/PanelContainer2" unique_id=173031789]
 layout_mode = 2
 text = "A"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=211483172]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer2/HBoxContainer" unique_id=211483172]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer3" unique_id=665937690]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer/PanelContainer3" unique_id=665937690]
 layout_mode = 2
 text = "T"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer4" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer" unique_id=2031581029]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer2/HBoxContainer" unique_id=2031581029]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer/PanelContainer4" unique_id=1851533134]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer/PanelContainer4" unique_id=1851533134]
 layout_mode = 2
 text = "H"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Title/VBoxContainer" unique_id=514477293]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2" unique_id=514477293]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=2113330329]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=2113330329]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer" unique_id=1004562383]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer" unique_id=1004562383]
 layout_mode = 2
 text = "M"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1156457829]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1156457829]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer2" unique_id=229580010]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer2" unique_id=229580010]
 layout_mode = 2
 text = "A"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1466671399]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1466671399]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer3" unique_id=1722763073]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer3" unique_id=1722763073]
 layout_mode = 2
 text = "C"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer4" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1872185732]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1872185732]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer4" unique_id=1987896495]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer4" unique_id=1987896495]
 layout_mode = 2
 text = "H"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer5" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=346616420]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer5" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=346616420]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer5" unique_id=1217250486]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer5" unique_id=1217250486]
 layout_mode = 2
 text = "I"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer6" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1427149523]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer6" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1427149523]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer6" unique_id=686441696]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer6" unique_id=686441696]
 layout_mode = 2
 text = "N"
 label_settings = SubResource("LabelSettings_qax5j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer7" type="PanelContainer" parent="Title/VBoxContainer/HBoxContainer2" unique_id=1001539061]
-custom_minimum_size = Vector2(80, 96)
+[node name="PanelContainer7" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1001539061]
+custom_minimum_size = Vector2(104, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
 
-[node name="Label" type="Label" parent="Title/VBoxContainer/HBoxContainer2/PanelContainer7" unique_id=1560476718]
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer7" unique_id=1560476718]
 layout_mode = 2
 text = "E"
 label_settings = SubResource("LabelSettings_qax5j")
@@ -352,17 +347,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -284.0
-offset_right = 128.0
-offset_bottom = -148.0
+offset_left = -184.0
+offset_top = -272.0
+offset_right = 184.0
+offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 
 [node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1503869416]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
