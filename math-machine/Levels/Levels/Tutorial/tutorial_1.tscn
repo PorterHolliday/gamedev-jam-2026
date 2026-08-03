@@ -115,8 +115,8 @@ metadata/_edit_group_ = true
 [node name="HandIcon" type="TextureRect" parent="." index="5" unique_id=762774428]
 offset_left = 176.0
 offset_top = 304.0
-offset_right = 239.99878
-offset_bottom = 383.9954
+offset_right = 239.9983
+offset_bottom = 383.99542
 mouse_filter = 2
 texture = ExtResource("4_nrwey")
 expand_mode = 1

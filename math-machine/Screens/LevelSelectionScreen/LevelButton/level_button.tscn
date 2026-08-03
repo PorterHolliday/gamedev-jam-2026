@@ -4,10 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="2_reuuw"]
 
 [node name="LevelButton" type="Button" unique_id=863369867]
+custom_minimum_size = Vector2(96, 96)
 offset_right = 80.0
 offset_bottom = 80.0
 theme_type_variation = &"LevelButton"
-disabled = true
 script = ExtResource("1_6lxuk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=725643736]

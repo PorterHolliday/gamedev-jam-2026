@@ -1,6 +1,5 @@
 extends Control
 
-@onready var level_buttons_container: Node = %LevelButtonsContainer
 @onready var back_button: Button = %BackButton
 @onready var settings_button: Button = %SettingsButton
 
@@ -27,21 +26,27 @@ func update_level_buttons() -> void:
 func _init_level_buttons() -> void:
 	var level_number: int = 0
 	var previous_level_complete = false
-	for child in level_buttons_container.get_children():
-		if child is LevelButton:
-			child.pressed.connect(func():
-				_on_level_button_pressed(child))
-			child.level_number = level_number
-			if previous_level_complete:
-				child.disabled = false
-			if LevelManager.has_level(level_number) and LevelManager.is_level_completed(level_number):
-				child.level_complete = true
-				previous_level_complete = true
-			else:
-				previous_level_complete = false
-			level_buttons.append(child)
-			level_number += 1
+	_recursive_get_level_buttons(self, level_buttons)
+	for level_button in level_buttons:
+		level_button.pressed.connect(func():
+				_on_level_button_pressed(level_button))
+		level_button.level_number = level_number
+		if previous_level_complete:
+			level_button.disabled = false
+		if LevelManager.has_level(level_number) and LevelManager.is_level_completed(level_number):
+			level_button.level_complete = true
+			previous_level_complete = true
+		else:
+			previous_level_complete = false
+		level_number += 1
 			
+func _recursive_get_level_buttons(current_node: Node, button_array: Array[LevelButton]) -> void:
+	for child in current_node.get_children():
+		if child is LevelButton:
+			button_array.append(child)
+			continue
+		_recursive_get_level_buttons(child, button_array)
+	
 func _on_level_button_pressed(button: LevelButton) -> void:
 	GameRoot.enter_level(button.level_number)
 	

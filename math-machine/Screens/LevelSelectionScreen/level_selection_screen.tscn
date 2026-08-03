@@ -7,95 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_gnmtl"]
 [ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="6_4o1ik"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v81n"]
-bg_color = Color(0, 0, 0, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osfc4"]
-bg_color = Color(0.43529412, 0.5058824, 0.57254905, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dpc8"]
-bg_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3qp5"]
-bg_color = Color(0.7647059, 0.68235296, 0.12156863, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgou2"]
-bg_color = Color(0.7490196, 0.2509804, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqsud"]
-bg_color = Color(0.19215687, 0.4, 0.1764706, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnmtl"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yuwhm"]
 bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
 border_width_left = 4
@@ -139,6 +50,75 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v81n"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+expand_margin_left = 8.0
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dpc8"]
+bg_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3qp5"]
+bg_color = Color(0.7647059, 0.68235296, 0.12156863, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgou2"]
+bg_color = Color(0.7490196, 0.2509804, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqsud"]
+bg_color = Color(0.19215687, 0.4, 0.1764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnmtl"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
 layout_mode = 3
 anchors_preset = 15
@@ -159,376 +139,6 @@ metadata/_edit_lock_ = true
 
 [node name="Dividers" type="Control" parent="." unique_id=1933769582]
 anchors_preset = 0
-
-[node name="GroupDivider" type="Control" parent="Dividers" unique_id=492848605]
-custom_minimum_size = Vector2(1, 1)
-anchors_preset = 0
-offset_left = 256.0
-offset_top = 32.0
-offset_right = 288.0
-offset_bottom = 67.0
-metadata/_edit_group_ = true
-
-[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider" unique_id=1365344396]
-layout_mode = 1
-offset_right = 568.0
-offset_bottom = 4.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
-
-[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider" unique_id=1676739429]
-layout_mode = 1
-offset_right = 144.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_osfc4")
-
-[node name="Label" type="Label" parent="Dividers/GroupDivider/PanelContainer" unique_id=1014042662]
-layout_mode = 2
-text = "Tutorial"
-label_settings = ExtResource("2_osfc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GroupDivider2" type="Control" parent="Dividers" unique_id=101621133]
-custom_minimum_size = Vector2(1, 1)
-anchors_preset = 0
-offset_left = 256.0
-offset_top = 136.0
-offset_right = 288.0
-offset_bottom = 171.0
-metadata/_edit_group_ = true
-
-[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider2" unique_id=645282194]
-layout_mode = 1
-offset_right = 568.0
-offset_bottom = 4.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
-
-[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider2" unique_id=609917930]
-layout_mode = 1
-offset_right = 144.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_1dpc8")
-
-[node name="Label" type="Label" parent="Dividers/GroupDivider2/PanelContainer" unique_id=171055039]
-layout_mode = 2
-text = "Add Value"
-label_settings = ExtResource("2_osfc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GroupDivider3" type="Control" parent="Dividers" unique_id=1532247483]
-custom_minimum_size = Vector2(1, 1)
-anchors_preset = 0
-offset_left = 256.0
-offset_top = 240.0
-offset_right = 288.0
-offset_bottom = 275.0
-metadata/_edit_group_ = true
-
-[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider3" unique_id=350444684]
-layout_mode = 1
-offset_right = 568.0
-offset_bottom = 4.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
-
-[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider3" unique_id=186092529]
-layout_mode = 1
-offset_right = 144.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_u3qp5")
-
-[node name="Panel" type="Panel" parent="Dividers/GroupDivider3/PanelContainer" unique_id=538517503]
-custom_maximum_size = Vector2(52, -1)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_tgou2")
-
-[node name="Label" type="Label" parent="Dividers/GroupDivider3/PanelContainer" unique_id=75865554]
-layout_mode = 2
-text = "Sum & Subtract"
-label_settings = ExtResource("2_osfc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GroupDivider4" type="Control" parent="Dividers" unique_id=163032398]
-custom_minimum_size = Vector2(1, 1)
-anchors_preset = 0
-offset_left = 256.0
-offset_top = 424.0
-offset_right = 288.0
-offset_bottom = 459.0
-metadata/_edit_group_ = true
-
-[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider4" unique_id=2043722742]
-layout_mode = 1
-offset_right = 568.0
-offset_bottom = 4.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
-
-[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider4" unique_id=2068894189]
-layout_mode = 1
-offset_right = 144.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vqsud")
-
-[node name="Label" type="Label" parent="Dividers/GroupDivider4/PanelContainer" unique_id=1902656470]
-layout_mode = 2
-text = "Storage"
-label_settings = ExtResource("2_osfc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GroupDivider5" type="Control" parent="Dividers" unique_id=712495437]
-custom_minimum_size = Vector2(1, 1)
-anchors_preset = 0
-offset_left = 256.0
-offset_top = 528.0
-offset_right = 288.0
-offset_bottom = 563.0
-metadata/_edit_group_ = true
-
-[node name="DividerLine" type="Panel" parent="Dividers/GroupDivider5" unique_id=1193001365]
-layout_mode = 1
-offset_right = 568.0
-offset_bottom = 4.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
-
-[node name="PanelContainer" type="PanelContainer" parent="Dividers/GroupDivider5" unique_id=62259496]
-layout_mode = 1
-offset_right = 144.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
-
-[node name="TextureRect" type="TextureRect" parent="Dividers/GroupDivider5/PanelContainer" unique_id=1618687411]
-layout_mode = 2
-texture = ExtResource("2_e8uy2")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Dividers/GroupDivider5/PanelContainer" unique_id=461404234]
-layout_mode = 2
-text = "Challenge"
-label_settings = ExtResource("2_osfc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LevelButtonsContainer" type="Control" parent="." unique_id=358540096]
-unique_name_in_owner = true
-anchors_preset = 0
-
-[node name="LevelButton" parent="LevelButtonsContainer" unique_id=863369867 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 48.0
-offset_right = 488.0
-offset_bottom = 120.0
-disabled = false
-
-[node name="LevelButton2" parent="LevelButtonsContainer" unique_id=531769527 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 496.0
-offset_top = 48.0
-offset_right = 568.0
-offset_bottom = 120.0
-disabled = false
-
-[node name="LevelButton3" parent="LevelButtonsContainer" unique_id=1650950780 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 152.0
-offset_right = 488.0
-offset_bottom = 224.0
-disabled = false
-
-[node name="LevelButton4" parent="LevelButtonsContainer" unique_id=1570781335 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 496.0
-offset_top = 152.0
-offset_right = 568.0
-offset_bottom = 224.0
-disabled = false
-
-[node name="LevelButton5" parent="LevelButtonsContainer" unique_id=1200488002 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 152.0
-offset_right = 648.0
-offset_bottom = 224.0
-disabled = false
-
-[node name="LevelButton6" parent="LevelButtonsContainer" unique_id=1451083318 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 152.0
-offset_right = 728.0
-offset_bottom = 224.0
-disabled = false
-
-[node name="LevelButton23" parent="LevelButtonsContainer" unique_id=991400321 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 736.0
-offset_top = 152.0
-offset_right = 808.0
-offset_bottom = 224.0
-disabled = false
-
-[node name="LevelButton7" parent="LevelButtonsContainer" unique_id=893442744 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 256.0
-offset_right = 488.0
-offset_bottom = 328.0
-disabled = false
-
-[node name="LevelButton8" parent="LevelButtonsContainer" unique_id=386276884 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 496.0
-offset_top = 256.0
-offset_right = 568.0
-offset_bottom = 328.0
-disabled = false
-
-[node name="LevelButton9" parent="LevelButtonsContainer" unique_id=153766639 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 256.0
-offset_right = 648.0
-offset_bottom = 328.0
-disabled = false
-
-[node name="LevelButton10" parent="LevelButtonsContainer" unique_id=94989472 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 256.0
-offset_right = 728.0
-offset_bottom = 328.0
-disabled = false
-
-[node name="LevelButton11" parent="LevelButtonsContainer" unique_id=1056782993 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 736.0
-offset_top = 256.0
-offset_right = 808.0
-offset_bottom = 328.0
-disabled = false
-
-[node name="LevelButton12" parent="LevelButtonsContainer" unique_id=780097692 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 336.0
-offset_right = 488.0
-offset_bottom = 408.0
-disabled = false
-
-[node name="LevelButton13" parent="LevelButtonsContainer" unique_id=336903344 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 496.0
-offset_top = 336.0
-offset_right = 568.0
-offset_bottom = 408.0
-disabled = false
-
-[node name="LevelButton14" parent="LevelButtonsContainer" unique_id=415540774 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 336.0
-offset_right = 648.0
-offset_bottom = 408.0
-disabled = false
-
-[node name="LevelButton15" parent="LevelButtonsContainer" unique_id=1045238823 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 336.0
-offset_right = 728.0
-offset_bottom = 408.0
-disabled = false
-
-[node name="LevelButton16" parent="LevelButtonsContainer" unique_id=406050735 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 736.0
-offset_top = 336.0
-offset_right = 808.0
-offset_bottom = 408.0
-disabled = false
-
-[node name="LevelButton17" parent="LevelButtonsContainer" unique_id=985013322 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 440.0
-offset_right = 488.0
-offset_bottom = 512.0
-disabled = false
-
-[node name="LevelButton18" parent="LevelButtonsContainer" unique_id=463969283 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 496.0
-offset_top = 440.0
-offset_right = 568.0
-offset_bottom = 512.0
-disabled = false
-
-[node name="LevelButton19" parent="LevelButtonsContainer" unique_id=73588653 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 440.0
-offset_right = 648.0
-offset_bottom = 512.0
-disabled = false
-
-[node name="LevelButton20" parent="LevelButtonsContainer" unique_id=1559009018 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 440.0
-offset_right = 728.0
-offset_bottom = 512.0
-disabled = false
-
-[node name="LevelButton21" parent="LevelButtonsContainer" unique_id=968432730 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 736.0
-offset_top = 440.0
-offset_right = 808.0
-offset_bottom = 512.0
-disabled = false
-
-[node name="LevelButton22" parent="LevelButtonsContainer" unique_id=260983362 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 416.0
-offset_top = 544.0
-offset_right = 488.0
-offset_bottom = 616.0
-disabled = false
-
-[node name="LevelButton24" parent="LevelButtonsContainer" unique_id=471533219 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 496.0
-offset_top = 544.0
-offset_right = 568.0
-offset_bottom = 616.0
-disabled = false
-
-[node name="LevelButton25" parent="LevelButtonsContainer" unique_id=1293210855 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 544.0
-offset_right = 648.0
-offset_bottom = 616.0
-disabled = false
-
-[node name="LevelButton26" parent="LevelButtonsContainer" unique_id=393916819 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 544.0
-offset_right = 728.0
-offset_bottom = 616.0
-disabled = false
-
-[node name="LevelButton27" parent="LevelButtonsContainer" unique_id=559676808 instance=ExtResource("1_bntq0")]
-layout_mode = 0
-offset_left = 736.0
-offset_top = 544.0
-offset_right = 808.0
-offset_bottom = 616.0
-disabled = false
 
 [node name="BackButton" type="Button" parent="." unique_id=23307136]
 unique_name_in_owner = true
@@ -577,3 +187,201 @@ offset_bottom = 48.0
 texture = ExtResource("6_4o1ik")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1985171784]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=70558787]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="DividerLine2" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=754417603]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+offset_transform_position = Vector2(-152, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/DividerLine2" unique_id=609917930]
+layout_mode = 1
+offset_left = -152.0
+offset_right = -8.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1dpc8")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/DividerLine2/PanelContainer" unique_id=171055039]
+layout_mode = 2
+text = "Add Value"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=315190812]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=186531277 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=2114157678 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=952181192 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1373238799 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1821487464 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="DividerLine3" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=1216016167]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+offset_transform_position = Vector2(-152, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/DividerLine3" unique_id=186092529]
+layout_mode = 1
+offset_left = -152.0
+offset_right = -8.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3qp5")
+
+[node name="Panel" type="Panel" parent="CenterContainer/VBoxContainer/DividerLine3/PanelContainer" unique_id=538517503]
+custom_maximum_size = Vector2(52, -1)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tgou2")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/DividerLine3/PanelContainer" unique_id=75865554]
+layout_mode = 2
+text = "Sum & Subtract"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=502519001]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=414646327 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1505554140 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=856943026 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=2082068779 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=219170013 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=680556328]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=1114464244 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=1065378656 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=252526499 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=1433930331 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=500586701 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="DividerLine4" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=557673068]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+offset_transform_position = Vector2(-152, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/DividerLine4" unique_id=2068894189]
+layout_mode = 1
+offset_left = -152.0
+offset_right = -8.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vqsud")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/DividerLine4/PanelContainer" unique_id=1902656470]
+layout_mode = 2
+text = "Storage"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1073712852]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=567549989 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=1890087557 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=117930696 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=1732868843 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=2003774966 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="DividerLine5" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=991361096]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+offset_transform_position = Vector2(-152, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/DividerLine5" unique_id=62259496]
+layout_mode = 1
+offset_left = -152.0
+offset_right = -8.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/DividerLine5/PanelContainer" unique_id=1618687411]
+layout_mode = 2
+texture = ExtResource("2_e8uy2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/DividerLine5/PanelContainer" unique_id=461404234]
+layout_mode = 2
+text = "Challenge"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1248526742]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=1912304066 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=954272668 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=1826886082 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=840388451 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=1782706185 instance=ExtResource("1_bntq0")]
+layout_mode = 2
