@@ -17,3 +17,4 @@ mono_crash.*.json
 
 __pycache__/
 *.pyc
+math-machine/Export/

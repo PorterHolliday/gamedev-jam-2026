@@ -89,18 +89,19 @@ transition_duration = 0.25
 metadata/_custom_type_script = "uid://dcdorusfnlmtt"
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1397873177]
-position = Vector2(4, 4)
-scale = Vector2(0.313, 0.313)
+position = Vector2(6, 6)
+scale = Vector2(0.375, 0.375)
 texture = ExtResource("2_3c162")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1359526420]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_3pf3m")
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_m306b")
+metadata/_edit_group_ = true
 
 [node name="ValueLabel" type="Label" parent="PanelContainer" unique_id=757642171]
 unique_name_in_owner = true
@@ -114,4 +115,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("3_amupw")]
-position = Vector2(-40, 0)
+position = Vector2(-48, 0)
