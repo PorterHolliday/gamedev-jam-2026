@@ -55,7 +55,8 @@ bg_color = Color(0, 0, 0, 1)
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
-expand_margin_left = 8.0
+expand_margin_left = 16.0
+expand_margin_right = 16.0
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
@@ -188,201 +189,203 @@ texture = ExtResource("6_4o1ik")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1985171784]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=70558787]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -313.0
+offset_right = 312.0
+offset_bottom = 311.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=70558787]
-layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="DividerLine2" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=754417603]
+[node name="DividerLine2" type="Panel" parent="VBoxContainer" unique_id=754417603]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 offset_transform_position = Vector2(-152, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/DividerLine2" unique_id=609917930]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/DividerLine2" unique_id=609917930]
 layout_mode = 1
-offset_left = -152.0
-offset_right = -8.0
-offset_bottom = 32.0
+offset_left = -216.0
+offset_right = -16.0
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1dpc8")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/DividerLine2/PanelContainer" unique_id=171055039]
+[node name="Label" type="Label" parent="VBoxContainer/DividerLine2/PanelContainer" unique_id=171055039]
 layout_mode = 2
 text = "Add Value"
 label_settings = ExtResource("2_osfc4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=315190812]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=315190812]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=186531277 instance=ExtResource("1_bntq0")]
+[node name="LevelButton" parent="VBoxContainer/HBoxContainer2" unique_id=186531277 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=2114157678 instance=ExtResource("1_bntq0")]
+[node name="LevelButton2" parent="VBoxContainer/HBoxContainer2" unique_id=2114157678 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=952181192 instance=ExtResource("1_bntq0")]
+[node name="LevelButton3" parent="VBoxContainer/HBoxContainer2" unique_id=952181192 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1373238799 instance=ExtResource("1_bntq0")]
+[node name="LevelButton4" parent="VBoxContainer/HBoxContainer2" unique_id=1373238799 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1821487464 instance=ExtResource("1_bntq0")]
+[node name="LevelButton5" parent="VBoxContainer/HBoxContainer2" unique_id=1821487464 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="DividerLine3" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=1216016167]
+[node name="DividerLine3" type="Panel" parent="VBoxContainer" unique_id=1216016167]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 offset_transform_position = Vector2(-152, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/DividerLine3" unique_id=186092529]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/DividerLine3" unique_id=186092529]
 layout_mode = 1
-offset_left = -152.0
-offset_right = -8.0
-offset_bottom = 32.0
+offset_left = -216.0
+offset_right = -16.0
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_u3qp5")
 
-[node name="Panel" type="Panel" parent="CenterContainer/VBoxContainer/DividerLine3/PanelContainer" unique_id=538517503]
-custom_maximum_size = Vector2(52, -1)
+[node name="Panel" type="Panel" parent="VBoxContainer/DividerLine3/PanelContainer" unique_id=538517503]
+custom_maximum_size = Vector2(72, -1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tgou2")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/DividerLine3/PanelContainer" unique_id=75865554]
+[node name="Label" type="Label" parent="VBoxContainer/DividerLine3/PanelContainer" unique_id=75865554]
 layout_mode = 2
 text = "Sum & Subtract"
 label_settings = ExtResource("2_osfc4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=502519001]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=502519001]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=414646327 instance=ExtResource("1_bntq0")]
+[node name="LevelButton" parent="VBoxContainer/HBoxContainer3" unique_id=414646327 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1505554140 instance=ExtResource("1_bntq0")]
+[node name="LevelButton2" parent="VBoxContainer/HBoxContainer3" unique_id=1505554140 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=856943026 instance=ExtResource("1_bntq0")]
+[node name="LevelButton3" parent="VBoxContainer/HBoxContainer3" unique_id=856943026 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=2082068779 instance=ExtResource("1_bntq0")]
+[node name="LevelButton4" parent="VBoxContainer/HBoxContainer3" unique_id=2082068779 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=219170013 instance=ExtResource("1_bntq0")]
+[node name="LevelButton5" parent="VBoxContainer/HBoxContainer3" unique_id=219170013 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=680556328]
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer" unique_id=680556328]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=1114464244 instance=ExtResource("1_bntq0")]
+[node name="LevelButton" parent="VBoxContainer/HBoxContainer6" unique_id=1114464244 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=1065378656 instance=ExtResource("1_bntq0")]
+[node name="LevelButton2" parent="VBoxContainer/HBoxContainer6" unique_id=1065378656 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=252526499 instance=ExtResource("1_bntq0")]
+[node name="LevelButton3" parent="VBoxContainer/HBoxContainer6" unique_id=252526499 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=1433930331 instance=ExtResource("1_bntq0")]
+[node name="LevelButton4" parent="VBoxContainer/HBoxContainer6" unique_id=1433930331 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer6" unique_id=500586701 instance=ExtResource("1_bntq0")]
+[node name="LevelButton5" parent="VBoxContainer/HBoxContainer6" unique_id=500586701 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="DividerLine4" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=557673068]
+[node name="DividerLine4" type="Panel" parent="VBoxContainer" unique_id=557673068]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 offset_transform_position = Vector2(-152, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/DividerLine4" unique_id=2068894189]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/DividerLine4" unique_id=2068894189]
 layout_mode = 1
-offset_left = -152.0
-offset_right = -8.0
-offset_bottom = 32.0
+offset_left = -216.0
+offset_right = -16.0
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vqsud")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/DividerLine4/PanelContainer" unique_id=1902656470]
+[node name="Label" type="Label" parent="VBoxContainer/DividerLine4/PanelContainer" unique_id=1902656470]
 layout_mode = 2
 text = "Storage"
 label_settings = ExtResource("2_osfc4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1073712852]
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=1073712852]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=567549989 instance=ExtResource("1_bntq0")]
+[node name="LevelButton" parent="VBoxContainer/HBoxContainer4" unique_id=567549989 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=1890087557 instance=ExtResource("1_bntq0")]
+[node name="LevelButton2" parent="VBoxContainer/HBoxContainer4" unique_id=1890087557 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=117930696 instance=ExtResource("1_bntq0")]
+[node name="LevelButton3" parent="VBoxContainer/HBoxContainer4" unique_id=117930696 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=1732868843 instance=ExtResource("1_bntq0")]
+[node name="LevelButton4" parent="VBoxContainer/HBoxContainer4" unique_id=1732868843 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=2003774966 instance=ExtResource("1_bntq0")]
+[node name="LevelButton5" parent="VBoxContainer/HBoxContainer4" unique_id=2003774966 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="DividerLine5" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=991361096]
+[node name="DividerLine5" type="Panel" parent="VBoxContainer" unique_id=991361096]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 offset_transform_position = Vector2(-152, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/DividerLine5" unique_id=62259496]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/DividerLine5" unique_id=62259496]
 layout_mode = 1
-offset_left = -152.0
-offset_right = -8.0
-offset_bottom = 32.0
+offset_left = -216.0
+offset_right = -16.0
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/DividerLine5/PanelContainer" unique_id=1618687411]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/DividerLine5/PanelContainer" unique_id=1618687411]
 layout_mode = 2
 texture = ExtResource("2_e8uy2")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/DividerLine5/PanelContainer" unique_id=461404234]
+[node name="Label" type="Label" parent="VBoxContainer/DividerLine5/PanelContainer" unique_id=461404234]
 layout_mode = 2
 text = "Challenge"
 label_settings = ExtResource("2_osfc4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1248526742]
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=1248526742]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LevelButton" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=1912304066 instance=ExtResource("1_bntq0")]
+[node name="LevelButton" parent="VBoxContainer/HBoxContainer5" unique_id=1912304066 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton2" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=954272668 instance=ExtResource("1_bntq0")]
+[node name="LevelButton2" parent="VBoxContainer/HBoxContainer5" unique_id=954272668 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton3" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=1826886082 instance=ExtResource("1_bntq0")]
+[node name="LevelButton3" parent="VBoxContainer/HBoxContainer5" unique_id=1826886082 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton4" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=840388451 instance=ExtResource("1_bntq0")]
+[node name="LevelButton4" parent="VBoxContainer/HBoxContainer5" unique_id=840388451 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton5" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=1782706185 instance=ExtResource("1_bntq0")]
+[node name="LevelButton5" parent="VBoxContainer/HBoxContainer5" unique_id=1782706185 instance=ExtResource("1_bntq0")]
 layout_mode = 2

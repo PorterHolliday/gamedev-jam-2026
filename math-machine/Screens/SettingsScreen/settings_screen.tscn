@@ -283,8 +283,10 @@ offset_transform_position = Vector2(0, -28)
 offset_transform_visual_only = false
 
 [node name="AudioSettingsContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer2" unique_id=1042960115]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="MusicSettings" type="PanelContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer" unique_id=1199986476]
 layout_mode = 2
