@@ -13,7 +13,7 @@ config_version=5
 config/name="Math Machine"
 run/main_scene="uid://dpu1qtcpln6qf"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="uid://dqu6avedswv7y"
+config/icon="uid://e2pxsl2bkn5v"
 boot_splash/minimum_display_time=500
 boot_splash/icon="uid://dqu6avedswv7y"
 
