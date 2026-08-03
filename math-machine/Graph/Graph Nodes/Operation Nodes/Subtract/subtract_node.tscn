@@ -27,10 +27,11 @@ metadata/_custom_type_script = "uid://ua5g1uh1ndaf"
 
 [node name="DragControl" parent="." unique_id=109764403 instance=ExtResource("2_tsxk7")]
 unique_name_in_owner = true
-offset_left = -40.0
-offset_top = -60.0
-offset_right = 40.0
-offset_bottom = 60.0
+offset_left = -48.0
+offset_top = -80.0
+offset_right = 48.0
+offset_bottom = 80.0
+metadata/_edit_group_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="DragControl" unique_id=1891016011]
 layout_mode = 1
@@ -51,10 +52,10 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("4_tsxk7")]
-position = Vector2(-40, -32)
+position = Vector2(-48, -48)
 
 [node name="GraphNodeInput2" parent="." unique_id=1144647020 instance=ExtResource("4_tsxk7")]
-position = Vector2(-40, 32)
+position = Vector2(-48, 48)
 
 [node name="GraphNodeOutput" parent="." unique_id=529093135 instance=ExtResource("5_fr80i")]
-position = Vector2(40, 0)
+position = Vector2(48, 0)

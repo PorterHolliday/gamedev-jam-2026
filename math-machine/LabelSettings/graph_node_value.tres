@@ -6,4 +6,5 @@ font_weight = 600
 
 [resource]
 font = SubResource("SystemFont_6orn6")
-font_size = 32
+font_size = 36
+outline_size = 2

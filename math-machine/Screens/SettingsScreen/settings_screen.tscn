@@ -71,6 +71,8 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+expand_margin_left = 32.0
+expand_margin_right = 16.0
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
@@ -143,226 +145,208 @@ offset_bottom = 130.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
+alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=1798336287]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1031327448]
 layout_mode = 2
+theme_override_constants/margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer" unique_id=1031327448]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=371909551]
 layout_mode = 2
-theme_override_constants/margin_bottom = 32
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer/MarginContainer" unique_id=371909551]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1213968239]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1213968239]
 custom_minimum_size = Vector2(56, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65gj2")
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=881224599]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=881224599]
 layout_mode = 2
 text = "S"
 label_settings = ExtResource("3_wxc82")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=458761628]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=458761628]
 custom_minimum_size = Vector2(56, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65gj2")
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=540425065]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=540425065]
 layout_mode = 2
 text = "E"
 label_settings = ExtResource("3_wxc82")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1376198704]
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1376198704]
 custom_minimum_size = Vector2(56, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65gj2")
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/PanelContainer3" unique_id=21780019]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/PanelContainer3" unique_id=21780019]
 layout_mode = 2
 text = "T"
 label_settings = ExtResource("3_wxc82")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1202915375]
+[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1202915375]
 custom_minimum_size = Vector2(56, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65gj2")
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/PanelContainer4" unique_id=1209075588]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/PanelContainer4" unique_id=1209075588]
 layout_mode = 2
 text = "T"
 label_settings = ExtResource("3_wxc82")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer5" type="PanelContainer" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=991549670]
+[node name="PanelContainer5" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=991549670]
 custom_minimum_size = Vector2(56, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65gj2")
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/PanelContainer5" unique_id=568825528]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/PanelContainer5" unique_id=568825528]
 layout_mode = 2
 text = "I"
 label_settings = ExtResource("3_wxc82")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer6" type="PanelContainer" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1042661132]
+[node name="PanelContainer6" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1042661132]
 custom_minimum_size = Vector2(56, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65gj2")
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/PanelContainer6" unique_id=826637563]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/PanelContainer6" unique_id=826637563]
 layout_mode = 2
 text = "N"
 label_settings = ExtResource("3_wxc82")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer7" type="PanelContainer" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1953122694]
+[node name="PanelContainer7" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1953122694]
 custom_minimum_size = Vector2(56, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65gj2")
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/PanelContainer7" unique_id=1484441661]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/PanelContainer7" unique_id=1484441661]
 layout_mode = 2
 text = "G"
 label_settings = ExtResource("3_wxc82")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer8" type="PanelContainer" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=767464494]
+[node name="PanelContainer8" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=767464494]
 custom_minimum_size = Vector2(56, 72)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65gj2")
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/PanelContainer8" unique_id=1244487735]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/PanelContainer8" unique_id=1244487735]
 layout_mode = 2
 text = "S"
 label_settings = ExtResource("3_wxc82")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GroupDivider" type="Control" parent="VBoxContainer" unique_id=483879764]
-custom_minimum_size = Vector2(568, 35)
+[node name="DividerLine" type="Panel" parent="VBoxContainer" unique_id=635703415]
+custom_minimum_size = Vector2(640, 4)
 layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(-72, 0)
-metadata/_edit_group_ = true
-
-[node name="DividerLine" type="Panel" parent="VBoxContainer/GroupDivider" unique_id=635703415]
-layout_mode = 1
-offset_right = 568.0
-offset_bottom = 4.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wxc82")
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/GroupDivider" unique_id=766258035]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/DividerLine" unique_id=766258035]
 layout_mode = 1
-offset_right = 144.0
-offset_bottom = 32.0
+offset_left = -176.0
+offset_right = -16.0
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xpm1y")
 
-[node name="Label" type="Label" parent="VBoxContainer/GroupDivider/PanelContainer" unique_id=1942485241]
+[node name="Label" type="Label" parent="VBoxContainer/DividerLine/PanelContainer" unique_id=1942485241]
 layout_mode = 2
 text = "Audio"
 label_settings = ExtResource("2_4gme4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer" unique_id=632188513]
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(0, -28)
-offset_transform_visual_only = false
-
-[node name="AudioSettingsContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer2" unique_id=1042960115]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="MusicSettings" type="PanelContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer" unique_id=1199986476]
+[node name="MusicSettings" type="PanelContainer" parent="VBoxContainer" unique_id=1199986476]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/MusicSettings" unique_id=624232255]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MusicSettings" unique_id=624232255]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/MusicSettings/MarginContainer" unique_id=1459391354]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MusicSettings/MarginContainer" unique_id=1459391354]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=159436231]
+[node name="Label" type="Label" parent="VBoxContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=159436231]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-size_flags_horizontal = 6
 text = "Music"
 label_settings = ExtResource("3_lrles")
+horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=959015420]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=1354985579]
 layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/MusicSettings/MarginContainer/HBoxContainer/CenterContainer" unique_id=1354985579]
-layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="MusicSlider" type="HSlider" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/MusicSettings/MarginContainer/HBoxContainer/CenterContainer/MarginContainer" unique_id=1588016279]
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/MusicSettings/MarginContainer/HBoxContainer/MarginContainer" unique_id=1588016279]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(176, 0)
 layout_mode = 2
+size_flags_vertical = 4
 value = 50.0
 
-[node name="MusicPercentage" type="Label" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=1018589631]
+[node name="MusicPercentage" type="Label" parent="VBoxContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=1018589631]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(85, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "50%"
+text = "100%"
 label_settings = ExtResource("3_lrles")
 horizontal_alignment = 2
 
-[node name="SFXSettings" type="PanelContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer" unique_id=1254316018]
+[node name="SFXSettings" type="PanelContainer" parent="VBoxContainer" unique_id=1254316018]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/SFXSettings" unique_id=2073817450]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SFXSettings" unique_id=2073817450]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/SFXSettings/MarginContainer" unique_id=1091206786]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/SFXSettings/MarginContainer" unique_id=1091206786]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=1681972364]
+[node name="Label" type="Label" parent="VBoxContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=1681972364]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
 text = "SFX"
 label_settings = ExtResource("3_lrles")
+horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=1597680733]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=988750733]
 layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/SFXSettings/MarginContainer/HBoxContainer/CenterContainer" unique_id=988750733]
-layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="SFXSlider" type="HSlider" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/SFXSettings/MarginContainer/HBoxContainer/CenterContainer/MarginContainer" unique_id=2042289763]
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer/SFXSettings/MarginContainer/HBoxContainer/MarginContainer" unique_id=2042289763]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(176, 0)
 layout_mode = 2
+size_flags_vertical = 4
 value = 50.0
 
-[node name="SFXPercentage" type="Label" parent="VBoxContainer/CenterContainer2/AudioSettingsContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=633335647]
+[node name="SFXPercentage" type="Label" parent="VBoxContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=633335647]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(85, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "50%"
 label_settings = ExtResource("3_lrles")

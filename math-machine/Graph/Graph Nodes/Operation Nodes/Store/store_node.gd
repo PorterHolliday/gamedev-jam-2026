@@ -4,10 +4,6 @@ extends OperationNode
 var value: int = 0
 @onready var value_label: Label = %ValueLabel
 
-func _ready() -> void:
-	super()
-	outputs[0].value = 0
-
 func update_input(port: GraphNodePort, new_value: int) -> void:
 	super(port, new_value)
 	if new_value != NULL_VALUE:
@@ -27,6 +23,6 @@ func _calculate_outputs() -> Array[int]:
 	
 func _update_value_label() -> void:
 	if value == NULL_VALUE:
-		value_label.text = ''
+		value_label.text = '?'
 	else:
 		value_label.text = str(value)

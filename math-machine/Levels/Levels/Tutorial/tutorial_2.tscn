@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="2_ho0of"]
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_ho0of"]
 [ext_resource type="Texture2D" uid="uid://cjtlorpytq0mn" path="res://Levels/Levels/Tutorial/hand_icon.png" id="5_3pjiv"]
+[ext_resource type="Texture2D" uid="uid://drb32npgxdq2r" path="res://Levels/Levels/Tutorial/tap_icon.png" id="6_ho0of"]
 
 [sub_resource type="Resource" id="Resource_j1a6v"]
 script = ExtResource("2_ho0of")
@@ -29,7 +30,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RightClickIcon:visible")
+tracks/0/path = NodePath("HandIcon:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +42,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RightClickIcon:offset_transform_rotation")
+tracks/1/path = NodePath("HandIcon:offset_transform_rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -49,6 +50,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandIcon/TapIcon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_581xw"]
@@ -59,7 +72,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RightClickIcon:visible")
+tracks/0/path = NodePath("HandIcon:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -70,8 +83,8 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RightClickIcon:offset_transform_rotation")
+tracks/1/enabled = false
+tracks/1/path = NodePath("HandIcon:offset_transform_rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,6 +92,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.34906584, 0.0, -0.34906584, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HandIcon/TapIcon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.3, 2.5, 2.7, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1a6v"]
@@ -134,7 +159,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="RightClickIcon" type="TextureRect" parent="." index="3" unique_id=1704541209]
+[node name="HandIcon" type="TextureRect" parent="." index="3" unique_id=1704541209]
 visible = false
 offset_left = 560.0
 offset_top = 208.0
@@ -146,9 +171,22 @@ texture = ExtResource("5_3pjiv")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="TapIcon" type="TextureRect" parent="HandIcon" index="0" unique_id=1489731110]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = -26.0
+offset_right = 35.0
+offset_bottom = 6.0
+offset_transform_enabled = true
+mouse_filter = 2
+texture = ExtResource("6_ho0of")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=706738908]
 libraries/ = SubResource("AnimationLibrary_j1a6v")
 autoplay = &"tutorial"
 
-[connection signal="disconnection_occurred" from="GraphCanvas" to="RightClickIcon" method="hide"]
+[connection signal="disconnection_occurred" from="GraphCanvas" to="HandIcon" method="hide"]
 [connection signal="disconnection_occurred" from="GraphCanvas" to="TutorialAnimationPlayer" method="pause"]
