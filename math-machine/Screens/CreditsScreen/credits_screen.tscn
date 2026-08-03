@@ -253,6 +253,7 @@ alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=899532477]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/margin_bottom = 16
 
 [node name="TitleContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=299758867]
 layout_mode = 2
@@ -366,7 +367,7 @@ offset_transform_position = Vector2(2, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_lg0ts")
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer3/GroupDivider" unique_id=176139870]
-custom_minimum_size = Vector2(225, 32)
+custom_minimum_size = Vector2(360, 40)
 layout_mode = 1
 offset_right = 144.0
 offset_bottom = 32.0
@@ -422,7 +423,7 @@ offset_transform_position = Vector2(2, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_lg0ts")
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer2/GroupDivider2" unique_id=1722109163]
-custom_minimum_size = Vector2(225, 0)
+custom_minimum_size = Vector2(360, 40)
 layout_mode = 1
 offset_right = 144.0
 offset_bottom = 32.0

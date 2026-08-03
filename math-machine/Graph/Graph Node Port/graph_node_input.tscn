@@ -2,11 +2,8 @@
 
 [ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://Graph/Graph Node Port/graph_node_port.gd" id="1_v8ah4"]
 [ext_resource type="Script" uid="uid://b7assewelikkx" path="res://DragControl/clickable_control.gd" id="2_dcjrd"]
-[ext_resource type="Texture2D" uid="uid://bxk6rmw3swbbr" path="res://Graph/Graph Node Port/port.png" id="2_kp32d"]
-[ext_resource type="Texture2D" uid="uid://dq7cmcucj1jdy" path="res://Graph/Graph Node Port/port_shadow.png" id="2_mso3d"]
 [ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_qp16x"]
 [ext_resource type="Script" uid="uid://byh1bnt7lgfl8" path="res://UI/DirectionalExpandContainer/directional_expand_container.gd" id="4_xv260"]
-[ext_resource type="Texture2D" uid="uid://vomfgbeuondv" path="res://Graph/Graph Node Port/port_hover_fill.png" id="6_ok08f"]
 [ext_resource type="Texture2D" uid="uid://hocp4reuyt5h" path="res://Graph/Graph Node Port/port_bad_connection.png" id="6_xbod7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0l3"]
@@ -32,7 +29,7 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bp0l3"]
-radius = 30.0
+radius = 40.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcdoi"]
 bg_color = Color(1, 1, 1, 1)
@@ -55,54 +52,36 @@ connection_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
 connected_color = Color(0.40392157, 0.48235294, 0.5686275, 1)
 
 [node name="Panel" type="Panel" parent="." unique_id=678500308]
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bp0l3")
 
 [node name="FillPanel" type="Panel" parent="." unique_id=990032233]
 unique_name_in_owner = true
 visible = false
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7gix3")
 
 [node name="SnapArea" type="Control" parent="." unique_id=864252047]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -4.0
-offset_right = -4.0
+offset_left = -8.0
+offset_right = -8.0
 script = ExtResource("2_dcjrd")
 shape = SubResource("CircleShape2D_bp0l3")
 metadata/_custom_type_script = "uid://b7assewelikkx"
-
-[node name="Shadow" type="Sprite2D" parent="." unique_id=1239731309]
-visible = false
-position = Vector2(1, 1)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_mso3d")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=68125033]
-visible = false
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_kp32d")
-
-[node name="FillSprite" type="Sprite2D" parent="." unique_id=1872212463]
-unique_name_in_owner = true
-visible = false
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("6_ok08f")
 
 [node name="BadConnection" type="Sprite2D" parent="." unique_id=1637018849]
 unique_name_in_owner = true
 visible = false
 modulate = Color(0.7490196, 0.050980393, 0.050980393, 1)
-scale = Vector2(0.313, 0.313)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("6_xbod7")
 
 [node name="DirectionalExpandContainer" type="Container" parent="." unique_id=30440322]
