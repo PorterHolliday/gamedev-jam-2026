@@ -291,6 +291,7 @@ offset_top = -24.0
 offset_bottom = 24.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/separation = 16
 alignment = 2
 
 [node name="RestartButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" unique_id=930462941]
