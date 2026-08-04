@@ -1,7 +1,7 @@
 class_name StoreNode
 extends OperationNode
 
-var value: int = 0
+var value: int = NULL_VALUE
 @onready var value_label: Label = %ValueLabel
 
 func update_input(port: GraphNodePort, new_value: int) -> void:
@@ -16,7 +16,6 @@ func _disconnect_input() -> void:
 	var connection: = _graph_canvas.get_port_connections(inputs[0])[0]
 	_graph_canvas.connections.erase(connection)
 	inputs[0].value = NULL_VALUE
-	
 	
 func _calculate_outputs() -> Array[int]:
 	return [value]
