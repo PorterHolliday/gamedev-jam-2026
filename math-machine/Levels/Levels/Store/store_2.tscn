@@ -6,17 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="4_n5yjm"]
 [ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="5_5svkb"]
 
-[sub_resource type="SystemFont" id="SystemFont_q6k2w"]
-font_names = PackedStringArray("Century Gothic")
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_wlvep"]
-font = SubResource("SystemFont_q6k2w")
-font_size = 24
-font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
-outline_size = 2
-outline_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
-
 [node name="Store2" unique_id=1073491300 instance=ExtResource("1_5svkb")]
 
 [node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="1" unique_id=1370377095 instance=ExtResource("2_n7hdv")]
@@ -52,12 +41,5 @@ offset_bottom = 23.0
 [node name="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
 text = "Storage: 2"
 
-[node name="UI_HintPopup_PanelContainer_VBoxContainer#Hint" type="Label" parent="UILayer/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1289930638) index="0" unique_id=47662854]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-size_flags_vertical = 3
+[node name="Hint" parent="UILayer/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1289930638) index="0" unique_id=47662854]
 text = "Store the number 3 in the green block."
-label_settings = SubResource("LabelSettings_wlvep")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
