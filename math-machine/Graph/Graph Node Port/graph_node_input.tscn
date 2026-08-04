@@ -29,7 +29,7 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bp0l3"]
-radius = 40.0
+radius = 48.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcdoi"]
 bg_color = Color(1, 1, 1, 1)
@@ -71,8 +71,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7gix3")
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -8.0
-offset_right = -8.0
+offset_left = -16.0
+offset_right = -16.0
 script = ExtResource("2_dcjrd")
 shape = SubResource("CircleShape2D_bp0l3")
 metadata/_custom_type_script = "uid://b7assewelikkx"
@@ -81,7 +81,7 @@ metadata/_custom_type_script = "uid://b7assewelikkx"
 unique_name_in_owner = true
 visible = false
 modulate = Color(0.7490196, 0.050980393, 0.050980393, 1)
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.375, 0.375)
 texture = ExtResource("6_xbod7")
 
 [node name="DirectionalExpandContainer" type="Container" parent="." unique_id=30440322]

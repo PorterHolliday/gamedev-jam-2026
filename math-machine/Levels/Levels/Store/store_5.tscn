@@ -21,10 +21,10 @@ position = Vector2(1072, 416)
 value = -10
 
 [node name="StoreNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=879742008 instance=ExtResource("4_a5xod")]
-position = Vector2(576, 208)
+position = Vector2(576, 192)
 
 [node name="StoreNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=205057045 instance=ExtResource("4_a5xod")]
-position = Vector2(576, 496)
+position = Vector2(576, 512)
 
 [node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1134007312 instance=ExtResource("5_vqhpx")]
 position = Vector2(576, 352)

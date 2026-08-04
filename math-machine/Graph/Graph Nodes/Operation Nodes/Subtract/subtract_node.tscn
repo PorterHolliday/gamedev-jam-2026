@@ -25,31 +25,34 @@ shadow_offset = Vector2(4, 4)
 script = ExtResource("1_0rwlh")
 metadata/_custom_type_script = "uid://ua5g1uh1ndaf"
 
-[node name="DragControl" parent="." unique_id=109764403 instance=ExtResource("2_tsxk7")]
-unique_name_in_owner = true
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1891016011]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -48.0
 offset_top = -80.0
 offset_right = 48.0
 offset_bottom = 80.0
-metadata/_edit_group_ = true
-
-[node name="PanelContainer" type="PanelContainer" parent="DragControl" unique_id=1891016011]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_6l4bh")
 
-[node name="Label" type="Label" parent="DragControl/PanelContainer" unique_id=1533026284]
+[node name="Label" type="Label" parent="PanelContainer" unique_id=1533026284]
 layout_mode = 2
 text = "−"
 label_settings = ExtResource("6_tsxk7")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="DragControl" parent="." unique_id=109764403 instance=ExtResource("2_tsxk7")]
+unique_name_in_owner = true
+offset_left = -56.0
+offset_top = -88.0
+offset_right = 56.0
+offset_bottom = 88.0
+metadata/_edit_group_ = true
 
 [node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("4_tsxk7")]
 position = Vector2(-48, -48)
