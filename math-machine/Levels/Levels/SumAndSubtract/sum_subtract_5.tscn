@@ -25,10 +25,10 @@ position = Vector2(1072, 416)
 value = -2
 
 [node name="SumNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=1459015131 instance=ExtResource("4_ukfh1")]
-position = Vector2(576, 192)
+position = Vector2(576, 176)
 
 [node name="SumNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=743805373 instance=ExtResource("4_ukfh1")]
-position = Vector2(576, 512)
+position = Vector2(576, 528)
 
 [node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1134007312 instance=ExtResource("5_jyeam")]
 position = Vector2(576, 352)

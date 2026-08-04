@@ -27,10 +27,10 @@ value = -4
 position = Vector2(576, 352)
 
 [node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1134007312 instance=ExtResource("5_3t1jg")]
-position = Vector2(576, 224)
+position = Vector2(576, 192)
 
 [node name="SubtractNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=647148039 instance=ExtResource("5_3t1jg")]
-position = Vector2(576, 480)
+position = Vector2(576, 512)
 
 [node name="PanelContainer" parent="UILayer/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="1" unique_id=1298672109]
 offset_left = -115.0

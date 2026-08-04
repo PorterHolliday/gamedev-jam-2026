@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="4_x35gt"]
 [ext_resource type="Texture2D" uid="uid://cari7ta8dgpi4" path="res://Levels/Levels/AddValue/open_hand_icon.png" id="5_x35gt"]
 [ext_resource type="Texture2D" uid="uid://6oly3fd63d3p" path="res://Levels/Levels/AddValue/closed_hand_icon.png" id="6_gn8oa"]
-[ext_resource type="Texture2D" uid="uid://cjtlorpytq0mn" path="res://Levels/Levels/Tutorial/hand_icon.png" id="7_fdk85"]
-[ext_resource type="Texture2D" uid="uid://drb32npgxdq2r" path="res://Levels/Levels/Tutorial/tap_icon.png" id="8_o1fcn"]
+[ext_resource type="Texture2D" uid="uid://cjtlorpytq0mn" path="res://Levels/Levels/AddValue/hand_icon.png" id="7_fdk85"]
+[ext_resource type="Texture2D" uid="uid://drb32npgxdq2r" path="res://Levels/Levels/AddValue/tap_icon.png" id="8_o1fcn"]
 [ext_resource type="Script" uid="uid://t5dmnhc8ir25" path="res://Levels/Levels/AddValue/tutorial_animation_player.gd" id="10_yr7j6"]
 
 [sub_resource type="Resource" id="Resource_fdk85"]
@@ -133,6 +133,18 @@ tracks/2/keys = {
 "args": [],
 "method": &"_move_pointer_to_add_value_node_port"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointIcon/TapIcon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_gn8oa"]
