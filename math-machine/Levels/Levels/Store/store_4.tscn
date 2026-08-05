@@ -33,6 +33,3 @@ offset_bottom = 23.0
 
 [node name="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
 text = "Storage: 4"
-
-[node name="Hint" parent="UILayer/HintPopup/PanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1289930638) index="0" unique_id=47662854]
-text = "Two green blocks can feed into each other to allow infinite operations!"

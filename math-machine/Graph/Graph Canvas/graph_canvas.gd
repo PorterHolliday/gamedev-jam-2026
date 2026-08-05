@@ -28,6 +28,9 @@ var current_connection_end_port: GraphNodePort
 
 var ports: Array[GraphNodePort] = []
 var _level_completed: bool = false
+var _hint_connection: Connection
+var _hint_connection_alpha: float = HintVisuals.GLOW_ALPHA
+var _hint_connection_tween: Tween
 
 func _ready() -> void:
 	_connect_port_signals()
@@ -60,8 +63,9 @@ func _draw() -> void:
 	var hovered_connection: Connection = _get_closest_connection_at_point(get_global_mouse_position(), DISCONNECTION_DISTANCE)
 	for connection in connections:
 		_draw_connection(connection, connection == hovered_connection)
+	_draw_hint_connection()
 	_draw_current_connection()
-	
+
 func get_port_connections(port: GraphNodePort) -> Array[Connection]:
 	var port_connections: Array[Connection] = []
 	for connection in connections:
@@ -95,6 +99,7 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 		AudioManager.play_connection_sfx()
 	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
 	
+	clear_hint_connection()
 	connection_occurred.emit()
 	return true
 	
@@ -106,10 +111,27 @@ func request_disconnection(connection: Connection, play_sound: bool = true) -> b
 		AudioManager.play_disconnection_sfx()
 	connection.to_port.graph_node.remove_input(connection.to_port)
 	
+	clear_hint_connection()
 	disconnection_occurred.emit()
 	return true
 
-func play_level_complete_animation() -> void:	
+## Sets the connection line drawn as the current hint, glowing on a loop
+## until the player changes the board or a new hint replaces it.
+func set_hint_connection(from_port: GraphNodePort, to_port: GraphNodePort) -> void:
+	var connection := Connection.new()
+	connection.from_port = from_port
+	connection.to_port = to_port
+	_hint_connection = connection
+	_restart_hint_connection_pulse()
+
+## Clears the hint connection line, if any.
+func clear_hint_connection() -> void:
+	_hint_connection = null
+	if _hint_connection_tween:
+		_hint_connection_tween.kill()
+		_hint_connection_tween = null
+
+func play_level_complete_animation() -> void:
 	await get_tree().create_timer(0.3).timeout
 	
 	if _output_nodes.size() == 1: return
@@ -196,6 +218,29 @@ func _draw_hovered_connection(connection: Connection) -> void:
 			true
 		)
 		
+func _restart_hint_connection_pulse() -> void:
+	if _hint_connection_tween:
+		_hint_connection_tween.kill()
+	_hint_connection_alpha = HintVisuals.GLOW_ALPHA
+	_hint_connection_tween = create_tween()
+	_hint_connection_tween.set_loops()
+	_hint_connection_tween.tween_property(self, "_hint_connection_alpha", HintVisuals.DIM_ALPHA, HintVisuals.PULSE_DURATION)
+	_hint_connection_tween.tween_property(self, "_hint_connection_alpha", HintVisuals.GLOW_ALPHA, HintVisuals.PULSE_DURATION)
+
+func _draw_hint_connection() -> void:
+	if _hint_connection == null: return
+	var color: Color = HintVisuals.COLOR
+	color.a = _hint_connection_alpha
+	var border_color: Color = HintVisuals.BORDER_COLOR
+	border_color.a = _hint_connection_alpha
+	_draw_bezier(
+			to_local(_hint_connection.from_port.global_position),
+			to_local(_hint_connection.to_port.global_position),
+			color,
+			border_color,
+			true
+		)
+
 func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color, draw_shadow: bool) -> void:
 	var offset := Vector2(abs(to.x - from.x) * 0.5, 0.0)
 	var p0 := from

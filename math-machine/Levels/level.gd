@@ -1,14 +1,14 @@
 class_name Level
 extends Node2D
 
+@export var solution_data: LevelSolutionData
+
 @onready var graph_canvas: GraphCanvas = %GraphCanvas
 @onready var ui_layer: CanvasLayer = %UILayer
 @onready var back_button: Button = %BackButton
 @onready var restart_button: Button = %RestartButton
 @onready var hint_button: Button = %HintButton
-@onready var hint_close_button: Button = %HintCloseButton
 @onready var settings_button: Button = %SettingsButton
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 func _ready() -> void:
 	global_position = Vector2.ZERO
@@ -18,7 +18,6 @@ func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
 	restart_button.pressed.connect(_on_restart_button_pressed)
 	hint_button.pressed.connect(_on_hint_button_pressed)
-	hint_close_button.pressed.connect(_on_hint_close_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	
 	back_button.pressed.connect(_on_button_pressed)
@@ -46,11 +45,25 @@ func _on_restart_button_pressed() -> void:
 	GameRoot.restart_level()
 	
 func _on_hint_button_pressed() -> void:
-	animation_player.play('show_hint')
-	
-func _on_hint_close_button_pressed() -> void:
-	animation_player.play('hide_hint')
-	
+	if solution_data == null: return
+
+	var step: SolutionStep = solution_data.get_next_hint(graph_canvas)
+	if step == null:
+		graph_canvas.clear_hint_connection()
+		return
+
+	var target: Dictionary = solution_data.get_hint_target(step, graph_canvas)
+	match step.get_kind():
+		SolutionStep.Type.STORE_VALUE:
+			graph_canvas.clear_hint_connection()
+			var node: MyGraphNode = target["nodes"][0] if not target["nodes"].is_empty() else null
+			if node is StoreNode:
+				node.show_hint_value(step.step_data.value)
+		SolutionStep.Type.CONNECTION:
+			var ports: Array = target["ports"]
+			if ports.size() == 2:
+				graph_canvas.set_hint_connection(ports[0], ports[1])
+
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()
 	
