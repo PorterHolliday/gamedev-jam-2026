@@ -34,10 +34,10 @@ func resolve_bindings(graph_canvas: GraphCanvas) -> Dictionary:
 	# scoreable until it's a full assignment, since CONNECTION steps span
 	# two types at once.
 	var best_bindings: Dictionary = {}
-	var best_score: int = -1
+	var best_score: Vector2i = Vector2i(-1, -1)
 	for full_candidate in _combine_candidates(candidates_by_type):
-		var score: int = _score_bindings(full_candidate, graph_canvas)
-		if score > best_score:
+		var score: Vector2i = _score_bindings(full_candidate, graph_canvas)
+		if _is_better_score(score, best_score):
 			best_score = score
 			best_bindings = full_candidate
 
@@ -153,9 +153,29 @@ func _combine_candidates(candidates_by_type: Array[Array]) -> Array[Dictionary]:
 		combined = next_combined
 	return combined
 
-func _score_bindings(bindings: Dictionary, graph_canvas: GraphCanvas) -> int:
-	var score: int = 0
+## Scores a candidate assignment as (satisfied STORE_VALUE steps, satisfied
+## CONNECTION steps), compared lexicographically by _is_better_score.
+## Stores are weighted above connections because a stored value is a
+## prerequisite for the connection that carries it: a binding whose Store
+## already holds the required value is the one the player is actually
+## working with, even if a stale wire off a different Store happens to
+## satisfy a later step. Scoring both equally lets that stale wire tie the
+## correct binding, and the tie falls through to scene child order.
+func _score_bindings(bindings: Dictionary, graph_canvas: GraphCanvas) -> Vector2i:
+	var store_score: int = 0
+	var connection_score: int = 0
 	for step in solution_steps:
-		if step.is_satisfied(bindings, graph_canvas, self):
-			score += 1
-	return score
+		if not step.is_satisfied(bindings, graph_canvas, self):
+			continue
+		if step.get_kind() == SolutionStep.Type.STORE_VALUE:
+			store_score += 1
+		else:
+			connection_score += 1
+	return Vector2i(store_score, connection_score)
+
+## Strict lexicographic comparison, so ties still resolve to the earliest
+## candidate (scene child order) as before.
+func _is_better_score(score: Vector2i, best: Vector2i) -> bool:
+	if score.x != best.x:
+		return score.x > best.x
+	return score.y > best.y

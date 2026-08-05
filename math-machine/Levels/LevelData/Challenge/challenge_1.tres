@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cqanypbjd04oa"]
+[gd_resource type="Resource" script_class="LevelData" format=3]
 
-[ext_resource type="Script" uid="uid://cxfcv878bwcua" path="res://HintSystem/connection_step_data.gd" id="CSD"]
 [ext_resource type="Script" uid="uid://bqkbdyhscmtcb" path="res://Levels/LevelData/graph_node_data.gd" id="GND"]
 [ext_resource type="Script" uid="uid://ciy62d543op8" path="res://Levels/LevelData/level_data.gd" id="LD"]
 [ext_resource type="Script" uid="uid://cexqyukx5s6ta" path="res://HintSystem/level_solution_data.gd" id="LSD"]
 [ext_resource type="Script" uid="uid://cut5mll0elw0n" path="res://HintSystem/solution_path.gd" id="SP"]
 [ext_resource type="Script" uid="uid://cltmh45jarwf8" path="res://HintSystem/solution_step.gd" id="SS"]
 [ext_resource type="Script" uid="uid://b7d0piii6kegt" path="res://HintSystem/StoreValueStepData.gd" id="SVD"]
+[ext_resource type="Script" uid="uid://cxfcv878bwcua" path="res://HintSystem/connection_step_data.gd" id="CSD"]
 
 [sub_resource type="Resource" id="In0"]
 script = ExtResource("GND")
@@ -16,6 +16,44 @@ metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 [sub_resource type="Resource" id="In1"]
 script = ExtResource("GND")
 value = 7
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Op0"]
+script = ExtResource("GND")
+type = 3
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Op1"]
+script = ExtResource("GND")
+type = 5
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Op2"]
+script = ExtResource("GND")
+type = 5
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Op3"]
+script = ExtResource("GND")
+type = 4
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Out0"]
+script = ExtResource("GND")
+type = 1
+value = 1
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Out1"]
+script = ExtResource("GND")
+type = 1
+value = 10
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Out2"]
+script = ExtResource("GND")
+type = 1
+value = 19
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [sub_resource type="Resource" id="D_p0_sv0"]
@@ -357,7 +395,8 @@ metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="D_p3_sv0"]
 script = ExtResource("SVD")
-value = 10
+value = 19
+slot = 1
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p3_sv0"]
@@ -367,8 +406,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p3_sv1"]
 script = ExtResource("SVD")
-value = 19
-slot = 1
+value = 10
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p3_sv1"]
@@ -469,7 +507,8 @@ metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="D_p4_sv0"]
 script = ExtResource("SVD")
-value = 12
+value = 1
+slot = 1
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p4_sv0"]
@@ -479,8 +518,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p4_sv1"]
 script = ExtResource("SVD")
-value = 1
-slot = 1
+value = 12
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p4_sv1"]
@@ -581,7 +619,8 @@ metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="D_p5_sv0"]
 script = ExtResource("SVD")
-value = 3
+value = 19
+slot = 1
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p5_sv0"]
@@ -591,8 +630,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p5_sv1"]
 script = ExtResource("SVD")
-value = 19
-slot = 1
+value = 3
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p5_sv1"]
@@ -693,7 +731,8 @@ metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="D_p6_sv0"]
 script = ExtResource("SVD")
-value = 10
+value = 19
+slot = 1
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p6_sv0"]
@@ -703,8 +742,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p6_sv1"]
 script = ExtResource("SVD")
-value = 19
-slot = 1
+value = 10
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p6_sv1"]
@@ -805,7 +843,8 @@ metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="D_p7_sv0"]
 script = ExtResource("SVD")
-value = 10
+value = 19
+slot = 1
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p7_sv0"]
@@ -815,8 +854,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p7_sv1"]
 script = ExtResource("SVD")
-value = 19
-slot = 1
+value = 10
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p7_sv1"]
@@ -917,7 +955,8 @@ metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="D_p8_sv0"]
 script = ExtResource("SVD")
-value = 10
+value = -9
+slot = 1
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p8_sv0"]
@@ -927,8 +966,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p8_sv1"]
 script = ExtResource("SVD")
-value = -9
-slot = 1
+value = 10
 metadata/_custom_type_script = "uid://b7d0piii6kegt"
 
 [sub_resource type="Resource" id="S_p8_sv1"]
@@ -1031,44 +1069,6 @@ metadata/_custom_type_script = "uid://cut5mll0elw0n"
 script = ExtResource("LSD")
 solution_paths = Array[ExtResource("SP")]([SubResource("Path0"), SubResource("Path1"), SubResource("Path2"), SubResource("Path3"), SubResource("Path4"), SubResource("Path5"), SubResource("Path6"), SubResource("Path7"), SubResource("Path8")])
 metadata/_custom_type_script = "uid://cexqyukx5s6ta"
-
-[sub_resource type="Resource" id="Op0"]
-script = ExtResource("GND")
-type = 3
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Op1"]
-script = ExtResource("GND")
-type = 5
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Op2"]
-script = ExtResource("GND")
-type = 5
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Op3"]
-script = ExtResource("GND")
-type = 4
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Out0"]
-script = ExtResource("GND")
-type = 1
-value = 1
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Out1"]
-script = ExtResource("GND")
-type = 1
-value = 10
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Out2"]
-script = ExtResource("GND")
-type = 1
-value = 19
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [resource]
 script = ExtResource("LD")

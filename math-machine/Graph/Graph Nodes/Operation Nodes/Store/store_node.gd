@@ -41,7 +41,7 @@ func _update_value_label() -> void:
 	if _hint_tween:
 		_hint_tween.kill()
 		_hint_tween = null
-		print(value)
+	
 	value_label.modulate = Color.WHITE
 	if value == NULL_VALUE:
 		value_label.text = '?'
