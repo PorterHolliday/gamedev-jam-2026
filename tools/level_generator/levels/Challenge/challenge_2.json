@@ -1,0 +1,35 @@
+{
+  "name": "challenge_2",
+  "inputs": {
+    "I1": 7
+  },
+  "operations": {
+    "P1": {
+      "type": "sum"
+    },
+    "A1": {
+      "type": "add",
+      "value": -4
+    },
+    "S1": {
+      "type": "store"
+    },
+    "S2": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": -5,
+    "O2": -4,
+    "O3": 2
+  },
+  "source": {
+    "scene": "res://Levels/Levels/Challenge/challenge_2.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}

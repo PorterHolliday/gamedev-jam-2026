@@ -1,0 +1,32 @@
+{
+  "name": "sum_subtract_2",
+  "inputs": {
+    "I1": 1,
+    "I2": 5
+  },
+  "operations": {
+    "A1": {
+      "type": "add",
+      "value": -2
+    },
+    "P1": {
+      "type": "sum"
+    },
+    "P2": {
+      "type": "sum"
+    }
+  },
+  "outputs": {
+    "O1": 7,
+    "O2": 0
+  },
+  "source": {
+    "scene": "res://Levels/Levels/SumAndSubtract/sum_subtract_2.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}

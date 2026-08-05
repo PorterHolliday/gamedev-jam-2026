@@ -1,0 +1,32 @@
+{
+  "name": "sum_subtract_4",
+  "inputs": {
+    "I1": 6,
+    "I2": 5
+  },
+  "operations": {
+    "A1": {
+      "type": "add",
+      "value": 3
+    },
+    "M1": {
+      "type": "subtract"
+    },
+    "M2": {
+      "type": "subtract"
+    }
+  },
+  "outputs": {
+    "O1": 3,
+    "O2": -4
+  },
+  "source": {
+    "scene": "res://Levels/Levels/SumAndSubtract/sum_subtract_4.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}
