@@ -2,7 +2,7 @@ class_name LevelBuilder
 extends Node2D
 
 const INPUT_MAX: int = 4
-const OPERATION_MAX: int = 5
+const OPERATION_MAX: int = 6
 const OUTPUT_MAX: int = 4
 
 @export var graph_canvas: GraphCanvas

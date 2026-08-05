@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3vvhaji5x0ta" path="res://TransitionRoot/transition_root.tscn" id="5_pc124"]
 [ext_resource type="PackedScene" uid="uid://dckjs325lx5n3" path="res://UIRoot/ui_root.tscn" id="5_yjbio"]
 [ext_resource type="Script" uid="uid://g68g4kmhjyq7" path="res://UIRoot/ui_root.gd" id="6_7rb8t"]
-[ext_resource type="PackedScene" uid="uid://cw60x2kgtjono" path="res://Levels/test_level.tscn" id="6_4878p"]
+[ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/level.tscn" id="6_4878p"]
 [ext_resource type="PackedScene" uid="uid://crdmfsmvvx803" path="res://Screens/CreditsScreen/credits_screen.tscn" id="6_ahdtl"]
 [ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="7_7rb8t"]
 [ext_resource type="PackedScene" uid="uid://l0wv334kim35" path="res://Levels/LevelCompletePopup/game_complete_popup.tscn" id="10_4878p"]
