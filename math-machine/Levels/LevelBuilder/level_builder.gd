@@ -33,7 +33,8 @@ func _place_inputs(level_data: LevelData) -> void:
 	for i in range(input_count):
 		var input_data: GraphNodeData = level_data.inputs[i]
 		var input: InputNode2 = NodeTypeRegistry.scene_for(input_data.type).instantiate()
-		input.set('value', input_data.value)
+		if NodeTypeRegistry.has_fixed_value(input_data.type):
+			input.set('value', input_data.value)
 		graph_canvas.add_child(input)
 		var location_group: LocationGroup = input_location_groups[input_count - 1]
 		var marker_2d: Marker2D = get_node(location_group.locations[i])
@@ -51,7 +52,8 @@ func _place_operations(level_data: LevelData) -> void:
 	for i in range(operation_count):
 		var operation_data: GraphNodeData = level_data.operations[i]
 		var operation: MyGraphNode = NodeTypeRegistry.scene_for(operation_data.type).instantiate()
-		operation.set('value', operation_data.value)
+		if NodeTypeRegistry.has_fixed_value(operation_data.type):
+			operation.set('value', operation_data.value)
 		graph_canvas.add_child(operation)
 		var location_group: LocationGroup = operation_location_groups[operation_count - 1]
 		var marker_2d: Marker2D = get_node(location_group.locations[i])
@@ -69,7 +71,8 @@ func _place_outputs(level_data: LevelData) -> void:
 	for i in range(output_count):
 		var output_data: GraphNodeData = level_data.outputs[i]
 		var output: OutputNode2 = NodeTypeRegistry.scene_for(output_data.type).instantiate()
-		output.set('value', output_data.value)
+		if NodeTypeRegistry.has_fixed_value(output_data.type):
+			output.set('value', output_data.value)
 		graph_canvas.add_child(output)
 		var location_group: LocationGroup = output_location_groups[output_count - 1]
 		var marker_2d: Marker2D = get_node(location_group.locations[i])

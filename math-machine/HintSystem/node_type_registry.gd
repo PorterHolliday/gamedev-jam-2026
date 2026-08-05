@@ -25,6 +25,20 @@ const commutative_types: Array[NodeType] = [
 	NodeType.SUM,
 ]
 
+## Types whose `value` property is a fixed, level-authored constant
+## (Input's fed-in number, Output's target, Add Value's operand) rather
+## than player-driven runtime state. Store also has a `value` property, but
+## it's the *captured* value the player wires in -- it must start at
+## NULL_VALUE, never a level-data default. Anything setting `value` from
+## LevelData (see LevelBuilder) must check this first, or it'll silently
+## stomp Store's initial state to 0 (GraphNodeData.value's default) instead
+## of leaving it unset.
+const fixed_value_types: Array[NodeType] = [
+	NodeType.INPUT,
+	NodeType.OUTPUT,
+	NodeType.ADD_VALUE,
+]
+
 enum NodeType {
 	INPUT,
 	OUTPUT,
@@ -43,6 +57,9 @@ enum NodeType {
 
 func is_commutative(type: NodeType) -> bool:
 	return commutative_types.has(type)
+
+func has_fixed_value(type: NodeType) -> bool:
+	return fixed_value_types.has(type)
 
 func inherits(node: Node, type: NodeType) -> bool:
 	if matches(node, type):

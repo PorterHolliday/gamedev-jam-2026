@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_ormqy"]
 [ext_resource type="Script" uid="uid://dg04l17u1edmc" path="res://Levels/LevelBuilder/level_builder.gd" id="2_4k50d"]
+[ext_resource type="Resource" uid="uid://h7w8cd3g68ue" path="res://Levels/LevelData/asymmetric_ratchet.tres" id="2_i4ak4"]
 [ext_resource type="Script" uid="uid://h7n66s84nt4c" path="res://Levels/LevelBuilder/location_group.gd" id="3_i4ak4"]
 
 [sub_resource type="Resource" id="Resource_bp0l3"]
@@ -70,6 +71,7 @@ locations = Array[NodePath]([NodePath("OutputLocations/Marker2D"), NodePath("Out
 metadata/_custom_type_script = "uid://h7n66s84nt4c"
 
 [node name="TestLevel" unique_id=1073491300 instance=ExtResource("1_ormqy")]
+level_data = ExtResource("2_i4ak4")
 
 [node name="GraphCanvas" parent="." index="1" unique_id=90730119]
 metadata/_edit_lock_ = true
