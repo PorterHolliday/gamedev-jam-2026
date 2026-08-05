@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cexqyukx5s6ta" path="res://HintSystem/level_solution_data.gd" id="LSD"]
 [ext_resource type="Script" uid="uid://cut5mll0elw0n" path="res://HintSystem/solution_path.gd" id="SP"]
 [ext_resource type="Script" uid="uid://cltmh45jarwf8" path="res://HintSystem/solution_step.gd" id="SS"]
-[ext_resource type="Script" uid="uid://b7d0piii6kegt" path="res://HintSystem/StoreValueStepData.gd" id="SVD"]
+[ext_resource type="Script" uid="uid://b7d0piii6kegt" path="res://HintSystem/store_value_step_data.gd" id="SVD"]
 
 [sub_resource type="Resource" id="In0"]
 script = ExtResource("GND")
