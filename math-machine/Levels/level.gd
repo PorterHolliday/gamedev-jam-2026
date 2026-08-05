@@ -1,8 +1,9 @@
 class_name Level
 extends Node2D
 
-@export var solution_data: LevelSolutionData
+@export var level_data: LevelData
 
+@onready var level_builder: LevelBuilder = %LevelBuilder
 @onready var graph_canvas: GraphCanvas = %GraphCanvas
 @onready var ui_layer: CanvasLayer = %UILayer
 @onready var back_button: Button = %BackButton
@@ -25,6 +26,9 @@ func _ready() -> void:
 	hint_button.pressed.connect(_on_button_pressed)
 	settings_button.pressed.connect(_on_button_pressed)
 	
+	level_builder.build(level_data)
+	graph_canvas.start()
+	
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
 		if not ui_layer: return
@@ -45,6 +49,7 @@ func _on_restart_button_pressed() -> void:
 	GameRoot.restart_level()
 	
 func _on_hint_button_pressed() -> void:
+	var solution_data: LevelSolutionData = level_data.level_solution_data
 	if solution_data == null: return
 
 	var step: SolutionStep = solution_data.get_next_hint(graph_canvas)

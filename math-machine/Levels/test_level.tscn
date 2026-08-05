@@ -1,67 +1,153 @@
 [gd_scene format=3 uid="uid://cw60x2kgtjono"]
 
 [ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/Template/new_level_template.tscn" id="1_ormqy"]
-[ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="6_4t6x8"]
-[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="6_pvdih"]
-[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="7_7e6fp"]
-[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="7_tc6tp"]
-[ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="8_k8b6b"]
-[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="9_lx7qo"]
+[ext_resource type="Script" uid="uid://dg04l17u1edmc" path="res://Levels/LevelBuilder/level_builder.gd" id="2_4k50d"]
+[ext_resource type="Script" uid="uid://h7n66s84nt4c" path="res://Levels/LevelBuilder/location_group.gd" id="3_i4ak4"]
+
+[sub_resource type="Resource" id="Resource_bp0l3"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("InputLocations/Marker2D4")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_7gix3"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("InputLocations/Marker2D3"), NodePath("InputLocations/Marker2D5")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_blbig"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("InputLocations/Marker2D2"), NodePath("InputLocations/Marker2D4"), NodePath("InputLocations/Marker2D6")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_qonav"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("InputLocations/Marker2D"), NodePath("InputLocations/Marker2D3"), NodePath("InputLocations/Marker2D5"), NodePath("InputLocations/Marker2D7")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_3ffsk"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D4")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_n0bta"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D3"), NodePath("OperationLocations/Marker2D5")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_jsfp8"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D3"), NodePath("OperationLocations/Marker2D4"), NodePath("OperationLocations/Marker2D5")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_kvrw6"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D"), NodePath("OperationLocations/Marker2D2"), NodePath("OperationLocations/Marker2D6"), NodePath("OperationLocations/Marker2D7")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_6imm1"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D"), NodePath("OperationLocations/Marker2D2"), NodePath("OperationLocations/Marker2D4"), NodePath("OperationLocations/Marker2D6"), NodePath("OperationLocations/Marker2D7")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_dkv23"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("OutputLocations/Marker2D4")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_x458k"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("OutputLocations/Marker2D3"), NodePath("OutputLocations/Marker2D5")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_lrol0"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("OutputLocations/Marker2D2"), NodePath("OutputLocations/Marker2D4"), NodePath("OutputLocations/Marker2D6")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_ouwm7"]
+script = ExtResource("3_i4ak4")
+locations = Array[NodePath]([NodePath("OutputLocations/Marker2D"), NodePath("OutputLocations/Marker2D3"), NodePath("OutputLocations/Marker2D5"), NodePath("OutputLocations/Marker2D7")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
 
 [node name="TestLevel" unique_id=1073491300 instance=ExtResource("1_ormqy")]
 
-[node name="InputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="1" unique_id=1370377095 instance=ExtResource("7_7e6fp")]
-position = Vector2(128, 368)
-value = 4
+[node name="GraphCanvas" parent="." index="1" unique_id=90730119]
+metadata/_edit_lock_ = true
 
-[node name="InputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="2" unique_id=688742612 instance=ExtResource("7_7e6fp")]
-visible = false
-position = Vector2(133, 472)
+[node name="LevelBuilder" type="Node2D" parent="." index="2" unique_id=1458211304 node_paths=PackedStringArray("graph_canvas")]
+unique_name_in_owner = true
+script = ExtResource("2_4k50d")
+graph_canvas = NodePath("../GraphCanvas")
+input_location_groups = Array[ExtResource("3_i4ak4")]([SubResource("Resource_bp0l3"), SubResource("Resource_7gix3"), SubResource("Resource_blbig"), SubResource("Resource_qonav")])
+operation_location_groups = Array[ExtResource("3_i4ak4")]([SubResource("Resource_3ffsk"), SubResource("Resource_n0bta"), SubResource("Resource_jsfp8"), SubResource("Resource_kvrw6"), SubResource("Resource_6imm1")])
+output_location_groups = Array[ExtResource("3_i4ak4")]([SubResource("Resource_dkv23"), SubResource("Resource_x458k"), SubResource("Resource_lrol0"), SubResource("Resource_ouwm7")])
+metadata/_custom_type_script = "uid://dg04l17u1edmc"
 
-[node name="AddValueNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="3" unique_id=1512119247 instance=ExtResource("6_pvdih")]
-position = Vector2(446, 235)
-value = 7
+[node name="InputLocations" type="Node2D" parent="LevelBuilder" index="0" unique_id=443600461]
 
-[node name="AddValueNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="4" unique_id=1661453544 instance=ExtResource("6_pvdih")]
-position = Vector2(443, 463)
-value = 2
+[node name="Marker2D" type="Marker2D" parent="LevelBuilder/InputLocations" index="0" unique_id=1569355104]
+position = Vector2(80, 160)
 
-[node name="AddValueNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="5" unique_id=1520662115 instance=ExtResource("6_pvdih")]
-position = Vector2(744, 468)
-value = -3
+[node name="Marker2D2" type="Marker2D" parent="LevelBuilder/InputLocations" index="1" unique_id=1586949344]
+position = Vector2(80, 224)
 
-[node name="AddValueNode4" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="6" unique_id=1222578314 instance=ExtResource("6_pvdih")]
-position = Vector2(737, 227)
-value = -4
+[node name="Marker2D3" type="Marker2D" parent="LevelBuilder/InputLocations" index="2" unique_id=1699343401]
+position = Vector2(80, 288)
 
-[node name="SubtractNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="7" unique_id=1134007312 instance=ExtResource("7_tc6tp")]
-visible = false
-position = Vector2(372, 307)
+[node name="Marker2D4" type="Marker2D" parent="LevelBuilder/InputLocations" index="3" unique_id=213841921]
+position = Vector2(80, 352)
 
-[node name="StoreNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="8" unique_id=879742008 instance=ExtResource("8_k8b6b")]
-visible = false
-position = Vector2(576, 292)
+[node name="Marker2D5" type="Marker2D" parent="LevelBuilder/InputLocations" index="4" unique_id=1629222259]
+position = Vector2(80, 416)
 
-[node name="StoreNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="9" unique_id=1533894850 instance=ExtResource("8_k8b6b")]
-visible = false
-position = Vector2(583, 417)
+[node name="Marker2D6" type="Marker2D" parent="LevelBuilder/InputLocations" index="5" unique_id=45740581]
+position = Vector2(80, 480)
 
-[node name="SumNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="10" unique_id=1459015131 instance=ExtResource("6_4t6x8")]
-visible = false
-position = Vector2(382, 330)
+[node name="Marker2D7" type="Marker2D" parent="LevelBuilder/InputLocations" index="6" unique_id=143735940]
+position = Vector2(80, 544)
 
-[node name="SumNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="11" unique_id=1717139212 instance=ExtResource("6_4t6x8")]
-visible = false
-position = Vector2(378, 496)
+[node name="OperationLocations" type="Node2D" parent="LevelBuilder" index="1" unique_id=227610265]
 
-[node name="OutputNode" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="12" unique_id=1924490215 instance=ExtResource("9_lx7qo")]
-position = Vector2(1043, 229)
-value = -1
+[node name="Marker2D" type="Marker2D" parent="LevelBuilder/OperationLocations" index="0" unique_id=647084659]
+position = Vector2(384, 256)
 
-[node name="OutputNode2" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="13" unique_id=310644201 instance=ExtResource("9_lx7qo")]
-position = Vector2(1041, 364)
-value = 3
+[node name="Marker2D2" type="Marker2D" parent="LevelBuilder/OperationLocations" index="1" unique_id=1898824797]
+position = Vector2(384, 448)
 
-[node name="OutputNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="14" unique_id=482030964 instance=ExtResource("9_lx7qo")]
-position = Vector2(1048, 506)
-value = 8
+[node name="Marker2D3" type="Marker2D" parent="LevelBuilder/OperationLocations" index="2" unique_id=562775370]
+position = Vector2(576, 192)
+
+[node name="Marker2D4" type="Marker2D" parent="LevelBuilder/OperationLocations" index="3" unique_id=1126173353]
+position = Vector2(576, 352)
+
+[node name="Marker2D5" type="Marker2D" parent="LevelBuilder/OperationLocations" index="4" unique_id=418735226]
+position = Vector2(576, 528)
+
+[node name="Marker2D6" type="Marker2D" parent="LevelBuilder/OperationLocations" index="5" unique_id=1245276739]
+position = Vector2(768, 256)
+
+[node name="Marker2D7" type="Marker2D" parent="LevelBuilder/OperationLocations" index="6" unique_id=196207617]
+position = Vector2(768, 448)
+
+[node name="OutputLocations" type="Node2D" parent="LevelBuilder" index="2" unique_id=113853802]
+
+[node name="Marker2D" type="Marker2D" parent="LevelBuilder/OutputLocations" index="0" unique_id=2051749613]
+position = Vector2(1072, 160)
+
+[node name="Marker2D2" type="Marker2D" parent="LevelBuilder/OutputLocations" index="1" unique_id=1711978149]
+position = Vector2(1072, 224)
+
+[node name="Marker2D3" type="Marker2D" parent="LevelBuilder/OutputLocations" index="2" unique_id=781850422]
+position = Vector2(1072, 288)
+
+[node name="Marker2D4" type="Marker2D" parent="LevelBuilder/OutputLocations" index="3" unique_id=1919176761]
+position = Vector2(1072, 352)
+
+[node name="Marker2D5" type="Marker2D" parent="LevelBuilder/OutputLocations" index="4" unique_id=252243142]
+position = Vector2(1072, 416)
+
+[node name="Marker2D6" type="Marker2D" parent="LevelBuilder/OutputLocations" index="5" unique_id=257583422]
+position = Vector2(1072, 480)
+
+[node name="Marker2D7" type="Marker2D" parent="LevelBuilder/OutputLocations" index="6" unique_id=1488795547]
+position = Vector2(1072, 544)

@@ -32,7 +32,7 @@ var _hint_connection: Connection
 var _hint_connection_alpha: float = HintVisuals.GLOW_ALPHA
 var _hint_connection_tween: Tween
 
-func _ready() -> void:
+func start() -> void:
 	_connect_port_signals()
 	
 	double_click_detector.double_clicked.connect(_on_double_clicked)
