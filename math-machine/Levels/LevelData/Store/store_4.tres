@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://bsllf0u16q8cc"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://b3a74ip0pxg2k"]
 
 [ext_resource type="Script" uid="uid://cxfcv878bwcua" path="res://HintSystem/connection_step_data.gd" id="CSD"]
 [ext_resource type="Script" uid="uid://bqkbdyhscmtcb" path="res://Levels/LevelData/graph_node_data.gd" id="GND"]
@@ -53,60 +53,9 @@ script = ExtResource("SP")
 solution_steps = Array[ExtResource("SS")]([SubResource("S_p0_sv0"), SubResource("S_p0_c0"), SubResource("S_p0_c1")])
 metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
-[sub_resource type="Resource" id="D_p1_sv0"]
-script = ExtResource("SVD")
-value = 9
-metadata/_custom_type_script = "uid://b7d0piii6kegt"
-
-[sub_resource type="Resource" id="S_p1_sv0"]
-script = ExtResource("SS")
-step_data = SubResource("D_p1_sv0")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="D_p1_sv1"]
-script = ExtResource("SVD")
-value = 11
-slot = 1
-metadata/_custom_type_script = "uid://b7d0piii6kegt"
-
-[sub_resource type="Resource" id="S_p1_sv1"]
-script = ExtResource("SS")
-step_data = SubResource("D_p1_sv1")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="D_p1_c0"]
-script = ExtResource("CSD")
-from_type = 5
-to_type = 2
-to_value = 2
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="S_p1_c0"]
-script = ExtResource("SS")
-step_data = SubResource("D_p1_c0")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="D_p1_c1"]
-script = ExtResource("CSD")
-from_type = 5
-from_slot = 1
-to_type = 1
-to_value = 11
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="S_p1_c1"]
-script = ExtResource("SS")
-step_data = SubResource("D_p1_c1")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="Path1"]
-script = ExtResource("SP")
-solution_steps = Array[ExtResource("SS")]([SubResource("S_p1_sv0"), SubResource("S_p1_sv1"), SubResource("S_p1_c0"), SubResource("S_p1_c1")])
-metadata/_custom_type_script = "uid://cut5mll0elw0n"
-
 [sub_resource type="Resource" id="Solution"]
 script = ExtResource("LSD")
-solution_paths = Array[ExtResource("SP")]([SubResource("Path0"), SubResource("Path1")])
+solution_paths = Array[ExtResource("SP")]([SubResource("Path0")])
 metadata/_custom_type_script = "uid://cexqyukx5s6ta"
 
 [sub_resource type="Resource" id="Op0"]

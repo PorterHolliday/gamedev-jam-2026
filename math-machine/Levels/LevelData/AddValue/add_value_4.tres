@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cbi6p30gag4t"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://b85bwgbhleem0"]
 
 [ext_resource type="Script" uid="uid://cxfcv878bwcua" path="res://HintSystem/connection_step_data.gd" id="CSD"]
 [ext_resource type="Script" uid="uid://bqkbdyhscmtcb" path="res://Levels/LevelData/graph_node_data.gd" id="GND"]
@@ -105,11 +105,11 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="D_p1_c2"]
 script = ExtResource("CSD")
 from_type = 2
-from_slot = 3
-from_value = 5
+from_slot = 1
+from_value = -7
 to_type = 2
-to_slot = 2
-to_value = 1
+to_slot = 3
+to_value = 5
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p1_c2"]
@@ -120,11 +120,11 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="D_p1_c3"]
 script = ExtResource("CSD")
 from_type = 2
-from_slot = 1
-from_value = -7
+from_slot = 3
+from_value = 5
 to_type = 2
-to_slot = 3
-to_value = 5
+to_slot = 2
+to_value = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p1_c3"]

@@ -69,15 +69,58 @@ func _live_instances_of_type(graph_canvas: GraphCanvas, type: NodeTypeRegistry.N
 	return instances
 
 ## One partial-bindings dict per injective assignment of `slots` onto
-## `live_instances` (every permutation of size slots.size()).
+## `live_instances` (every permutation of size slots.size()), pruned by any
+## known value requirements for types with a fixed, level-authored value
+## (see _slot_value_requirements). Without this, a type with multiple live
+## instances distinguished only by value (e.g. three Add Value nodes) can't
+## be told apart by connection-based scoring alone until a live connection
+## already proves which is which -- so on a fresh board, ties get broken
+## arbitrarily (scene child order) instead of by the value the step data
+## actually asked for, and the hint can point at the wrong instance.
 func _candidates_for_type(type: NodeTypeRegistry.NodeType, slots: Array, live_instances: Array[MyGraphNode]) -> Array[Dictionary]:
+	var slot_value_requirements: Dictionary = _slot_value_requirements(type) if NodeTypeRegistry.has_fixed_value(type) else {}
+
 	var candidates: Array[Dictionary] = []
 	for assignment in _permutations(live_instances, slots.size()):
+		if not _assignment_matches_value_requirements(assignment, slots, slot_value_requirements):
+			continue
 		var partial: Dictionary = {}
 		for i in range(slots.size()):
 			partial[Vector2i(type, slots[i])] = assignment[i]
 		candidates.append(partial)
+
+	if candidates.is_empty() and not slot_value_requirements.is_empty():
+		push_error("SolutionPath: no live instance of NodeType %d matches the value(s) required for its slots" % type)
+
 	return candidates
+
+## True if every slot in `slots` that has a known value requirement is
+## assigned (at the same index) a live instance whose value matches it.
+## Slots with no known requirement (ANY_VALUE everywhere they're
+## referenced) are unconstrained here.
+func _assignment_matches_value_requirements(assignment: Array, slots: Array, slot_value_requirements: Dictionary) -> bool:
+	for i in range(slots.size()):
+		if not slot_value_requirements.has(slots[i]):
+			continue
+		if assignment[i].get("value") != slot_value_requirements[slots[i]]:
+			return false
+	return true
+
+## Maps each slot of `type` to the value every step referencing it (as
+## from_type/from_slot or to_type/to_slot) explicitly requires, skipping
+## ConnectionStepData.ANY_VALUE ("don't care"). Assumes the existing
+## convention that a given slot's required value is consistent everywhere
+## it's referenced.
+func _slot_value_requirements(type: NodeTypeRegistry.NodeType) -> Dictionary:
+	var requirements: Dictionary = {}
+	for step in solution_steps:
+		if step.get_kind() != SolutionStep.Type.CONNECTION:
+			continue
+		if step.step_data.from_type == type and step.step_data.from_value != ConnectionStepData.ANY_VALUE:
+			requirements[step.step_data.from_slot] = step.step_data.from_value
+		if step.step_data.to_type == type and step.step_data.to_value != ConnectionStepData.ANY_VALUE:
+			requirements[step.step_data.to_slot] = step.step_data.to_value
+	return requirements
 
 ## All ordered picks of k distinct elements from pool. No built-in for this
 ## in GDScript; sizes here are always small per the level-design convention

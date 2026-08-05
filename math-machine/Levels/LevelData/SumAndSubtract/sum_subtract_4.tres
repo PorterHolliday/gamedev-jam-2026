@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://d2ce7spmiguqo"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://bjuadwgh8mage"]
 
 [ext_resource type="Script" uid="uid://cxfcv878bwcua" path="res://HintSystem/connection_step_data.gd" id="CSD"]
 [ext_resource type="Script" uid="uid://bqkbdyhscmtcb" path="res://Levels/LevelData/graph_node_data.gd" id="GND"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://fahucel5ep85"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://dh062ej6s0mdo"]
 
 [ext_resource type="Script" uid="uid://cxfcv878bwcua" path="res://HintSystem/connection_step_data.gd" id="CSD"]
 [ext_resource type="Script" uid="uid://bqkbdyhscmtcb" path="res://Levels/LevelData/graph_node_data.gd" id="GND"]
@@ -1493,9 +1493,8 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p8_c2"]
 script = ExtResource("CSD")
-from_type = 3
-to_type = 3
-to_slot = 1
+from_value = 1
+to_type = 4
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p8_c2"]
@@ -1505,10 +1504,8 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p8_c3"]
 script = ExtResource("CSD")
-from_type = 4
-from_slot = 1
-to_type = 3
-to_slot = 1
+from_type = 3
+to_type = 4
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
@@ -1519,8 +1516,9 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p8_c4"]
 script = ExtResource("CSD")
-from_value = 1
+from_type = 3
 to_type = 4
+to_slot = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p8_c4"]
@@ -1530,8 +1528,9 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p8_c5"]
 script = ExtResource("CSD")
-from_type = 3
+from_type = 4
 to_type = 4
+to_slot = 1
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
@@ -1543,7 +1542,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="D_p8_c6"]
 script = ExtResource("CSD")
 from_type = 3
-to_type = 4
+to_type = 3
 to_slot = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
@@ -1555,7 +1554,8 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="D_p8_c7"]
 script = ExtResource("CSD")
 from_type = 4
-to_type = 4
+from_slot = 1
+to_type = 3
 to_slot = 1
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
@@ -1675,9 +1675,8 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p9_c2"]
 script = ExtResource("CSD")
-from_type = 3
-to_type = 3
-to_slot = 1
+from_value = 1
+to_type = 4
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p9_c2"]
@@ -1687,10 +1686,8 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p9_c3"]
 script = ExtResource("CSD")
-from_type = 4
-from_slot = 1
-to_type = 3
-to_slot = 1
+from_type = 3
+to_type = 4
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
@@ -1701,8 +1698,9 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p9_c4"]
 script = ExtResource("CSD")
-from_value = 1
+from_type = 3
 to_type = 4
+to_slot = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p9_c4"]
@@ -1712,8 +1710,9 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p9_c5"]
 script = ExtResource("CSD")
-from_type = 3
+from_type = 4
 to_type = 4
+to_slot = 1
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
@@ -1725,7 +1724,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="D_p9_c6"]
 script = ExtResource("CSD")
 from_type = 3
-to_type = 4
+to_type = 3
 to_slot = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
@@ -1737,7 +1736,8 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="D_p9_c7"]
 script = ExtResource("CSD")
 from_type = 4
-to_type = 4
+from_slot = 1
+to_type = 3
 to_slot = 1
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
