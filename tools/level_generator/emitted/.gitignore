@@ -1,0 +1,12 @@
+# Staging output from emit.py. Build artifacts, not source.
+#
+# emit.py writes here by default rather than into
+# math-machine/Levels/LevelData/, because the phased .tres format is not
+# readable by the shipped hint system until the CRs in
+# HINT_SYSTEM_PHASE_CHANGE_REQUESTS.md land. Pass --in-project once the game
+# side is ready.
+#
+# The checked-in copies live in emitter/golden/ and are what the test corpus
+# compares against.
+*
+!.gitignore

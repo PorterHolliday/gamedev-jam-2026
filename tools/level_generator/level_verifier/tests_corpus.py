@@ -80,6 +80,29 @@ CASES = [
         expect_minimal=True,
         expect_min_families=2,
     ),
+    dict(
+        num=6,
+        desc="I1=3; A1=+2, S1=s, S2=s; O1=11  (must NOT latch past the finish)",
+        data={
+            "name": "case6",
+            "inputs": {"I1": 3},
+            "operations": {
+                "A1": {"type": "add", "value": 2},
+                "S1": {"type": "store"},
+                "S2": {"type": "store"},
+            },
+            "outputs": {"O1": 11},
+        },
+        expect_solvable=True,
+        expect_minimal=True,
+        # Exactly one family. The ratchet reaches S1=9, at which point A1 holds
+        # 11 and can be wired straight to O1. A second family used to come back
+        # that latched that same 11 into S2 and then read it back out --
+        # every latch "used", so the dead-latch sweep kept it, but it is pure
+        # padding and no player would do it. See _latches_past_the_finish.
+        expect_families=1,
+        expect_max_latches_in_any_family=3,
+    ),
 ]
 
 
@@ -118,6 +141,24 @@ def run_one(case, verbose=True):
         if min_fam is not None and len(families) < min_fam:
             ok = False
             msgs.append(f"found {len(families)} distinct solution families, expected >= {min_fam}")
+
+        exact_fam = case.get("expect_families")
+        if exact_fam is not None and len(families) != exact_fam:
+            ok = False
+            msgs.append(f"found {len(families)} distinct solution families, expected exactly {exact_fam}")
+
+        # Guards against padded families creeping back in: a solution that
+        # keeps latching after the level is already finishable inflates this
+        # without changing what the level can do.
+        max_latches_seen = case.get("expect_max_latches_in_any_family")
+        if max_latches_seen is not None:
+            worst = max((len(s.latches) for s in families), default=0)
+            if worst > max_latches_seen:
+                ok = False
+                msgs.append(
+                    f"a family uses {worst} latches, expected at most {max_latches_seen} "
+                    f"-- a solution is latching past the point the level could be finished"
+                )
 
     status = "PASS" if ok else "FAIL"
     if verbose:

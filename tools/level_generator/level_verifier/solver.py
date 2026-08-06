@@ -250,6 +250,9 @@ def solve(level: Level, bound: Tuple[int, int] = (-200, 200), max_latches: int =
                     fbuilt = prune_to_needed(fbuilt, fassignment)
                     latches, fbuilt, fassignment = _prefer_cheaper_producers(level, latches, fbuilt, fassignment)
                     pruned_latches = _prune_dead_latches(latches, fbuilt, fassignment, store_ids)
+                    if _latches_past_the_finish(level, pruned_latches, store_ids, comb_ops,
+                                                 bound, goal_cache, cached_reach):
+                        continue
                     candidate = Solution(pruned_latches, FinalPhase(fbuilt, fassignment), len(pruned_latches))
 
                     sig = literal_signature(candidate)
@@ -325,6 +328,59 @@ def _prefer_cheaper_producers(level: Level, latches: List[LatchPhase],
     new_final_built = [remap_node(n) for n in final_built]
     new_final_assignment = {k: remap(v) for k, v in final_assignment.items()}
     return new_latches, new_final_built, new_final_assignment
+
+
+def _latches_past_the_finish(level: Level, latches: List[LatchPhase], store_ids: List[str],
+                              comb_ops: dict, bound: Tuple[int, int], goal_cache,
+                              reach_fn) -> bool:
+    """True if the solution keeps latching after the level could already have
+    been finished.
+
+    Distinct from _prune_dead_latches, which asks whether a latch is *causally
+    used* downstream. A latch can be perfectly well used -- its value wired
+    straight to an output -- and still be redundant, because the value it
+    captured was already sitting on a live node that could have been wired to
+    that output directly. Store latching is never a goal in itself; it exists
+    to carry a value across a rewiring, and once every output is simultaneously
+    reachable from the current store contents there is nothing left to carry.
+
+    store_4 (I1=3; A1=+2, S1=s, S2=s; O1=11) is the clean case. Two families
+    come back:
+
+        S1=5 -> S2=7 -> S1=9          then S1 -> A1 -> O1     (A1 computes 11)
+        S1=5 -> S2=7 -> S1=9 -> S2=11 then S2 -> O1
+
+    The second latches the 11 that A1 was already holding, then reads it back
+    out. Every latch is "used", so the dead-latch sweep keeps it, but no player
+    would do it and offering it as a hint path is worse than not having it.
+    The state after three latches is already winning, so the fourth is padding.
+
+    Checking every proper prefix rather than just the last one catches runs of
+    padding: store_5 produces families with two redundant latches trailing.
+
+    Safety: whenever this returns True, the winning prefix state is itself in
+    the outer search's `winning_states` (it is winning, and reachable at a
+    shallower depth than the state we are rejecting), so its own -- shorter --
+    solutions are generated independently. Filtering here therefore drops
+    padded duplicates without ever dropping the last representative of a
+    result. With find_all=False this can never fire at all: the BFS stops at
+    the first depth that yields a winner, so no proper prefix can be winning.
+    """
+    if not latches:
+        return False
+    index = {sid: i for i, sid in enumerate(store_ids)}
+    values = [None] * len(store_ids)
+    for k, latch in enumerate(latches):
+        # k == 0 is the pre-latch state. On a minimal level it can never be
+        # winning (if the outputs were reachable without the stores, deleting a
+        # store would still solve the level), but checking it costs one cached
+        # lookup and makes a non-minimal level's padding visible rather than
+        # silently accepted.
+        if _check_goal(level, StoreState(tuple(values)), store_ids, comb_ops,
+                       bound, goal_cache, reach_fn=reach_fn):
+            return True
+        values[index[latch.store_id]] = latch.value
+    return False
 
 
 def _prune_dead_latches(latches: List[LatchPhase], final_built: List[PlacedNode],

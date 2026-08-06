@@ -32,7 +32,7 @@ Non-negotiable. These exist because hand-reasoning about these levels has produc
 5. **Never hand-edit a generated level's `inputs`, `operations`, or `outputs`.** Any such change invalidates every claim in the file. Change the command and regenerate. Renaming a level or moving its file is fine.
 6. **Never generate directly into the curated pool.** See §4.
 7. **Never emit Godot resources for a level the designer has not explicitly approved.** Approval is per level, not per batch. See §19.0.
-8. **Never hand-author a solution step.** Every `StoreValueStepData.value` and every `ConnectionStepData` wire must come from a mechanical replay of `verify.py --all` output (§19.8). If you catch yourself deciding what the final wiring "should" be, you have already made the mistake rule 2 exists to prevent — stop and replay the transcript.
+8. **Never hand-author a solution step.** Every `StoreValueStepData.value` and every `ConnectionStepData` wire must come from a mechanical replay of `verify.py --all` output (§19.8). If you catch yourself deciding what the wiring for any phase "should" be, you have already made the mistake rule 2 exists to prevent — stop and replay the transcript.
 9. **Never modify a `.tres` in the Godot project that you did not write this session.** If an approved level collides with an existing filename, ask; do not overwrite.
 
 ---
@@ -57,7 +57,7 @@ Players wire nodes so that **all output nodes simultaneously** receive their tar
 - A node with any unfilled port produces nothing. Latched stores are the exception.
 - **Cycles are blocked**, including through stores. One store alone cannot ratchet; two can, without bound.
 
-Design constraints: 1–4 inputs, 1–4 outputs, 1–6 operations. Input and output values −9..20; add-value amounts −9..9 (see §9). Input values distinct. Output targets distinct. Every input and operation node must be required.
+Design constraints: 1–4 inputs, 1–4 outputs, 1–6 operations. Input values −9..9; output targets −20..20; add-value amounts −9..9 (see §9). Input values distinct. Output targets distinct. Every input and operation node must be required.
 
 > **Engine limit, currently tighter than the design limit.** `LevelBuilder.OPERATION_MAX` is **5**, and `operation_location_groups` is indexed `[operation_count - 1]`. A 6-operation level `push_error`s and refuses to build. Until the designer raises that constant and adds a sixth location group, do not emit resources for a 6-op level — flag it and hold the level in `candidates/`. See §19.12.
 
@@ -95,8 +95,12 @@ There is no `level_verifier/levels/` directory despite what that component's REA
 | `<repo>/math-machine/` | Godot project root — this is `res://` |
 | `math-machine/Levels/LevelData/` | `level_data.gd`, `graph_node_data.gd`, **and your emitted `.tres` files** |
 | `math-machine/HintSystem/` | `SolutionPath`, `SolutionStep`, the two `*StepData` classes, `NodeTypeRegistry` |
-| `math-machine/Levels/Levels/<Category>/` | Hand-authored level scenes. **Read-only to you** |
-| `math-machine/Levels/Levels/Challenge/challenge_1.tscn` | The reference implementation. Read it before your first emission |
+| `math-machine/Levels/level.tscn` | The single level scene, driven by whichever `LevelData` is assigned. **Read-only to you** |
+
+There is no longer a per-level scene to read as a reference implementation. The
+worked example in §19.12 is the reference; read it before your first emission.
+Shipped `.tres` files may still be in the pre-phase format — do not copy their
+solution-data shape without checking §19.9 first.
 
 A level's JSON in `levels/` and its `.tres` in `Levels/LevelData/` are two representations of the same level. The JSON stays authoritative for provenance (seed, bounds, minimality); the `.tres` is a derived artifact and may always be regenerated from it.
 
@@ -217,13 +221,40 @@ Pipeline B silently discards candidates whose output equals an input value. No c
 
 Three independently configurable ranges control what values may appear on a node. They exist because oversized numbers overflow the node's bounding box in game.
 
-| Flag | Default | Governs |
-|---|---|---|
-| `--input-range` | `-9,20` | Randomly sampled inputs on both pipelines; validates `--input-values` when supplied explicitly |
-| `--output-range` | `-9,20` | Pipeline A: validates `--outputs`. Pipeline B: **the target-enumeration range** — which output values are proposed as candidates at all |
-| `--add-value-range` | `-9,9` | Randomly sampled add-op values; validates explicit `add:N` in `--ops` |
+### The display ranges — authoritative
 
-Add values are tighter on the positive side because they render with a leading `+`, so a double-digit value overflows in either direction.
+These are the constraint. A level carrying a value outside its range does not render correctly, whatever flags produced it. `emit.py` enforces them (§19.13 check 5) and refuses to emit a level that violates one.
+
+| Node kind | Range | Why |
+|---|---|---|
+| Input | `-9 .. 9` | Single digit either way |
+| Output | `-20 .. 20` | Output nodes have the room; two digits fit |
+| Add Value | `-9 .. 9` | Renders with a leading `+`, so a double-digit value overflows in either direction |
+
+Inputs are tighter than outputs because they are drawn in a narrower node.
+
+### The generator flags — currently wider than the display ranges
+
+The same three names exist as `generate.py` flags, but their **built-in defaults do not match the table above**:
+
+| Flag | `generate.py` default | Display range | Governs |
+|---|---|---|---|
+| `--input-range` | `-9,20` | `-9,9` | Randomly sampled inputs on both pipelines; validates `--input-values` when supplied explicitly |
+| `--output-range` | `-9,20` | `-20,20` | Pipeline A: validates `--outputs`. Pipeline B: **the target-enumeration range** — which output values are proposed as candidates at all |
+| `--add-value-range` | `-9,9` | `-9,9` | Randomly sampled add-op values; validates explicit `add:N` in `--ops` |
+
+Only `--add-value-range` agrees. The other two diverge in opposite directions:
+
+- **Inputs**: the generator will sample up to `20`, which is **wider than the display range** and will produce levels `emit.py` then rejects. **Always pass `--input-range=-9,9` explicitly.**
+- **Outputs**: the generator only enumerates targets up to `20` and down to `-9`, which is **narrower than the display range** on the negative side. Perfectly legal levels with targets in `-20..-10` are never proposed. Pass `--output-range=-20,20` when you want them.
+
+So the safe invocation, on both pipelines, is:
+
+```
+--input-range=-9,9 --output-range=-20,20
+```
+
+Aligning `generate.py`'s hardcoded defaults with this table would remove the need for both flags. That is a change to the generator's internals and therefore outside this agent's remit (§1) — raise it with the designer rather than editing `generate.py`.
 
 **These are independent of `--bound`.** `--bound` is the solver's *intermediate* value search space — how wide a value it will consider mid-network while proving solvability. It is a performance and completeness knob and says nothing about which values may appear on a node. Widen `--bound` for solver headroom without widening what gets sampled or emitted. Do not assume the two move together just because they once shared a default.
 
@@ -240,7 +271,9 @@ argparse recognizes a bare negative integer as a value but not `-9,20`, because 
 
 ### Re-screen the existing pool
 
-Levels promoted into `levels/` before this change were generated under the old −20..20 range and may carry values that now overflow. Nothing flags them retroactively. Check each file's `generator.input_range`, `generator.output_range`, and `generator.add_value_range`; where those fields are absent the level predates the change, so inspect its `inputs`, `operations`, and `outputs` values directly. `generator.bound` tells you nothing about display safety.
+Levels promoted into `levels/` under an earlier range may carry values that now overflow. Nothing flags them retroactively. Check each file's `generator.input_range`, `generator.output_range`, and `generator.add_value_range`; where those fields are absent the level predates the change, so inspect its `inputs`, `operations`, and `outputs` values directly. `generator.bound` tells you nothing about display safety.
+
+The 25 levels currently in `levels/` all fit the display ranges above — inputs span `0..8`, outputs `-10..19`, add values `-7..7`. `store_5`'s `O2 = -10` is the only value that fell outside the previous `-9..20` output range, and the widening to `-20..20` is what brings it back in. Re-run `emit.py` over the pool after any further range change; it is the only thing that checks this.
 
 ---
 
@@ -268,7 +301,9 @@ Each file is a verifier-loadable level with one extra top-level key, `generator`
 | `generator.exhaustive` | (enumerate) Whether `--exhaustive` was used |
 | `generator.reach_setup_exhausted` | (enumerate) Whether reachability proved its result |
 
-**Filter every batch on:** `minimal_within_bound` is `true` (not null), `solver_timeout_hit` is `false` (or re-checked), and for Pipeline A, no overlap between `inputs` and `outputs` values.
+**Filter every batch on:** `minimal_within_bound` is `true` (not null), `solver_timeout_hit` is `false` (or re-checked), `solution_family_count` is non-null and ≤ 6 with `family_search_exhausted` `true` (§16a), and for Pipeline A, no overlap between `inputs` and `outputs` values.
+
+`solution_family_count` and `family_search_exhausted` are the cheapest of these to check and reject on the most candidates — screen on them first, before spending a `verify.py` run on anything.
 
 Files in `levels/` may carry `generator.pipeline` values and extra fields not listed here (e.g. `constructive-asym`, `direct_store`, `rule1_holds`). Those predate this document. Treat unknown fields as informational, and rely only on the fields above.
 
@@ -392,6 +427,45 @@ The tools hand you correct levels. Most of them are boring. This is the part of 
 - solutions trivially short for the intended tier
 - levels isomorphic to one already in the batch or the pool
 - levels whose only difficulty is arithmetic tedium rather than insight
+- **more than 6 solution families**, or a family count that is unproven — see §16a
+
+### 16a The six-family cap
+
+**A level with more than 6 solution families is rejected.** Two reasons, both
+binding:
+
+1. Many solutions usually means an easy level — the player stumbles into one
+   rather than finding it.
+2. Challenge mode asks the player to solve a level every distinct way, so the
+   family count is the size of a unit of content the player works through
+   directly. Six is the ceiling for that being a task rather than a chore.
+
+"Families" here means distinct final configurations — the same thing that
+becomes `solution_paths` in the emitted resource (§19.10). Screen on
+`generator.solution_family_count` in the JSON before spending a `verify.py`
+run; confirm against `verify.py --all` at the gate.
+
+#### Exhaustiveness is part of the cap
+
+`solution_family_count` is only a **lower bound** unless
+`generator.family_search_exhausted` is `true`.
+
+This used to be a soft concern: an incomplete family list meant slightly worse
+hints. With challenge mode it becomes a correctness problem — a player who finds
+a valid solution the game does not list cannot complete the challenge, and
+nothing in the game will explain why.
+
+| `solution_family_count` | `family_search_exhausted` | Verdict |
+|---|---|---|
+| ≤ 6 | `true` | Eligible |
+| ≤ 6 | `false` | **Reject** — the true count is unknown and may exceed 6, and the path list may be incomplete |
+| > 6 | either | Reject |
+| `null` | either | Reject — the family search timed out |
+
+A level rejected only for non-exhaustive search can be regenerated or re-verified
+at a higher `--solve-timeout` and reconsidered. That is a search-budget problem,
+not a property of the level — say so when reporting it, rather than discarding
+the level silently.
 
 **Prefer:**
 
@@ -461,8 +535,9 @@ Emit a level only if **all** of these hold:
 1. The designer named this level as approved, in this session.
 2. It is in `levels/`, not `candidates/`.
 3. `generator.minimal_within_bound` is `true` (not `null`) and `generator.solver_timeout_hit` is `false`, or you re-checked it manually per §10.
-4. It has ≤ 4 inputs, ≤ 4 outputs, and **≤ 5 operations** (§3 engine limit).
+4. It has ≤ 4 inputs, ≤ 4 outputs, and **≤ 6 operations** (§3 engine limit — re-read `LevelBuilder`'s constants rather than trusting this number).
 5. You have a captured `verify.py --all` transcript for it, run at its own recorded bound.
+6. That transcript reports **≤ 6 families**, and `generator.family_search_exhausted` is `true` (§16a).
 
 If any fails, say which and stop.
 
@@ -474,7 +549,13 @@ math-machine/Levels/LevelData/<snake_case_name>.tres
 
 Flat, no subfolders. Name it from the level's curated name, snake_cased — `ratchet_climb.tres`, not `generated_7.tres`. If the filename already exists, ask (hard rule 9).
 
-**You emit the `.tres` only.** You do not create the level `.tscn`, and you do not touch `LevelManager.level_scenes`. Finish by telling the designer that each new resource still needs a scene instanced from `res://Levels/Template/new_level_template.tscn` with `level_data` pointed at it, and that scene registered in `LevelManager`.
+**You emit the `.tres` only.** You do not touch `LevelManager`. Finish by telling
+the designer that each new resource still needs adding to
+`LevelManager.level_data_list`.
+
+There is no per-level scene. A single `Levels/level.tscn` is instantiated on
+demand and driven by whichever `LevelData` is current, so a new level is a
+resource and a registration — nothing else.
 
 ### 19.2 Scripts and UIDs
 
@@ -484,7 +565,7 @@ Flat, no subfolders. Name it from the level's curated name, snake_cased — `rat
 cd math-machine
 for f in Levels/LevelData/level_data.gd Levels/LevelData/graph_node_data.gd \
          HintSystem/level_solution_data.gd HintSystem/solution_path.gd \
-         HintSystem/solution_step.gd HintSystem/StoreValueStepData.gd \
+         HintSystem/solution_step.gd HintSystem/store_value_step_data.gd \
          HintSystem/connection_step_data.gd; do
   printf "%-45s %s\n" "$f" "$(cat "$f.uid")"
 done
@@ -497,10 +578,12 @@ done
 | `LevelSolutionData` | `HintSystem/level_solution_data.gd` | `uid://cexqyukx5s6ta` |
 | `SolutionPath` | `HintSystem/solution_path.gd` | `uid://cut5mll0elw0n` |
 | `SolutionStep` | `HintSystem/solution_step.gd` | `uid://cltmh45jarwf8` |
-| `StoreValueStepData` | `HintSystem/StoreValueStepData.gd` | `uid://b7d0piii6kegt` |
+| `StoreValueStepData` | `HintSystem/store_value_step_data.gd` | `uid://b7d0piii6kegt` |
 | `ConnectionStepData` | `HintSystem/connection_step_data.gd` | `uid://cxfcv878bwcua` |
 
-Note the capitalised filename `StoreValueStepData.gd` — it breaks the snake_case convention of its neighbours. Copy it exactly.
+Every filename in `HintSystem/` is snake_case. An earlier revision of this
+document recorded `StoreValueStepData.gd` in mixed case; that was wrong and any
+`.tres` carrying that path will fail to load.
 
 ### 19.3 Type mapping
 
@@ -521,17 +604,110 @@ Because `type` defaults to `0` in `GraphNodeData`, **input nodes omit the `type`
 
 ### 19.4 Building the three arrays
 
-From the level JSON, in **JSON key order** — do not sort, do not tidy:
+From the level JSON:
 
-- **`inputs`** — one `GraphNodeData` per `inputs` entry: `type` omitted (0), `value` = the integer.
-- **`operations`** — one per `operations` entry: `type` per §19.3; `value` = the add amount for `add`, omitted for `sum`/`subtract`/`store`.
-- **`outputs`** — one per `outputs` entry: `type = 1`, `value` = the target.
+- **`inputs`** — one `GraphNodeData` per `inputs` entry: `type` omitted (0), `value` = the integer. **Sorted ascending by value.**
+- **`operations`** — one per `operations` entry: `type` per §19.3; `value` = the add amount for `add`, omitted for `sum`/`subtract`/`store`. **Ordered per §19.4a.**
+- **`outputs`** — one per `outputs` entry: `type = 1`, `value` = the target. **Sorted ascending by value.**
 
-Array order is load-bearing twice over: `LevelBuilder` places node *i* at location-group slot *i*, and every `slot` field in the solution data is derived from these arrays (§19.5). Reordering them silently repoints the hint system at the wrong nodes.
+Input values and output targets are guaranteed distinct (§3), so ascending value
+is a total order on each — no tiebreak is needed.
+
+Array order is load-bearing twice over: `LevelBuilder` places node *i* at
+location-group slot *i*, and every `slot` field in the solution data is derived
+from these arrays (§19.5).
+
+> **Order the arrays first, then build the `(type, slot)` map.** Slot numbers
+> come from the final array order. Sorting after the map is built silently
+> repoints every hint at the wrong node.
+
+### 19.4a Operation layout
+
+`LevelBuilder` places operation *i* at `operation_location_groups[n-1].locations[i]`.
+Those markers form **columns filled top-to-bottom, left-to-right**, so an index
+is a grid position, not a rank:
+
+```
+n=1      n=2      n=3        n=4            n=5              n=6
+
+ [0]     [0]      [0]     [0]   [2]     [0]       [3]     [0] [2] [4]
+         [1]      [1]     [1]   [3]         [2]           [1] [3] [5]
+                  [2]                   [1]       [4]
+```
+
+Consequently a **pair occupies a column** and a **triple occupies a row**. The
+rules below arrange nodes so repeated types read as deliberate structure rather
+than scatter.
+
+#### Size groups
+
+```
+LARGE : SUM, SUBTRACT
+SMALL : ADD_VALUE, STORE
+```
+
+Add new node types here as they are implemented. A type absent from both groups
+is an authoring error — fail rather than defaulting.
+
+#### Algorithm
+
+**Stores are excluded from grouping entirely.** Every rule below concerns
+non-store types only.
+
+1. **Form groups.** Group non-store nodes by `NodeType`. Any group of 2 or more
+   is a *claiming group*. Add Value nodes group by type alone — `+3` and `-1`
+   are two of the same type for layout purposes.
+
+2. **Sort claiming groups** by, in order: count descending, then LARGE before
+   SMALL, then `NodeType` ordinal ascending.
+
+3. **Each group claims slots**, in that order. Look up the shape table for
+   `(n, count)`:
+   - **No entry** → the group does not claim; its nodes fall through to step 4.
+   - **Entry exists** → claim the first listed shape whose slots are all
+     unclaimed. If every listed shape is blocked, claim the lowest-indexed
+     unclaimed slots instead.
+
+4. **Everything unclaimed** — singles and all stores — fills the remaining slots
+   in ascending index: non-stores first by `NodeType` ordinal, then stores. This
+   is what puts stores last; it is a consequence of the ordering, not a separate
+   rule that can conflict with one.
+
+#### Shape table
+
+| n | count | Shapes, in priority order |
+|---|---|---|
+| 1, 2 | — | none |
+| 3 | 2 | `{0,2}` — top and bottom of the stack, odd node centred |
+| 4 | 2 | `{0,1}` left column, then `{2,3}` right column |
+| 5 | 4 | `{0,1,3,4}` — both columns, centre left free |
+| 5 | 3 | `{0,1,2}` |
+| 5 | 2 | `{0,1}` left column, then `{3,4}` right column |
+| 6 | 5 | `{0,1,2,3,4}` |
+| 6 | 4 | `{0,1,2,3}` — left and middle columns |
+| 6 | 3 | `{0,2,4}` top row, then `{1,3,5}` bottom row |
+| 6 | 2 | `{0,1}` left, then `{4,5}` right, then `{2,3}` middle |
+
+`n=4` with a triple has no entry deliberately — a triple can form neither a row
+nor a column in a 2×2, so it falls through to step 4.
+
+#### Worked cases
+
+| n | Composition | Result |
+|---|---|---|
+| 6 | 3 Sum, 2 Add, 1 Store | Sum `{0,2,4}` top row; Add's shapes are all blocked, so fallback to lowest unclaimed `{1,3}`; Store at 5 |
+| 6 | 2 Sum, 2 Subtract, 2 Add | Sum `{0,1}`, Subtract `{4,5}`, Add `{2,3}` — LARGE first, then ordinal |
+| 6 | 4 Sum, 2 Add | Sum `{0,1,2,3}`, Add falls to `{4,5}` |
+| 6 | 2 Sum, 2 Store, 2 Add | Sum `{0,1}`, Add `{4,5}` (only two claiming groups), Stores at 2,3 |
+| 5 | 3 Subtract, 2 Add | Subtract `{0,1,2}`, Add `{3,4}` |
+| 5 | 4 Sum, 1 Store | Sum `{0,1,3,4}`, Store centred at 2 |
+| 4 | 2 Sum, 2 Add | Sum `{0,1}`, Add `{2,3}` |
+| 4 | 3 Sum, 1 Store | No shape for `(4,3)`; Sums at 0,1,2 and Store at 3 by step 4 |
+| 3 | 2 Sum, 1 Store | Sum `{0,2}`, Store centred at 1 |
 
 ### 19.5 Slot numbering
 
-`slot` is the **0-based index among nodes of the same `NodeType`**, in the array order you just wrote. Inputs and outputs each occupy a type of their own, so their slot is simply their array index. Operations are counted per type.
+`slot` is the **0-based index among nodes of the same `NodeType`**, in the **final, ordered** array from §19.4 — not JSON key order. Inputs and outputs each occupy a type of their own, so their slot is simply their array index after the ascending-value sort. Operations are counted per type over the §19.4a layout order.
 
 Example — operations written `[S1, A1, P1, S2]`:
 
@@ -566,7 +742,19 @@ The trap is ADD_VALUE. `SolutionStep._matches_value` compares against `node.valu
 
 Omitting a field leaves it at `ConnectionStepData.ANY_VALUE` (`-2147483648`), which means "don't care". Do not write that sentinel literally — omit the line.
 
-### 19.8 Deriving the final wiring
+### 19.8 Deriving the phased wiring
+
+A `SolutionPath` is an ordered sequence of **phases**. Each phase is the set of
+wires that must be live at the moment one store latches, closed by a
+`StoreValueStepData` recording which store latched and to what value. The
+trailing phase has no terminator and holds the final configuration.
+
+The hint system walks the phase the player is currently in, so a phase must
+contain **every wire that must be live at its latch** — not just the wires newly
+placed since the previous latch. The verifier's transcript is delta-style: it
+stays silent about a wire that is already correct from an earlier phase. The
+replay below reconstructs snapshots from those deltas, which is why it must be
+run mechanically rather than read off the transcript by eye.
 
 Capture the transcript once:
 
@@ -589,50 +777,211 @@ Line handling:
 | `N. Connect X (v) → Y` | `state[(Y, 0)] = (X, 0)` |
 | `N. Connect X (v) → Y top` | `state[(Y, 0)] = (X, 0)` |
 | `N. Connect X (v) → Y bottom` | `state[(Y, 1)] = (X, 0)` |
-| `[S latches k; its input auto-disconnects]` | `store_value[S] = k`; `del state[(S, 0)]` |
+| `[S latches k; its input auto-disconnects]` | emit a phase (below), then `store_value[S] = k`; `del state[(S, 0)]` |
 | `[auto-severs A → B ...]` | no action — the overwrite already did it. Assert it agrees with what you replaced; a mismatch means you mis-parsed |
 
-At the end of the family:
+**On each latch line, before deleting the store's input**, emit a phase:
 
-- **Final wiring** = the surviving contents of `state`.
-- **Required stores** = stores appearing as a *source* in `state.values()`. A store latched during the solve but read by nothing at the end contributes nothing to the final configuration; it gets no `StoreValueStepData`.
-- **Each required store's value** = `store_value[S]`, i.e. its **last** latch.
+- `producer` = `state[(S, 0)]`, the node whose value is being captured.
+- **Phase wiring** = the wires reachable by walking *backwards* through `state`
+  from `producer` — every wire that transitively feeds it — plus the latch wire
+  `producer → S` itself.
+- **Phase terminator** = `(S, k)`.
 
-Then **check your parse arithmetically**: evaluate the final wiring and confirm every Output node receives its declared target, with no node left partially wired. If it doesn't balance, your parse is wrong. Fix the parse. Do not adjust the wiring to make it balance — that is hard rule 8.
+The backward walk is not optional. A wire can be live at a latch while feeding
+nothing that matters to it; carrying it into the phase would make the hint send
+the player to build something the phase does not need. In `challenge_1` family 1,
+`I1 → P1 top` and `I2 → P1 bottom` are live when `S1` latches and are correctly
+kept, but by `S2`'s latch `P1` is fed from `M1` instead, and the walk drops the
+stale pair.
 
-#### Why "final wiring" and not "the steps after the last latch"
+At the end of the family, emit the **final phase**: the wires reachable by
+walking *backwards* through `state` from every Output node, with no terminator.
+**Prune it exactly as you prune a latch phase** — same backward walk, rooted at
+the outputs instead of at a latch producer.
 
-A wire made early can survive untouched to the end. In `levels/challenge.json`, family 1 sets `A1`'s input from `S2` at step 5, three steps before `S1`'s final latch at step 6, and never rewires it. `A1` feeds both of `P1`'s ports in the finished graph, so `O2` is unreachable without it — yet a post-last-latch slice drops it entirely and the hint path becomes unsatisfiable.
+> Do not skip this prune on the grounds that minimality makes it unnecessary.
+> Minimality guarantees every node is needed *somewhere in the solution*, which
+> includes the latch phases. It does **not** guarantee every node is used in the
+> *final configuration*. A node whose only job was to build a value into a store
+> is idle at the end, but its input wire is still live — latching severs the
+> store's own input, not wires elsewhere in the graph.
+>
+> `challenge_3` shows it: `A1` earns its place during the latch phases, and at
+> the end `S1 → A1` is still live while `A1`'s output feeds nothing. Emitting it
+> unpruned puts a connection in the final phase that contributes nothing to
+> completing the level — the hint system would ask the player to build it, and
+> challenge mode would withhold credit until they did.
+>
+> The arithmetic check in §19.13 will not catch this. `A1` is single-input and
+> that input *is* wired, so nothing is partially wired and every Output still
+> receives its target. The stale wire rides along silently. The backward walk is
+> the only thing that removes it.
 
-The reference file `Levels/Levels/Challenge/challenge_1.tscn` encodes final wiring: two `StoreValueStepData` then seven `ConnectionStepData`, for a solution the verifier renders in far more steps. Neither of its Input nodes appears in any connection step, because in the finished graph the inputs are wired to nothing — the latched stores carry everything. That is correct and expected.
+Drop any phase whose store is never read afterwards — neither as a source in a
+later phase's wiring nor in the final phase. A latch nothing ever reads is dead
+and must not be emitted.
+
+Drop the whole family if it **keeps latching after the level could already have
+been finished** — that is, if the store contents at some point part-way through
+already make every output simultaneously reachable. Such a family latches a
+value that was already sitting on a live node and then reads it straight back
+out; every latch looks "used", so the dead-latch rule above will not catch it.
+The solver now filters these at source (`_latches_past_the_finish`), so in
+practice you will not see one; check it anyway if you are replaying a transcript
+captured before that change.
+
+Then **check your parse arithmetically, per phase**: evaluating a phase's wiring
+must yield its terminator's value at `producer`, and evaluating the final phase
+must give every Output node its declared target with no node left partially
+wired. If it doesn't balance, your parse is wrong. Fix the parse. Do not adjust
+the wiring to make it balance — that is hard rule 8.
+
+#### Why snapshots and not "the steps since the last latch"
+
+A wire made early can survive untouched across several latches. In
+`levels/challenge.json`, family 1 sets `A1`'s input from `S2` at step 5, three
+steps before `S1`'s final latch at step 6, and never rewires it. `A1` feeds both
+of `P1`'s ports in the finished graph, so `O2` is unreachable without it — yet a
+since-last-latch slice drops it entirely and the hint path becomes unsatisfiable.
+
+The same trap applies to every intermediate phase, which is why each one is a
+snapshot pruned by reachability rather than a slice of the transcript.
+
+#### Worked replay — `challenge_1`, family 1
+
+Transcript (15 steps, 2 latches) replays to three phases:
+
+```
+phase 0  (latch S1=9)      I1 → P1 top      I2 → P1 bottom
+                           P1 → S1
+phase 1  (latch S2=10)     I2 → M1 top      I1 → M1 bottom
+                           M1 → P1 top      M1 → P1 bottom
+                           P1 → S2
+phase 2  (final)           S1 → P1 top      S2 → P1 bottom
+                           S2 → M1 top      S1 → M1 bottom
+                           M1 → O1          S2 → O2          P1 → O3
+```
+
+Arithmetic check: phase 0, `P1 = 2 + 7 = 9` ✓. Phase 1, `M1 = 7 − 2 = 5`,
+`P1 = 5 + 5 = 10` ✓. Phase 2, `P1 = 9 + 10 = 19` → `O3`, `M1 = 10 − 9 = 1` →
+`O1`, `S2 = 10` → `O2` ✓.
+
+Note that phase 1 does **not** contain `I1 → P1 top` or `I2 → P1 bottom`: both
+were overwritten by `M1` before `S2` latched. Note also that phase 2 contains
+seven wires including ones placed long before the final latch.
 
 ### 19.9 Step order within a `SolutionPath`
 
-`SolutionPath`'s docstring requires STORE_VALUE steps before CONNECTION steps, and `LevelSolutionData.get_current_path` scores the two groups separately, so the grouping is load-bearing. Within each group, order for the player's benefit:
+`solution_steps` is a flat array. Phase structure is carried by position: a
+`StoreValueStepData` **terminates** the phase it closes. Write each phase's
+connections, then its latch connection, then its terminator; final phase last,
+with no terminator.
 
-1. **`StoreValueStepData`** for each required store, ascending `slot`.
-2. **`ConnectionStepData`** grouped by target node: non-Output targets first in `operations`-array order, then Output targets in `outputs`-array order. Within one target, ascending `to_port`.
+```
+[phase 0 connections…] [phase 0 latch connection] [phase 0 terminator]
+[phase 1 connections…] [phase 1 latch connection] [phase 1 terminator]
+…
+[final phase connections…]
+```
 
-This produces a left-to-right, sources-before-sinks reading that ends on the outputs — matching `challenge_1.tscn` exactly.
+Two rules are load-bearing and checked in §19.13:
+
+1. **The latch connection is last among its phase's connections**, immediately
+   before the terminator, and its `to_type`/`to_slot` must be the STORE the
+   terminator names. The hint system offers the first unsatisfied connection in
+   the current phase; if the latch wire is offered early the player latches
+   whatever garbage the producer currently holds.
+2. **No terminator may be the first step of its phase** — a phase with no
+   connections is malformed.
+
+#### Ordering within a phase
+
+The hint system treats a phase as a set, so order does not affect correctness.
+It does affect the player: hints are offered in list order, so a badly ordered
+phase asks the player to wire a node's output before that node has a value.
+
+Order every phase by this single rule:
+
+> **Walk the phase's target nodes in topological order — a node comes after
+> every node that feeds it. On reaching a node, emit all of its input wires
+> contiguously, ascending `to_port`.**
+
+Two consequences worth stating separately, because both were previously
+violated:
+
+1. **A node's input wires always precede any wire leaving that node.** Wiring
+   `M1 → P1` before `M1` has inputs shows the player a hint that produces
+   nothing.
+2. **A multi-input node's wires are contiguous.** Sum and Subtract take two
+   today; the rule is written per-node rather than "two steps" so it still holds
+   when node types with more inputs arrive.
+
+Break ties among nodes that are simultaneously ready by `operations`-array
+order, then `outputs`-array order — outputs are sinks and therefore always come
+last. The latch connection is a sink too (its store has no outgoing wire in that
+phase), so it lands last on its own; assert it anyway per rule 1 above.
+
+Worked, for `challenge_1` phase 1 — targets `M1` (fed by inputs), `P1` (fed by
+`M1`), `S2` (fed by `P1`), so the topological order is `M1`, `P1`, `S2`:
+
+```
+I2 → M1 top     I1 → M1 bottom      ; M1's inputs, contiguous
+M1 → P1 top     M1 → P1 bottom      ; then P1's, now that M1 has a value
+P1 → S2                             ; latch connection, sink, last
+```
+
+Within a phase the wiring is always a DAG — `GraphCanvas` blocks cycles — so a
+topological order always exists.
+
+This section is an inversion of the previous convention, which grouped all
+`StoreValueStepData` at the head of the path and ordered connections by
+`operations`-array position alone. Files in the old format are not readable
+under the new one.
 
 ### 19.10 Reducing families to distinct paths
 
-`verify.py --all` reports families that differ in *build order*. The hint system only ever checks the final configuration, so families sharing one final configuration are the same path in game and must not be duplicated — a duplicate makes `get_current_path`'s scoring ambiguous for no benefit.
+`verify.py --all` reports families that differ in *build order*. Families sharing
+one **final configuration** remain the same path in game and must not be
+duplicated — a duplicate makes path scoring ambiguous for no benefit.
 
-Canonical key per family:
+Keying is unchanged, and is still on the final configuration only:
 
-- `store_values`: sorted `(slot, value)` over required stores
-- `wires`: the set of `(from_type, from_slot, from_port, to_type, to_slot, to_port)`; **drop `to_port` from the key when `to_type` is SUM**, since it is commutative
+- `store_values`: sorted `(slot, value)` over stores read in the final phase
+- `wires`: the final phase's set of `(from_type, from_slot, from_port, to_type, to_slot, to_port)`; **drop `to_port` from the key when `to_type` is SUM**, since it is commutative
 
-Then quotient by permutations of same-type slots — a family that is another family with `S1` and `S2` exchanged is not a new path, because `SolutionPath.resolve_bindings` performs exactly that permutation search at runtime and will bind whichever assignment scores highest. Enumerate permutations per type, take the lexicographically smallest key.
+Then quotient by permutations of same-type slots — a family that is another family with `S1` and `S2` exchanged is not a new path, because the hint system performs exactly that permutation search at runtime and will bind whichever assignment scores highest. Enumerate permutations per type, take the lexicographically smallest key.
 
-Keep the **first** family in verifier order from each equivalence class. Order `solution_paths` shortest-first: `solution_paths[0]` is `get_current_path`'s fallback when nothing matches, so it should be the most direct route.
+What changes is **which representative you keep**. Phases are now authored, so
+the journey is visible to the player as a hint sequence: keep the **shortest**
+family in each equivalence class — fewest latch events first, then fewest
+transcript steps — not the first in verifier order. This matches the
+representative `notation.py` already selects when collapsing a family, and it is
+the version a player is most likely to find unaided.
+
+Order `solution_paths` shortest-first, as before.
 
 Report the collapse explicitly: *"verify.py reported 4 families; 2 distinct final configurations."* A large collapse is worth mentioning — it may mean the level is less rich than `generator.solution_family_count` suggested, which is curation-relevant (§16).
 
+**The §16a cap of 6 applies to the collapsed count**, since that is what becomes
+`solution_paths` and therefore what challenge mode asks the player to work
+through. In practice the two numbers agree — `notation.py` already groups
+solutions by destination rather than journey, so `verify.py`'s family count is
+usually the distinct-configuration count already, and this section's keying is a
+safety net rather than a real reduction. A level where they differ substantially
+is worth flagging to the designer either way.
+
+**Completeness now matters more than it used to.** For hints, a missing path
+degrades guidance. For challenge mode, a missing path means a player can find a
+legitimate solution the game does not recognise and cannot be credited for. This
+is why §16a rejects any level whose family search was not proven exhaustive, and
+why `solution_paths` must list every distinct configuration rather than a
+representative sample.
+
 ### 19.11 `.tres` text format
 
-Rules, all confirmed against `challenge_1.tres` and `challenge_1.tscn`:
+Rules, all confirmed against `challenge_1.tres`. These govern `.tres` syntax only
+and are unaffected by the move to phased paths:
 
 - Header: `[gd_resource type="Resource" script_class="LevelData" format=3]`. **Omit `uid=`** — Godot assigns one on first import. Never invent a UID. `load_steps` is optional; omit it.
 - One `[ext_resource type="Script" uid="..." path="res://..." id="..."]` per distinct script actually used.
@@ -645,9 +994,18 @@ Rules, all confirmed against `challenge_1.tres` and `challenge_1.tscn`:
 
 ### 19.12 Worked example
 
-Corpus case 5's shape, matching `challenge_1.tscn`: `I1=2, I2=7; P1=+, M1=−, S1=s, S2=s; O1=1, O2=10, O3=19`, one family with `S1` latched to 10 and `S2` to 9 — `10+9=19`, `10−9=1`, `10` direct.
+`challenge_1`: `I1=2, I2=7; P1=+, M1=−, S1=s, S2=s; O1=1, O2=10, O3=19`. Family 1
+of `verify.py --all`, replayed per §19.8 into three phases — `S1` latches 9,
+then `S2` latches 10, then the final configuration gives `9+10=19`, `10−9=1`,
+and `10` direct.
 
-Slots: `P1`→SUM 0, `M1`→SUBTRACT 0, `S1`→STORE 0, `S2`→STORE 1; `I1`/`I2`→INPUT 0/1; `O1`/`O2`/`O3`→OUTPUT 0/1/2. Neither input appears in a connection step.
+Slots: `P1`→SUM 0, `M1`→SUBTRACT 0, `S1`→STORE 0, `S2`→STORE 1; `I1`/`I2`→INPUT 0/1; `O1`/`O2`/`O3`→OUTPUT 0/1/2.
+
+Both inputs appear here, in phases 0 and 1 — they are what the stores are loaded
+from. They do **not** appear in the final phase, where the latched stores carry
+everything. Under the previous final-wiring-only format this level emitted no
+input connections at all; that is the most visible difference between the two
+formats.
 
 ```
 [gd_resource type="Resource" script_class="LevelData" format=3]
@@ -657,7 +1015,7 @@ Slots: `P1`→SUM 0, `M1`→SUBTRACT 0, `S1`→STORE 0, `S2`→STORE 1; `I1`/`I2
 [ext_resource type="Script" uid="uid://cexqyukx5s6ta" path="res://HintSystem/level_solution_data.gd" id="LSD"]
 [ext_resource type="Script" uid="uid://cut5mll0elw0n" path="res://HintSystem/solution_path.gd" id="SP"]
 [ext_resource type="Script" uid="uid://cltmh45jarwf8" path="res://HintSystem/solution_step.gd" id="SS"]
-[ext_resource type="Script" uid="uid://b7d0piii6kegt" path="res://HintSystem/StoreValueStepData.gd" id="SVD"]
+[ext_resource type="Script" uid="uid://b7d0piii6kegt" path="res://HintSystem/store_value_step_data.gd" id="SVD"]
 [ext_resource type="Script" uid="uid://cxfcv878bwcua" path="res://HintSystem/connection_step_data.gd" id="CSD"]
 
 ; --- nodes: inputs I1, I2 ---
@@ -711,32 +1069,11 @@ type = 1
 value = 19
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
-; --- path 0: store values (S1 = 10, S2 = 9) ---
-[sub_resource type="Resource" id="D_p0_sv0"]
-script = ExtResource("SVD")
-value = 10
-metadata/_custom_type_script = "uid://b7d0piii6kegt"
-
-[sub_resource type="Resource" id="S_p0_sv0"]
-script = ExtResource("SS")
-step_data = SubResource("D_p0_sv0")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="D_p0_sv1"]
-script = ExtResource("SVD")
-value = 9
-slot = 1
-metadata/_custom_type_script = "uid://b7d0piii6kegt"
-
-[sub_resource type="Resource" id="S_p0_sv1"]
-script = ExtResource("SS")
-step_data = SubResource("D_p0_sv1")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-; --- path 0: connections. S1 -> P1 top ---
+; ===== path 0, phase 0 — builds 9 into S1 =====
+; I1 -> P1 top
 [sub_resource type="Resource" id="D_p0_c0"]
 script = ExtResource("CSD")
-from_type = 5
+from_value = 2
 to_type = 3
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
@@ -745,11 +1082,11 @@ script = ExtResource("SS")
 step_data = SubResource("D_p0_c0")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
-; S2 -> P1 bottom
+; I2 -> P1 bottom
 [sub_resource type="Resource" id="D_p0_c1"]
 script = ExtResource("CSD")
-from_type = 5
 from_slot = 1
+from_value = 7
 to_type = 3
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
@@ -759,11 +1096,11 @@ script = ExtResource("SS")
 step_data = SubResource("D_p0_c1")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
-; S1 -> M1 top
+; P1 -> S1  <- latch connection, last in phase
 [sub_resource type="Resource" id="D_p0_c2"]
 script = ExtResource("CSD")
-from_type = 5
-to_type = 4
+from_type = 3
+to_type = 5
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p0_c2"]
@@ -771,13 +1108,25 @@ script = ExtResource("SS")
 step_data = SubResource("D_p0_c2")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
-; S2 -> M1 bottom
+; terminator: S1 latches 9
+[sub_resource type="Resource" id="D_p0_sv0"]
+script = ExtResource("SVD")
+value = 9
+metadata/_custom_type_script = "uid://b7d0piii6kegt"
+
+[sub_resource type="Resource" id="S_p0_sv0"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_sv0")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
+; ===== path 0, phase 1 — builds 10 into S2 =====
+; topological order: M1's inputs, then P1's, then the latch
+; I2 -> M1 top
 [sub_resource type="Resource" id="D_p0_c3"]
 script = ExtResource("CSD")
-from_type = 5
 from_slot = 1
+from_value = 7
 to_type = 4
-to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p0_c3"]
@@ -785,12 +1134,12 @@ script = ExtResource("SS")
 step_data = SubResource("D_p0_c3")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
-; M1 -> O1 (= 1)
+; I1 -> M1 bottom
 [sub_resource type="Resource" id="D_p0_c4"]
 script = ExtResource("CSD")
-from_type = 4
-to_type = 1
-to_value = 1
+from_value = 2
+to_type = 4
+to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p0_c4"]
@@ -798,13 +1147,11 @@ script = ExtResource("SS")
 step_data = SubResource("D_p0_c4")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
-; S1 -> O2 (= 10)
+; M1 -> P1 top
 [sub_resource type="Resource" id="D_p0_c5"]
 script = ExtResource("CSD")
-from_type = 5
-to_type = 1
-to_slot = 1
-to_value = 10
+from_type = 4
+to_type = 3
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p0_c5"]
@@ -812,13 +1159,12 @@ script = ExtResource("SS")
 step_data = SubResource("D_p0_c5")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
-; P1 -> O3 (= 19)
+; M1 -> P1 bottom
 [sub_resource type="Resource" id="D_p0_c6"]
 script = ExtResource("CSD")
-from_type = 3
-to_type = 1
-to_slot = 2
-to_value = 19
+from_type = 4
+to_type = 3
+to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p0_c6"]
@@ -826,9 +1172,129 @@ script = ExtResource("SS")
 step_data = SubResource("D_p0_c6")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
+; P1 -> S2  <- latch connection, last in phase
+[sub_resource type="Resource" id="D_p0_c7"]
+script = ExtResource("CSD")
+from_type = 3
+to_type = 5
+to_slot = 1
+metadata/_custom_type_script = "uid://cxfcv878bwcua"
+
+[sub_resource type="Resource" id="S_p0_c7"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_c7")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
+; terminator: S2 latches 10
+[sub_resource type="Resource" id="D_p0_sv1"]
+script = ExtResource("SVD")
+value = 10
+slot = 1
+metadata/_custom_type_script = "uid://b7d0piii6kegt"
+
+[sub_resource type="Resource" id="S_p0_sv1"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_sv1")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
+; ===== path 0, phase 2 — final configuration, no terminator =====
+; S1 -> P1 top
+[sub_resource type="Resource" id="D_p0_c8"]
+script = ExtResource("CSD")
+from_type = 5
+to_type = 3
+metadata/_custom_type_script = "uid://cxfcv878bwcua"
+
+[sub_resource type="Resource" id="S_p0_c8"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_c8")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
+; S2 -> P1 bottom
+[sub_resource type="Resource" id="D_p0_c9"]
+script = ExtResource("CSD")
+from_type = 5
+from_slot = 1
+to_type = 3
+to_port = 1
+metadata/_custom_type_script = "uid://cxfcv878bwcua"
+
+[sub_resource type="Resource" id="S_p0_c9"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_c9")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
+; S2 -> M1 top
+[sub_resource type="Resource" id="D_p0_c10"]
+script = ExtResource("CSD")
+from_type = 5
+from_slot = 1
+to_type = 4
+metadata/_custom_type_script = "uid://cxfcv878bwcua"
+
+[sub_resource type="Resource" id="S_p0_c10"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_c10")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
+; S1 -> M1 bottom
+[sub_resource type="Resource" id="D_p0_c11"]
+script = ExtResource("CSD")
+from_type = 5
+to_type = 4
+to_port = 1
+metadata/_custom_type_script = "uid://cxfcv878bwcua"
+
+[sub_resource type="Resource" id="S_p0_c11"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_c11")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
+; M1 -> O1 (= 1)
+[sub_resource type="Resource" id="D_p0_c12"]
+script = ExtResource("CSD")
+from_type = 4
+to_type = 1
+to_value = 1
+metadata/_custom_type_script = "uid://cxfcv878bwcua"
+
+[sub_resource type="Resource" id="S_p0_c12"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_c12")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
+; S2 -> O2 (= 10)
+[sub_resource type="Resource" id="D_p0_c13"]
+script = ExtResource("CSD")
+from_type = 5
+from_slot = 1
+to_type = 1
+to_slot = 1
+to_value = 10
+metadata/_custom_type_script = "uid://cxfcv878bwcua"
+
+[sub_resource type="Resource" id="S_p0_c13"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_c13")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
+; P1 -> O3 (= 19)
+[sub_resource type="Resource" id="D_p0_c14"]
+script = ExtResource("CSD")
+from_type = 3
+to_type = 1
+to_slot = 2
+to_value = 19
+metadata/_custom_type_script = "uid://cxfcv878bwcua"
+
+[sub_resource type="Resource" id="S_p0_c14"]
+script = ExtResource("SS")
+step_data = SubResource("D_p0_c14")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
 [sub_resource type="Resource" id="Path0"]
 script = ExtResource("SP")
-solution_steps = Array[ExtResource("SS")]([SubResource("S_p0_sv0"), SubResource("S_p0_sv1"), SubResource("S_p0_c0"), SubResource("S_p0_c1"), SubResource("S_p0_c2"), SubResource("S_p0_c3"), SubResource("S_p0_c4"), SubResource("S_p0_c5"), SubResource("S_p0_c6")])
+solution_steps = Array[ExtResource("SS")]([SubResource("S_p0_c0"), SubResource("S_p0_c1"), SubResource("S_p0_c2"), SubResource("S_p0_sv0"), SubResource("S_p0_c3"), SubResource("S_p0_c4"), SubResource("S_p0_c5"), SubResource("S_p0_c6"), SubResource("S_p0_c7"), SubResource("S_p0_sv1"), SubResource("S_p0_c8"), SubResource("S_p0_c9"), SubResource("S_p0_c10"), SubResource("S_p0_c11"), SubResource("S_p0_c12"), SubResource("S_p0_c13"), SubResource("S_p0_c14")])
 metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="Solution"]
@@ -849,22 +1315,36 @@ The `;` comment lines are for this document's readability. Godot's parser tolera
 
 Add one more `Path<n>` block per distinct final configuration and list them all in `solution_paths`.
 
+Note the shape of `solution_steps`: connections and terminators interleaved in
+phase order, terminators at the *end* of their phase. A file with all its
+`StoreValueStepData` at the head is in the old format and will not read
+correctly.
+
+Expect files roughly 2.5–3× the size of the old format on store levels — this
+example goes from 9 steps to 17 for the same level. That is inherent to
+authoring the journey rather than only the destination.
+
 ### 19.13 Verify before handing off
 
 Run these as a script over each emitted `.tres`. This checks your *transcription*, not the level — the level's correctness was settled by the verifier and is not up for re-derivation.
 
-1. **Round-trip.** Re-parse the `.tres`, rebuild the `(type, slot)` map from its own arrays, and reconstruct each path's wiring. Assert it equals the final wiring you extracted in §19.8.
-2. **Arithmetic.** Evaluate each path's wiring with its store values. Every Output node must receive its declared target; no node may be left partially wired.
-3. **Referential integrity.** Every `(type, slot)` referenced by any step must exist in the arrays. `SolutionPath.resolve_bindings` `push_error`s and silently drops the type otherwise, which degrades hints without failing loudly.
-4. **Engine limits.** `inputs.size() ≤ 4`, `operations.size() ≤ 5`, `outputs.size() ≤ 4`. Assert against `LevelBuilder`'s `INPUT_MAX` / `OPERATION_MAX` / `OUTPUT_MAX`, re-read from source rather than hardcoded here — `OPERATION_MAX` in particular is expected to change.
-5. **Display safety.** Every emitted `value` within its range per §9 — inputs/outputs −9..20, add amounts −9..9.
-6. **Structural diff.** Compare the shape of your file against `challenge_1.tscn`'s solution block. Same block ordering, same defaults omitted, same `metadata/_custom_type_script` lines.
+1. **Round-trip.** Re-parse the `.tres`, rebuild the `(type, slot)` map from its own arrays, split each path into phases at its terminators, and reconstruct each phase's wiring. Assert it equals the phased wiring you extracted in §19.8, phase for phase.
+2. **Arithmetic, per phase.** For each non-final phase, evaluate its wiring and assert the latch connection's source node holds the terminator's value. For the final phase, every Output node must receive its declared target; no node may be left partially wired.
+3. **Referential integrity.** Every `(type, slot)` referenced by any step must exist in the arrays. Binding resolution `push_error`s and silently drops the type otherwise, which degrades hints without failing loudly.
+3a. **Latch connection placement.** In every non-final phase, the last connection before the terminator must have `to_type = 5` (STORE) with `to_slot` equal to the terminator's `slot`. No other connection in that phase may target that store.
+3b. **No empty phase.** Every terminator must be preceded by at least one connection within its own phase.
+3c. **No dead latch.** Every terminator's store must appear as a `from_type = 5` source in some later phase, or in the final phase.
+3d. **Distinct required states.** Compute each phase's required store state — for each store, the value of the last terminator on it, kept only if some phase from here on reads that store before re-latching it — and assert no two phases in one path produce identical maps. A collision means the hint system will silently skip a phase's work.
+3e. **Topological ordering.** Within each phase, assert that no connection whose `from` node is a target of that phase appears before all of that node's own input connections, and that a multi-input node's input connections are contiguous. See §19.9.
+4. **Engine limits.** `inputs.size() ≤ 4`, `operations.size() ≤ 6`, `outputs.size() ≤ 4`. Assert against `LevelBuilder`'s `INPUT_MAX` / `OPERATION_MAX` / `OUTPUT_MAX`, re-read from source rather than hardcoded here — these are expected to change.
+5. **Display safety.** Every emitted `value` within its range per §9 — inputs −9..9, outputs −20..20, add amounts −9..9. Note these are three separate ranges, not two; the generator's flag defaults do not match them (§9).
+6. **Structural diff.** Compare the shape of your file against the §19.12 example. Same block ordering, same defaults omitted, same `metadata/_custom_type_script` lines. Do not diff against an existing shipped `.tres` unless you have confirmed it is already in the phased format.
 
 You cannot run Godot, so import is unverified. Say so, and ask the designer to open the project once and confirm the resources load without errors before building scenes on them.
 
 ### 19.14 What to report
 
-Per emitted level: file path, tier, one-line "teaches", family count → distinct path count, store values per path, and the seed/bound line from §18. Then the standing reminder that scenes and `LevelManager` registration remain manual (§19.1).
+Per emitted level: file path, tier, one-line "teaches", family count → distinct path count, phase count and the latch sequence per path (e.g. *"path 0: 3 phases, S1=9 → S2=10"*), and the seed/bound line from §18. Then the standing reminder that adding each resource to `LevelManager.level_data_list` remains manual (§19.1).
 
 ---
 
@@ -872,9 +1352,14 @@ Per emitted level: file path, tier, one-line "teaches", family count → distinc
 
 Report these once per session if still present; do not fix them (hard rule 9, and they are outside your remit).
 
-- **`Levels/level.gd:52` reads `level_data.solution_data`, but `LevelData` exports `level_solution_data`.** Hints will fail at runtime on any level whose solution lives on the resource. This is the migration your emitted files depend on, and it is currently broken.
-- **`Levels/Levels/Challenge/challenge_1.tscn` sets `solution_data` on the root `Level` node**, a property `level.gd` no longer declares. Legacy from before the solution data moved onto `LevelData`.
-- **`LevelBuilder.OPERATION_MAX` is 5** while the design document allows 6. See §3.
+All three issues previously listed here — `level.gd` reading the wrong property,
+`challenge_1.tscn` setting `solution_data` on the root node, and
+`LevelBuilder.OPERATION_MAX` being 5 — have since been resolved. `level.gd` reads
+`level_data.level_solution_data`, the per-level `.tscn` files have been replaced
+by a single `Levels/level.tscn` driven by `LevelData`, and `OPERATION_MAX` is 6.
+
+Re-check this section against the project rather than assuming it is current; if
+you find nothing, report that and move on.
 
 ---
 
