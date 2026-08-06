@@ -10,3 +10,8 @@ const DIM_ALPHA: float = 0.35
 const GLOW_ALPHA: float = 1.0
 const PULSE_DURATION: float = 0.6
 const STORE_VALUE_PULSE_COUNT: int = 5
+
+## When true, every hint inside a latch phase pulses that phase's goal value
+## on its store, not just the hint for the wire that causes the latch.
+## Set false to fall back to latch-connection-only.
+const SHOW_PHASE_GOAL_VALUE: bool = true

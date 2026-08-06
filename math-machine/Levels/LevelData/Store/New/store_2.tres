@@ -13,39 +13,6 @@ script = ExtResource("GND")
 value = 1
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
-[sub_resource type="Resource" id="Op0"]
-script = ExtResource("GND")
-type = 3
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Op1"]
-script = ExtResource("GND")
-type = 5
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Op2"]
-script = ExtResource("GND")
-type = 3
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Out0"]
-script = ExtResource("GND")
-type = 1
-value = 3
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Out1"]
-script = ExtResource("GND")
-type = 1
-value = 4
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Out2"]
-script = ExtResource("GND")
-type = 1
-value = 6
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
 [sub_resource type="Resource" id="D_p0_c0"]
 script = ExtResource("CSD")
 from_value = 1
@@ -212,6 +179,39 @@ metadata/_custom_type_script = "uid://cut5mll0elw0n"
 script = ExtResource("LSD")
 solution_paths = Array[ExtResource("SP")]([SubResource("Path0")])
 metadata/_custom_type_script = "uid://cexqyukx5s6ta"
+
+[sub_resource type="Resource" id="Op0"]
+script = ExtResource("GND")
+type = 3
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Op1"]
+script = ExtResource("GND")
+type = 5
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Op2"]
+script = ExtResource("GND")
+type = 3
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Out0"]
+script = ExtResource("GND")
+type = 1
+value = 3
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Out1"]
+script = ExtResource("GND")
+type = 1
+value = 4
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Out2"]
+script = ExtResource("GND")
+type = 1
+value = 6
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [resource]
 script = ExtResource("LD")

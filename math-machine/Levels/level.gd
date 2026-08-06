@@ -52,22 +52,36 @@ func _on_hint_button_pressed() -> void:
 	var solution_data: LevelSolutionData = level_data.level_solution_data
 	if solution_data == null: return
 
-	var step: SolutionStep = solution_data.get_next_hint(graph_canvas)
-	if step == null:
+	var steps: Array[SolutionStep] = solution_data.get_next_hint_group(graph_canvas)
+	if steps.is_empty():
 		graph_canvas.clear_hint_connection()
 		return
 
-	var target: Dictionary = solution_data.get_hint_target(step, graph_canvas)
-	match step.get_kind():
-		SolutionStep.Type.STORE_VALUE:
-			graph_canvas.clear_hint_connection()
-			var node: MyGraphNode = target["nodes"][0] if not target["nodes"].is_empty() else null
-			if node is StoreNode:
-				node.show_hint_value(step.step_data.value)
-		SolutionStep.Type.CONNECTION:
-			var ports: Array = target["ports"]
-			if ports.size() == 2:
-				graph_canvas.set_hint_connection(ports[0], ports[1])
+	var target: Dictionary = solution_data.get_hint_group_target(steps, graph_canvas)
+	graph_canvas.set_hint_connections(target["port_pairs"])
+
+	if _should_show_hint_value(steps, target):
+		var store_node: MyGraphNode = target["store_node"]
+		if store_node is StoreNode:
+			store_node.show_hint_value(target["store_value"])
+
+## Whether this hint should pulse the cursor phase's goal value on its
+## store. The phase goal is absent entirely on the final phase, which has no
+## terminator, so there is nothing to show there either way.
+##
+## The single read of HintVisuals.SHOW_PHASE_GOAL_VALUE lives here on
+## purpose: LevelSolutionData always reports the goal store, and the
+## presentation layer decides whether to use it, so the hint system's data
+## contract is the same whichever way the flag goes. With the flag off, the
+## ghost appears only on the wire that actually causes the latch -- that's
+## established behaviour, not part of the experiment.
+func _should_show_hint_value(steps: Array[SolutionStep], target: Dictionary) -> bool:
+	if not target.has("store_node"):
+		return false
+	if HintVisuals.SHOW_PHASE_GOAL_VALUE:
+		return true
+	return steps.size() == 1 \
+			and steps[0].step_data.to_type == NodeTypeRegistry.NodeType.STORE
 
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()

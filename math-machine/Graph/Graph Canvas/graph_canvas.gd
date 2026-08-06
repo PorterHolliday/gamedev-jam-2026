@@ -28,7 +28,7 @@ var current_connection_end_port: GraphNodePort
 
 var ports: Array[GraphNodePort] = []
 var _level_completed: bool = false
-var _hint_connection: Connection
+var _hint_connections: Array[Connection] = []
 var _hint_connection_alpha: float = HintVisuals.GLOW_ALPHA
 var _hint_connection_tween: Tween
 
@@ -63,7 +63,7 @@ func _draw() -> void:
 	var hovered_connection: Connection = _get_closest_connection_at_point(get_global_mouse_position(), DISCONNECTION_DISTANCE)
 	for connection in connections:
 		_draw_connection(connection, connection == hovered_connection)
-	_draw_hint_connection()
+	_draw_hint_connections()
 	_draw_current_connection()
 
 func get_port_connections(port: GraphNodePort) -> Array[Connection]:
@@ -115,18 +115,31 @@ func request_disconnection(connection: Connection, play_sound: bool = true) -> b
 	disconnection_occurred.emit()
 	return true
 
-## Sets the connection line drawn as the current hint, glowing on a loop
-## until the player changes the board or a new hint replaces it.
-func set_hint_connection(from_port: GraphNodePort, to_port: GraphNodePort) -> void:
-	var connection := Connection.new()
-	connection.from_port = from_port
-	connection.to_port = to_port
-	_hint_connection = connection
+## Sets the connection lines drawn as the current hint, glowing on a loop
+## until the player changes the board or a new hint replaces them.
+##
+## port_pairs holds one [from_port, to_port] array per wire. A hint into a
+## multi-input node is several wires at once, and they must replace the
+## previous hint atomically and share a single tween -- drawn from one alpha
+## they pulse together instead of drifting out of phase.
+func set_hint_connections(port_pairs: Array[Array]) -> void:
+	_hint_connections.clear()
+	for pair in port_pairs:
+		if pair.size() != 2:
+			continue
+		var connection := Connection.new()
+		connection.from_port = pair[0]
+		connection.to_port = pair[1]
+		_hint_connections.append(connection)
+
+	if _hint_connections.is_empty():
+		clear_hint_connection()
+		return
 	_restart_hint_connection_pulse()
 
-## Clears the hint connection line, if any.
+## Clears every hint connection line, if any.
 func clear_hint_connection() -> void:
-	_hint_connection = null
+	_hint_connections.clear()
 	if _hint_connection_tween:
 		_hint_connection_tween.kill()
 		_hint_connection_tween = null
@@ -227,19 +240,20 @@ func _restart_hint_connection_pulse() -> void:
 	_hint_connection_tween.tween_property(self, "_hint_connection_alpha", HintVisuals.DIM_ALPHA, HintVisuals.PULSE_DURATION)
 	_hint_connection_tween.tween_property(self, "_hint_connection_alpha", HintVisuals.GLOW_ALPHA, HintVisuals.PULSE_DURATION)
 
-func _draw_hint_connection() -> void:
-	if _hint_connection == null: return
+func _draw_hint_connections() -> void:
+	if _hint_connections.is_empty(): return
 	var color: Color = HintVisuals.COLOR
 	color.a = _hint_connection_alpha
 	var border_color: Color = HintVisuals.BORDER_COLOR
 	border_color.a = _hint_connection_alpha
-	_draw_bezier(
-			to_local(_hint_connection.from_port.global_position),
-			to_local(_hint_connection.to_port.global_position),
-			color,
-			border_color,
-			true
-		)
+	for connection in _hint_connections:
+		_draw_bezier(
+				to_local(connection.from_port.global_position),
+				to_local(connection.to_port.global_position),
+				color,
+				border_color,
+				true
+			)
 
 func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color, draw_shadow: bool) -> void:
 	var offset := Vector2(abs(to.x - from.x) * 0.5, 0.0)

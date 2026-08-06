@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://cw60x2kgtjono"]
 
 [ext_resource type="PackedScene" uid="uid://bpflbeoqkvd62" path="res://Levels/level.tscn" id="1_ormqy"]
-[ext_resource type="PackedScene" uid="uid://cxym0fle4t3je" path="res://Levels/LevelBuilder/level_builder.tscn" id="2_00vsl"]
+[ext_resource type="Resource" uid="uid://bkljv5wds1g08" path="res://Levels/LevelData/Store/New/store_5.tres" id="2_00vsl"]
 
 [node name="TestLevel" unique_id=1073491300 instance=ExtResource("1_ormqy")]
+level_data = ExtResource("2_00vsl")
 
 [node name="GraphCanvas" parent="." index="1" unique_id=90730119]
 metadata/_edit_lock_ = true
-
-[node name="LevelBuilder" parent="." index="2" unique_id=549361583 instance=ExtResource("2_00vsl")]
-unique_name_in_owner = true
