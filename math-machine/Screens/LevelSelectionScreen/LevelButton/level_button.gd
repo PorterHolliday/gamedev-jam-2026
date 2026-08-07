@@ -1,7 +1,5 @@
 class_name LevelButton
-extends Button
-
-@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+extends MyButton
 
 var level_number: int = 0:
 	set(new_val):
@@ -16,9 +14,3 @@ var level_complete: bool = false:
 		level_complete = new_val
 		if level_complete:
 			theme_type_variation = 'CompleteLevelButton'
-
-func _ready() -> void:
-	pressed.connect(_on_pressed)
-		
-func _on_pressed() -> void:
-	AudioManager.play_button_click_sfx()

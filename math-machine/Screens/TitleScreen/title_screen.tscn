@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cxdnvto6wdmfw"]
 
 [ext_resource type="Script" uid="uid://cevlv5ybi8urd" path="res://Screens/TitleScreen/title_screen.gd" id="1_2e2ej"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="2_vnbe3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fqn1"]
 bg_color = Color(0.5882353, 0.09411765, 0.09411765, 1)
@@ -366,6 +367,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cqf5v")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f424p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x53nb")
 text = "PLAY"
+script = ExtResource("2_vnbe3")
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=460415763]
 unique_name_in_owner = true
@@ -374,6 +376,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qax5j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vpegp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ytjtq")
 text = "Settings"
+script = ExtResource("2_vnbe3")
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1189575717]
 unique_name_in_owner = true
@@ -385,3 +388,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_r64nw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_fhfdr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ksn83")
 text = "Credits"
+script = ExtResource("2_vnbe3")

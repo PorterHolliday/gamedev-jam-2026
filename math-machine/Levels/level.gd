@@ -21,11 +21,6 @@ func _ready() -> void:
 	hint_button.pressed.connect(_on_hint_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	
-	back_button.pressed.connect(_on_button_pressed)
-	restart_button.pressed.connect(_on_button_pressed)
-	hint_button.pressed.connect(_on_button_pressed)
-	settings_button.pressed.connect(_on_button_pressed)
-	
 	level_builder.build(level_data)
 	graph_canvas.start()
 	
@@ -85,9 +80,6 @@ func _should_show_hint_value(steps: Array[SolutionStep], target: Dictionary) -> 
 
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()
-	
-func _on_button_pressed() -> void:
-	AudioManager.play_button_click_sfx()
 
 func _on_level_complete() -> void:	
 	await graph_canvas.play_level_complete_animation()

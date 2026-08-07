@@ -3,6 +3,15 @@
 [ext_resource type="Script" uid="uid://boo36jrexts7x" path="res://Graph/Graph Canvas/graph_canvas.gd" id="1_v84bs"]
 [ext_resource type="Script" uid="uid://qvhs5frxppt3" path="res://DoubleClickDetector/double_click_detector.gd" id="2_wrq3c"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0l3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 24
+border_width_top = 24
+border_width_right = 24
+border_width_bottom = 24
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
 [node name="GraphCanvas" type="Node2D" unique_id=90730119]
 script = ExtResource("1_v84bs")
 metadata/_custom_type_script = "uid://boo36jrexts7x"
@@ -11,3 +20,15 @@ metadata/_custom_type_script = "uid://boo36jrexts7x"
 unique_name_in_owner = true
 script = ExtResource("2_wrq3c")
 metadata/_custom_type_script = "uid://qvhs5frxppt3"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1439465391]
+
+[node name="GlowPanel" type="Panel" parent="CanvasLayer" unique_id=135358936]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+z_as_relative = false
+offset_top = 66.0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bp0l3")

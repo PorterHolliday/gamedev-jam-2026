@@ -51,16 +51,7 @@ func _on_level_button_pressed(button: LevelButton) -> void:
 	GameRoot.enter_level(button.level_number)
 	
 func _on_back_button_pressed() -> void:
-	AudioManager.play_button_click_sfx()
 	GameRoot.enter_title_screen()
 	
 func _on_settings_button_pressed() -> void:
-	AudioManager.play_button_click_sfx()
 	GameRoot.enter_settings_screen()
-	
-#func _music_fade_in() -> void:
-	#level_selection_music.play()
-	#var prev_db = level_selection_music.volume_db
-	#level_selection_music.volume_db = prev_db - 10
-	#var tween = get_tree().create_tween()
-	#tween.tween_property(level_selection_music, 'volume_db', prev_db, 2)

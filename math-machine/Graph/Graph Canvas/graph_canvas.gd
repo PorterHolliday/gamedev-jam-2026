@@ -5,8 +5,12 @@ const DISCONNECTION_DISTANCE: float = 40.0
 const BEZIER_SAMPLES: float = 40
 const LINE_WIDTH: float = 6.0
 const BORDER_WIDTH: float = 6.0
-const PREVIEW_COLOR: Color = Color(1.0, 1.0, 1.0, 0.8)
-const BORDER_PREVIEW_COLOR: Color = Color(0.6, 0.6, 0.6, 0.6)
+const PREVIEW_COLOR: Color = Color(0.8, 0.8, 0.8, 0.8)
+const BORDER_PREVIEW_COLOR: Color = Color(0.4, 0.4, 0.4, 0.6)
+const VALID_CONNECTION_COLOR: Color = Color(1.0, 1.0, 1.0, 0.863)
+const BORDER_VALID_CONNECTION_COLOR: Color = Color(0.6, 0.6, 0.6, 0.706)
+const INVALID_CONNECTION_COLOR: Color = Color(1.0, 0.62, 0.62, 0.8)
+const BORDER_INVALID_CONNECTION_COLOR: Color = Color(0.6, 0.318, 0.318, 0.6)
 const SHADOW_OFFSET: Vector2 = Vector2(2, 2)
 const SHADOW_COLOR: Color = Color(Color.BLACK, 0.64)
 
@@ -21,10 +25,13 @@ class Connection:
 @export var init_connections: Array[ConnectionData] = []
 
 @onready var double_click_detector: DoubleClickDetector = %DoubleClickDetector
+@onready var glow_panel: Panel = %GlowPanel
 
 var connections: Array[Connection] = []
 var current_connection_start_port: GraphNodePort
 var current_connection_end_port: GraphNodePort
+var is_current_connection_valid: bool = false
+var is_current_connection_invalid: bool = false
 
 var ports: Array[GraphNodePort] = []
 var _level_completed: bool = false
@@ -97,6 +104,7 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 	
 	if play_sound:
 		AudioManager.play_connection_sfx()
+		HapticManager.trigger_port_connect_haptic()
 	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
 	
 	clear_hint_connection()
@@ -108,6 +116,7 @@ func request_disconnection(connection: Connection, play_sound: bool = true) -> b
 	
 	connections.erase(connection)
 	if play_sound:
+		HapticManager.trigger_port_disconnect_haptic()
 		AudioManager.play_disconnection_sfx()
 	connection.to_port.graph_node.remove_input(connection.to_port)
 	
@@ -160,13 +169,21 @@ func _mouse_entered_port_area(port: GraphNodePort) -> void:
 		return
 	if _can_connect_ports(current_connection_start_port, port):
 		port.show_hover_fill()
+		is_current_connection_valid = true
 		current_connection_end_port = port
+		_modulate_glow_panel(VALID_CONNECTION_COLOR)
+		HapticManager.trigger_port_snap_haptic()
 	elif port != current_connection_start_port:
 		port.show_bad_connection()
+		_modulate_glow_panel(INVALID_CONNECTION_COLOR)
+		is_current_connection_invalid = true
 	
 func _mouse_exited_port_area(port: GraphNodePort) -> void:
 	port.hide_hover_fill()
 	port.hide_bad_connection()
+	_modulate_glow_panel(Color(0.0, 0.0, 0.0, 0.0))
+	is_current_connection_valid = false
+	is_current_connection_invalid = false
 	if not current_connection_start_port: return
 	if port != current_connection_end_port: return
 	current_connection_end_port = null
@@ -215,10 +232,18 @@ func _draw_current_connection() -> void:
 		var end := to_local(current_connection_end_port.global_position) \
 				if current_connection_end_port != null \
 				else get_local_mouse_position()
+		var color: Color = PREVIEW_COLOR
+		var border_color: Color = BORDER_PREVIEW_COLOR
+		if is_current_connection_valid:
+			color = VALID_CONNECTION_COLOR
+			border_color = BORDER_VALID_CONNECTION_COLOR
+		elif is_current_connection_invalid:
+			color = INVALID_CONNECTION_COLOR
+			border_color = BORDER_INVALID_CONNECTION_COLOR
 		if current_connection_start_port.type == GraphNodePort.Type.OUTPUT:
-			_draw_bezier(start, end, PREVIEW_COLOR, BORDER_PREVIEW_COLOR, false)
+			_draw_bezier(start, end, color, border_color, false)
 		else:
-			_draw_bezier(end, start, PREVIEW_COLOR, BORDER_PREVIEW_COLOR, false)
+			_draw_bezier(end, start, color, border_color, false)
 			
 func _draw_hovered_connection(connection: Connection) -> void:
 	if not connection: return
@@ -280,6 +305,7 @@ func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color,
 func _port_released() -> void:
 	if current_connection_start_port and current_connection_end_port:
 		request_connection(current_connection_start_port, current_connection_end_port)
+	_modulate_glow_panel(Color(0.0, 0.0, 0.0, 0.0))
 	current_connection_start_port = null
 	current_connection_end_port = null
 		
@@ -349,3 +375,8 @@ func _port_clicked(port: GraphNodePort) -> void:
 	
 	# Start connection from current port
 	current_connection_start_port = port
+	HapticManager.trigger_port_click_haptic()
+
+func _modulate_glow_panel(color: Color) -> void:
+	if OS.has_feature('web_android') or OS.has_feature('web_ios'):
+		glow_panel.modulate = color

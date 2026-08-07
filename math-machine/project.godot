@@ -27,6 +27,7 @@ LevelManager="*uid://p7vahmcreqeo"
 SaveManager="*uid://ckii1lcb1rdhn"
 AudioManager="*uid://dv32veov1f06t"
 NodeTypeRegistry="*uid://biubedogqv1b6"
+HapticManager="*uid://cco4urw1uaao1"
 
 [display]
 
