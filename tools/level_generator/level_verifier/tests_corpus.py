@@ -82,7 +82,7 @@ CASES = [
     ),
     dict(
         num=6,
-        desc="I1=3; A1=+2, S1=s, S2=s; O1=11  (must NOT latch past the finish)",
+        desc="I1=3; A1=+2, S1=s, S2=s; O1=11  (leftover scratch must not split a family)",
         data={
             "name": "case6",
             "inputs": {"I1": 3},
@@ -95,13 +95,47 @@ CASES = [
         },
         expect_solvable=True,
         expect_minimal=True,
-        # Exactly one family. The ratchet reaches S1=9, at which point A1 holds
-        # 11 and can be wired straight to O1. A second family used to come back
-        # that latched that same 11 into S2 and then read it back out --
-        # every latch "used", so the dead-latch sweep kept it, but it is pure
-        # padding and no player would do it. See _latches_past_the_finish.
-        expect_families=1,
-        expect_max_latches_in_any_family=3,
+        # Exactly two, distinguished by WHICH VALUE THE FINAL NETWORK READS:
+        #   {9}   ratchet to 9, then A1 computes 9+2=11 live
+        #   {11}  latch the 11 itself, then wire it straight out
+        # Both leave a value in the other store (7 and 9 respectively) that
+        # nothing reads at the end.
+        #
+        # Characterisation only: this level has one route per end state, so it
+        # passes under both the old and the fixed signature in
+        # notation._final_state_and_wiring. Case 7 is the one that actually
+        # fails without the fix.
+        expect_families=2,
+        expect_final_read_store_values=[[9], [11]],
+    ),
+    dict(
+        num=7,
+        desc="I1=1; A1=+2, A2=+5, S1=s, S2=s; O1=11  (two routes to 11, different scratch)",
+        data={
+            "name": "case7",
+            "inputs": {"I1": 1},
+            "operations": {
+                "A1": {"type": "add", "value": 2},
+                "A2": {"type": "add", "value": 5},
+                "S1": {"type": "store"},
+                "S2": {"type": "store"},
+            },
+            "outputs": {"O1": 11},
+        },
+        expect_solvable=True,
+        # Deliberately NOT minimal -- either Add alone can ratchet to 11, so
+        # each is individually deletable. Minimality is not what this case
+        # tests; it is here because it is the smallest shape that reaches one
+        # stored value by two routes leaving different scratch behind.
+        expect_minimal=False,
+        # Three families, by what the final network reads: 6, 9, or 11.
+        # Without the fix in notation._final_state_and_wiring this is FOUR,
+        # because the two ways of ending with 11 stored -- leftover 6 in one
+        # store versus leftover 9 in the other -- count as different families
+        # despite being the same solution to a player: only the 11 is wired to
+        # anything. This case fails on the pre-fix signature.
+        expect_families=3,
+        expect_final_read_store_values=[[6], [9], [11]],
     ),
 ]
 
@@ -147,17 +181,24 @@ def run_one(case, verbose=True):
             ok = False
             msgs.append(f"found {len(families)} distinct solution families, expected exactly {exact_fam}")
 
-        # Guards against padded families creeping back in: a solution that
-        # keeps latching after the level is already finishable inflates this
-        # without changing what the level can do.
-        max_latches_seen = case.get("expect_max_latches_in_any_family")
-        if max_latches_seen is not None:
-            worst = max((len(s.latches) for s in families), default=0)
-            if worst > max_latches_seen:
+        # The store values the FINAL network reads, per family, sorted. Guards
+        # the rule that leftover scratch in an unread store must not split one
+        # solution into several families.
+        expected_read = case.get("expect_final_read_store_values")
+        if expected_read is not None:
+            got = []
+            for sol in families:
+                held = {l.store_id: l.value for l in sol.latches}
+                read = {p for n in sol.final.built for p in n.inputs if p in held}
+                read |= {v for v in sol.final.assignment.values() if v in held}
+                got.append(sorted(held[s] for s in read))
+            got.sort()
+            if got != sorted(expected_read):
                 ok = False
                 msgs.append(
-                    f"a family uses {worst} latches, expected at most {max_latches_seen} "
-                    f"-- a solution is latching past the point the level could be finished"
+                    f"final-network-read store values per family are {got}, "
+                    f"expected {sorted(expected_read)} -- an unread leftover value "
+                    f"is probably splitting one solution into several families"
                 )
 
     status = "PASS" if ok else "FAIL"

@@ -81,14 +81,26 @@ def _final_key(path: Path, layout: Layout, project: Project,
         to_port = None if to_type in project.commutative else w.to_port
         wires.append((from_type, from_slot, w.from_port, to_type, to_slot, to_port))
 
-    store_values = []
-    read_in_final = {w.from_id for w in final.wires}
+    # The value each store HOLDS at the end -- the last terminator on it, not
+    # every terminator it ever saw. §19.10 keys on the final configuration
+    # only: "how the stores got to hold those values -- which route was used,
+    # how many latches it took, what intermediate scratch values passed through
+    # along the way -- is part of how you play it", not part of the identity.
+    #
+    # Collecting every terminator instead put the whole latch history into the
+    # key, so two families with the same destination but different journeys
+    # failed to collapse -- defeating the entire point of this function.
+    held: Dict[str, int] = {}
     for phase in path.phases:
-        if phase.terminator is None:
-            continue
-        if phase.terminator.store_id in read_in_final:
-            _, slot = ref(phase.terminator.store_id)
-            store_values.append((slot, phase.terminator.value))
+        if phase.terminator is not None:
+            held[phase.terminator.store_id] = phase.terminator.value
+
+    read_in_final = {w.from_id for w in final.wires}
+    store_values = [
+        (ref(store_id)[1], value)
+        for store_id, value in held.items()
+        if store_id in read_in_final
+    ]
 
     return (tuple(sorted(set(store_values))), tuple(sorted(set(wires), key=repr)))
 

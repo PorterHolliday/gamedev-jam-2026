@@ -184,18 +184,51 @@ def canonical_signature_with_symmetry(level: Level, solution: Solution, classes=
 
 
 def _final_state_and_wiring(solution: Solution):
-    """(final store contents, final wiring) -- deliberately excludes every
-    latch phase's own internal structure. Only the LAST value written to each
-    store (i.e. what it actually holds once the level is solved) matters;
-    which route got it there does not. dead-latch pruning upstream already
-    guarantees `solution.latches` only contains latches for stores the final
-    network actually reads from, so this is exactly "what's on the board when
-    the player finishes.\""""
+    """(store contents the final network READS, final wiring) -- deliberately
+    excludes every latch phase's own internal structure. Only the last value
+    written to each store matters; which route got it there does not.
+
+    Restricted to stores the final network actually reads from. An earlier
+    version took every store in `solution.latches`, on the reasoning that
+    dead-latch pruning had already removed the rest -- but that is not what
+    _prune_dead_latches does. It keeps a latch whose store is read by a later
+    LATCH PHASE, which is not the same as being read at the end. A store used
+    purely as scratch during a ratchet is legitimately latched, legitimately
+    kept, and yet holds a value nobody ever looks at once the level is solved.
+
+    store_4 (I1=3; A1=+2, S1=s, S2=s; O1=11) has this in both its families:
+
+        end {S1: 9, S2: 7}   final network reads only S1  (A1 makes 9+2=11)
+        end {S1: 9, S2: 11}  final network reads only S2  (11 wired straight out)
+
+    Including the unused value would make solutions that differ *only* in
+    leftover scratch look like different families -- {9,11}, {13,11}, {3,11},
+    {5,11} are one solution to a player, since only the 11 is doing anything.
+    What is on the board when the player finishes is what they can see being
+    used, not every number still sitting in a store.
+    """
     final_store_state: Dict[str, int] = {}
     for latch in solution.latches:
         final_store_state[latch.store_id] = latch.value
+
+    read_by_final = {
+        producer_id
+        for node in solution.final.built
+        for producer_id in node.inputs
+        if producer_id in final_store_state
+    }
+    read_by_final |= {
+        producer_id
+        for producer_id in solution.final.assignment.values()
+        if producer_id in final_store_state
+    }
+
     return (
-        frozenset(final_store_state.items()),
+        frozenset(
+            (store_id, value)
+            for store_id, value in final_store_state.items()
+            if store_id in read_by_final
+        ),
         edge_set(solution.final.built),
         frozenset(solution.final.assignment.items()),
     )

@@ -822,14 +822,20 @@ Drop any phase whose store is never read afterwards — neither as a source in a
 later phase's wiring nor in the final phase. A latch nothing ever reads is dead
 and must not be emitted.
 
-Drop the whole family if it **keeps latching after the level could already have
-been finished** — that is, if the store contents at some point part-way through
-already make every output simultaneously reachable. Such a family latches a
-value that was already sitting on a live node and then reads it straight back
-out; every latch looks "used", so the dead-latch rule above will not catch it.
-The solver now filters these at source (`_latches_past_the_finish`), so in
-practice you will not see one; check it anyway if you are replaying a transcript
-captured before that change.
+A family that **keeps latching after the level could already have been
+finished** is kept, not dropped. It reaches a genuinely different final board,
+and a player who lands on that board has solved the level and must be creditable
+for it — completeness matters more here than tidiness (§19.10). `store_5` has
+four such families; all four ship.
+
+What such a family must **not** do is fragment into several. Two solutions that
+end with the same value wired to the same place, differing only in a leftover
+number sitting in a store nothing reads, are one solution to the player. Family
+identity therefore keys on the stores the **final network actually reads**, not
+on every store that was ever latched — see `notation._final_state_and_wiring`.
+`store_4`'s two families are exactly this: one reads `9` and computes `11` live,
+the other reads a stored `11`; each leaves an unread value behind, and that
+value is deliberately invisible to family identity.
 
 Then **check your parse arithmetically, per phase**: evaluating a phase's wiring
 must yield its terminator's value at `producer`, and evaluating the final phase

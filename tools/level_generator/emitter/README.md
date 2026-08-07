@@ -95,21 +95,31 @@ receives its target). The structured extraction prunes backwards from the
 outputs and is correct; `replay.py` takes `prune_final=False` to reproduce the
 old wording and see the difference.
 
-**Solutions that latch past the finish are filtered in the solver.** A latch can
-be causally "used" — its value wired straight to an output — and still be
-redundant, because that value was already sitting on a live node that could have
-been wired to the output directly. `store_4` had two families: reach `S1=9` and
-wire `S1 → A1 → O1` (A1 computes 11), or do that *and* latch the 11 into `S2`
-first, then read it back out. Every latch is used, so `_prune_dead_latches`
-keeps the second one, but no player would do it.
+**Latching past the finish is kept; leftover scratch is ignored.** A solution
+can keep latching after the level is already finishable — `store_4` can reach
+`S1=9` and wire `S1 → A1 → O1` (A1 computes 11), *or* latch that 11 into `S2`
+first and read it straight out. Both reach a genuinely different final board, so
+both ship: a player who lands on either has solved the level and must be
+creditable for it. An earlier revision filtered these out in the solver and it
+was reverted, because completeness matters more than tidiness here (§19.10).
 
-`solver._latches_past_the_finish` drops these at source: if the store contents
-at any point part-way through already make every output simultaneously
-reachable, the rest is padding. This removed 5 of 75 corpus families —
-`store_4` 2→1 and `store_5` 6→2 — and never the last representative of a
-result, since the winning prefix state is itself in the search's
-`winning_states` and generates its own shorter solutions. Regression case 6 in
-`level_verifier/tests_corpus.py` pins it.
+What must not happen is one solution fragmenting into several. Family identity
+keys on the stores the **final network actually reads**, not on every store ever
+latched. `notation._final_state_and_wiring` used to do the latter, on a
+docstring claim that dead-latch pruning had already removed unread stores —
+which is false: `_prune_dead_latches` keeps a latch read by a later *latch
+phase*, which is not the same as being read at the end. Both `store_4` families
+violate that claim. Left unfixed, a level reaching one stored value by two
+routes with different scratch reports them as separate families — `I1=1;
+A1=+2, A2=+5, S1, S2; O1=11` gives 4 instead of 3, the extra being two ways of
+ending with 11 stored that differ only in a leftover nobody reads. Regression
+case 7 in `level_verifier/tests_corpus.py` pins it; case 6 is characterisation
+only and passes either way.
+
+The emitter's own §19.10 key (`collapse.py::_final_key`) applies the same rule,
+and separately had the mirror-image bug: it collected *every* terminator on a
+store rather than the last, putting the whole latch history into a key §19.10
+says must be the final configuration only.
 
 **Two store-free levels gain solution paths.** `add_value_4` (2 → 10) and
 `sum_subtract_9` (10 → 11). The solver enumerates families exhaustively where
