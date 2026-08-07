@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cpjdg0xbwgfg8" path="res://Levels/level.gd" id="1_3rkkl"]
 [ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://Graph/Graph Canvas/graph_canvas.tscn" id="2_ngotv"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="3_11tni"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="3_ni20n"]
 [ext_resource type="Texture2D" uid="uid://dxctjnu8acqc1" path="res://UI/Level UI/restart_icon.png" id="4_ni20n"]
 [ext_resource type="Texture2D" uid="uid://ccb31vo32ayga" path="res://UI/Level UI/hint_icon.png" id="5_tcd1y"]
 [ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="6_ni20n"]
@@ -240,6 +241,7 @@ size_flags_horizontal = 0
 size_flags_stretch_ratio = 15.0
 tooltip_text = "Level Select"
 icon_alignment = 1
+script = ExtResource("3_ni20n")
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/BackButton" unique_id=2016060500]
 layout_mode = 0
@@ -300,6 +302,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 2
 tooltip_text = "Restart"
+script = ExtResource("3_ni20n")
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/RestartButton" unique_id=300638952]
 layout_mode = 0
@@ -316,6 +319,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Hint"
+script = ExtResource("3_ni20n")
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HintButton" unique_id=807053921]
 layout_mode = 0
@@ -333,6 +337,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Settings"
+script = ExtResource("3_ni20n")
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/SettingsButton" unique_id=1044884217]
 layout_mode = 0

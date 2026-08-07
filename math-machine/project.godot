@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://mswcxkopegv8"
 LevelManager="*uid://p7vahmcreqeo"
 SaveManager="*uid://ckii1lcb1rdhn"
 AudioManager="*uid://dv32veov1f06t"
+HapticManager="*uid://cco4urw1uaao1"
 
 [display]
 

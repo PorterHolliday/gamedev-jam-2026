@@ -21,11 +21,6 @@ func _ready() -> void:
 	hint_close_button.pressed.connect(_on_hint_close_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	
-	back_button.pressed.connect(_on_button_pressed)
-	restart_button.pressed.connect(_on_button_pressed)
-	hint_button.pressed.connect(_on_button_pressed)
-	settings_button.pressed.connect(_on_button_pressed)
-	
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
 		if not ui_layer: return
@@ -53,9 +48,6 @@ func _on_hint_close_button_pressed() -> void:
 	
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()
-	
-func _on_button_pressed() -> void:
-	AudioManager.play_button_click_sfx()
 
 func _on_level_complete() -> void:	
 	await graph_canvas.play_level_complete_animation()

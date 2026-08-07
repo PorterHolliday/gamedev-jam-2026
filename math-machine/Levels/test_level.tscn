@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="6_pvdih"]
 [ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="7_7e6fp"]
 [ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="7_tc6tp"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="8_7e6fp"]
 [ext_resource type="PackedScene" uid="uid://jxjl5s4t0dnk" path="res://Graph/Graph Nodes/Operation Nodes/Store/store_node.tscn" id="8_k8b6b"]
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="9_lx7qo"]
 
@@ -65,3 +66,18 @@ value = 3
 [node name="OutputNode3" parent="GraphCanvas" parent_id_path=PackedInt32Array(90730119) index="14" unique_id=482030964 instance=ExtResource("9_lx7qo")]
 position = Vector2(1048, 506)
 value = 8
+
+[node name="UILayer" parent="." index="2" unique_id=1147669631]
+layer = 2
+
+[node name="BackButton" parent="UILayer/PanelContainer/MarginContainer/Control" parent_id_path=PackedInt32Array(148626940) index="0" unique_id=629111258]
+script = ExtResource("8_7e6fp")
+
+[node name="RestartButton" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="0" unique_id=930462941]
+script = ExtResource("8_7e6fp")
+
+[node name="HintButton" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="1" unique_id=348902469]
+script = ExtResource("8_7e6fp")
+
+[node name="SettingsButton" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" parent_id_path=PackedInt32Array(1938899271) index="2" unique_id=518444032]
+script = ExtResource("8_7e6fp")

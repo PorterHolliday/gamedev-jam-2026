@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://Screens/LevelSelectionScreen/LevelButton/level_button.tscn" id="1_bntq0"]
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://Screens/LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="2_4o1ik"]
 [ext_resource type="Texture2D" uid="uid://bqjkn1etmk7m1" path="res://Screens/LevelSelectionScreen/challenge_level_divider.png" id="2_e8uy2"]
 [ext_resource type="LabelSettings" uid="uid://buq01gkh36dd0" path="res://LabelSettings/divider_label_settings.tres" id="2_osfc4"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_gnmtl"]
@@ -153,6 +154,7 @@ theme_type_variation = &"BackButton"
 theme_override_styles/normal = SubResource("StyleBoxFlat_yuwhm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_337mu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfhlq")
+script = ExtResource("2_4o1ik")
 
 [node name="TextureRect" type="TextureRect" parent="BackButton" unique_id=1767596963]
 layout_mode = 0
@@ -179,6 +181,7 @@ theme_type_variation = &"BackButton"
 theme_override_styles/normal = SubResource("StyleBoxFlat_yuwhm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_337mu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfhlq")
+script = ExtResource("2_4o1ik")
 
 [node name="TextureRect" type="TextureRect" parent="SettingsButton" unique_id=785720812]
 layout_mode = 0
