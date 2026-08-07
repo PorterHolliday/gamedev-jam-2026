@@ -103,7 +103,6 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 		HapticManager.trigger_port_connect_haptic()
 	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
 	
-	_modulate_glow_panel(Color(0.0, 0.0, 0.0, 0.0))
 	connection_occurred.emit()
 	return true
 	
@@ -247,6 +246,7 @@ func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color,
 func _port_released() -> void:
 	if current_connection_start_port and current_connection_end_port:
 		request_connection(current_connection_start_port, current_connection_end_port)
+	_modulate_glow_panel(Color(0.0, 0.0, 0.0, 0.0))
 	current_connection_start_port = null
 	current_connection_end_port = null
 		
