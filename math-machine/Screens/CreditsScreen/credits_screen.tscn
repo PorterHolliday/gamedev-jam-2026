@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://66rm3attlumf" path="res://Screens/CreditsScreen/credits_screen.gd" id="1_3d6hp"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="2_1xyof"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="2_fly6y"]
 [ext_resource type="LabelSettings" uid="uid://bqd5dbb4rb5gh" path="res://LabelSettings/header_label_settings.tres" id="4_fly6y"]
 [ext_resource type="LabelSettings" uid="uid://buq01gkh36dd0" path="res://LabelSettings/divider_label_settings.tres" id="5_5ot11"]
 [ext_resource type="LabelSettings" uid="uid://b1ki0m1e1cqpy" path="res://LabelSettings/credits_label_settings.tres" id="5_jhtfi"]
@@ -229,6 +230,7 @@ theme_type_variation = &"BackButton"
 theme_override_styles/normal = SubResource("StyleBoxFlat_ah2hc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_slkg8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jhtfi")
+script = ExtResource("2_fly6y")
 
 [node name="TextureRect" type="TextureRect" parent="BackButton" unique_id=903090795]
 layout_mode = 0

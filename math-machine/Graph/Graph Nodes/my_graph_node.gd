@@ -1,6 +1,9 @@
 class_name MyGraphNode
 extends Node2D
 
+const GROW_SCALE: Vector2 = Vector2(1.15, 1.15)
+const ROTATION_DEGREES: float = 10.0
+
 @onready var _graph_canvas: GraphCanvas
 
 const NULL_VALUE: int = 9223372036854775807
@@ -51,11 +54,11 @@ func _calculate_outputs() -> Array[int]:
 	
 func _play_update_input_animation() -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(self, 'scale', Vector2(1.1, 1.1), 0.1)
+	tween.tween_property(self, 'scale', GROW_SCALE, 0.1)
 	tween.tween_property(self, 'scale', Vector2.ONE, 0.1)
 	
 func _play_remove_input_animation() -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(self, 'rotation_degrees', -5.0, 0.05)
-	tween.tween_property(self, 'rotation_degrees', 5, 0.1)
+	tween.tween_property(self, 'rotation_degrees', -ROTATION_DEGREES, 0.05)
+	tween.tween_property(self, 'rotation_degrees', ROTATION_DEGREES, 0.1)
 	tween.tween_property(self, 'rotation_degrees', 0, 0.05)
