@@ -6,7 +6,7 @@ extends Control
 
 func on_level_complete() -> void:
 	var popup: LevelCompletePopup
-	if LevelManager.current_level_index == LevelManager.level_scenes.size() - 1:
+	if LevelManager.current_level_index == LevelManager.level_data_list.size() - 1:
 		popup = game_complete_popup_scene.instantiate()
 	else:
 		popup = level_complete_popup_scene.instantiate()

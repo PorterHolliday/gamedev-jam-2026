@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://cxym0fle4t3je"]
+
+[ext_resource type="Script" uid="uid://dg04l17u1edmc" path="res://Levels/LevelBuilder/level_builder.gd" id="1_sjik3"]
+[ext_resource type="Script" uid="uid://h7n66s84nt4c" path="res://Levels/LevelBuilder/location_group.gd" id="2_fxnir"]
+
+[sub_resource type="Resource" id="Resource_bp0l3"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("InputLocations/Marker2D4")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_7gix3"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("InputLocations/Marker2D3"), NodePath("InputLocations/Marker2D5")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_blbig"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("InputLocations/Marker2D2"), NodePath("InputLocations/Marker2D4"), NodePath("InputLocations/Marker2D6")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_qonav"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("InputLocations/Marker2D"), NodePath("InputLocations/Marker2D3"), NodePath("InputLocations/Marker2D5"), NodePath("InputLocations/Marker2D7")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_3ffsk"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D5")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_n0bta"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D4"), NodePath("OperationLocations/Marker2D6")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_jsfp8"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D3"), NodePath("OperationLocations/Marker2D5"), NodePath("OperationLocations/Marker2D7")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_kvrw6"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D"), NodePath("OperationLocations/Marker2D2"), NodePath("OperationLocations/Marker2D8"), NodePath("OperationLocations/Marker2D9")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_6imm1"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D"), NodePath("OperationLocations/Marker2D2"), NodePath("OperationLocations/Marker2D5"), NodePath("OperationLocations/Marker2D8"), NodePath("OperationLocations/Marker2D9")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_sjik3"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OperationLocations/Marker2D"), NodePath("OperationLocations/Marker2D2"), NodePath("OperationLocations/Marker2D4"), NodePath("OperationLocations/Marker2D6"), NodePath("OperationLocations/Marker2D8"), NodePath("OperationLocations/Marker2D9")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_dkv23"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OutputLocations/Marker2D4")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_x458k"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OutputLocations/Marker2D3"), NodePath("OutputLocations/Marker2D5")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_lrol0"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OutputLocations/Marker2D2"), NodePath("OutputLocations/Marker2D4"), NodePath("OutputLocations/Marker2D6")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[sub_resource type="Resource" id="Resource_ouwm7"]
+script = ExtResource("2_fxnir")
+locations = Array[NodePath]([NodePath("OutputLocations/Marker2D"), NodePath("OutputLocations/Marker2D3"), NodePath("OutputLocations/Marker2D5"), NodePath("OutputLocations/Marker2D7")])
+metadata/_custom_type_script = "uid://h7n66s84nt4c"
+
+[node name="LevelBuilder" type="Node2D" unique_id=549361583]
+script = ExtResource("1_sjik3")
+input_location_groups = Array[ExtResource("2_fxnir")]([SubResource("Resource_bp0l3"), SubResource("Resource_7gix3"), SubResource("Resource_blbig"), SubResource("Resource_qonav")])
+operation_location_groups = Array[ExtResource("2_fxnir")]([SubResource("Resource_3ffsk"), SubResource("Resource_n0bta"), SubResource("Resource_jsfp8"), SubResource("Resource_kvrw6"), SubResource("Resource_6imm1"), SubResource("Resource_sjik3")])
+output_location_groups = Array[ExtResource("2_fxnir")]([SubResource("Resource_dkv23"), SubResource("Resource_x458k"), SubResource("Resource_lrol0"), SubResource("Resource_ouwm7")])
+metadata/_custom_type_script = "uid://dg04l17u1edmc"
+
+[node name="InputLocations" type="Node2D" parent="." unique_id=619020436]
+
+[node name="Marker2D" type="Marker2D" parent="InputLocations" unique_id=88934820]
+position = Vector2(80, 160)
+
+[node name="Marker2D2" type="Marker2D" parent="InputLocations" unique_id=646994815]
+position = Vector2(80, 224)
+
+[node name="Marker2D3" type="Marker2D" parent="InputLocations" unique_id=761838770]
+position = Vector2(80, 288)
+
+[node name="Marker2D4" type="Marker2D" parent="InputLocations" unique_id=1307699826]
+position = Vector2(80, 352)
+
+[node name="Marker2D5" type="Marker2D" parent="InputLocations" unique_id=1796347149]
+position = Vector2(80, 416)
+
+[node name="Marker2D6" type="Marker2D" parent="InputLocations" unique_id=1801158879]
+position = Vector2(80, 480)
+
+[node name="Marker2D7" type="Marker2D" parent="InputLocations" unique_id=2068130194]
+position = Vector2(80, 544)
+
+[node name="OperationLocations" type="Node2D" parent="." unique_id=19553426]
+
+[node name="Marker2D" type="Marker2D" parent="OperationLocations" unique_id=81706797]
+position = Vector2(384, 256)
+
+[node name="Marker2D2" type="Marker2D" parent="OperationLocations" unique_id=1484918597]
+position = Vector2(384, 448)
+
+[node name="Marker2D3" type="Marker2D" parent="OperationLocations" unique_id=125137260]
+position = Vector2(576, 176)
+
+[node name="Marker2D4" type="Marker2D" parent="OperationLocations" unique_id=530611064]
+position = Vector2(576, 256)
+
+[node name="Marker2D5" type="Marker2D" parent="OperationLocations" unique_id=892884948]
+position = Vector2(576, 352)
+
+[node name="Marker2D6" type="Marker2D" parent="OperationLocations" unique_id=493508680]
+position = Vector2(576, 448)
+
+[node name="Marker2D7" type="Marker2D" parent="OperationLocations" unique_id=1437427432]
+position = Vector2(576, 528)
+
+[node name="Marker2D8" type="Marker2D" parent="OperationLocations" unique_id=672624626]
+position = Vector2(768, 256)
+
+[node name="Marker2D9" type="Marker2D" parent="OperationLocations" unique_id=560241013]
+position = Vector2(768, 448)
+
+[node name="OutputLocations" type="Node2D" parent="." unique_id=928317284]
+
+[node name="Marker2D" type="Marker2D" parent="OutputLocations" unique_id=1474467071]
+position = Vector2(1072, 160)
+
+[node name="Marker2D2" type="Marker2D" parent="OutputLocations" unique_id=1939910343]
+position = Vector2(1072, 224)
+
+[node name="Marker2D3" type="Marker2D" parent="OutputLocations" unique_id=7541596]
+position = Vector2(1072, 288)
+
+[node name="Marker2D4" type="Marker2D" parent="OutputLocations" unique_id=1089538707]
+position = Vector2(1072, 352)
+
+[node name="Marker2D5" type="Marker2D" parent="OutputLocations" unique_id=328865185]
+position = Vector2(1072, 416)
+
+[node name="Marker2D6" type="Marker2D" parent="OutputLocations" unique_id=249012545]
+position = Vector2(1072, 480)
+
+[node name="Marker2D7" type="Marker2D" parent="OutputLocations" unique_id=1475289226]
+position = Vector2(1072, 544)

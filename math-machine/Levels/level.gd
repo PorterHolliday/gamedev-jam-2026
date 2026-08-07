@@ -1,14 +1,15 @@
 class_name Level
 extends Node2D
 
+@export var level_data: LevelData
+
+@onready var level_builder: LevelBuilder = %LevelBuilder
 @onready var graph_canvas: GraphCanvas = %GraphCanvas
 @onready var ui_layer: CanvasLayer = %UILayer
 @onready var back_button: Button = %BackButton
 @onready var restart_button: Button = %RestartButton
 @onready var hint_button: Button = %HintButton
-@onready var hint_close_button: Button = %HintCloseButton
 @onready var settings_button: Button = %SettingsButton
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 func _ready() -> void:
 	global_position = Vector2.ZERO
@@ -18,8 +19,10 @@ func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
 	restart_button.pressed.connect(_on_restart_button_pressed)
 	hint_button.pressed.connect(_on_hint_button_pressed)
-	hint_close_button.pressed.connect(_on_hint_close_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
+	
+	level_builder.build(level_data)
+	graph_canvas.start()
 	
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
@@ -41,11 +44,40 @@ func _on_restart_button_pressed() -> void:
 	GameRoot.restart_level()
 	
 func _on_hint_button_pressed() -> void:
-	animation_player.play('show_hint')
-	
-func _on_hint_close_button_pressed() -> void:
-	animation_player.play('hide_hint')
-	
+	var solution_data: LevelSolutionData = level_data.level_solution_data
+	if solution_data == null: return
+
+	var steps: Array[SolutionStep] = solution_data.get_next_hint_group(graph_canvas)
+	if steps.is_empty():
+		graph_canvas.clear_hint_connection()
+		return
+
+	var target: Dictionary = solution_data.get_hint_group_target(steps, graph_canvas)
+	graph_canvas.set_hint_connections(target["port_pairs"])
+
+	if _should_show_hint_value(steps, target):
+		var store_node: MyGraphNode = target["store_node"]
+		if store_node is StoreNode:
+			store_node.show_hint_value(target["store_value"])
+
+## Whether this hint should pulse the cursor phase's goal value on its
+## store. The phase goal is absent entirely on the final phase, which has no
+## terminator, so there is nothing to show there either way.
+##
+## The single read of HintVisuals.SHOW_PHASE_GOAL_VALUE lives here on
+## purpose: LevelSolutionData always reports the goal store, and the
+## presentation layer decides whether to use it, so the hint system's data
+## contract is the same whichever way the flag goes. With the flag off, the
+## ghost appears only on the wire that actually causes the latch -- that's
+## established behaviour, not part of the experiment.
+func _should_show_hint_value(steps: Array[SolutionStep], target: Dictionary) -> bool:
+	if not target.has("store_node"):
+		return false
+	if HintVisuals.SHOW_PHASE_GOAL_VALUE:
+		return true
+	return steps.size() == 1 \
+			and steps[0].step_data.to_type == NodeTypeRegistry.NodeType.STORE
+
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()
 

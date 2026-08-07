@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://1lqjjftt3w7m"]
+
+[ext_resource type="Script" uid="uid://cpjdg0xbwgfg8" path="res://Levels/level.gd" id="1_8a2b0"]
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://Graph/Graph Canvas/graph_canvas.tscn" id="2_ecu0b"]
+[ext_resource type="PackedScene" uid="uid://cxym0fle4t3je" path="res://Levels/LevelBuilder/level_builder.tscn" id="3_t2u7g"]
+[ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_vx8ih"]
+[ext_resource type="Texture2D" uid="uid://dxctjnu8acqc1" path="res://UI/Level UI/restart_icon.png" id="5_ugh17"]
+[ext_resource type="Texture2D" uid="uid://ccb31vo32ayga" path="res://UI/Level UI/hint_icon.png" id="6_eabcg"]
+[ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="7_dvejp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3su"]
+bg_color = Color(0.22745098, 0.2509804, 0.32941177, 1)
+border_width_left = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="SystemFont" id="SystemFont_11tni"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ni20n"]
+font = SubResource("SystemFont_11tni")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Level" type="Node2D" unique_id=1073491300]
+script = ExtResource("1_8a2b0")
+metadata/_custom_type_script = "uid://cpjdg0xbwgfg8"
+
+[node name="Panel" type="Panel" parent="." unique_id=2079327295]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="GraphCanvas" parent="." unique_id=90730119 instance=ExtResource("2_ecu0b")]
+unique_name_in_owner = true
+
+[node name="LevelBuilder" parent="." unique_id=549361583 node_paths=PackedStringArray("graph_canvas") instance=ExtResource("3_t2u7g")]
+unique_name_in_owner = true
+graph_canvas = NodePath("../GraphCanvas")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1147669631]
+unique_name_in_owner = true
+
+[node name="PanelContainer" type="PanelContainer" parent="UILayer" unique_id=1898184552]
+custom_minimum_size = Vector2(0, 66)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sh3su")
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/PanelContainer" unique_id=1154784698]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="Control" type="Control" parent="UILayer/PanelContainer/MarginContainer" unique_id=148626940]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control" unique_id=629111258]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 24.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 15.0
+tooltip_text = "Level Select"
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/BackButton" unique_id=2016060500]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("4_vx8ih")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="UILayer/PanelContainer/MarginContainer/Control" unique_id=1298672109]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 13.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer" unique_id=812724359]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" unique_id=815026241]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_ni20n")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/PanelContainer/MarginContainer/Control" unique_id=1938899271]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="RestartButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" unique_id=930462941]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 2
+tooltip_text = "Restart"
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/RestartButton" unique_id=300638952]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("5_ugh17")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HintButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" unique_id=348902469]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Hint"
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HintButton" unique_id=807053921]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 35.0
+offset_bottom = 41.0
+texture = ExtResource("6_eabcg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" unique_id=518444032]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Settings"
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/SettingsButton" unique_id=1044884217]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("7_dvejp")
+expand_mode = 1
+stretch_mode = 5

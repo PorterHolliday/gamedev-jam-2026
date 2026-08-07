@@ -68,8 +68,8 @@ DEFAULT_SOLVE_TIMEOUT = 8  # seconds, per solve() call; see note above
 # --*-range vs --bound below). Every CLI flag that samples or accepts a raw
 # value (inputs, outputs, add-op values) is checked against the matching
 # range; the solver's search bound is a completely separate concern.
-DEFAULT_INPUT_RANGE: Tuple[int, int] = (-9, 20)
-DEFAULT_OUTPUT_RANGE: Tuple[int, int] = (-9, 20)
+DEFAULT_INPUT_RANGE: Tuple[int, int] = (-9, 9)
+DEFAULT_OUTPUT_RANGE: Tuple[int, int] = (-20, 20)
 DEFAULT_ADD_VALUE_RANGE: Tuple[int, int] = (-9, 9)
 
 OP_TYPES = ["add", "sum", "subtract", "store"]

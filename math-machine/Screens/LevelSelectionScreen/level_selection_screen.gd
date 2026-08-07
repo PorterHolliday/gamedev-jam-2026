@@ -14,7 +14,7 @@ func _ready() -> void:
 func update_level_buttons() -> void:
 	var previous_level_complete: bool = false
 	for level_button in level_buttons:
-		if level_button.level_number >= LevelManager.level_scenes.size(): continue
+		if level_button.level_number >= LevelManager.level_data_list.size(): continue
 		if previous_level_complete:
 			previous_level_complete = false
 			level_button.disabled = false
