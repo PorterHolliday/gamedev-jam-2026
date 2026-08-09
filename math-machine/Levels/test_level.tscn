@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cw60x2kgtjono"]
 
 [ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_ormqy"]
-[ext_resource type="Resource" uid="uid://gpo4dcvk2wsb" path="res://Levels/LevelData/AddValue/add_value_4.tres" id="2_00vsl"]
+[ext_resource type="Resource" uid="uid://cgr4pd3d3gemw" path="res://Levels/LevelData/Sum/sum_5.tres" id="2_00vsl"]
 
 [node name="TestLevel" unique_id=1073491300 instance=ExtResource("1_ormqy")]
 level_data = ExtResource("2_00vsl")
