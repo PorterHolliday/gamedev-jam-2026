@@ -1,0 +1,54 @@
+{
+  "name": "three_op_s0_21",
+  "inputs": {
+    "I1": 7,
+    "I2": 8
+  },
+  "operations": {
+    "A1": {
+      "type": "add",
+      "value": 3
+    },
+    "P1": {
+      "type": "sum"
+    },
+    "M1": {
+      "type": "subtract"
+    }
+  },
+  "outputs": {
+    "O1": -9,
+    "O2": -6
+  },
+  "generator": {
+    "pipeline": "enumerate",
+    "seed": 0,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "minimality_rows_exhausted": true,
+    "solution_length": 7,
+    "latch_count": 0,
+    "solution_family_count": 1,
+    "family_search_exhausted": true,
+    "tier": 2,
+    "exhaustive": true,
+    "reach_setup_exhausted": true,
+    "solver_timeout_hit": false,
+    "input_range": [
+      0,
+      9
+    ],
+    "output_range": [
+      -20,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

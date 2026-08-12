@@ -1,0 +1,52 @@
+{
+  "name": "double_sum",
+  "inputs": {
+    "I1": 1,
+    "I2": 5
+  },
+  "operations": {
+    "P1": {
+      "type": "sum"
+    },
+    "P2": {
+      "type": "sum"
+    },
+    "S1": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": 18
+  },
+  "generator": {
+    "pipeline": "enumerate",
+    "seed": 3,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "minimality_rows_exhausted": true,
+    "solution_length": 9,
+    "latch_count": 1,
+    "solution_family_count": 5,
+    "family_search_exhausted": true,
+    "tier": 2,
+    "exhaustive": true,
+    "reach_setup_exhausted": false,
+    "solver_timeout_hit": false,
+    "input_range": [
+      0,
+      9
+    ],
+    "output_range": [
+      -20,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

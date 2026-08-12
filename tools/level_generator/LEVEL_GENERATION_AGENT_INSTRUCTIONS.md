@@ -12,12 +12,12 @@ You generate levels for a node-based number puzzle game. A **generator** (`gener
 |---|---|
 | Is this level solvable? | Which mechanic a batch should teach |
 | Is every node required? | Which survivors are worth keeping |
-| What are the solutions? | Tier assignment, naming, teaching notes |
+| What are the solutions? | Naming, teaching notes |
 | How many solution families? | Batch diversity and pacing |
 
 Correctness is entirely the tools' job. Curation is entirely yours. Do not cross the line in either direction.
 
-Resource emission (§19) is a **third** category: pure transcription. It is neither the tools' judgment nor yours — it is a mechanical rewrite of the verifier's output into Godot's format. Treat any place you are tempted to exercise judgment there as a bug in these instructions and raise it.
+Resource emission (§18) is a **third** category: pure transcription. It is neither the tools' judgment nor yours — it is a mechanical rewrite of the verifier's output into Godot's format. Treat any place you are tempted to exercise judgment there as a bug in these instructions and raise it.
 
 ---
 
@@ -31,8 +31,8 @@ Non-negotiable. These exist because hand-reasoning about these levels has produc
 4. **If your intuition disagrees with the tools, the tools win.** Report the disagreement to the designer rather than silently deferring — a mismatch may indicate a gap worth knowing about.
 5. **Never hand-edit a generated level's `inputs`, `operations`, or `outputs`.** Any such change invalidates every claim in the file. Change the command and regenerate. Renaming a level or moving its file is fine.
 6. **Never generate directly into the curated pool.** See §4.
-7. **Never emit Godot resources for a level the designer has not explicitly approved.** Approval is per level, not per batch. See §19.0.
-8. **Never hand-author a solution step.** Every `StoreValueStepData.value` and every `ConnectionStepData` wire must come from a mechanical replay of `verify.py --all` output (§19.8). If you catch yourself deciding what the wiring for any phase "should" be, you have already made the mistake rule 2 exists to prevent — stop and replay the transcript.
+7. **Never emit Godot resources for a level the designer has not explicitly approved.** Approval is per level, not per batch. See §18.0.
+8. **Never hand-author a solution step.** Every `StoreValueStepData.value` and every `ConnectionStepData` wire must come from a mechanical replay of `verify.py --all` output (§18.8). If you catch yourself deciding what the wiring for any phase "should" be, you have already made the mistake rule 2 exists to prevent — stop and replay the transcript.
 9. **Never modify a `.tres` in the Godot project that you did not write this session.** If an approved level collides with an existing filename, ask; do not overwrite.
 
 ---
@@ -57,9 +57,16 @@ Players wire nodes so that **all output nodes simultaneously** receive their tar
 - A node with any unfilled port produces nothing. Latched stores are the exception.
 - **Cycles are blocked**, including through stores. One store alone cannot ratchet; two can, without bound.
 
-Design constraints: 1–4 inputs, 1–4 outputs, 1–6 operations. Input values −9..9; output targets −20..20; add-value amounts −9..9 (see §9). Input values distinct. Output targets distinct. Every input and operation node must be required.
+Design constraints: **1–2 inputs** (tightened from the engine's 1–4 capacity — this is an enforced ceiling for every level generated under these instructions, not just a flag default; see §9), 1–4 outputs, 1–6 operations. Input values **0..9** (tightened from the engine's −9..9 capacity — no negative inputs; see §9); output targets −20..20; add-value amounts −9..9 (see §9). Input values distinct. Output targets distinct. Every input and operation node must be required.
 
-> **Engine limit, currently tighter than the design limit.** `LevelBuilder.OPERATION_MAX` is **5**, and `operation_location_groups` is indexed `[operation_count - 1]`. A 6-operation level `push_error`s and refuses to build. Until the designer raises that constant and adds a sixth location group, do not emit resources for a 6-op level — flag it and hold the level in `candidates/`. See §19.12.
+> **Enforced, not aspirational.** `generate.py`'s `--input-range` now defaults to `0,9` on both pipelines, so a fresh generation call already won't sample a negative input by default — but **input count is a separate knob with no such default**: every invocation must still pass `--inputs`/`--pool-inputs` ≤ 2 explicitly (§9). `emit.py`'s own `--input-range` also still defaults wider (`-9,9`, unchanged — see §9), so a hand-authored or pre-existing level could still slip a negative input past emission unless you pass `--input-range=0,9` to `emit.py` too. A candidate with 3+ inputs or any negative/double-digit input value is rejected at curation regardless of how it was generated; don't rely on catching it after the fact if the generation flags didn't already enforce it.
+
+Two further structural requirements, checked at curation time rather than by the generator itself:
+
+- **Every output needs at least one branch — from some input, along some route — that passes through two or more combinational operations.** Depth is measured by an input's *longest* branch to the output, not its shortest: an input can have both a shallow, direct wire into one port and a genuinely deep route via another, and the deep route is what counts — the shallow one doesn't disqualify it. Other inputs feeding the same output may be shallow throughout — the requirement is one genuine deep branch per output, not depth on every branch. See §15c (revised v3; read the revision note there before applying an older recollection of this rule). No arithmetic shortcut is known for this version — `operation count == output count` levels usually still fail in practice (§15d) but this is not a proven bound, so don't reject on the arithmetic alone; run the check.
+- **In levels with a store, every non-store operation node's output must still be live and connected through to some output in the finished board.** See §15b. This is automatic (and free to skip checking) for levels without a store, by ordinary minimality.
+
+> **Engine limit, currently tighter than the design limit.** `LevelBuilder.OPERATION_MAX` is **5**, and `operation_location_groups` is indexed `[operation_count - 1]`. A 6-operation level `push_error`s and refuses to build. Until the designer raises that constant and adds a sixth location group, do not emit resources for a 6-op level — flag it and hold the level in `candidates/`. See §18.12.
 
 ---
 
@@ -98,9 +105,9 @@ There is no `level_verifier/levels/` directory despite what that component's REA
 | `math-machine/Levels/level.tscn` | The single level scene, driven by whichever `LevelData` is assigned. **Read-only to you** |
 
 There is no longer a per-level scene to read as a reference implementation. The
-worked example in §19.12 is the reference; read it before your first emission.
+worked example in §18.12 is the reference; read it before your first emission.
 Shipped `.tres` files may still be in the pre-phase format — do not copy their
-solution-data shape without checking §19.9 first.
+solution-data shape without checking §18.9 first.
 
 A level's JSON in `levels/` and its `.tres` in `Levels/LevelData/` are two representations of the same level. The JSON stays authoritative for provenance (seed, bounds, minimality); the `.tres` is a derived artifact and may always be regenerated from it.
 
@@ -135,7 +142,7 @@ If anything fails, **stop and report**. Generating against a miscalibrated oracl
 
 **Deletion (Pipeline A)** — fast, produces minimal levels by construction, samples rather than enumerates. One level per invocation. Use for volume, for variety, and whenever the designer just wants levels.
 
-**Enumeration (Pipeline B)** — slow, exhaustive for a fixed operation set. Many levels per invocation. Use when the designer wants *every* level teaching a specific mechanic, or a coverage guarantee for a tier.
+**Enumeration (Pipeline B)** — slow, exhaustive for a fixed operation set. Many levels per invocation. Use when the designer wants *every* level teaching a specific mechanic, or a coverage guarantee for a given input/op/output shape.
 
 Default to deletion. Reach for enumeration only on an explicit coverage request.
 
@@ -154,14 +161,14 @@ Starts from a randomly over-provisioned pool against the fixed output targets yo
 | Flag | Default | Meaning |
 |---|---|---|
 | `--outputs` | *required* | Comma-separated target values, e.g. `1,17,19`. Sets output count (1–4) and values. The one thing this pipeline does not search over |
-| `--pool-inputs` | 4 | Starting input pool size; final level usually has fewer |
+| `--pool-inputs` | 4 | Starting input pool size; final level usually has fewer. **Set this to 1 or 2** — the design constraint (§3) caps every level at 2 inputs, and the default of 4 can survive the shrink intact if solvability happens to need them all |
 | `--pool-ops` | 6 | Starting operation pool size; final level usually has fewer |
 | `--op-types` | `add,sum,subtract,store` | Restricts which op types can be sampled. Use to bias the mechanic — e.g. `subtract,store` forces a subtract-and-latch level |
 | `--seed` | 0 | Controls both the starting pool and the deletion order |
-| `--input-range` | `-9,20` | Range the sampled input pool is drawn from. See §9 |
+| `--input-range` | `0,9` | Range the sampled input pool is drawn from. Already matches §3's no-negative-inputs rule; pass `--input-range=0,9` explicitly anyway for self-documentation. See §9 |
 | `--output-range` | `-9,20` | **`--outputs` is validated against this** before any generation runs |
 | `--add-value-range` | `-9,9` | Range sampled add-op values are drawn from |
-| `--bound` | `-20,20` | Solver's intermediate-value search space. Independent of the three ranges. See §13 before widening |
+| `--bound` | `-20,20` | Solver's intermediate-value search space. Independent of the three ranges. See §12 before widening |
 | `--max-latches` | 8 | Max store-latch events searched |
 | `--max-families` | 10 | Search budget for the family count, not a hard cap |
 | `--solve-timeout` | 8 | Wall-clock seconds per verifier call before treating it as inconclusive. Do not set to 0 |
@@ -179,6 +186,8 @@ Starts from a randomly over-provisioned pool against the fixed output targets yo
 
 Guaranteed: add-op values always come from `--add-value-range`, and the sampled input pool is always distinct by construction.
 
+**Not checked — §15c depth.** Deletion shrinks the operation pool for solvability alone; it has no notion of the two-hop floor and will happily leave a level with an output one operation away from an input. Since deletion doesn't let you fix the operation *count* directly (only `--pool-ops`, the *starting* pool, which the shrink then reduces unpredictably), a §15c failure here usually means re-seeding rather than tuning a flag — try a different `--seed`, or bias `--op-types` away from the type that keeps landing adjacent to the output. Check §15c same as any other candidate, after the fact.
+
 ---
 
 ## 8. Pipeline B — enumerate
@@ -191,13 +200,13 @@ Fixes an exact operation set and input set, computes what output values are actu
 
 | Flag | Default | Meaning |
 |---|---|---|
-| `--inputs` | *required* | Number of inputs (1–4) |
-| `--input-values` | random distinct | Explicit values; count must match `--inputs` |
+| `--inputs` | *required* | Number of inputs. Engine supports 1–4, but **this doc's design constraint (§3) caps it at 1–2** — never pass 3 or 4 |
+| `--input-values` | random distinct | Explicit values; count must match `--inputs`. Must all be in `0..9` (§3) |
 | `--ops` | *required* | Op types **in ID-assignment order**, e.g. `sum,subtract,store,store` → `P1, M1, S1, S2`. Append a value to add ops: `add:5,store` → `A1` with value 5. An out-of-range value raises a traceback, not a clean message |
 | `--targets` | 4 | Max output tuple *size*; the search sweeps sizes 1..this. No exact-size flag — post-filter yourself for `len(outputs) == N` |
 | `--exhaustive` | off | See below |
 | `--seed` | 0 | Only affects random input-value selection. Does not reorder the search, which is deterministic |
-| `--input-range` | `-9,20` | Source of random inputs; **validates `--input-values`** when supplied |
+| `--input-range` | `0,9` | Source of random inputs; **validates `--input-values`** when supplied. Already matches §3's no-negative-inputs rule; pass `--input-range=0,9` explicitly anyway for self-documentation |
 | `--output-range` | `-9,20` | **The target-enumeration range** — which output values are proposed as candidates at all |
 | `--add-value-range` | `-9,9` | **Validates explicit `add:N`** values in `--ops` |
 | `--bound` | `-20,20` | Solver search space. Independent of the three ranges |
@@ -213,6 +222,8 @@ Fixes an exact operation set and input set, computes what output values are actu
 
 With `--targets` high and `--max-emit` low, small output tuples can fill the quota before the sweep reaches larger sizes. Raise `--max-emit` if you want larger-output levels.
 
+**§15c biases toward `--ops` listing more nodes than your intended output count**, though it is no longer a proven requirement (see the revision note in §15c). A `--targets N` sweep with exactly N ops in `--ops` failed §15c for every level in round 2's batch (§15d) — treat that as a strong prior, not a hard block. Pick `--ops` length as (desired output count) + 1 as a starting point, but if you deliberately want to test the boundary, an equal-length `--ops` set is now worth trying rather than skipping outright — just budget the solve time to actually check it.
+
 Pipeline B silently discards candidates whose output equals an input value. No check needed on your side. It also never accepts a raw output value from you, so there is no `--outputs` validation step here — every target it proposes already comes from `--output-range`.
 
 ---
@@ -223,38 +234,41 @@ Three independently configurable ranges control what values may appear on a node
 
 ### The display ranges — authoritative
 
-These are the constraint. A level carrying a value outside its range does not render correctly, whatever flags produced it. `emit.py` enforces them (§19.13 check 5) and refuses to emit a level that violates one.
+These are the constraint. A level carrying a value outside its range does not render correctly, whatever flags produced it. `emit.py` enforces them (§18.13 check 5) and refuses to emit a level that violates one.
 
 | Node kind | Range | Why |
 |---|---|---|
-| Input | `-9 .. 9` | Single digit either way |
+| Input | `0 .. 9` | Single digit, non-negative only |
 | Output | `-20 .. 20` | Output nodes have the room; two digits fit |
 | Add Value | `-9 .. 9` | Renders with a leading `+`, so a double-digit value overflows in either direction |
 
-Inputs are tighter than outputs because they are drawn in a narrower node.
+Inputs are tighter than outputs because they are drawn in a narrower node. The input row's lower bound of `0` (rather than the node's rendering capacity of `-9`) is **not** a rendering constraint like the other two rows — it's a designer-imposed content rule layered on top of the rendering one: every level must also have **at most 2 input nodes** (§3). Both restrictions — input count ≤ 2 and input value ≥ 0 — are enforced together and checked at curation the same way the rendering ranges are.
 
 ### The generator flags — currently wider than the display ranges
 
 The same three names exist as `generate.py` flags, but their **built-in defaults do not match the table above**:
 
-| Flag | `generate.py` default | Display range | Governs |
+| Flag | `generate.py` default | Display range (this doc's requirement) | Governs |
 |---|---|---|---|
-| `--input-range` | `-9,20` | `-9,9` | Randomly sampled inputs on both pipelines; validates `--input-values` when supplied explicitly |
+| `--input-range` | `0,9` | `0,9` | Randomly sampled inputs on both pipelines; validates `--input-values` when supplied explicitly |
 | `--output-range` | `-9,20` | `-20,20` | Pipeline A: validates `--outputs`. Pipeline B: **the target-enumeration range** — which output values are proposed as candidates at all |
 | `--add-value-range` | `-9,9` | `-9,9` | Randomly sampled add-op values; validates explicit `add:N` in `--ops` |
 
-Only `--add-value-range` agrees. The other two diverge in opposite directions:
+`--input-range` and `--add-value-range` now agree with their defaults — `generate.py`'s default was changed to `0,9` specifically so the no-negative-inputs rule (§3) holds without needing the flag every time. Passing `--input-range=0,9` explicitly is still good practice (self-documents intent, and survives if the default ever drifts again) but is no longer load-bearing.
 
-- **Inputs**: the generator will sample up to `20`, which is **wider than the display range** and will produce levels `emit.py` then rejects. **Always pass `--input-range=-9,9` explicitly.**
-- **Outputs**: the generator only enumerates targets up to `20` and down to `-9`, which is **narrower than the display range** on the negative side. Perfectly legal levels with targets in `-20..-10` are never proposed. Pass `--output-range=-20,20` when you want them.
+Only `--output-range` still needs an explicit override: the generator only enumerates targets up to `20` and down to `-9`, which is **narrower than the display range** on the negative side. Perfectly legal levels with targets in `-20..-10` are never proposed. Pass `--output-range=-20,20` when you want them.
 
 So the safe invocation, on both pipelines, is:
 
 ```
---input-range=-9,9 --output-range=-20,20
+--input-range=0,9 --output-range=-20,20
 ```
 
-Aligning `generate.py`'s hardcoded defaults with this table would remove the need for both flags. That is a change to the generator's internals and therefore outside this agent's remit (§1) — raise it with the designer rather than editing `generate.py`.
+> **`emit.py` has its own, separate `--input-range` default, and it was *not* updated.** `emit.py`'s display-validation default is still `-9,9` (checked directly against the emitter source, not assumed) — wider than the `0,9` this doc requires. A hand-authored or old level with a negative input would currently pass `emit.py`'s own validation unless you also pass `--input-range=0,9` to `emit.py` itself. `generate.py` no longer sampling negative inputs by default covers the normal generation path, but if you ever emit a level `generate.py` didn't produce (hand-edited JSON, an old file from `levels/`), pass `--input-range=0,9` to `emit.py` too, or raise aligning its default with the designer.
+
+And, on top of the value range, cap the **input count**: `--pool-inputs` (Pipeline A) or `--inputs` (Pipeline B) must never exceed `2`. Pipeline A's deletion shrink can leave a level with anywhere from 1 up to `--pool-inputs` inputs depending on what solvability actually required — passing `--pool-inputs 3` or `4` does not merely risk a *wider* level, it risks one that's outright non-compliant with §3 and has to be discarded after the fact. Set `--pool-inputs` to `1` or `2` up front rather than generating wide and filtering down. (No `generate.py` default change can cover this — count isn't a range — so this remains a flag you must set every time.)
+
+Aligning `generate.py`'s remaining hardcoded default (`--output-range`) with this table, and `emit.py`'s `--input-range` default, would remove the need for those overrides too. That is a change to the tools' internals and therefore outside this agent's remit (§1) — raise it with the designer rather than editing `generate.py`/`emit.py`.
 
 **These are independent of `--bound`.** `--bound` is the solver's *intermediate* value search space — how wide a value it will consider mid-network while proving solvability. It is a performance and completeness knob and says nothing about which values may appear on a node. Widen `--bound` for solver headroom without widening what gets sampled or emitted. Do not assume the two move together just because they once shared a default.
 
@@ -294,16 +308,15 @@ Each file is a verifier-loadable level with one extra top-level key, `generator`
 | `generator.latch_count` | Store-latch events in the simplest known solution |
 | `generator.solution_family_count` | Distinct families found; null if that search timed out |
 | `generator.family_search_exhausted` | Whether all families were proven found |
-| `generator.tier` | Generator's own 1–5 difficulty score. **Not your tier** — see §12 |
 | `generator.solver_timeout_hit` | True if *any* call during generation hit the wall clock. Re-check such levels manually before trusting their other metadata |
 | `generator.resample_attempt` | (deletion) Starting pools tried before one was solvable |
 | `generator.deletion_pass_exhausted` | (deletion) Whether every shrink check proved its result |
 | `generator.exhaustive` | (enumerate) Whether `--exhaustive` was used |
 | `generator.reach_setup_exhausted` | (enumerate) Whether reachability proved its result |
 
-**Filter every batch on:** `minimal_within_bound` is `true` (not null), `solver_timeout_hit` is `false` (or re-checked), `solution_family_count` is non-null and ≤ 6 with `family_search_exhausted` `true` (§16a), and for Pipeline A, no overlap between `inputs` and `outputs` values.
+**Filter every batch on:** `minimal_within_bound` is `true` (not null), `solver_timeout_hit` is `false` (or re-checked), `solution_family_count` is non-null and ≤ 6 with `family_search_exhausted` `true` (§15a), **`inputs` has ≤ 2 entries and every input value is in `0..9`** (§3 — check this even though the generation flags should already enforce it), for Pipeline A no overlap between `inputs` and `outputs` values, every output has at least one input reachable only through two-plus combinational operations (§15c), and — store levels only — no dead operation node in any distinct final configuration (§15b).
 
-`solution_family_count` and `family_search_exhausted` are the cheapest of these to check and reject on the most candidates — screen on them first, before spending a `verify.py` run on anything.
+`solution_family_count` and `family_search_exhausted` are the cheapest of these to check and reject on the most candidates — screen on them first, before spending a `verify.py` run on anything. §15b and §15c are the most expensive: both require a solved `Solution` object (`find_all=True`), not just the JSON's own recorded fields, so run them last, only on candidates that already passed everything else. §15c no longer has a proven arithmetic pre-filter (see the revision note in §15c) — `operation count == output count` levels fail often in practice (§15d) but must still be solved and checked, not rejected on arithmetic alone.
 
 Files in `levels/` may carry `generator.pipeline` values and extra fields not listed here (e.g. `constructive-asym`, `direct_store`, `rule1_holds`). Those predate this document. Treat unknown fields as informational, and rely only on the fields above.
 
@@ -331,37 +344,7 @@ Files in `levels/` may carry `generator.pipeline` values and extra fields not li
 
 ---
 
-## 12. Tier assignment
-
-**The design document's tier definitions are authoritative. Ignore `generator.tier`.**
-
-Assign the tier from the level's structure and the mechanic it exercises:
-
-| Tier | Shape | Mechanic |
-|---|---|---|
-| 1 | 1 input, 1 output, 1–2 ops, single chain | Basic connection, add-value |
-| 2 | 1–2 inputs, 1 output, 2–3 ops | Fan-out, sum, subtract |
-| 3 | 2–3 inputs, 2–3 outputs, 3–4 ops | Node sharing, subtract port order |
-| 4 | 1–2 inputs, 2 outputs, 2–4 ops incl. one store | Store, reuse via rewiring |
-| 5 | 2–3 inputs, 2–3 outputs, 4–6 ops incl. two stores | Ratcheting, cycle avoidance |
-| 6 | 3–4 inputs, 3–4 outputs, 5–6 ops | Multi-phase sequencing, long recursion |
-
-Two reasons not to use `generator.tier`: it was written without knowledge of these definitions, and it is structurally incapable of emitting a 6 — its formula is
-
-```
-score = solution_length + 2*latch_count − (solution_family_count − 1)
-tier  = 1 if score ≤ 4, 2 if ≤ 8, 3 if ≤ 12, 4 if ≤ 17, else 5
-```
-
-Four thresholds partition the score line into exactly five buckets. There is no suppressed tier 6.
-
-Use `generator.tier` and the score only for **ordering levels within a tier you have already assigned**. Do not treat agreement between it and your own assessment as independent confirmation — if your judgment also draws on solution length, latch count, and family count, you are reading the same three numbers twice under different names, not getting a second opinion.
-
-Tier 6 shapes routinely want six operations. See the engine-limit note in §3 before promising the designer one.
-
----
-
-## 13. Performance
+## 12. Performance
 
 Both pipelines can appear to hang. This is documented behavior of the frozen verifier, not a bug to work around by killing and retrying blindly.
 
@@ -369,11 +352,11 @@ Both pipelines can appear to hang. This is documented behavior of the frozen ver
 - **Pipeline B's setup phase** issues roughly `(node_count + 1) × 41` solve probes before any candidate is considered — a few seconds for a 6-node shape, and a probe that times out still costs the full timeout. That figure was measured under the older, wider value range and may now be lower.
 - **A timeout is a third outcome**, never treated as proof either way, but handled conservatively in the moment ("not solvable" / "node not required"). That can make the generator keep a node it didn't need or skip a candidate that would have worked. `generator.solver_timeout_hit` is your signal to re-check.
 - **Never widen `--bound` casually.** `verify.py`'s own default is `-200,200`, far wider than the generator's `-20,20`, and `verify.py` has **no timeout protection at all**. Running it wider than the level was generated under risks an effective hang on nothing more exotic than a few subtract/sum ops.
-- **`verify.py --all` is the expensive one.** §19 requires it for every approved level. Run it once per level, capture the output to a file, and work from the capture — do not re-invoke it while transcribing.
+- **`verify.py --all` is the expensive one.** §18 requires it for every approved level. Run it once per level, capture the output to a file, and work from the capture — do not re-invoke it while transcribing.
 
 ---
 
-## 14. Inspecting solutions
+## 13. Inspecting solutions
 
 `generate.py` output never contains rendered solution steps, by design, so curating doesn't force you to read the answer first. When you need to see one:
 
@@ -385,11 +368,11 @@ python3 verify.py <path> --all     --bound=<lo,hi> --max-latches <n>           #
 python3 verify.py <path> --minimality --bound=<lo,hi> --max-latches <n>        # minimality table only
 ```
 
-**Always pass `--bound` and `--max-latches` matching the level's own recorded `generator.bound` / `generator.max_latches`.** A JSON bound of `[-20, 20]` becomes `--bound=-20,20` (note the `=`, per §9). Matching is both the only way to get an answer consistent with what the generator claimed, and the way to avoid the blowup described in §13.
+**Always pass `--bound` and `--max-latches` matching the level's own recorded `generator.bound` / `generator.max_latches`.** A JSON bound of `[-20, 20]` becomes `--bound=-20,20` (note the `=`, per §9). Matching is both the only way to get an answer consistent with what the generator claimed, and the way to avoid the blowup described in §12.
 
 ---
 
-## 15. Deduplication
+## 14. Deduplication
 
 The generator's isomorphism filter only dedupes **within a single `enumerate` invocation**. It does not persist across CLI calls, across seeds, across Pipeline A runs, or against `levels/`. You are responsible for checking every new candidate against the existing pool.
 
@@ -413,23 +396,25 @@ is_duplicate = g.canonical_signature(new_level) in seen
 
 Add `level_verifier/` to `sys.path` explicitly as shown. Import `level_from_dict` from `api`, which is the stable seam for external use.
 
-This dedupes *levels*. Deduplicating *solution families within one level* is a different operation with a different key — see §19.10.
+This dedupes *levels*. Deduplicating *solution families within one level* is a different operation with a different key — see §18.10.
 
 ---
 
-## 16. Curation — where your judgment belongs
+## 15. Curation — where your judgment belongs
 
 The tools hand you correct levels. Most of them are boring. This is the part of the job that is actually yours.
 
 **Reject outright:**
 
 - an output target equal to an input value — one direct wire satisfies it
-- solutions trivially short for the intended tier
+- solutions that are trivially short given the mechanics involved — not enough puzzle to be worth a slot
 - levels isomorphic to one already in the batch or the pool
 - levels whose only difficulty is arithmetic tedium rather than insight
-- **more than 6 solution families**, or a family count that is unproven — see §16a
+- **more than 6 solution families**, or a family count that is unproven — see §15a
+- **any distinct final configuration with a dead operation node** (store levels only) — see §15b
+- **any output where every contributing input reaches it in fewer than two combinational operations** — see §15c
 
-### 16a The six-family cap
+### 15a The six-family cap
 
 **A level with more than 6 solution families is rejected.** Two reasons, both
 binding:
@@ -441,7 +426,7 @@ binding:
    directly. Six is the ceiling for that being a task rather than a chore.
 
 "Families" here means distinct final configurations — the same thing that
-becomes `solution_paths` in the emitted resource (§19.10). Screen on
+becomes `solution_paths` in the emitted resource (§18.10). Screen on
 `generator.solution_family_count` in the JSON before spending a `verify.py`
 run; confirm against `verify.py --all` at the gate.
 
@@ -467,6 +452,230 @@ at a higher `--solve-timeout` and reconsidered. That is a search-budget problem,
 not a property of the level — say so when reporting it, rather than discarding
 the level silently.
 
+### 15b. No dead operation nodes in the final configuration
+
+Every non-store operation node must still be doing something when the puzzle
+is finished — its output must be part of a live chain that reaches at least
+one output node, possibly by first feeding another operation node's input.
+No operation node may be able to sit disconnected (contributing nothing) in
+the final solution.
+
+This is automatically true for levels **without** a store: the whole solution
+*is* the final phase, so ordinary minimality already forces every required
+node onto a path to some output — a node contributing nothing downstream
+would not be required, and would not have survived deletion/enumeration in
+the first place. **Skip this check for store-free levels; it costs a solve
+for nothing.**
+
+Store levels are different. A node can be genuinely required to build the
+value a store latches in an *earlier* phase, then have nothing left to do —
+its output goes nowhere by the time the board reaches its final state, even
+though deleting the node would have broken that earlier phase. §18.8 already
+documents exactly this failure mode in `challenge_3`: "`A1` earns its place
+during the latch phases, and at the end `S1 → A1` is still live while `A1`'s
+output feeds nothing." That level shipped anyway because the old spec only
+asked whether every node was *required somewhere*, never whether it was
+*live at the end*. This rule closes that gap.
+
+**Check**, once per solved family (`sol` is a `level_verifier.solver.Solution`
+from `api.solve(level, bound=..., max_latches=..., find_all=True)`):
+
+```python
+def dead_nodes_in_final_phase(level, sol):
+    final_ids = {n.node_id for n in sol.final.built}
+    combinational_ids = {oid for oid, op in level.operations.items() if op.type != "store"}
+    return combinational_ids - final_ids   # non-empty => reject
+```
+
+A node missing from `sol.final.built` contributed nothing to the final
+phase's own construction — that is the dead node, regardless of whether its
+physical wire happens to still be pointing somewhere left over from an
+earlier phase. (Today's levels use exactly one store per §7/§8 convention,
+so store-to-store liveness chains don't arise; if a future level uses more
+than one store, extend this check to also confirm every store's latched
+value is itself referenced in the final phase, directly or through another
+store.)
+
+### 15c. Minimum depth: at least one input's *longest* branch to each output is two or more operations
+
+**Revision history:** this rule originally required *every* contributing
+input to sit at least two operations behind *every* output. That was too
+strict — it rejected `sum_subtract/03_double_sum_subtract_a`, a level where
+`O2` is a sum of a raw input (`I1`, one hop) and a genuinely-built
+intermediate (`I2` reaches it only through `M1` first, two hops), and where
+the shallow-looking wire (`I2 − I1`) is a deliberate trap that doesn't
+actually work in the real solution. Punishing an output for *also* having a
+cheap branch throws away exactly that kind of design. Revision v2 loosened
+this to "one deep branch per output, not depth on every branch" — but its
+reference check still measured each input's *shortest* route to the output,
+which silently reintroduced the same bug one level down: an input with both
+a shallow, direct wire into one port of an operation node *and* a genuinely
+deep route into another port was scored by its shallow route and marked as
+not counting. That is wrong — what matters is whether the input has *any*
+route of depth two or more, not whether its shortest route also happens to
+be deep. **v3 fixes this: depth is now each input's longest branch, not its
+shortest.** A shallow port sitting alongside a deep one on the same input no
+longer disqualifies that input; the deep route is what counts.
+
+**Current rule:** for every output, **at least one** input that feeds it
+must have **some** route to that output — not necessarily every route — that
+passes through **two or more** combinational operations (add / sum /
+subtract). That input may *also* have a shorter, more direct route into some
+other port; the presence of a shallow route alongside a genuine one does not
+disqualify it, because what the player can find is bounded by the deepest
+structure available, not by the shallowest wire that happens to also work.
+Other inputs feeding the same output may be shallow throughout; a mix of one
+cheap branch (on one input, or a shallow port on the same input) and one
+genuine deep branch is exactly the shape that produces a good trap (see the
+`03_double_sum_subtract_a` example above and its "the obvious `I1−I2`
+doesn't work" note in §15's `Prefer` list territory). What's disallowed is an
+output where **every** contributing input reaches it in one hop on **every**
+one of its routes — that output has no intermediate value behind it at all
+on any path, and the player is just handed the answer.
+
+A store crossed along a path does not itself count toward the two hops — it
+is transparent for this purpose — but the walk continues back through
+whatever built the value that got latched. (A store can never legally hold
+a bare, unprocessed input in the first place — that would make the store
+node itself redundant with the input node and break minimality — so this
+case only matters for counting depth correctly, not for finding a
+loophole.)
+
+This exists so the player always has at least one intermediate value to
+chase that is not itself one of the targets, for every output. A level
+where some output is wired straight off raw inputs on every branch hands
+the player that output the moment they try the obvious first wire.
+
+**No arithmetic shortcut this time.** The previous revision's corollary
+(operation count must exceed output count by at least 1) was a direct
+consequence of requiring depth on *every* branch; it does not follow the
+same way from an *at-least-one-branch* requirement, and no equivalent
+arithmetic floor has been proven for this version. Op-count-vs-output-count
+is no longer something you can screen on before running the solver —
+run the check below and read the result. Empirically (§15d), most
+`operation count == output count` shapes still failed this round, but not
+because of a provable arithmetic bound — check each one.
+
+**Check:**
+
+```python
+def per_input_depths(level, sol, output_id):
+    """For every input that feeds this output (even transitively, through
+    stores), the LONGEST combinational-op distance from THAT input to the
+    output — i.e. the depth of its deepest branch, not its shallowest.
+    Returns {input_id: depth}."""
+    final_by_id = {n.node_id: n for n in sol.final.built}
+
+    def latch_of(store_id):
+        lp = None
+        for phase in sol.latches:
+            if phase.store_id == store_id:
+                lp = phase          # last latch wins -- that's what's in the store now
+        return lp
+
+    depths = {}   # input_id -> deepest (longest) depth found so far
+
+    def bump(input_id, depth):
+        if input_id not in depths or depth > depths[input_id]:   # max, not min
+            depths[input_id] = depth
+
+    def walk(node_id, depth, by_id):
+        if node_id in level.inputs:
+            bump(node_id, depth)
+            return
+        if node_id in level.store_ops():
+            lp = latch_of(node_id)
+            if lp is None:
+                return
+            prod = lp.assignment.get("_latch")
+            walk(prod, depth, {n.node_id: n for n in lp.built})   # store: +0
+            return
+        n = by_id.get(node_id)
+        if n is None:
+            return
+        for p in n.inputs:
+            walk(p, depth + 1, by_id)                              # combinational op: +1
+
+    start = sol.final.assignment[output_id]
+    if start in level.inputs:
+        bump(start, 0)
+    elif start in level.store_ops():
+        walk(start, 0, final_by_id)
+    else:
+        n = final_by_id.get(start)
+        if n is not None:
+            for p in n.inputs:
+                walk(p, 1, final_by_id)
+    return depths
+
+
+def output_has_deep_branch(level, sol, output_id):
+    depths = per_input_depths(level, sol, output_id)
+    return bool(depths) and max(depths.values()) >= 2
+```
+
+Reject the level if `output_has_deep_branch(...)` is `False` for **any**
+output. This takes the **max** twice over, and the two maxes must not be
+confused: `per_input_depths` takes each individual input's own **longest**
+route (`bump` keeps the running max, not the running min — this is the v3
+fix), and `output_has_deep_branch` then takes the max *across* inputs of
+those per-input maxima. One genuinely-deep route, on one input, on one of
+that input's ports, is enough to pass — no matter how many other routes,
+ports, or inputs on the same output are shallow.
+
+**Both 16b and 16c are properties of the final wiring shape itself, not of
+the build history used to reach it.** Two raw solver families
+(`verify.py --all` entries) that collapse to the same distinct final
+configuration under §18.10 will always agree on both checks — there is no
+such thing as a clean journey to a dirty configuration. Practically: run
+both checks against every family in the `--all` transcript before
+collapsing (checking a few redundant duplicates costs nothing); if *any*
+distinct final configuration fails either check, the level as a whole is
+rejected. Unlike the family-count collapse in §18.10, there is no cleaner
+representative to substitute — a dirty configuration is a dirty level.
+
+### 15d. Measured pass rate (round 2, for calibration)
+
+Run against the 25 `round2_*` candidates generated before this rule existed,
+under the current (§15c v3, longest-branch) wording:
+
+| Level | ops/outs | Result |
+|---|---|---|
+| `sum_subtract/03_double_sum_subtract_a` | 3/2 | **Pass** |
+| `sum_subtract/04_sum_double_subtract` | 3/2 | **Pass** |
+| `sum_subtract/05_double_sum_subtract_b` | 3/2 | **Pass** |
+| `store_two/01_store_add_sum` | 3/2 | **Pass** |
+| `store_three/02_store_add_sum_subtract` | 4/2 | **Pass** |
+| `store_three/03_store_double_sum_subtract` | 4/2 | **Pass** |
+| `store_three/05_store_sum_double_subtract` | 4/2 | **Pass** |
+| everything in `constant_sum`, `constant_subtract` | 2/2 or 3/3 | Fail — every branch on every output turned out shallow |
+| `sum_subtract/01, 02` | 2/2 each | Fail — depth |
+| `store_two/02, 04, 05` | 3/2 each | Fail — depth |
+| `store_two/03` | 3/2 | Fail — dead node (§15b), not depth |
+| `store_three/01, 04` | 4/2 each | Fail — dead node (§15b) only |
+
+7 of 25 pass, up from 5 under the v2 (shortest-branch) check. Two pass-flips
+came directly from the v3 fix: `store_two/01_store_add_sum` and
+`sum_subtract/05_double_sum_subtract_b` were previously rejected because
+their deep-only input also happened to have a shallow port into the same
+region of the graph, and the old shortest-branch check scored them by that
+shallow port. `store_three/01` and `store_three/04` were previously rejected
+for "both depth and dead node"; under v3 they still fail — but only for the
+dead node (§15b), and the depth reason drops out. No level flipped from
+passing to failing.
+
+Two things still worth noting for future generation, and both survive the
+revision unchanged: every `operation count == output count` level failed
+outright (no exceptions in this batch, though §15c still does not prove that
+has to be true — see the note above the check). And `store_two`'s remaining
+failures (`02`, `04`, `05`) are still genuine depth failures even under the
+longest-branch check — `01`'s pass shows a 3-op/2-output `store_two` shape
+*can* clear the bar, so the other four aren't evidence the shape can't work,
+only that those particular seeds didn't land on a wiring that used the third
+node for real depth rather than for a second shallow output. Bias future
+`store_two` generation toward more seeds/`--ops` variety before concluding
+the shape itself can't work.
+
 **Prefer:**
 
 - a single non-obvious critical move — a wire that, once found, cascades into several outputs
@@ -480,20 +689,20 @@ Run `verify.py --all` on serious candidates before promoting them. The generator
 
 ---
 
-## 17. Batch composition
+## 16. Batch composition
 
 - Vary the shape. Twelve minimal levels that all reduce to the same trick are one level printed twelve times.
 - Introduce one new idea at a time. A level teaching ratcheting should not also be the first to use a negative target.
-- Order by ascending solution length within a tier as a first approximation of pacing.
+- Order by ascending solution length as a first approximation of pacing.
 - If the designer asked for N levels and only M survive curation, deliver M and say why. Do not pad with weak levels.
 
 ---
 
-## 18. Presenting levels
+## 17. Presenting levels
 
 ```
 Level 12 — Ratchet
-Tier: 5
+Families: 2
 Teaches: alternating two stores to climb past a single store's ceiling
 
 Inputs:      I1 = 3
@@ -522,13 +731,13 @@ Quote the bounds from the level's own metadata, not from this document.
 
 ---
 
-## 19. Emitting Godot resources
+## 18. Emitting Godot resources
 
 Once — and only once — the designer approves a level, transcribe it into a `LevelData` resource in the game project.
 
 This section is a transcription spec. Every value in the output traces to either the level JSON or a verbatim `verify.py --all` transcript. Nothing here is a judgment call.
 
-### 19.0 The gate
+### 18.0 The gate
 
 Emit a level only if **all** of these hold:
 
@@ -536,12 +745,13 @@ Emit a level only if **all** of these hold:
 2. It is in `levels/`, not `candidates/`.
 3. `generator.minimal_within_bound` is `true` (not `null`) and `generator.solver_timeout_hit` is `false`, or you re-checked it manually per §10.
 4. It has ≤ 4 inputs, ≤ 4 outputs, and **≤ 6 operations** (§3 engine limit — re-read `LevelBuilder`'s constants rather than trusting this number).
-5. You have a captured `verify.py --all` transcript for it, run at its own recorded bound.
-6. That transcript reports **≤ 6 families**, and `generator.family_search_exhausted` is `true` (§16a).
+5. It has **≤ 2 inputs, each in `0..9`** (§3 design constraint — tighter than, and independent of, gate 4's engine limit above; a level can pass gate 4 with 3 inputs and still fail this one).
+6. You have a captured `verify.py --all` transcript for it, run at its own recorded bound.
+7. That transcript reports **≤ 6 families**, and `generator.family_search_exhausted` is `true` (§15a).
 
 If any fails, say which and stop.
 
-### 19.1 Where the file goes
+### 18.1 Where the file goes
 
 ```
 math-machine/Levels/LevelData/<snake_case_name>.tres
@@ -557,7 +767,7 @@ There is no per-level scene. A single `Levels/level.tscn` is instantiated on
 demand and driven by whichever `LevelData` is current, so a new level is a
 resource and a registration — nothing else.
 
-### 19.2 Scripts and UIDs
+### 18.2 Scripts and UIDs
 
 `.tres` files reference scripts by UID. **Re-read the `.uid` files at session start** rather than trusting this table — UIDs are stable in practice but the table is a snapshot.
 
@@ -585,7 +795,7 @@ Every filename in `HintSystem/` is snake_case. An earlier revision of this
 document recorded `StoreValueStepData.gd` in mixed case; that was wrong and any
 `.tres` carrying that path will fail to load.
 
-### 19.3 Type mapping
+### 18.3 Type mapping
 
 `NodeTypeRegistry.NodeType` ordinals, read from `HintSystem/node_type_registry.gd`:
 
@@ -602,12 +812,12 @@ Ordinals 6+ (`MULTIPLY`, `DIVIDE`, `INVERT`, `REVERSE`, `SPLIT`, `SUM_DIGITS`, `
 
 Because `type` defaults to `0` in `GraphNodeData`, **input nodes omit the `type` line entirely**. That is why `add_value_1.tres` shows a bare `value = 5` for its input.
 
-### 19.4 Building the three arrays
+### 18.4 Building the three arrays
 
 From the level JSON:
 
 - **`inputs`** — one `GraphNodeData` per `inputs` entry: `type` omitted (0), `value` = the integer. **Sorted ascending by value.**
-- **`operations`** — one per `operations` entry: `type` per §19.3; `value` = the add amount for `add`, omitted for `sum`/`subtract`/`store`. **Ordered per §19.4a.**
+- **`operations`** — one per `operations` entry: `type` per §18.3; `value` = the add amount for `add`, omitted for `sum`/`subtract`/`store`. **Ordered per §18.4a.**
 - **`outputs`** — one per `outputs` entry: `type = 1`, `value` = the target. **Sorted ascending by value.**
 
 Input values and output targets are guaranteed distinct (§3), so ascending value
@@ -615,13 +825,13 @@ is a total order on each — no tiebreak is needed.
 
 Array order is load-bearing twice over: `LevelBuilder` places node *i* at
 location-group slot *i*, and every `slot` field in the solution data is derived
-from these arrays (§19.5).
+from these arrays (§18.5).
 
 > **Order the arrays first, then build the `(type, slot)` map.** Slot numbers
 > come from the final array order. Sorting after the map is built silently
 > repoints every hint at the wrong node.
 
-### 19.4a Operation layout
+### 18.4a Operation layout
 
 `LevelBuilder` places operation *i* at `operation_location_groups[n-1].locations[i]`.
 Those markers form **columns filled top-to-bottom, left-to-right**, so an index
@@ -705,9 +915,9 @@ nor a column in a 2×2, so it falls through to step 4.
 | 4 | 3 Sum, 1 Store | No shape for `(4,3)`; Sums at 0,1,2 and Store at 3 by step 4 |
 | 3 | 2 Sum, 1 Store | Sum `{0,2}`, Store centred at 1 |
 
-### 19.5 Slot numbering
+### 18.5 Slot numbering
 
-`slot` is the **0-based index among nodes of the same `NodeType`**, in the **final, ordered** array from §19.4 — not JSON key order. Inputs and outputs each occupy a type of their own, so their slot is simply their array index after the ascending-value sort. Operations are counted per type over the §19.4a layout order.
+`slot` is the **0-based index among nodes of the same `NodeType`**, in the **final, ordered** array from §18.4 — not JSON key order. Inputs and outputs each occupy a type of their own, so their slot is simply their array index after the ascending-value sort. Operations are counted per type over the §18.4a layout order.
 
 Example — operations written `[S1, A1, P1, S2]`:
 
@@ -720,14 +930,14 @@ Example — operations written `[S1, A1, P1, S2]`:
 
 Build this `generator_id → (type, slot)` map once per level and use it for every step. Do not recompute it per step.
 
-### 19.6 Ports
+### 18.6 Ports
 
 - **`from_port` is always 0.** Every node type in play has exactly one output port.
 - **`to_port`:** `0` for Add Value, Store, and Output (single input). For Sum and Subtract, **top = 0, bottom = 1** — confirmed from `sum_node.tscn` / `subtract_node.tscn`, where `GraphNodeInput` sits at y = −48 and `GraphNodeInput2` at y = +48, and `_init_ports()` appends in child order.
 
 `SubtractNode` computes `inputs[0] − inputs[1]`, so port order is load-bearing for `M` nodes. `SumNode` is commutative and `NodeTypeRegistry.commutative_types` lists it, so the hint system relaxes port matching for `P` targets — but still write the port the verifier named. A relaxed check is not a licence to guess.
 
-### 19.7 `from_value` / `to_value`
+### 18.7 `from_value` / `to_value`
 
 Set these **only** for node types that carry a level-authored value:
 
@@ -742,7 +952,7 @@ The trap is ADD_VALUE. `SolutionStep._matches_value` compares against `node.valu
 
 Omitting a field leaves it at `ConnectionStepData.ANY_VALUE` (`-2147483648`), which means "don't care". Do not write that sentinel literally — omit the line.
 
-### 19.8 Deriving the phased wiring
+### 18.8 Deriving the phased wiring
 
 A `SolutionPath` is an ordered sequence of **phases**. Each phase is the set of
 wires that must be live at the moment one store latches, closed by a
@@ -813,7 +1023,7 @@ the outputs instead of at a latch producer.
 > completing the level — the hint system would ask the player to build it, and
 > challenge mode would withhold credit until they did.
 >
-> The arithmetic check in §19.13 will not catch this. `A1` is single-input and
+> The arithmetic check in §18.13 will not catch this. `A1` is single-input and
 > that input *is* wired, so nothing is partially wired and every Output still
 > receives its target. The stale wire rides along silently. The backward walk is
 > the only thing that removes it.
@@ -825,7 +1035,7 @@ and must not be emitted.
 A family that **keeps latching after the level could already have been
 finished** is kept, not dropped. It reaches a genuinely different final board,
 and a player who lands on that board has solved the level and must be creditable
-for it — completeness matters more here than tidiness (§19.10). `store_5` has
+for it — completeness matters more here than tidiness (§18.10). `store_5` has
 four such families; all four ship.
 
 What such a family must **not** do is fragment into several. Two solutions that
@@ -877,7 +1087,7 @@ Note that phase 1 does **not** contain `I1 → P1 top` or `I2 → P1 bottom`: bo
 were overwritten by `M1` before `S2` latched. Note also that phase 2 contains
 seven wires including ones placed long before the final latch.
 
-### 19.9 Step order within a `SolutionPath`
+### 18.9 Step order within a `SolutionPath`
 
 `solution_steps` is a flat array. Phase structure is carried by position: a
 `StoreValueStepData` **terminates** the phase it closes. Write each phase's
@@ -891,7 +1101,7 @@ with no terminator.
 [final phase connections…]
 ```
 
-Two rules are load-bearing and checked in §19.13:
+Two rules are load-bearing and checked in §18.13:
 
 1. **The latch connection is last among its phase's connections**, immediately
    before the terminator, and its `to_type`/`to_slot` must be the STORE the
@@ -945,7 +1155,7 @@ This section is an inversion of the previous convention, which grouped all
 `operations`-array position alone. Files in the old format are not readable
 under the new one.
 
-### 19.10 Reducing families to distinct paths
+### 18.10 Reducing families to distinct paths
 
 `verify.py --all` reports families that differ in *build order*. Families sharing
 one **final configuration** remain the same path in game and must not be
@@ -967,9 +1177,9 @@ the version a player is most likely to find unaided.
 
 Order `solution_paths` shortest-first, as before.
 
-Report the collapse explicitly: *"verify.py reported 4 families; 2 distinct final configurations."* A large collapse is worth mentioning — it may mean the level is less rich than `generator.solution_family_count` suggested, which is curation-relevant (§16).
+Report the collapse explicitly: *"verify.py reported 4 families; 2 distinct final configurations."* A large collapse is worth mentioning — it may mean the level is less rich than `generator.solution_family_count` suggested, which is curation-relevant (§15).
 
-**The §16a cap of 6 applies to the collapsed count**, since that is what becomes
+**The §15a cap of 6 applies to the collapsed count**, since that is what becomes
 `solution_paths` and therefore what challenge mode asks the player to work
 through. In practice the two numbers agree — `notation.py` already groups
 solutions by destination rather than journey, so `verify.py`'s family count is
@@ -980,11 +1190,11 @@ is worth flagging to the designer either way.
 **Completeness now matters more than it used to.** For hints, a missing path
 degrades guidance. For challenge mode, a missing path means a player can find a
 legitimate solution the game does not recognise and cannot be credited for. This
-is why §16a rejects any level whose family search was not proven exhaustive, and
+is why §15a rejects any level whose family search was not proven exhaustive, and
 why `solution_paths` must list every distinct configuration rather than a
 representative sample.
 
-### 19.11 `.tres` text format
+### 18.11 `.tres` text format
 
 Rules, all confirmed against `challenge_1.tres`. These govern `.tres` syntax only
 and are unaffected by the move to phased paths:
@@ -998,10 +1208,10 @@ and are unaffected by the move to phased paths:
 - Sub-resource ids are free-form strings. Use readable ones (`In0`, `Op2`, `SVD_p0_s0`, `Conn_p0_3`) rather than Godot's random suffixes — you are writing these by hand and will need to check them.
 - `[resource]` block last, with `script`, the three arrays, `level_solution_data`, and the `metadata/_custom_type_script` line.
 
-### 19.12 Worked example
+### 18.12 Worked example
 
 `challenge_1`: `I1=2, I2=7; P1=+, M1=−, S1=s, S2=s; O1=1, O2=10, O3=19`. Family 1
-of `verify.py --all`, replayed per §19.8 into three phases — `S1` latches 9,
+of `verify.py --all`, replayed per §18.8 into three phases — `S1` latches 9,
 then `S2` latches 10, then the final configuration gives `9+10=19`, `10−9=1`,
 and `10` direct.
 
@@ -1330,31 +1540,32 @@ Expect files roughly 2.5–3× the size of the old format on store levels — th
 example goes from 9 steps to 17 for the same level. That is inherent to
 authoring the journey rather than only the destination.
 
-### 19.13 Verify before handing off
+### 18.13 Verify before handing off
 
 Run these as a script over each emitted `.tres`. This checks your *transcription*, not the level — the level's correctness was settled by the verifier and is not up for re-derivation.
 
-1. **Round-trip.** Re-parse the `.tres`, rebuild the `(type, slot)` map from its own arrays, split each path into phases at its terminators, and reconstruct each phase's wiring. Assert it equals the phased wiring you extracted in §19.8, phase for phase.
+1. **Round-trip.** Re-parse the `.tres`, rebuild the `(type, slot)` map from its own arrays, split each path into phases at its terminators, and reconstruct each phase's wiring. Assert it equals the phased wiring you extracted in §18.8, phase for phase.
 2. **Arithmetic, per phase.** For each non-final phase, evaluate its wiring and assert the latch connection's source node holds the terminator's value. For the final phase, every Output node must receive its declared target; no node may be left partially wired.
 3. **Referential integrity.** Every `(type, slot)` referenced by any step must exist in the arrays. Binding resolution `push_error`s and silently drops the type otherwise, which degrades hints without failing loudly.
 3a. **Latch connection placement.** In every non-final phase, the last connection before the terminator must have `to_type = 5` (STORE) with `to_slot` equal to the terminator's `slot`. No other connection in that phase may target that store.
 3b. **No empty phase.** Every terminator must be preceded by at least one connection within its own phase.
 3c. **No dead latch.** Every terminator's store must appear as a `from_type = 5` source in some later phase, or in the final phase.
 3d. **Distinct required states.** Compute each phase's required store state — for each store, the value of the last terminator on it, kept only if some phase from here on reads that store before re-latching it — and assert no two phases in one path produce identical maps. A collision means the hint system will silently skip a phase's work.
-3e. **Topological ordering.** Within each phase, assert that no connection whose `from` node is a target of that phase appears before all of that node's own input connections, and that a multi-input node's input connections are contiguous. See §19.9.
+3e. **Topological ordering.** Within each phase, assert that no connection whose `from` node is a target of that phase appears before all of that node's own input connections, and that a multi-input node's input connections are contiguous. See §18.9.
 4. **Engine limits.** `inputs.size() ≤ 4`, `operations.size() ≤ 6`, `outputs.size() ≤ 4`. Assert against `LevelBuilder`'s `INPUT_MAX` / `OPERATION_MAX` / `OUTPUT_MAX`, re-read from source rather than hardcoded here — these are expected to change.
-5. **Display safety.** Every emitted `value` within its range per §9 — inputs −9..9, outputs −20..20, add amounts −9..9. Note these are three separate ranges, not two; the generator's flag defaults do not match them (§9).
-6. **Structural diff.** Compare the shape of your file against the §19.12 example. Same block ordering, same defaults omitted, same `metadata/_custom_type_script` lines. Do not diff against an existing shipped `.tres` unless you have confirmed it is already in the phased format.
+4a. **Design constraint (tighter than 4).** `inputs.size() ≤ 2` (§3). This is a separate, tighter check from 4 above — do not treat passing check 4 as covering it.
+5. **Display safety.** Every emitted `value` within its range per §9 — inputs **0..9** (not −9..9 — tightened, no negative inputs), outputs −20..20, add amounts −9..9. Note these are three separate ranges, not two; the generator's flag defaults do not match them (§9).
+6. **Structural diff.** Compare the shape of your file against the §18.12 example. Same block ordering, same defaults omitted, same `metadata/_custom_type_script` lines. Do not diff against an existing shipped `.tres` unless you have confirmed it is already in the phased format.
 
 You cannot run Godot, so import is unverified. Say so, and ask the designer to open the project once and confirm the resources load without errors before building scenes on them.
 
-### 19.14 What to report
+### 18.14 What to report
 
-Per emitted level: file path, tier, one-line "teaches", family count → distinct path count, phase count and the latch sequence per path (e.g. *"path 0: 3 phases, S1=9 → S2=10"*), and the seed/bound line from §18. Then the standing reminder that adding each resource to `LevelManager.level_data_list` remains manual (§19.1).
+Per emitted level: file path, one-line "teaches", family count → distinct path count, phase count and the latch sequence per path (e.g. *"path 0: 3 phases, S1=9 → S2=10"*), and the seed/bound line from §17. Then the standing reminder that adding each resource to `LevelManager.level_data_list` remains manual (§18.1).
 
 ---
 
-## 20. Known issues in the game project
+## 19. Known issues in the game project
 
 Report these once per session if still present; do not fix them (hard rule 9, and they are outside your remit).
 
@@ -1369,16 +1580,16 @@ you find nothing, report that and move on.
 
 ---
 
-## 21. When things fail
+## 20. When things fail
 
 - **Pipeline B produced nothing.** Remember it exits 0. Retry with `--exhaustive` first — that is the single most common cause. If it still returns nothing, report what was tried and which constraint appears binding.
-- **Pipeline A exhausted resamples.** Try a different `--seed`, or a larger `--pool-inputs` / `--pool-ops`. If the targets themselves look unreachable, say so rather than raising the pool indefinitely.
+- **Pipeline A exhausted resamples.** Try a different `--seed`, or a larger `--pool-ops` (leave `--pool-inputs` at 1 or 2 — do not raise it past the §3 cap even to unstick a resample search; a wider input pool that happens to survive the shrink produces a non-compliant level, not a solved problem). If the targets themselves look unreachable, say so rather than raising the pool indefinitely.
 - **A range rejection.** A clean one-liner means `--outputs` or `--input-values` fell outside its range; a traceback ending in *"outside the configured add-value range"* means an `add:N` did. Fix the value or widen the range deliberately — do not widen a range just to make a command pass.
 - **`expected one argument` on a range or bound flag.** You used a space instead of `=` before a negative low value. See §9.
 - **A Python traceback with any other message.** Malformed command. Fix the invocation; do not retry as-is and do not edit the source.
 - **`minimal_within_bound` is null, or `solver_timeout_hit` is true.** Re-check that level manually via `verify.py` at its own recorded bound, or regenerate with a higher `--solve-timeout`. Do not ship it on the strength of its other fields.
 - **Corpus calibration fails.** Stop entirely. Nothing generated in that session is trustworthy.
-- **A `.tres` round-trip or arithmetic check fails (§19.13).** Your transcription is wrong, not the level. Re-run the replay in §19.8 from the captured transcript. Do not adjust wires until the numbers work — that is exactly the failure mode hard rule 8 exists to catch.
-- **A transcript line doesn't match any pattern in §19.8.** Stop and report the literal line. The verifier's rendering has changed and the replay parser is now unsafe; do not guess at the new format.
+- **A `.tres` round-trip or arithmetic check fails (§18.13).** Your transcription is wrong, not the level. Re-run the replay in §18.8 from the captured transcript. Do not adjust wires until the numbers work — that is exactly the failure mode hard rule 8 exists to catch.
+- **A transcript line doesn't match any pattern in §18.8.** Stop and report the literal line. The verifier's rendering has changed and the replay parser is now unsafe; do not guess at the new format.
 - **Tools error or hang beyond the documented performance envelope.** Report the invocation and the failure. Do not debug, patch around, or fall back to hand-verification.
 - **A result surprises you.** Say so explicitly and keep the tool's answer. A surprising-but-verified level is often the most interesting one in the batch — and a surprise is also the first sign of a gap the designer needs to hear about.

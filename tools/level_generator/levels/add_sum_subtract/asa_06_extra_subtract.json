@@ -1,0 +1,57 @@
+{
+  "name": "four_extrasub_s3_11",
+  "inputs": {
+    "I1": 1,
+    "I2": 5
+  },
+  "operations": {
+    "A1": {
+      "type": "add",
+      "value": -2
+    },
+    "P1": {
+      "type": "sum"
+    },
+    "M1": {
+      "type": "subtract"
+    },
+    "M2": {
+      "type": "subtract"
+    }
+  },
+  "outputs": {
+    "O1": -17,
+    "O2": 8
+  },
+  "generator": {
+    "pipeline": "enumerate",
+    "seed": 3,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "minimality_rows_exhausted": true,
+    "solution_length": 9,
+    "latch_count": 0,
+    "solution_family_count": 2,
+    "family_search_exhausted": true,
+    "tier": 2,
+    "exhaustive": true,
+    "reach_setup_exhausted": true,
+    "solver_timeout_hit": false,
+    "input_range": [
+      0,
+      9
+    ],
+    "output_range": [
+      -20,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}
