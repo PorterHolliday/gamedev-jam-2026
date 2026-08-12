@@ -9,12 +9,12 @@
 
 [sub_resource type="Resource" id="In0"]
 script = ExtResource("1_5tkdv")
-value = 1
+value = 2
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [sub_resource type="Resource" id="D_p0_c0"]
 script = ExtResource("5_5wmgm")
-from_value = 1
+from_value = 2
 to_type = 3
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
@@ -25,7 +25,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p0_c1"]
 script = ExtResource("5_5wmgm")
-from_value = 1
+from_value = 2
 to_type = 3
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
@@ -62,9 +62,9 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="Resource_r0nsq"]
 script = ExtResource("5_5wmgm")
-from_value = 1
-to_type = 3
-to_slot = 2
+from_type = 3
+to_type = 1
+to_value = 4
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="Resource_d6njq"]
@@ -72,63 +72,23 @@ script = ExtResource("4_112ya")
 step_data = SubResource("Resource_r0nsq")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
-[sub_resource type="Resource" id="Resource_fao60"]
-script = ExtResource("5_5wmgm")
-from_type = 3
-from_slot = 1
-to_type = 3
-to_slot = 2
-to_port = 1
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="Resource_kt31v"]
-script = ExtResource("4_112ya")
-step_data = SubResource("Resource_fao60")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="D_p0_c4"]
-script = ExtResource("5_5wmgm")
-from_type = 3
-to_type = 1
-to_value = 2
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="S_p0_c4"]
-script = ExtResource("4_112ya")
-step_data = SubResource("D_p0_c4")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="Resource_mh4t6"]
+[sub_resource type="Resource" id="Resource_squn3"]
 script = ExtResource("5_5wmgm")
 from_type = 3
 from_slot = 1
 to_type = 1
 to_slot = 1
-to_value = 4
+to_value = 8
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
-[sub_resource type="Resource" id="Resource_os1rj"]
+[sub_resource type="Resource" id="Resource_5tkdv"]
 script = ExtResource("4_112ya")
-step_data = SubResource("Resource_mh4t6")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="Resource_3hdh2"]
-script = ExtResource("5_5wmgm")
-from_type = 3
-from_slot = 2
-to_type = 1
-to_slot = 2
-to_value = 5
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="Resource_j6m5u"]
-script = ExtResource("4_112ya")
-step_data = SubResource("Resource_3hdh2")
+step_data = SubResource("Resource_squn3")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="Path0"]
 script = ExtResource("3_aowkw")
-solution_steps = Array[ExtResource("4_112ya")]([SubResource("S_p0_c0"), SubResource("S_p0_c1"), SubResource("S_p0_c2"), SubResource("S_p0_c3"), SubResource("Resource_d6njq"), SubResource("Resource_kt31v"), SubResource("S_p0_c4"), SubResource("Resource_os1rj"), SubResource("Resource_j6m5u")])
+solution_steps = Array[ExtResource("4_112ya")]([SubResource("S_p0_c0"), SubResource("S_p0_c1"), SubResource("S_p0_c2"), SubResource("S_p0_c3"), SubResource("Resource_d6njq"), SubResource("Resource_5tkdv")])
 metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="Solution"]
@@ -146,33 +106,22 @@ script = ExtResource("1_5tkdv")
 type = 3
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
-[sub_resource type="Resource" id="Resource_lka1j"]
-script = ExtResource("1_5tkdv")
-type = 3
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
 [sub_resource type="Resource" id="Resource_sj8vl"]
-script = ExtResource("1_5tkdv")
-type = 1
-value = 2
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Resource_3y5rv"]
 script = ExtResource("1_5tkdv")
 type = 1
 value = 4
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
-[sub_resource type="Resource" id="Resource_lidsa"]
+[sub_resource type="Resource" id="Resource_ormh1"]
 script = ExtResource("1_5tkdv")
 type = 1
-value = 5
+value = 8
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [resource]
 script = ExtResource("6_5bubw")
 inputs = Array[ExtResource("1_5tkdv")]([SubResource("In0")])
-operations = Array[ExtResource("1_5tkdv")]([SubResource("Op0"), SubResource("Op1"), SubResource("Resource_lka1j")])
-outputs = Array[ExtResource("1_5tkdv")]([SubResource("Resource_sj8vl"), SubResource("Resource_3y5rv"), SubResource("Resource_lidsa")])
+operations = Array[ExtResource("1_5tkdv")]([SubResource("Op0"), SubResource("Op1")])
+outputs = Array[ExtResource("1_5tkdv")]([SubResource("Resource_sj8vl"), SubResource("Resource_ormh1")])
 level_solution_data = SubResource("Solution")
 metadata/_custom_type_script = "uid://ciy62d543op8"

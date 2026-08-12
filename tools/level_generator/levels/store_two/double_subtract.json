@@ -1,0 +1,52 @@
+{
+  "name": "double_subtract",
+  "inputs": {
+    "I1": 5,
+    "I2": 2
+  },
+  "operations": {
+    "M1": {
+      "type": "subtract"
+    },
+    "M2": {
+      "type": "subtract"
+    },
+    "S1": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": -12
+  },
+  "generator": {
+    "pipeline": "enumerate",
+    "seed": 10,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "minimality_rows_exhausted": true,
+    "solution_length": 11,
+    "latch_count": 1,
+    "solution_family_count": 5,
+    "family_search_exhausted": true,
+    "tier": 3,
+    "exhaustive": true,
+    "reach_setup_exhausted": false,
+    "solver_timeout_hit": false,
+    "input_range": [
+      0,
+      9
+    ],
+    "output_range": [
+      -20,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

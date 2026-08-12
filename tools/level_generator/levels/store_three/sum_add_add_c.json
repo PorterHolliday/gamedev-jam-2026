@@ -1,0 +1,58 @@
+{
+  "name": "sum_add_add_c",
+  "inputs": {
+    "I1": 5,
+    "I2": 9
+  },
+  "operations": {
+    "P1": {
+      "type": "sum"
+    },
+    "A1": {
+      "type": "add",
+      "value": 3
+    },
+    "A2": {
+      "type": "add",
+      "value": -5
+    },
+    "S1": {
+      "type": "store"
+    }
+  },
+  "outputs": {
+    "O1": -5,
+    "O2": 7
+  },
+  "generator": {
+    "pipeline": "enumerate",
+    "seed": 2,
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8,
+    "minimal_within_bound": true,
+    "minimality_rows_exhausted": true,
+    "solution_length": 10,
+    "latch_count": 1,
+    "solution_family_count": 3,
+    "family_search_exhausted": true,
+    "tier": 3,
+    "exhaustive": true,
+    "reach_setup_exhausted": false,
+    "solver_timeout_hit": false,
+    "input_range": [
+      0,
+      9
+    ],
+    "output_range": [
+      -20,
+      20
+    ],
+    "add_value_range": [
+      -9,
+      9
+    ]
+  }
+}

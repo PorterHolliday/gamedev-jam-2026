@@ -12,11 +12,6 @@ script = ExtResource("1_y2t32")
 value = 2
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
-[sub_resource type="Resource" id="In1"]
-script = ExtResource("1_y2t32")
-value = 3
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
 [sub_resource type="Resource" id="D_p0_c0"]
 script = ExtResource("5_ykfg2")
 from_value = 2
@@ -30,8 +25,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p0_c1"]
 script = ExtResource("5_ykfg2")
-from_slot = 1
-from_value = 3
+from_value = 2
 to_type = 3
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
@@ -55,7 +49,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
 [sub_resource type="Resource" id="D_p0_c3"]
 script = ExtResource("5_ykfg2")
-from_type = 3
+from_value = 2
 to_type = 3
 to_slot = 1
 to_port = 1
@@ -69,9 +63,8 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="D_p0_c4"]
 script = ExtResource("5_ykfg2")
 from_type = 3
-from_slot = 1
 to_type = 1
-to_value = 10
+to_value = 4
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p0_c4"]
@@ -79,9 +72,23 @@ script = ExtResource("4_nd71t")
 step_data = SubResource("D_p0_c4")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
+[sub_resource type="Resource" id="Resource_8fd4x"]
+script = ExtResource("5_ykfg2")
+from_type = 3
+from_slot = 1
+to_type = 1
+to_slot = 1
+to_value = 6
+metadata/_custom_type_script = "uid://cxfcv878bwcua"
+
+[sub_resource type="Resource" id="Resource_48odw"]
+script = ExtResource("4_nd71t")
+step_data = SubResource("Resource_8fd4x")
+metadata/_custom_type_script = "uid://cltmh45jarwf8"
+
 [sub_resource type="Resource" id="Path0"]
 script = ExtResource("3_b1iag")
-solution_steps = Array[ExtResource("4_nd71t")]([SubResource("S_p0_c0"), SubResource("S_p0_c1"), SubResource("S_p0_c2"), SubResource("S_p0_c3"), SubResource("S_p0_c4")])
+solution_steps = Array[ExtResource("4_nd71t")]([SubResource("S_p0_c0"), SubResource("S_p0_c1"), SubResource("S_p0_c2"), SubResource("S_p0_c3"), SubResource("S_p0_c4"), SubResource("Resource_48odw")])
 metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="Solution"]
@@ -102,13 +109,19 @@ metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 [sub_resource type="Resource" id="Resource_sj8vl"]
 script = ExtResource("1_y2t32")
 type = 1
-value = 10
+value = 4
+metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
+
+[sub_resource type="Resource" id="Resource_ormh1"]
+script = ExtResource("1_y2t32")
+type = 1
+value = 6
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [resource]
 script = ExtResource("6_rxv8l")
-inputs = Array[ExtResource("1_y2t32")]([SubResource("In0"), SubResource("In1")])
+inputs = Array[ExtResource("1_y2t32")]([SubResource("In0")])
 operations = Array[ExtResource("1_y2t32")]([SubResource("Op0"), SubResource("Op1")])
-outputs = Array[ExtResource("1_y2t32")]([SubResource("Resource_sj8vl")])
+outputs = Array[ExtResource("1_y2t32")]([SubResource("Resource_sj8vl"), SubResource("Resource_ormh1")])
 level_solution_data = SubResource("Solution")
 metadata/_custom_type_script = "uid://ciy62d543op8"
