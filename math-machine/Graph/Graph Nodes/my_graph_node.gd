@@ -3,18 +3,21 @@ extends Node2D
 
 const GROW_SCALE: Vector2 = Vector2(1.15, 1.15)
 const ROTATION_DEGREES: float = 10.0
-
-@onready var _graph_canvas: GraphCanvas
-
 const NULL_VALUE: int = 9223372036854775807
 
+@export var click_detector: ClickableControl
+
+var _graph_canvas: GraphCanvas
 var inputs: Array[GraphNodePort] = []
 var outputs: Array[GraphNodePort] = []
+
+@onready var node_info: NodeInfo = %NodeInfo
 
 func _ready() -> void:
 	if get_parent() is GraphCanvas:
 		_graph_canvas = get_parent()
 	_init_ports()
+	click_detector.mouse_clicked.connect(_on_click_detector_mouse_clicked)
 	
 func _init_ports() -> void:
 	for child in get_children():
@@ -62,3 +65,7 @@ func _play_remove_input_animation() -> void:
 	tween.tween_property(self, 'rotation_degrees', -ROTATION_DEGREES, 0.05)
 	tween.tween_property(self, 'rotation_degrees', ROTATION_DEGREES, 0.1)
 	tween.tween_property(self, 'rotation_degrees', 0, 0.05)
+	
+func _on_click_detector_mouse_clicked(button_index: MouseButton) -> void:
+	if button_index == MOUSE_BUTTON_RIGHT:
+		node_info.show()

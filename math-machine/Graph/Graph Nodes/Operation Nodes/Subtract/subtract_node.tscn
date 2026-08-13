@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cfbjles1s05dy" path="res://DragControl/drag_control.tscn" id="2_tsxk7"]
 [ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="4_tsxk7"]
 [ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="5_fr80i"]
+[ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="6_6l4bh"]
 [ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="6_tsxk7"]
+[ext_resource type="PackedScene" uid="uid://cjxx8phlk1sjd" path="res://Graph/Graph Nodes/NodeInfo/node_info_panel.tscn" id="7_u355i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6l4bh"]
 bg_color = Color(0.7647059, 0.68235296, 0.12156863, 1)
@@ -21,8 +23,9 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
 
-[node name="SubtractNode" type="Node2D" unique_id=1134007312]
+[node name="SubtractNode" type="Node2D" unique_id=1134007312 node_paths=PackedStringArray("click_detector")]
 script = ExtResource("1_0rwlh")
+click_detector = NodePath("DragControl")
 metadata/_custom_type_script = "uid://ua5g1uh1ndaf"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1891016011]
@@ -62,3 +65,50 @@ position = Vector2(-48, 48)
 
 [node name="GraphNodeOutput" parent="." unique_id=529093135 instance=ExtResource("5_fr80i")]
 position = Vector2(48, 0)
+
+[node name="NodeInfo" type="Control" parent="." unique_id=1778084076]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("6_6l4bh")
+metadata/_custom_type_script = "uid://ypfv3rfioneb"
+
+[node name="NodeName" parent="NodeInfo" unique_id=134562754 instance=ExtResource("7_u355i")]
+layout_mode = 1
+offset_left = -69.0
+offset_top = -139.0
+offset_right = 30.0
+offset_bottom = -103.0
+text = "Subtract"
+mobile_text = ""
+
+[node name="InputInfo" parent="NodeInfo" unique_id=810552848 instance=ExtResource("7_u355i")]
+layout_mode = 1
+offset_left = -86.0
+offset_top = -86.0
+offset_right = -50.0
+offset_bottom = -51.0
+text = "A"
+mobile_text = ""
+
+[node name="InputInfo2" parent="NodeInfo" unique_id=1075725859 instance=ExtResource("7_u355i")]
+layout_mode = 1
+offset_left = -86.0
+offset_top = 9.5
+offset_right = -50.0
+offset_bottom = 45.5
+text = "B"
+mobile_text = ""
+
+[node name="OutputInfo" parent="NodeInfo" unique_id=2146236910 instance=ExtResource("7_u355i")]
+layout_mode = 1
+offset_left = 10.0
+offset_top = -38.0
+offset_right = 64.0
+offset_bottom = -2.0
+text = "A−B"
+mobile_text = ""

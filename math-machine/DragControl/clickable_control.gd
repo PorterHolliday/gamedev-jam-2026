@@ -7,6 +7,9 @@ signal mouse_clicked(button_index: MouseButton)
 ## Emitted when the input area is released.
 signal mouse_released(button_index: MouseButton)
 
+const TOUCH_TO_RIGHT_CLICK_TIME: float = 0.5
+const TOUCH_MOVE_TOLERANCE: float = 16.0
+
 ## Shape used for hit-testing, positioned relative to the Control's origin
 ## (top-left corner), not its size. If null, falls back to the default
 ## rectangular Control bounds.
@@ -24,6 +27,13 @@ signal mouse_released(button_index: MouseButton)
 @export var shape_color: Color = Color(0.4, 0.8, 1.0, 0.5)
 
 var is_clicked: bool = false
+var _touch_initial_position: Vector2 = Vector2.ZERO
+
+@onready var touch_timer: Timer = Timer.new()
+
+func _ready() -> void:
+	add_child(touch_timer)
+	touch_timer.timeout.connect(_on_touch_timer_timeout)
 
 func _has_point(point: Vector2) -> bool:
 	if shape == null:
@@ -83,6 +93,16 @@ func _draw() -> void:
 			draw_colored_polygon(shape.points, shape_color)
 
 func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			_touch_initial_position = event.position
+			touch_timer.one_shot = true
+			touch_timer.start(TOUCH_TO_RIGHT_CLICK_TIME)
+		else:
+			touch_timer.stop()
+	if event is InputEventScreenDrag:
+		if event.position.distance_to(_touch_initial_position) > TOUCH_MOVE_TOLERANCE:
+			touch_timer.stop()
 	if event is InputEventMouseButton and event.pressed:
 		is_clicked = true
 		mouse_clicked.emit(event.button_index)
@@ -96,3 +116,8 @@ func _input(event: InputEvent) -> void:
 		is_clicked = false
 		mouse_released.emit(event.button_index)
 		get_viewport().set_input_as_handled()
+		
+func _on_touch_timer_timeout() -> void:
+	HapticManager.trigger_right_click_haptic()
+	mouse_released.emit(MOUSE_BUTTON_LEFT)
+	mouse_clicked.emit(MOUSE_BUTTON_RIGHT)

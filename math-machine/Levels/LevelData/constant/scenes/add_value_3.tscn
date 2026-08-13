@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ugcg65bx8t11"]
+
+[ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_jvcch"]
+[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_ntadn"]
+[ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="3_bmupk"]
+
+[sub_resource type="Resource" id="Resource_w14a8"]
+script = ExtResource("3_bmupk")
+to_node_index = 1
+metadata/_custom_type_script = "uid://b0viev2x74hv1"
+
+[sub_resource type="Resource" id="Resource_r6lmc"]
+script = ExtResource("3_bmupk")
+to_node_index = 2
+metadata/_custom_type_script = "uid://b0viev2x74hv1"
+
+[node name="Level" unique_id=1073491300 instance=ExtResource("1_jvcch")]
+
+[node name="TutorialPanel" parent="." index="1" unique_id=129932882 instance=ExtResource("2_ntadn")]
+offset_left = 464.0
+offset_top = 112.0
+offset_right = 694.0
+offset_bottom = 183.0
+text = "You can use any
+number multiple times."
+
+[node name="GraphCanvas" parent="." index="2" unique_id=90730119]
+tutorial_connection_data = Array[ExtResource("3_bmupk")]([SubResource("Resource_w14a8"), SubResource("Resource_r6lmc")])

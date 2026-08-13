@@ -7,6 +7,7 @@ extends Node
 @onready var pickup_haptic: HapticData = HapticData.new([25])
 @onready var drop_haptic: HapticData = HapticData.new([15])
 @onready var button_haptic: HapticData = HapticData.new([15])
+@onready var right_click_haptic: HapticData = HapticData.new([15])
 
 var haptics_enabled: bool = true
 
@@ -30,6 +31,9 @@ func trigger_drop_haptic() -> void:
 	
 func trigger_button_haptic() -> void:
 	_trigger_haptic(button_haptic)
+	
+func trigger_right_click_haptic() -> void:
+	_trigger_haptic(right_click_haptic)
 
 func _trigger_haptic(haptic: HapticData) -> void:
 	if not haptics_enabled:

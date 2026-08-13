@@ -5,8 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="3_amupw"]
 [ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="4_amupw"]
 [ext_resource type="Texture2D" uid="uid://1yo072dwf5wh" path="res://Graph/Graph Nodes/Output Node/output_node2.png" id="4_pfaup"]
+[ext_resource type="Script" uid="uid://b7assewelikkx" path="res://DragControl/clickable_control.gd" id="5_aaifq"]
+[ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="7_pfaup"]
+[ext_resource type="PackedScene" uid="uid://cjxx8phlk1sjd" path="res://Graph/Graph Nodes/NodeInfo/node_info_panel.tscn" id="8_4qmq5"]
 
-[sub_resource type="Shader" id="Shader_251ob"]
+[sub_resource type="Shader" id="Shader_pfaup"]
 code = "shader_type canvas_item;
 
 uniform float progress: hint_range(0.0, 1.0, 0.1) = 0.0;
@@ -31,19 +34,19 @@ void fragment() {
 	COLOR = vec4(color.rgb, color.a * COLOR.a);
 }"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aaifq"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4qmq5"]
 load_path = "res://.godot/imported/satisfied_output_node2.png-5a2d33aab8038dccf29ad668280a6b6c.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pf3m"]
-shader = SubResource("Shader_251ob")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m306b"]
+shader = SubResource("Shader_pfaup")
 shader_parameter/progress = 0.0
-shader_parameter/replace_texture = SubResource("CompressedTexture2D_aaifq")
+shader_parameter/replace_texture = SubResource("CompressedTexture2D_4qmq5")
 shader_parameter/invert = false
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m306b"]
 texture = ExtResource("4_pfaup")
 
-[sub_resource type="Shader" id="Shader_pfaup"]
+[sub_resource type="Shader" id="Shader_k5ghu"]
 code = "shader_type canvas_item;
 
 uniform float progress: hint_range(0.0, 1.0, 0.1) = 0.0;
@@ -74,18 +77,19 @@ void fragment() {
 	COLOR = vec4(color.rgb, color.a * COLOR.a);
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qmq5"]
-shader = SubResource("Shader_pfaup")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isxt7"]
+shader = SubResource("Shader_k5ghu")
 shader_parameter/progress = 0.0
 shader_parameter/fill_color = Color(1, 1, 1, 1)
 shader_parameter/invert = false
 shader_parameter/label_size = Vector2(80, 80)
 
-[node name="OutputNode" type="Node2D" unique_id=1924490215]
+[node name="OutputNode" type="Node2D" unique_id=1924490215 node_paths=PackedStringArray("click_detector")]
 script = ExtResource("1_gusin")
 unsatisfied_text_color = Color(0.43529412, 0.5058824, 0.57254905, 1)
 satisfied_color = Color(0.45481837, 0.67, 0.39530003, 1)
 transition_duration = 0.25
+click_detector = NodePath("ClickableControl")
 metadata/_custom_type_script = "uid://dcdorusfnlmtt"
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1397873177]
@@ -95,7 +99,7 @@ texture = ExtResource("2_3c162")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1359526420]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_3pf3m")
+material = SubResource("ShaderMaterial_m306b")
 offset_left = -48.0
 offset_top = -48.0
 offset_right = 48.0
@@ -106,7 +110,7 @@ metadata/_edit_group_ = true
 [node name="ValueLabel" type="Label" parent="PanelContainer" unique_id=757642171]
 unique_name_in_owner = true
 modulate = Color(0.43529412, 0.5058824, 0.57254905, 1)
-material = SubResource("ShaderMaterial_4qmq5")
+material = SubResource("ShaderMaterial_isxt7")
 layout_mode = 2
 size_flags_vertical = 1
 text = "1"
@@ -114,5 +118,40 @@ label_settings = ExtResource("4_amupw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ClickableControl" type="Control" parent="." unique_id=754682188]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_aaifq")
+metadata/_custom_type_script = "uid://b7assewelikkx"
+
 [node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("3_amupw")]
 position = Vector2(-48, 0)
+
+[node name="NodeInfo" type="Control" parent="." unique_id=1608801991]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("7_pfaup")
+metadata/_custom_type_script = "uid://ypfv3rfioneb"
+
+[node name="NodeName" parent="NodeInfo" unique_id=134562754 instance=ExtResource("8_4qmq5")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -68.0
+offset_top = -87.0
+offset_right = 70.0
+offset_bottom = -51.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Target Value"
+mobile_text = ""

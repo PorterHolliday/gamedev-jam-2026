@@ -38,10 +38,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
@@ -89,28 +89,29 @@ texture = ExtResource("6_1y8pw")
 
 [node name="DirectionalExpandContainer" type="Container" parent="." unique_id=1787146700]
 offset_left = 8.0
-offset_top = -40.0
+offset_top = -48.0
 offset_right = 8.0
-offset_bottom = -40.0
+offset_bottom = -48.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("4_dptiu")
 metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
+metadata/_edit_group_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="DirectionalExpandContainer" unique_id=712190939]
 unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8bxjd")
 
 [node name="MarginContainer" type="MarginContainer" parent="DirectionalExpandContainer/PanelContainer" unique_id=404157358]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = -3
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = -2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
 
 [node name="Label" type="Label" parent="DirectionalExpandContainer/PanelContainer/MarginContainer" unique_id=293123437]
 unique_name_in_owner = true
 layout_mode = 2
 label_settings = ExtResource("3_ykvyb")
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
