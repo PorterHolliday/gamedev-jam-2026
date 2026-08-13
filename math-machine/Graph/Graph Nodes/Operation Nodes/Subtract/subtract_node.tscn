@@ -51,10 +51,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DragControl" parent="." unique_id=109764403 instance=ExtResource("2_tsxk7")]
 unique_name_in_owner = true
-offset_left = -56.0
-offset_top = -88.0
-offset_right = 56.0
-offset_bottom = 88.0
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
 metadata/_edit_group_ = true
 
 [node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("4_tsxk7")]
@@ -80,9 +80,9 @@ metadata/_custom_type_script = "uid://ypfv3rfioneb"
 [node name="NodeName" parent="NodeInfo" unique_id=134562754 instance=ExtResource("7_u355i")]
 layout_mode = 1
 offset_left = -69.0
-offset_top = -139.0
+offset_top = -144.0
 offset_right = 30.0
-offset_bottom = -103.0
+offset_bottom = -108.0
 text = "Subtract"
 mobile_text = ""
 

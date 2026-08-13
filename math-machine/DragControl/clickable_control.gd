@@ -7,8 +7,8 @@ signal mouse_clicked(button_index: MouseButton)
 ## Emitted when the input area is released.
 signal mouse_released(button_index: MouseButton)
 
-const TOUCH_TO_RIGHT_CLICK_TIME: float = 0.5
-const TOUCH_MOVE_TOLERANCE: float = 16.0
+const TOUCH_TO_RIGHT_CLICK_TIME: float = 0.8
+const TOUCH_MOVE_TOLERANCE: float = 8.0
 
 ## Shape used for hit-testing, positioned relative to the Control's origin
 ## (top-left corner), not its size. If null, falls back to the default

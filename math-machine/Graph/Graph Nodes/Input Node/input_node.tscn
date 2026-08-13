@@ -46,10 +46,10 @@ vertical_alignment = 1
 [node name="ClickableControl" type="Control" parent="." unique_id=569355102]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -56.0
-offset_top = -56.0
-offset_right = 56.0
-offset_bottom = 56.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 script = ExtResource("3_ymrrd")
 metadata/_custom_type_script = "uid://b7assewelikkx"
 
@@ -70,8 +70,8 @@ metadata/_custom_type_script = "uid://ypfv3rfioneb"
 [node name="NodeName" parent="NodeInfo" unique_id=134562754 instance=ExtResource("6_0dthf")]
 layout_mode = 1
 offset_left = -96.0
-offset_top = -107.5
+offset_top = -112.5
 offset_right = 56.0
-offset_bottom = -71.5
+offset_bottom = -76.5
 text = "Starting Value"
 mobile_text = ""

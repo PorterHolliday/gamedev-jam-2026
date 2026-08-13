@@ -121,8 +121,10 @@ vertical_alignment = 1
 [node name="ClickableControl" type="Control" parent="." unique_id=754682188]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 script = ExtResource("5_aaifq")
 metadata/_custom_type_script = "uid://b7assewelikkx"
 
@@ -148,9 +150,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -68.0
-offset_top = -87.0
+offset_top = -92.0
 offset_right = 70.0
-offset_bottom = -51.0
+offset_bottom = -56.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "Target Value"

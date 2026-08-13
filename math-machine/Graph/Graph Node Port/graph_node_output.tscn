@@ -89,9 +89,9 @@ texture = ExtResource("6_1y8pw")
 
 [node name="DirectionalExpandContainer" type="Container" parent="." unique_id=1787146700]
 offset_left = 8.0
-offset_top = -48.0
+offset_top = -50.0
 offset_right = 8.0
-offset_bottom = -48.0
+offset_bottom = -50.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("4_dptiu")
 metadata/_custom_type_script = "uid://byh1bnt7lgfl8"

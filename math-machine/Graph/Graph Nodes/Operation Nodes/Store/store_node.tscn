@@ -51,10 +51,10 @@ vertical_alignment = 1
 
 [node name="DragControl" parent="." unique_id=109764403 instance=ExtResource("2_pgy35")]
 unique_name_in_owner = true
-offset_left = -56.0
-offset_top = -56.0
-offset_right = 56.0
-offset_bottom = 56.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 metadata/_edit_group_ = true
 
 [node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("4_pgy35")]
@@ -78,9 +78,9 @@ metadata/_custom_type_script = "uid://ypfv3rfioneb"
 propagate_maximum_size = true
 layout_mode = 1
 offset_left = -51.0
-offset_top = -107.0
+offset_top = -112.0
 offset_right = 11.0
-offset_bottom = -71.0
+offset_bottom = -76.0
 mouse_filter = 0
 text = "Hold"
 mobile_text = ""

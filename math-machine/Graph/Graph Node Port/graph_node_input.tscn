@@ -86,9 +86,9 @@ texture = ExtResource("6_xbod7")
 
 [node name="DirectionalExpandContainer" type="Container" parent="." unique_id=30440322]
 offset_left = -8.0
-offset_top = -48.0
+offset_top = -50.0
 offset_right = -8.0
-offset_bottom = -48.0
+offset_bottom = -50.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("4_xv260")
 h_expand_direction = 0
