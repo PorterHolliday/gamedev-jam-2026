@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://Graph/Graph Node Port/graph_node_port.gd" id="1_j0l1v"]
 [ext_resource type="Script" uid="uid://b7assewelikkx" path="res://DragControl/clickable_control.gd" id="2_u4gnu"]
-[ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_ykvyb"]
 [ext_resource type="Script" uid="uid://byh1bnt7lgfl8" path="res://UI/DirectionalExpandContainer/directional_expand_container.gd" id="4_dptiu"]
 [ext_resource type="Texture2D" uid="uid://hocp4reuyt5h" path="res://Graph/Graph Node Port/port_bad_connection.png" id="6_1y8pw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4gnu"]
-bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
+bg_color = Color(1, 1, 1, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -46,6 +45,39 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
+[sub_resource type="SystemFont" id="SystemFont_d4gjh"]
+font_names = PackedStringArray("Century Gothic")
+
+[sub_resource type="LabelSettings" id="LabelSettings_uiagc"]
+font = SubResource("SystemFont_d4gjh")
+font_size = 18
+outline_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5pxb"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_8bxjd"]
+font_names = PackedStringArray("Century Gothic")
+
+[sub_resource type="LabelSettings" id="LabelSettings_u4gnu"]
+font = SubResource("SystemFont_8bxjd")
+font_size = 18
+font_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+outline_size = 2
+outline_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+
 [node name="GraphNodeOutput" type="Marker2D" unique_id=2095797941]
 script = ExtResource("1_j0l1v")
 type = 1
@@ -55,6 +87,7 @@ connected_color = Color(0.40460834, 0.48308903, 0.56990933, 1)
 metadata/_custom_type_script = "uid://igltm2xbx00c"
 
 [node name="Panel" type="Panel" parent="." unique_id=408845485]
+unique_name_in_owner = true
 offset_left = -18.0
 offset_top = -18.0
 offset_right = 18.0
@@ -78,6 +111,7 @@ offset_left = 12.0
 offset_right = 12.0
 script = ExtResource("2_u4gnu")
 shape = SubResource("CircleShape2D_u4gnu")
+show_shape_in_editor = false
 metadata/_custom_type_script = "uid://b7assewelikkx"
 
 [node name="BadConnection" type="Sprite2D" parent="." unique_id=1142063469]
@@ -87,31 +121,67 @@ modulate = Color(0.7490196, 0.050980393, 0.050980393, 1)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("6_1y8pw")
 
-[node name="DirectionalExpandContainer" type="Container" parent="." unique_id=1787146700]
+[node name="ValueContainer" type="Container" parent="." unique_id=1787146700]
+unique_name_in_owner = true
+visible = false
 offset_left = 8.0
 offset_top = -50.0
-offset_right = 8.0
-offset_bottom = -50.0
+offset_right = 36.0
+offset_bottom = -22.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 script = ExtResource("4_dptiu")
 metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
 metadata/_edit_group_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="DirectionalExpandContainer" unique_id=712190939]
+[node name="ValuePanelContainer" type="PanelContainer" parent="ValueContainer" unique_id=712190939]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8bxjd")
 
-[node name="MarginContainer" type="MarginContainer" parent="DirectionalExpandContainer/PanelContainer" unique_id=404157358]
+[node name="MarginContainer" type="MarginContainer" parent="ValueContainer/ValuePanelContainer" unique_id=404157358]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_right = 6
 
-[node name="Label" type="Label" parent="DirectionalExpandContainer/PanelContainer/MarginContainer" unique_id=293123437]
+[node name="ValueLabel" type="Label" parent="ValueContainer/ValuePanelContainer/MarginContainer" unique_id=293123437]
 unique_name_in_owner = true
 layout_mode = 2
-label_settings = ExtResource("3_ykvyb")
+label_settings = SubResource("LabelSettings_uiagc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ErrorContainer" type="Container" parent="." unique_id=91254713]
+unique_name_in_owner = true
+visible = false
+offset_left = 24.0
+offset_top = -14.0
+offset_right = 52.0
+offset_bottom = 14.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+script = ExtResource("4_dptiu")
+metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
+metadata/_edit_group_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="ErrorContainer" unique_id=1581742491]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y5pxb")
+
+[node name="MarginContainer" type="MarginContainer" parent="ErrorContainer/PanelContainer" unique_id=1791230707]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="ErrorLabel" type="Label" parent="ErrorContainer/PanelContainer/MarginContainer" unique_id=1240222055]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_u4gnu")
 horizontal_alignment = 1
 vertical_alignment = 1

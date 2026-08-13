@@ -43,6 +43,7 @@ var is_current_connection_valid: bool = false
 var is_current_connection_invalid: bool = false
 
 var ports: Array[GraphNodePort] = []
+var hovered_port: GraphNodePort
 var _level_completed: bool = false
 var _hint_connections: Array[Connection] = []
 var _hint_connection_alpha: float = HintVisuals.GLOW_ALPHA
@@ -119,6 +120,7 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 		AudioManager.play_connection_sfx()
 		HapticManager.trigger_port_connect_haptic()
 	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
+	connection.to_port.connected_color = connection.from_port.connection_color
 	
 	clear_hint_connection()
 	connection_occurred.emit()
@@ -177,6 +179,7 @@ func play_level_complete_animation() -> void:
 	await get_tree().create_timer(0.4).timeout
 	
 func _mouse_entered_port_area(port: GraphNodePort) -> void:
+	hovered_port = port
 	if not current_connection_start_port: 
 		port.show_hover_fill()
 		return
@@ -202,16 +205,19 @@ func _mouse_exited_port_area(port: GraphNodePort) -> void:
 	current_connection_end_port = null
 	
 func _can_connect_ports(port1: GraphNodePort, port2: GraphNodePort) -> bool:
-	if port1.type == port2.type: return false
-	if port1.graph_node == port2.graph_node: return false
+	return _get_connection_error(port1, port2) == ""
 	
-	for connection in connections:
-		if (port1 == connection.from_port or port1 == connection.to_port)\
-			and (port2 == connection.from_port or port2 == connection.to_port):
-				return false
-	
-	if _is_loop_created(port1, port2): return false
-	return true
+func _get_connection_error(port1: GraphNodePort, port2: GraphNodePort) -> String:
+	if port1.type == port2.type:
+		if port1.type == GraphNodePort.Type.INPUT:
+			return "Input to Input"
+		else:
+			return "Output to Output"
+			
+	if _is_loop_created(port1, port2):
+		return "Forms Loop"
+		
+	return ""
 	
 func _is_loop_created(port1: GraphNodePort, port2: GraphNodePort) -> bool:
 	if port1.type == GraphNodePort.Type.OUTPUT:
@@ -406,6 +412,9 @@ func _get_dashed_segments(points: PackedVector2Array) -> Array[PackedVector2Arra
 func _port_released() -> void:
 	if current_connection_start_port and current_connection_end_port:
 		request_connection(current_connection_start_port, current_connection_end_port)
+	elif is_current_connection_invalid:
+		var error: String = _get_connection_error(current_connection_start_port, hovered_port)
+		hovered_port.show_error(error)
 	_modulate_glow_panel(Color(0.0, 0.0, 0.0, 0.0))
 	current_connection_start_port = null
 	current_connection_end_port = null

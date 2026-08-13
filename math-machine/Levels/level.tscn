@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="7_dvejp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3su"]
-bg_color = Color(0.22745098, 0.2509804, 0.32941177, 1)
+bg_color = Color(0.41362852, 0.15643254, 0.08528743, 1)
 border_width_left = 4
 border_width_right = 4
 border_width_bottom = 4

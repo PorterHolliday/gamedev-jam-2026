@@ -55,6 +55,10 @@ metadata/_custom_type_script = "uid://b7assewelikkx"
 
 [node name="GraphNodeOutput" parent="." unique_id=2095797941 instance=ExtResource("3_45htt")]
 position = Vector2(48, 0)
+color = Color(0.80784315, 0.83137256, 0.8862745, 1)
+connection_color = Color(0.40392157, 0.48235294, 0.5686275, 1)
+connection_hover_color = Color(0.6082993, 0.65017086, 0.7493103, 1)
+value_panel_color = Color(0.43529412, 0.5058824, 0.57254905, 1)
 
 [node name="NodeInfo" type="Control" parent="." unique_id=134183925]
 unique_name_in_owner = true

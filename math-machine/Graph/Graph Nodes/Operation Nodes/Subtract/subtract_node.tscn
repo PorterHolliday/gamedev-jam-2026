@@ -65,6 +65,11 @@ position = Vector2(-48, 48)
 
 [node name="GraphNodeOutput" parent="." unique_id=529093135 instance=ExtResource("5_fr80i")]
 position = Vector2(48, 0)
+color = Color(0.9490196, 0.94509804, 0.49411765, 1)
+connection_color = Color(0.8745098, 0.78431374, 0.21568628, 1)
+connection_hover_color = Color(0.95, 0.94065833, 0.38950002, 1)
+connected_color = Color(0.5866521, 0.47739345, 0.11832195, 1)
+value_panel_color = Color(0.7647059, 0.68235296, 0.12156863, 1)
 
 [node name="NodeInfo" type="Control" parent="." unique_id=1778084076]
 unique_name_in_owner = true
