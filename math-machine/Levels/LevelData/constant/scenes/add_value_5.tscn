@@ -16,7 +16,7 @@ offset_left = 144.0
 offset_top = 144.0
 offset_right = 374.0
 offset_bottom = 215.0
-text = "Drag colored operations
+text = "Drag operations
 to rearrange them."
 
 [node name="GraphCanvas" parent="." index="2" unique_id=90730119]

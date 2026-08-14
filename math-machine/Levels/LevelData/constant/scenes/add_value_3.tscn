@@ -21,8 +21,8 @@ offset_left = 464.0
 offset_top = 112.0
 offset_right = 694.0
 offset_bottom = 183.0
-text = "You can use any
-number multiple times."
+text = "You can use colored
+numbers multiple times."
 
 [node name="GraphCanvas" parent="." index="2" unique_id=90730119]
 tutorial_connection_data = Array[ExtResource("3_bmupk")]([SubResource("Resource_w14a8"), SubResource("Resource_r6lmc")])

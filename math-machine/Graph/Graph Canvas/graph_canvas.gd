@@ -210,12 +210,12 @@ func _can_connect_ports(port1: GraphNodePort, port2: GraphNodePort) -> bool:
 func _get_connection_error(port1: GraphNodePort, port2: GraphNodePort) -> String:
 	if port1.type == port2.type:
 		if port1.type == GraphNodePort.Type.INPUT:
-			return "Input to Input"
+			return "Both Empty"
 		else:
-			return "Output to Output"
+			return "Both Full"
 			
 	if _is_loop_created(port1, port2):
-		return "Forms Loop"
+		return "Creates Loop"
 		
 	return ""
 	

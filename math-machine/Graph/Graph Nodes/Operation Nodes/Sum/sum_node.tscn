@@ -64,9 +64,9 @@ position = Vector2(-48, 48)
 
 [node name="GraphNodeOutput" parent="." unique_id=380110332 instance=ExtResource("4_td6ec")]
 position = Vector2(48, 0)
-color = Color(0.95148855, 0.5007729, 0.4409422, 1)
-connection_color = Color(0.8069323, 0.18188, 9.62615e-08, 1)
-connection_hover_color = Color(0.7903965, 0.26433888, 0.21478596, 1)
+color = Color(0.9529412, 0.5019608, 0.4392157, 1)
+connection_color = Color(0.7921569, 0.2627451, 0.21568628, 1)
+connection_hover_color = Color(0.91, 0.407225, 0.31850004, 1)
 connected_color = Color(0.5726696, 0, 0, 1)
 value_panel_color = Color(0.7490196, 0.2509804, 0, 1)
 

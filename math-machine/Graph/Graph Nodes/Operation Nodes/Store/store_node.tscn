@@ -64,12 +64,13 @@ position = Vector2(-48, 0)
 position = Vector2(48, 0)
 color = Color(0.5294118, 0.7294118, 0.42745098, 1)
 connection_color = Color(0.31318787, 0.49956393, 0.26649353, 1)
-connection_hover_color = Color(0.5294118, 0.7294118, 0.42745098, 1)
+connection_hover_color = Color(0.47444344, 0.66477764, 0.37656003, 1)
 connected_color = Color(0.1734, 0.34, 0.19838998, 1)
 value_panel_color = Color(0.2509804, 0.44313726, 0.23529412, 1)
 
 [node name="NodeInfo" type="Control" parent="." unique_id=1850646178]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
