@@ -112,10 +112,10 @@ texture = ExtResource("6_xbod7")
 [node name="ValueContainer" type="Container" parent="." unique_id=30440322]
 unique_name_in_owner = true
 visible = false
-offset_left = -36.0
-offset_top = -50.0
-offset_right = -8.0
-offset_bottom = -22.0
+offset_left = -50.0
+offset_top = -55.0
+offset_right = -14.0
+offset_bottom = -19.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("4_xv260")
 h_expand_direction = 0
@@ -124,7 +124,7 @@ metadata/_edit_group_ = true
 
 [node name="ValuePanelContainer" type="PanelContainer" parent="ValueContainer" unique_id=1739816546]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(28, 28)
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pcdoi")
 
@@ -143,10 +143,10 @@ vertical_alignment = 1
 [node name="ErrorContainer" type="Container" parent="." unique_id=955624384]
 unique_name_in_owner = true
 visible = false
-offset_left = -52.0
-offset_top = -14.0
-offset_right = -24.0
-offset_bottom = 14.0
+offset_left = -72.0
+offset_top = -18.0
+offset_right = -36.0
+offset_bottom = 18.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("4_xv260")
@@ -155,7 +155,7 @@ metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
 metadata/_edit_group_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="ErrorContainer" unique_id=1921571140]
-custom_minimum_size = Vector2(28, 28)
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ok08f")

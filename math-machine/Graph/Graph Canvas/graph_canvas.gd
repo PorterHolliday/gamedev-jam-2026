@@ -120,6 +120,8 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 		AudioManager.play_connection_sfx()
 		HapticManager.trigger_port_connect_haptic()
 	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
+	
+	connection.to_port.value_text_color = connection.from_port.value_panel_color
 	connection.to_port.connected_color = connection.from_port.connection_color
 	
 	clear_hint_connection()

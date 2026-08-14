@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxy864y1rmwdl"]
 
 [ext_resource type="Script" uid="uid://tnge33mk1lgm" path="res://Graph/Graph Nodes/Input Node/input_node.gd" id="1_whq1o"]
-[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="3_45htt"]
+[ext_resource type="PackedScene" uid="uid://dkqgs2bxkfvsd" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="3_45htt"]
 [ext_resource type="Script" uid="uid://b7assewelikkx" path="res://DragControl/clickable_control.gd" id="3_ymrrd"]
 [ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="4_45htt"]
 [ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="5_0dthf"]

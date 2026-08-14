@@ -29,7 +29,12 @@ enum Type {
 	set(new_val):
 		value_panel_color = new_val
 		if value_panel_container:
-			value_panel_container.modulate = value_panel_color
+			value_panel_container.self_modulate = value_panel_color
+@export var value_text_color: Color = Color.WHITE:
+	set(new_val):
+		value_text_color = new_val
+		if value_label:
+			value_label.self_modulate = value_text_color
 
 @onready var graph_node: MyGraphNode = get_parent()
 @onready var panel: Panel = %Panel
@@ -53,6 +58,7 @@ var value: int = NULL_VALUE:
 func _ready() -> void:
 	panel.modulate = color
 	value_panel_container.self_modulate = value_panel_color
+	value_label.self_modulate = value_text_color
 	if Engine.is_editor_hint():
 		return
 	snap_area.mouse_entered.connect(_on_mouse_entered)
