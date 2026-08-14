@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c1kmh24otohft"]
+
+[ext_resource type="Script" uid="uid://b7dqywl71kvsm" path="res://Levels/Tutorial/drag_tutorial.gd" id="1_am1g1"]
+[ext_resource type="Texture2D" uid="uid://dqd8a4b033u3v" path="res://Levels/Tutorial/hand_icon.svg" id="2_5tj12"]
+
+[node name="DragTutorial" type="Node2D" unique_id=1359360949]
+script = ExtResource("1_am1g1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1294584478]
+position = Vector2(11, 26)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_5tj12")
+
+[node name="Timer" type="Timer" parent="." unique_id=951281125]
+unique_name_in_owner = true
+one_shot = true
