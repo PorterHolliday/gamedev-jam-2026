@@ -51,6 +51,8 @@ func _place_operations(level_data: LevelData) -> void:
 		
 	for i in range(operation_count):
 		var operation_data: GraphNodeData = level_data.operations[i]
+		if not operation_data:
+			continue
 		var operation: MyGraphNode = NodeTypeRegistry.scene_for(operation_data.type).instantiate()
 		if NodeTypeRegistry.has_fixed_value(operation_data.type):
 			operation.set('value', operation_data.value)

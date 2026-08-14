@@ -14,7 +14,6 @@ static var node: GameRoot
 @export var level_select_screen_scene: PackedScene
 @export var settings_screen_scene: PackedScene
 @export var credits_screen_scene: PackedScene
-@export var level_scene: PackedScene
 
 @onready var game_screen_root: Node = %GameScreenRoot
 @onready var ui_root: UIRoot = %UIRoot
@@ -136,11 +135,12 @@ func _transition(build_screen: Callable) -> void:
 ## Instantiates and parents a level while the screen is black.
 ## Returns null if [param index] is out of bounds.
 func _build_level(index: int) -> Level:
-	var level: Level = level_scene.instantiate()
+	var level_data: LevelData = LevelManager.get_level_data(index)
+	var level: Level = level_data.level_scene.instantiate()
 
 	level.hide()
 	level.process_mode = Node.PROCESS_MODE_DISABLED
-	level.level_data = LevelManager.get_level_data(index)
+	level.level_data = level_data
 	game_screen_root.add_child(level)
 	await get_tree().process_frame  # let _ready and node setup settle while black
 	return level

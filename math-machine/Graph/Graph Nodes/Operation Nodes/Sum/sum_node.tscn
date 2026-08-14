@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="3_7apbg"]
 [ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="4_td6ec"]
 [ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="6_2r0to"]
+[ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="6_fc24g"]
+[ext_resource type="PackedScene" uid="uid://cjxx8phlk1sjd" path="res://Graph/Graph Nodes/NodeInfo/node_info_panel.tscn" id="7_53vfo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0l3"]
 bg_color = Color(0.7490196, 0.2509804, 0, 1)
@@ -21,8 +23,9 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
 
-[node name="SumNode" type="Node2D" unique_id=1459015131]
+[node name="SumNode" type="Node2D" unique_id=1459015131 node_paths=PackedStringArray("click_detector")]
 script = ExtResource("1_ckcue")
+click_detector = NodePath("DragControl")
 metadata/_custom_type_script = "uid://184cv0va5mfi"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=686987980]
@@ -47,10 +50,10 @@ vertical_alignment = 1
 
 [node name="DragControl" parent="." unique_id=109764403 instance=ExtResource("2_2r0to")]
 unique_name_in_owner = true
-offset_left = -56.0
-offset_top = -88.0
-offset_right = 56.0
-offset_bottom = 88.0
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
 metadata/_edit_group_ = true
 
 [node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("3_7apbg")]
@@ -61,3 +64,55 @@ position = Vector2(-48, 48)
 
 [node name="GraphNodeOutput" parent="." unique_id=380110332 instance=ExtResource("4_td6ec")]
 position = Vector2(48, 0)
+color = Color(0.9529412, 0.5019608, 0.4392157, 1)
+connection_color = Color(0.7921569, 0.2627451, 0.21568628, 1)
+connection_hover_color = Color(0.91, 0.407225, 0.31850004, 1)
+connected_color = Color(0.5726696, 0, 0, 1)
+value_panel_color = Color(0.7490196, 0.2509804, 0, 1)
+
+[node name="NodeInfo" type="Control" parent="." unique_id=2074310673]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("6_fc24g")
+metadata/_custom_type_script = "uid://ypfv3rfioneb"
+
+[node name="NodeName" parent="NodeInfo" unique_id=134562754 instance=ExtResource("7_53vfo")]
+layout_mode = 1
+offset_left = -49.0
+offset_top = -144.0
+offset_right = 10.0
+offset_bottom = -108.0
+text = "Sum"
+mobile_text = ""
+
+[node name="InputInfo" parent="NodeInfo" unique_id=718257492 instance=ExtResource("7_53vfo")]
+layout_mode = 1
+offset_left = -86.0
+offset_top = -86.0
+offset_right = -50.0
+offset_bottom = -51.0
+text = "A"
+mobile_text = ""
+
+[node name="InputInfo2" parent="NodeInfo" unique_id=1115453743 instance=ExtResource("7_53vfo")]
+layout_mode = 1
+offset_left = -86.0
+offset_top = 9.5
+offset_right = -50.0
+offset_bottom = 45.5
+text = "B"
+mobile_text = ""
+
+[node name="OutputInfo" parent="NodeInfo" unique_id=822926514 instance=ExtResource("7_53vfo")]
+layout_mode = 1
+offset_left = 10.0
+offset_top = -38.0
+offset_right = 64.0
+offset_bottom = -2.0
+text = "A+B"
+mobile_text = ""

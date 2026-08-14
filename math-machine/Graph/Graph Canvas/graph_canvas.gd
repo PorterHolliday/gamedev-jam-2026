@@ -2,7 +2,7 @@ class_name GraphCanvas
 extends Node2D
 
 const DISCONNECTION_DISTANCE: float = 40.0
-const BEZIER_SAMPLES: float = 40
+const BEZIER_SAMPLES: float = 39
 const LINE_WIDTH: float = 6.0
 const BORDER_WIDTH: float = 6.0
 const PREVIEW_COLOR: Color = Color(0.8, 0.8, 0.8, 0.8)
@@ -11,29 +11,39 @@ const VALID_CONNECTION_COLOR: Color = Color(1.0, 1.0, 1.0, 0.863)
 const BORDER_VALID_CONNECTION_COLOR: Color = Color(0.6, 0.6, 0.6, 0.706)
 const INVALID_CONNECTION_COLOR: Color = Color(1.0, 0.62, 0.62, 0.8)
 const BORDER_INVALID_CONNECTION_COLOR: Color = Color(0.6, 0.318, 0.318, 0.6)
+const TUTORIAL_CONNECTION_COLOR: Color = Color(1.0, 1.0, 1.0, 0.8)
+const TUTORIAL_BORDER_CONNECTION_COLOR: Color = Color(1.0, 1.0, 1.0, 0.0)
 const SHADOW_OFFSET: Vector2 = Vector2(2, 2)
 const SHADOW_COLOR: Color = Color(Color.BLACK, 0.64)
+const DASH_LENGTH: float = 24.0
+const DASH_GAP: float = 24.0
 
 signal connection_occurred
 signal disconnection_occurred
 signal level_complete
+var nodes: Array[MyGraphNode] = []
 var _output_nodes: Array[OutputNode2] = []
 
 class Connection:
 	var from_port: GraphNodePort
 	var to_port: GraphNodePort
-@export var init_connections: Array[ConnectionData] = []
+	func _init(_from: GraphNodePort = null, _to: GraphNodePort = null) -> void:
+		from_port = _from
+		to_port = _to
+@export var tutorial_connection_data: Array[ConnectionData] = []
 
 @onready var double_click_detector: DoubleClickDetector = %DoubleClickDetector
 @onready var glow_panel: Panel = %GlowPanel
 
 var connections: Array[Connection] = []
+var tutorial_connections: Array[Connection] = []
 var current_connection_start_port: GraphNodePort
 var current_connection_end_port: GraphNodePort
 var is_current_connection_valid: bool = false
 var is_current_connection_invalid: bool = false
 
 var ports: Array[GraphNodePort] = []
+var hovered_port: GraphNodePort
 var _level_completed: bool = false
 var _hint_connections: Array[Connection] = []
 var _hint_connection_alpha: float = HintVisuals.GLOW_ALPHA
@@ -44,15 +54,17 @@ func start() -> void:
 	
 	double_click_detector.double_clicked.connect(_on_double_clicked)
 	
-	for connection_data in init_connections:
-		var from_port: GraphNodePort = get_node(connection_data.from_node).outputs[connection_data.from_port]
-		var to_port: GraphNodePort = get_node(connection_data.to_node).inputs[connection_data.to_port]
-		request_connection(from_port, to_port, false)
-	
 	for child in get_children():
+		if child is MyGraphNode:
+			nodes.append(child)
 		if child is OutputNode2:
 			_output_nodes.append(child)
 			child.received_valid_output.connect(_check_level_complete.call_deferred)
+	
+	for connection_data in tutorial_connection_data:
+		var from_port: GraphNodePort = nodes[connection_data.from_node_index].outputs[connection_data.from_port]
+		var to_port: GraphNodePort = nodes[connection_data.to_node_index].inputs[connection_data.to_port]
+		tutorial_connections.append(Connection.new(from_port, to_port))
 			
 func _process(_delta: float) -> void:
 	queue_redraw()
@@ -68,6 +80,8 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	var hovered_connection: Connection = _get_closest_connection_at_point(get_global_mouse_position(), DISCONNECTION_DISTANCE)
+	for connection in tutorial_connections:
+		_draw_tutorial_connection(connection)
 	for connection in connections:
 		_draw_connection(connection, connection == hovered_connection)
 	_draw_hint_connections()
@@ -106,6 +120,9 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 		AudioManager.play_connection_sfx()
 		HapticManager.trigger_port_connect_haptic()
 	connection.to_port.graph_node.update_input(connection.to_port, connection.from_port.value)
+	
+	connection.to_port.value_text_color = connection.from_port.value_panel_color
+	connection.to_port.connected_color = connection.from_port.connection_color
 	
 	clear_hint_connection()
 	connection_occurred.emit()
@@ -164,6 +181,7 @@ func play_level_complete_animation() -> void:
 	await get_tree().create_timer(0.4).timeout
 	
 func _mouse_entered_port_area(port: GraphNodePort) -> void:
+	hovered_port = port
 	if not current_connection_start_port: 
 		port.show_hover_fill()
 		return
@@ -189,16 +207,19 @@ func _mouse_exited_port_area(port: GraphNodePort) -> void:
 	current_connection_end_port = null
 	
 func _can_connect_ports(port1: GraphNodePort, port2: GraphNodePort) -> bool:
-	if port1.type == port2.type: return false
-	if port1.graph_node == port2.graph_node: return false
+	return _get_connection_error(port1, port2) == ""
 	
-	for connection in connections:
-		if (port1 == connection.from_port or port1 == connection.to_port)\
-			and (port2 == connection.from_port or port2 == connection.to_port):
-				return false
-	
-	if _is_loop_created(port1, port2): return false
-	return true
+func _get_connection_error(port1: GraphNodePort, port2: GraphNodePort) -> String:
+	if port1.type == port2.type:
+		if port1.type == GraphNodePort.Type.INPUT:
+			return "Both Receivers"
+		else:
+			return "Both Sources"
+			
+	if _is_loop_created(port1, port2):
+		return "Creates Loop"
+		
+	return ""
 	
 func _is_loop_created(port1: GraphNodePort, port2: GraphNodePort) -> bool:
 	if port1.type == GraphNodePort.Type.OUTPUT:
@@ -224,6 +245,15 @@ func _draw_connection(connection: Connection, is_hovered: bool) -> void:
 			connection.from_port.connection_hover_color if is_hovered else connection.from_port.connection_color,
 			connection.from_port.connection_border_color,
 			true
+		)
+		
+func _draw_tutorial_connection(connection: Connection) -> void:
+	_draw_dashed_bezier(
+			to_local(connection.from_port.global_position),
+			to_local(connection.to_port.global_position),
+			TUTORIAL_CONNECTION_COLOR,
+			TUTORIAL_BORDER_CONNECTION_COLOR,
+			false
 		)
 	
 func _draw_current_connection() -> void:
@@ -299,12 +329,94 @@ func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color,
 
 	if draw_shadow:
 		draw_polyline(shadow_points, SHADOW_COLOR, LINE_WIDTH + BORDER_WIDTH * 2.0, true)
+	
 	draw_polyline(points, border_color, LINE_WIDTH + BORDER_WIDTH * 2.0, true)
 	draw_polyline(points, color, LINE_WIDTH, true)
+		
+## Draws a dashed version of the same cubic bezier curve as _draw_bezier, with
+## optional shadow and border. Dash segments are spaced evenly along the
+## curve's arc length rather than its sample-point indices, so the middle of
+## the curve doesn't look squished relative to the ends.
+func _draw_dashed_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color, draw_shadow: bool) -> void:
+	var offset := Vector2(abs(to.x - from.x) * 0.5, 0.0)
+	var p0 := from
+	var p1 := from + offset
+	var p2 := to - offset
+	var p3 := to
+	var points := PackedVector2Array()
+	points.resize(BEZIER_SAMPLES + 1)
+	for i in range(BEZIER_SAMPLES + 1):
+		var t := float(i) / float(BEZIER_SAMPLES)
+		var u := 1.0 - t
+		points[i] = u*u*u*p0 + 3.0*u*u*t*p1 + 3.0*u*t*t*p2 + t*t*t*p3
+
+	var dash_segments := _get_dashed_segments(points)
+
+	for segment in dash_segments:
+		if draw_shadow:
+			var shadow_segment := PackedVector2Array()
+			shadow_segment.resize(segment.size())
+			for i in range(segment.size()):
+				shadow_segment[i] = segment[i] + SHADOW_OFFSET
+			draw_polyline(shadow_segment, SHADOW_COLOR, LINE_WIDTH + BORDER_WIDTH * 2.0, true)
+
+		draw_polyline(segment, border_color, LINE_WIDTH + BORDER_WIDTH * 2.0, true)
+		draw_polyline(segment, color, LINE_WIDTH, true)
+
+## Splits a sampled polyline into evenly-spaced dash segments by walking
+## along its cumulative arc length (rather than its point indices), using
+## linear interpolation to place dash/gap boundaries exactly. This keeps
+## dash length visually consistent even when the source points are not
+## uniformly spaced, as with bezier sample points.
+func _get_dashed_segments(points: PackedVector2Array) -> Array[PackedVector2Array]:
+	var segments: Array[PackedVector2Array] = []
+	if points.size() < 2:
+		return segments
+
+	var current_segment := PackedVector2Array()
+	current_segment.append(points[0])
+	var drawing := true
+	var distance_into_phase := 0.0
+
+	for i in range(1, points.size()):
+		var segment_start := points[i - 1]
+		var segment_end := points[i]
+		var segment_length := segment_start.distance_to(segment_end)
+		var traveled := 0.0
+
+		while traveled < segment_length:
+			var phase_length := DASH_LENGTH if drawing else DASH_GAP
+			var remaining_in_phase := phase_length - distance_into_phase
+			var remaining_in_segment := segment_length - traveled
+
+			if remaining_in_phase <= remaining_in_segment:
+				traveled += remaining_in_phase
+				var point := segment_start.lerp(segment_end, traveled / segment_length)
+				if drawing:
+					current_segment.append(point)
+					segments.append(current_segment)
+					current_segment = PackedVector2Array()
+				else:
+					current_segment.append(point)
+				drawing = not drawing
+				distance_into_phase = 0.0
+			else:
+				traveled = segment_length
+				distance_into_phase += remaining_in_segment
+				if drawing:
+					current_segment.append(segment_end)
+
+	if drawing and current_segment.size() > 1:
+		segments.append(current_segment)
+
+	return segments
 
 func _port_released() -> void:
 	if current_connection_start_port and current_connection_end_port:
 		request_connection(current_connection_start_port, current_connection_end_port)
+	elif is_current_connection_invalid:
+		var error: String = _get_connection_error(current_connection_start_port, hovered_port)
+		hovered_port.show_error(error)
 	_modulate_glow_panel(Color(0.0, 0.0, 0.0, 0.0))
 	current_connection_start_port = null
 	current_connection_end_port = null

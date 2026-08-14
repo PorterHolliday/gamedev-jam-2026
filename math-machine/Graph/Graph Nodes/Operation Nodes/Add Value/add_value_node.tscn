@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cfbjles1s05dy" path="res://DragControl/drag_control.tscn" id="2_typ00"]
 [ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="3_ri1qq"]
 [ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="4_wdqb3"]
+[ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="6_mvvqe"]
+[ext_resource type="PackedScene" uid="uid://cjxx8phlk1sjd" path="res://Graph/Graph Nodes/NodeInfo/node_info_panel.tscn" id="7_obedx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvvqe"]
 bg_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
@@ -21,8 +23,9 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
 
-[node name="AddValueNode" type="Node2D" unique_id=1512119247]
+[node name="AddValueNode" type="Node2D" unique_id=1512119247 node_paths=PackedStringArray("click_detector")]
 script = ExtResource("1_4m75e")
+click_detector = NodePath("DragControl")
 metadata/_custom_type_script = "uid://dp3x2ylp6ysso"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=489281560]
@@ -60,3 +63,47 @@ position = Vector2(-48, 0)
 
 [node name="GraphNodeOutput" parent="." unique_id=1452740761 instance=ExtResource("4_wdqb3")]
 position = Vector2(48, 0)
+color = Color(0.49411765, 0.6862745, 0.96862745, 1)
+connection_color = Color(0.28728372, 0.38619685, 0.8672597, 1)
+connection_hover_color = Color(0.40850002, 0.525825, 0.95, 1)
+connected_color = Color(0.21960784, 0.16078432, 0.5921569, 1)
+value_panel_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
+
+[node name="NodeInfo" type="Control" parent="." unique_id=1169321836]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("6_mvvqe")
+metadata/_custom_type_script = "uid://ypfv3rfioneb"
+
+[node name="NodeName" parent="NodeInfo" unique_id=134562754 instance=ExtResource("7_obedx")]
+layout_mode = 1
+offset_left = -100.0
+offset_top = -112.0
+offset_right = 61.0
+offset_bottom = -76.0
+text = "Adjust Amount"
+mobile_text = ""
+
+[node name="InputInfo" parent="NodeInfo" unique_id=1213534489 instance=ExtResource("7_obedx")]
+layout_mode = 1
+offset_left = -86.0
+offset_top = -38.0
+offset_right = -51.0
+offset_bottom = -3.0
+text = "A"
+mobile_text = ""
+
+[node name="OutputInfo" parent="NodeInfo" unique_id=2070874347 instance=ExtResource("7_obedx")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 10.0
+offset_top = -38.0
+offset_right = 63.0
+offset_bottom = -2.0
+text = "A+3"
+mobile_text = ""

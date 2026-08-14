@@ -37,10 +37,6 @@ window/stretch/mode="canvas_items"
 
 theme/custom="uid://c8v5ql7fu0rxv"
 
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
-
 [physics]
 
 3d/physics_engine="Jolt Physics"
