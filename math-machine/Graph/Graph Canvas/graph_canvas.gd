@@ -48,6 +48,7 @@ var _level_completed: bool = false
 var _hint_connections: Array[Connection] = []
 var _hint_connection_alpha: float = HintVisuals.GLOW_ALPHA
 var _hint_connection_tween: Tween
+var mouse_position_override: Vector2 = Vector2.ZERO
 
 func start() -> void:
 	_connect_port_signals()
@@ -79,7 +80,8 @@ func _process(_delta: float) -> void:
 		connection.to_port.show_connected_fill()
 
 func _draw() -> void:
-	var hovered_connection: Connection = _get_closest_connection_at_point(get_global_mouse_position(), DISCONNECTION_DISTANCE)
+	var mouse_position: Vector2 = mouse_position_override if mouse_position_override else get_global_mouse_position()
+	var hovered_connection: Connection = _get_closest_connection_at_point(mouse_position, DISCONNECTION_DISTANCE)
 	for connection in tutorial_connections:
 		_draw_tutorial_connection(connection)
 	for connection in connections:
@@ -100,8 +102,8 @@ func update_output_connections(port: GraphNodePort) -> void:
 	for connection in connections:
 		connection.to_port.graph_node.update_input(connection.to_port, port.value)
 
-func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: bool = true) -> bool:
-	if not _can_connect_ports(port1, port2): return false
+func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: bool = true) -> Connection:
+	if not _can_connect_ports(port1, port2): return null
 	
 	var connection: Connection = Connection.new()
 	if port1.type == GraphNodePort.Type.OUTPUT:
@@ -126,7 +128,7 @@ func request_connection(port1: GraphNodePort, port2: GraphNodePort, play_sound: 
 	
 	clear_hint_connection()
 	connection_occurred.emit()
-	return true
+	return connection
 	
 func request_disconnection(connection: Connection, play_sound: bool = true) -> bool:
 	if not connections.has(connection): return false
@@ -189,7 +191,6 @@ func _mouse_entered_port_area(port: GraphNodePort) -> void:
 		port.show_hover_fill()
 		is_current_connection_valid = true
 		current_connection_end_port = port
-		_modulate_glow_panel(VALID_CONNECTION_COLOR)
 		HapticManager.trigger_port_snap_haptic()
 	elif port != current_connection_start_port:
 		port.show_bad_connection()
@@ -259,9 +260,11 @@ func _draw_tutorial_connection(connection: Connection) -> void:
 func _draw_current_connection() -> void:
 	if current_connection_start_port != null:
 		var start := to_local(current_connection_start_port.global_position)
-		var end := to_local(current_connection_end_port.global_position) \
-				if current_connection_end_port != null \
+		var end := mouse_position_override \
+				if mouse_position_override \
 				else get_local_mouse_position()
+		if current_connection_end_port != null:
+			end = to_local(current_connection_end_port.global_position)
 		var color: Color = PREVIEW_COLOR
 		var border_color: Color = BORDER_PREVIEW_COLOR
 		if is_current_connection_valid:

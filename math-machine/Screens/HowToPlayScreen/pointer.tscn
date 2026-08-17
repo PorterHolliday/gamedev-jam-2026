@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cnq8kcmvx62v6"]
+
+[ext_resource type="Script" uid="uid://cm7idulljcf2p" path="res://Screens/HowToPlayScreen/pointer.gd" id="1_a1g0y"]
+[ext_resource type="Texture2D" uid="uid://dqd8a4b033u3v" path="res://Levels/Tutorial/hand_icon.svg" id="1_vgalk"]
+[ext_resource type="Texture2D" uid="uid://ctckwmv658aqf" path="res://Levels/Tutorial/click_icon.svg" id="3_t4u3b"]
+
+[node name="Pointer" type="Node2D" unique_id=1898927088]
+script = ExtResource("1_a1g0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1020217915]
+unique_name_in_owner = true
+position = Vector2(11, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_vgalk")
+
+[node name="ClickSprite" type="Sprite2D" parent="." unique_id=65039963]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_t4u3b")
