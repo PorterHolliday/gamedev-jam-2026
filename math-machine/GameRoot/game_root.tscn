@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://deggewgm1t5un" path="res://GameRoot/game_root.gd" id="1_6mbnm"]
 [ext_resource type="PackedScene" uid="uid://cxdnvto6wdmfw" path="res://Screens/TitleScreen/title_screen.tscn" id="2_prtjo"]
 [ext_resource type="PackedScene" uid="uid://25v23ibhxckb" path="res://Screens/LevelSelectionScreen/level_selection_screen.tscn" id="3_pc124"]
+[ext_resource type="PackedScene" uid="uid://cpb805c4nlrbu" path="res://Screens/HowToPlayScreen/how_to_play_screen.tscn" id="5_4878p"]
 [ext_resource type="PackedScene" uid="uid://dhhayos68polj" path="res://Screens/SettingsScreen/settings_screen.tscn" id="5_c8ohv"]
 [ext_resource type="PackedScene" uid="uid://3vvhaji5x0ta" path="res://TransitionRoot/transition_root.tscn" id="5_pc124"]
 [ext_resource type="PackedScene" uid="uid://dckjs325lx5n3" path="res://UIRoot/ui_root.tscn" id="5_yjbio"]
 [ext_resource type="Script" uid="uid://g68g4kmhjyq7" path="res://UIRoot/ui_root.gd" id="6_7rb8t"]
-[ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="6_4878p"]
 [ext_resource type="PackedScene" uid="uid://crdmfsmvvx803" path="res://Screens/CreditsScreen/credits_screen.tscn" id="6_ahdtl"]
 [ext_resource type="PackedScene" uid="uid://2lhe6vg0rg0o" path="res://Levels/LevelCompletePopup/level_complete_popup.tscn" id="7_7rb8t"]
 [ext_resource type="PackedScene" uid="uid://l0wv334kim35" path="res://Levels/LevelCompletePopup/game_complete_popup.tscn" id="10_4878p"]
@@ -17,8 +17,8 @@ script = ExtResource("1_6mbnm")
 title_screen_scene = ExtResource("2_prtjo")
 level_select_screen_scene = ExtResource("3_pc124")
 settings_screen_scene = ExtResource("5_c8ohv")
+how_to_play_screen_scene = ExtResource("5_4878p")
 credits_screen_scene = ExtResource("6_ahdtl")
-level_scene = ExtResource("6_4878p")
 metadata/_custom_type_script = "uid://deggewgm1t5un"
 
 [node name="GameScreenLayer" type="CanvasLayer" parent="." unique_id=813723494]

@@ -23,9 +23,9 @@ offset_left = 448.0
 offset_top = 144.0
 offset_right = 697.0
 offset_bottom = 215.0
-text = "Right-click an operation
+text = "Right-click a piece
 to learn how it works."
-mobile_text = "Long-press an operation
+mobile_text = "Long-press a piece
 to learn how it works."
 
 [node name="GraphCanvas" parent="." index="2" unique_id=90730119]

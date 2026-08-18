@@ -13,6 +13,7 @@ static var node: GameRoot
 @export var title_screen_scene: PackedScene
 @export var level_select_screen_scene: PackedScene
 @export var settings_screen_scene: PackedScene
+@export var how_to_play_screen_scene: PackedScene
 @export var credits_screen_scene: PackedScene
 
 @onready var game_screen_root: Node = %GameScreenRoot
@@ -21,6 +22,7 @@ static var node: GameRoot
 @onready var title_screen: Node = title_screen_scene.instantiate()
 @onready var level_select_screen: Node = level_select_screen_scene.instantiate()
 @onready var settings_screen: Node = settings_screen_scene.instantiate()
+@onready var how_to_play_screen: HowToPlayScreen = how_to_play_screen_scene.instantiate()
 @onready var credits_screen: Node = credits_screen_scene.instantiate()
 
 ## Visibility only. Process state is owned by [method _transition] so that a
@@ -79,6 +81,12 @@ static func enter_settings_screen() -> void:
 
 static func exit_settings_screen() -> void:
 	await node.transition(node.previous_screen)
+	
+static func enter_how_to_play_screen() -> void:
+	await node.transition(node.how_to_play_screen)
+	
+static func exit_how_to_play_screen() -> void:
+	await node.transition(node.previous_screen)
 
 static func enter_credits_screen() -> void:
 	AudioManager.crossfade_to_menu_music()
@@ -116,7 +124,7 @@ func _transition(build_screen: Callable) -> void:
 	# Levels are disposable, menu screens are not. Settings is exempt because
 	# exit_settings_screen() must be able to return to the level behind it.
 	var freed_level: bool = false
-	if outgoing_level and outgoing_level != new_screen and new_screen != settings_screen:
+	if outgoing_level and outgoing_level != new_screen and new_screen != settings_screen and new_screen != how_to_play_screen:
 		outgoing_level.queue_free()
 		freed_level = true
 		current_level = null
@@ -151,6 +159,7 @@ func _add_screens() -> void:
 	game_screen_root.add_child(title_screen)
 	game_screen_root.add_child(level_select_screen)
 	game_screen_root.add_child(settings_screen)
+	game_screen_root.add_child(how_to_play_screen)
 	game_screen_root.add_child(credits_screen)
 
 	for child in game_screen_root.get_children():
