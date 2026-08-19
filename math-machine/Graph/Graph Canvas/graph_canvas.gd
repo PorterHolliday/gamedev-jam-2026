@@ -30,9 +30,10 @@ class Connection:
 	func _init(_from: GraphNodePort = null, _to: GraphNodePort = null) -> void:
 		from_port = _from
 		to_port = _to
+@export var initial_connection_data: Array[ConnectionData] = []
 @export var tutorial_connection_data: Array[ConnectionData] = []
 
-@onready var double_click_detector: DoubleClickDetector = %DoubleClickDetector
+@onready var click_detector: ClickDetector = %ClickDetector
 @onready var glow_panel: Panel = %GlowPanel
 
 var connections: Array[Connection] = []
@@ -53,7 +54,7 @@ var mouse_position_override: Vector2 = Vector2.ZERO
 func start() -> void:
 	_connect_port_signals()
 	
-	double_click_detector.double_clicked.connect(_on_double_clicked)
+	click_detector.clicked.connect(_on_clicked)
 	
 	for child in get_children():
 		if child is MyGraphNode:
@@ -66,6 +67,11 @@ func start() -> void:
 		var from_port: GraphNodePort = nodes[connection_data.from_node_index].outputs[connection_data.from_port]
 		var to_port: GraphNodePort = nodes[connection_data.to_node_index].inputs[connection_data.to_port]
 		tutorial_connections.append(Connection.new(from_port, to_port))
+			
+	for connection_data in initial_connection_data:
+		var from_port: GraphNodePort = nodes[connection_data.from_node_index].outputs[connection_data.from_port]
+		var to_port: GraphNodePort = nodes[connection_data.to_node_index].inputs[connection_data.to_port]
+		connections.append(Connection.new(from_port, to_port))
 			
 func _process(_delta: float) -> void:
 	queue_redraw()
@@ -424,7 +430,7 @@ func _port_released() -> void:
 	current_connection_start_port = null
 	current_connection_end_port = null
 		
-func _on_double_clicked(position: Vector2, _button_index: MouseButton) -> void:
+func _on_clicked(position: Vector2, _button_index: MouseButton) -> void:
 	var connection: Connection = _get_closest_connection_at_point(position, DISCONNECTION_DISTANCE)
 	if not connection: return
 	request_disconnection(connection)

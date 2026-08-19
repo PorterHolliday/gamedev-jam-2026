@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfcmc8qocwu47"]
 
 [ext_resource type="Script" uid="uid://boo36jrexts7x" path="res://Graph/Graph Canvas/graph_canvas.gd" id="1_v84bs"]
-[ext_resource type="Script" uid="uid://qvhs5frxppt3" path="res://DoubleClickDetector/double_click_detector.gd" id="2_wrq3c"]
+[ext_resource type="Script" uid="uid://bkhbcn52lxkix" path="res://ClickDetector/click_detector.gd" id="2_wrq3c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0l3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -16,10 +16,10 @@ border_blend = true
 script = ExtResource("1_v84bs")
 metadata/_custom_type_script = "uid://boo36jrexts7x"
 
-[node name="DoubleClickDetector" type="Node" parent="." unique_id=1314618252]
+[node name="ClickDetector" type="Node" parent="." unique_id=101288708]
 unique_name_in_owner = true
 script = ExtResource("2_wrq3c")
-metadata/_custom_type_script = "uid://qvhs5frxppt3"
+metadata/_custom_type_script = "uid://bkhbcn52lxkix"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1439465391]
 

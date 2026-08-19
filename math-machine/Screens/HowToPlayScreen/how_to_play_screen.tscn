@@ -102,35 +102,28 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="TutorialPanel6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1447792528 instance=ExtResource("2_abb0i")]
-custom_minimum_size = Vector2(484, 40)
 layout_mode = 2
 text = "Fill all targets at the same time to win."
 
 [node name="TutorialPanel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1682298335 instance=ExtResource("2_abb0i")]
-custom_minimum_size = Vector2(484, 40)
 layout_mode = 2
-text = "Click-and-drag circles to connect pieces."
-mobile_text = "Touch-and-drag between circles to connect them."
+text = "Click-and-drag from circles to connect pieces."
+mobile_text = "Touch-and-drag from circles to connect pieces."
 
 [node name="TutorialPanel3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1800126288 instance=ExtResource("2_abb0i")]
-custom_minimum_size = Vector2(484, 40)
 layout_mode = 2
 text = "Each output can wire to multiple inputs."
 
 [node name="TutorialPanel2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=975235135 instance=ExtResource("2_abb0i")]
-custom_minimum_size = Vector2(484, 40)
 layout_mode = 2
 text = "Click a wire to remove it."
-mobile_text = "Tap a connection
-to remove it."
+mobile_text = "Tap a wire to remove it."
 
 [node name="TutorialPanel4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=878675032 instance=ExtResource("2_abb0i")]
-custom_minimum_size = Vector2(484, 40)
 layout_mode = 2
 text = "Drag pieces to rearrange them."
 
 [node name="TutorialPanel5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=307943729 instance=ExtResource("2_abb0i")]
-custom_minimum_size = Vector2(484, 40)
 layout_mode = 2
 text = "Right-click a piece to learn how it works."
 mobile_text = "Long-press a piece to learn how it works."

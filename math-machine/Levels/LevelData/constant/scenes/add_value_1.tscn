@@ -28,10 +28,10 @@ offset_left = 480.0
 offset_top = 160.0
 offset_right = 685.0
 offset_bottom = 221.0
-text = "Click-and-drag to
-connect circles."
-mobile_text = "Touch-and-drag to
-connect them."
+text = "Click-and-drag from
+circles to connect pieces."
+mobile_text = "Touch-and-drag from
+circles to connect pieces."
 
 [node name="GraphCanvas" parent="." index="2" unique_id=90730119]
 tutorial_connection_data = Array[ExtResource("2_w14a8")]([SubResource("Resource_w14a8"), SubResource("Resource_r6lmc")])
