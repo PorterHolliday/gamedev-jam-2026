@@ -30,7 +30,6 @@ extends PanelContainer
 @onready var label: Label = %Label
 
 func _ready() -> void:
-	label.label_settings.duplicate()
 	label.text = text
 	self_modulate = color
 	label.self_modulate = text_color

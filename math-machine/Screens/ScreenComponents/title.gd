@@ -54,7 +54,7 @@ func _update_title() -> void:
 			continue
 			
 		var title_panel: TitlePanel = title_panel_scene.instantiate()
-		title_panel.get_node("Label").label_settings.duplicate()
+		title_panel.get_node("Label").label_settings = title_panel.get_node("Label").label_settings.duplicate()
 		title_panel.text = text[i]
 		title_panel.color = color
 		title_panel.text_color = text_color

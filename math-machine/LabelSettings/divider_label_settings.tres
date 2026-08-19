@@ -7,5 +7,3 @@ font_weight = 600
 [resource]
 font = SubResource("SystemFont_osfc4")
 font_size = 24
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)

@@ -1,46 +1,10 @@
 [gd_scene format=3 uid="uid://cxdnvto6wdmfw"]
 
 [ext_resource type="Script" uid="uid://cevlv5ybi8urd" path="res://Screens/TitleScreen/title_screen.gd" id="1_2e2ej"]
+[ext_resource type="PackedScene" uid="uid://bdxx61cy41cyb" path="res://Screens/ScreenComponents/title.tscn" id="2_ilw8c"]
 [ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="2_vnbe3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fqn1"]
-bg_color = Color(0.5882353, 0.09411765, 0.09411765, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="SystemFont" id="SystemFont_vnbe3"]
-font_names = PackedStringArray("Century Gothic")
-font_weight = 600
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_qax5j"]
-font = SubResource("SystemFont_vnbe3")
-font_size = 80
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oaxot"]
-bg_color = Color(0.22745098, 0.2509804, 0.32941177, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
+[ext_resource type="Texture2D" uid="uid://n5m6irf5sqyf" path="res://UI/credits_icon.png" id="4_gld00"]
+[ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="4_h15x5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqf5v"]
 bg_color = Color(0.21176471, 0.49019608, 0.09411765, 1)
@@ -86,91 +50,9 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qax5j"]
-bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpegp"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_size = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytjtq"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r64nw"]
-bg_color = Color(0.45882353, 0.3529412, 0.6901961, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhfdr"]
-bg_color = Color(0.6509804, 0.5411765, 0.8901961, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_size = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksn83"]
-bg_color = Color(0.6509804, 0.5411765, 0.8901961, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
+[sub_resource type="LabelSettings" id="LabelSettings_bp0l3"]
+font_size = 24
+outline_color = Color(0, 0, 0, 1)
 
 [node name="TitleScreen" type="Control" unique_id=177250034]
 layout_mode = 3
@@ -186,206 +68,119 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 656.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=48857325]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1130489241]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -376.0
-offset_top = 56.0
-offset_right = 376.0
-offset_bottom = 318.0
+offset_left = -516.0
+offset_top = 151.0
+offset_right = 516.0
+offset_bottom = 263.0
 grow_horizontal = 2
-theme_override_constants/separation = 6
+theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2" unique_id=38280589]
+[node name="Title" parent="HBoxContainer" unique_id=1727297454 instance=ExtResource("2_ilw8c")]
 layout_mode = 2
+text = "NUMBER"
+color = Color(0.43529412, 0.5058824, 0.57254905, 1)
+panel_min_size = Vector2(96, 112)
+spacer_min_size = 40.0
+text_size = 72
+text_outline_size = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/HBoxContainer" unique_id=1661353495]
-custom_minimum_size = Vector2(104, 128)
+[node name="Title2" parent="HBoxContainer" unique_id=1193041958 instance=ExtResource("2_ilw8c")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
+text = "WIRE"
+color = Color(0.7294118, 0.41568628, 0.13333334, 1)
+panel_min_size = Vector2(96, 112)
+spacer_min_size = 40.0
+text_size = 64
+text_outline_size = 8
 
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer/PanelContainer" unique_id=1351784842]
-layout_mode = 2
-text = "M"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer2/HBoxContainer" unique_id=1031069347]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer/PanelContainer2" unique_id=173031789]
-layout_mode = 2
-text = "A"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer2/HBoxContainer" unique_id=211483172]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer/PanelContainer3" unique_id=665937690]
-layout_mode = 2
-text = "T"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer2/HBoxContainer" unique_id=2031581029]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_0fqn1")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer/PanelContainer4" unique_id=1851533134]
-layout_mode = 2
-text = "H"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2" unique_id=514477293]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=2113330329]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer" unique_id=1004562383]
-layout_mode = 2
-text = "M"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1156457829]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer2" unique_id=229580010]
-layout_mode = 2
-text = "A"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1466671399]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer3" unique_id=1722763073]
-layout_mode = 2
-text = "C"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1872185732]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer4" unique_id=1987896495]
-layout_mode = 2
-text = "H"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer5" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=346616420]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer5" unique_id=1217250486]
-layout_mode = 2
-text = "I"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer6" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1427149523]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-offset_transform_enabled = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer6" unique_id=686441696]
-layout_mode = 2
-text = "N"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer7" type="PanelContainer" parent="VBoxContainer2/HBoxContainer2" unique_id=1001539061]
-custom_minimum_size = Vector2(104, 128)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_oaxot")
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/PanelContainer7" unique_id=1560476718]
-layout_mode = 2
-text = "E"
-label_settings = SubResource("LabelSettings_qax5j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=233216516]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -184.0
-offset_top = -272.0
-offset_right = 184.0
-offset_bottom = -62.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 16
-
-[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1503869416]
+[node name="PlayButton" type="Button" parent="." unique_id=1503869416]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = 76.0
+offset_right = 180.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_cqf5v")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f424p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x53nb")
 text = "PLAY"
 script = ExtResource("2_vnbe3")
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=460415763]
+[node name="CreditsButton" type="Button" parent="." unique_id=1311501315]
 unique_name_in_owner = true
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_qax5j")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vpegp")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ytjtq")
-text = "Settings"
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+size_flags_horizontal = 10
+tooltip_text = "Credits"
 script = ExtResource("2_vnbe3")
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1189575717]
+[node name="TextureRect" type="TextureRect" parent="CreditsButton" unique_id=1988934235]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("4_gld00")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsButton" type="Button" parent="." unique_id=1353745590]
 unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_r64nw")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_fhfdr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ksn83")
-text = "Credits"
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 0
+size_flags_horizontal = 10
+tooltip_text = "Settings"
 script = ExtResource("2_vnbe3")
+
+[node name="TextureRect" type="TextureRect" parent="SettingsButton" unique_id=2036500710]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("4_h15x5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CopyRightLabel" type="Label" parent="." unique_id=727944671]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -441.0
+offset_top = -34.0
+offset_right = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "© Goat Code Games. All Rights Reserved."
+label_settings = SubResource("LabelSettings_bp0l3")
