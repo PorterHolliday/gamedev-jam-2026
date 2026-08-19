@@ -10,16 +10,17 @@
 
 [sub_resource type="Resource" id="In0"]
 script = ExtResource("1_l1v72")
+value = -2
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [sub_resource type="Resource" id="In1"]
 script = ExtResource("1_l1v72")
-value = 7
+value = 3
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [sub_resource type="Resource" id="Resource_vcnn6"]
 script = ExtResource("5_nb7yv")
-from_value = 0
+from_value = 3
 to_type = 4
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
@@ -31,7 +32,7 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="Resource_xd0k7"]
 script = ExtResource("5_nb7yv")
 from_slot = 1
-from_value = 7
+from_value = -2
 to_type = 4
 to_port = 1
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
@@ -44,8 +45,8 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="Resource_qhv0i"]
 script = ExtResource("5_nb7yv")
 from_type = 4
-to_type = 4
-to_slot = 1
+to_type = 1
+to_value = 5
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="Resource_0r58k"]
@@ -53,49 +54,9 @@ script = ExtResource("4_gyfbd")
 step_data = SubResource("Resource_qhv0i")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
-[sub_resource type="Resource" id="Resource_r57td"]
-script = ExtResource("5_nb7yv")
-from_slot = 1
-from_value = 7
-to_type = 4
-to_slot = 1
-to_port = 1
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="Resource_egcpe"]
-script = ExtResource("4_gyfbd")
-step_data = SubResource("Resource_r57td")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="Resource_g7q6b"]
-script = ExtResource("5_nb7yv")
-from_type = 4
-to_type = 1
-to_value = -7
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="Resource_xpk86"]
-script = ExtResource("4_gyfbd")
-step_data = SubResource("Resource_g7q6b")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="Resource_aawqh"]
-script = ExtResource("5_nb7yv")
-from_type = 4
-from_slot = 1
-to_type = 1
-to_slot = 1
-to_value = -14
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="Resource_gjn6r"]
-script = ExtResource("4_gyfbd")
-step_data = SubResource("Resource_aawqh")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
 [sub_resource type="Resource" id="Resource_2ywyp"]
 script = ExtResource("3_8p03w")
-solution_steps = Array[ExtResource("4_gyfbd")]([SubResource("Resource_s7738"), SubResource("Resource_yh6mc"), SubResource("Resource_0r58k"), SubResource("Resource_egcpe"), SubResource("Resource_xpk86"), SubResource("Resource_gjn6r")])
+solution_steps = Array[ExtResource("4_gyfbd")]([SubResource("Resource_s7738"), SubResource("Resource_yh6mc"), SubResource("Resource_0r58k")])
 metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="Solution"]
@@ -108,27 +69,16 @@ script = ExtResource("1_l1v72")
 type = 4
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
-[sub_resource type="Resource" id="Resource_wnrbj"]
-script = ExtResource("1_l1v72")
-type = 4
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
 [sub_resource type="Resource" id="Out0"]
 script = ExtResource("1_l1v72")
 type = 1
-value = -7
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Resource_f8hb8"]
-script = ExtResource("1_l1v72")
-type = 1
-value = -14
+value = 5
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [resource]
 script = ExtResource("6_q2i6s")
 inputs = Array[ExtResource("1_l1v72")]([SubResource("In0"), SubResource("In1")])
-operations = Array[ExtResource("1_l1v72")]([SubResource("Op0"), SubResource("Resource_wnrbj")])
-outputs = Array[ExtResource("1_l1v72")]([SubResource("Out0"), SubResource("Resource_f8hb8")])
+operations = Array[ExtResource("1_l1v72")]([SubResource("Op0")])
+outputs = Array[ExtResource("1_l1v72")]([SubResource("Out0")])
 level_solution_data = SubResource("Solution")
 metadata/_custom_type_script = "uid://ciy62d543op8"
