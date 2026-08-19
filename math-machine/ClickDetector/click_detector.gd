@@ -25,7 +25,6 @@ func _input(event: InputEvent) -> void:
 	if _last_click_time + click_time >= now \
 		and _last_click_position.distance_to(event.position) <= click_distance:
 		clicked.emit(event.position, event.button_index)
-		get_viewport().set_input_as_handled()
 
 	_last_click_time = -INF
 	_last_click_position = -Vector2.INF

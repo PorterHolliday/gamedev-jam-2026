@@ -33,6 +33,7 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_tkb2t")
 script = ExtResource("1_tkb2t")
+text_color = null
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=465002811]
 layout_mode = 2

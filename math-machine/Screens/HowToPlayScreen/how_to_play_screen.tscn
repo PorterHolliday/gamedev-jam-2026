@@ -14,6 +14,27 @@
 [ext_resource type="PackedScene" uid="uid://cnq8kcmvx62v6" path="res://Screens/HowToPlayScreen/pointer.tscn" id="9_2lpnl"]
 [ext_resource type="Texture2D" uid="uid://0njw5eurbgsd" path="res://UI/ScrollContainer/up_arrow.svg" id="11_pat87"]
 [ext_resource type="Texture2D" uid="uid://cwm7bvwdspyuy" path="res://UI/ScrollContainer/down_arrow.svg" id="12_fqy5f"]
+[ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="13_xgsoy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqy5f"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6332245, 0, 0.14389938, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_fqy5f"]
+script = ExtResource("13_xgsoy")
+to_node_index = 1
+metadata/_custom_type_script = "uid://b0viev2x74hv1"
 
 [node name="HowToPlayScreen" type="Control" unique_id=488120557]
 layout_mode = 3
@@ -104,29 +125,53 @@ metadata/_edit_lock_ = true
 [node name="TutorialPanel6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1447792528 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Fill all targets at the same time to win."
+text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1682298335 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Click-and-drag from circles to connect pieces."
 mobile_text = "Touch-and-drag from circles to connect pieces."
+text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1800126288 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Each output can wire to multiple inputs."
+text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=975235135 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Click a wire to remove it."
 mobile_text = "Tap a wire to remove it."
+text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=878675032 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Drag pieces to rearrange them."
+text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=307943729 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Right-click a piece to learn how it works."
 mobile_text = "Long-press a piece to learn how it works."
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1201859658 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fqy5f")
+text = "Invalid Wiring: Both Inputs"
+text_color = Color(0.6313726, 0, 0.14509805, 1)
+
+[node name="TutorialPanel8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=81080710 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fqy5f")
+text = "Invalid Wiring: Both Outputs"
+text_color = Color(0.6313726, 0, 0.14509805, 1)
+
+[node name="TutorialPanel9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=977800653 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fqy5f")
+text = "Invalid Wiring: Creates Loop"
+text_color = Color(0.6313726, 0, 0.14509805, 1)
 
 [node name="Control" type="Control" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1949485899]
 layout_mode = 2
@@ -235,7 +280,63 @@ position = Vector2(197, 371)
 unique_name_in_owner = true
 visible = false
 
+[node name="GraphCanvas7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1599730110 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="AddValueNode7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas7" unique_id=466378669 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(400, 2096)
+value = 1
+
+[node name="AddValueNode8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas7" unique_id=306536909 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(752, 2208)
+value = -1
+
+[node name="Pointer6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas7" unique_id=2072082468 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="GraphCanvas8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1534359373 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="AddValueNode9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas8" unique_id=1869441230 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(400, 2400)
+value = 1
+
+[node name="AddValueNode10" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas8" unique_id=2046832442 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(752, 2512)
+value = -1
+
+[node name="Pointer7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas8" unique_id=749747894 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="GraphCanvas9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1313832923 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+initial_connection_data = Array[ExtResource("13_xgsoy")]([SubResource("Resource_fqy5f")])
+
+[node name="AddValueNode11" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas9" unique_id=815457454 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(400, 2704)
+value = 1
+
+[node name="AddValueNode12" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas9" unique_id=1625282551 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(752, 2816)
+value = -1
+
+[node name="Pointer8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas9" unique_id=215580579 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
 [node name="MouseBlocker" type="Control" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=113095860]
+visible = false
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="." unique_id=127066832]

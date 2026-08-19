@@ -36,6 +36,18 @@ var timers: Array[Timer] = []
 @onready var add_value_node_6: AddValueNode = %AddValueNode6
 @onready var pointer_5: Pointer = %Pointer5
 @onready var mouse: Mouse = %Mouse
+@onready var graph_canvas_7: GraphCanvas = %GraphCanvas7
+@onready var add_value_node_7: AddValueNode = %AddValueNode7
+@onready var add_value_node_8: AddValueNode = %AddValueNode8
+@onready var pointer_6: Pointer = %Pointer6
+@onready var graph_canvas_8: GraphCanvas = %GraphCanvas8
+@onready var add_value_node_9: AddValueNode = %AddValueNode9
+@onready var add_value_node_10: AddValueNode = %AddValueNode10
+@onready var pointer_7: Pointer = %Pointer7
+@onready var graph_canvas_9: GraphCanvas = %GraphCanvas9
+@onready var add_value_node_11: AddValueNode = %AddValueNode11
+@onready var add_value_node_12: AddValueNode = %AddValueNode12
+@onready var pointer_8: Pointer = %Pointer8
 @onready var back_button: Button = %BackButton
 
 func _ready() -> void:
@@ -52,13 +64,19 @@ func _ready() -> void:
 	graph_canvas_5.mouse_position_override = Vector2.ONE
 	graph_canvas_6.start()
 	graph_canvas_6.mouse_position_override = Vector2.ONE
+	graph_canvas_7.start()
+	graph_canvas_7.mouse_position_override = Vector2.ONE
+	graph_canvas_8.start()
+	graph_canvas_8.mouse_position_override = Vector2.ONE
+	graph_canvas_9.start()
+	graph_canvas_9.mouse_position_override = Vector2.ONE
 	start()
+	await get_tree().create_timer(4.0).timeout
+	_start_animations()
 
 func start() -> void:
 	scroll_container.set_deferred('scroll_vertical', 0)
 	up_arrow.hide()
-	await get_tree().create_timer(4.0).timeout
-	_start_animations()
 
 func _start_animations() -> void:
 	_reset_disconnect_animation()
@@ -69,6 +87,9 @@ func _start_animations() -> void:
 	_play_disconnect_animation()
 	_play_drag_animation()
 	_play_node_info_animation()
+	_play_input_to_input_animation()
+	_play_output_to_output_animation()
+	_play_creates_loop_animation()
 
 func _play_fill_targets_animation() -> void:
 	while can_process():
@@ -199,8 +220,44 @@ func _play_node_info_animation() -> void:
 
 func _reset_node_info_animation() -> void:
 	add_value_node_6.node_info.hide()
-
-func _play_connection_animation(from_port: GraphNodePort, to_port: GraphNodePort, graph_canvas: GraphCanvas, pointer: Pointer) -> GraphCanvas.Connection:
+	
+func _play_input_to_input_animation() -> void:
+	while can_process():
+		pointer_6.global_position = add_value_node_7.inputs[0].global_position
+		pointer_6.show()
+		await _play_connection_animation(add_value_node_7.inputs[0], add_value_node_8.inputs[0], graph_canvas_7, pointer_6)
+		pointer_6.hide()
+		_reset_input_to_input_animation()
+		await get_tree().create_timer(TIME_BETWEEN_ANIMATIONS).timeout
+	
+func _reset_input_to_input_animation() -> void:
+	pass
+	
+func _play_output_to_output_animation() -> void:
+	while can_process():
+		pointer_7.global_position = add_value_node_9.outputs[0].global_position
+		pointer_7.show()
+		await _play_connection_animation(add_value_node_9.outputs[0], add_value_node_10.outputs[0], graph_canvas_8, pointer_7)
+		pointer_7.hide()
+		_reset_output_to_output_animation()
+		await get_tree().create_timer(TIME_BETWEEN_ANIMATIONS).timeout
+	
+func _reset_output_to_output_animation() -> void:
+	pass
+	
+func _play_creates_loop_animation() -> void:
+	while can_process():
+		pointer_8.global_position = add_value_node_12.outputs[0].global_position
+		pointer_8.show()
+		await _play_connection_animation(add_value_node_12.outputs[0], add_value_node_11.inputs[0], graph_canvas_9, pointer_8)
+		pointer_8.hide()
+		_reset_creates_loop_animation()
+		await get_tree().create_timer(TIME_BETWEEN_ANIMATIONS).timeout
+	
+func _reset_creates_loop_animation() -> void:
+	pass
+	
+func _play_connection_animation(from_port: GraphNodePort, to_port: GraphNodePort, graph_canvas: GraphCanvas, pointer: Pointer) -> void:
 	graph_canvas.current_connection_start_port = from_port
 	var distance: float = from_port.global_position.distance_to(to_port.global_position)
 	var tween: Tween = get_tree().create_tween()
@@ -212,8 +269,15 @@ func _play_connection_animation(from_port: GraphNodePort, to_port: GraphNodePort
 		0.0, 1.0, distance / CONNECT_SPEED
 	)
 	await tween.finished
-	graph_canvas.current_connection_start_port = null
-	return graph_canvas.request_connection(from_port, to_port, true)
+	if graph_canvas._can_connect_ports(from_port, to_port):
+		graph_canvas.current_connection_start_port = null
+		graph_canvas.request_connection(from_port, to_port, true)
+	else:
+		graph_canvas.is_current_connection_invalid = true
+		to_port.bad_connection.show()
+		await get_tree().create_timer(1.0).timeout
+		graph_canvas.current_connection_start_port = null
+		to_port.bad_connection.hide()
 	
 func _on_back_button_pressed() -> void:
 	GameRoot.exit_how_to_play_screen()
