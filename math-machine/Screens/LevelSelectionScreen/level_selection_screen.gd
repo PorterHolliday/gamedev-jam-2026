@@ -1,6 +1,7 @@
 extends Control
 
 @onready var back_button: Button = %BackButton
+@onready var tutorial_button: MyButton = %TutorialButton
 @onready var settings_button: Button = %SettingsButton
 
 ## Parallel to LevelManager.level_scenes: level_buttons[n].level_number == n.
@@ -8,6 +9,7 @@ var level_buttons: Array[LevelButton] = []
 
 func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
+	tutorial_button.pressed.connect(_on_tutorial_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	_init_level_buttons()
 	
@@ -52,6 +54,9 @@ func _on_level_button_pressed(button: LevelButton) -> void:
 	
 func _on_back_button_pressed() -> void:
 	GameRoot.enter_title_screen()
+	
+func _on_tutorial_button_pressed() -> void:
+	GameRoot.enter_how_to_play_screen()
 	
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()

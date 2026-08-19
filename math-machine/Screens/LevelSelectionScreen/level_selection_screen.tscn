@@ -3,10 +3,78 @@
 [ext_resource type="PackedScene" uid="uid://7qbklb5jwxg5" path="res://Screens/LevelSelectionScreen/LevelButton/level_button.tscn" id="1_bntq0"]
 [ext_resource type="Script" uid="uid://buvcidul7bj23" path="res://Screens/LevelSelectionScreen/level_selection_screen.gd" id="1_whgxd"]
 [ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="2_4o1ik"]
-[ext_resource type="Texture2D" uid="uid://bqjkn1etmk7m1" path="res://Screens/LevelSelectionScreen/challenge_level_divider.png" id="2_e8uy2"]
+[ext_resource type="PackedScene" uid="uid://bdxx61cy41cyb" path="res://Screens/ScreenComponents/title.tscn" id="2_cm4pd"]
 [ext_resource type="LabelSettings" uid="uid://buq01gkh36dd0" path="res://LabelSettings/divider_label_settings.tres" id="2_osfc4"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_gnmtl"]
 [ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="6_4o1ik"]
+[ext_resource type="Texture2D" uid="uid://eh2o513barue" path="res://UI/Level UI/tutorial_icon.png" id="7_cm4pd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v81n"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dpc8"]
+bg_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cm4pd"]
+bg_color = Color(0.7490196, 0.2509804, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3qp5"]
+bg_color = Color(0.7647059, 0.68235296, 0.12156863, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqsud"]
+bg_color = Color(0.19215687, 0.4, 0.1764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yuwhm"]
 bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
@@ -51,76 +119,6 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v81n"]
-bg_color = Color(0, 0, 0, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-expand_margin_left = 16.0
-expand_margin_right = 16.0
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dpc8"]
-bg_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3qp5"]
-bg_color = Color(0.7647059, 0.68235296, 0.12156863, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgou2"]
-bg_color = Color(0.7490196, 0.2509804, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqsud"]
-bg_color = Color(0.19215687, 0.4, 0.1764706, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnmtl"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
 [node name="LevelSelectionScreen" type="Control" unique_id=1515532989]
 layout_mode = 3
 anchors_preset = 15
@@ -139,8 +137,332 @@ offset_bottom = 656.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="Dividers" type="Control" parent="." unique_id=1933769582]
-anchors_preset = 0
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=982808491]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=1236009848]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer" unique_id=469960385]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Title" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1727297454 instance=ExtResource("2_cm4pd")]
+layout_mode = 2
+text = "LEVEL SELECT"
+color = Color(0.40069774, 0.40069774, 0.40069768, 1)
+panel_min_size = Vector2(64, 80)
+spacer_min_size = 40.0
+text_size = 48
+text_outline_size = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=70558787]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="DividerLine" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=754417603]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+offset_transform_position = Vector2(-152, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DividerLine" unique_id=609917930]
+layout_mode = 1
+offset_left = -216.0
+offset_right = -16.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1dpc8")
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DividerLine/PanelContainer" unique_id=171055039]
+layout_mode = 2
+text = "Adjust Amount"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1774420990]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 5
+
+[node name="LevelButton" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=186531277 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=2114157678 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=952181192 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=1373238799 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=1821487464 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton6" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=863369867 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton7" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=408386870 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="DividerLine2" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1216016167]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+offset_transform_position = Vector2(-152, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DividerLine2" unique_id=186092529]
+layout_mode = 1
+offset_left = -216.0
+offset_right = -16.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cm4pd")
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DividerLine2/PanelContainer" unique_id=75865554]
+layout_mode = 2
+text = "Sum"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer2" type="GridContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=239918691]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 5
+
+[node name="LevelButton" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=2076453575 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=712817597 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=528830421 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1950266728 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1290621226 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton6" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=28856558 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton7" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=2004554620 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton8" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1971357356 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton9" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1691396687 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton10" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1080600004 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton11" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1394787080 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton12" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1424658454 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton13" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1500195949 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="DividerLine3" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1122225532]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+offset_transform_position = Vector2(-152, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DividerLine3" unique_id=736133934]
+layout_mode = 1
+offset_left = -216.0
+offset_right = -16.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3qp5")
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DividerLine3/PanelContainer" unique_id=61926454]
+layout_mode = 2
+text = "Subtract"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer3" type="GridContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1248937353]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 5
+
+[node name="LevelButton" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=397891742 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1820237365 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1676552708 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=899332904 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1227562070 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton6" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=893297150 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton7" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=138920762 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton8" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1551479404 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton9" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1527345715 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton10" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1955066051 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton11" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=349998468 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton12" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=242883849 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton13" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1028576800 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton14" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=2100659059 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton15" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=128684626 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton16" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=965320400 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton17" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1911463844 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton18" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=3205128 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton19" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1495668773 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton20" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1265587181 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton21" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=932690223 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton22" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=303385994 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton23" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1607557340 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton24" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=145180245 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton25" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1544781486 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="DividerLine4" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=557673068]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+offset_transform_position = Vector2(-152, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DividerLine4" unique_id=2068894189]
+layout_mode = 1
+offset_left = -216.0
+offset_right = -16.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vqsud")
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DividerLine4/PanelContainer" unique_id=1902656470]
+layout_mode = 2
+text = "Hold Value"
+label_settings = ExtResource("2_osfc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer4" type="GridContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1760716339]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 5
+
+[node name="LevelButton" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=310863323 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=97184130 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=393433248 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1990269719 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=377134251 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton6" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1110050715 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton7" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=535779738 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton8" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=26826388 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton9" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1442412898 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton10" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1408227895 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton11" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1359748085 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton12" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1558984087 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton13" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1152750281 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton14" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=271640073 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton15" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1303174764 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton16" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=262273868 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton17" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=486048757 instance=ExtResource("1_bntq0")]
+layout_mode = 2
 
 [node name="BackButton" type="Button" parent="." unique_id=23307136]
 unique_name_in_owner = true
@@ -162,6 +484,34 @@ offset_left = 9.0
 offset_right = 39.0
 offset_bottom = 48.0
 texture = ExtResource("4_gnmtl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TutorialButton" type="Button" parent="." unique_id=717598710]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 8.0
+offset_right = -64.0
+offset_bottom = 56.0
+grow_horizontal = 0
+tooltip_text = "Settings"
+theme_type_variation = &"BackButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_yuwhm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_337mu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfhlq")
+script = ExtResource("2_4o1ik")
+
+[node name="TextureRect" type="TextureRect" parent="TutorialButton" unique_id=1924462563]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 36.0
+offset_bottom = 41.0
+texture = ExtResource("7_cm4pd")
 expand_mode = 1
 stretch_mode = 5
 
@@ -191,337 +541,3 @@ offset_bottom = 48.0
 texture = ExtResource("6_4o1ik")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=982808491]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=70558787]
-layout_mode = 2
-size_flags_horizontal = 6
-theme_override_constants/separation = 16
-alignment = 1
-
-[node name="DividerLine2" type="Panel" parent="ScrollContainer/VBoxContainer" unique_id=754417603]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-offset_transform_position = Vector2(-152, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
-
-[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/DividerLine2" unique_id=609917930]
-layout_mode = 1
-offset_left = -216.0
-offset_right = -16.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_1dpc8")
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/DividerLine2/PanelContainer" unique_id=171055039]
-layout_mode = 2
-text = "Add Value"
-label_settings = ExtResource("2_osfc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=315190812]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=186531277 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=2114157678 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=952181192 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1373238799 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1821487464 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="DividerLine3" type="Panel" parent="ScrollContainer/VBoxContainer" unique_id=1216016167]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-offset_transform_position = Vector2(-152, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
-
-[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/DividerLine3" unique_id=186092529]
-layout_mode = 1
-offset_left = -216.0
-offset_right = -16.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_u3qp5")
-
-[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/DividerLine3/PanelContainer" unique_id=538517503]
-custom_maximum_size = Vector2(72, -1)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_tgou2")
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/DividerLine3/PanelContainer" unique_id=75865554]
-layout_mode = 2
-text = "Sum & Subtract"
-label_settings = ExtResource("2_osfc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=502519001]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=414646327 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1505554140 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=856943026 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=2082068779 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=219170013 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=680556328]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=1114464244 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=1065378656 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=252526499 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=1433930331 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=500586701 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="DividerLine4" type="Panel" parent="ScrollContainer/VBoxContainer" unique_id=557673068]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-offset_transform_position = Vector2(-152, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
-
-[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/DividerLine4" unique_id=2068894189]
-layout_mode = 1
-offset_left = -216.0
-offset_right = -16.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vqsud")
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/DividerLine4/PanelContainer" unique_id=1902656470]
-layout_mode = 2
-text = "Storage"
-label_settings = ExtResource("2_osfc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1073712852]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=567549989 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1890087557 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=117930696 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1732868843 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=2003774966 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="DividerLine5" type="Panel" parent="ScrollContainer/VBoxContainer" unique_id=991361096]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-offset_transform_position = Vector2(-152, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_3v81n")
-
-[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer/DividerLine5" unique_id=62259496]
-layout_mode = 1
-offset_left = -216.0
-offset_right = -16.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gnmtl")
-
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/DividerLine5/PanelContainer" unique_id=1618687411]
-layout_mode = 2
-texture = ExtResource("2_e8uy2")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/DividerLine5/PanelContainer" unique_id=461404234]
-layout_mode = 2
-text = "Challenge"
-label_settings = ExtResource("2_osfc4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1248526742]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1912304066 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=954272668 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1826886082 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=840388451 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1782706185 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="HBoxContainer7" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1001210760]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=863369867 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=674894164 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=869610621 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=368374980 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=638283927 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="HBoxContainer8" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1464517586]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=417346484 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=1339732226 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=1426308795 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=486020332 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=1935086087 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="HBoxContainer9" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=523645333]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer9" unique_id=381750075 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer9" unique_id=1112372132 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer9" unique_id=1554959648 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer9" unique_id=68547575 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer9" unique_id=1665123651 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="HBoxContainer10" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=422108498]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer10" unique_id=2106147136 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer10" unique_id=735020457 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer10" unique_id=538550900 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer10" unique_id=1986560603 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer10" unique_id=880117053 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="HBoxContainer11" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=2125258910]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer11" unique_id=354039305 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer11" unique_id=1004721851 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer11" unique_id=1799864711 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer11" unique_id=1930291188 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer11" unique_id=1704521016 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="HBoxContainer12" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=2112969]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer12" unique_id=1486373347 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer12" unique_id=1007084864 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer12" unique_id=1999554302 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer12" unique_id=1642480808 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer12" unique_id=1560174429 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="HBoxContainer13" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=890541561]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="LevelButton" parent="ScrollContainer/VBoxContainer/HBoxContainer13" unique_id=366031781 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton2" parent="ScrollContainer/VBoxContainer/HBoxContainer13" unique_id=859287184 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="ScrollContainer/VBoxContainer/HBoxContainer13" unique_id=1158352670 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="ScrollContainer/VBoxContainer/HBoxContainer13" unique_id=1874752131 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="ScrollContainer/VBoxContainer/HBoxContainer13" unique_id=1865649748 instance=ExtResource("1_bntq0")]
-layout_mode = 2
