@@ -2,17 +2,34 @@
 
 [ext_resource type="Script" uid="uid://dxfbd2rhaav4o" path="res://Screens/ScreenComponents/title_panel.gd" id="1_u0qf6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0qf6"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
 [sub_resource type="SystemFont" id="SystemFont_myilg"]
 font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_u0qf6"]
 font = SubResource("SystemFont_myilg")
-font_size = 48
+font_size = 64
 outline_size = 4
 
 [node name="TitlePanel" type="PanelContainer" unique_id=667427244]
 custom_minimum_size = Vector2(80, 96)
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u0qf6")
 script = ExtResource("1_u0qf6")
 
 [node name="Label" type="Label" parent="." unique_id=1592445818]
