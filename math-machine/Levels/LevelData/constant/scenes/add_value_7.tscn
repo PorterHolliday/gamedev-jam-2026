@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://pyfxmafojwgb"]
+[gd_scene format=3 uid="uid://7pl3pljswuj8"]
 
 [ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_2w2ap"]
 [ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_735xd"]
