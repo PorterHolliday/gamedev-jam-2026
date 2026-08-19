@@ -106,7 +106,7 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		is_clicked = true
 		mouse_clicked.emit(event.button_index)
-		accept_event()
+		#accept_event()
 
 # Once clicked, track release globally so dragging outside the shape
 # still delivers the release event to this control.
@@ -115,7 +115,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and not event.pressed:
 		is_clicked = false
 		mouse_released.emit(event.button_index)
-		get_viewport().set_input_as_handled()
+		#get_viewport().set_input_as_handled()
 		
 func _on_touch_timer_timeout() -> void:
 	HapticManager.trigger_right_click_haptic()

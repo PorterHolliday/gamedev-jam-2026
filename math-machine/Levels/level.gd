@@ -9,6 +9,7 @@ extends Node2D
 @onready var back_button: Button = %BackButton
 @onready var restart_button: Button = %RestartButton
 @onready var hint_button: Button = %HintButton
+@onready var help_button: Button = %HelpButton
 @onready var settings_button: Button = %SettingsButton
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
 	restart_button.pressed.connect(_on_restart_button_pressed)
 	hint_button.pressed.connect(_on_hint_button_pressed)
+	help_button.pressed.connect(_on_help_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	
 	level_builder.build(level_data)
@@ -77,6 +79,9 @@ func _should_show_hint_value(steps: Array[SolutionStep], target: Dictionary) -> 
 		return true
 	return steps.size() == 1 \
 			and steps[0].step_data.to_type == NodeTypeRegistry.NodeType.STORE
+
+func _on_help_button_pressed() -> void:
+	GameRoot.enter_how_to_play_screen()
 
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()

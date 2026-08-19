@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://cpb805c4nlrbu"]
+
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://Graph/Graph Canvas/graph_canvas.tscn" id="1_dkl70"]
+[ext_resource type="Script" uid="uid://c8mnvxhr6espd" path="res://Screens/HowToPlayScreen/how_to_play_screen.gd" id="1_oqb02"]
+[ext_resource type="PackedScene" uid="uid://bdxx61cy41cyb" path="res://Screens/ScreenComponents/title.tscn" id="1_qd0ap"]
+[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_abb0i"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_dkl70"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_oqb02"]
+[ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="3_qkwna"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="4_2lpnl"]
+[ext_resource type="PackedScene" uid="uid://cnq8kcmvx62v6" path="res://Screens/HowToPlayScreen/pointer.tscn" id="9_2lpnl"]
+
+[node name="HowToPlayScreen" type="Control" unique_id=488120557]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oqb02")
+
+[node name="Panel" type="Panel" parent="." unique_id=330880498]
+layout_mode = 0
+offset_right = 1168.0
+offset_bottom = 656.0
+
+[node name="GraphCanvas" parent="." unique_id=90730119 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+scale = Vector2(0.75, 0.75)
+
+[node name="OutputNode" parent="GraphCanvas" unique_id=1924490215 instance=ExtResource("3_oqb02")]
+unique_name_in_owner = true
+position = Vector2(213.33333, 277.33334)
+
+[node name="OutputNode2" parent="GraphCanvas" unique_id=235871707 instance=ExtResource("3_oqb02")]
+unique_name_in_owner = true
+position = Vector2(405.33334, 277.33334)
+value = 3
+
+[node name="OutputNode3" parent="GraphCanvas" unique_id=1431407012 instance=ExtResource("3_oqb02")]
+unique_name_in_owner = true
+position = Vector2(597.3334, 277.33334)
+value = 6
+
+[node name="InputNode" parent="GraphCanvas" unique_id=1935018160 instance=ExtResource("2_dkl70")]
+unique_name_in_owner = true
+position = Vector2(213.33334, 490.6667)
+
+[node name="InputNode2" parent="GraphCanvas" unique_id=1450184192 instance=ExtResource("2_dkl70")]
+unique_name_in_owner = true
+position = Vector2(213.33334, 704)
+value = 2
+
+[node name="InputNode3" parent="GraphCanvas" unique_id=1010184336 instance=ExtResource("2_dkl70")]
+unique_name_in_owner = true
+position = Vector2(938.6667, 277.33334)
+value = 2
+
+[node name="AddValueNode" parent="GraphCanvas" unique_id=1512119247 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(597.3334, 490.6667)
+
+[node name="AddValueNode2" parent="GraphCanvas" unique_id=342065537 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(597.3333, 704)
+value = 1
+
+[node name="AddValueNode3" parent="GraphCanvas" unique_id=614570384 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(405.33334, 789.3334)
+value = -1
+
+[node name="AddValueNode4" parent="GraphCanvas" unique_id=1722824041 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(1301.3334, 277.33334)
+value = -1
+
+[node name="AddValueNode5" parent="GraphCanvas" unique_id=852494802 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(1301.3334, 490.6667)
+value = 4
+
+[node name="AddValueNode6" parent="GraphCanvas" unique_id=308176139 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(1130.6666, 746.6666)
+value = 1
+
+[node name="Pointer" parent="." unique_id=1898927088 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="MouseBlocker" type="Control" parent="." unique_id=113095860]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="." unique_id=127066832]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 15.0
+tooltip_text = "Level Select"
+icon_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="BackButton" unique_id=934436511]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("3_qkwna")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" parent="." unique_id=1727297454 instance=ExtResource("1_qd0ap")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 8.0
+offset_right = 576.0
+offset_bottom = 88.0
+grow_horizontal = 2
+text = "HOW TO PLAY"
+panel_min_size = Vector2(72, 80)
+spacer_min_size = 20.0
+text_size = 48
+text_outline_size = 4
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=379254591]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 112.0
+offset_right = 1076.0
+offset_bottom = 488.0
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 120
+columns = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="TutorialPanel6" parent="GridContainer" unique_id=1447792528 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Fill all targets to win."
+
+[node name="TutorialPanel2" parent="GridContainer" unique_id=975235135 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Click a connection to remove it."
+mobile_text = "Tap a connection
+to remove it."
+
+[node name="TutorialPanel" parent="GridContainer" unique_id=1682298335 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Click-and-drag between circles to connect them."
+mobile_text = "Touch-and-drag between circles to connect them."
+
+[node name="TutorialPanel4" parent="GridContainer" unique_id=878675032 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Drag operations to rearrange them."
+
+[node name="TutorialPanel3" parent="GridContainer" unique_id=1800126288 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "You can connect colored circles multiple times."
+
+[node name="TutorialPanel5" parent="GridContainer" unique_id=307943729 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Right-click an operation to learn how it works."
+mobile_text = "Long-press an operation to learn how it works."

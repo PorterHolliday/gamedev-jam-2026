@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://b7assewelikkx"
 
 [node name="GraphNodeOutput" parent="." unique_id=2095797941 instance=ExtResource("3_45htt")]
 position = Vector2(48, 0)
-color = Color(0.72175664, 0.7544295, 0.8310962, 1)
+color = Color(0.72156864, 0.7529412, 0.83137256, 1)
 connection_color = Color(0.50980395, 0.5882353, 0.6784314, 1)
 connection_hover_color = Color(0.67200005, 0.7274667, 0.8, 1)
 value_panel_color = Color(0.43529412, 0.5058824, 0.57254905, 1)
@@ -78,4 +78,3 @@ offset_top = -112.5
 offset_right = 56.0
 offset_bottom = -76.5
 text = "Starting Value"
-mobile_text = ""

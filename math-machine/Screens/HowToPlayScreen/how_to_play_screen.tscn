@@ -1,0 +1,363 @@
+[gd_scene format=3 uid="uid://cpb805c4nlrbu"]
+
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://Graph/Graph Canvas/graph_canvas.tscn" id="1_dkl70"]
+[ext_resource type="Script" uid="uid://c8mnvxhr6espd" path="res://Screens/HowToPlayScreen/how_to_play_screen.gd" id="1_oqb02"]
+[ext_resource type="PackedScene" uid="uid://bdxx61cy41cyb" path="res://Screens/ScreenComponents/title.tscn" id="1_qd0ap"]
+[ext_resource type="Script" uid="uid://cr6u1k8u5dalo" path="res://UI/ScrollContainer/scroll_container_wrapper.gd" id="2_2lpnl"]
+[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_abb0i"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="2_dkl70"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_oqb02"]
+[ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="3_qkwna"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="4_2lpnl"]
+[ext_resource type="PackedScene" uid="uid://cfugbetubydom" path="res://Screens/HowToPlayScreen/mouse.tscn" id="7_dkl70"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="8_oqb02"]
+[ext_resource type="PackedScene" uid="uid://cnq8kcmvx62v6" path="res://Screens/HowToPlayScreen/pointer.tscn" id="9_2lpnl"]
+[ext_resource type="Texture2D" uid="uid://0njw5eurbgsd" path="res://UI/ScrollContainer/up_arrow.svg" id="11_pat87"]
+[ext_resource type="Texture2D" uid="uid://cwm7bvwdspyuy" path="res://UI/ScrollContainer/down_arrow.svg" id="12_fqy5f"]
+[ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="13_xgsoy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqy5f"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_fqy5f"]
+script = ExtResource("13_xgsoy")
+to_node_index = 1
+metadata/_custom_type_script = "uid://b0viev2x74hv1"
+
+[node name="HowToPlayScreen" type="Control" unique_id=488120557]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oqb02")
+
+[node name="Panel" type="Panel" parent="." unique_id=330880498]
+layout_mode = 0
+offset_right = 1168.0
+offset_bottom = 656.0
+
+[node name="ScrollContainerWrapper" type="Control" parent="." unique_id=1769257281 node_paths=PackedStringArray("scroll_container", "up_arrow", "down_arrow")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_2lpnl")
+scroll_container = NodePath("ScrollContainer")
+up_arrow = NodePath("UpArrow")
+down_arrow = NodePath("DownArrow")
+
+[node name="UpArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=1004678716]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 992.0
+offset_top = 32.0
+offset_right = 1072.0
+offset_bottom = 128.0
+texture = ExtResource("11_pat87")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DownArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=210436378]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 528.0
+offset_right = 1072.0
+offset_bottom = 624.0
+texture = ExtResource("12_fqy5f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainerWrapper" unique_id=734762239]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainerWrapper/ScrollContainer" unique_id=640819738]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1238401113]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 32
+
+[node name="Title" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1727297454 instance=ExtResource("1_qd0ap")]
+layout_mode = 2
+text = "TUTORIAL"
+color = Color(0.3111, 0.61, 0.3111, 1)
+panel_min_size = Vector2(72, 80)
+spacer_min_size = 20.0
+text_size = 48
+text_outline_size = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer" unique_id=593325322]
+layout_mode = 2
+theme_override_constants/separation = 256
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="TutorialPanel6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1447792528 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Fill all targets at the same time to win."
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1682298335 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Click-and-drag from circles to connect pieces."
+mobile_text = "Touch-and-drag from circles to connect pieces."
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1800126288 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Each output can wire to multiple inputs."
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=975235135 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Click a wire to remove it."
+mobile_text = "Tap a wire to remove it."
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=878675032 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Drag pieces to rearrange them."
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=307943729 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+text = "Right-click a piece to learn how it works."
+mobile_text = "Long-press a piece to learn how it works."
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1201859658 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fqy5f")
+text = "Invalid Wiring: Both Inputs"
+text_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+
+[node name="TutorialPanel8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=81080710 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fqy5f")
+text = "Invalid Wiring: Both Outputs"
+text_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+
+[node name="TutorialPanel9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=977800653 instance=ExtResource("2_abb0i")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fqy5f")
+text = "Invalid Wiring: Creates Loop"
+text_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+
+[node name="Control" type="Control" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1949485899]
+layout_mode = 2
+
+[node name="GraphCanvas" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=90730119 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="OutputNode" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas" unique_id=1924490215 instance=ExtResource("3_oqb02")]
+unique_name_in_owner = true
+position = Vector2(384, 304)
+
+[node name="OutputNode2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas" unique_id=235871707 instance=ExtResource("3_oqb02")]
+unique_name_in_owner = true
+position = Vector2(576, 304)
+value = 3
+
+[node name="OutputNode3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas" unique_id=1431407012 instance=ExtResource("3_oqb02")]
+unique_name_in_owner = true
+position = Vector2(768.00006, 304)
+value = 6
+
+[node name="GraphCanvas2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=2087330114 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="InputNode" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas2" unique_id=1935018160 instance=ExtResource("2_dkl70")]
+unique_name_in_owner = true
+position = Vector2(384, 608)
+
+[node name="AddValueNode" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas2" unique_id=1512119247 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(768, 608)
+
+[node name="Pointer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas2" unique_id=1898927088 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="GraphCanvas3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=468327846 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="InputNode2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas3" unique_id=1450184192 instance=ExtResource("2_dkl70")]
+unique_name_in_owner = true
+position = Vector2(384, 912)
+value = 2
+
+[node name="AddValueNode2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas3" unique_id=342065537 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(768, 864)
+value = 1
+
+[node name="AddValueNode3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas3" unique_id=614570384 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(768, 976)
+value = -1
+
+[node name="Pointer2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas3" unique_id=1496569600 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="GraphCanvas4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=2055396445 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="InputNode3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas4" unique_id=1010184336 instance=ExtResource("2_dkl70")]
+unique_name_in_owner = true
+position = Vector2(384, 1232)
+value = 2
+
+[node name="AddValueNode4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas4" unique_id=1722824041 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(768.00006, 1232)
+value = -1
+
+[node name="Pointer3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas4" unique_id=1172081532 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="GraphCanvas5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1159995358 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="AddValueNode5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas5" unique_id=852494802 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(768, 1536)
+value = 4
+
+[node name="Pointer4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas5" unique_id=1700118296 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="GraphCanvas6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1209437148 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="AddValueNode6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas6" unique_id=308176139 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(576, 1840)
+value = 1
+
+[node name="Pointer5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas6" unique_id=501638318 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="Mouse" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas6" unique_id=179320004 instance=ExtResource("7_dkl70")]
+unique_name_in_owner = true
+visible = false
+
+[node name="GraphCanvas7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1599730110 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="AddValueNode7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas7" unique_id=466378669 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(400, 2096)
+value = 1
+
+[node name="AddValueNode8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas7" unique_id=306536909 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(752, 2208)
+value = -1
+
+[node name="Pointer6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas7" unique_id=2072082468 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="GraphCanvas8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1534359373 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+
+[node name="AddValueNode9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas8" unique_id=1869441230 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(400, 2400)
+value = 1
+
+[node name="AddValueNode10" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas8" unique_id=2046832442 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(752, 2512)
+value = -1
+
+[node name="Pointer7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas8" unique_id=749747894 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="GraphCanvas9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1313832923 instance=ExtResource("1_dkl70")]
+unique_name_in_owner = true
+initial_connection_data = Array[ExtResource("13_xgsoy")]([SubResource("Resource_fqy5f")])
+
+[node name="AddValueNode11" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas9" unique_id=815457454 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(400, 2704)
+value = 1
+
+[node name="AddValueNode12" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas9" unique_id=1625282551 instance=ExtResource("4_2lpnl")]
+unique_name_in_owner = true
+position = Vector2(752, 2816)
+value = -1
+
+[node name="Pointer8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas9" unique_id=215580579 instance=ExtResource("9_2lpnl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(197, 371)
+
+[node name="MouseBlocker" type="Control" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=113095860]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="." unique_id=127066832]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 15.0
+tooltip_text = "Level Select"
+icon_alignment = 1
+script = ExtResource("8_oqb02")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="BackButton" unique_id=934436511]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("3_qkwna")
+expand_mode = 1
+stretch_mode = 5

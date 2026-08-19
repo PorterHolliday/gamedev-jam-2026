@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://78djk0fiv101"]
+
+[ext_resource type="Script" uid="uid://dxfbd2rhaav4o" path="res://Screens/ScreenComponents/title_panel.gd" id="1_u0qf6"]
+
+[sub_resource type="SystemFont" id="SystemFont_myilg"]
+font_names = PackedStringArray("Century Gothic")
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0qf6"]
+font = SubResource("SystemFont_myilg")
+font_size = 48
+outline_size = 4
+
+[node name="TitlePanel" type="PanelContainer" unique_id=667427244]
+custom_minimum_size = Vector2(80, 96)
+mouse_filter = 2
+script = ExtResource("1_u0qf6")
+
+[node name="Label" type="Label" parent="." unique_id=1592445818]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_u0qf6")
+horizontal_alignment = 1

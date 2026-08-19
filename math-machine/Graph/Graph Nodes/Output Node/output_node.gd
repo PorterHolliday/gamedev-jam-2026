@@ -78,6 +78,12 @@ func _play_fill_animation(reverse: bool = false) -> void:
 	)
 	
 	await tween.finished
+	
+func set_fill_progress(progress: float) -> void:
+	var sprite_material: ShaderMaterial = _panel_container.material
+	var text_material: ShaderMaterial = _value_label.material
+	sprite_material.set_shader_parameter('progress', progress)
+	text_material.set_shader_parameter('progress', progress)
 
 func play_level_complete_animation() -> void:
 	var tween: Tween = get_tree().create_tween()

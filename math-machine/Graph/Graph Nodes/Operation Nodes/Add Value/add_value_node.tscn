@@ -4,7 +4,7 @@
 [ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="2_qmhv7"]
 [ext_resource type="PackedScene" uid="uid://cfbjles1s05dy" path="res://DragControl/drag_control.tscn" id="2_typ00"]
 [ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="3_ri1qq"]
-[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="4_wdqb3"]
+[ext_resource type="PackedScene" uid="uid://dkqgs2bxkfvsd" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="4_wdqb3"]
 [ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="6_mvvqe"]
 [ext_resource type="PackedScene" uid="uid://cjxx8phlk1sjd" path="res://Graph/Graph Nodes/NodeInfo/node_info_panel.tscn" id="7_obedx"]
 

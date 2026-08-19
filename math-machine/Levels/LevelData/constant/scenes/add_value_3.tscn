@@ -1,29 +1,41 @@
-[gd_scene format=3 uid="uid://ugcg65bx8t11"]
+[gd_scene format=3 uid="uid://d0pnbioqek45n"]
 
-[ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_jvcch"]
-[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_ntadn"]
-[ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="3_bmupk"]
+[ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_ntadn"]
+[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_bmupk"]
+[ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="3_j3h0l"]
+[ext_resource type="Script" uid="uid://ciulv6vydjieg" path="res://Levels/LevelData/constant/scenes/remove_connection_tutorial.gd" id="4_bmupk"]
+[ext_resource type="PackedScene" uid="uid://cnq8kcmvx62v6" path="res://Screens/HowToPlayScreen/pointer.tscn" id="5_j3h0l"]
 
-[sub_resource type="Resource" id="Resource_w14a8"]
-script = ExtResource("3_bmupk")
-to_node_index = 1
-metadata/_custom_type_script = "uid://b0viev2x74hv1"
-
-[sub_resource type="Resource" id="Resource_r6lmc"]
-script = ExtResource("3_bmupk")
+[sub_resource type="Resource" id="Resource_ntadn"]
+script = ExtResource("3_j3h0l")
 to_node_index = 2
 metadata/_custom_type_script = "uid://b0viev2x74hv1"
 
-[node name="Level" unique_id=1073491300 instance=ExtResource("1_jvcch")]
+[sub_resource type="Resource" id="Resource_bmupk"]
+script = ExtResource("3_j3h0l")
+from_node_index = 1
+to_node_index = 3
+metadata/_custom_type_script = "uid://b0viev2x74hv1"
 
-[node name="TutorialPanel" parent="." index="1" unique_id=129932882 instance=ExtResource("2_ntadn")]
-offset_left = 464.0
-offset_top = 112.0
-offset_right = 694.0
-offset_bottom = 183.0
-text = "You can connect colored
-circles multiple times."
+[node name="Level" unique_id=1073491300 instance=ExtResource("1_ntadn")]
+
+[node name="TutorialPanel" parent="." index="1" unique_id=129932882 instance=ExtResource("2_bmupk")]
+offset_left = 480.0
+offset_top = 97.0
+offset_right = 685.0
+offset_bottom = 190.0
+text = "Click a wire
+to remove it."
+mobile_text = "Tap a wire
+to remove it"
 
 [node name="GraphCanvas" parent="." index="2" unique_id=90730119]
-tutorial_connection_data = Array[ExtResource("3_bmupk")]([SubResource("Resource_w14a8"), SubResource("Resource_r6lmc")])
-metadata/_edit_lock_ = true
+initial_connection_data = Array[ExtResource("3_j3h0l")]([SubResource("Resource_ntadn"), SubResource("Resource_bmupk")])
+
+[node name="RemoveConnectionTutorial" type="Node2D" parent="." index="4" unique_id=1532650954 node_paths=PackedStringArray("graph_canvas", "pointer")]
+script = ExtResource("4_bmupk")
+graph_canvas = NodePath("../GraphCanvas")
+pointer = NodePath("Pointer")
+
+[node name="Pointer" parent="RemoveConnectionTutorial" index="0" unique_id=1898927088 instance=ExtResource("5_j3h0l")]
+position = Vector2(320, 264)

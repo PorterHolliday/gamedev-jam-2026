@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cfugbetubydom"]
+
+[ext_resource type="Script" uid="uid://ch8wmv4t5c0ab" path="res://Screens/HowToPlayScreen/mouse.gd" id="1_eeqwx"]
+[ext_resource type="Texture2D" uid="uid://bbwy4g00nt8v2" path="res://Levels/Tutorial/mouse.svg" id="2_oqyyq"]
+
+[node name="Mouse" type="Node2D" unique_id=179320004]
+script = ExtResource("1_eeqwx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1715281775]
+unique_name_in_owner = true
+position = Vector2(0, 33)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_oqyyq")
