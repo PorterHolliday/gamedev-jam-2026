@@ -83,6 +83,7 @@ static func exit_settings_screen() -> void:
 	await node.transition(node.previous_screen)
 	
 static func enter_how_to_play_screen() -> void:
+	node.how_to_play_screen.reset()
 	await node.transition(node.how_to_play_screen)
 	
 static func exit_how_to_play_screen() -> void:

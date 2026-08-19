@@ -22,7 +22,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.6332245, 0, 0.14389938, 1)
+border_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -159,19 +159,19 @@ text_color = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fqy5f")
 text = "Invalid Wiring: Both Inputs"
-text_color = Color(0.6313726, 0, 0.14509805, 1)
+text_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
 
 [node name="TutorialPanel8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=81080710 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fqy5f")
 text = "Invalid Wiring: Both Outputs"
-text_color = Color(0.6313726, 0, 0.14509805, 1)
+text_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
 
 [node name="TutorialPanel9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=977800653 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fqy5f")
 text = "Invalid Wiring: Creates Loop"
-text_color = Color(0.6313726, 0, 0.14509805, 1)
+text_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
 
 [node name="Control" type="Control" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1949485899]
 layout_mode = 2
@@ -336,7 +336,6 @@ visible = false
 position = Vector2(197, 371)
 
 [node name="MouseBlocker" type="Control" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=113095860]
-visible = false
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="." unique_id=127066832]

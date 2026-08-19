@@ -9,5 +9,5 @@ func _process(delta: float) -> void:
 	down_arrow.hide()
 	if scroll_container.scroll_vertical > 0:
 		up_arrow.show()
-	if scroll_container.scroll_vertical < scroll_container.size.y + size.y:
+	if scroll_container.scroll_vertical < scroll_container.get_child(0).size.y - scroll_container.size.y:
 		down_arrow.show()
