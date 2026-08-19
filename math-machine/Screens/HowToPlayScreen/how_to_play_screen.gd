@@ -272,7 +272,7 @@ func _play_connection_animation(from_port: GraphNodePort, to_port: GraphNodePort
 	)
 	await tween.finished
 	if graph_canvas._can_connect_ports(from_port, to_port):
-		graph_canvas.request_connection(from_port, to_port, true)
+		graph_canvas.request_connection(from_port, to_port, false)
 	else:
 		graph_canvas.is_current_connection_invalid = true
 		to_port.bad_connection.show()

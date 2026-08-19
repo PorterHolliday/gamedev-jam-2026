@@ -13,15 +13,15 @@ extends CenterContainer
 	set(new_val):
 		text_color = new_val
 		_update_title()
-@export var panel_min_size: Vector2 = Vector2(80.0, 96.0):
+@export var panel_min_size: Vector2 = Vector2(72.0, 80.0):
 	set(new_val):
 		panel_min_size = new_val
 		_update_title()
-@export var spacer_min_size: float = 40.0:
+@export var spacer_min_size: float = 16.0:
 	set(new_val):
 		spacer_min_size = new_val
 		_update_title()
-@export var text_size: int = 64:
+@export var text_size: int = 48:
 	set(new_val):
 		text_size = new_val
 		_update_title()

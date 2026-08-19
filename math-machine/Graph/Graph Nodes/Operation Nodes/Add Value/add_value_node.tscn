@@ -87,7 +87,6 @@ offset_top = -112.0
 offset_right = 61.0
 offset_bottom = -76.0
 text = "Adjust Amount"
-mobile_text = ""
 
 [node name="InputInfo" parent="NodeInfo" unique_id=1213534489 instance=ExtResource("7_obedx")]
 layout_mode = 1
@@ -96,7 +95,6 @@ offset_top = -38.0
 offset_right = -51.0
 offset_bottom = -3.0
 text = "A"
-mobile_text = ""
 
 [node name="OutputInfo" parent="NodeInfo" unique_id=2070874347 instance=ExtResource("7_obedx")]
 unique_name_in_owner = true
@@ -106,4 +104,3 @@ offset_top = -38.0
 offset_right = 63.0
 offset_bottom = -2.0
 text = "A+3"
-mobile_text = ""
