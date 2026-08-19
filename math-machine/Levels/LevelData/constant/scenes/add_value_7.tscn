@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://7pl3pljswuj8"]
+[gd_scene format=3 uid="uid://pyfxmafojwgb"]
 
 [ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_2w2ap"]
 [ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_735xd"]
@@ -19,6 +19,7 @@ offset_right = 374.0
 offset_bottom = 215.0
 text = "Drag pieces
 to rearrange them."
+text_color = Color(0, 0, 0, 1)
 
 [node name="GraphCanvas" parent="." index="2" unique_id=90730119]
 tutorial_connection_data = Array[ExtResource("3_8tcqv")]([SubResource("Resource_lkylo")])
