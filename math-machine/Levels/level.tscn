@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cxym0fle4t3je" path="res://Levels/LevelBuilder/level_builder.tscn" id="3_t2u7g"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_vx8ih"]
 [ext_resource type="Texture2D" uid="uid://dxctjnu8acqc1" path="res://UI/Level UI/restart_icon.png" id="5_ugh17"]
-[ext_resource type="Texture2D" uid="uid://ccb31vo32ayga" path="res://UI/Level UI/hint_icon.png" id="6_eabcg"]
+[ext_resource type="Texture2D" uid="uid://ccb31vo32ayga" path="res://UI/Level UI/tutorial_icon.png" id="6_eabcg"]
+[ext_resource type="Texture2D" uid="uid://dbj8h7jpvvs15" path="res://UI/Level UI/hint_icon.png" id="6_ecu0b"]
 [ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="7_dvejp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3su"]
@@ -161,11 +162,9 @@ tooltip_text = "Hint"
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HintButton" unique_id=807053921]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 7.0
-offset_right = 35.0
-offset_bottom = 41.0
-texture = ExtResource("6_eabcg")
+offset_right = 47.0
+offset_bottom = 48.0
+texture = ExtResource("6_ecu0b")
 expand_mode = 1
 stretch_mode = 5
 
@@ -174,7 +173,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 10
-tooltip_text = "Hint"
+tooltip_text = "Tutorial"
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HelpButton" unique_id=1918585257]
 layout_mode = 0

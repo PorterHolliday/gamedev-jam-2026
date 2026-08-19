@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyw5uavel1gy"
-path="res://.godot/imported/hint_button.svg-e0fecc5c2f628a8d09bab34cab57c96c.ctex"
+uid="uid://ccb31vo32ayga"
+path="res://.godot/imported/tutorial_icon.png-53704f4be74e20f1392900dc51c48afe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Level UI/hint_button.svg"
-dest_files=["res://.godot/imported/hint_button.svg-e0fecc5c2f628a8d09bab34cab57c96c.ctex"]
+source_file="res://UI/Level UI/tutorial_icon.png"
+dest_files=["res://.godot/imported/tutorial_icon.png-53704f4be74e20f1392900dc51c48afe.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=4.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
