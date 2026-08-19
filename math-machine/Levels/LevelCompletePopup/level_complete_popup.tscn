@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://2lhe6vg0rg0o"]
 
 [ext_resource type="Script" uid="uid://72t5a2yscv3" path="res://Levels/LevelCompletePopup/level_complete_popup.gd" id="1_u7nyv"]
-[ext_resource type="Texture2D" uid="uid://1o4x7lbjqqi4" path="res://Levels/LevelCompletePopup/star_location.png" id="2_3ckc3"]
-[ext_resource type="Texture2D" uid="uid://dyq2fghqdxkop" path="res://Levels/LevelCompletePopup/star.png" id="3_myun5"]
 [ext_resource type="Texture2D" uid="uid://clmak4td1d4na" path="res://Levels/LevelCompletePopup/level_complete_popup_header.png" id="4_jsvsw"]
 [ext_resource type="StyleBox" uid="uid://ykbus7xangow" path="res://Themes/GreenButton/green_button_normal.tres" id="4_qe50i"]
 [ext_resource type="StyleBox" uid="uid://cjauutl4wsp43" path="res://Themes/GreenButton/green_button_pressed.tres" id="5_j2e6t"]
@@ -16,7 +14,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer/Star:offset_transform_scale")
+tracks/0/path = NodePath(".:offset_transform_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,58 +26,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2/Star:offset_transform_scale")
+tracks/1/path = NodePath(".:offset_transform_rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3/Star:offset_transform_scale")
+tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:offset_transform_position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:offset_transform_rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -93,82 +55,46 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer/Star:offset_transform_scale")
+tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2/Star:offset_transform_scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.95000005, 1.15, 1.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3/Star:offset_transform_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.15, 1.35, 1.5500001),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:offset_transform_position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_transform_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-128, -600), Vector2(0, 0)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:offset_transform_rotation")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:offset_transform_rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-2.0943951023931953, 0.0]
 }
-tracks/6/type = "audio"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AudioStreamPlayer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -180,7 +106,7 @@ tracks/6/keys = {
 }],
 "times": PackedFloat32Array(0, 0.92)
 }
-tracks/6/use_blend = true
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7o3u2"]
 _data = {
@@ -218,102 +144,21 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -320.0
-offset_top = -200.0
+offset_top = -102.0
 offset_right = 320.0
-offset_bottom = 200.0
+offset_bottom = 158.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1964901290]
 layout_mode = 2
-theme_override_constants/margin_top = 64
+theme_override_constants/margin_top = 80
 theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=567861347]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1270606317]
-layout_mode = 2
-theme_override_constants/margin_top = 32
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=638994863]
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2060386078]
-custom_minimum_size = Vector2(96, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-
-[node name="StarLocation" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer" unique_id=1481446631]
-custom_minimum_size = Vector2(96, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-offset_transform_enabled = true
-texture = ExtResource("2_3ckc3")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="Star" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer" unique_id=2134812754]
-custom_minimum_size = Vector2(96, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-offset_transform_enabled = true
-offset_transform_position = Vector2(1, 1)
-offset_transform_scale = Vector2(0, 0)
-texture = ExtResource("3_myun5")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="CenterContainer2" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=424813396]
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(0, -24)
-
-[node name="StarLocation" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2" unique_id=1869159025]
-custom_minimum_size = Vector2(96, 0)
-layout_mode = 2
-offset_transform_position = Vector2(0, -16)
-texture = ExtResource("2_3ckc3")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="Star" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer2" unique_id=1875278838]
-custom_minimum_size = Vector2(96, 0)
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_scale = Vector2(0, 0)
-texture = ExtResource("3_myun5")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="CenterContainer3" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1211788937]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="StarLocation" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3" unique_id=1863869468]
-custom_minimum_size = Vector2(96, 0)
-layout_mode = 2
-size_flags_horizontal = 2
-offset_transform_enabled = true
-texture = ExtResource("2_3ckc3")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="Star" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CenterContainer3" unique_id=1300239588]
-custom_minimum_size = Vector2(96, 0)
-layout_mode = 2
-size_flags_horizontal = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(1, 0)
-offset_transform_scale = Vector2(0, 0)
-texture = ExtResource("3_myun5")
-expand_mode = 4
-stretch_mode = 4
 
 [node name="NextLevelButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1173664343]
 unique_name_in_owner = true
@@ -324,6 +169,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("4_qe50i")
 theme_override_styles/pressed = ExtResource("5_j2e6t")
 theme_override_styles/hover = ExtResource("6_c5v27")
@@ -347,9 +193,9 @@ bus = &"SFX"
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=558318405]
 layout_mode = 0
 offset_left = 277.0
-offset_top = 66.0
+offset_top = 163.0
 offset_right = 877.0
-offset_bottom = 190.0
+offset_bottom = 287.0
 
 [node name="Title" type="TextureRect" parent="CenterContainer" unique_id=946102949]
 custom_minimum_size = Vector2(600, 124)
