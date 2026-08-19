@@ -112,7 +112,7 @@ layout_mode = 2
 text = "TUTORIAL"
 color = Color(0.3111, 0.61, 0.3111, 1)
 panel_min_size = Vector2(72, 80)
-spacer_min_size = 20.0
+spacer_min_size = 16.0
 text_size = 48
 text_outline_size = 4
 

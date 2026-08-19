@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://eh2o513barue" path="res://UI/Level UI/tutorial_icon.png" id="7_ecu0b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3su"]
-bg_color = Color(0.7294118, 0.41568628, 0.13333334, 1)
+bg_color = Color(0.54, 0.38790002, 0.18900003, 1)
 border_width_left = 4
 border_width_right = 4
 border_width_bottom = 4
