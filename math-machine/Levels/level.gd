@@ -7,6 +7,7 @@ extends Node2D
 @onready var graph_canvas: GraphCanvas = %GraphCanvas
 @onready var ui_layer: CanvasLayer = %UILayer
 @onready var back_button: Button = %BackButton
+@onready var level_number_label: Label = %LevelNumberLabel
 @onready var restart_button: Button = %RestartButton
 @onready var hint_button: Button = %HintButton
 @onready var help_button: Button = %HelpButton
@@ -22,6 +23,10 @@ func _ready() -> void:
 	hint_button.pressed.connect(_on_hint_button_pressed)
 	help_button.pressed.connect(_on_help_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
+	
+	level_number_label.text = "Level " + \
+		str(LevelManager.level_data_list.find(level_data) + 1) + \
+		" of " + str(LevelManager.level_data_list.size())
 	
 	level_builder.build(level_data)
 	graph_canvas.start()

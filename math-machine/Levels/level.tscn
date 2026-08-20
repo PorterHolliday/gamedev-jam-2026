@@ -23,6 +23,21 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx8ih"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
 [sub_resource type="SystemFont" id="SystemFont_11tni"]
 font_names = PackedStringArray("Century Gothic")
 subpixel_positioning = 0
@@ -97,7 +112,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="PanelContainer" type="PanelContainer" parent="UILayer/PanelContainer/MarginContainer/Control" unique_id=1298672109]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -111,6 +125,7 @@ offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_vx8ih")
 
 [node name="MarginContainer" type="MarginContainer" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer" unique_id=812724359]
 layout_mode = 2
@@ -119,7 +134,8 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="Label" type="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" unique_id=815026241]
+[node name="LevelNumberLabel" type="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" unique_id=815026241]
+unique_name_in_owner = true
 layout_mode = 2
 label_settings = SubResource("LabelSettings_ni20n")
 horizontal_alignment = 1

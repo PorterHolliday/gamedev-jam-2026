@@ -33,7 +33,6 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_tkb2t")
 script = ExtResource("1_tkb2t")
-text_color = null
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=465002811]
 layout_mode = 2
@@ -44,6 +43,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="Label" type="Label" parent="MarginContainer" unique_id=513297603]
 unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 label_settings = ExtResource("2_vt3k0")
 horizontal_alignment = 1
