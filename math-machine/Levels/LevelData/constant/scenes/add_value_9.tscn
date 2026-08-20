@@ -11,9 +11,8 @@ offset_left = 704.0
 offset_top = 88.0
 offset_right = 964.0
 offset_bottom = 181.0
-text = "Get a hint to
-see the next wire."
-text_color = Color(0, 0, 0, 1)
+text = "You can get a hint
+to see the next wire."
 
 [node name="HintTutorial" type="Node2D" parent="." index="4" unique_id=2312030 node_paths=PackedStringArray("hint_button")]
 script = ExtResource("3_5d3wq")
