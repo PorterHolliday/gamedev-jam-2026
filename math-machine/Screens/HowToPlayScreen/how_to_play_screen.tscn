@@ -109,7 +109,7 @@ theme_override_constants/separation = 32
 
 [node name="Title" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1727297454 instance=ExtResource("1_qd0ap")]
 layout_mode = 2
-text = "TUTORIAL"
+text = "TUTORIALS"
 color = Color(0.30980393, 0.6117647, 0.30980393, 1)
 panel_min_size = Vector2(72, 80)
 spacer_min_size = 16.0
@@ -118,6 +118,7 @@ text_outline_size = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer" unique_id=593325322]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 256
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -125,35 +126,29 @@ metadata/_edit_lock_ = true
 [node name="TutorialPanel6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1447792528 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Fill all targets at the same time to win."
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1682298335 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Click-and-drag from circles to connect pieces."
 mobile_text = "Touch-and-drag from circles to connect pieces."
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1800126288 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Each output can wire to multiple inputs."
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=975235135 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Click a wire to remove it."
 mobile_text = "Tap a wire to remove it."
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=878675032 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Drag pieces to rearrange them."
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=307943729 instance=ExtResource("2_abb0i")]
 layout_mode = 2
 text = "Right-click a piece to learn how it works."
 mobile_text = "Long-press a piece to learn how it works."
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1201859658 instance=ExtResource("2_abb0i")]
 layout_mode = 2

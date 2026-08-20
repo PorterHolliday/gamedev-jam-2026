@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bbvdkyui7wnee"]
+
+[ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_gko0p"]
+[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_ag84f"]
+
+[node name="Level" unique_id=1073491300 instance=ExtResource("1_gko0p")]
+
+[node name="TutorialPanel" parent="." index="1" unique_id=1447792528 instance=ExtResource("2_ag84f")]
+offset_left = 416.0
+offset_top = 96.0
+offset_right = 731.0
+offset_bottom = 189.0
+text = "Fill all target values at
+the same time to win"

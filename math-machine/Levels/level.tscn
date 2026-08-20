@@ -193,7 +193,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 10
-tooltip_text = "Tutorial"
+tooltip_text = "Tutorials"
 script = ExtResource("4_t2u7g")
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HelpButton" unique_id=1918585257]

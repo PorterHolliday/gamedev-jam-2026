@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://gpo4dcvk2wsb"]
 
 [ext_resource type="Script" uid="uid://bqkbdyhscmtcb" path="res://Levels/LevelData/graph_node_data.gd" id="1_f2nht"]
-[ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="2_bhchg"]
+[ext_resource type="PackedScene" uid="uid://bbvdkyui7wnee" path="res://Levels/LevelData/constant/scenes/add_value_2.tscn" id="2_bhchg"]
 [ext_resource type="Script" uid="uid://cexqyukx5s6ta" path="res://HintSystem/level_solution_data.gd" id="2_uydmk"]
 [ext_resource type="Script" uid="uid://cut5mll0elw0n" path="res://HintSystem/solution_path.gd" id="3_sfpd6"]
 [ext_resource type="Script" uid="uid://cltmh45jarwf8" path="res://HintSystem/solution_step.gd" id="4_2rytt"]
@@ -108,6 +108,7 @@ metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [resource]
 script = ExtResource("6_ve4q2")
+level_scene = ExtResource("2_bhchg")
 inputs = Array[ExtResource("1_f2nht")]([SubResource("In0"), SubResource("In1")])
 operations = Array[ExtResource("1_f2nht")]([SubResource("Op0"), SubResource("Op3")])
 outputs = Array[ExtResource("1_f2nht")]([SubResource("Out1"), SubResource("Resource_a4aii")])

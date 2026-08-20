@@ -2,7 +2,6 @@ class_name HintButton
 extends MyButton
 
 func glow_pulse(times: int) -> void:
-	modulate = HintVisuals.COLOR
 	var tween: Tween = get_tree().create_tween()
 	for i in range(times):
 		tween.tween_property(self, 'modulate', HintVisuals.COLOR, HintVisuals.PULSE_DURATION)
