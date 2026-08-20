@@ -13,6 +13,7 @@ const INVALID_CONNECTION_COLOR: Color = Color(1.0, 0.62, 0.62, 0.8)
 const BORDER_INVALID_CONNECTION_COLOR: Color = Color(0.6, 0.318, 0.318, 0.6)
 const TUTORIAL_CONNECTION_COLOR: Color = Color(1.0, 1.0, 1.0, 0.8)
 const TUTORIAL_BORDER_CONNECTION_COLOR: Color = Color(1.0, 1.0, 1.0, 0.0)
+const VALID_CONNECTION_GLOW_COLOR: Color = Color(18.892, 18.892, 18.892, 1.0) #Color(0.463, 0.761, 0.388, 0.8)
 const SHADOW_OFFSET: Vector2 = Vector2(2, 2)
 const SHADOW_COLOR: Color = Color(Color.BLACK, 0.64)
 const DASH_LENGTH: float = 24.0
@@ -198,6 +199,7 @@ func _mouse_entered_port_area(port: GraphNodePort) -> void:
 		is_current_connection_valid = true
 		current_connection_end_port = port
 		HapticManager.trigger_port_snap_haptic()
+		_modulate_glow_panel(VALID_CONNECTION_GLOW_COLOR)
 	elif port != current_connection_start_port:
 		port.show_bad_connection()
 		_modulate_glow_panel(INVALID_CONNECTION_COLOR)
