@@ -28,6 +28,15 @@ func _ready() -> void:
 
 #region Progress
 
+func is_new_player() -> bool:
+	return _completed_level_uids.is_empty()
+	
+func get_first_incomplete_level_index() -> int:
+	for level_data in LevelManager.level_data_list:
+		if not _completed_level_uids.has(LevelManager._uid_for(level_data)):
+			return LevelManager.level_data_list.find(level_data)
+	return -1
+
 func is_level_completed(uid: String) -> bool:
 	return _completed_level_uids.get(uid, false)
 
@@ -100,7 +109,7 @@ func _apply(data: Dictionary) -> void:
 	sfx_volume = float(settings.get('sfx_volume', 100.0))
 
 	_completed_level_uids.clear()
-	if int(data.get('version', 1)) < 2:
+	if int(data.get('version', SAVE_VERSION)) < 2:
 		_migrate_v1_progress(progress.get('levels_completed', []))
 		return
 

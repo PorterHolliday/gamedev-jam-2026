@@ -8,6 +8,8 @@ extends Node
 ## inside [method _transition], while the screen is fully faded to black, and
 ## freed as soon as the player leaves them. Only one [Level] exists at a time.
 
+const AUTOSTART_NEW_PLAYERS: bool = false
+
 static var node: GameRoot
 
 @export var title_screen_scene: PackedScene
@@ -44,9 +46,14 @@ var current_level: Level
 func _ready() -> void:
 	node = self
 	_add_screens()
-	AudioManager.play_menu_music()
-	current_screen = title_screen
-	title_screen.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	if AUTOSTART_NEW_PLAYERS and SaveManager.is_new_player():
+		current_screen = await node._build_level(0)
+		current_screen.process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		AudioManager.play_menu_music()
+		current_screen = title_screen
+		title_screen.process_mode = Node.PROCESS_MODE_INHERIT
 
 #region Navigation
 
