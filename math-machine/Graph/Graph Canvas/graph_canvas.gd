@@ -316,7 +316,7 @@ func _draw_hint_connections() -> void:
 				to_local(connection.to_port.global_position),
 				color,
 				border_color,
-				true
+				false
 			)
 
 func _draw_bezier(from: Vector2, to: Vector2, color: Color, border_color: Color, draw_shadow: bool) -> void:

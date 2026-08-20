@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://cpjdg0xbwgfg8" path="res://Levels/level.gd" id="1_8a2b0"]
 [ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://Graph/Graph Canvas/graph_canvas.tscn" id="2_ecu0b"]
 [ext_resource type="PackedScene" uid="uid://cxym0fle4t3je" path="res://Levels/LevelBuilder/level_builder.tscn" id="3_t2u7g"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="4_t2u7g"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="4_vx8ih"]
 [ext_resource type="Texture2D" uid="uid://dxctjnu8acqc1" path="res://UI/Level UI/restart_icon.png" id="5_ugh17"]
 [ext_resource type="Texture2D" uid="uid://dbj8h7jpvvs15" path="res://UI/Level UI/hint_icon.png" id="6_ecu0b"]
 [ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="7_dvejp"]
 [ext_resource type="Texture2D" uid="uid://eh2o513barue" path="res://UI/Level UI/tutorial_icon.png" id="7_ecu0b"]
+[ext_resource type="Script" uid="uid://bt14fmbnhvtf6" path="res://UI/HintButton/hint_button.gd" id="7_vx8ih"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3su"]
 bg_color = Color(0.54, 0.38790002, 0.18900003, 1)
@@ -83,6 +85,7 @@ size_flags_horizontal = 0
 size_flags_stretch_ratio = 15.0
 tooltip_text = "Level Select"
 icon_alignment = 1
+script = ExtResource("4_t2u7g")
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/BackButton" unique_id=2016060500]
 layout_mode = 0
@@ -159,6 +162,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Hint"
+script = ExtResource("7_vx8ih")
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HintButton" unique_id=807053921]
 layout_mode = 0
@@ -174,6 +178,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Tutorial"
+script = ExtResource("4_t2u7g")
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HelpButton" unique_id=1918585257]
 layout_mode = 0
@@ -191,6 +196,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Settings"
+script = ExtResource("4_t2u7g")
 
 [node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/SettingsButton" unique_id=1044884217]
 layout_mode = 0
