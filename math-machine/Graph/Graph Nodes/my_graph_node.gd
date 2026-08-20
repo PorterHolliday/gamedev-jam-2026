@@ -1,6 +1,8 @@
 class_name MyGraphNode
 extends Node2D
 
+signal node_info_shown
+
 const GROW_SCALE: Vector2 = Vector2(1.15, 1.15)
 const ROTATION_DEGREES: float = 10.0
 const NULL_VALUE: int = 9223372036854775807
@@ -69,3 +71,4 @@ func _play_remove_input_animation() -> void:
 func _on_click_detector_mouse_clicked(button_index: MouseButton) -> void:
 	if button_index == MOUSE_BUTTON_RIGHT:
 		node_info.show()
+		node_info_shown.emit()

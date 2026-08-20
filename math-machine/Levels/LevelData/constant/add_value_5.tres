@@ -79,13 +79,13 @@ metadata/_custom_type_script = "uid://cexqyukx5s6ta"
 [sub_resource type="Resource" id="Op0"]
 script = ExtResource("1_l3xes")
 type = 2
-value = 2
+value = -1
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [sub_resource type="Resource" id="Op1"]
 script = ExtResource("1_l3xes")
 type = 2
-value = -1
+value = 2
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [sub_resource type="Resource" id="Out0"]

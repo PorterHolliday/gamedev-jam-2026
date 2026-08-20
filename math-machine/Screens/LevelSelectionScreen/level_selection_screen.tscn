@@ -259,6 +259,12 @@ layout_mode = 2
 [node name="LevelButton7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=408386870 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
+[node name="LevelButton8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=616877804 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
+[node name="LevelButton9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=1550974026 instance=ExtResource("1_bntq0")]
+layout_mode = 2
+
 [node name="DividerLine2" type="Panel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1216016167]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
