@@ -48,6 +48,9 @@ func _ready() -> void:
 
 func play_menu_music() -> void:
 	_play_music(menu_music)
+	
+func play_level_music() -> void:
+	_play_music(level_music)
 
 func crossfade_to_menu_music(duration: float = 0.75) -> void:
 	await _crossfade_music(menu_music, duration)

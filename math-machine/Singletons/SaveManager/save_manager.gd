@@ -28,6 +28,9 @@ func _ready() -> void:
 
 #region Progress
 
+func is_new_player() -> bool:
+	return _completed_level_uids.is_empty()
+
 func is_level_completed(uid: String) -> bool:
 	return _completed_level_uids.get(uid, false)
 
@@ -100,7 +103,7 @@ func _apply(data: Dictionary) -> void:
 	sfx_volume = float(settings.get('sfx_volume', 100.0))
 
 	_completed_level_uids.clear()
-	if int(data.get('version', 1)) < 2:
+	if int(data.get('version', SAVE_VERSION)) < 2:
 		_migrate_v1_progress(progress.get('levels_completed', []))
 		return
 

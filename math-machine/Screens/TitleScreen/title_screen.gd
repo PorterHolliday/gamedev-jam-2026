@@ -10,7 +10,10 @@ func _ready() -> void:
 	credits_button.pressed.connect(_on_credits_button_pressed)
 	
 func _on_play_button_pressed() -> void:
-	GameRoot.enter_level_select_screen()
+	if SaveManager.is_new_player():
+		GameRoot.enter_level(0)
+	else:
+		GameRoot.enter_level_select_screen()
 
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()
