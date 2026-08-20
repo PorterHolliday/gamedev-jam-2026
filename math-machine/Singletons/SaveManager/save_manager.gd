@@ -30,6 +30,12 @@ func _ready() -> void:
 
 func is_new_player() -> bool:
 	return _completed_level_uids.is_empty()
+	
+func get_first_incomplete_level_index() -> int:
+	for level_data in LevelManager.level_data_list:
+		if not _completed_level_uids.has(LevelManager._uid_for(level_data)):
+			return LevelManager.level_data_list.find(level_data)
+	return -1
 
 func is_level_completed(uid: String) -> bool:
 	return _completed_level_uids.get(uid, false)
