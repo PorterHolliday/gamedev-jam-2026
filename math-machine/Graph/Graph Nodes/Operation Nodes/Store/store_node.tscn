@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://jxjl5s4t0dnk"]
+
+[ext_resource type="Script" uid="uid://coor3phny5eqw" path="res://Graph/Graph Nodes/Operation Nodes/Store/store_node.gd" id="1_am1hp"]
+[ext_resource type="PackedScene" uid="uid://cfbjles1s05dy" path="res://DragControl/drag_control.tscn" id="2_pgy35"]
+[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="4_pgy35"]
+[ext_resource type="PackedScene" uid="uid://ugrt5ergfwml" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="5_y7270"]
+[ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="6_kevf4"]
+[ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="6_pgy35"]
+[ext_resource type="PackedScene" uid="uid://cjxx8phlk1sjd" path="res://Graph/Graph Nodes/NodeInfo/node_info_panel.tscn" id="7_ubqhd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kevf4"]
+bg_color = Color(0.2509804, 0.44313726, 0.23529412, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[node name="StoreNode" type="Node2D" unique_id=879742008 node_paths=PackedStringArray("click_detector")]
+script = ExtResource("1_am1hp")
+click_detector = NodePath("DragControl")
+metadata/_custom_type_script = "uid://coor3phny5eqw"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=622149285]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_kevf4")
+
+[node name="ValueLabel" type="Label" parent="PanelContainer" unique_id=769433824]
+unique_name_in_owner = true
+layout_mode = 2
+text = "?"
+label_settings = ExtResource("6_pgy35")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DragControl" parent="." unique_id=109764403 instance=ExtResource("2_pgy35")]
+unique_name_in_owner = true
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+metadata/_edit_group_ = true
+
+[node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("4_pgy35")]
+position = Vector2(-48, 0)
+
+[node name="GraphNodeOutput" parent="." unique_id=429833011 instance=ExtResource("5_y7270")]
+position = Vector2(48, 0)
+color = Color(0.5294118, 0.7294118, 0.42745098, 1)
+connection_color = Color(0.31318787, 0.49956393, 0.26649353, 1)
+connection_hover_color = Color(0.47444344, 0.66477764, 0.37656003, 1)
+connected_color = Color(0.1734, 0.34, 0.19838998, 1)
+value_panel_color = Color(0.2509804, 0.44313726, 0.23529412, 1)
+
+[node name="NodeInfo" type="Control" parent="." unique_id=1850646178]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("6_kevf4")
+metadata/_custom_type_script = "uid://ypfv3rfioneb"
+
+[node name="NodeName" parent="NodeInfo" unique_id=134562754 instance=ExtResource("7_ubqhd")]
+propagate_maximum_size = true
+layout_mode = 1
+offset_left = -51.0
+offset_top = -112.0
+offset_right = 11.0
+offset_bottom = -76.0
+mouse_filter = 0
+text = "Hold Value"
+mobile_text = ""
+
+[node name="InputInfo" parent="NodeInfo" unique_id=108883130 instance=ExtResource("7_ubqhd")]
+propagate_maximum_size = true
+layout_mode = 1
+offset_left = -86.0
+offset_top = -38.5
+offset_right = -50.0
+offset_bottom = -2.5
+mouse_filter = 0
+text = "A"
+mobile_text = ""
+
+[node name="OutputInfo" parent="NodeInfo" unique_id=1817133769 instance=ExtResource("7_ubqhd")]
+propagate_maximum_size = true
+layout_mode = 1
+offset_left = 9.5
+offset_top = -38.0
+offset_right = 92.5
+offset_bottom = -2.0
+mouse_filter = 0
+text = "A, held"
+mobile_text = ""

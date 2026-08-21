@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://df11ohc8m2i3u"]
+
+[ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_l5rts"]
+[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_w2k0p"]
+[ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="2_w14a8"]
+[ext_resource type="PackedScene" uid="uid://cjh5476r8vx0u" path="res://Levels/Tutorial/connect_tutorial.tscn" id="4_r6lmc"]
+
+[sub_resource type="Resource" id="Resource_w14a8"]
+script = ExtResource("2_w14a8")
+to_node_index = 1
+metadata/_custom_type_script = "uid://b0viev2x74hv1"
+
+[sub_resource type="Resource" id="Resource_r6lmc"]
+script = ExtResource("2_w14a8")
+from_node_index = 1
+to_node_index = 2
+metadata/_custom_type_script = "uid://b0viev2x74hv1"
+
+[sub_resource type="Resource" id="Resource_ggb8j"]
+script = ExtResource("2_w14a8")
+to_node_index = 1
+metadata/_custom_type_script = "uid://b0viev2x74hv1"
+
+[node name="Level" unique_id=1073491300 instance=ExtResource("1_l5rts")]
+
+[node name="TutorialPanel" parent="." index="1" unique_id=129932882 instance=ExtResource("2_w2k0p")]
+offset_left = 480.0
+offset_top = 160.0
+offset_right = 685.0
+offset_bottom = 221.0
+text = "Click-and-drag from
+circles to connect pieces."
+mobile_text = "Touch-and-drag from
+circles to connect pieces."
+
+[node name="GraphCanvas" parent="." index="2" unique_id=90730119]
+tutorial_connection_data = Array[ExtResource("2_w14a8")]([SubResource("Resource_w14a8"), SubResource("Resource_r6lmc")])
+
+[node name="ConnectTutorial" parent="." index="4" unique_id=1208276199 node_paths=PackedStringArray("graph_canvas") instance=ExtResource("4_r6lmc")]
+graph_canvas = NodePath("../GraphCanvas")
+connection_data = SubResource("Resource_ggb8j")

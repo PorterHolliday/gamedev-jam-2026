@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cjh5476r8vx0u"]
+
+[ext_resource type="Script" uid="uid://b3ahqq1m8rg8h" path="res://Levels/Tutorial/connect_tutorial.gd" id="1_7jj3g"]
+[ext_resource type="Texture2D" uid="uid://dqd8a4b033u3v" path="res://Levels/Tutorial/hand_icon.svg" id="2_g0f1l"]
+
+[node name="ConnectTutorial" type="Node2D" unique_id=1208276199]
+script = ExtResource("1_7jj3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1917948068]
+position = Vector2(11, 26)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_g0f1l")
+
+[node name="Timer" type="Timer" parent="." unique_id=1806486283]
+unique_name_in_owner = true
+one_shot = true

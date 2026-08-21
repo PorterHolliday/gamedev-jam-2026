@@ -1,0 +1,35 @@
+{
+  "name": "sum_subtract_10",
+  "inputs": {
+    "I1": 1,
+    "I2": 3
+  },
+  "operations": {
+    "P1": {
+      "type": "sum"
+    },
+    "P2": {
+      "type": "sum"
+    },
+    "M1": {
+      "type": "subtract"
+    },
+    "A1": {
+      "type": "add",
+      "value": -7
+    }
+  },
+  "outputs": {
+    "O1": -2,
+    "O2": 10
+  },
+  "source": {
+    "scene": "res://Levels/Levels/SumAndSubtract/sum_subtract_10.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}

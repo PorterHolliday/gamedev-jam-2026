@@ -1,0 +1,28 @@
+{
+  "name": "sum_subtract_3",
+  "inputs": {
+    "I1": 7,
+    "I2": 5
+  },
+  "operations": {
+    "M1": {
+      "type": "subtract"
+    },
+    "M2": {
+      "type": "subtract"
+    }
+  },
+  "outputs": {
+    "O1": 2,
+    "O2": -2
+  },
+  "source": {
+    "scene": "res://Levels/Levels/SumAndSubtract/sum_subtract_3.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}

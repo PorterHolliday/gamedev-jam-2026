@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bk1nf5aqj7fq1"]
+
+[node name="TitleSpacer" type="Control" unique_id=1555467899]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+mouse_filter = 2

@@ -1,72 +1,156 @@
-[gd_scene format=3 uid="uid://bvox10j6vx5vc"]
+[gd_scene format=3 uid="uid://cxfq5h7snyc2s"]
 
-[ext_resource type="Script" uid="uid://dbxj6me4ikcab" path="res://Graph/Graph Nodes/Output Node/output_node.gd" id="1_baoyu"]
-[ext_resource type="Texture2D" uid="uid://beswkip7wfw7a" path="res://Graph/Graph Nodes/square_node.png" id="3_251ob"]
-[ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="4_0tasx"]
-[ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="5_251ob"]
+[ext_resource type="Script" uid="uid://dcdorusfnlmtt" path="res://Graph/Graph Nodes/Output Node/output_node.gd" id="1_gusin"]
+[ext_resource type="Texture2D" uid="uid://bj8ommvwqy81c" path="res://Graph/Graph Nodes/square_node_shadow.png" id="2_3c162"]
+[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="3_amupw"]
+[ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="4_amupw"]
+[ext_resource type="Texture2D" uid="uid://1yo072dwf5wh" path="res://Graph/Graph Nodes/Output Node/output_node.png" id="4_pfaup"]
+[ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="7_pfaup"]
+[ext_resource type="PackedScene" uid="uid://cjxx8phlk1sjd" path="res://Graph/Graph Nodes/NodeInfo/node_info_panel.tscn" id="8_4qmq5"]
 
-[node name="OutputNode" type="GraphNode" unique_id=1426663194]
-offset_right = 64.0
-offset_bottom = 64.0
-slot/0/left_enabled = true
-slot/0/left_type = 1
-slot/0/left_color = Color(1, 1, 1, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = false
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
-slot/1/left_enabled = false
-slot/1/left_type = 0
-slot/1/left_color = Color(1, 1, 1, 1)
-slot/1/left_icon = null
-slot/1/right_enabled = false
-slot/1/right_type = 0
-slot/1/right_color = Color(1, 1, 1, 1)
-slot/1/right_icon = null
-slot/1/draw_stylebox = true
-script = ExtResource("1_baoyu")
-metadata/_custom_type_script = "uid://dbxj6me4ikcab"
+[sub_resource type="Shader" id="Shader_3pf3m"]
+code = "shader_type canvas_item;
 
-[node name="Control" type="Control" parent="." unique_id=1491004729]
-layout_mode = 2
-size_flags_vertical = 3
+uniform float progress: hint_range(0.0, 1.0, 0.1) = 0.0;
+uniform sampler2D replace_texture;
+uniform bool invert = false;
 
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=578542364]
-self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
-layout_mode = 0
-offset_top = -23.0
-offset_right = 64.0
-offset_bottom = 41.0
-texture = ExtResource("3_251ob")
-expand_mode = 1
-stretch_mode = 5
+bool is_within_radius(vec2 point) {
+	float radius = progress * 0.7;
+	float radius_squared = radius * radius;
+	float distance_squared = (point.x - 0.5) * (point.x - 0.5) + (point.y - 0.5) * (point.y - 0.5);
+	if (distance_squared <= radius_squared) {
+		return !invert;
+	}
+	return invert;
+}
 
-[node name="ValueLabel" type="Label" parent="Control" unique_id=1773080751]
+void fragment() {
+	vec4 color = COLOR;
+	if (is_within_radius(UV)) {
+		color = texture(replace_texture, UV);
+	}
+	COLOR = vec4(color.rgb, color.a * COLOR.a);
+}"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pfaup"]
+load_path = "res://.godot/imported/satisfied_output_node.png-d1fc79ffc2716dcab80d62c6cb3c4490.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qmq5"]
+shader = SubResource("Shader_3pf3m")
+shader_parameter/progress = 0.0
+shader_parameter/replace_texture = SubResource("CompressedTexture2D_pfaup")
+shader_parameter/invert = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m306b"]
+texture = ExtResource("4_pfaup")
+
+[sub_resource type="Shader" id="Shader_m306b"]
+code = "shader_type canvas_item;
+
+uniform float progress: hint_range(0.0, 1.0, 0.1) = 0.0;
+uniform vec4 fill_color: source_color = vec4(1.0);
+uniform bool invert = false;
+uniform vec2 label_size = vec2(1.0, 1.0);
+varying vec2 local_uv;
+
+bool is_within_radius(vec2 point) {
+	float radius = progress * 0.65;
+	float radius_squared = radius * radius;
+	float distance_squared = (point.x - 0.5) * (point.x - 0.5) + (point.y - 0.5) * (point.y - 0.5);
+	if (distance_squared <= radius_squared) {
+		return !invert;
+	}
+	return invert;
+}
+
+void vertex() {
+	local_uv = VERTEX / label_size;
+}
+
+void fragment() {
+	vec4 color = COLOR;
+	if (is_within_radius(local_uv)) {
+		color = (1.0 - color) * fill_color + color;
+	}
+	COLOR = vec4(color.rgb, color.a * COLOR.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5ghu"]
+shader = SubResource("Shader_m306b")
+shader_parameter/progress = 0.0
+shader_parameter/fill_color = Color(1, 1, 1, 1)
+shader_parameter/invert = false
+shader_parameter/label_size = Vector2(80, 80)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_cl8wq"]
+points = PackedVector2Array(124, -64, -4, -64, -44, 0, -4, 64, 124, 64)
+
+[node name="OutputNode" type="Node2D" unique_id=1924490215 node_paths=PackedStringArray("click_detector")]
+script = ExtResource("1_gusin")
+unsatisfied_text_color = Color(0.43529412, 0.5058824, 0.57254905, 1)
+satisfied_color = Color(0.30980393, 0.6117647, 0.30980393, 1)
+transition_duration = 0.25
+click_detector = NodePath("GraphNodeInput/SnapArea")
+metadata/_custom_type_script = "uid://dcdorusfnlmtt"
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1397873177]
+position = Vector2(6, 6)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_3c162")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1359526420]
 unique_name_in_owner = true
-self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
-layout_mode = 0
-offset_top = -23.0
-offset_right = 64.0
-offset_bottom = 41.0
+material = SubResource("ShaderMaterial_4qmq5")
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_m306b")
+metadata/_edit_group_ = true
+
+[node name="ValueLabel" type="Label" parent="PanelContainer" unique_id=757642171]
+unique_name_in_owner = true
+modulate = Color(0.43529412, 0.5058824, 0.57254905, 1)
+material = SubResource("ShaderMaterial_k5ghu")
+layout_mode = 2
+size_flags_vertical = 1
 text = "1"
-label_settings = ExtResource("4_0tasx")
+label_settings = ExtResource("4_amupw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InputLabel" type="Label" parent="Control" unique_id=1921193364]
-unique_name_in_owner = true
-self_modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
-layout_mode = 0
-offset_left = -43.0
-offset_top = -26.0
-offset_right = -3.0
-offset_bottom = -3.0
-label_settings = ExtResource("5_251ob")
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("3_amupw")]
+position = Vector2(-48, 0)
 
-[node name="Spacer" type="Control" parent="." unique_id=1271002943]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="SnapArea" parent="GraphNodeInput" index="2" unique_id=864252047]
+mouse_filter = 1
+shape = SubResource("ConvexPolygonShape2D_cl8wq")
+
+[node name="NodeInfo" type="Control" parent="." unique_id=1608801991]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("7_pfaup")
+metadata/_custom_type_script = "uid://ypfv3rfioneb"
+
+[node name="NodeName" parent="NodeInfo" unique_id=134562754 instance=ExtResource("8_4qmq5")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -68.0
+offset_top = -92.0
+offset_right = 70.0
+offset_bottom = -56.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Target Value"
+
+[editable path="GraphNodeInput"]

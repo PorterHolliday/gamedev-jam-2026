@@ -1,0 +1,281 @@
+[gd_scene format=3 uid="uid://dhhayos68polj"]
+
+[ext_resource type="Script" uid="uid://cst43moqvm13t" path="res://Screens/SettingsScreen/settings_screen.gd" id="1_1slek"]
+[ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="1_7ludb"]
+[ext_resource type="LabelSettings" uid="uid://buq01gkh36dd0" path="res://LabelSettings/divider_label_settings.tres" id="2_4gme4"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="2_xpm1y"]
+[ext_resource type="LabelSettings" uid="uid://byutq4ftxd1o6" path="res://LabelSettings/settings_label_settings.tres" id="3_lrles"]
+[ext_resource type="PackedScene" uid="uid://bdxx61cy41cyb" path="res://Screens/ScreenComponents/title.tscn" id="4_xpm1y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxc82"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 32.0
+expand_margin_right = 16.0
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpm1y"]
+bg_color = Color(0.43529412, 0.5058824, 0.57254905, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65gj2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b64u0"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gme4"]
+bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrles"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1slek"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[node name="SettingsScreen" type="Control" unique_id=680274786]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1slek")
+
+[node name="Panel" type="Panel" parent="." unique_id=162870146]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=87312509]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -130.5
+offset_right = 284.0
+offset_bottom = 130.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Title" parent="VBoxContainer" unique_id=1727297454 instance=ExtResource("4_xpm1y")]
+layout_mode = 2
+text = "SETTINGS"
+color = Color(0.8745098, 0.53333336, 0.30980393, 1)
+panel_min_size = Vector2(72, 80)
+spacer_min_size = 16.0
+text_size = 48
+text_outline_size = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=72327333]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="DividerLine" type="Panel" parent="VBoxContainer/VBoxContainer" unique_id=635703415]
+custom_minimum_size = Vector2(640, 4)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wxc82")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer/DividerLine" unique_id=766258035]
+layout_mode = 1
+offset_left = -176.0
+offset_right = -16.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xpm1y")
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/DividerLine/PanelContainer" unique_id=1942485241]
+layout_mode = 2
+text = "Audio"
+label_settings = ExtResource("2_4gme4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSettings" type="PanelContainer" parent="VBoxContainer/VBoxContainer" unique_id=1199986476]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_65gj2")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/MusicSettings" unique_id=624232255]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/MusicSettings/MarginContainer" unique_id=1459391354]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=159436231]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Music"
+label_settings = ExtResource("3_lrles")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=1354985579]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/MusicSettings/MarginContainer/HBoxContainer/MarginContainer" unique_id=1588016279]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(176, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 50.0
+
+[node name="MusicPercentage" type="Label" parent="VBoxContainer/VBoxContainer/MusicSettings/MarginContainer/HBoxContainer" unique_id=1018589631]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "100%"
+label_settings = ExtResource("3_lrles")
+horizontal_alignment = 2
+
+[node name="SFXSettings" type="PanelContainer" parent="VBoxContainer/VBoxContainer" unique_id=1254316018]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b64u0")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/SFXSettings" unique_id=2073817450]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/SFXSettings/MarginContainer" unique_id=1091206786]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=1681972364]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SFX"
+label_settings = ExtResource("3_lrles")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=988750733]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/SFXSettings/MarginContainer/HBoxContainer/MarginContainer" unique_id=2042289763]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+value = 50.0
+
+[node name="SFXPercentage" type="Label" parent="VBoxContainer/VBoxContainer/SFXSettings/MarginContainer/HBoxContainer" unique_id=633335647]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "50%"
+label_settings = ExtResource("3_lrles")
+horizontal_alignment = 2
+
+[node name="BackButton" type="Button" parent="." unique_id=672972270]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+tooltip_text = "Back"
+theme_type_variation = &"BackButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_4gme4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lrles")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1slek")
+script = ExtResource("2_xpm1y")
+
+[node name="TextureRect" type="TextureRect" parent="BackButton" unique_id=404573420]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("1_7ludb")
+expand_mode = 1
+stretch_mode = 5

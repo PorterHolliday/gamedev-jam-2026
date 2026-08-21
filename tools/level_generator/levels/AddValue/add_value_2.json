@@ -1,0 +1,29 @@
+{
+  "name": "add_value_2",
+  "inputs": {
+    "I1": 3
+  },
+  "operations": {
+    "A1": {
+      "type": "add",
+      "value": 2
+    },
+    "A2": {
+      "type": "add",
+      "value": -1
+    }
+  },
+  "outputs": {
+    "O1": 5,
+    "O2": 2
+  },
+  "source": {
+    "scene": "res://Levels/Levels/AddValue/add_value_2.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}

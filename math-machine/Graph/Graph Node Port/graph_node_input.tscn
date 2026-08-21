@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://cgkcg446jre7f"]
+
+[ext_resource type="Script" uid="uid://igltm2xbx00c" path="res://Graph/Graph Node Port/graph_node_port.gd" id="1_v8ah4"]
+[ext_resource type="Script" uid="uid://b7assewelikkx" path="res://DragControl/clickable_control.gd" id="2_dcjrd"]
+[ext_resource type="LabelSettings" uid="uid://cki4fddqlk2is" path="res://LabelSettings/graph_node_connection.tres" id="3_qp16x"]
+[ext_resource type="Script" uid="uid://byh1bnt7lgfl8" path="res://UI/DirectionalExpandContainer/directional_expand_container.gd" id="4_xv260"]
+[ext_resource type="Texture2D" uid="uid://hocp4reuyt5h" path="res://Graph/Graph Node Port/port_bad_connection.png" id="6_xbod7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0l3"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gix3"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bp0l3"]
+radius = 44.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcdoi"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ok08f"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_d4gjh"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dcjrd"]
+font = SubResource("SystemFont_d4gjh")
+font_size = 24
+font_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+outline_size = 2
+outline_color = Color(0.7490196, 0.050980393, 0.050980393, 1)
+
+[node name="GraphNodeInput" type="Marker2D" unique_id=2095797941]
+script = ExtResource("1_v8ah4")
+
+[node name="Panel" type="Panel" parent="." unique_id=678500308]
+unique_name_in_owner = true
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bp0l3")
+
+[node name="FillPanel" type="Panel" parent="." unique_id=990032233]
+unique_name_in_owner = true
+visible = false
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7gix3")
+
+[node name="SnapArea" type="Control" parent="." unique_id=864252047]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -12.0
+offset_right = -12.0
+script = ExtResource("2_dcjrd")
+shape = SubResource("CircleShape2D_bp0l3")
+show_shape_in_editor = false
+metadata/_custom_type_script = "uid://b7assewelikkx"
+
+[node name="BadConnection" type="Sprite2D" parent="." unique_id=1637018849]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.7490196, 0.050980393, 0.050980393, 1)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("6_xbod7")
+
+[node name="ValueContainer" type="Container" parent="." unique_id=30440322]
+unique_name_in_owner = true
+visible = false
+offset_left = -50.0
+offset_top = -55.0
+offset_right = -14.0
+offset_bottom = -19.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("4_xv260")
+h_expand_direction = 0
+metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
+metadata/_edit_group_ = true
+
+[node name="ValuePanelContainer" type="PanelContainer" parent="ValueContainer" unique_id=1739816546]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcdoi")
+
+[node name="MarginContainer" type="MarginContainer" parent="ValueContainer/ValuePanelContainer" unique_id=740526017]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="ValueLabel" type="Label" parent="ValueContainer/ValuePanelContainer/MarginContainer" unique_id=1189312209]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("3_qp16x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ErrorContainer" type="Container" parent="." unique_id=955624384]
+unique_name_in_owner = true
+visible = false
+offset_left = -72.0
+offset_top = -18.0
+offset_right = -36.0
+offset_bottom = 18.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+script = ExtResource("4_xv260")
+h_expand_direction = 0
+metadata/_custom_type_script = "uid://byh1bnt7lgfl8"
+metadata/_edit_group_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="ErrorContainer" unique_id=1921571140]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ok08f")
+
+[node name="MarginContainer" type="MarginContainer" parent="ErrorContainer/PanelContainer" unique_id=351450993]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="ErrorLabel" type="Label" parent="ErrorContainer/PanelContainer/MarginContainer" unique_id=406421086]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_dcjrd")
+horizontal_alignment = 1
+vertical_alignment = 1

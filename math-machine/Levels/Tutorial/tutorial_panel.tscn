@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bppi3d3csbful"]
+
+[ext_resource type="Script" uid="uid://c0an8mmjxgfxt" path="res://Levels/Tutorial/tutorial_panel.gd" id="1_tkb2t"]
+[ext_resource type="LabelSettings" uid="uid://dq3knhvy1lxuk" path="res://LabelSettings/tutorial_label_settings.tres" id="2_vt3k0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkb2t"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[node name="TutorialPanel" type="PanelContainer" unique_id=1447792528]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -21.5
+offset_right = 14.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_tkb2t")
+script = ExtResource("1_tkb2t")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=465002811]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=513297603]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+label_settings = ExtResource("2_vt3k0")
+horizontal_alignment = 1

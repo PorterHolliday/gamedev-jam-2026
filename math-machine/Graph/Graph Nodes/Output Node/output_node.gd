@@ -1,50 +1,93 @@
 @tool
-class_name OutputNode
+class_name OutputNode2
 extends MyGraphNode
 
 signal received_valid_output
 
-@onready var _input_label: Label = %InputLabel
+@onready var _panel_container: PanelContainer = %PanelContainer
 @onready var _value_label: Label = %ValueLabel
 @export var value: int = 1:
 	set(new_val):
 		value = new_val
 		if Engine.is_editor_hint():
 			_update_value_label()
+@export var unsatisfied_color: Color = Color.WHITE:
+	set(new_val):
+		unsatisfied_color = new_val
+		if not is_satisfied:
+			_panel_container.modulate = unsatisfied_color
+@export var unsatisfied_text_color: Color = Color.BLACK:
+	set(new_val):
+		unsatisfied_text_color = new_val
+		if not is_satisfied and _value_label:
+			_value_label.modulate = unsatisfied_text_color
+@export var satisfied_color: Color
+@export var satisfied_text_color: Color = Color.WHITE
 
-var is_satisfied: bool = false
+@export var is_satisfied: bool = false:
+	set(new_val):
+		if not is_satisfied and new_val:
+			AudioManager.play_output_satisfied_sfx()
+			_play_fill_animation()
+		elif is_satisfied and not new_val:
+			_play_fill_animation(true)
+		is_satisfied = new_val
+			
+@export var transition_duration: float = 0.5
 
 func _ready() -> void:
-	super()
-	_inputs = [NULL_VALUE]
 	_update_value_label()
+	_panel_container.material = _panel_container.material.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	_value_label.material = _value_label.material.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	_value_label.material.set_shader_parameter('fill_color', satisfied_text_color)
+	if Engine.is_editor_hint(): return
+	super()
 	
-func update_input(port_idx: int, new_value: int) -> void:
-	super(port_idx, new_value)
-	_update_input_label()
+func update_input(port: GraphNodePort, new_value: int) -> void:
+	super(port, new_value)
 	_check_if_satisfied()
 	
-func remove_input(port_idx: int) -> void:
-	super(port_idx)
-	_update_input_label()
+func remove_input(port: GraphNodePort) -> void:
+	super(port)
 	is_satisfied = false
 	
 func _check_if_satisfied() -> void:
-	if _inputs[0] == value:
+	if inputs[0].value == value:
 		is_satisfied = true
 		received_valid_output.emit()
 	else:
 		is_satisfied = false
-		
-func _calculate_output() -> int:
-	return NULL_VALUE
-	
-func _update_input_label() -> void:
-	if _inputs[0] == NULL_VALUE:
-		_input_label.text = ''
-	else:
-		_input_label.text = str(_inputs[0])
 
 func _update_value_label() -> void:
 	if not _value_label: return
 	_value_label.text = str(value)
+
+func _play_fill_animation(reverse: bool = false) -> void:
+	var sprite_material: ShaderMaterial = _panel_container.material
+	#sprite_material.set_shader_parameter('invert', reverse)
+	var text_material: ShaderMaterial = _value_label.material
+	#text_material.set_shader_parameter('invert', reverse)
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_method(func(value: float):
+		sprite_material.set_shader_parameter('progress', value), 
+		1.0 - float(!reverse), 1.0 - float(reverse), transition_duration
+	)
+	tween.parallel().tween_method(func(value: float):
+		text_material.set_shader_parameter('progress', value), 
+		1.0 - float(!reverse), 1.0 - float(reverse), transition_duration
+	)
+	
+	await tween.finished
+	
+func set_fill_progress(progress: float) -> void:
+	var sprite_material: ShaderMaterial = _panel_container.material
+	var text_material: ShaderMaterial = _value_label.material
+	sprite_material.set_shader_parameter('progress', progress)
+	text_material.set_shader_parameter('progress', progress)
+
+func play_level_complete_animation() -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, 'scale', Vector2(1.1, 1.1), 0.15)
+	tween.tween_property(self, 'scale', Vector2(1.0, 1.0), 0.15)
+	AudioManager.play_output_satisfied_sfx()
+	await tween.finished

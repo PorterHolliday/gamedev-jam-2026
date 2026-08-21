@@ -1,0 +1,35 @@
+{
+  "name": "challenge_3",
+  "inputs": {
+    "I1": 8
+  },
+  "operations": {
+    "S1": {
+      "type": "store"
+    },
+    "S2": {
+      "type": "store"
+    },
+    "M1": {
+      "type": "subtract"
+    },
+    "A1": {
+      "type": "add",
+      "value": 7
+    }
+  },
+  "outputs": {
+    "O1": -5,
+    "O2": 3,
+    "O3": 13
+  },
+  "source": {
+    "scene": "res://Levels/Levels/Challenge/challenge_3.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}

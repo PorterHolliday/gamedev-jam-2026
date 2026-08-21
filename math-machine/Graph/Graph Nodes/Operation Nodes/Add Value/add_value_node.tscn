@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://bcc6d7yom8e26"]
+
+[ext_resource type="Script" uid="uid://dp3x2ylp6ysso" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.gd" id="1_4m75e"]
+[ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="2_qmhv7"]
+[ext_resource type="PackedScene" uid="uid://cfbjles1s05dy" path="res://DragControl/drag_control.tscn" id="2_typ00"]
+[ext_resource type="PackedScene" uid="uid://cgkcg446jre7f" path="res://Graph/Graph Node Port/graph_node_input.tscn" id="3_ri1qq"]
+[ext_resource type="PackedScene" uid="uid://dkqgs2bxkfvsd" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="4_wdqb3"]
+[ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="6_mvvqe"]
+[ext_resource type="PackedScene" uid="uid://cjxx8phlk1sjd" path="res://Graph/Graph Nodes/NodeInfo/node_info_panel.tscn" id="7_obedx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvvqe"]
+bg_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[node name="AddValueNode" type="Node2D" unique_id=1512119247 node_paths=PackedStringArray("click_detector")]
+script = ExtResource("1_4m75e")
+click_detector = NodePath("DragControl")
+metadata/_custom_type_script = "uid://dp3x2ylp6ysso"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=489281560]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_mvvqe")
+
+[node name="ValueLabel" type="Label" parent="PanelContainer" unique_id=1927894702]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+3"
+label_settings = ExtResource("2_qmhv7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DragControl" parent="." unique_id=1240829746 instance=ExtResource("2_typ00")]
+unique_name_in_owner = true
+offset_left = -56.0
+offset_top = -56.0
+offset_right = 56.0
+offset_bottom = 56.0
+show_shape_in_editor = false
+metadata/_edit_group_ = true
+
+[node name="GraphNodeInput" parent="." unique_id=2095797941 instance=ExtResource("3_ri1qq")]
+position = Vector2(-48, 0)
+
+[node name="GraphNodeOutput" parent="." unique_id=1452740761 instance=ExtResource("4_wdqb3")]
+position = Vector2(48, 0)
+color = Color(0.49411765, 0.6862745, 0.96862745, 1)
+connection_color = Color(0.28728372, 0.38619685, 0.8672597, 1)
+connection_hover_color = Color(0.40850002, 0.525825, 0.95, 1)
+connected_color = Color(0.21960784, 0.16078432, 0.5921569, 1)
+value_panel_color = Color(0.3137255, 0.29411766, 0.85490197, 1)
+
+[node name="NodeInfo" type="Control" parent="." unique_id=1169321836]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("6_mvvqe")
+metadata/_custom_type_script = "uid://ypfv3rfioneb"
+
+[node name="NodeName" parent="NodeInfo" unique_id=134562754 instance=ExtResource("7_obedx")]
+layout_mode = 1
+offset_left = -100.0
+offset_top = -112.0
+offset_right = 61.0
+offset_bottom = -76.0
+text = "Adjust Amount"
+
+[node name="InputInfo" parent="NodeInfo" unique_id=1213534489 instance=ExtResource("7_obedx")]
+layout_mode = 1
+offset_left = -86.0
+offset_top = -38.0
+offset_right = -51.0
+offset_bottom = -3.0
+text = "A"
+
+[node name="OutputInfo" parent="NodeInfo" unique_id=2070874347 instance=ExtResource("7_obedx")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 10.0
+offset_top = -38.0
+offset_right = 63.0
+offset_bottom = -2.0
+text = "A+3"

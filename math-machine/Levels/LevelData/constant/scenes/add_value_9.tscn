@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://pyfxmafojwgb"]
+
+[ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_rvon3"]
+[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_n5knb"]
+[ext_resource type="Script" uid="uid://c6d3jjuv85gap" path="res://Levels/LevelData/constant/scenes/hint_tutorial.gd" id="3_5d3wq"]
+
+[node name="Level" unique_id=1073491300 instance=ExtResource("1_rvon3")]
+
+[node name="TutorialPanel" parent="." index="1" unique_id=1447792528 instance=ExtResource("2_n5knb")]
+offset_left = 704.0
+offset_top = 88.0
+offset_right = 964.0
+offset_bottom = 181.0
+text = "You can get a hint
+to see the next wire."
+
+[node name="HintTutorial" type="Node2D" parent="." index="4" unique_id=2312030 node_paths=PackedStringArray("hint_button")]
+script = ExtResource("3_5d3wq")
+hint_button = NodePath("../UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HintButton")

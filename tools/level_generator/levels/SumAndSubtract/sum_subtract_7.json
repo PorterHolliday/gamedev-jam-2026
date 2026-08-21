@@ -1,0 +1,27 @@
+{
+  "name": "sum_subtract_7",
+  "inputs": {
+    "I1": 0,
+    "I2": 7
+  },
+  "operations": {
+    "M1": {
+      "type": "subtract"
+    },
+    "M2": {
+      "type": "subtract"
+    }
+  },
+  "outputs": {
+    "O1": 14
+  },
+  "source": {
+    "scene": "res://Levels/Levels/SumAndSubtract/sum_subtract_7.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}

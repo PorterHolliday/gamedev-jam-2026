@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cjxx8phlk1sjd"]
+
+[ext_resource type="Script" uid="uid://c0an8mmjxgfxt" path="res://Levels/Tutorial/tutorial_panel.gd" id="1_ql363"]
+[ext_resource type="LabelSettings" uid="uid://gcm2u4xs7mql" path="res://LabelSettings/node_info_label_settings.tres" id="2_8clxu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkb2t"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[node name="NodeInfoPanel" type="PanelContainer" unique_id=134562754]
+custom_minimum_size = Vector2(36, 36)
+propagate_maximum_size = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -16.5
+offset_right = 18.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tkb2t")
+script = ExtResource("1_ql363")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1631320872]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=651255793]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("2_8clxu")
+horizontal_alignment = 1

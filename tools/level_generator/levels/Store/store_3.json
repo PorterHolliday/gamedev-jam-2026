@@ -1,0 +1,31 @@
+{
+  "name": "store_3",
+  "inputs": {
+    "I1": 2,
+    "I2": 5
+  },
+  "operations": {
+    "S1": {
+      "type": "store"
+    },
+    "M1": {
+      "type": "subtract"
+    },
+    "M2": {
+      "type": "subtract"
+    }
+  },
+  "outputs": {
+    "O1": 8,
+    "O2": 11
+  },
+  "source": {
+    "scene": "res://Levels/Levels/Store/store_3.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}

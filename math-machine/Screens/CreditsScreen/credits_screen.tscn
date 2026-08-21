@@ -1,0 +1,454 @@
+[gd_scene format=3 uid="uid://crdmfsmvvx803"]
+
+[ext_resource type="Script" uid="uid://66rm3attlumf" path="res://Screens/CreditsScreen/credits_screen.gd" id="1_3d6hp"]
+[ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="2_1xyof"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="2_fly6y"]
+[ext_resource type="Script" uid="uid://cr6u1k8u5dalo" path="res://UI/ScrollContainer/scroll_container_wrapper.gd" id="2_yu0jd"]
+[ext_resource type="Texture2D" uid="uid://0njw5eurbgsd" path="res://UI/ScrollContainer/up_arrow.svg" id="3_lg0ts"]
+[ext_resource type="PackedScene" uid="uid://bdxx61cy41cyb" path="res://Screens/ScreenComponents/title.tscn" id="4_5ot11"]
+[ext_resource type="Texture2D" uid="uid://cwm7bvwdspyuy" path="res://UI/ScrollContainer/down_arrow.svg" id="4_lbjfv"]
+[ext_resource type="LabelSettings" uid="uid://buq01gkh36dd0" path="res://LabelSettings/divider_label_settings.tres" id="5_5ot11"]
+[ext_resource type="Texture2D" uid="uid://bxet0voqss8dw" path="res://Screens/CreditsScreen/Goat Code Games Logo.png" id="6_jhtfi"]
+[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="7_7pevr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg0ts"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ot11"]
+bg_color = Color(0.19215687, 0.4, 0.1764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbjfv"]
+bg_color = Color(0.7647059, 0.68235296, 0.12156863, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="SystemFont" id="SystemFont_7gix3"]
+font_names = PackedStringArray("Century Gothic")
+font_italic = true
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_bp0l3"]
+font = SubResource("SystemFont_7gix3")
+font_size = 28
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ah2hc"]
+bg_color = Color(0.80784315, 0.83137256, 0.8862745, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slkg8"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhtfi"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fly6y"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_jhtfi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogoContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LogoContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fly6y"]
+resource_name = "logo_fade"
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogoContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LogoContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ot11"]
+_data = {
+&"RESET": SubResource("Animation_jhtfi"),
+&"logo_fade": SubResource("Animation_fly6y")
+}
+
+[node name="CreditsScreen" type="Control" unique_id=1851428125]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3d6hp")
+
+[node name="Panel" type="Panel" parent="." unique_id=1852089463]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainerWrapper" type="Control" parent="." unique_id=1096936874 node_paths=PackedStringArray("scroll_container", "up_arrow", "down_arrow")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_yu0jd")
+scroll_container = NodePath("ScrollContainer")
+up_arrow = NodePath("UpArrow")
+down_arrow = NodePath("DownArrow")
+
+[node name="UpArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=985853463]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 992.0
+offset_top = 32.0
+offset_right = 1072.0
+offset_bottom = 128.0
+texture = ExtResource("3_lg0ts")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DownArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=1277849517]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 528.0
+offset_right = 1072.0
+offset_bottom = 624.0
+texture = ExtResource("4_lbjfv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainerWrapper" unique_id=823828472]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainerWrapper/ScrollContainer" unique_id=1868674630]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=813825174]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Title" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1727297454 instance=ExtResource("4_5ot11")]
+layout_mode = 2
+text = "CREDITS"
+color = Color(0.3137255, 0.29411766, 0.85490197, 1)
+panel_min_size = Vector2(72, 80)
+spacer_min_size = 16.0
+text_size = 48
+text_outline_size = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1540517909]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="MarginContainer3" type="MarginContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1032654336]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 192
+
+[node name="GroupDivider" type="Control" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3" unique_id=1844783438]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="DividerLine" type="Panel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/GroupDivider" unique_id=807396871]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg0ts")
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/GroupDivider" unique_id=176139870]
+custom_minimum_size = Vector2(360, 40)
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ot11")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/GroupDivider/PanelContainer" unique_id=1009280059]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="Label" type="Label" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/GroupDivider/PanelContainer/MarginContainer" unique_id=1543338034]
+layout_mode = 2
+text = "Design, Development & Art"
+label_settings = ExtResource("5_5ot11")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialPanel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1447792528 instance=ExtResource("7_7pevr")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Porter Holliday"
+text_color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=752935831]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 192
+
+[node name="GroupDivider2" type="Control" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2" unique_id=1843789331]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="DividerLine" type="Panel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/GroupDivider2" unique_id=704717038]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg0ts")
+
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/GroupDivider2" unique_id=1722109163]
+custom_minimum_size = Vector2(360, 40)
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lbjfv")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/GroupDivider2/PanelContainer" unique_id=1427099203]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="Label" type="Label" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/GroupDivider2/PanelContainer/MarginContainer" unique_id=708023611]
+layout_mode = 2
+text = "Music & Sound Effects"
+label_settings = ExtResource("5_5ot11")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=835376149]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1249985577]
+layout_mode = 2
+text = "Via Pixabay"
+label_settings = SubResource("LabelSettings_bp0l3")
+horizontal_alignment = 1
+
+[node name="TutorialPanel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=972166380 instance=ExtResource("7_7pevr")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Eliveta - \"Background Music\""
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1848903345 instance=ExtResource("7_7pevr")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "freesound_community - \"Breaker Switch\""
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=514175547 instance=ExtResource("7_7pevr")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "freesound_community - \"\"slice apple on wood_fizz\"\""
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1121922622 instance=ExtResource("7_7pevr")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PuyoPuyoMegaFan1234 - \"Winner game sound.\""
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=607747147 instance=ExtResource("7_7pevr")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "The_Mountain - \"Digital Factory\""
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1000391635 instance=ExtResource("7_7pevr")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "u_56l164mftx - \"cardDrop\""
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=253678797 instance=ExtResource("7_7pevr")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Universfield - \"Bubble Pop\""
+text_color = Color(0, 0, 0, 1)
+
+[node name="TutorialPanel7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1238039086 instance=ExtResource("7_7pevr")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Vadim_Makes_Sound - \"Soft App Button Tap Sound # 2\""
+text_color = Color(0, 0, 0, 1)
+
+[node name="BackButton" type="Button" parent="." unique_id=1882274648]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+theme_type_variation = &"BackButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_ah2hc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_slkg8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jhtfi")
+script = ExtResource("2_fly6y")
+
+[node name="TextureRect" type="TextureRect" parent="BackButton" unique_id=903090795]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("2_1xyof")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LogoContainer" type="PanelContainer" parent="." unique_id=1144720524]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fly6y")
+
+[node name="CenterContainer" type="CenterContainer" parent="LogoContainer" unique_id=1226671905]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LogoContainer/CenterContainer" unique_id=1256697093]
+texture_filter = 1
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture = ExtResource("6_jhtfi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1586579404]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_5ot11")

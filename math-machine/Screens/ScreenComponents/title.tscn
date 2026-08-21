@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bdxx61cy41cyb"]
+
+[ext_resource type="Script" uid="uid://dwophfkvogbmh" path="res://Screens/ScreenComponents/title.gd" id="1_tbk72"]
+
+[node name="Title" type="CenterContainer" unique_id=1727297454]
+mouse_filter = 2
+script = ExtResource("1_tbk72")
+color = Color(0.62967473, 0.62967473, 0.6296747, 1)
+text_color = Color(1, 1, 1, 1)
+panel_min_size = null
+spacer_min_size = null
+text_size = null
+text_outline_size = null
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1861644379]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1

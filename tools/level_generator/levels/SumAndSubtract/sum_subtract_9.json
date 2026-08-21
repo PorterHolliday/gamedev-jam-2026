@@ -1,0 +1,38 @@
+{
+  "name": "sum_subtract_9",
+  "inputs": {
+    "I1": 1
+  },
+  "operations": {
+    "P1": {
+      "type": "sum"
+    },
+    "P2": {
+      "type": "sum"
+    },
+    "M1": {
+      "type": "subtract"
+    },
+    "M2": {
+      "type": "subtract"
+    },
+    "M3": {
+      "type": "subtract"
+    }
+  },
+  "outputs": {
+    "O1": 2,
+    "O2": 3,
+    "O3": 4,
+    "O4": 5
+  },
+  "source": {
+    "scene": "res://Levels/Levels/SumAndSubtract/sum_subtract_9.tscn",
+    "transcribed_from": "hand-authored scene",
+    "bound": [
+      -20,
+      20
+    ],
+    "max_latches": 8
+  }
+}

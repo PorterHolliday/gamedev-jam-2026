@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://3vvhaji5x0ta"]
+
+[ext_resource type="Script" uid="uid://bdwtcgt4rnjhx" path="res://TransitionRoot/transition_root.gd" id="2_k5fmk"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7gix3"]
+
+[node name="TransitionRoot" type="Control" unique_id=743984437]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_k5fmk")
+transition_duration = 0.35
+
+[node name="Black" type="TextureRect" parent="." unique_id=534759470]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_7gix3")

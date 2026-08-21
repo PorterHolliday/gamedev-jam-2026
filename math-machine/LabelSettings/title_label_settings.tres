@@ -6,6 +6,4 @@ font_names = PackedStringArray("Century Gothic")
 [resource]
 font = SubResource("SystemFont_myilg")
 font_size = 64
-font_color = Color(0, 0, 0, 1)
 outline_size = 4
-outline_color = Color(0, 0, 0, 1)

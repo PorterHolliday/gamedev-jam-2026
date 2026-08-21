@@ -1,32 +1,45 @@
-Intro:
-	How to Connect w/ Add Value
-	Multiple Outputs
-	Multiple Inputs & Multiple Outputs
-	More Complex Puzzle
-Sum/Subtract Nodes:
-	Intro to Sum Node
-	More Sum Node
-	Intro to Subtract Node
-	More Subtract Node
-	Sum & Subtract Nodes
-	Sum & Subtract Nodes
-	Sum, Subtract, & Add Value Nodes
-Store Node:
-	Intro to Store Node
-	Store Node w/ Add/Subtract Node
-	More Store Node
-	2 Store Nodes = Infinite Operations
-	More 2 Store Node
-Level Node:
-	Intro to Level Node
-	More Level Node
-	Multiple Level Nodes
-	Level Node w/ Store Node (Save one result, get another)
-	More Level Node w/ Store Node
-	Multiple Level Nodes w/ Store Node
-Finale:
-	Actual Levels have outputs
-	""
-	""
-	""
-	""
+Git Branches:
+	* Level UI Update
+	* Update Draggable Component Bounds & Name
+	* Graph Canvas Connection Update
+	* Update Port Value Labels
+	* Level Update
+	* Remove Old Code/Scenes
+	* Level Complete Popup Update
+	* Game Structure
+	* Level Select Update
+	* Title Screen Update
+	* Settings Screen + Settings Button
+	* Gameplay Animations
+		- Port filled when hovered
+		- Node pop animation when it gets a new input
+		- Output node fill animation when fulfilled
+		- Output node pop when level is complete
+		- Connection line color change when hovered
+	* Screens
+		- Credits Screen
+		- End Screen Update
+		- Miscellaneous Screen Fixes
+	* Save Data
+		- Saves LevelManager levels_complete array
+		- Saves Settings selection
+	* Fix Web Lag
+	* Toolbar Explanation
+	* Audio Update
+	* Fix Entering Levels
+	*Hint Popup Update
+	* 3 Star Audio
+	* Add Credits
+	* Mobile Support
+	Feedback Fix
+		- Bug when beating level
+		- Error color when trying to connect to wrong port
+	Additional Levels
+		- 1 Add Value Level
+		- 1 Store Level
+		- 3 Challenge Levels
+			- Inputs are negatives
+	
+	Final Check/Refactor - Add Additional Branches as Needed
+
+ANY OTHER CHANGES MUST BE ADDED TO THIS LIST BEFORE BEING IMPLEMENTED!!!
