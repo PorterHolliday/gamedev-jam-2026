@@ -208,6 +208,8 @@ func _mouse_entered_port_area(port: GraphNodePort) -> void:
 func _mouse_exited_port_area(port: GraphNodePort) -> void:
 	port.hide_hover_fill()
 	port.hide_bad_connection()
+	if _level_completed:
+		port.show_connected_fill()
 	_modulate_glow_panel(Color(0.0, 0.0, 0.0, 0.0))
 	is_current_connection_valid = false
 	is_current_connection_invalid = false
@@ -476,6 +478,8 @@ func _check_level_complete() -> void:
 			return
 	_level_completed = true
 	level_complete.emit()
+	queue_redraw()
+	process_mode = Node.PROCESS_MODE_DISABLED
 	
 func _connect_port_signals() -> void:
 	for child in get_children():
