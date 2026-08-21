@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://tnge33mk1lgm" path="res://Graph/Graph Nodes/Input Node/input_node.gd" id="1_whq1o"]
 [ext_resource type="PackedScene" uid="uid://dkqgs2bxkfvsd" path="res://Graph/Graph Node Port/graph_node_output.tscn" id="3_45htt"]
-[ext_resource type="Script" uid="uid://b7assewelikkx" path="res://DragControl/clickable_control.gd" id="3_ymrrd"]
 [ext_resource type="LabelSettings" uid="uid://ct31oif4gybnu" path="res://LabelSettings/graph_node_value.tres" id="4_45htt"]
 [ext_resource type="Script" uid="uid://ypfv3rfioneb" path="res://Graph/Graph Nodes/NodeInfo/node_info.gd" id="5_0dthf"]
 [ext_resource type="PackedScene" uid="uid://cjxx8phlk1sjd" path="res://Graph/Graph Nodes/NodeInfo/node_info_panel.tscn" id="6_0dthf"]
@@ -22,9 +21,12 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_0dthf"]
+points = PackedVector2Array(-124, -64, 4, -64, 44, 0, 4, 64, -124, 64)
+
 [node name="InputNode" type="Node2D" unique_id=1370377095 node_paths=PackedStringArray("click_detector")]
 script = ExtResource("1_whq1o")
-click_detector = NodePath("ClickableControl")
+click_detector = NodePath("GraphNodeOutput/SnapArea")
 metadata/_custom_type_script = "uid://tnge33mk1lgm"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1855390834]
@@ -43,22 +45,21 @@ label_settings = ExtResource("4_45htt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ClickableControl" type="Control" parent="." unique_id=569355102]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-script = ExtResource("3_ymrrd")
-metadata/_custom_type_script = "uid://b7assewelikkx"
-
 [node name="GraphNodeOutput" parent="." unique_id=2095797941 instance=ExtResource("3_45htt")]
 position = Vector2(48, 0)
 color = Color(0.72156864, 0.7529412, 0.83137256, 1)
 connection_color = Color(0.50980395, 0.5882353, 0.6784314, 1)
 connection_hover_color = Color(0.67200005, 0.7274667, 0.8, 1)
 value_panel_color = Color(0.43529412, 0.5058824, 0.57254905, 1)
+
+[node name="Panel" parent="GraphNodeOutput" index="0" unique_id=408845485]
+modulate = Color(0.72156864, 0.7529412, 0.83137256, 1)
+
+[node name="SnapArea" parent="GraphNodeOutput" index="2" unique_id=1102113085]
+shape = SubResource("ConvexPolygonShape2D_0dthf")
+
+[node name="ValuePanelContainer" parent="GraphNodeOutput/ValueContainer" parent_id_path=PackedInt32Array(2095797941, 1787146700) index="0" unique_id=712190939]
+self_modulate = Color(0.43529412, 0.5058824, 0.57254905, 1)
 
 [node name="NodeInfo" type="Control" parent="." unique_id=134183925]
 unique_name_in_owner = true
@@ -78,3 +79,5 @@ offset_top = -112.5
 offset_right = 56.0
 offset_bottom = -76.5
 text = "Starting Value"
+
+[editable path="GraphNodeOutput"]

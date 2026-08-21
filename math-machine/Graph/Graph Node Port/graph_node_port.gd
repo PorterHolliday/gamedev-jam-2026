@@ -63,10 +63,8 @@ func _ready() -> void:
 		return
 	snap_area.mouse_entered.connect(_on_mouse_entered)
 	snap_area.mouse_exited.connect(_on_mouse_exited)
-	snap_area.mouse_clicked.connect(func(mouse_button):
-		port_clicked.emit())
-	snap_area.mouse_released.connect(func(mouse_button):
-		port_released.emit())
+	snap_area.mouse_clicked.connect(_on_mouse_clicked)
+	snap_area.mouse_released.connect(_on_mouse_released)
 
 func _update_value_label() -> void:
 	if value == NULL_VALUE:
@@ -117,3 +115,15 @@ func fade_out_error() -> void:
 	await tween.finished
 	error_container.hide()
 	error_container.modulate = Color.WHITE
+	
+func _on_mouse_clicked(mouse_button: MouseButton) -> void:
+	if not mouse_button == MOUSE_BUTTON_LEFT:
+		return
+		
+	port_clicked.emit()
+
+func _on_mouse_released(mouse_button: MouseButton) -> void:
+	if not mouse_button == MOUSE_BUTTON_LEFT:
+		return
+		
+	port_released.emit()
