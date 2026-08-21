@@ -10,16 +10,20 @@ func _ready() -> void:
 	level_select_button.pressed.connect(_on_level_select_button_pressed)
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	credits_button.pressed.connect(_on_credits_button_pressed)
-	if not SaveManager.is_new_player():
+	
+	var deepest_incomplete_level_index: int = SaveManager.get_deepest_incomplete_level_index()
+	if deepest_incomplete_level_index == -1:
+		play_button.text = "LEVEL SELECT"
+	elif not SaveManager.is_new_player():
 		play_button.text = "CONTINUE"
 		level_select_button.show()
 	
 func _on_play_button_pressed() -> void:
-	var first_incomplete_level_index: int = SaveManager.get_first_incomplete_level_index()
-	if first_incomplete_level_index == -1:
+	var deepest_incomplete_level_index: int = SaveManager.get_deepest_incomplete_level_index()
+	if deepest_incomplete_level_index == -1:
 		GameRoot.enter_level_select_screen()
 	else:
-		GameRoot.enter_level(first_incomplete_level_index)
+		GameRoot.enter_level(deepest_incomplete_level_index)
 
 func _on_level_select_button_pressed() -> void:
 	GameRoot.enter_level_select_screen()

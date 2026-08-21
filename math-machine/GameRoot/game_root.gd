@@ -48,13 +48,16 @@ func _ready() -> void:
 	_add_screens()
 	
 	if AUTOSTART_GAME:
-		var level_index: int = SaveManager.get_first_incomplete_level_index()
-		current_screen = await node._build_level(level_index)
-		current_screen.process_mode = Node.PROCESS_MODE_INHERIT
+		var level_index: int = SaveManager.get_deepest_incomplete_level_index()
+		if level_index == -1:
+			current_screen = node.level_select_screen
+		else:
+			current_screen = await node._build_level(level_index)
 	else:
 		AudioManager.play_menu_music()
 		current_screen = title_screen
-		title_screen.process_mode = Node.PROCESS_MODE_INHERIT
+		
+	current_screen.process_mode = Node.PROCESS_MODE_INHERIT
 
 #region Navigation
 
