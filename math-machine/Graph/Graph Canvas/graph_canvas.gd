@@ -2,7 +2,7 @@ class_name GraphCanvas
 extends Node2D
 
 const DISCONNECTION_DISTANCE: float = 40.0
-const BEZIER_SAMPLES: float = 39
+const BEZIER_SAMPLES: float = 40
 const LINE_WIDTH: float = 6.0
 const BORDER_WIDTH: float = 6.0
 const PREVIEW_COLOR: Color = Color(0.8, 0.8, 0.8, 0.8)
