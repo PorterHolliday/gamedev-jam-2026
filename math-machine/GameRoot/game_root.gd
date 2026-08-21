@@ -8,7 +8,7 @@ extends Node
 ## inside [method _transition], while the screen is fully faded to black, and
 ## freed as soon as the player leaves them. Only one [Level] exists at a time.
 
-const AUTOSTART_NEW_PLAYERS: bool = false
+const AUTOSTART_GAME: bool = false
 
 static var node: GameRoot
 
@@ -47,8 +47,9 @@ func _ready() -> void:
 	node = self
 	_add_screens()
 	
-	if AUTOSTART_NEW_PLAYERS and SaveManager.is_new_player():
-		current_screen = await node._build_level(0)
+	if AUTOSTART_GAME:
+		var level_index: int = SaveManager.get_first_incomplete_level_index()
+		current_screen = await node._build_level(level_index)
 		current_screen.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
 		AudioManager.play_menu_music()
