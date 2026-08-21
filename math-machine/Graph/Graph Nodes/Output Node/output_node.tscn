@@ -126,7 +126,6 @@ position = Vector2(-48, 0)
 [node name="SnapArea" parent="GraphNodeInput" index="2" unique_id=864252047]
 mouse_filter = 1
 shape = SubResource("ConvexPolygonShape2D_cl8wq")
-show_shape_in_editor = true
 
 [node name="NodeInfo" type="Control" parent="." unique_id=1608801991]
 unique_name_in_owner = true

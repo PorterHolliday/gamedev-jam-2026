@@ -57,7 +57,6 @@ modulate = Color(0.72156864, 0.7529412, 0.83137256, 1)
 
 [node name="SnapArea" parent="GraphNodeOutput" index="2" unique_id=1102113085]
 shape = SubResource("ConvexPolygonShape2D_0dthf")
-show_shape_in_editor = true
 
 [node name="ValuePanelContainer" parent="GraphNodeOutput/ValueContainer" parent_id_path=PackedInt32Array(2095797941, 1787146700) index="0" unique_id=712190939]
 self_modulate = Color(0.43529412, 0.5058824, 0.57254905, 1)
