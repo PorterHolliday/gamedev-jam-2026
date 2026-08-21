@@ -36,6 +36,17 @@ func get_first_incomplete_level_index() -> int:
 		if not _completed_level_uids.has(LevelManager._uid_for(level_data)):
 			return LevelManager.level_data_list.find(level_data)
 	return -1
+	
+func get_deepest_incomplete_level_index() -> int:
+	var deepest_complete_level_index: int = -1
+	for i in range(LevelManager.level_data_list.size()):
+		var level_data: LevelData = LevelManager.level_data_list[i]
+		if _completed_level_uids.has(LevelManager._uid_for(level_data)):
+			deepest_complete_level_index = i
+	var deepest_incomplete_level_index: int = deepest_complete_level_index + 1
+	if deepest_incomplete_level_index >= LevelManager.level_data_list.size():
+		return -1
+	return deepest_incomplete_level_index
 
 func is_level_completed(uid: String) -> bool:
 	return _completed_level_uids.get(uid, false)
