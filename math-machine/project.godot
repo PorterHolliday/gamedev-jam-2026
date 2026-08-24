@@ -33,6 +33,8 @@ HapticManager="*uid://cco4urw1uaao1"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://vnkc8u4f5e7"
+mouse_cursor/custom_image_hotspot=Vector2(16, 4)
 
 [gui]
 
