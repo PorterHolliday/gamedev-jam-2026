@@ -1,0 +1,279 @@
+[gd_scene format=3 uid="uid://ctvjgj41tc8e7"]
+
+[ext_resource type="Script" uid="uid://da05fd68g243i" path="res://Levels/marketing_level.gd" id="1_evxpn"]
+[ext_resource type="PackedScene" uid="uid://dfcmc8qocwu47" path="res://Graph/Graph Canvas/graph_canvas.tscn" id="2_4vur8"]
+[ext_resource type="PackedScene" uid="uid://cxy864y1rmwdl" path="res://Graph/Graph Nodes/Input Node/input_node.tscn" id="3_8tu76"]
+[ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="4_77qr7"]
+[ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="4_jk7wl"]
+[ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="5_mu7be"]
+[ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="5_ye6fy"]
+[ext_resource type="Texture2D" uid="uid://dxctjnu8acqc1" path="res://UI/Level UI/restart_icon.png" id="6_8tu76"]
+[ext_resource type="PackedScene" uid="uid://dfdis5g62i3y0" path="res://Graph/Graph Nodes/Operation Nodes/Sum/sum_node.tscn" id="6_vbbns"]
+[ext_resource type="PackedScene" uid="uid://ctt7yx4a462q7" path="res://Graph/Graph Nodes/Operation Nodes/Subtract/subtract_node.tscn" id="7_53sbi"]
+[ext_resource type="Script" uid="uid://bt14fmbnhvtf6" path="res://UI/HintButton/hint_button.gd" id="7_77qr7"]
+[ext_resource type="PackedScene" uid="uid://bdxx61cy41cyb" path="res://Screens/ScreenComponents/title.tscn" id="8_8tu76"]
+[ext_resource type="Texture2D" uid="uid://dbj8h7jpvvs15" path="res://UI/Level UI/hint_icon.png" id="8_mu7be"]
+[ext_resource type="Texture2D" uid="uid://eh2o513barue" path="res://UI/Level UI/tutorial_icon.png" id="9_vbbns"]
+[ext_resource type="Texture2D" uid="uid://5lsaj8seli3p" path="res://UI/Level UI/settings_icon.png" id="10_53sbi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh3su"]
+bg_color = Color(0.54, 0.38790002, 0.18900003, 1)
+border_width_left = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx8ih"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_11tni"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ni20n"]
+font = SubResource("SystemFont_11tni")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MarketingLevel" type="Node2D" unique_id=154877036]
+script = ExtResource("1_evxpn")
+
+[node name="Panel" type="Panel" parent="." unique_id=2079327295]
+offset_right = 1152.0
+offset_bottom = 648.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="GraphCanvas" parent="." unique_id=90730119 instance=ExtResource("2_4vur8")]
+unique_name_in_owner = true
+position = Vector2(4, 4)
+scale = Vector2(0.9, 0.9)
+
+[node name="InputNode" parent="GraphCanvas" unique_id=1370377095 instance=ExtResource("3_8tu76")]
+position = Vector2(60.000015, 444.44455)
+value = 2
+
+[node name="OutputNode" parent="GraphCanvas" unique_id=1924490215 instance=ExtResource("4_77qr7")]
+visible = false
+position = Vector2(704, 256)
+value = 7
+
+[node name="OutputNode2" parent="GraphCanvas" unique_id=1376470306 instance=ExtResource("4_77qr7")]
+position = Vector2(635.5557, 443.3334)
+value = 9
+
+[node name="AddValueNode" parent="GraphCanvas" unique_id=1512119247 instance=ExtResource("5_mu7be")]
+position = Vector2(235.55557, 348.88892)
+value = 5
+
+[node name="SumNode" parent="GraphCanvas" unique_id=1459015131 instance=ExtResource("6_vbbns")]
+position = Vector2(427.7778, 443.33334)
+
+[node name="SubtractNode" parent="GraphCanvas" unique_id=1134007312 instance=ExtResource("7_53sbi")]
+visible = false
+position = Vector2(304, 304)
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="." unique_id=590024135]
+offset_top = 16.0
+offset_right = 840.0
+offset_bottom = 328.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 8
+metadata/_edit_group_ = true
+
+[node name="Title" parent="HBoxContainer2" unique_id=1727297454 instance=ExtResource("8_8tu76")]
+layout_mode = 2
+text = "NUMBER"
+color = Color(0.43529412, 0.5058824, 0.57254905, 1)
+panel_min_size = Vector2(126, 152)
+spacer_min_size = 40.0
+text_size = 112
+text_outline_size = 8
+
+[node name="Title2" parent="HBoxContainer2" unique_id=754862347 instance=ExtResource("8_8tu76")]
+layout_mode = 2
+text = "WIRE"
+color = Color(0.7294118, 0.41568628, 0.13333334, 1)
+panel_min_size = Vector2(126, 152)
+spacer_min_size = 40.0
+text_size = 112
+text_outline_size = 8
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1147669631]
+unique_name_in_owner = true
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="UILayer" unique_id=1898184552]
+custom_minimum_size = Vector2(0, 66)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sh3su")
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/PanelContainer" unique_id=1154784698]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="Control" type="Control" parent="UILayer/PanelContainer/MarginContainer" unique_id=148626940]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control" unique_id=629111258]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 24.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 15.0
+tooltip_text = "Level Select"
+icon_alignment = 1
+script = ExtResource("4_jk7wl")
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/BackButton" unique_id=2016060500]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("5_ye6fy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="UILayer/PanelContainer/MarginContainer/Control" unique_id=1298672109]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 13.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_vx8ih")
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer" unique_id=812724359]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="LevelNumberLabel" type="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" unique_id=815026241]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_ni20n")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/PanelContainer/MarginContainer/Control" unique_id=1938899271]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="RestartButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" unique_id=930462941]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 2
+tooltip_text = "Restart"
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/RestartButton" unique_id=300638952]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 39.0
+offset_bottom = 48.0
+texture = ExtResource("6_8tu76")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HintButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" unique_id=348902469]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Hint"
+script = ExtResource("7_77qr7")
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HintButton" unique_id=807053921]
+layout_mode = 0
+offset_right = 47.0
+offset_bottom = 48.0
+texture = ExtResource("8_mu7be")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HelpButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" unique_id=593531429]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Tutorials"
+script = ExtResource("4_jk7wl")
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/HelpButton" unique_id=1918585257]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 36.0
+offset_bottom = 41.0
+texture = ExtResource("9_vbbns")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsButton" type="Button" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer" unique_id=518444032]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Settings"
+script = ExtResource("4_jk7wl")
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/PanelContainer/MarginContainer/Control/HBoxContainer/SettingsButton" unique_id=1044884217]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("10_53sbi")
+expand_mode = 1
+stretch_mode = 5

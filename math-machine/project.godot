@@ -21,6 +21,7 @@ boot_splash/icon="uid://dqu6avedswv7y"
 [audio]
 
 buses/default_bus_layout="uid://mswcxkopegv8"
+driver/output_latency.web=100
 
 [autoload]
 
@@ -36,6 +37,7 @@ window/stretch/mode="canvas_items"
 
 [gui]
 
+theme/default_font_subpixel_positioning=0
 theme/custom="uid://c8v5ql7fu0rxv"
 
 [physics]

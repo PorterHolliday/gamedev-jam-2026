@@ -72,7 +72,7 @@ func start() -> void:
 	for connection_data in initial_connection_data:
 		var from_port: GraphNodePort = nodes[connection_data.from_node_index].outputs[connection_data.from_port]
 		var to_port: GraphNodePort = nodes[connection_data.to_node_index].inputs[connection_data.to_port]
-		request_connection(from_port, to_port)
+		request_connection(from_port, to_port, false)
 			
 func _process(_delta: float) -> void:
 	queue_redraw()
