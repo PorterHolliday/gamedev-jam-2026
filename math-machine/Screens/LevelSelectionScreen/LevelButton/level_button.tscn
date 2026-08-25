@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://7qbklb5jwxg5"]
 
 [ext_resource type="Script" uid="uid://bae0nu5wpdss6" path="res://Screens/LevelSelectionScreen/LevelButton/level_button.gd" id="1_6lxuk"]
-[ext_resource type="AudioStream" uid="uid://g14s8khqfdsu" path="res://Audio/SFX/ButtonClick.mp3" id="2_reuuw"]
 
 [node name="LevelButton" type="Button" unique_id=863369867]
 custom_minimum_size = Vector2(96, 96)
@@ -9,7 +8,3 @@ offset_right = 80.0
 offset_bottom = 80.0
 theme_type_variation = &"LevelButton"
 script = ExtResource("1_6lxuk")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=725643736]
-unique_name_in_owner = true
-stream = ExtResource("2_reuuw")
