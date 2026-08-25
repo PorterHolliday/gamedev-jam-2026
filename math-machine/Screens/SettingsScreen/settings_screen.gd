@@ -11,8 +11,10 @@ func _ready() -> void:
 	_init_settings()
 	back_button.pressed.connect(_on_back_button_pressed)
 	music_slider.value_changed.connect(_on_music_slider_value_changed)
+	music_slider.drag_started.connect(_on_slider_drag_started)
 	music_slider.drag_ended.connect(_on_slider_drag_ended)
 	sfx_slider.value_changed.connect(_on_sfx_slider_value_changed)
+	sfx_slider.drag_started.connect(_on_slider_drag_started)
 	sfx_slider.drag_ended.connect(_on_slider_drag_ended)
 	
 func _init_settings() -> void:
@@ -37,7 +39,11 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	sfx_percentage.text = str(int(value)) + '%'
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index('SFX'), linear_to_db(value / 100))
 	SaveManager.sfx_volume = value
+	
+func _on_slider_drag_started() -> void:
+	AudioManager.play_connection_sfx()
 
 func _on_slider_drag_ended(value_changed: bool) -> void:
+	AudioManager.play_connection_sfx()
 	if not value_changed: return
 	SaveManager.save_game()
