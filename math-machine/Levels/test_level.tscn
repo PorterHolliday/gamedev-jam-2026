@@ -7,18 +7,17 @@
 [ext_resource type="Script" uid="uid://cltmh45jarwf8" path="res://HintSystem/solution_step.gd" id="5_tc6tp"]
 [ext_resource type="Script" uid="uid://cxfcv878bwcua" path="res://HintSystem/connection_step_data.gd" id="6_k8b6b"]
 [ext_resource type="Script" uid="uid://ciy62d543op8" path="res://Levels/LevelData/level_data.gd" id="7_lx7qo"]
-[ext_resource type="PackedScene" uid="uid://bdxx61cy41cyb" path="res://Screens/ScreenComponents/title.tscn" id="8_7e6fp"]
 
 [sub_resource type="Resource" id="In0"]
 script = ExtResource("2_pvdih")
-value = 2
+value = 5
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [sub_resource type="Resource" id="D_p0_c0"]
 script = ExtResource("6_k8b6b")
-from_value = 2
+from_value = 5
 to_type = 2
-to_value = 5
+to_value = 3
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p0_c0"]
@@ -29,8 +28,9 @@ metadata/_custom_type_script = "uid://cltmh45jarwf8"
 [sub_resource type="Resource" id="D_p0_c1"]
 script = ExtResource("6_k8b6b")
 from_type = 2
-from_value = 5
-to_type = 3
+from_value = 3
+to_type = 1
+to_value = 8
 metadata/_custom_type_script = "uid://cxfcv878bwcua"
 
 [sub_resource type="Resource" id="S_p0_c1"]
@@ -38,168 +38,60 @@ script = ExtResource("5_tc6tp")
 step_data = SubResource("D_p0_c1")
 metadata/_custom_type_script = "uid://cltmh45jarwf8"
 
-[sub_resource type="Resource" id="D_p0_c2"]
-script = ExtResource("6_k8b6b")
-from_value = 2
-to_type = 3
-to_port = 1
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="S_p0_c2"]
-script = ExtResource("5_tc6tp")
-step_data = SubResource("D_p0_c2")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="D_p0_c3"]
-script = ExtResource("6_k8b6b")
-from_type = 3
-to_type = 1
-to_value = 9
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="S_p0_c3"]
-script = ExtResource("5_tc6tp")
-step_data = SubResource("D_p0_c3")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
 [sub_resource type="Resource" id="Path0"]
 script = ExtResource("4_4t6x8")
-solution_steps = Array[ExtResource("5_tc6tp")]([SubResource("S_p0_c0"), SubResource("S_p0_c1"), SubResource("S_p0_c2"), SubResource("S_p0_c3")])
-metadata/_custom_type_script = "uid://cut5mll0elw0n"
-
-[sub_resource type="Resource" id="D_p1_c0"]
-script = ExtResource("6_k8b6b")
-from_value = 2
-to_type = 3
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="S_p1_c0"]
-script = ExtResource("5_tc6tp")
-step_data = SubResource("D_p1_c0")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="D_p1_c1"]
-script = ExtResource("6_k8b6b")
-from_value = 2
-to_type = 3
-to_port = 1
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="S_p1_c1"]
-script = ExtResource("5_tc6tp")
-step_data = SubResource("D_p1_c1")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="D_p1_c2"]
-script = ExtResource("6_k8b6b")
-from_type = 3
-to_type = 2
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="S_p1_c2"]
-script = ExtResource("5_tc6tp")
-step_data = SubResource("D_p1_c2")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="D_p1_c3"]
-script = ExtResource("6_k8b6b")
-from_type = 2
-to_type = 1
-to_value = 9
-metadata/_custom_type_script = "uid://cxfcv878bwcua"
-
-[sub_resource type="Resource" id="S_p1_c3"]
-script = ExtResource("5_tc6tp")
-step_data = SubResource("D_p1_c3")
-metadata/_custom_type_script = "uid://cltmh45jarwf8"
-
-[sub_resource type="Resource" id="Path1"]
-script = ExtResource("4_4t6x8")
-solution_steps = Array[ExtResource("5_tc6tp")]([SubResource("S_p1_c0"), SubResource("S_p1_c1"), SubResource("S_p1_c2"), SubResource("S_p1_c3")])
+solution_steps = Array[ExtResource("5_tc6tp")]([SubResource("S_p0_c0"), SubResource("S_p0_c1")])
 metadata/_custom_type_script = "uid://cut5mll0elw0n"
 
 [sub_resource type="Resource" id="Solution"]
 script = ExtResource("3_7e6fp")
-solution_paths = Array[ExtResource("4_4t6x8")]([SubResource("Path0"), SubResource("Path1")])
+solution_paths = Array[ExtResource("4_4t6x8")]([SubResource("Path0")])
 metadata/_custom_type_script = "uid://cexqyukx5s6ta"
 
 [sub_resource type="Resource" id="Op0"]
 script = ExtResource("2_pvdih")
 type = 2
-value = 5
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Op1"]
-script = ExtResource("2_pvdih")
-type = 3
-metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
-
-[sub_resource type="Resource" id="Resource_4k50d"]
-script = ExtResource("2_pvdih")
-type = 1
-value = 7
+value = 3
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
 [sub_resource type="Resource" id="Out0"]
 script = ExtResource("2_pvdih")
 type = 1
-value = 9
+value = 8
 metadata/_custom_type_script = "uid://bqkbdyhscmtcb"
 
-[sub_resource type="Resource" id="Resource_dkv23"]
+[sub_resource type="Resource" id="Resource_pvdih"]
 script = ExtResource("7_lx7qo")
 inputs = Array[ExtResource("2_pvdih")]([SubResource("In0")])
-operations = Array[ExtResource("2_pvdih")]([SubResource("Op0"), SubResource("Op1")])
-outputs = Array[ExtResource("2_pvdih")]([SubResource("Resource_4k50d"), SubResource("Out0")])
+operations = Array[ExtResource("2_pvdih")]([SubResource("Op0")])
+outputs = Array[ExtResource("2_pvdih")]([SubResource("Out0")])
 level_solution_data = SubResource("Solution")
 metadata/_custom_type_script = "uid://ciy62d543op8"
 
+[sub_resource type="SystemFont" id="SystemFont_11tni"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ni20n"]
+font = SubResource("SystemFont_11tni")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="TestLevel" unique_id=1073491300 instance=ExtResource("1_ormqy")]
-level_data = SubResource("Resource_dkv23")
+level_data = SubResource("Resource_pvdih")
 
 [node name="GraphCanvas" parent="." index="1" unique_id=90730119]
 metadata/_edit_lock_ = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="." index="2" unique_id=1494592176]
-offset_left = 8.0
-offset_top = 376.0
-offset_right = 1040.0
-offset_bottom = 488.0
-theme_override_constants/separation = 8
-metadata/_edit_group_ = true
-
-[node name="Title" parent="HBoxContainer2" index="0" unique_id=1727297454 instance=ExtResource("8_7e6fp")]
-layout_mode = 2
-text = "NUMBER"
-color = Color(0.43529412, 0.5058824, 0.57254905, 1)
-panel_min_size = Vector2(80, 96)
-spacer_min_size = 40.0
-text_size = 64
-text_outline_size = 8
-
-[node name="Title2" parent="HBoxContainer2" index="1" unique_id=1624342050 instance=ExtResource("8_7e6fp")]
-layout_mode = 2
-text = "WIRE"
-color = Color(0.7294118, 0.41568628, 0.13333334, 1)
-panel_min_size = Vector2(80, 96)
-spacer_min_size = 40.0
-text_size = 64
-text_outline_size = 8
-
-[node name="Marker2D4" parent="LevelBuilder/InputLocations" parent_id_path=PackedInt32Array(549361583, 619020436) index="3" unique_id=1307699826]
-position = Vector2(80, 208)
-
-[node name="Marker2D3" parent="LevelBuilder/OutputLocations" parent_id_path=PackedInt32Array(549361583, 928317284) index="2" unique_id=7541596]
-position = Vector2(688, 144)
-
-[node name="Marker2D5" parent="LevelBuilder/OutputLocations" parent_id_path=PackedInt32Array(549361583, 928317284) index="4" unique_id=328865185]
-position = Vector2(688, 272)
-
-[node name="UILayer" parent="." index="4" unique_id=1147669631]
+[node name="LevelNumberLabel" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="0" unique_id=815026241]
 visible = false
+text = "Level 1 of 65"
 
-[node name="Camera2D" type="Camera2D" parent="." index="5" unique_id=16955770]
-position = Vector2(384, 280)
-zoom = Vector2(1.5, 1.5)
-
-[editable path="LevelBuilder"]
+[node name="LevelNumberLabel2" type="Label" parent="UILayer/PanelContainer/MarginContainer/Control/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(812724359) index="1" unique_id=1175889381]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level 1 of 65"
+label_settings = SubResource("LabelSettings_ni20n")
+horizontal_alignment = 1
