@@ -15,6 +15,7 @@ static var node: GameRoot
 @export var settings_screen_scene: PackedScene
 @export var how_to_play_screen_scene: PackedScene
 @export var credits_screen_scene: PackedScene
+@export var sitelock_screen_scene: PackedScene
 
 @onready var autostart_game: bool = OS.has_feature("crazygames")
 @onready var game_screen_root: Node = %GameScreenRoot
@@ -25,6 +26,7 @@ static var node: GameRoot
 @onready var settings_screen: Node = settings_screen_scene.instantiate()
 @onready var how_to_play_screen: HowToPlayScreen = how_to_play_screen_scene.instantiate()
 @onready var credits_screen: Node = credits_screen_scene.instantiate()
+@onready var sitelock_screen: Node = sitelock_screen_scene.instantiate()
 
 ## Visibility only. Process state is owned by [method _transition] so that a
 ## screen stays inert until the fade-out has finished.
@@ -105,6 +107,10 @@ static func enter_credits_screen() -> void:
 	await node.transition(node.credits_screen)
 	node.credits_screen.logo_animation()
 
+static func enter_sitelock_screen() -> void:
+	node.current_screen = node.sitelock_screen
+	node.current_screen.process_mode = Node.PROCESS_MODE_ALWAYS
+
 #endregion
 
 #region Transitions
@@ -172,6 +178,7 @@ func _add_screens() -> void:
 	game_screen_root.add_child(settings_screen)
 	game_screen_root.add_child(how_to_play_screen)
 	game_screen_root.add_child(credits_screen)
+	game_screen_root.add_child(sitelock_screen)
 
 	for child in game_screen_root.get_children():
 		child.hide()
