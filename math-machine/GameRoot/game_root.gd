@@ -8,8 +8,6 @@ extends Node
 ## inside [method _transition], while the screen is fully faded to black, and
 ## freed as soon as the player leaves them. Only one [Level] exists at a time.
 
-const AUTOSTART_GAME: bool = false
-
 static var node: GameRoot
 
 @export var title_screen_scene: PackedScene
@@ -18,6 +16,7 @@ static var node: GameRoot
 @export var how_to_play_screen_scene: PackedScene
 @export var credits_screen_scene: PackedScene
 
+@onready var autostart_game: bool = OS.has_feature("crazygames")
 @onready var game_screen_root: Node = %GameScreenRoot
 @onready var ui_root: UIRoot = %UIRoot
 @onready var transition_root: TransitionRoot = %TransitionRoot
@@ -47,7 +46,7 @@ func _ready() -> void:
 	node = self
 	_add_screens()
 	
-	if AUTOSTART_GAME:
+	if autostart_game:
 		var level_index: int = SaveManager.get_deepest_incomplete_level_index()
 		if level_index == -1:
 			current_screen = node.level_select_screen
