@@ -8,7 +8,7 @@ extends Node
 ## inside [method _transition], while the screen is fully faded to black, and
 ## freed as soon as the player leaves them. Only one [Level] exists at a time.
 
-const AUTOSTART_GAME: bool = false
+const AUTOSTART_GAME: bool = true
 
 static var node: GameRoot
 
