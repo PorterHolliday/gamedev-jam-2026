@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b4t2f4pn2vv4v"]
+
+[ext_resource type="Script" uid="uid://bdyeitc4m16rq" path="res://Screens/SitelockScreen/sitelock_screen.gd" id="1_ljn61"]
+
+[node name="SitelockScreen" type="Control" unique_id=1185057051]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ljn61")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1670830794]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.5
+offset_top = -58.0
+offset_right = 285.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2063879338]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer" unique_id=998844028]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][color=black][font size=26]This is an unauthorized copy of [color=red]Numberwire[/color].
+You may play an authorized version at
+[color=blue][url]https://www.crazygames.com[/url][/color][/font][/color][/center]"
+fit_content = true
+autowrap_mode = 0
