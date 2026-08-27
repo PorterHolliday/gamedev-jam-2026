@@ -17,7 +17,7 @@ static var node: GameRoot
 @export var credits_screen_scene: PackedScene
 @export var sitelock_screen_scene: PackedScene
 
-@onready var autostart_game: bool = OS.has_feature("crazygames")
+@onready var autostart_game: bool = OS.has_feature("autostart")
 @onready var game_screen_root: Node = %GameScreenRoot
 @onready var ui_root: UIRoot = %UIRoot
 @onready var transition_root: TransitionRoot = %TransitionRoot
