@@ -20,6 +20,11 @@ var sfx_volume: float = 100.0
 ## Used as a set. Values are always true; membership is what matters.
 var _completed_level_uids: Dictionary[String, bool] = {}
 
+## Whether the hint button's one-time idle glow has already been used up,
+## either because it fired or because the player found the button on their
+## own first. Once true, no level ever arms the idle timer again.
+var _hint_glow_seen: bool = false
+
 func _ready() -> void:
 	# Migrating a version 1 save needs the level order to map indices onto UIDs.
 	if not LevelManager.is_node_ready():
@@ -60,6 +65,18 @@ func set_level_completed(uid: String, completed: bool = true) -> void:
 	else:
 		_completed_level_uids.erase(uid)
 
+func has_seen_hint_glow() -> bool:
+	return _hint_glow_seen
+
+## Marks the hint button's idle glow as used up for good. Idempotent, and
+## saves immediately so this can't be lost to a crash or a hard quit between
+## the glow firing and the next level-complete save.
+func mark_hint_glow_seen() -> void:
+	if _hint_glow_seen:
+		return
+	_hint_glow_seen = true
+	save_game()
+
 #endregion
 
 #region Serialisation
@@ -74,7 +91,8 @@ func save_game() -> void:
 	var data: Dictionary = {
 		'version': SAVE_VERSION,
 		'progress': {
-			'completed_level_uids': _completed_level_uids.keys()
+			'completed_level_uids': _completed_level_uids.keys(),
+			'hint_glow_seen': _hint_glow_seen
 		},
 		'settings': {
 			'music_volume': music_volume,
@@ -120,6 +138,7 @@ func _apply(data: Dictionary) -> void:
 	sfx_volume = float(settings.get('sfx_volume', 100.0))
 
 	_completed_level_uids.clear()
+	_hint_glow_seen = bool(progress.get('hint_glow_seen', false))
 	if int(data.get('version', SAVE_VERSION)) < 2:
 		_migrate_v1_progress(progress.get('levels_completed', []))
 		return

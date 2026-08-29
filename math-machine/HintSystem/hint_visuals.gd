@@ -11,6 +11,12 @@ const GLOW_ALPHA: float = 1.0
 const PULSE_DURATION: float = 0.6
 const STORE_VALUE_PULSE_COUNT: int = 5
 
+## How long a player can sit on a level without solving it before the hint
+## button glows on its own, and how many pulses that glow runs. This only
+## ever fires once per player -- see SaveManager.has_seen_hint_glow().
+const HINT_GLOW_IDLE_DELAY: float = 30.0
+const HINT_GLOW_PULSE_COUNT: int = 10
+
 ## When true, every hint inside a latch phase pulses that phase's goal value
 ## on its store, not just the hint for the wire that causes the latch.
 ## Set false to fall back to latch-connection-only.
