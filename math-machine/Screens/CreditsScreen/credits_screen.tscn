@@ -308,7 +308,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Porter Holliday"
-text_color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=752935831]
 layout_mode = 2
@@ -365,49 +364,41 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Eliveta - \"Background Music\""
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1848903345 instance=ExtResource("7_7pevr")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "freesound_community - \"Breaker Switch\""
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=514175547 instance=ExtResource("7_7pevr")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "freesound_community - \"\"slice apple on wood_fizz\"\""
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1121922622 instance=ExtResource("7_7pevr")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "PuyoPuyoMegaFan1234 - \"Winner game sound.\""
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=607747147 instance=ExtResource("7_7pevr")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "The_Mountain - \"Digital Factory\""
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1000391635 instance=ExtResource("7_7pevr")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "u_56l164mftx - \"cardDrop\""
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=253678797 instance=ExtResource("7_7pevr")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Universfield - \"Bubble Pop\""
-text_color = Color(0, 0, 0, 1)
 
 [node name="TutorialPanel7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1238039086 instance=ExtResource("7_7pevr")]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Vadim_Makes_Sound - \"Soft App Button Tap Sound # 2\""
-text_color = Color(0, 0, 0, 1)
 
 [node name="BackButton" type="Button" parent="." unique_id=1882274648]
 unique_name_in_owner = true

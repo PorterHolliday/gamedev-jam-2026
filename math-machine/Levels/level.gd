@@ -9,9 +9,12 @@ extends Node2D
 @onready var back_button: Button = %BackButton
 @onready var level_number_label: Label = %LevelNumberLabel
 @onready var restart_button: Button = %RestartButton
-@onready var hint_button: Button = %HintButton
+@onready var hint_button: HintButton = %HintButton
 @onready var help_button: Button = %HelpButton
 @onready var settings_button: Button = %SettingsButton
+
+var _hint_glow_timer: Timer
+var _level_solved: bool = false
 
 func _ready() -> void:
 	global_position = Vector2.ZERO
@@ -30,7 +33,8 @@ func _ready() -> void:
 	
 	level_builder.build(level_data)
 	graph_canvas.start()
-	
+	_start_hint_glow_timer()
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
 		if not ui_layer: return
@@ -50,7 +54,35 @@ func _on_back_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	GameRoot.restart_level()
 	
+## Idle-in-level nudge: if the player hasn't solved (or left) the level
+## within HintVisuals.HINT_GLOW_IDLE_DELAY, glow the hint button once to
+## surface that it exists -- no text, no popup, just a visual cue they're
+## free to ignore. Fires at most once ever, across the whole game; every
+## level after that just skips arming the timer.
+func _start_hint_glow_timer() -> void:
+	if SaveManager.has_seen_hint_glow():
+		return
+	if level_data.level_solution_data == null:
+		return
+
+	_hint_glow_timer = Timer.new()
+	_hint_glow_timer.wait_time = HintVisuals.HINT_GLOW_IDLE_DELAY
+	_hint_glow_timer.one_shot = true
+	add_child(_hint_glow_timer)
+	_hint_glow_timer.timeout.connect(_on_hint_glow_timer_timeout)
+	_hint_glow_timer.start()
+
+func _on_hint_glow_timer_timeout() -> void:
+	if _level_solved or SaveManager.has_seen_hint_glow():
+		return
+	hint_button.glow_pulse(HintVisuals.HINT_GLOW_PULSE_COUNT)
+	SaveManager.mark_hint_glow_seen()
+
 func _on_hint_button_pressed() -> void:
+	# They found the hint button themselves -- nothing left to nudge them
+	# toward, whether or not the idle glow ever got the chance to fire.
+	SaveManager.mark_hint_glow_seen()
+
 	var solution_data: LevelSolutionData = level_data.level_solution_data
 	if solution_data == null: return
 
@@ -91,7 +123,11 @@ func _on_help_button_pressed() -> void:
 func _on_settings_button_pressed() -> void:
 	GameRoot.enter_settings_screen()
 
-func _on_level_complete() -> void:	
+func _on_level_complete() -> void:
+	_level_solved = true
+	if _hint_glow_timer:
+		_hint_glow_timer.stop()
+
 	await graph_canvas.play_level_complete_animation()
 	await get_tree().create_timer(0.1).timeout
 	

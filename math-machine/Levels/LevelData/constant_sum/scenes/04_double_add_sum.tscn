@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ckis76080gyh1"]
+
+[ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_qz5xr"]
+[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_qz5xr"]
+[ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="3_qz5xr"]
+[ext_resource type="Script" uid="uid://ciulv6vydjieg" path="res://Levels/LevelData/constant/scenes/remove_connection_tutorial.gd" id="4_qz5xr"]
+[ext_resource type="PackedScene" uid="uid://cnq8kcmvx62v6" path="res://Screens/HowToPlayScreen/pointer.tscn" id="5_qz5xr"]
+
+[sub_resource type="Resource" id="Resource_qz5xr1"]
+script = ExtResource("3_qz5xr")
+from_node_index = 1
+to_node_index = 4
+metadata/_custom_type_script = "uid://b0viev2x74hv1"
+
+[node name="Level" unique_id=1073491300 instance=ExtResource("1_qz5xr")]
+
+[node name="TutorialPanel" parent="." index="1" unique_id=2118913054 instance=ExtResource("2_qz5xr")]
+offset_left = 184.0
+offset_top = 96.0
+offset_right = 389.0
+offset_bottom = 189.0
+text = "Click a wire
+to remove it."
+mobile_text = "Tap a wire
+to remove it"
+
+[node name="GraphCanvas" parent="." index="2" unique_id=90730119]
+initial_connection_data = Array[ExtResource("3_qz5xr")]([SubResource("Resource_qz5xr1")])
+metadata/_edit_lock_ = true
+
+[node name="RemoveConnectionTutorial" type="Node2D" parent="." index="4" unique_id=1680450078 node_paths=PackedStringArray("graph_canvas", "pointer")]
+script = ExtResource("4_qz5xr")
+graph_canvas = NodePath("../GraphCanvas")
+pointer = NodePath("Pointer")
+
+[node name="Pointer" parent="RemoveConnectionTutorial" index="0" unique_id=1045973402 instance=ExtResource("5_qz5xr")]
+position = Vector2(336, 472)

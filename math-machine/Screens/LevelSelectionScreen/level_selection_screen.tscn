@@ -253,18 +253,6 @@ layout_mode = 2
 [node name="LevelButton5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=1821487464 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton6" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=863369867 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=408386870 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=616877804 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer" unique_id=1550974026 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
 [node name="DividerLine2" type="Panel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1216016167]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
@@ -315,19 +303,7 @@ layout_mode = 2
 [node name="LevelButton8" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1971357356 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1691396687 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton10" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1080600004 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton11" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1394787080 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton12" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1424658454 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton13" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=1500195949 instance=ExtResource("1_bntq0")]
+[node name="LevelButton9" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer2" unique_id=863369867 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
 [node name="DividerLine3" type="Panel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1122225532]
@@ -410,30 +386,6 @@ layout_mode = 2
 [node name="LevelButton18" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=3205128 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
-[node name="LevelButton19" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1495668773 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton20" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1265587181 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton21" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=932690223 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton22" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=303385994 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton23" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1607557340 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton24" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=145180245 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton25" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=1544781486 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton26" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer3" unique_id=628413350 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
 [node name="DividerLine4" type="Panel" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=557673068]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
@@ -494,21 +446,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="LevelButton12" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1558984087 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton13" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1152750281 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton14" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=271640073 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton15" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1303174764 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton16" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=262273868 instance=ExtResource("1_bntq0")]
-layout_mode = 2
-
-[node name="LevelButton17" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=486048757 instance=ExtResource("1_bntq0")]
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="." unique_id=23307136]

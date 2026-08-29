@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://8qeynkjv5j80"]
 
 [ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_2w2ap"]
-[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_735xd"]
 [ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="3_8tcqv"]
-[ext_resource type="PackedScene" uid="uid://c1kmh24otohft" path="res://Levels/Tutorial/drag_tutorial.tscn" id="4_735xd"]
 
 [sub_resource type="Resource" id="Resource_gn767"]
 script = ExtResource("3_8tcqv")
@@ -11,37 +9,8 @@ from_node_index = 1
 to_node_index = 2
 metadata/_custom_type_script = "uid://b0viev2x74hv1"
 
-[sub_resource type="Resource" id="Resource_t5kh4"]
-script = ExtResource("3_8tcqv")
-from_node_index = 1
-to_node_index = 3
-metadata/_custom_type_script = "uid://b0viev2x74hv1"
-
 [node name="Level" unique_id=1073491300 instance=ExtResource("1_2w2ap")]
 
-[node name="TutorialPanel" parent="." index="1" unique_id=1447792528 instance=ExtResource("2_735xd")]
-offset_left = 440.0
-offset_top = 112.0
-offset_right = 717.0
-offset_bottom = 205.0
-text = "Drag pieces
-to rearrange them."
-text_color = Color(0, 0, 0, 1)
-
-[node name="GraphCanvas" parent="." index="2" unique_id=90730119]
-tutorial_connection_data = Array[ExtResource("3_8tcqv")]([SubResource("Resource_gn767"), SubResource("Resource_t5kh4")])
+[node name="GraphCanvas" parent="." index="1" unique_id=90730119]
+tutorial_connection_data = Array[ExtResource("3_8tcqv")]([SubResource("Resource_gn767")])
 metadata/_edit_lock_ = true
-
-[node name="DragTutorial" parent="." index="3" unique_id=1359360949 node_paths=PackedStringArray("graph_canvas") instance=ExtResource("4_735xd")]
-position = Vector2(0, -16)
-graph_canvas = NodePath("../GraphCanvas")
-graph_node_index = 2
-final_position = Vector2(704, 512)
-
-[node name="Marker2D4" parent="LevelBuilder/OperationLocations" parent_id_path=PackedInt32Array(549361583, 19553426) index="3" unique_id=530611064]
-position = Vector2(448, 352)
-
-[node name="Marker2D6" parent="LevelBuilder/OperationLocations" parent_id_path=PackedInt32Array(549361583, 19553426) index="5" unique_id=493508680]
-position = Vector2(704, 352)
-
-[editable path="LevelBuilder"]

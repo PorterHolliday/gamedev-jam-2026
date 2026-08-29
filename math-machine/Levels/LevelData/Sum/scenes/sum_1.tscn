@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://dpkhl102laole"]
 
 [ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_nvwcs"]
-[ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_5h6q7"]
 [ext_resource type="Script" uid="uid://b0viev2x74hv1" path="res://Graph/Graph Canvas/connection_data.gd" id="3_rfgqw"]
-[ext_resource type="PackedScene" uid="uid://cfugbetubydom" path="res://Screens/HowToPlayScreen/mouse.tscn" id="4_kfvnj"]
-[ext_resource type="Script" uid="uid://q0mdeceu0ewl" path="res://Levels/LevelData/Sum/scenes/node_info_tutorial.gd" id="4_sh11c"]
-[ext_resource type="PackedScene" uid="uid://cnq8kcmvx62v6" path="res://Screens/HowToPlayScreen/pointer.tscn" id="6_13std"]
 
 [sub_resource type="Resource" id="Resource_lkylo"]
 script = ExtResource("3_rfgqw")
@@ -21,33 +17,9 @@ metadata/_custom_type_script = "uid://b0viev2x74hv1"
 
 [node name="Level" unique_id=1073491300 instance=ExtResource("1_nvwcs")]
 
-[node name="TutorialPanel" parent="." index="1" unique_id=129932882 instance=ExtResource("2_5h6q7")]
-offset_left = 416.0
-offset_top = 112.0
-offset_right = 729.0
-offset_bottom = 205.0
-text = "Right-click a piece
-to learn how it works."
-mobile_text = "Long-press a piece
-to learn how it works."
-text_color = Color(0, 0, 0, 1)
-
 [node name="GraphCanvas" parent="." index="2" unique_id=90730119]
 tutorial_connection_data = Array[ExtResource("3_rfgqw")]([SubResource("Resource_lkylo"), SubResource("Resource_sn1ps")])
 metadata/_edit_lock_ = true
-
-[node name="NodeInfoTutorial" type="Node2D" parent="." index="3" unique_id=1250099872 node_paths=PackedStringArray("pointer", "mouse", "graph_canvas")]
-script = ExtResource("4_sh11c")
-pointer = NodePath("Pointer")
-mouse = NodePath("Mouse")
-graph_canvas = NodePath("../GraphCanvas")
-graph_node_index = 2
-
-[node name="Mouse" parent="NodeInfoTutorial" index="0" unique_id=179320004 instance=ExtResource("4_kfvnj")]
-visible = false
-
-[node name="Pointer" parent="NodeInfoTutorial" index="1" unique_id=1898927088 instance=ExtResource("6_13std")]
-visible = false
 
 [node name="LevelBuilder" parent="." index="4" unique_id=549361583]
 metadata/_edit_lock_ = true
