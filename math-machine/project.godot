@@ -36,6 +36,11 @@ Sitelock="*uid://cuw07acka77hf"
 
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+enabled.wavedash=PackedStringArray("res://addons/wavedash/plugin.cfg")
+
 [gui]
 
 theme/default_font_subpixel_positioning=0
@@ -50,3 +55,4 @@ theme/custom="uid://c8v5ql7fu0rxv"
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

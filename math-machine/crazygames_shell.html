@@ -108,34 +108,105 @@ const engine = new Engine(GODOT_CONFIG);
 // host page/iframe applies, e.g. CrazyGames' portal) instead of
 // window.innerWidth/innerHeight, which only reflects this document's own
 // viewport and is blind to that kind of ancestor-level scaling.
+//
+// CRASH FIX (2026-08-30): this used to size the canvas backing store to
+// rect size x devicePixelRatio with NO ceiling. That's harmless on a phone
+// (viewport is small and fixed), but on desktop a maximized window on a
+// big/high-DPI monitor can ask for a multi-thousand-pixel-per-side
+// framebuffer, which is the leading suspect for our desktop-only crash
+// spike (WebGL/GPU driver failures scale with framebuffer size). We now
+// cap both the effective DPR and the backing-store's long edge, and
+// coalesce bursts of resize events (e.g. dragging a window edge) onto a
+// single rAF tick instead of resizing on every single event.
 (function () {
 	const canvas = document.getElementById('canvas');
 
+	// Tune these if the game looks soft on big desktop displays, but keep
+	// in mind raising them directly increases GPU memory / framebuffer
+	// size on exactly the platform that's been crashing.
+	const MAX_DPR = 2;
+	const MAX_LONG_EDGE = 1920; // backing-store px, not CSS px
+
 	function resizeCanvasToDisplaySize() {
 		const rect = canvas.getBoundingClientRect();
-		const dpr = window.devicePixelRatio || 1;
-		const width = Math.max(1, Math.round(rect.width * dpr));
-		const height = Math.max(1, Math.round(rect.height * dpr));
+		const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
+		let width = Math.max(1, Math.round(rect.width * dpr));
+		let height = Math.max(1, Math.round(rect.height * dpr));
+
+		const longEdge = Math.max(width, height);
+		if (longEdge > MAX_LONG_EDGE) {
+			const scale = MAX_LONG_EDGE / longEdge;
+			width = Math.max(1, Math.round(width * scale));
+			height = Math.max(1, Math.round(height * scale));
+		}
+
 		if (canvas.width !== width || canvas.height !== height) {
 			canvas.width = width;
 			canvas.height = height;
 		}
 	}
 
+	let resizeScheduled = false;
+	function scheduleResize() {
+		if (resizeScheduled) {
+			return;
+		}
+		resizeScheduled = true;
+		requestAnimationFrame(function () {
+			resizeScheduled = false;
+			resizeCanvasToDisplaySize();
+		});
+	}
+
 	// Run once immediately, before engine.startGame() reads the canvas size.
 	resizeCanvasToDisplaySize();
 
-	// Event-driven: fires immediately on real layout changes.
-	window.addEventListener('resize', resizeCanvasToDisplaySize);
-	document.addEventListener('fullscreenchange', resizeCanvasToDisplaySize);
+	// Event-driven: fires immediately on real layout changes, coalesced to
+	// at most once per animation frame so a window-drag resize doesn't
+	// thrash the GL framebuffer dozens of times per second.
+	window.addEventListener('resize', scheduleResize);
+	document.addEventListener('fullscreenchange', scheduleResize);
 	if (typeof ResizeObserver !== 'undefined') {
-		new ResizeObserver(resizeCanvasToDisplaySize).observe(canvas);
+		new ResizeObserver(scheduleResize).observe(canvas);
 	}
 
 	// Polling fallback: catches ancestor CSS transform/zoom changes (e.g. a
 	// portal resizing its iframe with `transform: scale()`), which don't
 	// necessarily fire a resize event or trigger ResizeObserver on their own.
-	setInterval(resizeCanvasToDisplaySize, 250);
+	setInterval(scheduleResize, 250);
+}());
+// ----------------------------------------------------------------------------
+
+// --- WebGL context-loss recovery/logging -----------------------------------
+// Desktop WebGL runs across a far wider range of GPUs/drivers than mobile
+// (old integrated Intel graphics, outdated Nvidia/AMD drivers, VMs/remote
+// desktops), and a lost GPU context otherwise just freezes the canvas with
+// no error the player (or CrazyGames' crash reporting) can act on. This
+// logs it clearly and gives the browser a few seconds to auto-restore the
+// context before falling back to a full reload, which is strictly better
+// than a silently frozen game.
+(function () {
+	const canvas = document.getElementById('canvas');
+	let reloadTimer = null;
+
+	canvas.addEventListener('webglcontextlost', function (event) {
+		// Without preventDefault() the browser won't even attempt to
+		// restore the context.
+		event.preventDefault();
+		console.error('[Numberwire] WebGL context lost. Waiting for the browser to restore it...');
+		reloadTimer = setTimeout(function () {
+			console.error('[Numberwire] WebGL context was not restored in time; reloading.');
+			window.location.reload();
+		}, 3000);
+	}, false);
+
+	canvas.addEventListener('webglcontextrestored', function () {
+		console.warn('[Numberwire] WebGL context restored.');
+		if (reloadTimer !== null) {
+			clearTimeout(reloadTimer);
+			reloadTimer = null;
+		}
+	}, false);
 }());
 // ----------------------------------------------------------------------------
 
