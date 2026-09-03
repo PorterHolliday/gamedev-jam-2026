@@ -53,7 +53,7 @@ func _ready() -> void:
 		if level_index == -1:
 			current_screen = node.level_select_screen
 		else:
-			current_screen = await node._build_level(level_index)
+			current_screen = await node._build_level(LevelManager.enter_level(level_index))
 	else:
 		AudioManager.play_menu_music()
 		current_screen = title_screen
@@ -65,19 +65,19 @@ func _ready() -> void:
 
 #region Navigation
 
-static func enter_level(index: int) -> void:
+static func enter_level(level_data: LevelData) -> void:
 	AudioManager.crossfade_to_level_music()
-	await node.transition_to_level(index)
+	await node.transition_to_level(level_data)
 
 static func restart_level() -> void:
-	await node.transition_to_level(LevelManager.current_level_index)
+	await node.transition_to_level(LevelManager.restart_current_level())
 
 static func enter_next_level() -> void:
 	var next_index: int = LevelManager.current_level_index + 1
 	if not LevelManager.has_level(next_index):
 		await enter_level_select_screen()
 		return
-	await enter_level(next_index)
+	await enter_level(LevelManager.enter_level(next_index))
 
 static func level_complete() -> void:
 	node.ui_root.on_level_complete()
@@ -122,10 +122,10 @@ static func enter_sitelock_screen() -> void:
 func transition(new_screen: Node) -> void:
 	await _transition(func() -> Node: return new_screen)
 
-## Fades to the level at [param index], instantiating it while the screen is
+## Fades to the level in [level_data], instantiating it while the screen is
 ## black so the load cost is hidden by the transition.
-func transition_to_level(index: int) -> void:
-	await _transition(func() -> Node: return await _build_level(index))
+func transition_to_level(level_data: LevelData) -> void:
+	await _transition(func() -> Node: return await _build_level(level_data))
 
 ## Shared transition core. [param build_screen] is invoked at the moment the
 ## screen is fully black and must return the destination [Node], or null to
@@ -161,9 +161,7 @@ func _transition(build_screen: Callable) -> void:
 	new_screen.process_mode = Node.PROCESS_MODE_INHERIT
 
 ## Instantiates and parents a level while the screen is black.
-## Returns null if [param index] is out of bounds.
-func _build_level(index: int) -> Level:
-	var level_data: LevelData = LevelManager.get_level_data(index)
+func _build_level(level_data: LevelData) -> Level:
 	var level: Level = level_data.level_scene.instantiate()
 
 	level.hide()

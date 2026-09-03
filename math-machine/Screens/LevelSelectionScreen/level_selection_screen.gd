@@ -50,7 +50,7 @@ func _recursive_get_level_buttons(current_node: Node, button_array: Array[LevelB
 		_recursive_get_level_buttons(child, button_array)
 	
 func _on_level_button_pressed(button: LevelButton) -> void:
-	GameRoot.enter_level(button.level_number)
+	GameRoot.enter_level(LevelManager.enter_level(button.level_number))
 	
 func _on_back_button_pressed() -> void:
 	GameRoot.enter_title_screen()

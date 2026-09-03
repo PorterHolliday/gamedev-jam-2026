@@ -23,7 +23,7 @@ func _on_play_button_pressed() -> void:
 	if deepest_incomplete_level_index == -1:
 		GameRoot.enter_level_select_screen()
 	else:
-		GameRoot.enter_level(deepest_incomplete_level_index)
+		GameRoot.enter_level(LevelManager.enter_level(deepest_incomplete_level_index))
 
 func _on_level_select_button_pressed() -> void:
 	GameRoot.enter_level_select_screen()

@@ -91,6 +91,9 @@ func _web_unsupported(method_name: String) -> Dictionary:
 	return {"success": false, "data": null, "message": "%s is only supported in Web builds" % method_name}
 
 func _enter_tree():
+	if not OS.has_feature("wavedash"):
+		return
+		
 	_log("_enter_tree() called, platform: %s" % OS.get_name())
 	_entered_tree = true
 	if _is_web:
@@ -108,6 +111,9 @@ func _enter_tree():
 			_eval_returns_byte_array = JavaScriptBridge.eval("new Uint8Array([1,2,3])") is PackedByteArray
 
 func init(config: Dictionary):
+	if not OS.has_feature("wavedash"):
+		return
+		
 	assert(_entered_tree, "WavedashSDK.init() called before WavedashSDK was added to the tree")
 	if _is_web and WavedashJS:
 		WavedashJS.init(JSON.stringify(config))
