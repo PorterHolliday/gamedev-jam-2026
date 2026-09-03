@@ -8,7 +8,9 @@ const ALLOWED_DOMAINS = [
 	"crazygames.cz",
 	"crazygames.co.id",
 	"itch.io",
-	"itch.zone"
+	"itch.zone",
+	"wavedash.com",
+	"wavedashcdn.com"
 ]
 
 func _ready() -> void:
@@ -22,6 +24,7 @@ func check_sitelock() -> void:
 	# If hostname cannot be read due to strict security configurations, safely assume it is blocked
 	if host == null:
 		boot_pirate()
+		print("Pirate '", host, "' has been booted.")
 		return
 		
 	var is_valid = false
@@ -32,6 +35,7 @@ func check_sitelock() -> void:
 			
 	if not is_valid:
 		boot_pirate()
+		print("Pirate '", host, "' has been booted.")
 
 func boot_pirate() -> void:
 	# Pause the entire Godot engine scene tree to kill performance/gameplay

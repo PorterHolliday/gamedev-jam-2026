@@ -29,7 +29,7 @@ func _ready() -> void:
 	# Migrating a version 1 save needs the level order to map indices onto UIDs.
 	if not LevelManager.is_node_ready():
 		await LevelManager.ready
-	_apply(load_game())
+	_apply(await load_game())
 
 #region Progress
 
@@ -99,16 +99,23 @@ func save_game() -> void:
 			'sfx_volume': sfx_volume
 		}
 	}
-	file.store_string(JSON.stringify(data))
+	file.store_string(JSON.stringify(data))	
 	file.close()
+	
+	if OS.has_feature("wavedash"):
+		WavedashSDK.upload_remote_file(SAVE_PATH)
 
 ## Returns the parsed save file, or an empty dictionary if it is missing,
 ## unreadable, malformed, or not a JSON object.
 func load_game() -> Dictionary:
+	if OS.has_feature("wavedash"):
+		if await WavedashSDK.remote_file_exists(SAVE_PATH):
+			await WavedashSDK.download_remote_file(SAVE_PATH)
+	
 	if not FileAccess.file_exists(SAVE_PATH):
 		return {}
 
-	var file: FileAccess = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	if not file:
 		push_error('SaveManager: could not open %s for reading (%s).'
 			% [SAVE_PATH, error_string(FileAccess.get_open_error())])
