@@ -95,6 +95,27 @@ body {
 		</div>
 		<script src="$GODOT_URL"></script>
 
+		<script>
+			// Flip to true while debugging ByteBrew locally, then back to false.
+			// The vendor SDK (bytebrew.bundle.js) logs unconditionally to the
+			// console - ByteBrew ships no documented flag to quiet it - so when
+			// this is off, we also filter out ITS "ByteBrew: ..." console.log
+			// lines, not just the ones in our own wrapper below. console.error
+			// calls are left alone either way, from us and from the vendor SDK,
+			// so real failures always surface.
+			window.BYTEBREW_DEBUG_LOGGING = false;
+
+			(function () {
+				var originalLog = console.log.bind(console);
+				console.log = function (message) {
+					if (!window.BYTEBREW_DEBUG_LOGGING && typeof message === 'string' && message.indexOf('ByteBrew') === 0) {
+						return;
+					}
+					originalLog.apply(console, arguments);
+				};
+			}());
+		</script>
+
 		<!-- ByteBrew Web SDK: bundled by addons/bytebrew_web_export (see its README.md).
 		     This plain script tag works because the export plugin copies
 		     bytebrew.bundle.js next to this file during every Web export. -->
@@ -105,7 +126,9 @@ body {
 				try {
 					// Replace with your Web platform specific keys from the ByteBrew Dashboard
 					window.ByteBrewSDK.ByteBrew.initializeByteBrew(appId, sdkKey, appVersion);
-					console.log("ByteBrew JS SDK initialized successfully.");
+					if (window.BYTEBREW_DEBUG_LOGGING) {
+						console.log("ByteBrew JS SDK initialized successfully.");
+					}
 				} catch (e) {
 					console.error("Failed to initialize ByteBrew:", e);
 				}
