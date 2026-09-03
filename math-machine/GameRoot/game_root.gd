@@ -59,6 +59,9 @@ func _ready() -> void:
 		current_screen = title_screen
 		
 	current_screen.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	if OS.has_feature("wavedash"):
+		WavedashSDK.init({})
 
 #region Navigation
 

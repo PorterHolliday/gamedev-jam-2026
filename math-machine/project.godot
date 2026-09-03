@@ -25,6 +25,7 @@ driver/output_latency.web=100
 
 [autoload]
 
+WavedashSDK="*uid://dc4ettukihhcr"
 LevelManager="*uid://p7vahmcreqeo"
 SaveManager="*uid://ckii1lcb1rdhn"
 AudioManager="*uid://dv32veov1f06t"
