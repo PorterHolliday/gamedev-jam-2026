@@ -49,6 +49,7 @@ func enable() -> void:
 	graph_canvas.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_back_button_pressed() -> void:
+	LevelManager.exit_level()
 	GameRoot.enter_level_select_screen()
 
 func _on_restart_button_pressed() -> void:
@@ -98,6 +99,10 @@ func _on_hint_button_pressed() -> void:
 		var store_node: MyGraphNode = target["store_node"]
 		if store_node is StoreNode:
 			store_node.show_hint_value(target["store_value"])
+			
+	var path_index: int = solution_data.get_current_path_index()
+	var step_index: int = solution_data.get_step_index(steps[0])
+	LevelManager.track_hint(path_index, step_index)
 
 ## Whether this hint should pulse the cursor phase's goal value on its
 ## store. The phase goal is absent entirely on the final phase, which has no

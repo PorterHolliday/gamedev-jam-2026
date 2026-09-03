@@ -16,6 +16,7 @@ const SAVE_VERSION: int = 2
 
 var music_volume: float = 100.0
 var sfx_volume: float = 100.0
+var total_play_time: float = 0.0
 
 ## Used as a set. Values are always true; membership is what matters.
 var _completed_level_uids: Dictionary[String, bool] = {}
@@ -25,11 +26,24 @@ var _completed_level_uids: Dictionary[String, bool] = {}
 ## own first. Once true, no level ever arms the idle timer again.
 var _hint_glow_seen: bool = false
 
+var _flush_save_callback: JavaScriptObject
+
 func _ready() -> void:
-	# Migrating a version 1 save needs the level order to map indices onto UIDs.
+	if OS.has_feature("web"):
+		var window = JavaScriptBridge.get_interface("window")
+		if window:
+			_flush_save_callback = JavaScriptBridge.create_callback(_on_flush_save_requested)
+			window.onGameFlushSave = _flush_save_callback
+			
 	if not LevelManager.is_node_ready():
 		await LevelManager.ready
 	_apply(await load_game())
+	
+## Called from JS (see custom_shell.html) when the tab is about to be
+## hidden or closed. JavaScriptBridge callbacks always receive exactly one
+## Array - the JS call's arguments - even when nothing was passed.
+func _on_flush_save_requested(_args: Array) -> void:
+	save_game()
 
 #region Progress
 
@@ -92,7 +106,8 @@ func save_game() -> void:
 		'version': SAVE_VERSION,
 		'progress': {
 			'completed_level_uids': _completed_level_uids.keys(),
-			'hint_glow_seen': _hint_glow_seen
+			'hint_glow_seen': _hint_glow_seen,
+			'total_play_time': total_play_time
 		},
 		'settings': {
 			'music_volume': music_volume,
@@ -143,6 +158,7 @@ func _apply(data: Dictionary) -> void:
 
 	music_volume = float(settings.get('music_volume', 100.0))
 	sfx_volume = float(settings.get('sfx_volume', 100.0))
+	total_play_time = float(progress.get('total_play_time', 0.0))
 
 	_completed_level_uids.clear()
 	_hint_glow_seen = bool(progress.get('hint_glow_seen', false))

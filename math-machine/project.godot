@@ -25,6 +25,7 @@ driver/output_latency.web=100
 
 [autoload]
 
+ByteBrew="*uid://debrecpcvkrid"
 WavedashSDK="*uid://dc4ettukihhcr"
 LevelManager="*uid://p7vahmcreqeo"
 SaveManager="*uid://ckii1lcb1rdhn"
@@ -39,8 +40,8 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
 enabled.wavedash=PackedStringArray("res://addons/wavedash/plugin.cfg")
+enabled=PackedStringArray("res://addons/bytebrew_web_export/plugin.cfg", "res://addons/wavedash/plugin.cfg")
 
 [gui]
 

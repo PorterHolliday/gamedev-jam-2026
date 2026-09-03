@@ -175,6 +175,16 @@ func get_hint_group_target(steps: Array[SolutionStep], graph_canvas: GraphCanvas
 	var result: Dictionary = {"port_pairs": port_pairs}
 	result.merge(_phase_goal())
 	return result
+	
+## The index into solution_paths of the path chosen by the most recent
+## get_current_path() call.
+func get_current_path_index() -> int:
+	return solution_paths.find(_cached_path)
+
+## Where `step` sits in the current path's solution_steps array - the same
+## index the editor shows next to each entry.
+func get_step_index(step: SolutionStep) -> int:
+	return _cached_path.solution_steps.find(step)
 
 # Private functions
 

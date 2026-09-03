@@ -94,6 +94,81 @@ body {
 			<div id="status-notice"></div>
 		</div>
 		<script src="$GODOT_URL"></script>
+
+		<script>
+			// Flip to true while debugging ByteBrew locally, then back to false.
+			// The vendor SDK (bytebrew.bundle.js) logs unconditionally to the
+			// console - ByteBrew ships no documented flag to quiet it - so when
+			// this is off, we also filter out ITS "ByteBrew: ..." console.log
+			// lines, not just the ones in our own wrapper below. console.error
+			// calls are left alone either way, from us and from the vendor SDK,
+			// so real failures always surface.
+			window.BYTEBREW_DEBUG_LOGGING = false;
+
+			(function () {
+				var originalLog = console.log.bind(console);
+				console.log = function (message) {
+					if (!window.BYTEBREW_DEBUG_LOGGING && typeof message === 'string' && message.indexOf('ByteBrew') === 0) {
+						return;
+					}
+					originalLog.apply(console, arguments);
+				};
+			}());
+		</script>
+
+		<!-- ByteBrew Web SDK: bundled by addons/bytebrew_web_export (see its README.md).
+		     This plain script tag works because the export plugin copies
+		     bytebrew.bundle.js next to this file during every Web export. -->
+		<script src="bytebrew.bundle.js"></script>
+		<script>
+			// Bind initialization and tracking methods globally onto the window object
+			window.initByteBrew = function(appId, sdkKey, appVersion) {
+				try {
+					// Replace with your Web platform specific keys from the ByteBrew Dashboard
+					window.ByteBrewSDK.ByteBrew.initializeByteBrew(appId, sdkKey, appVersion);
+					if (window.BYTEBREW_DEBUG_LOGGING) {
+						console.log("ByteBrew JS SDK initialized successfully.");
+					}
+				} catch (e) {
+					console.error("Failed to initialize ByteBrew:", e);
+				}
+			};
+
+			window.trackCustomEvent = function(eventName, parametersJSON) {
+				try {
+					// Parse parameters passed from Godot as a JSON string
+					const params = parametersJSON ? JSON.parse(parametersJSON) : {};
+					window.ByteBrewSDK.ByteBrew.newCustomEvent(eventName, params);
+				} catch (e) {
+					console.error("Failed to track ByteBrew event:", e);
+				}
+			};
+		</script>
+		<script>
+			// Godot assigns window.onGameFlushSave once the engine boots (see
+			// SaveManager._ready()). We just need to call it at the right moments -
+			// checking it exists handles the brief window before the engine is up.
+			function flushGameSave() {
+				if (window.onGameFlushSave) {
+					window.onGameFlushSave();
+				}
+			}
+
+			// Primary signal: tab hidden, backgrounded, or navigated away from.
+			// This is the one Chrome's own guidance recommends over beforeunload,
+			// which can disable the back/forward cache and isn't reliably fired on
+			// mobile when the browser just suspends the app instead of closing it.
+			document.addEventListener('visibilitychange', function () {
+				if (document.visibilityState === 'hidden') {
+					flushGameSave();
+				}
+			});
+
+			// Fallback for cases visibilitychange can miss (e.g. some in-app
+			// browsers). Unlike beforeunload, pagehide doesn't hurt bfcache.
+			window.addEventListener('pagehide', flushGameSave);
+		</script>
+
 		<script>
 const GODOT_CONFIG = $GODOT_CONFIG;
 const GODOT_THREADS_ENABLED = $GODOT_THREADS_ENABLED;
