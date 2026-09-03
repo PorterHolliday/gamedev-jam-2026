@@ -63,6 +63,9 @@ func _ready() -> void:
 	if OS.has_feature("wavedash"):
 		WavedashSDK.init({})
 
+func _process(delta: float) -> void:
+	SaveManager.total_play_time += delta
+
 #region Navigation
 
 static func enter_level(level_data: LevelData) -> void:

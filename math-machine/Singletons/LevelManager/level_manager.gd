@@ -17,7 +17,6 @@ var _level_uids: Array[String] = []
 
 var hint_count: int = 0
 var restart_count: int = 0
-var lifetime_playtime: float = 0.0
 var total_level_time: float = 0.0
 var current_run_time: float = 0.0
 
@@ -65,8 +64,10 @@ func track_hint() -> void:
 	ByteBrew.track_event("hint_requested", {
 		"level_id": get_level_uid(current_level_index),
 		"level_name": _get_level_data(current_level_index).resource_path.get_file().get_basename(),
+		"level_index": current_level_index,
 		"hint_number": hint_count,
-		"total_level_time": snapped(total_level_time, 0.1)
+		"total_level_time": snapped(total_level_time, 0.1),
+		"total_play_time": snapped(SaveManager.total_play_time, 0.1),
 	})
 	
 func exit_level() -> void:
@@ -83,6 +84,8 @@ func _track_level_start_analytics() -> void:
 	ByteBrew.track_event("level_start", {
 		"level_id": get_level_uid(current_level_index),
 		"level_name": _get_level_data(current_level_index).resource_path.get_file().get_basename(),
+		"level_index": current_level_index,
+		"total_play_time": snapped(SaveManager.total_play_time, 0.1),
 	})
 	total_level_time = 0.0
 	current_run_time = 0.0
@@ -94,8 +97,10 @@ func _track_level_restart_analytics() -> void:
 	ByteBrew.track_event("level_restart", {
 		"level_id": get_level_uid(current_level_index),
 		"level_name": _get_level_data(current_level_index).resource_path.get_file().get_basename(),
+		"level_index": current_level_index,
 		"restart_number": restart_count,
 		"current_run_time": snapped(current_run_time, 0.1),
+		"total_play_time": snapped(SaveManager.total_play_time, 0.1),
 	})
 	current_run_time = 0.0
 	
@@ -103,22 +108,26 @@ func _track_level_complete_analytics() -> void:
 	ByteBrew.track_event("level_complete", {
 		"level_id": get_level_uid(current_level_index),
 		"level_name": _get_level_data(current_level_index).resource_path.get_file().get_basename(),
+		"level_index": current_level_index,
 		"status": "complete",
 		"total_level_time": snapped(total_level_time, 0.1),
 		"current_run_time": snapped(current_run_time, 0.1),
 		"restart_count": restart_count,
 		"hint_count": hint_count,
+		"total_play_time": snapped(SaveManager.total_play_time, 0.1),
 	})
 	
 func _track_level_quit_analytics() -> void:
 	ByteBrew.track_event("level_quit", {
 		"level_id": get_level_uid(current_level_index),
 		"level_name": _get_level_data(current_level_index).resource_path.get_file().get_basename(),
+		"level_index": current_level_index,
 		"status": "quit",
 		"total_level_time": snapped(total_level_time, 0.1),
 		"current_run_time": snapped(current_run_time, 0.1),
 		"restart_count": restart_count,
 		"hint_count": hint_count,
+		"total_play_time": snapped(SaveManager.total_play_time, 0.1),
 	})
 	
 func _get_level_data(index: int) -> LevelData:

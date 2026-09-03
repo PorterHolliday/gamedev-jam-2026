@@ -19,6 +19,7 @@ func initialize_bytebrew() -> void:
 		push_error("ByteBrew: Could not access browser window interface.")
 
 func track_event(event_name: String, parameters: Dictionary = {}) -> void:
+	parameters = _inject_web_host(parameters)
 	if OS.has_feature("web"):
 		var window = JavaScriptBridge.get_interface("window")
 		if window and typeof(window.trackCustomEvent) != TYPE_NIL:
@@ -27,3 +28,13 @@ func track_event(event_name: String, parameters: Dictionary = {}) -> void:
 			window.trackCustomEvent(event_name, json_string)
 	else:
 		print("ByteBrew Mock Track: ", event_name, " Params: ", parameters)
+
+func _inject_web_host(parameters: Dictionary = {}) -> Dictionary:
+	parameters["host"] = ""
+	if OS.has_feature("itch"):
+		parameters["host"] = "itch"
+	elif OS.has_feature("crazygames"):
+		parameters["host"] = "crazygames"
+	elif OS.has_feature("wavedash"):
+		parameters["host"] = "wavedash"
+	return parameters
