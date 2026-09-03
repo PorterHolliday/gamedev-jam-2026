@@ -59,13 +59,15 @@ func restart_current_level() -> LevelData:
 	_track_level_restart_analytics()
 	return level_data_list[current_level_index]
 	
-func track_hint() -> void:
+func track_hint(solution_path_index: int = -1, solution_step_index: int = -1) -> void:
 	hint_count += 1
 	ByteBrew.track_event("hint_requested", {
 		"level_id": get_level_uid(current_level_index),
 		"level_name": _get_level_data(current_level_index).resource_path.get_file().get_basename(),
 		"level_index": current_level_index,
 		"hint_number": hint_count,
+		"solution_path_index": solution_path_index,
+		"solution_step_index": solution_step_index,
 		"total_level_time": snapped(total_level_time, 0.1),
 		"total_play_time": snapped(SaveManager.total_play_time, 0.1),
 	})
