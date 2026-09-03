@@ -121,6 +121,30 @@ body {
 				}
 			};
 		</script>
+		<script>
+			// Godot assigns window.onGameFlushSave once the engine boots (see
+			// SaveManager._ready()). We just need to call it at the right moments -
+			// checking it exists handles the brief window before the engine is up.
+			function flushGameSave() {
+				if (window.onGameFlushSave) {
+					window.onGameFlushSave();
+				}
+			}
+
+			// Primary signal: tab hidden, backgrounded, or navigated away from.
+			// This is the one Chrome's own guidance recommends over beforeunload,
+			// which can disable the back/forward cache and isn't reliably fired on
+			// mobile when the browser just suspends the app instead of closing it.
+			document.addEventListener('visibilitychange', function () {
+				if (document.visibilityState === 'hidden') {
+					flushGameSave();
+				}
+			});
+
+			// Fallback for cases visibilitychange can miss (e.g. some in-app
+			// browsers). Unlike beforeunload, pagehide doesn't hurt bfcache.
+			window.addEventListener('pagehide', flushGameSave);
+		</script>
 
 		<script>
 const GODOT_CONFIG = $GODOT_CONFIG;
