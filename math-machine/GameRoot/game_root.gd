@@ -80,7 +80,12 @@ static func enter_next_level() -> void:
 	if not LevelManager.has_level(next_index):
 		await enter_level_select_screen()
 		return
-	await enter_level(LevelManager.enter_level(next_index))
+	AudioManager.crossfade_to_level_music()
+	await node._transition(
+		func() -> Node:
+			await CoolmathAPI.cmg_adbreak()
+			return await node._build_level(LevelManager.enter_level(next_index))
+	)
 
 static func level_complete() -> void:
 	node.ui_root.on_level_complete()

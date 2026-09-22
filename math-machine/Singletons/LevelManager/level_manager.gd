@@ -52,11 +52,14 @@ func enter_level(index: int) -> LevelData:
 	current_level_index = index
 	
 	_track_level_start_analytics()
+	CoolmathAPI.on_level_started(current_level_index)
 	
 	return level_data
 	
 func restart_current_level() -> LevelData:
 	_track_level_restart_analytics()
+	CoolmathAPI.on_level_restarted(current_level_index)
+	
 	return level_data_list[current_level_index]
 	
 func track_hint(solution_path_index: int = -1, solution_step_index: int = -1) -> void:

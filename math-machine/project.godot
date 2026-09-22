@@ -25,6 +25,7 @@ driver/output_latency.web=100
 
 [autoload]
 
+CoolmathAPI="*uid://c4dfu4snvbuoe"
 ByteBrew="*uid://debrecpcvkrid"
 WavedashSDK="*uid://dc4ettukihhcr"
 LevelManager="*uid://p7vahmcreqeo"
