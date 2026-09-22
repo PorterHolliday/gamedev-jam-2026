@@ -17,6 +17,7 @@ boot_splash/image="uid://cvdhaeulu3yh4"
 config/icon="uid://e2pxsl2bkn5v"
 boot_splash/minimum_display_time=500
 boot_splash/icon="uid://dqu6avedswv7y"
+config/name.coolmathgames="Numberwire – Play it now at CoolmathGames.com"
 
 [audio]
 
@@ -25,6 +26,7 @@ driver/output_latency.web=100
 
 [autoload]
 
+CoolmathAPI="*uid://c4dfu4snvbuoe"
 ByteBrew="*uid://debrecpcvkrid"
 WavedashSDK="*uid://dc4ettukihhcr"
 LevelManager="*uid://p7vahmcreqeo"
