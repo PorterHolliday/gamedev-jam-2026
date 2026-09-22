@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://1lqjjftt3w7m" path="res://Levels/level.tscn" id="1_nvwcs"]
 [ext_resource type="PackedScene" uid="uid://bppi3d3csbful" path="res://Levels/Tutorial/tutorial_panel.tscn" id="2_5h6q7"]
-[ext_resource type="PackedScene" uid="uid://cfugbetubydom" path="res://Screens/HowToPlayScreen/mouse.tscn" id="4_kfvnj"]
 [ext_resource type="Script" uid="uid://q0mdeceu0ewl" path="res://Levels/LevelData/Sum/scenes/node_info_tutorial.gd" id="4_sh11c"]
 [ext_resource type="PackedScene" uid="uid://cnq8kcmvx62v6" path="res://Screens/HowToPlayScreen/pointer.tscn" id="6_13std"]
 
@@ -14,17 +13,13 @@ metadata/_edit_lock_ = true
 [node name="LevelBuilder" parent="." index="2" unique_id=549361583]
 metadata/_edit_lock_ = true
 
-[node name="NodeInfoTutorial" type="Node2D" parent="." index="3" unique_id=436700477 node_paths=PackedStringArray("pointer", "mouse", "graph_canvas")]
+[node name="NodeInfoTutorial" type="Node2D" parent="." index="3" unique_id=436700477 node_paths=PackedStringArray("pointer", "graph_canvas")]
 script = ExtResource("4_sh11c")
 pointer = NodePath("Pointer")
-mouse = NodePath("Mouse")
 graph_canvas = NodePath("../GraphCanvas")
 graph_node_index = 2
 
 [node name="Pointer" parent="NodeInfoTutorial" index="0" unique_id=1898927088 instance=ExtResource("6_13std")]
-visible = false
-
-[node name="Mouse" parent="NodeInfoTutorial" index="1" unique_id=179320004 instance=ExtResource("4_kfvnj")]
 visible = false
 
 [node name="TutorialPanel" parent="." index="4" unique_id=1447792528 instance=ExtResource("2_5h6q7")]
@@ -32,7 +27,7 @@ offset_left = 432.0
 offset_top = 96.0
 offset_right = 729.0
 offset_bottom = 189.0
-text = "Right-click a piece to
+text = "Hover over a piece to
 learn how it works."
 mobile_text = "Long-press a piece to
 learn how it works."

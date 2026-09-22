@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cxfq5h7snyc2s" path="res://Graph/Graph Nodes/Output Node/output_node.tscn" id="3_oqb02"]
 [ext_resource type="Texture2D" uid="uid://2xlg48tp1dhd" path="res://UI/Level UI/back_icon.png" id="3_qkwna"]
 [ext_resource type="PackedScene" uid="uid://bcc6d7yom8e26" path="res://Graph/Graph Nodes/Operation Nodes/Add Value/add_value_node.tscn" id="4_2lpnl"]
-[ext_resource type="PackedScene" uid="uid://cfugbetubydom" path="res://Screens/HowToPlayScreen/mouse.tscn" id="7_dkl70"]
 [ext_resource type="Script" uid="uid://cwiwtsstyy536" path="res://UI/MyButton/my_button.gd" id="8_oqb02"]
 [ext_resource type="PackedScene" uid="uid://cnq8kcmvx62v6" path="res://Screens/HowToPlayScreen/pointer.tscn" id="9_2lpnl"]
 [ext_resource type="Texture2D" uid="uid://0njw5eurbgsd" path="res://UI/ScrollContainer/up_arrow.svg" id="11_pat87"]
@@ -147,7 +146,7 @@ text = "Drag pieces to rearrange them."
 
 [node name="TutorialPanel5" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=307943729 instance=ExtResource("2_abb0i")]
 layout_mode = 2
-text = "Right-click a piece to learn how it works."
+text = "Hover over a piece to learn how it works."
 mobile_text = "Long-press a piece to learn how it works."
 
 [node name="TutorialPanel7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1201859658 instance=ExtResource("2_abb0i")]
@@ -270,10 +269,6 @@ value = 1
 unique_name_in_owner = true
 visible = false
 position = Vector2(197, 371)
-
-[node name="Mouse" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas6" unique_id=179320004 instance=ExtResource("7_dkl70")]
-unique_name_in_owner = true
-visible = false
 
 [node name="GraphCanvas7" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=1599730110 instance=ExtResource("1_dkl70")]
 unique_name_in_owner = true

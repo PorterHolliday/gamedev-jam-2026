@@ -35,7 +35,6 @@ var timers: Array[Timer] = []
 @onready var graph_canvas_6: GraphCanvas = %GraphCanvas6
 @onready var add_value_node_6: AddValueNode = %AddValueNode6
 @onready var pointer_5: Pointer = %Pointer5
-@onready var mouse: Mouse = %Mouse
 @onready var graph_canvas_7: GraphCanvas = %GraphCanvas7
 @onready var add_value_node_7: AddValueNode = %AddValueNode7
 @onready var add_value_node_8: AddValueNode = %AddValueNode8
@@ -52,6 +51,7 @@ var timers: Array[Timer] = []
 
 func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
+	add_value_node_6.process_mode = Node.PROCESS_MODE_DISABLED
 	graph_canvas.start()
 	graph_canvas.mouse_position_override = Vector2.ONE
 	graph_canvas_2.start()
@@ -190,36 +190,37 @@ func _reset_drag_animation() -> void:
 	
 func _play_node_info_animation() -> void:
 	while can_process():
-		pointer_5.global_position = add_value_node_6.global_position
-		mouse.global_position = add_value_node_6.global_position
+		pointer_5.position = add_value_node_6.position + Vector2(0, 80)
 		
-		if OS.has_feature('web_android') or OS.has_feature('web_ios'):
-			pointer_5.show()
-		else:
-			mouse.show()
-			
-		await _wait(0.5)
+		pointer_5.show()
+		
+		var tween: Tween = _create_tween()
+		tween.tween_property(pointer_5, "position", add_value_node_6.position, 0.5)
+		
+		await tween.finished
 		
 		# Animate long-press
 		if OS.has_feature('web_android') or OS.has_feature('web_ios'):
-			await pointer_5.play_click_animation(1.0)
+			await pointer_5.play_click_animation(ClickableControl.TOUCH_TO_RIGHT_CLICK_TIME * 1.5)
 		else:
-			mouse.play_right_click_animation(0.5)
+			await pointer_5.play_hover_animation(MyGraphNode.NODE_INFO_TIME * 1.5)
 			
-		var tween: Tween = _create_tween()
-		tween.tween_method(
-			func(_time: float):
-				add_value_node_6.node_info.show(),
-			0.0, 1.0, 3.0)
-		await _wait(0.5)
+		add_value_node_6.node_info.show()
+		
+		await _wait(3.0)
+			
+		tween = _create_tween()
+		tween.tween_property(pointer_5, "position", add_value_node_6.position + Vector2(0, 80), 0.5)		
+		await _wait(0.35)
+		add_value_node_6.node_info.hide()
+		await tween.finished		
+		
 		pointer_5.hide()
-		mouse.hide()
-		await tween.finished
 		_reset_node_info_animation()
 		await _wait(TIME_BETWEEN_ANIMATIONS)
 
 func _reset_node_info_animation() -> void:
-	add_value_node_6.node_info.hide()
+	pass
 	
 func _play_input_to_input_animation() -> void:
 	while can_process():

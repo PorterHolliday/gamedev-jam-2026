@@ -4,6 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dqd8a4b033u3v" path="res://Levels/Tutorial/hand_icon.svg" id="1_vgalk"]
 [ext_resource type="Texture2D" uid="uid://ctckwmv658aqf" path="res://Levels/Tutorial/click_icon.svg" id="3_t4u3b"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_bp0l3"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Pointer" type="Node2D" unique_id=1898927088]
 script = ExtResource("1_a1g0y")
 
@@ -19,3 +25,13 @@ visible = false
 position = Vector2(0, -11)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_t4u3b")
+
+[node name="Label" type="Label" parent="." unique_id=323865431]
+unique_name_in_owner = true
+offset_left = -7.0
+offset_right = 33.0
+offset_bottom = 67.0
+text = "..."
+label_settings = SubResource("LabelSettings_bp0l3")
+visible_characters = 0
+visible_ratio = 0.0
