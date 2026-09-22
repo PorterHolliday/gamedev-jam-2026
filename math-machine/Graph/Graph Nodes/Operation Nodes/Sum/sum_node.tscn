@@ -23,9 +23,9 @@ shadow_color = Color(0, 0, 0, 0.6431373)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
 
-[node name="SumNode" type="Node2D" unique_id=1459015131 node_paths=PackedStringArray("click_detector")]
+[node name="SumNode" type="Node2D" unique_id=1459015131 node_paths=PackedStringArray("mouse_detector")]
 script = ExtResource("1_ckcue")
-click_detector = NodePath("DragControl")
+mouse_detector = NodePath("DragControl")
 metadata/_custom_type_script = "uid://184cv0va5mfi"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=686987980]

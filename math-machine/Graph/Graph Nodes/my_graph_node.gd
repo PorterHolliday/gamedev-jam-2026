@@ -6,20 +6,40 @@ signal node_info_shown
 const GROW_SCALE: Vector2 = Vector2(1.15, 1.15)
 const ROTATION_DEGREES: float = 10.0
 const NULL_VALUE: int = 9223372036854775807
+const NODE_INFO_TIME: float = 1.0
 
-@export var click_detector: ClickableControl
+@export var mouse_detector: ClickableControl
 
 var _graph_canvas: GraphCanvas
 var inputs: Array[GraphNodePort] = []
 var outputs: Array[GraphNodePort] = []
+var _is_last_input_mouse: bool = false
 
 @onready var node_info: NodeInfo = %NodeInfo
+@onready var node_info_timer: Timer = Timer.new()
 
 func _ready() -> void:
 	if get_parent() is GraphCanvas:
 		_graph_canvas = get_parent()
 	_init_ports()
-	click_detector.mouse_clicked.connect(_on_click_detector_mouse_clicked)
+	mouse_detector.mouse_entered.connect(_on_mouse_entered)
+	mouse_detector.mouse_exited.connect(_on_mouse_exited)
+	mouse_detector.mouse_clicked.connect(_on_mouse_clicked)
+	
+	add_child(node_info_timer)
+	node_info_timer.one_shot = true
+	node_info_timer.timeout.connect(_on_node_info_timer_timeout)
+	
+func _input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		_is_last_input_mouse = false
+	elif event is InputEventMouse and event.device == InputEvent.DEVICE_ID_EMULATION:
+		_is_last_input_mouse = false
+	elif event is InputEventMouse:
+		_is_last_input_mouse = true
+	
+	if event is InputEventMouseButton and event.pressed:
+		_cancel_tooltip()
 	
 func _init_ports() -> void:
 	for child in get_children():
@@ -67,8 +87,25 @@ func _play_remove_input_animation() -> void:
 	tween.tween_property(self, 'rotation_degrees', -ROTATION_DEGREES, 0.05)
 	tween.tween_property(self, 'rotation_degrees', ROTATION_DEGREES, 0.1)
 	tween.tween_property(self, 'rotation_degrees', 0, 0.05)
+
+func _on_mouse_entered() -> void:
+	if _is_last_input_mouse:
+		node_info_timer.start(NODE_INFO_TIME)
 	
-func _on_click_detector_mouse_clicked(button_index: MouseButton) -> void:
-	if button_index == MOUSE_BUTTON_RIGHT:
-		node_info.show()
-		node_info_shown.emit()
+func _on_mouse_exited() -> void:
+	_cancel_tooltip()
+	
+func _on_mouse_clicked(button: MouseButton) -> void:
+	if button == MOUSE_BUTTON_RIGHT:
+		_show_tooltip()
+	
+func _on_node_info_timer_timeout() -> void:
+	_show_tooltip()
+	
+func _show_tooltip() -> void:
+	node_info.show()
+	node_info_shown.emit()
+	
+func _cancel_tooltip() -> void:
+	node_info.hide()
+	node_info_timer.stop()

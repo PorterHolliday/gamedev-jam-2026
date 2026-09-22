@@ -24,9 +24,9 @@ shadow_offset = Vector2(4, 4)
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_0dthf"]
 points = PackedVector2Array(-124, -64, 4, -64, 44, 0, 4, 64, -124, 64)
 
-[node name="InputNode" type="Node2D" unique_id=1370377095 node_paths=PackedStringArray("click_detector")]
+[node name="InputNode" type="Node2D" unique_id=1370377095 node_paths=PackedStringArray("mouse_detector")]
 script = ExtResource("1_whq1o")
-click_detector = NodePath("GraphNodeOutput/SnapArea")
+mouse_detector = NodePath("GraphNodeOutput/SnapArea")
 metadata/_custom_type_script = "uid://tnge33mk1lgm"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1855390834]
