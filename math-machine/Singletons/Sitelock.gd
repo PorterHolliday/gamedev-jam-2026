@@ -3,6 +3,9 @@ extends Node
 const ALLOWED_DOMAINS = [
 	"localhost",
 	"127.0.0.1",
+	"coolmathgames.com",
+	"coolmath-games.com",
+	"coolmath.com",
 	"crazygames.com",
 	"crazygames.fr",
 	"crazygames.cz",
@@ -10,7 +13,7 @@ const ALLOWED_DOMAINS = [
 	"itch.io",
 	"itch.zone",
 	"wavedash.com",
-	"wavedashcdn.com"
+	"wavedashcdn.com",
 ]
 
 func _ready() -> void:

@@ -4,7 +4,7 @@ const APP_ID : String = "EQ1AEtI2Y"
 const SDK_KEY : String = "184TBmNvPIIvNcNjTpShxfMVMGQwynnMkasEZuDkR0oSCvVt+UqQyyVtSodn2Qb8"
 
 func _ready() -> void:
-	if OS.has_feature("web"):
+	if OS.has_feature("web") and OS.has_feature("bytebrew"):
 		initialize_bytebrew()
 
 func initialize_bytebrew() -> void:
@@ -20,13 +20,16 @@ func initialize_bytebrew() -> void:
 
 func track_event(event_name: String, parameters: Dictionary = {}) -> void:
 	parameters = _inject_web_host(parameters)
-	if OS.has_feature("web"):
+	if not OS.has_feature("bytebrew") and not OS.has_feature("editor"):
+		return
+		
+	if OS.has_feature("web") and OS.has_feature("bytebrew"):
 		var window = JavaScriptBridge.get_interface("window")
 		if window and typeof(window.trackCustomEvent) != TYPE_NIL:
 			# Convert Godot Dictionary to a JSON string string for robust transfer to JS
 			var json_string = JSON.stringify(parameters)
 			window.trackCustomEvent(event_name, json_string)
-	else:
+	elif OS.has_feature("editor"):
 		print("ByteBrew Mock Track: ", event_name, " Params: ", parameters)
 
 func _inject_web_host(parameters: Dictionary = {}) -> Dictionary:

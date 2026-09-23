@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bufby6sa3eblm"]
+
+[ext_resource type="Script" uid="uid://ntvh534nsxst" path="res://Screens/CoolmathGamesSplash/coolmath_games_splash.gd" id="1_tbmvg"]
+[ext_resource type="Texture2D" uid="uid://c0h08r2twqw8b" path="res://coolmath_games_splash.png" id="2_1iikw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0l3"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+
+[node name="CoolmathGamesSplash" type="Control" unique_id=623115636]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tbmvg")
+
+[node name="Panel" type="Panel" parent="." unique_id=18906055]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bp0l3")
+
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=1142293464]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1iikw")
