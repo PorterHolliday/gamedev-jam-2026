@@ -152,27 +152,6 @@ scroll_container = NodePath("ScrollContainer")
 up_arrow = NodePath("UpArrow")
 down_arrow = NodePath("DownArrow")
 
-[node name="UpArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=59982145]
-visible = false
-layout_mode = 0
-offset_left = 992.0
-offset_top = 80.0
-offset_right = 1072.0
-offset_bottom = 176.0
-texture = ExtResource("3_ev4gy")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="DownArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=793785489]
-layout_mode = 0
-offset_left = 992.0
-offset_top = 528.0
-offset_right = 1072.0
-offset_bottom = 624.0
-texture = ExtResource("4_52cp0")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainerWrapper" unique_id=982808491]
 clip_contents = false
 layout_mode = 1
@@ -447,6 +426,27 @@ layout_mode = 2
 
 [node name="LevelButton12" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/GridContainer4" unique_id=1558984087 instance=ExtResource("1_bntq0")]
 layout_mode = 2
+
+[node name="UpArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=59982145]
+visible = false
+layout_mode = 0
+offset_left = 992.0
+offset_top = 80.0
+offset_right = 1072.0
+offset_bottom = 176.0
+texture = ExtResource("3_ev4gy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DownArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=793785489]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 528.0
+offset_right = 1072.0
+offset_bottom = 624.0
+texture = ExtResource("4_52cp0")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BackButton" type="Button" parent="." unique_id=23307136]
 unique_name_in_owner = true

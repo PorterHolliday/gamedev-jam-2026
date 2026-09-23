@@ -62,28 +62,6 @@ scroll_container = NodePath("ScrollContainer")
 up_arrow = NodePath("UpArrow")
 down_arrow = NodePath("DownArrow")
 
-[node name="UpArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=1004678716]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = 992.0
-offset_top = 32.0
-offset_right = 1072.0
-offset_bottom = 128.0
-texture = ExtResource("11_pat87")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="DownArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=210436378]
-layout_mode = 0
-offset_left = 992.0
-offset_top = 528.0
-offset_right = 1072.0
-offset_bottom = 624.0
-texture = ExtResource("12_fqy5f")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainerWrapper" unique_id=734762239]
 unique_name_in_owner = true
 clip_contents = false
@@ -193,6 +171,8 @@ unique_name_in_owner = true
 [node name="InputNode" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas2" unique_id=1935018160 instance=ExtResource("2_dkl70")]
 unique_name_in_owner = true
 position = Vector2(384, 608)
+value = Object(Timer,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","process_callback":1,"wait_time":1.0,"one_shot":false,"autostart":false,"ignore_time_scale":false,"script":null)
+
 
 [node name="AddValueNode" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas2" unique_id=1512119247 instance=ExtResource("4_2lpnl")]
 unique_name_in_owner = true
@@ -209,7 +189,8 @@ unique_name_in_owner = true
 [node name="InputNode2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas3" unique_id=1450184192 instance=ExtResource("2_dkl70")]
 unique_name_in_owner = true
 position = Vector2(384, 912)
-value = 2
+value = Object(Timer,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","process_callback":1,"wait_time":1.0,"one_shot":false,"autostart":false,"ignore_time_scale":false,"script":null)
+
 
 [node name="AddValueNode2" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas3" unique_id=342065537 instance=ExtResource("4_2lpnl")]
 unique_name_in_owner = true
@@ -232,7 +213,8 @@ unique_name_in_owner = true
 [node name="InputNode3" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas4" unique_id=1010184336 instance=ExtResource("2_dkl70")]
 unique_name_in_owner = true
 position = Vector2(384, 1232)
-value = 2
+value = Object(Timer,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","process_callback":1,"wait_time":1.0,"one_shot":false,"autostart":false,"ignore_time_scale":false,"script":null)
+
 
 [node name="AddValueNode4" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer/GraphCanvas4" unique_id=1722824041 instance=ExtResource("4_2lpnl")]
 unique_name_in_owner = true
@@ -328,6 +310,28 @@ position = Vector2(197, 371)
 [node name="MouseBlocker" type="Control" parent="ScrollContainerWrapper/ScrollContainer/MarginContainer" unique_id=113095860]
 layout_mode = 2
 mouse_filter = 1
+
+[node name="UpArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=1004678716]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 992.0
+offset_top = 32.0
+offset_right = 1072.0
+offset_bottom = 128.0
+texture = ExtResource("11_pat87")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DownArrow" type="TextureRect" parent="ScrollContainerWrapper" unique_id=210436378]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 528.0
+offset_right = 1072.0
+offset_bottom = 624.0
+texture = ExtResource("12_fqy5f")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BackButton" type="Button" parent="." unique_id=127066832]
 unique_name_in_owner = true
