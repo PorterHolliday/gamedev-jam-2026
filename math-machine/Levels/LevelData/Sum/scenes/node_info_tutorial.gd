@@ -37,7 +37,7 @@ func play_node_info_animation() -> void:
 	await tween.finished
 	
 	# Animate long-press
-	if OS.has_feature('web_android') or OS.has_feature('web_ios'):
+	if DeviceInfo.is_mobile:
 		await pointer.play_click_animation(ClickableControl.TOUCH_TO_RIGHT_CLICK_TIME * 1.5)
 	else:
 		await pointer.play_hover_animation(MyGraphNode.NODE_INFO_TIME * 1.5)

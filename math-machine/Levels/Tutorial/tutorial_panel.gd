@@ -23,7 +23,7 @@ func _update_label_text() -> void:
 	if not label: return
 	
 	label.modulate = text_color
-	if mobile_text and (OS.has_feature('web_android') or OS.has_feature('web_ios')):
+	if mobile_text and DeviceInfo.is_mobile:
 		label.text = mobile_text
 	else:
 		label.text = text

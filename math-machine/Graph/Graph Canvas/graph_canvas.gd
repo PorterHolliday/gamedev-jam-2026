@@ -505,5 +505,5 @@ func _port_clicked(port: GraphNodePort) -> void:
 	HapticManager.trigger_port_click_haptic()
 
 func _modulate_glow_panel(color: Color) -> void:
-	if OS.has_feature('web_android') or OS.has_feature('web_ios'):
+	if DeviceInfo.is_mobile:
 		glow_panel.modulate = color

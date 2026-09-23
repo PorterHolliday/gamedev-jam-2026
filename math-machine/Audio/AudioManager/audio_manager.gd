@@ -40,7 +40,7 @@ func _ready() -> void:
 		sfx_player_pool.append(sfx_player)
 		add_child(sfx_player)
 		sfx_player.bus = 'SFX'
-		if OS.has_feature('web_android') or OS.has_feature('web_ios'):
+		if DeviceInfo.has_small_speakers:
 			sfx_player.volume_db = MOBILE_SFX_VOLUME_DB
 	# Not awaited: startup must not block on this.
 	_warm_up_music()

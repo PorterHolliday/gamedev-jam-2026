@@ -37,6 +37,7 @@ AudioManager="*uid://dv32veov1f06t"
 NodeTypeRegistry="*uid://biubedogqv1b6"
 HapticManager="*uid://cco4urw1uaao1"
 Sitelock="*uid://cuw07acka77hf"
+DeviceInfo="*uid://d4dubawrt8uon"
 
 [display]
 
