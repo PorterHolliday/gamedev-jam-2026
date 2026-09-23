@@ -62,6 +62,9 @@ func _ready() -> void:
 	
 	if OS.has_feature("wavedash"):
 		WavedashSDK.init({})
+		
+	if OS.has_feature("coolmathgames"):
+		CoolmathAPI.on_game_started()
 
 func _process(delta: float) -> void:
 	SaveManager.total_play_time += delta

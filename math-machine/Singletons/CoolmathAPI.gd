@@ -23,15 +23,18 @@ func _ready() -> void:
 
 func on_game_started() -> void:
 	if not (OS.has_feature("web") and OS.has_feature("coolmathgames")): return
+	print("window.parent.postMessage({'cm_game_event': true, 'cm_game_evt': 'start', 'cm_game_lvl': 0}, '*')")
 	JavaScriptBridge.eval("window.parent.postMessage({'cm_game_event': true, 'cm_game_evt': 'start', 'cm_game_lvl': 0}, '*')", true)
 
 func on_level_started(level_index: int) -> void:
 	if not (OS.has_feature("web") and OS.has_feature("coolmathgames")): return
-	JavaScriptBridge.eval("window.parent.postMessage({'cm_game_event': true, 'cm_game_evt': 'start', 'cm_game_lvl': %d}, '*');" % level_index, true)
+	print("window.parent.postMessage({'cm_game_event': true, 'cm_game_evt': 'start', 'cm_game_lvl': %d}, '*');" % (level_index+1))
+	JavaScriptBridge.eval("window.parent.postMessage({'cm_game_event': true, 'cm_game_evt': 'start', 'cm_game_lvl': %d}, '*');" % (level_index+1), true)
 
 func on_level_restarted(level_index: int) -> void:
 	if not (OS.has_feature("web") and OS.has_feature("coolmathgames")): return
-	JavaScriptBridge.eval("window.parent.postMessage({'cm_game_event': true, 'cm_game_evt': 'replay', 'cm_game_lvl': %d}, '*');" % level_index, true)
+	print("window.parent.postMessage({'cm_game_event': true, 'cm_game_evt': 'replay', 'cm_game_lvl': %d}, '*');" % (level_index+1))
+	JavaScriptBridge.eval("window.parent.postMessage({'cm_game_event': true, 'cm_game_evt': 'replay', 'cm_game_lvl': %d}, '*');" % (level_index+1), true)
 
 func cmg_adbreak() -> void:
 	if not (OS.has_feature("web") and OS.has_feature("coolmathgames")): return
